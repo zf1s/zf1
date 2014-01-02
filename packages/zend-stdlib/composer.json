@@ -1,0 +1,20 @@
+{
+	"name": "zf1/zend-stdlib",
+	"description": "Zend Framework 1 Stdlib package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"stdlib"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Stdlib": "library/"
+		}
+	}
+}
