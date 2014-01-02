@@ -1,0 +1,23 @@
+{
+	"name": "zf1/zend-pdf",
+	"description": "Zend Framework 1 Pdf package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"pdf"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-log": "self.version",
+		"zf1/zend-memory": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Pdf": "library/"
+		}
+	}
+}
