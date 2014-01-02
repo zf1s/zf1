@@ -1,0 +1,26 @@
+{
+	"name": "zf1/zend-service-shorturl",
+	"description": "Zend Framework 1 Service ShortUrl package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"service",
+		"shorturl"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-service": "self.version",
+		"zf1/zend-uri": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Service_ShortUrl": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-dom": "Used in special situations or with special adapters"
+	}
+}
