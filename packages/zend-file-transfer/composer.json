@@ -1,0 +1,25 @@
+{
+	"name": "zf1/zend-file-transfer",
+	"description": "Zend Framework 1 File Transfer package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"file",
+		"transfer"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_File_Transfer": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-loader": "Used in special situations or with special adapters"
+	}
+}
