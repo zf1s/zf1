@@ -1,0 +1,26 @@
+{
+	"name": "zf1/zend-barcode",
+	"description": "Zend Framework 1 Barcode package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"barcode"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-validate": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Barcode": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-pdf": "Used in special situations or with special adapters",
+		"zf1/zend-config": "Used in special situations or with special adapters"
+	}
+}
