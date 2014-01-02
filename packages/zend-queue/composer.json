@@ -1,0 +1,27 @@
+{
+	"name": "zf1/zend-queue",
+	"description": "Zend Framework 1 Queue package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"queue"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-validate": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Queue": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-loader": "Used in special situations or with special adapters",
+		"zf1/zend-config": "Used in special situations or with special adapters",
+		"zf1/zend-db": "Used in special situations or with special adapters"
+	}
+}
