@@ -1,0 +1,23 @@
+{
+	"name": "zf1/zend-json",
+	"description": "Zend Framework 1 Json package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"json"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-loader": "self.version",
+		"zf1/zend-server": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Json": "library/"
+		}
+	}
+}
