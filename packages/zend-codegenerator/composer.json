@@ -1,0 +1,26 @@
+{
+	"name": "zf1/zend-codegenerator",
+	"description": "Zend Framework 1 CodeGenerator package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"codegenerator"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-reflection": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_CodeGenerator": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-config": "Used in special situations or with special adapters",
+		"zf1/zend-loader": "Used in special situations or with special adapters"
+	}
+}
