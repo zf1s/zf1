@@ -1,0 +1,25 @@
+{
+	"name": "zf1/zend-tag",
+	"description": "Zend Framework 1 Tag package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"tag"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-loader": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Tag": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-config": "Used in special situations or with special adapters"
+	}
+}
