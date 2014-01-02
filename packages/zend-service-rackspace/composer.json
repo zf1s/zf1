@@ -1,0 +1,23 @@
+{
+	"name": "zf1/zend-service-rackspace",
+	"description": "Zend Framework 1 Service Rackspace package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"service",
+		"rackspace"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-service": "self.version",
+		"zf1/zend-validate": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Service_Rackspace": "library/"
+		}
+	}
+}
