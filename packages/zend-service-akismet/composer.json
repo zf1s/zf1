@@ -1,0 +1,25 @@
+{
+	"name": "zf1/zend-service-akismet",
+	"description": "Zend Framework 1 Service Akismet package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"service",
+		"akismet"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-http": "self.version",
+		"zf1/zend-uri": "self.version",
+		"zf1/zend-version": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Service_Akismet": "library/"
+		}
+	}
+}
