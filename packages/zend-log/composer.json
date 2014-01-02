@@ -1,0 +1,24 @@
+{
+	"name": "zf1/zend-log",
+	"description": "Zend Framework 1 Log package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"log"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Log": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-wildfire": "Used in special situations or with special adapters"
+	}
+}
