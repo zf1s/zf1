@@ -1,0 +1,25 @@
+{
+	"name": "zf1/zend-application",
+	"description": "Zend Framework 1 Application package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"application"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-controller": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Application": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-config": "Used in special situations or with special adapters"
+	}
+}
