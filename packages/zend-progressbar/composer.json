@@ -1,0 +1,26 @@
+{
+	"name": "zf1/zend-progressbar",
+	"description": "Zend Framework 1 ProgressBar package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"progressbar"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-config": "self.version",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-json": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_ProgressBar": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-session": "Used in special situations or with special adapters"
+	}
+}
