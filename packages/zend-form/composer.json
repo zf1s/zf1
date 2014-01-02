@@ -1,0 +1,31 @@
+{
+	"name": "zf1/zend-form",
+	"description": "Zend Framework 1 Form package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"form"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-filter": "self.version",
+		"zf1/zend-validate": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Form": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-captcha": "Used in special situations or with special adapters",
+		"zf1/zend-controller": "Used in special situations or with special adapters",
+		"zf1/zend-json": "Used in special situations or with special adapters",
+		"zf1/zend-loader": "Used in special situations or with special adapters",
+		"zf1/zend-registry": "Used in special situations or with special adapters",
+		"zf1/zend-session": "Used in special situations or with special adapters"
+	}
+}
