@@ -1,0 +1,27 @@
+{
+	"name": "zf1/zend-service-livedocx",
+	"description": "Zend Framework 1 Service LiveDocx package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"service",
+		"livedocx"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-service": "self.version",
+		"zf1/zend-date": "self.version",
+		"zf1/zend-soap": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Service_LiveDocx": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-config": "Used in special situations or with special adapters"
+	}
+}
