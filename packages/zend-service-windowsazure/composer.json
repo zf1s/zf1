@@ -1,0 +1,25 @@
+{
+	"name": "zf1/zend-service-windowsazure",
+	"description": "Zend Framework 1 Service WindowsAzure package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"service",
+		"windowsazure"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-service": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Service_WindowsAzure": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-log": "Used in special situations or with special adapters"
+	}
+}
