@@ -1,0 +1,24 @@
+{
+	"name": "zf1/zend-mail",
+	"description": "Zend Framework 1 Mail package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"mail"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-loader": "self.version",
+		"zf1/zend-mime": "self.version",
+		"zf1/zend-validate": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Mail": "library/"
+		}
+	}
+}
