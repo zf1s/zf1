@@ -1,0 +1,22 @@
+{
+	"name": "zf1/zend-currency",
+	"description": "Zend Framework 1 Currency package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"currency"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-locale": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Currency": "library/"
+		}
+	}
+}
