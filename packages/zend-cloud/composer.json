@@ -1,0 +1,31 @@
+{
+	"name": "zf1/zend-cloud",
+	"description": "Zend Framework 1 Cloud package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"cloud"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-loader": "self.version",
+		"zf1/zend-http": "self.version",
+		"zf1/zend-queue": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Cloud": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-config": "Used in special situations or with special adapters",
+		"zf1/zend-service-amazon": "Used in special situations or with special adapters",
+		"zf1/zend-service-windowsazure": "Used in special situations or with special adapters",
+		"zf1/zend-service-nirvanix": "Used in special situations or with special adapters",
+		"zf1/zend-service-rackspace": "Used in special situations or with special adapters"
+	}
+}
