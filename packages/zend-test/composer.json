@@ -1,0 +1,29 @@
+{
+	"name": "zf1/zend-test",
+	"description": "Zend Framework 1 Test package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"test"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1/zend-controller": "self.version",
+		"zf1/zend-dom": "self.version",
+		"zf1/zend-exception": "self.version",
+		"zf1/zend-layout": "self.version",
+		"zf1/zend-registry": "self.version",
+		"zf1/zend-session": "self.version"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Test": "library/"
+		}
+	},
+	"suggest": {
+		"zf1/zend-loader": "Used in special situations or with special adapters"
+	}
+}
