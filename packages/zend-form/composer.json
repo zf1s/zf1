@@ -17,7 +17,8 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"Zend_Form": "library/"
+			"Zend_Form": "library/",
+			"Zend_Dojo_Form": "library/"
 		}
 	},
 	"suggest": {
