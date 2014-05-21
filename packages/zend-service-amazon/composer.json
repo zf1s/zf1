@@ -14,7 +14,8 @@
 		"php": ">=5.2.11",
 		"zf1/zend-exception": "self.version",
 		"zf1/zend-http": "self.version",
-		"zf1/zend-rest": "self.version"
+		"zf1/zend-rest": "self.version",
+		"zf1/zend-xml": "self.version"
 	},
 	"autoload": {
 		"psr-0": {
