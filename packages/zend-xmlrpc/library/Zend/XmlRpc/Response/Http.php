@@ -13,29 +13,39 @@
  * to license@zend.com so we can send you a copy immediately.
  *
  * @category   Zend
- * @package    Zend_XmlRpc
- * @subpackage Client
+ * @package    Zend_Controller
  * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id$
  */
 
-
 /**
- * Zend_XmlRpc_Exception
+ * Zend_XmlRpc_Response
  */
-// require_once 'Zend/XmlRpc/Client/Exception.php';
-
+// require_once 'Zend/XmlRpc/Response.php';
 
 /**
- * Thrown by Zend_XmlRpc_Client when an HTTP error occurs during an
- * XML-RPC method call.
+ * HTTP response
  *
- * @category   Zend
- * @package    Zend_XmlRpc
- * @subpackage Client
+ * @uses Zend_XmlRpc_Response
+ * @category Zend
+ * @package  Zend_XmlRpc
  * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version $Id$
  */
-class Zend_XmlRpc_Client_HttpException extends Zend_XmlRpc_Client_Exception
-{}
+class Zend_XmlRpc_Response_Http extends Zend_XmlRpc_Response
+{
+    /**
+     * Override __toString() to send HTTP Content-Type header
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        if (!headers_sent()) {
+            header('Content-Type: text/xml; charset=' . strtolower($this->getEncoding()));
+        }
+
+        return parent::__toString();
+    }
+}
