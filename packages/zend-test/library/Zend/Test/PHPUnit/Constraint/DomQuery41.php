@@ -132,11 +132,19 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends PHPUnit_Framework_Constraint
     /**
      * Evaluate an object to see if it fits the constraints
      *
-     * @param  string $other String to examine
-     * @param  null|string Assertion type
+     * @param  string       Response content to be matched against (haystack)
+     * @param  null|string  Assertion type
+     * @param  string       (optional) String to match (needle), may be required depending on assertion type
      * @return bool
+     * 
+     * NOTE:
+     * Drastic changes up to PHPUnit 3.5.15 this was:
+     *     public function evaluate($other, $assertType = null)
+     * In PHPUnit 3.6.0 they changed the interface into this:
+     *     public function evaluate($other, $description = '', $returnResult = FALSE)
+     * We use the new interface for PHP-strict checking, but emulate the old one
      */
-    public function evaluate($other, $assertType = null)
+    public function evaluate($content, $assertType = '', $match = FALSE)
     {
         if (strstr($assertType, 'Not')) {
             $this->setNegate(true);
@@ -156,40 +164,38 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends PHPUnit_Framework_Constraint
         $this->_assertType = $assertType;
 
         $method   = $this->_useXpath ? 'queryXpath' : 'query';
-        $domQuery = new Zend_Dom_Query($other);
+        $domQuery = new Zend_Dom_Query($content);
         $domQuery->registerXpathNamespaces($this->_xpathNamespaces);
         $result   = $domQuery->$method($this->_path);
-        $argv     = func_get_args();
-        $argc     = func_num_args();
 
         switch ($assertType) {
             case self::ASSERT_CONTENT_CONTAINS:
-                if (3 > $argc) {
+                if (!$match) {
                     // require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
                     throw new Zend_Test_PHPUnit_Constraint_Exception('No content provided against which to match');
                 }
-                $this->_content = $content = $argv[2];
+                $this->_content = $match;
                 return ($this->_negate)
-                    ? $this->_notMatchContent($result, $content)
-                    : $this->_matchContent($result, $content);
+                    ? $this->_notMatchContent($result, $match)
+                    : $this->_matchContent($result, $match);
             case self::ASSERT_CONTENT_REGEX:
-                if (3 > $argc) {
+                if (!$match) {
                     // require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
                     throw new Zend_Test_PHPUnit_Constraint_Exception('No pattern provided against which to match');
                 }
-                $this->_content = $content = $argv[2];
+                $this->_content = $match;
                 return ($this->_negate)
-                    ? $this->_notRegexContent($result, $content)
-                    : $this->_regexContent($result, $content);
+                    ? $this->_notRegexContent($result, $match)
+                    : $this->_regexContent($result, $match);
             case self::ASSERT_CONTENT_COUNT:
             case self::ASSERT_CONTENT_COUNT_MIN:
             case self::ASSERT_CONTENT_COUNT_MAX:
-                if (3 > $argc) {
+                if ($match === false) {
                     // require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
                     throw new Zend_Test_PHPUnit_Constraint_Exception('No count provided against which to compare');
                 }
-                $this->_content = $content = $argv[2];
-                return $this->_countContent($result, $content, $assertType);
+                $this->_content = $match;
+                return $this->_countContent($result, $match, $assertType);
             case self::ASSERT_QUERY:
             default:
                 if ($this->_negate) {
@@ -204,13 +210,21 @@ class Zend_Test_PHPUnit_Constraint_DomQuery extends PHPUnit_Framework_Constraint
      * Report Failure
      *
      * @see    PHPUnit_Framework_Constraint for implementation details
-     * @param  mixed $other CSS selector path
-     * @param  string $description
-     * @param  bool $not
+     * @param  mixed    CSS selector path
+     * @param  string   Failure description
+     * @param  object   Cannot be used, null
      * @return void
      * @throws PHPUnit_Framework_ExpectationFailedException
+     * NOTE:
+     * Drastic changes up to PHPUnit 3.5.15 this was:
+     *     public function fail($other, $description, $not = false)
+     * In PHPUnit 3.6.0 they changed the interface into this:
+     *     protected function fail($other, $description, PHPUnit_Framework_ComparisonFailure $comparisonFailure = NULL)
+     * We use the new interface for PHP-strict checking
+     * NOTE 2:
+     * Interface changed again in PHPUnit 4.1.0 because of refactoring to SebastianBergmann\Comparator
      */
-    public function fail($other, $description, $not = false)
+    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = NULL)
     {
         // require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
         switch ($this->_assertType) {
