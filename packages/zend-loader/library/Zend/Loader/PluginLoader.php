@@ -389,7 +389,7 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
         foreach ($registry as $prefix => $paths) {
             $className = $prefix . $name;
 
-            if (class_exists($className, false)) {
+            if (class_exists($className)) {
                 $found = true;
                 break;
             }
