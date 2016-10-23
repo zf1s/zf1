@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-service-akismet",
+	"name": "zf1s/zend-service-akismet",
 	"description": "Zend Framework 1 Service Akismet package",
 	"keywords": [
 		"framework",
@@ -12,14 +12,22 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-http": "self.version",
-		"zf1/zend-uri": "self.version",
-		"zf1/zend-version": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-http": "^1.12",
+		"zf1s/zend-uri": "^1.12",
+		"zf1s/zend-version": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
 			"Zend_Service_Akismet": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-service-akismet": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
