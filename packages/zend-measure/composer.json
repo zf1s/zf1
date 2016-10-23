@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-measure",
+	"name": "zf1s/zend-measure",
 	"description": "Zend Framework 1 Measure package",
 	"keywords": [
 		"framework",
@@ -11,13 +11,21 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-locale": "self.version",
-		"zf1/zend-registry": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-locale": "^1.12",
+		"zf1s/zend-registry": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
 			"Zend_Measure": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-measure": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
