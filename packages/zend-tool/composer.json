@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-tool",
+	"name": "zf1s/zend-tool",
 	"description": "Zend Framework 1 Tool package",
 	"keywords": [
 		"framework",
@@ -18,11 +18,19 @@
 		}
 	},
 	"suggest": {
-		"zf1/zend-config": "Used in special situations or with special adapters",
-		"zf1/zend-loader": "Used in special situations or with special adapters"
+		"zf1s/zend-config": "Used in special situations or with special adapters",
+		"zf1s/zend-loader": "Used in special situations or with special adapters"
 	},
 	"bin": [
 		"bin/zf.sh",
 		"bin/zf.php"
-	]
+	],
+	"replace": {
+    	"zf1/zend-tool": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
 }
