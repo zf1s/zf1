@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-dojo",
+	"name": "zf1s/zend-dojo",
 	"description": "Zend Framework 1 Dojo package",
 	"keywords": [
 		"framework",
@@ -11,11 +11,11 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-form": "self.version",
-		"zf1/zend-json": "self.version",
-		"zf1/zend-registry": "self.version",
-		"zf1/zend-view": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-form": "^1.12",
+		"zf1s/zend-json": "^1.12",
+		"zf1s/zend-registry": "^1.12",
+		"zf1s/zend-view": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
@@ -23,6 +23,14 @@
 		}
 	},
 	"suggest": {
-		"zf1/zend-filter": "Used in special situations or with special adapters"
+		"zf1s/zend-filter": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-dojo": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }
