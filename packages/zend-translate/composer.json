@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-translate",
+	"name": "zf1s/zend-translate",
 	"description": "Zend Framework 1 Translate package",
 	"keywords": [
 		"framework",
@@ -11,14 +11,22 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-loader": "self.version",
-		"zf1/zend-locale": "self.version",
-		"zf1/zend-xml": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-loader": "^1.12",
+		"zf1s/zend-locale": "^1.12",
+		"zf1s/zend-xml": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
 			"Zend_Translate": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-translate": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
