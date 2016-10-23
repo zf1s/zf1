@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-feed",
+	"name": "zf1s/zend-feed",
 	"description": "Zend Framework 1 Feed package",
 	"keywords": [
 		"framework",
@@ -11,14 +11,24 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-loader": "self.version",
-		"zf1/zend-uri": "self.version",
-		"zf1/zend-xml": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-http": "^1.12",
+		"zf1s/zend-loader": "^1.12",
+		"zf1s/zend-uri": "^1.12",
+		"zf1s/zend-version": "^1.12",
+		"zf1s/zend-xml": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
 			"Zend_Feed": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-feed": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
