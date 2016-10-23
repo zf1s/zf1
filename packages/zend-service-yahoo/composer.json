@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-service-yahoo",
+	"name": "zf1s/zend-service-yahoo",
 	"description": "Zend Framework 1 Service Yahoo package",
 	"keywords": [
 		"framework",
@@ -12,10 +12,10 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-http": "self.version",
-		"zf1/zend-rest": "self.version",
-		"zf1/zend-xml": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-http": "^1.12",
+		"zf1s/zend-rest": "^1.12",
+		"zf1s/zend-xml": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
@@ -23,6 +23,14 @@
 		}
 	},
 	"suggest": {
-		"zf1/zend-validate": "Used in special situations or with special adapters"
+		"zf1s/zend-validate": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-service-yahoo": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }
