@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-service",
+	"name": "zf1s/zend-service",
 	"description": "Zend Framework 1 Service package",
 	"keywords": [
 		"framework",
@@ -11,12 +11,20 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-http": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-http": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
 			"Zend_Service": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-service": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
