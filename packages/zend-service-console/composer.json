@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-service-console",
+	"name": "zf1s/zend-service-console",
 	"description": "Zend Framework 1 Service Console package",
 	"keywords": [
 		"framework",
@@ -16,6 +16,14 @@
 	"autoload": {
 		"psr-0": {
 			"Zend_Service_Console": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-service-console": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
