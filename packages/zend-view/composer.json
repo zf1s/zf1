@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-view",
+	"name": "zf1s/zend-view",
 	"description": "Zend Framework 1 View package",
 	"keywords": [
 		"framework",
@@ -11,11 +11,11 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-controller": "self.version",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-loader": "self.version",
-		"zf1/zend-locale": "self.version",
-		"zf1/zend-registry": "self.version"
+		"zf1s/zend-controller": "^1.12",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-loader": "^1.12",
+		"zf1s/zend-locale": "^1.12",
+		"zf1s/zend-registry": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
@@ -23,7 +23,15 @@
 		}
 	},
 	"suggest": {
-		"zf1/zend-json": "Used in special situations or with special adapters",
-		"zf1/zend-layout": "Used in special situations or with special adapters"
+		"zf1s/zend-json": "Used in special situations or with special adapters",
+		"zf1s/zend-layout": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-view": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }
