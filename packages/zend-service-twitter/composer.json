@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-service-twitter",
+	"name": "zf1s/zend-service-twitter",
 	"description": "Zend Framework 1 Service Twitter package",
 	"keywords": [
 		"framework",
@@ -12,16 +12,24 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-feed": "self.version",
-		"zf1/zend-http": "self.version",
-		"zf1/zend-json": "self.version",
-		"zf1/zend-rest": "self.version",
-		"zf1/zend-uri": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-feed": "^1.12",
+		"zf1s/zend-http": "^1.12",
+		"zf1s/zend-json": "^1.12",
+		"zf1s/zend-rest": "^1.12",
+		"zf1s/zend-uri": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
 			"Zend_Service_Twitter": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-service-twitter": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
