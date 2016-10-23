@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-auth",
+	"name": "zf1s/zend-auth",
 	"description": "Zend Framework 1 Auth package",
 	"keywords": [
 		"framework",
@@ -11,7 +11,7 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version"
+		"zf1s/zend-exception": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
@@ -19,10 +19,18 @@
 		}
 	},
 	"suggest": {
-		"zf1/zend-db": "Used in special situations or with special adapters",
-		"zf1/zend-infocard": "Used in special situations or with special adapters",
-		"zf1/zend-ldap": "Used in special situations or with special adapters",
-		"zf1/zend-openid": "Used in special situations or with special adapters",
-		"zf1/zend-session": "Used in special situations or with special adapters"
+		"zf1s/zend-db": "Used in special situations or with special adapters",
+		"zf1s/zend-infocard": "Used in special situations or with special adapters",
+		"zf1s/zend-ldap": "Used in special situations or with special adapters",
+		"zf1s/zend-openid": "Used in special situations or with special adapters",
+		"zf1s/zend-session": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-auth": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }
