@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-wildfire",
+	"name": "zf1s/zend-wildfire",
 	"description": "Zend Framework 1 Wildfire package",
 	"keywords": [
 		"framework",
@@ -11,14 +11,22 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-controller": "self.version",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-json": "self.version",
-		"zf1/zend-loader": "self.version"
+		"zf1s/zend-controller": "^1.12",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-json": "^1.12",
+		"zf1s/zend-loader": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
 			"Zend_Wildfire": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-wildfire": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
