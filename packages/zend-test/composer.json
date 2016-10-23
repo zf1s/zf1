@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-test",
+	"name": "zf1s/zend-test",
 	"description": "Zend Framework 1 Test package",
 	"keywords": [
 		"framework",
@@ -11,12 +11,12 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-controller": "self.version",
-		"zf1/zend-dom": "self.version",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-layout": "self.version",
-		"zf1/zend-registry": "self.version",
-		"zf1/zend-session": "self.version"
+		"zf1s/zend-controller": "^1.12",
+		"zf1s/zend-dom": "^1.12",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-layout": "^1.12",
+		"zf1s/zend-registry": "^1.12",
+		"zf1s/zend-session": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
@@ -24,6 +24,14 @@
 		}
 	},
 	"suggest": {
-		"zf1/zend-loader": "Used in special situations or with special adapters"
+		"zf1s/zend-loader": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-test": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }
