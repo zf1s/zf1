@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-serializer",
+	"name": "zf1s/zend-serializer",
 	"description": "Zend Framework 1 Serializer package",
 	"keywords": [
 		"framework",
@@ -11,9 +11,9 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-loader": "self.version",
-		"zf1/zend-xml": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-loader": "^1.12",
+		"zf1s/zend-xml": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
@@ -21,7 +21,15 @@
 		}
 	},
 	"suggest": {
-		"zf1/zend-json": "Used in special situations or with special adapters",
-		"zf1/zend-amf": "Used in special situations or with special adapters"
+		"zf1s/zend-json": "Used in special situations or with special adapters",
+		"zf1s/zend-amf": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-serializer": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }
