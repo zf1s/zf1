@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-version",
+	"name": "zf1s/zend-version",
 	"description": "Zend Framework 1 Version package",
 	"keywords": [
 		"framework",
@@ -15,6 +15,14 @@
 	"autoload": {
 		"psr-0": {
 			"Zend_Version": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-version": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
