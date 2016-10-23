@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-console-getopt",
+	"name": "zf1s/zend-console-getopt",
 	"description": "Zend Framework 1 Console Getopt package",
 	"keywords": [
 		"framework",
@@ -12,7 +12,7 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version"
+		"zf1s/zend-exception": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
@@ -20,6 +20,14 @@
 		}
 	},
 	"suggest": {
-		"zf1/zend-json": "Used in special situations or with special adapters"
+		"zf1s/zend-json": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-console-getopt": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }
