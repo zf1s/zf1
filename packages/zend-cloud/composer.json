@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-cloud",
+	"name": "zf1s/zend-cloud",
 	"description": "Zend Framework 1 Cloud package",
 	"keywords": [
 		"framework",
@@ -11,10 +11,10 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-loader": "self.version",
-		"zf1/zend-http": "self.version",
-		"zf1/zend-queue": "self.version"
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-loader": "^1.12",
+		"zf1s/zend-http": "^1.12",
+		"zf1s/zend-queue": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
@@ -22,10 +22,18 @@
 		}
 	},
 	"suggest": {
-		"zf1/zend-config": "Used in special situations or with special adapters",
-		"zf1/zend-service-amazon": "Used in special situations or with special adapters",
-		"zf1/zend-service-windowsazure": "Used in special situations or with special adapters",
-		"zf1/zend-service-nirvanix": "Used in special situations or with special adapters",
-		"zf1/zend-service-rackspace": "Used in special situations or with special adapters"
+		"zf1s/zend-config": "Used in special situations or with special adapters",
+		"zf1s/zend-service-amazon": "Used in special situations or with special adapters",
+		"zf1s/zend-service-windowsazure": "Used in special situations or with special adapters",
+		"zf1s/zend-service-nirvanix": "Used in special situations or with special adapters",
+		"zf1s/zend-service-rackspace": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-cloud": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }
