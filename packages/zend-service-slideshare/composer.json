@@ -1,5 +1,5 @@
 {
-	"name": "zf1/zend-service-slideshare",
+	"name": "zf1s/zend-service-slideshare",
 	"description": "Zend Framework 1 Service SlideShare package",
 	"keywords": [
 		"framework",
@@ -12,14 +12,22 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-cache": "self.version",
-		"zf1/zend-exception": "self.version",
-		"zf1/zend-http": "self.version",
-		"zf1/zend-xml": "self.version"
+		"zf1s/zend-cache": "^1.12",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-http": "^1.12",
+		"zf1s/zend-xml": "^1.12"
 	},
 	"autoload": {
 		"psr-0": {
 			"Zend_Service_SlideShare": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-service-slideshare": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
 		}
 	}
 }
