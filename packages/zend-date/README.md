@@ -10,6 +10,10 @@ This package is a part of the Zend Framework 1. Each component was separated and
 **Autoloading!** Explicit `require_once` calls in the source code has been commented out to rely on composer autoloading, this reduces the number of included files to a minimum.
 
 **Migration!** Zend Framework 2 has been around for a while now, and migrating all your projects takes a lot of time. Using these packages makes it easier to migrate each component separately. Also, some packages doesn't exist in zf2 (such as the zend-search-lucene), now you can continue using that package without requiring the entire framework.
+
+## Changes after official 1.12.20 release
+
+-  Zend_Date::setTime fix for DST change zendframework/zf1#682
  
 ## How to use
 

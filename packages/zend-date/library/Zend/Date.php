@@ -2845,6 +2845,13 @@ class Zend_Date extends Zend_Date_DateObject
      * For example: dd.MMMM.yyTHH:mm' and 'ss sec'-> 10.May.07T25:11 and 44 sec => 1h11min44sec + 1 day
      * Returned is the new date object and the existing date is left as it was before
      *
+     * ADDED: Call the function twice to work around the DST bug
+     * http://zendframework.com/issues/browse/ZF-10584
+     * https://github.com/zendframework/zf1/issues/682
+     * http://stackoverflow.com/questions/7181702/work-around-for-zend-date-dst-bug
+     * http://stackoverflow.com/questions/8593660/zend-date-dst-bug-test-whether-a-date-is-a-time-change-date
+     * TODO: remove this once the bug is fixed
+     *
      * @param  string|integer|array|Zend_Date  $time    Time to set
      * @param  string                          $format  OPTIONAL Timeformat for parsing input
      * @param  string|Zend_Locale              $locale  OPTIONAL Locale for parsing input
@@ -2853,7 +2860,35 @@ class Zend_Date extends Zend_Date_DateObject
      */
     public function setTime($time, $format = null, $locale = null)
     {
-        return $this->_time('set', $time, $format, $locale);
+        //return $this->_time('set', $time, $format, $locale);
+
+        // start time zone juggling so that localtime() returns the correct results
+        $tzOrig = date_default_timezone_get();
+        date_default_timezone_set($this->getTimezone());
+
+        // capture orignal info
+        $timeInfoOrg = localtime($this->getTimestamp(), true);
+
+        // set the time
+        $ret = $this->_time('set', $time, $format, $locale);
+
+        // if the dst has changed, perform workaround
+        $timeInfoNew = localtime($this->getTimestamp(), true);
+        if ((0 < $timeInfoOrg['tm_isdst']) != (0 < $timeInfoNew['tm_isdst'])) {
+            // set the time again
+            $ret = $this->_time('set', $time, $format, $locale);
+            // if the day changed, set it back
+            if ($timeInfoOrg['tm_yday'] != $timeInfoNew['tm_yday']) {
+                // localtime() year date is zero indexed, add one
+                $this->setDayOfYear($timeInfoOrg['tm_yday'] + 1);
+            }
+        }
+
+        // end time zone juggling
+        date_default_timezone_set($tzOrig);
+
+        // fluent
+        return $ret;
     }
 
 
