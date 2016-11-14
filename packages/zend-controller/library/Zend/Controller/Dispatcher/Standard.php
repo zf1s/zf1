@@ -212,7 +212,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
         {
             $finalClass = $this->formatClassName($this->_curModule, $className);
         }
-        if (class_exists($finalClass, false)) {
+        if (class_exists($finalClass)) {
             return true;
         }
 
@@ -346,7 +346,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
         {
             $finalClass = $this->formatClassName($this->_curModule, $className);
         }
-        if (class_exists($finalClass, false)) {
+        if (class_exists($finalClass)) {
             return $finalClass;
         }
 
@@ -456,7 +456,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
         $this->_curDirectory = $controllerDirs[$this->_defaultModule];
         if ($this->isValidModule($module)) {
             $found = false;
-            if (class_exists($default, false)) {
+            if (class_exists($default)) {
                 $found = true;
             } else {
                 $moduleDir = $controllerDirs[$module];
