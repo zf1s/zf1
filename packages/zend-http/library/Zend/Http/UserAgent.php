@@ -427,7 +427,8 @@ class Zend_Http_UserAgent implements Serializable
         if (null === $this->_storage) {
             $config  = $this->_config['storage'];
             $adapter = $config['adapter'];
-            if (!class_exists($adapter)) {
+            // autoloader should not trigger for default options ('Session', 'NonPersistent')
+            if (in_array($adapter, array('Session', 'NonPersistent')) || !class_exists($adapter)) {
                 $loader = $this->getPluginLoader('storage');
                 $adapter = $loader->load($adapter);
                 $loader = $this->getPluginLoader('storage');
