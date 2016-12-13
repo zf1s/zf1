@@ -200,7 +200,8 @@ class Zend_Validate implements Zend_Validate_Interface
             if (!class_exists($className)) {
                 // require_once 'Zend/Loader.php';
                 foreach($namespaces as $namespace) {
-                    $class = $namespace . '_' . $className;
+                    $nsSeparator = (false !== strpos($namespace, '\\'))?'\\':'_';
+                    $class = rtrim($namespace, $nsSeparator) . $nsSeparator . $className;
                     if (!class_exists($class)) {
                         continue;
                     }
