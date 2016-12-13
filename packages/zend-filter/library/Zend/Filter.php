@@ -209,7 +209,8 @@ class Zend_Filter implements Zend_Filter_Interface
         // require_once 'Zend/Loader.php';
         $namespaces = array_merge((array) $namespaces, self::$_defaultNamespaces, array('Zend_Filter'));
         foreach ($namespaces as $namespace) {
-            $className = $namespace . '_' . ucfirst($classBaseName);
+            $nsSeparator = (false !== strpos($namespace, '\\'))?'\\':'_';
+            $className = rtrim($namespace, $nsSeparator) . $nsSeparator . ucfirst($classBaseName);
             if (!class_exists($className)) {
                 continue;
                 /*try {
