@@ -370,7 +370,8 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         $path        = rtrim($path, '/');
         $path        = rtrim($path, '\\');
         $path       .= DIRECTORY_SEPARATOR;
-        $classPrefix = rtrim($classPrefix, '_') . '_';
+        $nsSeparator = (false !== strpos($classPrefix, '_')) ? '_' : '\\';
+        $classPrefix = rtrim($classPrefix, $nsSeparator) . $nsSeparator;
         $this->setScriptPath($path . 'scripts');
         $this->setHelperPath($path . 'helpers', $classPrefix . 'Helper');
         $this->setFilterPath($path . 'filters', $classPrefix . 'Filter');
@@ -397,7 +398,8 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         $path        = rtrim($path, '/');
         $path        = rtrim($path, '\\');
         $path       .= DIRECTORY_SEPARATOR;
-        $classPrefix = rtrim($classPrefix, '_') . '_';
+        $nsSeparator = (false !== strpos($classPrefix, '_')) ? '_' : '\\';
+        $classPrefix = rtrim($classPrefix, $nsSeparator) . $nsSeparator;
         $this->addScriptPath($path . 'scripts');
         $this->addHelperPath($path . 'helpers', $classPrefix . 'Helper');
         $this->addFilterPath($path . 'filters', $classPrefix . 'Filter');
