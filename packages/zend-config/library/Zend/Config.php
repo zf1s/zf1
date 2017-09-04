@@ -120,6 +120,7 @@ class Zend_Config implements Countable, Iterator
 
     /**
      * Retrieve a value and return $default if there is no element set.
+     * added: retrieving nested value by ->get('value.value2.value3')
      *
      * @param string $name
      * @param mixed $default
@@ -128,8 +129,19 @@ class Zend_Config implements Countable, Iterator
     public function get($name, $default = null)
     {
         $result = $default;
+        $restName = null;
+        if (false !== strstr($name, '.')) {
+            $nestedName = explode('.', $name);
+            $name = array_shift($nestedName);
+            $restName = implode('.', $nestedName);
+        }
+
         if (array_key_exists($name, $this->_data)) {
             $result = $this->_data[$name];
+
+            if ($restName !== null && $result instanceof Zend_Config) {
+                $result = $result->get($restName, $default);
+            }
         }
         return $result;
     }
