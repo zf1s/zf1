@@ -128,22 +128,26 @@ class Zend_Config implements Countable, Iterator
      */
     public function get($name, $default = null)
     {
-        $result = $default;
-        $restName = null;
-        if (false !== strstr($name, '.')) {
-            $nestedName = explode('.', $name);
-            $name = array_shift($nestedName);
-            $restName = implode('.', $nestedName);
-        }
-
         if (array_key_exists($name, $this->_data)) {
-            $result = $this->_data[$name];
-
-            if ($restName !== null && $result instanceof Zend_Config) {
-                $result = $result->get($restName, $default);
-            }
+            return $this->_data[$name];
         }
-        return $result;
+        
+        if (false !== ($dotpos = strpos($name, '.'))) {
+            $restName = substr($name, $dotpos + 1);
+            $name = substr($name, 0, $dotpos);
+
+            if (!array_key_exists($name, $this->_data) || !($this->_data[$name] instanceof Zend_Config)) {
+                return $default;
+            }
+            $result = $this->_data[$name];
+            if ($restName === '') {
+                return $result;
+            }
+            
+            return $result->get($restName, $default);
+        }
+
+        return $default;
     }
 
     /**
