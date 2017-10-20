@@ -393,6 +393,8 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
                 $found = true;
                 break;
             }
+			// composer autoload should handle loading a class. class_exists call is enough
+			continue;
 
             $paths     = array_reverse($paths, true);
 
