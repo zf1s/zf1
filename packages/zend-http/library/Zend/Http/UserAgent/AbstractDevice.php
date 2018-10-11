@@ -561,23 +561,25 @@ abstract class Zend_Http_UserAgent_AbstractDevice
                 if (isset($comment[3])) {
                     $result['browser_language'] = trim($comment[3]);
                 }
-                if (isset($result['others']['detail'][1])) {
-                    $result['browser_version']  = $result['others']['detail'][1][2];
-                } elseif (isset($result['others']['detail']) && count($result['others']['detail'])) {
-                    $result['browser_version']  = $result['others']['detail'][0][2];
-                }
-                if (!empty($result['others']['detail'][2])) {
-                    $result['firmware'] = $result['others']['detail'][2][2];
-                }
-                if (!empty($result['others']['detail'][3])) {
-                    $result['browser_name']  = $result['others']['detail'][3][1];
-                    $result['browser_build'] = $result['others']['detail'][3][2];
+                if(isset($result['others']) && isset($result['others']['detail'])) {
+                    if (isset($result['others']['detail'][1])) {
+                        $result['browser_version']  = $result['others']['detail'][1][2];
+                    } elseif (isset($result['others']['detail']) && count($result['others']['detail'])) {
+                        $result['browser_version']  = $result['others']['detail'][0][2];
+                    }
+                    if (!empty($result['others']['detail'][2])) {
+                        $result['firmware'] = $result['others']['detail'][2][2];
+                    }
+                    if (!empty($result['others']['detail'][3])) {
+                        $result['browser_name']  = $result['others']['detail'][3][1];
+                        $result['browser_build'] = $result['others']['detail'][3][2];
+                    }
                 }
             }
         }
 
         // Safari
-        if (isset($result['others'])) {
+        if (isset($result['others']) && isset($result['others']['detail'])) {
             if ($result['others']['detail'][0][1] == 'AppleWebKit') {
                 $result['browser_engine'] = 'AppleWebKit';
                 if (isset($result['others']['detail'][1]) && $result['others']['detail'][1][1] == 'Version') {
