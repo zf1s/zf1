@@ -362,11 +362,11 @@ class Zend_Config_Yaml extends Zend_Config
         $value = trim($value);
 
         // remove quotes from string.
-        if ('"' == $value['0']) {
-            if ('"' == $value[count($value) -1]) {
+        if ('"' == substr($value, 0, 1)) {
+            if ('"' == substr($value, -1)) {
                 $value = substr($value, 1, -1);
             }
-        } elseif ('\'' == $value['0'] && '\'' == $value[count($value) -1]) {
+        } elseif ('\'' == substr($value, 0, 1) && '\'' == substr($value, -1)) {
             $value = strtr($value, array("''" => "'", "'" => ''));
         }
 
