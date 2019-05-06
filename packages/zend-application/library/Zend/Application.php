@@ -78,9 +78,10 @@ class Zend_Application
     {
         $this->_environment = (string) $environment;
 
-        require_once 'Zend/Loader/Autoloader.php';
-        $this->_autoloader = Zend_Loader_Autoloader::getInstance();
-        $this->_autoloader->suppressNotFoundWarnings($suppressNotFoundWarnings);
+        // see https://github.com/zf1/zend-application/pull/2 for discussion
+        // require_once 'Zend/Loader/Autoloader.php';
+        // $this->_autoloader = Zend_Loader_Autoloader::getInstance();
+        // $this->_autoloader->suppressNotFoundWarnings($suppressNotFoundWarnings);
 
         if (null !== $options) {
             if (is_string($options)) {
