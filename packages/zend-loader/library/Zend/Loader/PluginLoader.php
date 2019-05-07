@@ -50,6 +50,12 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
     protected static $_includeFileCacheHandler;
 
     /**
+     * Toggle for fallback loader
+     * @var bool
+     */
+    protected static $_useFallbackLoader = true;
+
+    /**
      * Instance loaded plugin paths
      *
      * @var array
@@ -393,8 +399,10 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
                 $found = true;
                 break;
             }
-			// composer autoload should handle loading a class. class_exists call is enough
-			continue;
+            if (!self::$_useFallbackLoader) {
+                // composer autoload should handle loading a class. class_exists call is enough
+                continue;
+            }
 
             $paths     = array_reverse($paths, true);
 
@@ -504,5 +512,17 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
             $line = "<?php include_once '$incFile'?>\n";
             fwrite(self::$_includeFileCacheHandler, $line, strlen($line));
         }
+    }
+
+    /**
+     * Set usage of fallback loader (enabled by default)
+     * You may disable it with Zend_Loader_PluginLoader::useFallbackLoader(false)
+     * to depend solely on composer's autoloader (for performance) - if your code structure supports that
+     *
+     * @param bool $flag
+     */
+    public static function useFallbackLoader($flag)
+    {
+        self::$_useFallbackLoader = (bool)$flag;
     }
 }
