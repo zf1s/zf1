@@ -27,17 +27,17 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * Zend_View
  */
-require_once 'Zend/View.php';
+// require_once 'Zend/View.php';
 
 /**
  * Zend_View_Interface
  */
-require_once 'Zend/View/Interface.php';
+// require_once 'Zend/View/Interface.php';
 
 /**
  * Zend_Loader
  */
-require_once 'Zend/Loader.php';
+// require_once 'Zend/Loader.php';
 
 /**
  * @category   Zend
@@ -844,7 +844,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
     public function testGetHelper()
     {
         // require so we can do type hinting
-        require_once 'Zend/View/Helper/DeclareVars.php';
+        // require_once 'Zend/View/Helper/DeclareVars.php';
         $view = new Zend_View();
         $view->declareVars();
         $helper = $view->getHelper('declareVars');
@@ -853,7 +853,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
 
     public function testGetHelperPath()
     {
-        require_once 'Zend/View/Helper/DeclareVars.php';
+        // require_once 'Zend/View/Helper/DeclareVars.php';
         $reflection = new ReflectionClass('Zend_View_Helper_DeclareVars');
         $expected   = $reflection->getFileName();
 
@@ -1126,7 +1126,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
      */
     public function testRegisterHelperShouldRegisterViewObjectWithHelper()
     {
-    	require_once 'Zend/View/Helper/Doctype.php';
+    	// require_once 'Zend/View/Helper/Doctype.php';
     	$view = new Zend_View();
     	$helper = new Zend_View_Helper_Doctype();
     	$view->registerHelper($helper, 'doctype');

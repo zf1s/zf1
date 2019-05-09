@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Feed/Writer/Entry.php';
+// require_once 'Zend/Feed/Writer/Entry.php';
 
 /**
  * @category   Zend

@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Crypt/Hmac.php';
+// require_once 'Zend/Crypt/Hmac.php';
 
 /**
  * Outside the Internal Function tests, tests do not distinguish between hash and mhash

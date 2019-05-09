@@ -29,12 +29,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Filter_Inflector
  */
-require_once 'Zend/Filter/Inflector.php';
+// require_once 'Zend/Filter/Inflector.php';
 
 /**
  * @see Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 
 /**

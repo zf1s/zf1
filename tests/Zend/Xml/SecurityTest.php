@@ -27,9 +27,9 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Xml_Security
  */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
-require_once 'Zend/Xml/Exception.php';
+// require_once 'Zend/Xml/Exception.php';
 
 /**
  * @category   Zend

@@ -28,12 +28,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_View_Helper_Gravatar
  */
-require_once 'Zend/View/Helper/Gravatar.php';
+// require_once 'Zend/View/Helper/Gravatar.php';
 
 /**
  * @see Zend_View
  */
-require_once 'Zend/View.php';
+// require_once 'Zend/View.php';
 
 /**
  * @category   Zend

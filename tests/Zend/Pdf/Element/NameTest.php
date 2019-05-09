@@ -23,7 +23,7 @@
 /**
  * Zend_Pdf_Element_Name
  */
-require_once 'Zend/Pdf/Element/Name.php';
+// require_once 'Zend/Pdf/Element/Name.php';
 
 /**
  * @category   Zend

@@ -25,10 +25,10 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_Helper_UrlTest::main");
 }
 
-require_once 'Zend/Controller/Action/Helper/Url.php';
+// require_once 'Zend/Controller/Action/Helper/Url.php';
 
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Request/Http.php';
 
 /**
  * Test class for Zend_Controller_Action_Helper_Url.

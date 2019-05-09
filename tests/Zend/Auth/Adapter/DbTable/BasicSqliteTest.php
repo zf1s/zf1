@@ -23,7 +23,7 @@
 /**
  * @see Zend_Db_Adapter_Pdo_Sqlite
  */
-require_once 'Zend/Db/Adapter/Pdo/Sqlite.php';
+// require_once 'Zend/Db/Adapter/Pdo/Sqlite.php';
 
 
 /**
@@ -32,13 +32,13 @@ require_once 'Zend/Db/Adapter/Pdo/Sqlite.php';
  *
  * @see Zend_Db
  */
-require_once 'Zend/Db.php';
+// require_once 'Zend/Db.php';
 
 
 /**
  * @see Zend_Auth_Adapter_DbTable
  */
-require_once 'Zend/Auth/Adapter/DbTable.php';
+// require_once 'Zend/Auth/Adapter/DbTable.php';
 
 
 /**
@@ -343,7 +343,7 @@ class Zend_Auth_Adapter_DbTable_BasicSqliteTest extends PHPUnit_Framework_TestCa
      */
     public function testAuthenticateWithDefaultDbAdapterNoAdapterException()
     {
-        require_once('Zend/Db/Table/Abstract.php');
+        // require_once('Zend/Db/Table/Abstract.php');
         // preserve default db adapter between cases
         $tmp = Zend_Db_Table_Abstract::getDefaultAdapter();
 
@@ -367,7 +367,7 @@ class Zend_Auth_Adapter_DbTable_BasicSqliteTest extends PHPUnit_Framework_TestCa
      */
     public function testAuthenticateWithDefaultDbAdapter()
     {
-        require_once('Zend/Db/Table/Abstract.php');
+        // require_once('Zend/Db/Table/Abstract.php');
         // preserve default adapter between cases
         $tmp = Zend_Db_Table_Abstract::getDefaultAdapter();
 

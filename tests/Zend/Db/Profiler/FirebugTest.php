@@ -21,22 +21,22 @@
  */
 
 /** Zend_Db */
-require_once 'Zend/Db.php';
+// require_once 'Zend/Db.php';
 
 /** Zend_Db_Profiler_Firebug */
-require_once 'Zend/Db/Profiler/Firebug.php';
+// require_once 'Zend/Db/Profiler/Firebug.php';
 
 /** Zend_Wildfire_Plugin_FirePhp */
-require_once 'Zend/Wildfire/Plugin/FirePhp.php';
+// require_once 'Zend/Wildfire/Plugin/FirePhp.php';
 
 /** Zend_Wildfire_Channel_HttpHeaders */
-require_once 'Zend/Wildfire/Channel/HttpHeaders.php';
+// require_once 'Zend/Wildfire/Channel/HttpHeaders.php';
 
 /** Zend_Controller_Request_Http */
-require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Request/Http.php';
 
 /** Zend_Controller_Response_Http */
-require_once 'Zend/Controller/Response/Http.php';
+// require_once 'Zend/Controller/Response/Http.php';
 
 
 /**

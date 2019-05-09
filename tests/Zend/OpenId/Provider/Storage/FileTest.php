@@ -23,7 +23,7 @@
 /**
  * @see Zend_OpenId_Provider_Storage_File
  */
-require_once 'Zend/OpenId/Provider/Storage/File.php';
+// require_once 'Zend/OpenId/Provider/Storage/File.php';
 
 /**
  * @category   Zend

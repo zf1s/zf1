@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_StrikeIron
  */
-require_once 'Zend/Service/StrikeIron.php';
+// require_once 'Zend/Service/StrikeIron.php';
 
 /**
  * @category   Zend

@@ -25,8 +25,8 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Json_Server_RequestTest::main");
 }
 
-require_once 'Zend/Json/Server/Request.php';
-require_once 'Zend/Json.php';
+// require_once 'Zend/Json/Server/Request.php';
+// require_once 'Zend/Json.php';
 
 /**
  * @category   Zend

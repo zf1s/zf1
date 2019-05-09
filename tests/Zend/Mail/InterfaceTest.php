@@ -23,7 +23,7 @@
 /**
  * Zend_Mail_Storage_Mbox
  */
-require_once 'Zend/Mail/Storage/Mbox.php';
+// require_once 'Zend/Mail/Storage/Mbox.php';
 
 /**
  * @category   Zend

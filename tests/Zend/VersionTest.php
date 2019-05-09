@@ -27,7 +27,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Version
  */
-require_once 'Zend/Version.php';
+// require_once 'Zend/Version.php';
 
 /**
  * @category   Zend

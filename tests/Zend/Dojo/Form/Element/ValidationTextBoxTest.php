@@ -26,16 +26,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_Dojo_Form_Element_ValidationTextBox */
-require_once 'Zend/Dojo/Form/Element/ValidationTextBox.php';
+// require_once 'Zend/Dojo/Form/Element/ValidationTextBox.php';
 
 /** Zend_View */
-require_once 'Zend/View.php';
+// require_once 'Zend/View.php';
 
 /** Zend_Registry */
-require_once 'Zend/Registry.php';
+// require_once 'Zend/Registry.php';
 
 /** Zend_Dojo_View_Helper_Dojo */
-require_once 'Zend/Dojo/View/Helper/Dojo.php';
+// require_once 'Zend/Dojo/View/Helper/Dojo.php';
 
 /**
  * Test class for Zend_Dojo_Form_Element_ValidationTextBox.
@@ -89,7 +89,7 @@ class Zend_Dojo_Form_Element_ValidationTextBoxTest extends PHPUnit_Framework_Tes
 
     public function getView()
     {
-        require_once 'Zend/View.php';
+        // require_once 'Zend/View.php';
         $view = new Zend_View();
         $view->addHelperPath('Zend/Dojo/View/Helper/', 'Zend_Dojo_View_Helper');
         return $view;

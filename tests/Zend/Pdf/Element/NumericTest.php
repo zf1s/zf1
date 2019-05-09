@@ -23,7 +23,7 @@
 /**
  * Zend_Pdf_Element_Numeric
  */
-require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
 
 /**
  * @category   Zend

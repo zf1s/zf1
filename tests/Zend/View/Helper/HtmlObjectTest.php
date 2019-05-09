@@ -25,8 +25,8 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_HtmlObjectTest::main");
 }
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/HtmlObject.php';
+// require_once 'Zend/View.php';
+// require_once 'Zend/View/Helper/HtmlObject.php';
 
 /**
  * @category   Zend

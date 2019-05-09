@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Gdata/Analytics.php';
+// require_once 'Zend/Gdata/Analytics.php';
 
 /**
  * @category   Zend

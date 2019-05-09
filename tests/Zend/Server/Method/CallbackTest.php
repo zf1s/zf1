@@ -26,7 +26,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_Server_Method_Callback */
-require_once 'Zend/Server/Method/Callback.php';
+// require_once 'Zend/Server/Method/Callback.php';
 
 /**
  * Test class for Zend_Server_Method_Callback

@@ -23,7 +23,7 @@
 /**
  * Zend_Measure_Viscosity_Dynamic
  */
-require_once 'Zend/Measure/Viscosity/Dynamic.php';
+// require_once 'Zend/Measure/Viscosity/Dynamic.php';
 
 /**
  * @category   Zend

@@ -22,20 +22,20 @@
 /**
  * Zend_Http_UserAgent
  */
-require_once 'Zend/Http/UserAgent.php';
-require_once 'Zend/Http/UserAgent/AbstractDevice.php';
-require_once 'Zend/Http/UserAgent/Bot.php';
-require_once 'Zend/Http/UserAgent/Checker.php';
-require_once 'Zend/Http/UserAgent/Console.php';
-require_once 'Zend/Http/UserAgent/Desktop.php';
-require_once 'Zend/Http/UserAgent/Email.php';
-require_once 'Zend/Http/UserAgent/Feed.php';
-require_once 'Zend/Http/UserAgent/Mobile.php';
-require_once 'Zend/Http/UserAgent/Offline.php';
-require_once 'Zend/Http/UserAgent/Probe.php';
-require_once 'Zend/Http/UserAgent/Spam.php';
-require_once 'Zend/Http/UserAgent/Text.php';
-require_once 'Zend/Http/UserAgent/Validator.php';
+// require_once 'Zend/Http/UserAgent.php';
+// require_once 'Zend/Http/UserAgent/AbstractDevice.php';
+// require_once 'Zend/Http/UserAgent/Bot.php';
+// require_once 'Zend/Http/UserAgent/Checker.php';
+// require_once 'Zend/Http/UserAgent/Console.php';
+// require_once 'Zend/Http/UserAgent/Desktop.php';
+// require_once 'Zend/Http/UserAgent/Email.php';
+// require_once 'Zend/Http/UserAgent/Feed.php';
+// require_once 'Zend/Http/UserAgent/Mobile.php';
+// require_once 'Zend/Http/UserAgent/Offline.php';
+// require_once 'Zend/Http/UserAgent/Probe.php';
+// require_once 'Zend/Http/UserAgent/Spam.php';
+// require_once 'Zend/Http/UserAgent/Text.php';
+// require_once 'Zend/Http/UserAgent/Validator.php';
 
 /**
  * @category   Zend

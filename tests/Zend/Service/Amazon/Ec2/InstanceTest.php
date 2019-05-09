@@ -20,9 +20,9 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Http/Client.php';
-require_once 'Zend/Http/Client/Adapter/Test.php';
-require_once 'Zend/Service/Amazon/Ec2/Instance.php';
+// require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client/Adapter/Test.php';
+// require_once 'Zend/Service/Amazon/Ec2/Instance.php';
 
 
 /**

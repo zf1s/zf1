@@ -23,7 +23,7 @@
 /**
  * @see Zend_Reflection_Method
  */
-require_once 'Zend/Reflection/Method.php';
+// require_once 'Zend/Reflection/Method.php';
 
 /**
  * @see ZF-9018

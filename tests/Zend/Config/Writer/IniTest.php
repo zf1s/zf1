@@ -23,17 +23,17 @@
 /**
  * Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /**
  * Zend_Config_Ini
  */
-require_once 'Zend/Config/Ini.php';
+// require_once 'Zend/Config/Ini.php';
 
 /**
  * Zend_Config_Writer_Ini
  */
-require_once 'Zend/Config/Writer/Ini.php';
+// require_once 'Zend/Config/Writer/Ini.php';
 
 /**
  * @category   Zend

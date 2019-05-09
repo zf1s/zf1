@@ -1,5 +1,5 @@
 <?php
-require_once 'Zend/Barcode/Object/Error.php';
+// require_once 'Zend/Barcode/Object/Error.php';
 
 class My_Namespace_Error extends Zend_Barcode_Object_Error
 {

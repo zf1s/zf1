@@ -26,13 +26,13 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_Form_Element_Captcha */
-require_once 'Zend/Form/Element/Captcha.php';
+// require_once 'Zend/Form/Element/Captcha.php';
 
 /** Zend_Captcha_Dumb */
-require_once 'Zend/Captcha/Dumb.php';
+// require_once 'Zend/Captcha/Dumb.php';
 
 /** Zend_Captcha_ReCaptcha */
-require_once 'Zend/Captcha/ReCaptcha.php';
+// require_once 'Zend/Captcha/ReCaptcha.php';
 
 /**
  * @category   Zend
@@ -132,8 +132,8 @@ class Zend_Form_Element_CaptchaTest extends PHPUnit_Framework_TestCase
      */
     public function testCaptchaShouldRenderFullyQualifiedElementName()
     {
-        require_once 'Zend/Form.php';
-        require_once 'Zend/View.php';
+        // require_once 'Zend/Form.php';
+        // require_once 'Zend/View.php';
         $form = new Zend_Form();
         $form->addElement($this->element)
              ->setElementsBelongTo('bar');
@@ -182,7 +182,7 @@ class Zend_Form_Element_CaptchaTest extends PHPUnit_Framework_TestCase
      */
     public function testHelperDoesNotShowUpInAttribs()
     {
-        require_once 'Zend/View.php';
+        // require_once 'Zend/View.php';
         $this->assertFalse(array_key_exists('helper', $this->element->getAttribs()));
     }
 

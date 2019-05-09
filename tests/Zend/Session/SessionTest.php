@@ -23,7 +23,7 @@
 /**
  * @see Zend_Session
  */
-require_once 'Zend/Session.php';
+// require_once 'Zend/Session.php';
 
 
 /**
@@ -1097,7 +1097,7 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
         // Attempt to start the session
         try {
             /** @see Zend_Session */
-            require_once "Zend/Session.php";
+            // require_once "Zend/Session.php";
             Zend_Session::start();
         } catch (Zend_Session_Exception $e) {
             Zend_Session::regenerateId();

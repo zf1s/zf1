@@ -23,7 +23,7 @@
 /**
  * Zend_Mime_Part
  */
-require_once 'Zend/Mime/Part.php';
+// require_once 'Zend/Mime/Part.php';
 
 /**
  * @category   Zend

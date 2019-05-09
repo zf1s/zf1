@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Reflection/File.php';
-require_once 'Zend/Reflection/Docblock/Tag/Param.php';
+// require_once 'Zend/Reflection/File.php';
+// require_once 'Zend/Reflection/Docblock/Tag/Param.php';
 
 /**
  * @category   Zend

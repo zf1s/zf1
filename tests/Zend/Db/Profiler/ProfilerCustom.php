@@ -24,7 +24,7 @@
 /**
  * @see Zend_Db_Profiler
  */
-require_once 'Zend/Db/Profiler.php';
+// require_once 'Zend/Db/Profiler.php';
 
 
 

@@ -23,7 +23,7 @@
 /**
  * @see Zend_Reflection_File
  */
-require_once 'Zend/Reflection/File.php';
+// require_once 'Zend/Reflection/File.php';
 
 /**
  * @category   Zend
@@ -39,7 +39,7 @@ class Zend_Reflection_FileTest extends PHPUnit_Framework_TestCase
 
     public function testFileConstructor()
     {
-        require_once 'Zend/Version.php';
+        // require_once 'Zend/Version.php';
         $reflectionFile = new Zend_Reflection_File('Zend/Version.php');
         $this->assertEquals(get_class($reflectionFile), 'Zend_Reflection_File');
     }
@@ -90,14 +90,14 @@ class Zend_Reflection_FileTest extends PHPUnit_Framework_TestCase
     {
         $this->assertNull(Zend_Reflection_File::export());
 
-        require_once 'Zend/Version.php';
+        // require_once 'Zend/Version.php';
         $reflectionFile = new Zend_Reflection_File('Zend/Version.php');
         $this->assertEquals('', $reflectionFile->__toString());
     }
 
     public function testFileGetFilenameReturnsCorrectFilename()
     {
-        require_once 'Zend/Version.php';
+        // require_once 'Zend/Version.php';
         $reflectionFile = new Zend_Reflection_File('Zend/Version.php');
 
         // Make sure this test works on all platforms

@@ -23,7 +23,7 @@
 /**
  * Zend_Ldap_Converter
  */
-require_once 'Zend/Ldap/Converter.php';
+// require_once 'Zend/Ldap/Converter.php';
 
 /**
  * @category   Zend
@@ -70,7 +70,7 @@ class Zend_Ldap_ConverterTest extends PHPUnit_Framework_TestCase
     }
 
     public function toLdapDateTimeProvider(){
-        include_once 'Zend/Date.php';
+        // include_once 'Zend/Date.php';
         $tz = new DateTimeZone('UTC');
         return array(
             array(array('date'=> 0, 'utc' => true ),'19700101000000Z'),

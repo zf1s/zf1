@@ -24,7 +24,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_Dojo_DataTest::main');
 }
 
-require_once 'Zend/Dojo/Data.php';
+// require_once 'Zend/Dojo/Data.php';
 
 /**
  * @category   Zend
@@ -448,7 +448,7 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
                 array('id' => 4, 'title' => 'Four', 'name' => 'Fourth'),
             ),
         );
-        require_once 'Zend/Json.php';
+        // require_once 'Zend/Json.php';
         $json = Zend_Json::encode($data);
         $dojoData = new Zend_Dojo_Data();
         $dojoData->fromJson($json);

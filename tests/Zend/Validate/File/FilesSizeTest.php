@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Validate_File_FilesSize
  */
-require_once 'Zend/Validate/File/FilesSize.php';
+// require_once 'Zend/Validate/File/FilesSize.php';
 
 /**
  * @category   Zend

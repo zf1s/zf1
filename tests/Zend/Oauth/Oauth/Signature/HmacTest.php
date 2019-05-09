@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Oauth/Signature/Hmac.php';
+// require_once 'Zend/Oauth/Signature/Hmac.php';
 
 /**
  * @category   Zend

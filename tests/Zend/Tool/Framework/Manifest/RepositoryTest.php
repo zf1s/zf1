@@ -23,11 +23,11 @@
 /**
  * @see Zend_Tool_Framework_Manifest_Repository
  */
-require_once 'Zend/Tool/Framework/Manifest/Repository.php';
+// require_once 'Zend/Tool/Framework/Manifest/Repository.php';
 
-require_once 'Zend/Tool/Framework/Registry.php';
-require_once 'Zend/Tool/Framework/Provider/Repository.php';
-require_once 'Zend/Tool/Framework/Action/Repository.php';
+// require_once 'Zend/Tool/Framework/Registry.php';
+// require_once 'Zend/Tool/Framework/Provider/Repository.php';
+// require_once 'Zend/Tool/Framework/Action/Repository.php';
 
 require_once '_files/ManifestGoodOne.php';
 require_once '_files/ManifestGoodTwo.php';

@@ -23,7 +23,7 @@
 /**
  * @see Zend_Serializer_Adapter_Igbinary
  */
-require_once 'Zend/Serializer/Adapter/Igbinary.php';
+// require_once 'Zend/Serializer/Adapter/Igbinary.php';
 
 /**
  * @category   Zend

@@ -23,7 +23,7 @@
 /**
  * Zend_Search_Lucene
  */
-require_once 'Zend/Search/Lucene.php';
+// require_once 'Zend/Search/Lucene.php';
 
 /**
  * @category   Zend

@@ -21,7 +21,7 @@
  */
 
 /** Zend_Pdf */
-require_once 'Zend/Pdf.php';
+// require_once 'Zend/Pdf.php';
 
 
 /**
@@ -52,7 +52,7 @@ class Zend_Pdf_NamedDestinationsTest extends PHPUnit_Framework_TestCase
 
         $this->assertTrue(count($pdf->getNamedDestinations()) == 0);
 
-        require_once 'Zend/Pdf/Destination/Fit.php';
+        // require_once 'Zend/Pdf/Destination/Fit.php';
         $destination1 = Zend_Pdf_Destination_Fit::create($page1);
         $destination2 = Zend_Pdf_Destination_Fit::create($page2);
         $action1 = Zend_Pdf_Action_GoTo::create($destination1);

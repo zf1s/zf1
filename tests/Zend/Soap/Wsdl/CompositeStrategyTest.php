@@ -25,14 +25,14 @@
  */
 
 /** Zend_Soap_Wsdl */
-require_once 'Zend/Soap/Wsdl.php';
+// require_once 'Zend/Soap/Wsdl.php';
 
-require_once 'Zend/Soap/Wsdl/Strategy/AnyType.php';
-require_once 'Zend/Soap/Wsdl/Strategy/ArrayOfTypeSequence.php';
-require_once 'Zend/Soap/Wsdl/Strategy/ArrayOfTypeComplex.php';
-require_once 'Zend/Soap/Wsdl/Strategy/DefaultComplexType.php';
-require_once 'Zend/Soap/Wsdl/Strategy/DefaultComplexType.php';
-require_once 'Zend/Soap/Wsdl/Strategy/Composite.php';
+// require_once 'Zend/Soap/Wsdl/Strategy/AnyType.php';
+// require_once 'Zend/Soap/Wsdl/Strategy/ArrayOfTypeSequence.php';
+// require_once 'Zend/Soap/Wsdl/Strategy/ArrayOfTypeComplex.php';
+// require_once 'Zend/Soap/Wsdl/Strategy/DefaultComplexType.php';
+// require_once 'Zend/Soap/Wsdl/Strategy/DefaultComplexType.php';
+// require_once 'Zend/Soap/Wsdl/Strategy/Composite.php';
 
 /**
  * @category   Zend

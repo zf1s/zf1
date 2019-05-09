@@ -23,7 +23,7 @@
 /**
  * Zend_Measure_Viscosity_Kinematic
  */
-require_once 'Zend/Measure/Viscosity/Kinematic.php';
+// require_once 'Zend/Measure/Viscosity/Kinematic.php';
 
 /**
  * @category   Zend

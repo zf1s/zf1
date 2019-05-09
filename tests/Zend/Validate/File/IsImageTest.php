@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Validate_File_IsImage
  */
-require_once 'Zend/Validate/File/IsImage.php';
+// require_once 'Zend/Validate/File/IsImage.php';
 
 /**
  * IsImage testbed

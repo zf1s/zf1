@@ -21,8 +21,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Calendar/EventEntry.php';
-require_once 'Zend/Gdata/Calendar.php';
+// require_once 'Zend/Gdata/Calendar/EventEntry.php';
+// require_once 'Zend/Gdata/Calendar.php';
 
 /**
  * @category   Zend

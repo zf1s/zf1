@@ -20,7 +20,7 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Mobile/Push/Message/Mpns/Raw.php';
+// require_once 'Zend/Mobile/Push/Message/Mpns/Raw.php';
 
 /**
  * @category   Zend

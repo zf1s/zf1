@@ -2,7 +2,7 @@
 /**
  * @see Zend_Service_Ebay_Abstract
  */
-require_once 'Zend/Service/Ebay/Abstract.php';
+// require_once 'Zend/Service/Ebay/Abstract.php';
 
 class Zend_Service_Ebay_AbstractConcrete extends Zend_Service_Ebay_Abstract
 {

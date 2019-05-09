@@ -26,7 +26,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_View_Helper_Placeholder_Container */
-require_once 'Zend/View/Helper/Placeholder/Container.php';
+// require_once 'Zend/View/Helper/Placeholder/Container.php';
 
 /**
  * Test class for Zend_View_Helper_Placeholder_Container.

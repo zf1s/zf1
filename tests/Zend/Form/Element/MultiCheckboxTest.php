@@ -25,7 +25,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Element_MultiCheckboxTest::main");
 }
 
-require_once 'Zend/Form/Element/MultiCheckbox.php';
+// require_once 'Zend/Form/Element/MultiCheckbox.php';
 
 /**
  * Test class for Zend_Form_Element_MultiCheckbox
@@ -73,7 +73,7 @@ class Zend_Form_Element_MultiCheckboxTest extends PHPUnit_Framework_TestCase
 
     public function getView()
     {
-        require_once 'Zend/View.php';
+        // require_once 'Zend/View.php';
         $view = new Zend_View();
         $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
         return $view;

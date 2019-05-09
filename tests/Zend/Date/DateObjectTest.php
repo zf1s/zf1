@@ -23,7 +23,7 @@
 /**
  * Zend_Date
  */
-require_once 'Zend/Date.php';
+// require_once 'Zend/Date.php';
 
 /**
  * @category   Zend
@@ -40,7 +40,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
     {
         $this->originalTimezone = date_default_timezone_get();
         date_default_timezone_set('Europe/Paris');
-        require_once 'Zend/Cache.php';
+        // require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory('Core', 'File',
                  array('lifetime' => 120, 'automatic_serialization' => true),
                  array('cache_dir' => dirname(__FILE__) . '/../_files/'));

@@ -20,9 +20,9 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Tool/Framework/Registry.php';
-require_once 'Zend/Tool/Framework/Client/Request.php';
-require_once 'Zend/Tool/Framework/Client/Response.php';
+// require_once 'Zend/Tool/Framework/Registry.php';
+// require_once 'Zend/Tool/Framework/Client/Request.php';
+// require_once 'Zend/Tool/Framework/Client/Response.php';
 
 require_once '_files/ProviderFullFeatured.php';
 

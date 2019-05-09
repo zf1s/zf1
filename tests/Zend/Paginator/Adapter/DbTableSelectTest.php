@@ -23,12 +23,12 @@
 /**
  * @see Zend_Paginator_Adapter_DbTableSelect
  */
-require_once 'Zend/Paginator/Adapter/DbTableSelect.php';
+// require_once 'Zend/Paginator/Adapter/DbTableSelect.php';
 
 /**
  * @see Zend_Paginator
  */
-require_once 'Zend/Paginator.php';
+// require_once 'Zend/Paginator.php';
 
 require_once dirname(__FILE__) . '/DbSelectTest.php';
 

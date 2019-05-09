@@ -29,30 +29,30 @@
 /**
  * @see Zend_Auth_Adapter_Http
  */
-require_once 'Zend/Auth/Adapter/Http.php';
+// require_once 'Zend/Auth/Adapter/Http.php';
 
 
 /**
  * @see Zend_Auth_Adapter_Http_Resolver_File
  */
-require_once 'Zend/Auth/Adapter/Http/Resolver/File.php';
+// require_once 'Zend/Auth/Adapter/Http/Resolver/File.php';
 
 
 /**
  * @see Zend_Controller_Request_Http
  */
-require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Request/Http.php';
 
 
 /**
  * @see Zend_Controller_Response_Http
  */
-require_once 'Zend/Controller/Response/Http.php';
+// require_once 'Zend/Controller/Response/Http.php';
 
 /**
  * @see Zend_Debug
  */
-require_once 'Zend/Debug.php';
+// require_once 'Zend/Debug.php';
 
 /**
  * @category   Zend

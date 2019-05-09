@@ -23,14 +23,14 @@
 /**
  * @see Zend_Tool_Framework_Registry
  */
-require_once 'Zend/Tool/Framework/Registry.php';
+// require_once 'Zend/Tool/Framework/Registry.php';
 
 /** Other Requirements */
-require_once 'Zend/Tool/Framework/Action/Repository.php';
-require_once 'Zend/Tool/Framework/Provider/Repository.php';
-require_once 'Zend/Tool/Framework/Manifest/Repository.php';
-require_once 'Zend/Tool/Framework/Client/Request.php';
-require_once 'Zend/Tool/Framework/Client/Response.php';
+// require_once 'Zend/Tool/Framework/Action/Repository.php';
+// require_once 'Zend/Tool/Framework/Provider/Repository.php';
+// require_once 'Zend/Tool/Framework/Manifest/Repository.php';
+// require_once 'Zend/Tool/Framework/Client/Request.php';
+// require_once 'Zend/Tool/Framework/Client/Response.php';
 require_once '_files/EmptyClient.php';
 require_once '_files/EmptyLoader.php';
 

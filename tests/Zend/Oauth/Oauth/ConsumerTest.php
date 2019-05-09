@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Oauth/Consumer.php';
+// require_once 'Zend/Oauth/Consumer.php';
 
 /**
  * @category   Zend

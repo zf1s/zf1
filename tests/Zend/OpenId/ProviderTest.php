@@ -23,17 +23,17 @@
 /**
  * Zend_OpenId
  */
-require_once 'Zend/OpenId/Provider.php';
+// require_once 'Zend/OpenId/Provider.php';
 
 /**
  * Zend_OpenId_ResponseHelper
  */
-require_once 'Zend/OpenId/ResponseHelper.php';
+// require_once 'Zend/OpenId/ResponseHelper.php';
 
 /**
  * @see Zend_OpenId_Provider_User_Session
  */
-require_once 'Zend/OpenId/Provider/User/Session.php';
+// require_once 'Zend/OpenId/Provider/User/Session.php';
 
 /**
  * @category   Zend

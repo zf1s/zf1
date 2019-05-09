@@ -23,7 +23,7 @@
 /**
  * Zend_Date
  */
-require_once 'Zend/Currency/CurrencyInterface.php';
+// require_once 'Zend/Currency/CurrencyInterface.php';
 
 /**
  * @category   Zend

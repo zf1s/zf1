@@ -23,7 +23,7 @@
 /**
  * Zend_OpenId
  */
-require_once 'Zend/OpenId.php';
+// require_once 'Zend/OpenId.php';
 
 Zend_OpenId::$exitOnRedirect = false;
 

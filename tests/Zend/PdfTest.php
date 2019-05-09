@@ -23,11 +23,11 @@
 /**
  * @see Zend_Pdf
  */
-require_once 'Zend/Pdf.php';
+// require_once 'Zend/Pdf.php';
 /**
  * @see Zend_Pdf_Exception
  */
-require_once 'Zend/Pdf/Exception.php';
+// require_once 'Zend/Pdf/Exception.php';
 
 /**
  * @category   Zend

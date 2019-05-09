@@ -23,7 +23,7 @@
 /**
  * Zend_Translate_Adapter_Gettext
  */
-require_once 'Zend/Translate/Adapter/Gettext.php';
+// require_once 'Zend/Translate/Adapter/Gettext.php';
 
 /**
  * @category   Zend
@@ -194,7 +194,7 @@ class Zend_Translate_Adapter_GettextTest extends PHPUnit_Framework_TestCase
 
     public function testOptionLocaleDirectory()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $adapter = new Zend_Translate_Adapter_Gettext(dirname(__FILE__) . '/_files/testmo/', 'de_AT', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
         $this->assertEquals(array('de_AT' => 'de_AT', 'en_GB' => 'en_GB'), $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
@@ -202,7 +202,7 @@ class Zend_Translate_Adapter_GettextTest extends PHPUnit_Framework_TestCase
 
     public function testOptionLocaleFilename()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $adapter = new Zend_Translate_Adapter_Gettext(dirname(__FILE__) . '/_files/testmo/', 'de_DE', array('scan' => Zend_Translate::LOCALE_FILENAME));
         $this->assertEquals(array('de_DE' => 'de_DE', 'en_US' => 'en_US'), $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));

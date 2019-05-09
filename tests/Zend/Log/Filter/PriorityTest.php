@@ -25,10 +25,10 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log */
-require_once 'Zend/Log.php';
+// require_once 'Zend/Log.php';
 
 /** Zend_Log_Filter_Priority */
-require_once 'Zend/Log/Filter/Priority.php';
+// require_once 'Zend/Log/Filter/Priority.php';
 
 /**
  * @category   Zend

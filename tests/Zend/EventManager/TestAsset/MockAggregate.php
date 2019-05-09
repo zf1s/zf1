@@ -19,8 +19,8 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/EventManager/EventCollection.php';
-require_once 'Zend/EventManager/ListenerAggregate.php';
+// require_once 'Zend/EventManager/EventCollection.php';
+// require_once 'Zend/EventManager/ListenerAggregate.php';
 
 /**
  * @category   Zend

@@ -21,10 +21,10 @@
  */
 
 /** Zend_Pdf */
-require_once 'Zend/Pdf.php';
+// require_once 'Zend/Pdf.php';
 
 /** Zend_Pdf_Page */
-require_once 'Zend/Pdf/Page.php';
+// require_once 'Zend/Pdf/Page.php';
 
 /**
  * @category   Zend

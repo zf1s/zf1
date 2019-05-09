@@ -20,15 +20,15 @@
  * @version    $Id$
  */
 
-require_once "Zend/Db/Table/Abstract.php";
+// require_once "Zend/Db/Table/Abstract.php";
 
-require_once "Zend/Db/Table.php";
+// require_once "Zend/Db/Table.php";
 
-require_once "Zend/Test/PHPUnit/Db/DataSet/DbTableDataSet.php";
+// require_once "Zend/Test/PHPUnit/Db/DataSet/DbTableDataSet.php";
 
-require_once "Zend/Test/PHPUnit/Db/SimpleTester.php";
+// require_once "Zend/Test/PHPUnit/Db/SimpleTester.php";
 
-require_once "Zend/Test/PHPUnit/Db/DataSet/DbRowset.php";
+// require_once "Zend/Test/PHPUnit/Db/DataSet/DbRowset.php";
 
 /**
  * @category   Zend

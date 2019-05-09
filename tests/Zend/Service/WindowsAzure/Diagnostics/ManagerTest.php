@@ -27,17 +27,17 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * Test helpers
  */
-require_once dirname(__FILE__) . '/../../../../TestHelper.php';
+// require_once dirname(__FILE__) . '/../../../../TestHelper.php';
 require_once dirname(__FILE__) . '/../../../../TestConfiguration.php.dist';
 
 /** Zend_Service_WindowsAzure_Storage_Blob */
-require_once 'Zend/Service/WindowsAzure/Storage/Blob.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/Blob.php';
 
 /** Zend_Service_WindowsAzure_Diagnostics_Manager */
-require_once 'Zend/Service/WindowsAzure/Diagnostics/Manager.php';
+// require_once 'Zend/Service/WindowsAzure/Diagnostics/Manager.php';
 
 /** Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance */
-require_once 'Zend/Service/WindowsAzure/Diagnostics/ConfigurationInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Diagnostics/ConfigurationInstance.php';
 
 /**
  * @category   Zend

@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter
  */
-require_once 'Zend/Filter.php';
+// require_once 'Zend/Filter.php';
 
 
 /**

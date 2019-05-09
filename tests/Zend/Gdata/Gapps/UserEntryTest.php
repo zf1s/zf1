@@ -20,8 +20,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Gapps/UserEntry.php';
-require_once 'Zend/Gdata/Gapps.php';
+// require_once 'Zend/Gdata/Gapps/UserEntry.php';
+// require_once 'Zend/Gdata/Gapps.php';
 
 /**
  * @category   Zend

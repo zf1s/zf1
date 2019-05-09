@@ -25,17 +25,17 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Amf_ServerTest::main");
 }
 
-require_once 'Zend/Config.php';
-require_once 'Zend/Amf/Server.php';
-require_once 'Zend/Amf/Request.php';
-require_once 'Zend/Amf/Parse/TypeLoader.php';
-require_once 'Zend/Amf/Value/Messaging/RemotingMessage.php';
-require_once 'Zend/Amf/Adobe/Auth.php';
-require_once 'Zend/Amf/Adobe/Introspector.php';
-require_once 'Zend/Acl.php';
+// require_once 'Zend/Config.php';
+// require_once 'Zend/Amf/Server.php';
+// require_once 'Zend/Amf/Request.php';
+// require_once 'Zend/Amf/Parse/TypeLoader.php';
+// require_once 'Zend/Amf/Value/Messaging/RemotingMessage.php';
+// require_once 'Zend/Amf/Adobe/Auth.php';
+// require_once 'Zend/Amf/Adobe/Introspector.php';
+// require_once 'Zend/Acl.php';
 require_once 'ServiceA.php';
 require_once 'ServiceB.php';
-require_once 'Zend/Session.php';
+// require_once 'Zend/Session.php';
 
 /**
  * @category   Zend
@@ -752,7 +752,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
      */
     public function testSetRequestShouldRaiseExceptionOnInvalidRequestObjects()
     {
-        require_once 'Zend/XmlRpc/Request.php';
+        // require_once 'Zend/XmlRpc/Request.php';
         $request = new Zend_XmlRpc_Request;
         $this->_server->setRequest($request);
     }
@@ -785,7 +785,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
      */
     public function testSetResponseShouldRaiseExceptionOnInvalidResponseObjects()
     {
-        require_once 'Zend/XmlRpc/Response.php';
+        // require_once 'Zend/XmlRpc/Response.php';
         $response = new Zend_XmlRpc_Response;
         $this->_server->setResponse($response);
     }
@@ -1086,7 +1086,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $response = $this->_server->getResponse()->getAMFBodies();
         $this->assertTrue($response[0]->getData() instanceof Zend_Amf_Value_Messaging_ErrorMessage);
         // test the same while ensuring Zend_Json is loaded
-        require_once 'Zend/Json.php';
+        // require_once 'Zend/Json.php';
         $this->_server->handle($request);
         $response = $this->_server->getResponse()->getAMFBodies();
         $this->assertTrue($response[0]->getData() instanceof Zend_Amf_Value_Messaging_ErrorMessage);

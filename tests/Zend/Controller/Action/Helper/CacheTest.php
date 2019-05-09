@@ -4,14 +4,14 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_Helper_CacheTest::main");
 }
 
-require_once 'Zend/Controller/Action/Helper/Cache.php';
-require_once 'Zend/Controller/Action/HelperBroker.php';
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Controller/Request/Http.php';
-require_once 'Zend/Controller/Response/Http.php';
-require_once 'Zend/Cache.php';
-require_once 'Zend/Cache/Core.php';
-require_once 'Zend/Cache/Backend.php';
+// require_once 'Zend/Controller/Action/Helper/Cache.php';
+// require_once 'Zend/Controller/Action/HelperBroker.php';
+// require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Response/Http.php';
+// require_once 'Zend/Cache.php';
+// require_once 'Zend/Cache/Core.php';
+// require_once 'Zend/Cache/Backend.php';
 
 /**
  * Test class for Zend_Controller_Action_Helper_Cache

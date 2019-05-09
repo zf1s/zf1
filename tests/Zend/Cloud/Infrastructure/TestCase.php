@@ -22,12 +22,12 @@
 /**
  * @see Zend_Cloud_Infrastructure_Adapter
  */
-require_once 'Zend/Cloud/Infrastructure/Adapter.php';
+// require_once 'Zend/Cloud/Infrastructure/Adapter.php';
 
 /**
  * @see Zend_Cloud_Infrastructure_Instance
  */
-require_once 'Zend/Cloud/Infrastructure/Instance.php';
+// require_once 'Zend/Cloud/Infrastructure/Instance.php';
 
 
 /**

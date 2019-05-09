@@ -23,7 +23,7 @@
 /**
  * @see Zend_Test_PHPUnit_Constraint_DomQuery
  */
-require_once 'Zend/Test/PHPUnit/Constraint/DomQuery.php';
+// require_once 'Zend/Test/PHPUnit/Constraint/DomQuery.php';
 
 /**
  * @category   Zend

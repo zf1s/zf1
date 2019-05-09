@@ -25,8 +25,8 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_FormLabelTest::main");
 }
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/FormLabel.php';
+// require_once 'Zend/View.php';
+// require_once 'Zend/View/Helper/FormLabel.php';
 
 /**
  * Test class for Zend_View_Helper_FormLabel.

@@ -25,9 +25,9 @@
  */
 
 /** Zend_Soap_Wsdl */
-require_once 'Zend/Soap/Wsdl.php';
+// require_once 'Zend/Soap/Wsdl.php';
 
-require_once 'Zend/Soap/Wsdl/Strategy/ArrayOfTypeSequence.php';
+// require_once 'Zend/Soap/Wsdl/Strategy/ArrayOfTypeSequence.php';
 
 /**
  * @category   Zend

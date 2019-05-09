@@ -21,13 +21,13 @@
  */
 
 /** Zend_Pdf_Destination */
-require_once 'Zend/Pdf/Destination.php';
+// require_once 'Zend/Pdf/Destination.php';
 
 /** Zend_Pdf_Action */
-require_once 'Zend/Pdf/ElementFactory.php';
+// require_once 'Zend/Pdf/ElementFactory.php';
 
 /** Zend_Pdf */
-require_once 'Zend/Pdf.php';
+// require_once 'Zend/Pdf.php';
 
 
 /**

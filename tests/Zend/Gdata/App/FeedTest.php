@@ -21,8 +21,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/App/Feed.php';
-require_once 'Zend/Gdata/App.php';
+// require_once 'Zend/Gdata/App/Feed.php';
+// require_once 'Zend/Gdata/App.php';
 
 /**
  * @category   Zend

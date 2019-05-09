@@ -23,9 +23,9 @@
 /**
  * Zend_Cache
  */
-require_once 'Zend/Cache.php';
-require_once 'Zend/Cache/Frontend/Function.php';
-require_once 'Zend/Cache/Backend/Test.php';
+// require_once 'Zend/Cache.php';
+// require_once 'Zend/Cache/Frontend/Function.php';
+// require_once 'Zend/Cache/Backend/Test.php';
 
 function foobar($param1, $param2) {
     echo "foobar_output($param1, $param2)";

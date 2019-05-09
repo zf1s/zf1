@@ -25,12 +25,12 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Decorator_FieldsetTest::main");
 }
 
-require_once 'Zend/Form/Decorator/Fieldset.php';
+// require_once 'Zend/Form/Decorator/Fieldset.php';
 
-require_once 'Zend/Form.php';
-require_once 'Zend/Form/Element.php';
-require_once 'Zend/View.php';
-require_once 'Zend/Form/SubForm.php';
+// require_once 'Zend/Form.php';
+// require_once 'Zend/Form/Element.php';
+// require_once 'Zend/View.php';
+// require_once 'Zend/Form/SubForm.php';
 /**
  * Test class for Zend_Form_Decorator_Fieldset
  *

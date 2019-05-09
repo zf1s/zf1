@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Service/Amazon/Sqs.php';
-require_once 'Zend/Http/Client/Adapter/Socket.php';
+// require_once 'Zend/Service/Amazon/Sqs.php';
+// require_once 'Zend/Http/Client/Adapter/Socket.php';
 
 /**
  * @category   Zend

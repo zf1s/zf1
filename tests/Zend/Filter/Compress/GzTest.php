@@ -27,7 +27,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Filter_Compress_Gz
  */
-require_once 'Zend/Filter/Compress/Gz.php';
+// require_once 'Zend/Filter/Compress/Gz.php';
 
 /**
  * @category   Zend

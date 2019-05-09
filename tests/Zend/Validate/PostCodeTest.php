@@ -27,7 +27,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Validate_PostCode
  */
-require_once 'Zend/Validate/PostCode.php';
+// require_once 'Zend/Validate/PostCode.php';
 
 /**
  * @category   Zend

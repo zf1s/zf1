@@ -20,9 +20,9 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Gapps/ServiceException.php';
-require_once 'Zend/Gdata/Gapps/Error.php';
-require_once 'Zend/Gdata/Gapps.php';
+// require_once 'Zend/Gdata/Gapps/ServiceException.php';
+// require_once 'Zend/Gdata/Gapps/Error.php';
+// require_once 'Zend/Gdata/Gapps.php';
 
 /**
  * @category   Zend

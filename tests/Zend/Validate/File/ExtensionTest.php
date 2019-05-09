@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Validate_File_Extension
  */
-require_once 'Zend/Validate/File/Extension.php';
+// require_once 'Zend/Validate/File/Extension.php';
 
 /**
  * Extension testbed

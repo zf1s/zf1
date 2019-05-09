@@ -27,20 +27,20 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Config_Ini
  */
-require_once 'Zend/Config/Ini.php';
+// require_once 'Zend/Config/Ini.php';
 
 /**
  * @see Zend_Cloud_StorageService_Factory
  */
-require_once 'Zend/Cloud/StorageService/Factory.php';
+// require_once 'Zend/Cloud/StorageService/Factory.php';
 
-require_once 'Zend/Cloud/StorageService/Adapter/FileSystem.php';
+// require_once 'Zend/Cloud/StorageService/Adapter/FileSystem.php';
 
-require_once 'Zend/Cloud/StorageService/Adapter/S3.php';
+// require_once 'Zend/Cloud/StorageService/Adapter/S3.php';
 
-require_once 'Zend/Cloud/StorageService/Adapter/WindowsAzure.php';
+// require_once 'Zend/Cloud/StorageService/Adapter/WindowsAzure.php';
 
-require_once 'Zend/Http/Client/Adapter/Test.php';
+// require_once 'Zend/Http/Client/Adapter/Test.php';
 
 /**
  * Test class for Zend_Cloud_StorageService_Factory

@@ -21,7 +21,7 @@
  * @version    $Id: OfflineTest.php 8064 2008-02-16 10:58:39Z thomas $
  */
 
-require_once 'Zend/Service/Amazon/SimpleDb/Page.php';
+// require_once 'Zend/Service/Amazon/SimpleDb/Page.php';
 
 /**
  * @category   Zend

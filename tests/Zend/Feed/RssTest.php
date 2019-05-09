@@ -25,7 +25,7 @@ require_once dirname(__FILE__) . '/AbstractFeedTest.php';
 /**
  * @see Zend_Feed_Rss
  */
-require_once 'Zend/Feed/Rss.php';
+// require_once 'Zend/Feed/Rss.php';
 
 /**
  * @category   Zend

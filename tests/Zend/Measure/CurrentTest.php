@@ -23,7 +23,7 @@
 /**
  * Zend_Measure_Current
  */
-require_once 'Zend/Measure/Current.php';
+// require_once 'Zend/Measure/Current.php';
 
 /**
  * @category   Zend

@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Power
  */
-require_once 'Zend/Measure/Power.php';
+// require_once 'Zend/Measure/Power.php';
 
 /**
  * @category   Zend

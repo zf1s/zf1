@@ -25,7 +25,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Memory */
-require_once 'Zend/Memory.php';
+// require_once 'Zend/Memory.php';
 
 /**
  * @category   Zend

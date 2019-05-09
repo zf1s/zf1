@@ -21,10 +21,10 @@
  */
 
 /** Zend_Mail */
-require_once 'Zend/Mail.php';
+// require_once 'Zend/Mail.php';
 
 /** Zend_Mime */
-require_once 'Zend/Mime.php';
+// require_once 'Zend/Mime.php';
 
 /**
  * @category   Zend

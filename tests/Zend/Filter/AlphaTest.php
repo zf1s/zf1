@@ -24,7 +24,7 @@
 /**
  * @see Zend_Filter_Alpha
  */
-require_once 'Zend/Filter/Alpha.php';
+// require_once 'Zend/Filter/Alpha.php';
 
 
 /**

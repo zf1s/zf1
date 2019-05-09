@@ -21,8 +21,8 @@
  */
 
 /** requires here */
-require_once 'Zend/CodeGenerator/Php/File.php';
-require_once 'Zend/Reflection/File.php';
+// require_once 'Zend/CodeGenerator/Php/File.php';
+// require_once 'Zend/Reflection/File.php';
 
 /**
  * @category   Zend

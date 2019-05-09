@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/View/Helper/Abstract.php';
+// require_once 'Zend/View/Helper/Abstract.php';
 
 /**
  * @category   Zend

@@ -23,12 +23,12 @@
 /**
  * Zend_Mail_Storage_Folder_Maildir
  */
-require_once 'Zend/Mail/Storage/Folder/Maildir.php';
+// require_once 'Zend/Mail/Storage/Folder/Maildir.php';
 
 /**
  * Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 
 /**

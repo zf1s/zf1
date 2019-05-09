@@ -20,20 +20,20 @@
  * @version $Id$
  */
 
-require_once 'Zend/XmlRpc/Value.php';
-require_once 'Zend/XmlRpc/Value/Scalar.php';
-require_once 'Zend/XmlRpc/Value/Collection.php';
-require_once 'Zend/XmlRpc/Value/Array.php';
-require_once 'Zend/XmlRpc/Value/Base64.php';
-require_once 'Zend/XmlRpc/Value/Boolean.php';
-require_once 'Zend/XmlRpc/Value/DateTime.php';
-require_once 'Zend/XmlRpc/Value/Double.php';
-require_once 'Zend/XmlRpc/Value/Integer.php';
-require_once 'Zend/XmlRpc/Value/String.php';
-require_once 'Zend/XmlRpc/Value/Nil.php';
-require_once 'Zend/XmlRpc/Value/Struct.php';
+// require_once 'Zend/XmlRpc/Value.php';
+// require_once 'Zend/XmlRpc/Value/Scalar.php';
+// require_once 'Zend/XmlRpc/Value/Collection.php';
+// require_once 'Zend/XmlRpc/Value/Array.php';
+// require_once 'Zend/XmlRpc/Value/Base64.php';
+// require_once 'Zend/XmlRpc/Value/Boolean.php';
+// require_once 'Zend/XmlRpc/Value/DateTime.php';
+// require_once 'Zend/XmlRpc/Value/Double.php';
+// require_once 'Zend/XmlRpc/Value/Integer.php';
+// require_once 'Zend/XmlRpc/Value/String.php';
+// require_once 'Zend/XmlRpc/Value/Nil.php';
+// require_once 'Zend/XmlRpc/Value/Struct.php';
 require_once 'Zend/XmlRpc/TestProvider.php';
-require_once 'Zend/Date.php';
+// require_once 'Zend/Date.php';
 
 /**
  * Test case for Zend_XmlRpc_Value

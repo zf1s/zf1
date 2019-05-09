@@ -21,7 +21,7 @@
  */
 
 /** Zend_Validate_Barcode */
-require_once 'Zend/Validate/Barcode.php';
+// require_once 'Zend/Validate/Barcode.php';
 
 /**
  * Zend_Validate_Barcode
@@ -172,7 +172,7 @@ class Zend_Validate_BarcodeTest extends PHPUnit_Framework_TestCase
     public function testConfigConstructAdapter()
     {
         $array = array('adapter' => 'Ean13', 'options' => 'unknown', 'checksum' => false);
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
         $config = new Zend_Config($array);
 
         $barcode = new Zend_Validate_Barcode($config);

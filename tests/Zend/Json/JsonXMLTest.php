@@ -25,7 +25,7 @@ error_reporting( E_ALL | E_STRICT ); // now required for each test suite
 /**
  * Zend_Json
  */
-require_once 'Zend/Json.php';
+// require_once 'Zend/Json.php';
 
 
 /**

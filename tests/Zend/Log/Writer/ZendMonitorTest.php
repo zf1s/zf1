@@ -25,7 +25,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log_Writer_ZendMonitor */
-require_once 'Zend/Log/Writer/ZendMonitor.php';
+// require_once 'Zend/Log/Writer/ZendMonitor.php';
 
 /**
  * @category   Zend

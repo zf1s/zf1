@@ -21,10 +21,10 @@
  */
 
 /** @see Zend_Service_ReCaptcha_MailHide */
-require_once 'Zend/Service/ReCaptcha/MailHide.php';
+// require_once 'Zend/Service/ReCaptcha/MailHide.php';
 
 /** @see Zend_Config */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @category   Zend

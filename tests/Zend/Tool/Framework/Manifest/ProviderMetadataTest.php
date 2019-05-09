@@ -23,7 +23,7 @@
 /**
  * @see Zend_Tool_Framework_Action_Base
  */
-require_once 'Zend/Tool/Framework/Manifest/ProviderMetadata.php';
+// require_once 'Zend/Tool/Framework/Manifest/ProviderMetadata.php';
 
 /**
  * @category   Zend

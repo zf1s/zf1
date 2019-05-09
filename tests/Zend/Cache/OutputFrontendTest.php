@@ -23,9 +23,9 @@
 /**
  * Zend_Cache
  */
-require_once 'Zend/Cache.php';
-require_once 'Zend/Cache/Frontend/Output.php';
-require_once 'Zend/Cache/Backend/Test.php';
+// require_once 'Zend/Cache.php';
+// require_once 'Zend/Cache/Frontend/Output.php';
+// require_once 'Zend/Cache/Backend/Test.php';
 
 /**
  * @category   Zend

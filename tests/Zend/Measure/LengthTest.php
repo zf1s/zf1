@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Length
  */
-require_once 'Zend/Measure/Length.php';
+// require_once 'Zend/Measure/Length.php';
 
 /**
  * @category   Zend

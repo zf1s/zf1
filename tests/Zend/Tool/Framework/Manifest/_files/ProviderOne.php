@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Tool/Framework/Provider/Interface.php';
-require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
+// require_once 'Zend/Tool/Framework/Provider/Interface.php';
+// require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
 
 /**
  * @category   Zend

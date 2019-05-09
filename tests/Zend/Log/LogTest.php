@@ -25,16 +25,16 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log */
-require_once 'Zend/Log.php';
+// require_once 'Zend/Log.php';
 
 /** Zend_Log_Writer_Mock */
-require_once 'Zend/Log/Writer/Mock.php';
+// require_once 'Zend/Log/Writer/Mock.php';
 
 /** Zend_Log_Writer_Stream */
-require_once 'Zend/Log/Writer/Stream.php';
+// require_once 'Zend/Log/Writer/Stream.php';
 
 /** Zend_Log_FactoryInterface */
-require_once 'Zend/Log/FactoryInterface.php';
+// require_once 'Zend/Log/FactoryInterface.php';
 
 /**
  * @category   Zend

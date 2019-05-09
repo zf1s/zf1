@@ -22,17 +22,17 @@
 /**
  * @see Zend_Cloud_QueueService_Adapter
  */
-require_once 'Zend/Cloud/QueueService/Adapter.php';
+// require_once 'Zend/Cloud/QueueService/Adapter.php';
 
 /**
  * @see Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @see Zend_Cloud_Queue_Factory
  */
-require_once 'Zend/Cloud/QueueService/Factory.php';
+// require_once 'Zend/Cloud/QueueService/Factory.php';
 
 /**
  * This class forces the adapter tests to implement tests for all methods on

@@ -27,7 +27,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Amf_Response_Http
  */
-require_once 'Zend/Amf/Response/Http.php';
+// require_once 'Zend/Amf/Response/Http.php';
 
 /**
  * Test case for Zend_Amf_Response

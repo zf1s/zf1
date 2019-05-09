@@ -23,8 +23,8 @@
 /**
  * @see Zend_Filter_Encrypt
  */
-require_once 'Zend/Filter/File/Encrypt.php';
-require_once 'Zend/Filter/File/Decrypt.php';
+// require_once 'Zend/Filter/File/Encrypt.php';
+// require_once 'Zend/Filter/File/Decrypt.php';
 
 /**
  * @category   Zend

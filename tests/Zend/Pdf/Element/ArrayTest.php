@@ -23,32 +23,32 @@
 /**
  * Zend_Pdf_Element_Array
  */
-require_once 'Zend/Pdf/Element/Array.php';
+// require_once 'Zend/Pdf/Element/Array.php';
 
 /**
  * Zend_Pdf_Element_Boolean
  */
-require_once 'Zend/Pdf/Element/Boolean.php';
+// require_once 'Zend/Pdf/Element/Boolean.php';
 
 /**
  * Zend_Pdf_Element_Numeric
  */
-require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
 
 /**
  * Zend_Pdf_Element_Name
  */
-require_once 'Zend/Pdf/Element/Name.php';
+// require_once 'Zend/Pdf/Element/Name.php';
 
 /**
  * Zend_Pdf_Element_String
  */
-require_once 'Zend/Pdf/Element/String.php';
+// require_once 'Zend/Pdf/Element/String.php';
 
 /**
  * Zend_Pdf_Element_String_Binary
  */
-require_once 'Zend/Pdf/Element/String/Binary.php';
+// require_once 'Zend/Pdf/Element/String/Binary.php';
 
 /**
  * @category   Zend

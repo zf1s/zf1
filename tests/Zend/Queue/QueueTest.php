@@ -29,13 +29,13 @@
  */
 
 /** Zend_Queue */
-require_once 'Zend/Queue.php';
+// require_once 'Zend/Queue.php';
 
 /** Zend_Queue */
-require_once 'Zend/Queue/Message.php';
+// require_once 'Zend/Queue/Message.php';
 
 /** Zend_Queue_Adapter_Array */
-require_once 'Zend/Queue/Adapter/Array.php';
+// require_once 'Zend/Queue/Adapter/Array.php';
 
 /**
  * @category   Zend
@@ -84,7 +84,7 @@ class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
             'adapter'   => 'array'
         );
 
-        require_once "Zend/Config.php";
+        // require_once "Zend/Config.php";
         $zend_config = new Zend_Config($config);
 
         $obj = new Zend_Queue($config);

@@ -26,16 +26,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_Dojo_View_Helper_Dojo */
-require_once 'Zend/Dojo/View/Helper/Dojo.php';
+// require_once 'Zend/Dojo/View/Helper/Dojo.php';
 
 /** Zend_Dojo_View_Helper_Dojo_Container */
-require_once 'Zend/Dojo/View/Helper/Dojo/Container.php';
+// require_once 'Zend/Dojo/View/Helper/Dojo/Container.php';
 
 /** Zend_Dojo */
-require_once 'Zend/Dojo.php';
+// require_once 'Zend/Dojo.php';
 
 /** Zend_View */
-require_once 'Zend/View.php';
+// require_once 'Zend/View.php';
 
 /**
  * Test class for Zend_Dojo_View_Helper_Dojo.
@@ -94,7 +94,7 @@ class Zend_Dojo_View_Helper_DojoTest extends PHPUnit_Framework_TestCase
 
     public function getView()
     {
-        require_once 'Zend/View.php';
+        // require_once 'Zend/View.php';
         $view = new Zend_View();
         $view->addHelperPath('Zend/Dojo/View/Helper/', 'Zend_Dojo_View_Helper');
         return $view;

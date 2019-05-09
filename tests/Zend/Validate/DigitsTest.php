@@ -23,7 +23,7 @@
 /**
  * @see Zend_Validate_Digits
  */
-require_once 'Zend/Validate/Digits.php';
+// require_once 'Zend/Validate/Digits.php';
 
 
 /**

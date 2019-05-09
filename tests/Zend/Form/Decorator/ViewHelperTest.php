@@ -25,11 +25,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Decorator_ViewHelperTest::main");
 }
 
-require_once 'Zend/Form/Decorator/ViewHelper.php';
+// require_once 'Zend/Form/Decorator/ViewHelper.php';
 
-require_once 'Zend/Form/Element.php';
-require_once 'Zend/Form/Element/Text.php';
-require_once 'Zend/View.php';
+// require_once 'Zend/Form/Element.php';
+// require_once 'Zend/Form/Element/Text.php';
+// require_once 'Zend/View.php';
 
 /**
  * Test class for Zend_Form_Decorator_ViewHelper
@@ -155,8 +155,8 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
 
     public function testMultiOptionsPassedToViewHelperAreTranslated()
     {
-        require_once 'Zend/Form/Element/Select.php';
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Form/Element/Select.php';
+        // require_once 'Zend/Translate.php';
         $element = new Zend_Form_Element_Select('foo');
         $options = array(
             'foo' => 'This Foo Will Not Be Displayed',
@@ -186,7 +186,7 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
      */
     public function testRenderWithListSeparatorForMulticheckbox()
     {
-        require_once 'Zend/Form/Element/MultiCheckbox.php';
+        // require_once 'Zend/Form/Element/MultiCheckbox.php';
         
         $element = new Zend_Form_Element_MultiCheckbox('foo');
         $options = array(
@@ -214,7 +214,7 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
      */
     public function testRenderWithListSeparatorForRadio()
     {
-        require_once 'Zend/Form/Element/Radio.php';
+        // require_once 'Zend/Form/Element/Radio.php';
         
         $element = new Zend_Form_Element_Radio('foo');
         $options = array(
@@ -243,7 +243,7 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
     public function testRenderingButtonWithValue()
     {
         // Create element
-        require_once 'Zend/Form/Element/Button.php';
+        // require_once 'Zend/Form/Element/Button.php';
 
         $element = new Zend_Form_Element_Button('foo');
         $element->setValue('bar');
@@ -268,7 +268,7 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
     public function testRenderingButtonAsTypeSubmit()
     {
         // Create element
-        require_once 'Zend/Form/Element/Button.php';
+        // require_once 'Zend/Form/Element/Button.php';
 
         $element = new Zend_Form_Element_Button('foo');
         $element->setAttrib('type', 'submit');

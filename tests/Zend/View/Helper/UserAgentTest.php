@@ -26,9 +26,9 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_UserAgentTest::main");
 }
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/UserAgent.php';
-require_once 'Zend/Http/UserAgent.php';
+// require_once 'Zend/View.php';
+// require_once 'Zend/View/Helper/UserAgent.php';
+// require_once 'Zend/Http/UserAgent.php';
 
 /**
  * Zend_View_Helper_UserAgentTest

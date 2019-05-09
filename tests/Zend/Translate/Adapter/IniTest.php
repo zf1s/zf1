@@ -23,7 +23,7 @@
 /**
  * Zend_Translate_Adapter_Ini
  */
-require_once 'Zend/Translate/Adapter/Ini.php';
+// require_once 'Zend/Translate/Adapter/Ini.php';
 
 /**
  * @category   Zend
@@ -187,7 +187,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
 
     public function testOptionLocaleDirectory()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/testini', 'de_AT', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
         $this->assertEquals(array('de_AT' => 'de_AT', 'en_GB' => 'en_GB'), $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message_8'));
@@ -195,7 +195,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
 
     public function testOptionLocaleFilename()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/testini', 'de_DE', array('scan' => Zend_Translate::LOCALE_FILENAME));
         $this->assertEquals(array('de_DE' => 'de_DE', 'en_US' => 'en_US'), $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message_8'));

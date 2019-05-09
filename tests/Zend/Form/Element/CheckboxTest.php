@@ -25,7 +25,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Element_CheckboxTest::main");
 }
 
-require_once 'Zend/Form/Element/Checkbox.php';
+// require_once 'Zend/Form/Element/Checkbox.php';
 
 /**
  * Test class for Zend_Form_Element_Checkbox
@@ -73,7 +73,7 @@ class Zend_Form_Element_CheckboxTest extends PHPUnit_Framework_TestCase
 
     public function getView()
     {
-        require_once 'Zend/View.php';
+        // require_once 'Zend/View.php';
         return new Zend_View();
     }
 
@@ -105,7 +105,7 @@ class Zend_Form_Element_CheckboxTest extends PHPUnit_Framework_TestCase
 
     public function testCheckedAttributeNotRenderedByDefault()
     {
-        require_once 'Zend/View.php';
+        // require_once 'Zend/View.php';
         $view = new Zend_View();
         $html = $this->element->render($view);
         $this->assertNotContains('checked="checked"', $html);
@@ -113,7 +113,7 @@ class Zend_Form_Element_CheckboxTest extends PHPUnit_Framework_TestCase
 
     public function testCheckedAttributeRenderedWhenCheckedFlagTrue()
     {
-        require_once 'Zend/View.php';
+        // require_once 'Zend/View.php';
         $view = new Zend_View();
         $this->element->checked = true;
         $html = $this->element->render($view);

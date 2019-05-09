@@ -25,8 +25,8 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_HtmlFlashTest::main");
 }
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/HtmlFlash.php';
+// require_once 'Zend/View.php';
+// require_once 'Zend/View/Helper/HtmlFlash.php';
 
 /**
  * @category   Zend

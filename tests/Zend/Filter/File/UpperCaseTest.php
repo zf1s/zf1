@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_File_UpperCase
  */
-require_once 'Zend/Filter/File/UpperCase.php';
+// require_once 'Zend/Filter/File/UpperCase.php';
 
 /**
  * @category   Zend

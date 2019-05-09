@@ -20,8 +20,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Books.php';
-require_once 'Zend/Gdata/Books/CollectionFeed.php';
+// require_once 'Zend/Gdata/Books.php';
+// require_once 'Zend/Gdata/Books/CollectionFeed.php';
 
 /**
  * @category   Zend

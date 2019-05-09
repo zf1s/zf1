@@ -25,8 +25,8 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_DeclareVarsTest::main");
 }
 
-require_once 'Zend/View.php';
-require_once 'Zend/View/Helper/DeclareVars.php';
+// require_once 'Zend/View.php';
+// require_once 'Zend/View/Helper/DeclareVars.php';
 
 /**
  * @category   Zend

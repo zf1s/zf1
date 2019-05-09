@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * Zend_Rest_Server
  */
-require_once 'Zend/Rest/Server.php';
+// require_once 'Zend/Rest/Server.php';
 
 /**
  * Test cases for Zend_Rest_Server

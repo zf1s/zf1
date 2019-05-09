@@ -23,12 +23,12 @@
 /**
  * @see Zend_Paginator
  */
-require_once 'Zend/Paginator.php';
+// require_once 'Zend/Paginator.php';
 
 /**
  * @see Zend_Paginator_ScrollingStyle_Jumping
  */
-require_once 'Zend/Paginator/ScrollingStyle/Jumping.php';
+// require_once 'Zend/Paginator/ScrollingStyle/Jumping.php';
 
 /**
  * @see PHPUnit_Framework_TestCase

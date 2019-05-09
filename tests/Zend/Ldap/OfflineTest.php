@@ -24,11 +24,11 @@
 /**
  * @see Zend_Ldap
  */
-require_once 'Zend/Ldap.php';
+// require_once 'Zend/Ldap.php';
 /**
  * @see Zend_Ldap_Exception
  */
-require_once 'Zend/Ldap/Exception.php';
+// require_once 'Zend/Ldap/Exception.php';
 
 
 /**
@@ -123,7 +123,7 @@ class Zend_Ldap_OfflineTest extends PHPUnit_Framework_TestCase
         /**
          * @see Zend_Config
          */
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
         $config = new Zend_Config(array(
             'host' => TESTS_ZEND_LDAP_HOST,
             'username' => TESTS_ZEND_LDAP_USERNAME,

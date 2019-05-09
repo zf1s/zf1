@@ -29,10 +29,10 @@
  */
 
 /** Zend_Queue */
-require_once 'Zend/Queue.php';
+// require_once 'Zend/Queue.php';
 
 /** Zend_Queue */
-require_once 'Zend/Queue/Message.php';
+// require_once 'Zend/Queue/Message.php';
 
 /** Zend_Queue_Message_Test */
 require_once 'MessageTestClass.php';
@@ -110,7 +110,7 @@ class Zend_Queue_Adapter_MemcacheqTest extends Zend_Queue_Adapter_AdapterTest
         /**
          * @see Zend_Queue_Adapter_Memcacheq
          */
-        require_once 'Zend/Queue/Adapter/Memcacheq.php';
+        // require_once 'Zend/Queue/Adapter/Memcacheq.php';
         $this->assertTrue(is_string(Zend_Queue_Adapter_Memcacheq::DEFAULT_HOST));
         $this->assertTrue(is_integer(Zend_Queue_Adapter_Memcacheq::DEFAULT_PORT));
         $this->assertTrue(is_string(Zend_Queue_Adapter_Memcacheq::EOL));

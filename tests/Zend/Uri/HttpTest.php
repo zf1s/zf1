@@ -23,12 +23,12 @@
 /**
  * @see Zend_Uri
  */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 /**
  * @see Zend_Uri_Http
  */
-require_once 'Zend/Uri/Http.php';
+// require_once 'Zend/Uri/Http.php';
 
 
 /**

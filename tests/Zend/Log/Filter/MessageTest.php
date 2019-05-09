@@ -25,10 +25,10 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log */
-require_once 'Zend/Log.php';
+// require_once 'Zend/Log.php';
 
 /** Zend_Log_Filter_Message */
-require_once 'Zend/Log/Filter/Message.php';
+// require_once 'Zend/Log/Filter/Message.php';
 
 /**
  * @category   Zend
@@ -80,7 +80,7 @@ class Zend_Log_Filter_MessageTest extends PHPUnit_Framework_TestCase
 
     public function testFactoryWithConfig()
     {
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
         $config = new Zend_Config(array('log' => array('memory' => array(
             'writerName'   => "Mock",
             'filterName'   => "Message",

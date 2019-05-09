@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Paginator/Adapter/Interface.php';
+// require_once 'Zend/Paginator/Adapter/Interface.php';
 
 /**
  * @category   Zend

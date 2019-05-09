@@ -26,19 +26,19 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_Dojo_Form_Element_Button */
-require_once 'Zend/Dojo/Form/Element/Button.php';
+// require_once 'Zend/Dojo/Form/Element/Button.php';
 
 /** Zend_View */
-require_once 'Zend/View.php';
+// require_once 'Zend/View.php';
 
 /** Zend_Registry */
-require_once 'Zend/Registry.php';
+// require_once 'Zend/Registry.php';
 
 /** Zend_Translate */
-require_once 'Zend/Translate.php';
+// require_once 'Zend/Translate.php';
 
 /** Zend_Dojo_View_Helper_Dojo */
-require_once 'Zend/Dojo/View/Helper/Dojo.php';
+// require_once 'Zend/Dojo/View/Helper/Dojo.php';
 
 /**
  * Test class for Zend_Dojo_Form_Element_Button.
@@ -92,7 +92,7 @@ class Zend_Dojo_Form_Element_ButtonTest extends PHPUnit_Framework_TestCase
 
     public function getView()
     {
-        require_once 'Zend/View.php';
+        // require_once 'Zend/View.php';
         $view = new Zend_View();
         $view->addHelperPath('Zend/Dojo/View/Helper/', 'Zend_Dojo_View_Helper');
         return $view;
@@ -144,7 +144,7 @@ class Zend_Dojo_Form_Element_ButtonTest extends PHPUnit_Framework_TestCase
 
     public function testLabelIsTranslatedWhenTranslationAvailable()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $translations = array('Label' => 'This is the Submit Label');
         $translate = new Zend_Translate('array', $translations);
         $button = new Zend_Dojo_Form_Element_Button('foo', 'Label');

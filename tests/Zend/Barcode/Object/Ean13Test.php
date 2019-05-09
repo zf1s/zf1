@@ -22,7 +22,7 @@
 
 require_once dirname(__FILE__) . '/TestCommon.php';
 
-require_once 'Zend/Barcode/Object/Ean13.php';
+// require_once 'Zend/Barcode/Object/Ean13.php';
 
 /**
  * @category   Zend

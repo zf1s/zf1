@@ -22,8 +22,8 @@
 /**
  * Zend_Http_UserAgent
  */
-require_once 'Zend/Http/UserAgent.php';
-require_once 'Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php';
+// require_once 'Zend/Http/UserAgent.php';
+// require_once 'Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php';
 
 /**
  * @category   Zend

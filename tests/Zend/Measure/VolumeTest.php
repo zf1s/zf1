@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Volume
  */
-require_once 'Zend/Measure/Volume.php';
+// require_once 'Zend/Measure/Volume.php';
 
 /**
  * @category   Zend

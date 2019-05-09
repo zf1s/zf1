@@ -28,7 +28,7 @@
 /**
  * @see Zend_Db_Statement_Interface
  */
-require_once 'Zend/Db/Statement/Interface.php';
+// require_once 'Zend/Db/Statement/Interface.php';
 
 
 /**

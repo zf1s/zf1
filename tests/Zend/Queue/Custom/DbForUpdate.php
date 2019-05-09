@@ -23,7 +23,7 @@
 /**
  * @see Zend_Queue_Adapter_Db
  */
-require_once 'Zend/Queue/Adapter/Db.php';
+// require_once 'Zend/Queue/Adapter/Db.php';
 
 /**
  * Class for using connecting to a Zend_Db-based queuing system
@@ -106,7 +106,7 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
             /**
              * @see Zend_Queue_Exception
              */
-            require_once 'Zend/Queue/Exception.php';
+            // require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception($e->getMessage(), $e->getCode());
         }
 
