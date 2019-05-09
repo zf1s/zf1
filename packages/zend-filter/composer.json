@@ -1,0 +1,35 @@
+{
+	"name": "zf1s/zend-filter",
+	"description": "Zend Framework 1 Filter package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"filter"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-crypt": "^1.12",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-loader": "^1.12",
+		"zf1s/zend-validate": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Filter": "library/"
+		}
+	},
+	"suggest": {
+		"zf1s/zend-locale": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-filter": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}

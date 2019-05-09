@@ -1,0 +1,35 @@
+{
+	"name": "zf1s/zend-navigation",
+	"description": "Zend Framework 1 Navigation package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"navigation"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-controller": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Navigation": "library/"
+		}
+	},
+	"suggest": {
+		"zf1s/zend-config": "Used in special situations or with special adapters",
+		"zf1s/zend-acl": "Used in special situations or with special adapters",
+		"zf1s/zend-view": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-navigation": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}

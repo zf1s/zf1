@@ -1,0 +1,29 @@
+{
+	"name": "zf1s/zend-server",
+	"description": "Zend Framework 1 Server package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"server"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-exception": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Server": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-server": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}

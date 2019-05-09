@@ -1,0 +1,35 @@
+{
+	"name": "zf1s/zend-service-delicious",
+	"description": "Zend Framework 1 Service Delicious package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"service",
+		"delicious"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-date": "^1.12",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-http": "^1.12",
+		"zf1s/zend-json": "^1.12",
+		"zf1s/zend-rest": "^1.12",
+		"zf1s/zend-xml": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Service_Delicious": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-service-delicious": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}

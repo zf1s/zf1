@@ -1,0 +1,36 @@
+{
+	"name": "zf1s/zend-validate",
+	"description": "Zend Framework 1 Validate package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"validate"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-loader": "^1.12",
+		"zf1s/zend-locale": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Validate": "library/"
+		}
+	},
+	"suggest": {
+		"zf1s/zend-date": "Used in special situations or with special adapters",
+		"zf1s/zend-filter": "Used in special situations or with special adapters",
+		"zf1s/zend-registry": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-validate": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}

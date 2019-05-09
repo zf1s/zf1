@@ -1,0 +1,30 @@
+{
+	"name": "zf1s/zend-dom",
+	"description": "Zend Framework 1 Dom package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"dom"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-xml": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Dom": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-dom": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"name": "zf1s/zend-session",
+	"description": "Zend Framework 1 Session package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"session"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-exception": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Session": "library/"
+		}
+	},
+	"suggest": {
+		"zf1s/zend-config": "Used in special situations or with special adapters",
+		"zf1s/zend-db": "Used in special situations or with special adapters",
+		"zf1s/zend-loader": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-session": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"name": "zf1s/zend-service-strikeiron",
+	"description": "Zend Framework 1 Service StrikeIron package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"service",
+		"strikeiron"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-http": "^1.12",
+		"zf1s/zend-loader": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Service_StrikeIron": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-service-strikeiron": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}

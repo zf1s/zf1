@@ -1,0 +1,32 @@
+{
+	"name": "zf1s/zend-cache",
+	"description": "Zend Framework 1 Cache package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"cache"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-exception": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Cache": "library/"
+		}
+	},
+	"suggest": {
+		"zf1s/zend-log": "Used in special situations or with special adapters"
+	},
+	"replace": {
+    	"zf1/zend-cache": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}

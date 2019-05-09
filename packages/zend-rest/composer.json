@@ -1,0 +1,33 @@
+{
+	"name": "zf1s/zend-rest",
+	"description": "Zend Framework 1 Rest package",
+	"keywords": [
+		"framework",
+		"zf1",
+		"zend",
+		"rest"
+	],
+	"homepage": "http://framework.zend.com/",
+	"license": "BSD-3-Clause",
+	"require": {
+		"php": ">=5.2.11",
+		"zf1s/zend-exception": "^1.12",
+		"zf1s/zend-server": "^1.12",
+		"zf1s/zend-service": "^1.12",
+		"zf1s/zend-uri": "^1.12",
+		"zf1s/zend-xml": "^1.12"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zend_Rest": "library/"
+		}
+	},
+	"replace": {
+    	"zf1/zend-rest": "^1.12"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
+	}
+}
