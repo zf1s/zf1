@@ -20,11 +20,11 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Photos.php';
-require_once 'Zend/Http/Client.php';
-require_once 'Zend/Http/Client/Adapter/Test.php';
-require_once 'Zend/Gdata/ClientLogin.php';
-require_once 'Zend/Gdata/App/InvalidArgumentException.php';
+// require_once 'Zend/Gdata/Photos.php';
+// require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client/Adapter/Test.php';
+// require_once 'Zend/Gdata/ClientLogin.php';
+// require_once 'Zend/Gdata/App/InvalidArgumentException.php';
 
 /**
  * @category   Zend

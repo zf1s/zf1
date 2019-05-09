@@ -25,7 +25,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log_Writer_Mock */
-require_once 'Zend/Log/Writer/Mock.php';
+// require_once 'Zend/Log/Writer/Mock.php';
 
 /**
  * @category   Zend
@@ -59,7 +59,7 @@ class Zend_Log_Writer_MockTest extends PHPUnit_Framework_TestCase
             'writerName' => "Mock"
         )));
 
-        require_once 'Zend/Log.php';
+        // require_once 'Zend/Log.php';
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);
     }

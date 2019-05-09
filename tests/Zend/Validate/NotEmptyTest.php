@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Validate_NotEmpty
  */
-require_once 'Zend/Validate/NotEmpty.php';
+// require_once 'Zend/Validate/NotEmpty.php';
 
 
 /**
@@ -481,7 +481,7 @@ class Zend_Validate_NotEmptyTest extends PHPUnit_Framework_TestCase
      */
     public function testConfigObject()
     {
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
         $options = array('type' => 'all');
         $config  = new Zend_Config($options);
 

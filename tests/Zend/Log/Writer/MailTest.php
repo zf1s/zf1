@@ -26,25 +26,25 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_Layout */
-require_once 'Zend/Layout.php';
+// require_once 'Zend/Layout.php';
 
 /** Zend_Log */
-require_once 'Zend/Log.php';
+// require_once 'Zend/Log.php';
 
 /** Zend_Log_Writer_Mail */
-require_once 'Zend/Log/Writer/Mail.php';
+// require_once 'Zend/Log/Writer/Mail.php';
 
 /** Zend_Mail */
-require_once 'Zend/Mail.php';
+// require_once 'Zend/Mail.php';
 
 /** Zend_Mail_Transport_Exception */
-require_once 'Zend/Mail/Transport/Exception.php';
+// require_once 'Zend/Mail/Transport/Exception.php';
 
 /** Zend_View_Exception */
-require_once 'Zend/View/Exception.php';
+// require_once 'Zend/View/Exception.php';
 
 /** Zend_Mail_Transport_Abstract */
-require_once 'Zend/Mail/Transport/Abstract.php';
+// require_once 'Zend/Mail/Transport/Abstract.php';
 
 
 /**
@@ -297,7 +297,7 @@ class Zend_Log_Writer_MailTest extends PHPUnit_Framework_TestCase
      */
     public function testFluentInterface()
     {
-        require_once 'Zend/Log/Formatter/Simple.php';
+        // require_once 'Zend/Log/Formatter/Simple.php';
         list(, $writer) = $this->_getSimpleLogger(true);
         $instance = $writer->setLayoutFormatter(new Zend_Log_Formatter_Simple())
                            ->setSubjectPrependText('subject');

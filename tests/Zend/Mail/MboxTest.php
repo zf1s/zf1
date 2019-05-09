@@ -23,12 +23,12 @@
 /**
  * @see Zend_Mail_Storage_Mbox
  */
-require_once 'Zend/Mail/Storage/Mbox.php';
+// require_once 'Zend/Mail/Storage/Mbox.php';
 
 /**
  * @see Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 
 /**

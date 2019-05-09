@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Oauth/Signature/Plaintext.php';
+// require_once 'Zend/Oauth/Signature/Plaintext.php';
 
 /**
  * @category   Zend

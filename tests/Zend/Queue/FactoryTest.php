@@ -21,15 +21,15 @@
  */
 
 /** Zend_Queue */
-require_once 'Zend/Queue.php';
+// require_once 'Zend/Queue.php';
 
 /** Zend_Queue_Exception */
-require_once 'Zend/Queue/Exception.php';
+// require_once 'Zend/Queue/Exception.php';
 
 /** Zend_Queue_Adapter_* */
-require_once 'Zend/Queue/Adapter/Array.php';
-require_once 'Zend/Queue/Adapter/Db.php';
-require_once 'Zend/Queue/Adapter/Memcacheq.php';
+// require_once 'Zend/Queue/Adapter/Array.php';
+// require_once 'Zend/Queue/Adapter/Db.php';
+// require_once 'Zend/Queue/Adapter/Memcacheq.php';
 require_once 'Zend/Queue/Adapter/ActivemqTest.php';
 
 /**

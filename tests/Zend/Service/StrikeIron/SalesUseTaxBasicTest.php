@@ -23,12 +23,12 @@
 /**
  * @see Zend_Service_StrikeIron
  */
-require_once 'Zend/Service/StrikeIron.php';
+// require_once 'Zend/Service/StrikeIron.php';
 
 /**
  * @see Zend_Service_StrikeIron_SalesUseTaxBasic
  */
-require_once 'Zend/Service/StrikeIron/SalesUseTaxBasic.php';
+// require_once 'Zend/Service/StrikeIron/SalesUseTaxBasic.php';
 
 
 /**

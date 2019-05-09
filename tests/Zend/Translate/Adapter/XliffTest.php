@@ -23,7 +23,7 @@
 /**
  * Zend_Translate_Adapter_Xliff
  */
-require_once 'Zend/Translate/Adapter/Xliff.php';
+// require_once 'Zend/Translate/Adapter/Xliff.php';
 
 /**
  * @category   Zend
@@ -199,7 +199,7 @@ class Zend_Translate_Adapter_XliffTest extends PHPUnit_Framework_TestCase
 
     public function testOptionLocaleDirectory()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $adapter = new Zend_Translate_Adapter_Xliff(dirname(__FILE__) . '/_files/testxliff', 'de', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
         $this->assertEquals(array('de' => 'de', 'en' => 'en', 'fr' => 'fr'), $adapter->getList());
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));
@@ -207,7 +207,7 @@ class Zend_Translate_Adapter_XliffTest extends PHPUnit_Framework_TestCase
 
     public function testOptionLocaleFilename()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $adapter = new Zend_Translate_Adapter_Xliff(dirname(__FILE__) . '/_files/testxliff', 'de', array('scan' => Zend_Translate::LOCALE_FILENAME));
         $this->assertEquals(array('de' => 'de', 'en' => 'en', 'fr' => 'fr'), $adapter->getList());
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));

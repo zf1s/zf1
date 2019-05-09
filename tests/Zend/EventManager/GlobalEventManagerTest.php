@@ -23,8 +23,8 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_EventManager_GlobalEventManagerTest::main');
 }
 
-require_once 'Zend/EventManager/GlobalEventManager.php';
-require_once 'Zend/EventManager/EventManager.php';
+// require_once 'Zend/EventManager/GlobalEventManager.php';
+// require_once 'Zend/EventManager/EventManager.php';
 
 /**
  * @category   Zend

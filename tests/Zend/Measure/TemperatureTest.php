@@ -27,12 +27,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * Zend_Measure_Temperature
  */
-require_once 'Zend/Measure/Temperature.php';
+// require_once 'Zend/Measure/Temperature.php';
 
 /**
  * Zend_Registry
  */
-require_once 'Zend/Registry.php';
+// require_once 'Zend/Registry.php';
 
 /**
  * @category   Zend

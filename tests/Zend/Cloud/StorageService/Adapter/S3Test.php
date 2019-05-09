@@ -31,7 +31,7 @@ require_once 'Zend/Cloud/StorageService/TestCase.php';
 /**
  * @see Zend_Cloud_StorageService_Adapter_S3
  */
-require_once 'Zend/Cloud/StorageService/Adapter/S3.php';
+// require_once 'Zend/Cloud/StorageService/Adapter/S3.php';
 
 /**
  * @category   Zend

@@ -21,7 +21,7 @@
  */
 
 /** @see Zend_Service_ReCaptcha_Response */
-require_once 'Zend/Service/ReCaptcha/Response.php';
+// require_once 'Zend/Service/ReCaptcha/Response.php';
 
 /**
  * @category   Zend

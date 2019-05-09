@@ -25,14 +25,14 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Layout_LayoutTest::main");
 }
 
-require_once 'Zend/Layout.php';
-require_once 'Zend/Layout/Controller/Plugin/Layout.php';
-require_once 'Zend/Layout/Controller/Action/Helper/Layout.php';
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Controller/Action/HelperBroker.php';
-require_once 'Zend/Filter/Inflector.php';
-require_once 'Zend/View/Interface.php';
-require_once 'Zend/View.php';
+// require_once 'Zend/Layout.php';
+// require_once 'Zend/Layout/Controller/Plugin/Layout.php';
+// require_once 'Zend/Layout/Controller/Action/Helper/Layout.php';
+// require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Action/HelperBroker.php';
+// require_once 'Zend/Filter/Inflector.php';
+// require_once 'Zend/View/Interface.php';
+// require_once 'Zend/View.php';
 
 /**
  * Test class for Zend_Layout.
@@ -117,7 +117,7 @@ class Zend_Layout_LayoutTest extends PHPUnit_Framework_TestCase
     {
         $layout = new Zend_Layout();
 
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
         $config = new Zend_Config(array(
             'layout'           => 'foo',
             'contentKey'       => 'foo',
@@ -138,7 +138,7 @@ class Zend_Layout_LayoutTest extends PHPUnit_Framework_TestCase
     {
         $layout = new Zend_Layout();
 
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
         $config = new Zend_Config(array(
             'layout'           => 'foo',
             'contentKey'       => 'foo',

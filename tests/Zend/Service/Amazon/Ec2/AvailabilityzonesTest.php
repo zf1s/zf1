@@ -20,9 +20,9 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Http/Client.php';
-require_once 'Zend/Http/Client/Adapter/Test.php';
-require_once 'Zend/Service/Amazon/Ec2/Availabilityzones.php';
+// require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client/Adapter/Test.php';
+// require_once 'Zend/Service/Amazon/Ec2/Availabilityzones.php';
 
 /**
  * Zend_Service_Amazon_Ec2_Availabilityzones test case.

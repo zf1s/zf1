@@ -25,12 +25,12 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Layout_PluginTest::main");
 }
 
-require_once 'Zend/Layout/Controller/Plugin/Layout.php';
-require_once 'Zend/Layout.php';
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Controller/Action/HelperBroker.php';
-require_once 'Zend/Controller/Request/Simple.php';
-require_once 'Zend/Controller/Response/Cli.php';
+// require_once 'Zend/Layout/Controller/Plugin/Layout.php';
+// require_once 'Zend/Layout.php';
+// require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Action/HelperBroker.php';
+// require_once 'Zend/Controller/Request/Simple.php';
+// require_once 'Zend/Controller/Response/Cli.php';
 
 /**
  * Test class for Zend_Layout_Controller_Plugin_Layout

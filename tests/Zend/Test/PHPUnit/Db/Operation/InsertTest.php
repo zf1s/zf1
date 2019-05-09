@@ -20,9 +20,9 @@
  * @version    $Id$
  */
 
-require_once "Zend/Test/DbAdapter.php";
+// require_once "Zend/Test/DbAdapter.php";
 
-require_once "Zend/Test/PHPUnit/Db/Operation/Insert.php";
+// require_once "Zend/Test/PHPUnit/Db/Operation/Insert.php";
 
 /**
  * @category   Zend

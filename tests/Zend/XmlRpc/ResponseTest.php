@@ -20,7 +20,7 @@
  * @version $Id$
  */
 
-require_once 'Zend/XmlRpc/Response.php';
+// require_once 'Zend/XmlRpc/Response.php';
 
 /**
  * Test case for Zend_XmlRpc_Response

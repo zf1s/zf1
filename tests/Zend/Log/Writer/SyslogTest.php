@@ -25,7 +25,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log_Writer_Syslog */
-require_once 'Zend/Log/Writer/Syslog.php';
+// require_once 'Zend/Log/Writer/Syslog.php';
 
 /**
  * @category   Zend
@@ -124,7 +124,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
         );
 
         $writer = Zend_Log_Writer_Syslog::factory(array());
-        require_once 'Zend/Log/Formatter/Simple.php';
+        // require_once 'Zend/Log/Formatter/Simple.php';
         $formatter = new Zend_Log_Formatter_Simple('%message% (this is a test)');
         $writer->setFormatter($formatter);
 

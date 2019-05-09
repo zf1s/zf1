@@ -23,7 +23,7 @@
 /**
  * Zend_Measure_Time
  */
-require_once 'Zend/Measure/Time.php';
+// require_once 'Zend/Measure/Time.php';
 
 /**
  * @category   Zend

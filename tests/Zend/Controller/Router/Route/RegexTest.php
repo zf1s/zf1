@@ -21,7 +21,7 @@
  */
 
 /** Zend_Controller_Router_Route_Regex */
-require_once 'Zend/Controller/Router/Route/Regex.php';
+// require_once 'Zend/Controller/Router/Route/Regex.php';
 
 /**
  * @category   Zend
@@ -381,7 +381,7 @@ class Zend_Controller_Router_Route_RegexTest extends PHPUnit_Framework_TestCase
 
     public function testGetInstance()
     {
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
 
         $routeConf = array(
             'route' => 'forum/(\d+)',

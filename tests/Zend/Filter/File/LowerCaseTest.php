@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_File_LowerCase
  */
-require_once 'Zend/Filter/File/LowerCase.php';
+// require_once 'Zend/Filter/File/LowerCase.php';
 
 /**
  * @category   Zend

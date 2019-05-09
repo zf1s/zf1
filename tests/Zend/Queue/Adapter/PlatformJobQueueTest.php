@@ -21,10 +21,10 @@
  */
 
 /** Zend_Queue */
-require_once 'Zend/Queue.php';
+// require_once 'Zend/Queue.php';
 
 /** Zend_Queue */
-require_once 'Zend/Queue/Message.php';
+// require_once 'Zend/Queue/Message.php';
 
 /** Zend_Queue_Message_Test */
 require_once 'MessageTestClass.php';

@@ -28,7 +28,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Validate_StringLength
  */
-require_once 'Zend/Validate/StringLength.php';
+// require_once 'Zend/Validate/StringLength.php';
 
 
 /**

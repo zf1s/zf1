@@ -26,7 +26,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 
-require_once 'Zend/Filter/Word/DashToCamelCase.php';
+// require_once 'Zend/Filter/Word/DashToCamelCase.php';
 
 /**
  * Test class for Zend_Filter_Word_DashToCamelCase.

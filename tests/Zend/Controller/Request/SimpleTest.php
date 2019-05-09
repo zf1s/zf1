@@ -26,7 +26,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 
-require_once 'Zend/Controller/Request/Simple.php';
+// require_once 'Zend/Controller/Request/Simple.php';
 
 /**
  * Test class for Zend_Controller_Request_Simple.

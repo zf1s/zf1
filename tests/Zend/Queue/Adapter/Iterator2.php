@@ -33,7 +33,7 @@
 /**
  * @see Zend_Queue_Message_Iterator
  */
-require_once 'Zend/Queue/Message/Iterator.php';
+// require_once 'Zend/Queue/Message/Iterator.php';
 
 class Zend_Queue_Message_Iterator2 extends Zend_Queue_Message_Iterator
 {

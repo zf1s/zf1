@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Force
  */
-require_once 'Zend/Measure/Force.php';
+// require_once 'Zend/Measure/Force.php';
 
 /**
  * @category   Zend

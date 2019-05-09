@@ -25,10 +25,10 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Decorator_DescriptionTest::main");
 }
 
-require_once 'Zend/Form/Decorator/Description.php';
+// require_once 'Zend/Form/Decorator/Description.php';
 
-require_once 'Zend/Form/Element.php';
-require_once 'Zend/View.php';
+// require_once 'Zend/Form/Element.php';
+// require_once 'Zend/View.php';
 
 /**
  * Test class for Zend_Form_Decorator_Description
@@ -173,7 +173,7 @@ class Zend_Form_Decorator_DescriptionTest extends PHPUnit_Framework_TestCase
 
     public function testDescriptionIsTranslatedWhenTranslationAvailable()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $translations = array('description' => 'This is the description');
         $translate = new Zend_Translate('array', $translations);
         $this->element->setDescription('description')
@@ -188,7 +188,7 @@ class Zend_Form_Decorator_DescriptionTest extends PHPUnit_Framework_TestCase
     public function testDescriptionIsNotTranslatedTwice()
     {
         // Init translator
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $translate = new Zend_Translate(
             array(
                  'adapter' => 'array',

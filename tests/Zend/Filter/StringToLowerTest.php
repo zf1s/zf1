@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_StringToLower
  */
-require_once 'Zend/Filter/StringToLower.php';
+// require_once 'Zend/Filter/StringToLower.php';
 
 
 /**

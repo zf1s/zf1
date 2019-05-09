@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * Zend_Text_MultiByte
  */
-require_once 'Zend/Text/MultiByte.php';
+// require_once 'Zend/Text/MultiByte.php';
 
 /**
  * @category   Zend

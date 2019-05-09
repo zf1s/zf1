@@ -25,12 +25,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Soap_Server */
-require_once 'Zend/Soap/Server.php';
+// require_once 'Zend/Soap/Server.php';
 
 /** Zend_Soap_Client */
-require_once 'Zend/Soap/Client.php';
+// require_once 'Zend/Soap/Client.php';
 
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @category   Zend

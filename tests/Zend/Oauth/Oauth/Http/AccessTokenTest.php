@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Oauth/Http/AccessToken.php';
+// require_once 'Zend/Oauth/Http/AccessToken.php';
 
 /**
  * @category   Zend

@@ -32,7 +32,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 require_once 'Zend/Xml/TestAsset/Security.php';
 
-require_once 'Zend/Xml/Exception.php';
+// require_once 'Zend/Xml/Exception.php';
 
 /**
  * @category   Zend

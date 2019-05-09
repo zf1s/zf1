@@ -25,7 +25,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Element_HiddenTest::main");
 }
 
-require_once 'Zend/Form/Element/Hidden.php';
+// require_once 'Zend/Form/Element/Hidden.php';
 
 /**
  * Test class for Zend_Form_Element_Hidden

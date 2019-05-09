@@ -29,7 +29,7 @@
  */
 
 /** Zend/Queue/Stomp/Frame.php */
-require_once 'Zend/Queue/Stomp/Frame.php';
+// require_once 'Zend/Queue/Stomp/Frame.php';
 
 /**
  * @category   Zend

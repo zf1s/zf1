@@ -20,7 +20,7 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Entry.php';
+// require_once 'Zend/Gdata/Entry.php';
 
 /**
  * @category   Zend

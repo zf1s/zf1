@@ -27,7 +27,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
+// require_once 'Zend/Loader/Autoloader.php';
 
 /**
  * @category   Zend

@@ -22,7 +22,7 @@
 /**
  * @see Zend_Validate_Isbn
  */
-require_once 'Zend/Validate/Isbn.php';
+// require_once 'Zend/Validate/Isbn.php';
 
 
 /**

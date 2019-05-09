@@ -20,10 +20,10 @@
  * @version    $Id $
  */
 
-require_once 'TestHelper.php';
-require_once 'Zend/Gdata/Gapps.php';
-require_once 'Zend/Gdata/ClientLogin.php';
-require_once 'Zend/Http/Client.php';
+// require_once 'TestHelper.php';
+// require_once 'Zend/Gdata/Gapps.php';
+// require_once 'Zend/Gdata/ClientLogin.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * @category   Zend
@@ -64,7 +64,7 @@ class Zend_Gdata_GappsTest extends PHPUnit_Framework_TestCase
     }
 
     public function testEmptyResponseExceptionRaisesException() {
-      require_once('Zend/Gdata/App/HttpException.php');
+      // require_once('Zend/Gdata/App/HttpException.php');
       $e = new Zend_Gdata_App_HttpException();
       $e->setResponse(null);
       $success = false;

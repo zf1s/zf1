@@ -27,7 +27,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Filter_Decompress
  */
-require_once 'Zend/Filter/Decompress.php';
+// require_once 'Zend/Filter/Decompress.php';
 
 /**
  * @category   Zend

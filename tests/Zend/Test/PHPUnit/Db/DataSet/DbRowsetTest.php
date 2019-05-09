@@ -20,10 +20,10 @@
  * @version    $Id$
  */
 
-require_once "Zend/Test/PHPUnit/Db/DataSet/DbRowset.php";
-require_once "Zend/Db/Table/Rowset.php";
-require_once 'Zend/Test/PHPUnit/Db/Exception.php';
-require_once 'Zend/Db/Table/Abstract.php';
+// require_once "Zend/Test/PHPUnit/Db/DataSet/DbRowset.php";
+// require_once "Zend/Db/Table/Rowset.php";
+// require_once 'Zend/Test/PHPUnit/Db/Exception.php';
+// require_once 'Zend/Db/Table/Abstract.php';
 
 /**
  * @category   Zend

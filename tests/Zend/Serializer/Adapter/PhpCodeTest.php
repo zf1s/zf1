@@ -23,7 +23,7 @@
 /**
  * @see Zend_Serializer_Adapter_PhpCode
  */
-require_once 'Zend/Serializer/Adapter/PhpCode.php';
+// require_once 'Zend/Serializer/Adapter/PhpCode.php';
 
 /**
  * @category   Zend

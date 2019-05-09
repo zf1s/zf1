@@ -23,7 +23,7 @@
 /**
  * Zend_Serializer
  */
-require_once 'Zend/Serializer.php';
+// require_once 'Zend/Serializer.php';
 
 /**
  * @category   Zend

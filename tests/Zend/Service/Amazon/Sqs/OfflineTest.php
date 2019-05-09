@@ -20,9 +20,9 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Service/Amazon/Sqs.php';
-require_once 'Zend/Service/Amazon/Sqs/Exception.php';
-require_once 'Zend/Http/Client/Adapter/Test.php';
+// require_once 'Zend/Service/Amazon/Sqs.php';
+// require_once 'Zend/Service/Amazon/Sqs/Exception.php';
+// require_once 'Zend/Http/Client/Adapter/Test.php';
 
 /**
  * @category   Zend

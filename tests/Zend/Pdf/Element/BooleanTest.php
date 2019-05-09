@@ -23,7 +23,7 @@
 /**
  * Zend_Pdf_Element_Boolean
  */
-require_once 'Zend/Pdf/Element/Boolean.php';
+// require_once 'Zend/Pdf/Element/Boolean.php';
 
 /**
  * @category   Zend

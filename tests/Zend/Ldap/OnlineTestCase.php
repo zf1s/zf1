@@ -27,7 +27,7 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'TestCase.php';
 /**
  * @see Zend_Ldap
  */
-require_once 'Zend/Ldap.php';
+// require_once 'Zend/Ldap.php';
 
 /**
  * @category   Zend

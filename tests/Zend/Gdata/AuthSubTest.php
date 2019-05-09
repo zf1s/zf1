@@ -20,8 +20,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/AuthSub.php';
-require_once 'Zend/Gdata/HttpClient.php';
+// require_once 'Zend/Gdata/AuthSub.php';
+// require_once 'Zend/Gdata/HttpClient.php';
 
 /**
  * @category   Zend

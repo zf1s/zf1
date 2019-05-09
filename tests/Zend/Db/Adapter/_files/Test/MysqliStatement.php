@@ -27,7 +27,7 @@
 /**
  * @see Zend_Db_Statement_Mysqli
  */
-require_once 'Zend/Db/Statement/Mysqli.php';
+// require_once 'Zend/Db/Statement/Mysqli.php';
 
 /**
  * Test Class for extending base Zend_Db_Statements

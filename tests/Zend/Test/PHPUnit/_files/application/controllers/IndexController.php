@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Controller/Action.php';
+// require_once 'Zend/Controller/Action.php';
 
 /**
  * @category   Zend

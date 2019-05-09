@@ -20,10 +20,10 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Calendar.php';
-require_once 'Zend/Gdata/Calendar/EventEntry.php';
-require_once 'Zend/Gdata/ClientLogin.php';
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Gdata/Calendar.php';
+// require_once 'Zend/Gdata/Calendar/EventEntry.php';
+// require_once 'Zend/Gdata/ClientLogin.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * @category   Zend

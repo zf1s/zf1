@@ -23,9 +23,9 @@
 /**
  * Zend_Cache
  */
-require_once 'Zend/Cache.php';
-require_once 'Zend/Cache/Frontend/Class.php';
-require_once 'Zend/Cache/Backend/Test.php';
+// require_once 'Zend/Cache.php';
+// require_once 'Zend/Cache/Frontend/Class.php';
+// require_once 'Zend/Cache/Backend/Test.php';
 
 /**
  * @todo: Should this class be named Zend_Cache_Something?

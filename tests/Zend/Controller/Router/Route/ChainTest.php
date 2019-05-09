@@ -25,40 +25,40 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Config */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /** Zend_Controller_Router_Rewrite */
-require_once 'Zend/Controller/Router/Rewrite.php';
+// require_once 'Zend/Controller/Router/Rewrite.php';
 
 /** Zend_Controller_Dispatcher_Standard */
-require_once 'Zend/Controller/Dispatcher/Standard.php';
+// require_once 'Zend/Controller/Dispatcher/Standard.php';
 
 /** Zend_Controller_Router_Route_Chain */
-require_once 'Zend/Controller/Router/Route/Chain.php';
+// require_once 'Zend/Controller/Router/Route/Chain.php';
 
 /** Zend_Controller_Router_Route */
-require_once 'Zend/Controller/Router/Route.php';
+// require_once 'Zend/Controller/Router/Route.php';
 
 /** Zend_Controller_Router_Route_Module */
-require_once 'Zend/Controller/Router/Route/Module.php';
+// require_once 'Zend/Controller/Router/Route/Module.php';
 
 /** Zend_Controller_Router_Route_Static */
-require_once 'Zend/Controller/Router/Route/Static.php';
+// require_once 'Zend/Controller/Router/Route/Static.php';
 
 /** Zend_Controller_Router_Route_Regex */
-require_once 'Zend/Controller/Router/Route/Regex.php';
+// require_once 'Zend/Controller/Router/Route/Regex.php';
 
 /** Zend_Controller_Router_Route_Hostname */
-require_once 'Zend/Controller/Router/Route/Hostname.php';
+// require_once 'Zend/Controller/Router/Route/Hostname.php';
 
 /** Zend_Controller_Request_Http */
-require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Request/Http.php';
 
 /** Zend_Uri_Http */
-require_once 'Zend/Uri/Http.php';
+// require_once 'Zend/Uri/Http.php';
 
 /** Zend_Config */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @category   Zend
@@ -1040,7 +1040,7 @@ class Zend_Controller_Router_Route_SubclassTest extends Zend_Controller_Router_R
         return 2;
     }
 
-    public function assemble($data = array(), $reset = false, $encode = false)
+    public function assemble($data = array(), $reset = false, $encode = false, $partial = false)
     {}
 
     public static function getInstance(Zend_Config $config)

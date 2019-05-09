@@ -27,7 +27,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Filter_Compress_Zip
  */
-require_once 'Zend/Filter/Compress/Zip.php';
+// require_once 'Zend/Filter/Compress/Zip.php';
 
 /**
  * @category   Zend

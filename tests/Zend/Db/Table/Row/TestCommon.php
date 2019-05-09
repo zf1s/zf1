@@ -29,7 +29,7 @@ require_once 'Zend/Db/Table/TestSetup.php';
 
 
 
-require_once 'Zend/Db/Table/Row.php';
+// require_once 'Zend/Db/Table/Row.php';
 
 
 /**

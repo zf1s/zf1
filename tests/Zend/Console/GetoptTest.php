@@ -23,7 +23,7 @@
 /**
  * Zend_Console_Getopt
  */
-require_once 'Zend/Console/Getopt.php';
+// require_once 'Zend/Console/Getopt.php';
 
 /**
  * @category   Zend

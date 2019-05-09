@@ -32,7 +32,7 @@ require_once 'Zend/Cloud/StorageService/TestCase.php';
 /**
  * @see Zend_Cloud_StorageService_Adapter_WindowsAzure
  */
-require_once 'Zend/Cloud/StorageService/Adapter/WindowsAzure.php';
+// require_once 'Zend/Cloud/StorageService/Adapter/WindowsAzure.php';
 
 
 /**

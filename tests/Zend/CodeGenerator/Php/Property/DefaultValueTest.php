@@ -20,7 +20,7 @@
  * @version    $Id $
  */
 
-require_once 'Zend/CodeGenerator/Php/Property/DefaultValue.php';
+// require_once 'Zend/CodeGenerator/Php/Property/DefaultValue.php';
 
 /**
  * @category   Zend

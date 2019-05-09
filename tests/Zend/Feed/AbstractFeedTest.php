@@ -23,12 +23,12 @@
 /**
  * @see Zend_Feed
  */
-require_once 'Zend/Feed.php';
+// require_once 'Zend/Feed.php';
 
 /**
  * @see Zend_Http
  */
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * @category   Zend

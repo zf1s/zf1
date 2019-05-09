@@ -21,10 +21,10 @@
  */
 
 /** Zend_Service_WindowsAzure_SessionHandler */
-require_once 'Zend/Service/WindowsAzure/SessionHandler.php';
+// require_once 'Zend/Service/WindowsAzure/SessionHandler.php';
 
 /** Zend_Service_WindowsAzure_Storage_Table */
-require_once 'Zend/Service/WindowsAzure/Storage/Table.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/Table.php';
 
 /**
  * @category   Zend

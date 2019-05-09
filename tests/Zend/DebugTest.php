@@ -23,7 +23,7 @@
 /**
  * Zend_Debug
  */
-require_once 'Zend/Debug.php';
+// require_once 'Zend/Debug.php';
 
 /**
  * @category   Zend

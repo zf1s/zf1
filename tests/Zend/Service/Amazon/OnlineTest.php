@@ -23,17 +23,17 @@
 /**
  * @see Zend_Service_Amazon
  */
-require_once 'Zend/Service/Amazon.php';
+// require_once 'Zend/Service/Amazon.php';
 
 /**
  * @see Zend_Service_Amazon_Query
  */
-require_once 'Zend/Service/Amazon/Query.php';
+// require_once 'Zend/Service/Amazon/Query.php';
 
 /**
  * @see Zend_Http_Client_Adapter_Socket
  */
-require_once 'Zend/Http/Client/Adapter/Socket.php';
+// require_once 'Zend/Http/Client/Adapter/Socket.php';
 
 /**
  * @category   Zend

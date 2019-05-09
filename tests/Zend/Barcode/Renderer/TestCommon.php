@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Barcode.php';
-require_once 'Zend/Config.php';
+// require_once 'Zend/Barcode.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @category   Zend
@@ -53,7 +53,7 @@ abstract class Zend_Barcode_Renderer_TestCommon extends PHPUnit_Framework_TestCa
 
     public function testSetBarcodeObject()
     {
-        require_once 'Zend/Barcode/Object/Code39.php';
+        // require_once 'Zend/Barcode/Object/Code39.php';
         $barcode = new Zend_Barcode_Object_Code39();
         $this->_renderer->setBarcode($barcode);
         $this->assertSame($barcode, $this->_renderer->getBarcode());

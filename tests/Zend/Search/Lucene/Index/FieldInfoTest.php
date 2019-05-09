@@ -23,7 +23,7 @@
 /**
  * Zend_Search_Lucene_Index_FieldInfo
  */
-require_once 'Zend/Search/Lucene/Index/FieldInfo.php';
+// require_once 'Zend/Search/Lucene/Index/FieldInfo.php';
 
 /**
  * @category   Zend

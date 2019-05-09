@@ -23,9 +23,9 @@
 /**
  * @see Zend_Tool_Framework_Client_Request
  */
-require_once 'Zend/Tool/Framework/Client/Response.php';
+// require_once 'Zend/Tool/Framework/Client/Response.php';
 
-require_once 'Zend/Tool/Framework/Client/Response/ContentDecorator/Separator.php';
+// require_once 'Zend/Tool/Framework/Client/Response/ContentDecorator/Separator.php';
 
 /**
  * @category   Zend

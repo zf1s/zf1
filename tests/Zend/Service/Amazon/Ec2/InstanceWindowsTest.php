@@ -20,9 +20,9 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Service/Amazon/Ec2/Instance/Windows.php';
-require_once 'Zend/Http/Client.php';
-require_once 'Zend/Http/Client/Adapter/Test.php';
+// require_once 'Zend/Service/Amazon/Ec2/Instance/Windows.php';
+// require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client/Adapter/Test.php';
 
 /**
  * Zend_Service_Amazon_Ec2_Instance_Windows test case.

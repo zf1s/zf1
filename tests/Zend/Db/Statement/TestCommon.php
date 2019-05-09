@@ -22,7 +22,7 @@
 
 require_once 'Zend/Db/TestSetup.php';
 
-require_once 'Zend/Db/Statement/Exception.php';
+// require_once 'Zend/Db/Statement/Exception.php';
 
 
 

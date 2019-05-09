@@ -23,18 +23,18 @@
 /**
  * Zend_Search_Lucene_Storage_Directory_Filesystem
  */
-require_once 'Zend/Search/Lucene/Storage/Directory/Filesystem.php';
+// require_once 'Zend/Search/Lucene/Storage/Directory/Filesystem.php';
 
 /**
  * Zend_Search_Lucene_Index_SegmentInfo
  */
-require_once 'Zend/Search/Lucene/Index/SegmentInfo.php';
+// require_once 'Zend/Search/Lucene/Index/SegmentInfo.php';
 
 
 /**
  * Zend_Search_Lucene_Index_SegmentMerger
  */
-require_once 'Zend/Search/Lucene/Index/SegmentMerger.php';
+// require_once 'Zend/Search/Lucene/Index/SegmentMerger.php';
 
 /**
  * @category   Zend

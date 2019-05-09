@@ -28,12 +28,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Paginator
  */
-require_once 'Zend/Paginator.php';
+// require_once 'Zend/Paginator.php';
 
 /**
  * @see Zend_Paginator_AdapterAggregate
  */
-require_once 'Zend/Paginator/AdapterAggregate.php';
+// require_once 'Zend/Paginator/AdapterAggregate.php';
 
 /**
  * @see PHPUnit_Framework_TestCase
@@ -42,27 +42,27 @@ require_once 'Zend/Paginator/AdapterAggregate.php';
 /**
  * @see Zend_Config_Xml
  */
-require_once 'Zend/Config/Xml.php';
+// require_once 'Zend/Config/Xml.php';
 
 /**
  * @see Zend_Db_Adapter_Pdo_Sqlite
  */
-require_once 'Zend/Db/Adapter/Pdo/Sqlite.php';
+// require_once 'Zend/Db/Adapter/Pdo/Sqlite.php';
 
 /**
  * @see Zend_View
  */
-require_once 'Zend/View.php';
+// require_once 'Zend/View.php';
 
 /**
  * @see Zend_Controller_Action_HelperBroker
  */
-require_once 'Zend/Controller/Action/HelperBroker.php';
+// require_once 'Zend/Controller/Action/HelperBroker.php';
 
 /**
  * @see Zend_View_Helper_PaginationControl
  */
-require_once 'Zend/View/Helper/PaginationControl.php';
+// require_once 'Zend/View/Helper/PaginationControl.php';
 
 /**
  * @see Zf4207
@@ -77,27 +77,27 @@ require_once 'Zend/Paginator/_files/TestTable.php';
 /**
  * @see Zend_Cache
  */
-require_once 'Zend/Cache.php';
+// require_once 'Zend/Cache.php';
 
 /**
  * @see Zend_Filter_Callback
  */
-require_once 'Zend/Filter/Callback.php';
+// require_once 'Zend/Filter/Callback.php';
 
 /**
  * @see Zend_Paginator_Adapter_DbSelect
  */
-require_once 'Zend/Paginator/Adapter/DbSelect.php';
+// require_once 'Zend/Paginator/Adapter/DbSelect.php';
 
 /**
  * @see Zend_Db_Adapter_Abstract
  */
-require_once 'Zend/Db/Adapter/Abstract.php';
+// require_once 'Zend/Db/Adapter/Abstract.php';
 
 /**
  * @see Zend_Cache_Core
  */
-require_once 'Zend/Cache/Core.php';
+// require_once 'Zend/Cache/Core.php';
 
 /**
  * @category   Zend

@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Amf_Adobe_Introspector
  */
-require_once 'Zend/Amf/Adobe/Introspector.php';
+// require_once 'Zend/Amf/Adobe/Introspector.php';
 
 /**
  * @category   Zend

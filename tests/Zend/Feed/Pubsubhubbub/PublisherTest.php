@@ -19,7 +19,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Feed/Pubsubhubbub/Publisher.php';
+// require_once 'Zend/Feed/Pubsubhubbub/Publisher.php';
 
 /**
  * @category   Zend

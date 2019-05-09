@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_StringToUpper
  */
-require_once 'Zend/Filter/StringToUpper.php';
+// require_once 'Zend/Filter/StringToUpper.php';
 
 
 /**

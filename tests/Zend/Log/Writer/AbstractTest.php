@@ -25,7 +25,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log_Writer_Abstract */
-require_once 'Zend/Log/Writer/Abstract.php';
+// require_once 'Zend/Log/Writer/Abstract.php';
 
 /**
  * @category   Zend
@@ -62,7 +62,7 @@ class Zend_Log_Writer_AbstractTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('Invalid typehinting is PHP Fatal error in PHP7+');
         }
 
-        require_once 'Zend/Log/Formatter/Simple.php';
+        // require_once 'Zend/Log/Formatter/Simple.php';
         $this->_writer->setFormatter(new Zend_Log_Formatter_Simple());
         $this->setExpectedException('PHPUnit_Framework_Error');
         $this->_writer->setFormatter(new StdClass());
@@ -71,7 +71,7 @@ class Zend_Log_Writer_AbstractTest extends PHPUnit_Framework_TestCase
     public function testAddFilter()
     {
         $this->_writer->addFilter(1);
-        require_once 'Zend/Log/Filter/Message.php';
+        // require_once 'Zend/Log/Filter/Message.php';
         $this->_writer->addFilter(new Zend_Log_Filter_Message('/mess/'));
         $this->setExpectedException('Zend_Log_Exception');
         $this->_writer->addFilter(new StdClass());
@@ -82,7 +82,7 @@ class Zend_Log_Writer_AbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testFluentInterface()
     {
-        require_once 'Zend/Log/Formatter/Simple.php';
+        // require_once 'Zend/Log/Formatter/Simple.php';
         $instance = $this->_writer->addFilter(1)
                                   ->setFormatter(new Zend_Log_Formatter_Simple());
 

@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * Zend_ProgressBar_Adapter_JsPush
  */
-require_once 'Zend/ProgressBar/Adapter/JsPush.php';
+// require_once 'Zend/ProgressBar/Adapter/JsPush.php';
 
 /**
  * @category   Zend

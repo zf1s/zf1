@@ -26,7 +26,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_Controller_Request_HttpTestCase */
-require_once 'Zend/Controller/Request/HttpTestCase.php';
+// require_once 'Zend/Controller/Request/HttpTestCase.php';
 
 /**
  * Test class for Zend_Controller_Request_HttpTestCase.

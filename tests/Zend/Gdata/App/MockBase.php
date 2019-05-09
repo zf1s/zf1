@@ -20,7 +20,7 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/App/Base.php';
+// require_once 'Zend/Gdata/App/Base.php';
 
 /**
  * Minimal implementation of Zend_Gdata_App_Base

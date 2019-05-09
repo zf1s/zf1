@@ -20,9 +20,9 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Tool/Project/Context/Repository.php';
+// require_once 'Zend/Tool/Project/Context/Repository.php';
 
-require_once 'Zend/Debug.php';
+// require_once 'Zend/Debug.php';
 
 /**
  * @category   Zend

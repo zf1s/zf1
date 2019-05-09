@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_StrikeIron_Exception
  */
-require_once 'Zend/Service/StrikeIron/Exception.php';
+// require_once 'Zend/Service/StrikeIron/Exception.php';
 
 
 /**

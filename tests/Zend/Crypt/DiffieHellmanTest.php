@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Crypt/DiffieHellman.php';
-require_once 'Zend/Crypt/Math/BigInteger.php';
+// require_once 'Zend/Crypt/DiffieHellman.php';
+// require_once 'Zend/Crypt/Math/BigInteger.php';
 
 /**
  * @category   Zend

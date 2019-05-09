@@ -20,9 +20,9 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Oauth.php';
-require_once 'Zend/Oauth/Config.php';
-require_once 'Zend/Oauth/Client.php';
+// require_once 'Zend/Oauth.php';
+// require_once 'Zend/Oauth/Config.php';
+// require_once 'Zend/Oauth/Client.php';
 
 class Test_Oauth_Client extends Zend_Oauth_Client {
     public function getSignableParametersAsQueryString()

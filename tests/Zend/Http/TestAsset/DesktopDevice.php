@@ -22,7 +22,7 @@
 /**
  * Zend_Http_UserAgent
  */
-require_once 'Zend/Http/UserAgent/Desktop.php';
+// require_once 'Zend/Http/UserAgent/Desktop.php';
 
 /**
  * @category   Zend

@@ -21,13 +21,13 @@
  */
 
 /** Zend_Rest_Route */
-require_once 'Zend/Rest/Route.php';
+// require_once 'Zend/Rest/Route.php';
 
 /** Zend_Controller_Front */
-require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Front.php';
 
 /** Zend_Controller_Request_HttpTestCase */
-require_once 'Zend/Controller/Request/HttpTestCase.php';
+// require_once 'Zend/Controller/Request/HttpTestCase.php';
 
 // Call Zend_Rest_RouteTest::main() if this source file is executed directly.
 if (!defined("PHPUnit_MAIN_METHOD")) {
@@ -92,9 +92,9 @@ class Zend_Rest_RouteTest extends PHPUnit_Framework_TestCase
 
     public function test_getInstance_fromINIConfig()
     {
-    	require_once('Zend/Config/Ini.php');
+    	// require_once('Zend/Config/Ini.php');
     	$config = new Zend_Config_Ini(dirname(__FILE__) . '/../Controller/_files/routes.ini', 'testing');
-    	require_once('Zend/Controller/Router/Rewrite.php');
+    	// require_once('Zend/Controller/Router/Rewrite.php');
     	$router = new Zend_Controller_Router_Rewrite();
     	$router->addConfig($config, 'routes');
     	$route = $router->getRoute('rest');

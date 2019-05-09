@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_SlideShare
  */
-require_once 'Zend/Service/SlideShare.php';
+// require_once 'Zend/Service/SlideShare.php';
 
 /**
  * @category   Zend

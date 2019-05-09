@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Service/Amazon/Ec2.php';
+// require_once 'Zend/Service/Amazon/Ec2.php';
 
 /**
  * Zend_Service_Amazon_Ec2 test case.

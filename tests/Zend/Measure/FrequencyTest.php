@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Frequency
  */
-require_once 'Zend/Measure/Frequency.php';
+// require_once 'Zend/Measure/Frequency.php';
 
 /**
  * @category   Zend

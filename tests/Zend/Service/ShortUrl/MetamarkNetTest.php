@@ -20,7 +20,7 @@
  */
 
 /** Zend_Service_ShortUrl_MetamarkNet */
-require_once 'Zend/Service/ShortUrl/MetamarkNet.php';
+// require_once 'Zend/Service/ShortUrl/MetamarkNet.php';
 
 /**
  * @package  Zend_Service

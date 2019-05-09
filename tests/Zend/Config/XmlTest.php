@@ -23,7 +23,7 @@
 /**
  * Zend_Config_Xml
  */
-require_once 'Zend/Config/Xml.php';
+// require_once 'Zend/Config/Xml.php';
 
 /**
  * @category   Zend

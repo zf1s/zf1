@@ -21,7 +21,7 @@
  */
 
 /** requires */
-require_once 'Zend/Reflection/Extension.php';
+// require_once 'Zend/Reflection/Extension.php';
 
 /**
  * @category   Zend

@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Torque
  */
-require_once 'Zend/Measure/Torque.php';
+// require_once 'Zend/Measure/Torque.php';
 
 /**
  * @category   Zend

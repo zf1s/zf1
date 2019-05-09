@@ -22,9 +22,9 @@
 
 require_once dirname(__FILE__) . '/TestCommon.php';
 
-require_once 'Zend/Barcode/Renderer/Pdf.php';
-require_once 'Zend/Pdf.php';
-require_once 'Zend/Barcode/Object/Code39.php';
+// require_once 'Zend/Barcode/Renderer/Pdf.php';
+// require_once 'Zend/Pdf.php';
+// require_once 'Zend/Barcode/Object/Code39.php';
 
 /**
  * @category   Zend

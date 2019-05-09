@@ -22,7 +22,7 @@
 
 require_once dirname(__FILE__) . '/TestCommon.php';
 
-require_once 'Zend/Barcode/Object/Royalmail.php';
+// require_once 'Zend/Barcode/Object/Royalmail.php';
 
 /**
  * @category   Zend

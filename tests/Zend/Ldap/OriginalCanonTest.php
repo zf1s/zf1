@@ -23,7 +23,7 @@
 /**
  * Zend_Ldap
  */
-require_once 'Zend/Ldap.php';
+// require_once 'Zend/Ldap.php';
 
 /**
  * @category   Zend

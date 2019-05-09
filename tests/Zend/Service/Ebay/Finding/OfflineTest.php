@@ -23,17 +23,17 @@
 /**
  * @see Zend_Service_Ebay_Finding
  */
-require_once 'Zend/Service/Ebay/Finding.php';
+// require_once 'Zend/Service/Ebay/Finding.php';
 
 /**
  * @see Zend_Service_Ebay_Finding_Response_Keywords
  */
-require_once 'Zend/Service/Ebay/Finding/Response/Keywords.php';
+// require_once 'Zend/Service/Ebay/Finding/Response/Keywords.php';
 
 /**
  * @see Zend_Service_Ebay_Finding_Response_Items
  */
-require_once 'Zend/Service/Ebay/Finding/Response/Items.php';
+// require_once 'Zend/Service/Ebay/Finding/Response/Items.php';
 
 /**
  * @category   Zend

@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_HtmlEntities
  */
-require_once 'Zend/Filter/HtmlEntities.php';
+// require_once 'Zend/Filter/HtmlEntities.php';
 
 /**
  * @category   Zend
@@ -152,7 +152,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
      */
     public function testConfigObject()
     {
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
         $options = array('quotestyle' => 5, 'encoding' => 'ISO-8859-1');
         $config  = new Zend_Config($options);
 

@@ -28,7 +28,7 @@ require_once dirname(__FILE__) . '/_files/Concrete.php';
 /**
  * @see Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @category   Zend
@@ -121,7 +121,7 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
         $this->assertSame('1', Zend_Service_Ebay_AbstractConcrete::toEbayValue(true));
         $this->assertSame('0', Zend_Service_Ebay_AbstractConcrete::toEbayValue(false));
 
-        require_once 'Zend/Date.php';
+        // require_once 'Zend/Date.php';
         $date = new Zend_Date();
         $this->assertSame($date->getIso(), Zend_Service_Ebay_AbstractConcrete::toEbayValue($date));
 

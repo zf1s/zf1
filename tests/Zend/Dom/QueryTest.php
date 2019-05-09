@@ -26,7 +26,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_Dom_Query */
-require_once 'Zend/Dom/Query.php';
+// require_once 'Zend/Dom/Query.php';
 
 /**
  * Test class for Zend_Dom_Query.

@@ -24,12 +24,12 @@
 /**
  * @see Zend_Http_Header_SetCookie
  */
-require_once 'Zend/Http/Header/SetCookie.php';
+// require_once 'Zend/Http/Header/SetCookie.php';
 
 /**
  * @see Zend_Controller_Response_HttpTestCase
  */
-require_once 'Zend/Controller/Response/HttpTestCase.php';
+// require_once 'Zend/Controller/Response/HttpTestCase.php';
 
 /**
  * Zend_Http_Cookie unit tests

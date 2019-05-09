@@ -23,7 +23,7 @@
 /**
  * Zend_Search_Lucene_Index_TermInfo
  */
-require_once 'Zend/Search/Lucene/Index/TermInfo.php';
+// require_once 'Zend/Search/Lucene/Index/TermInfo.php';
 
 /**
  * @category   Zend

@@ -30,7 +30,7 @@ require_once 'Zend/Db/Adapter/Db2Test.php';
 /**
  * @see Zend_Db_Adapter_Pdo_Ibm
  */
-require_once 'Zend/Db/Adapter/Pdo/Ibm.php';
+// require_once 'Zend/Db/Adapter/Pdo/Ibm.php';
 
 
 /**

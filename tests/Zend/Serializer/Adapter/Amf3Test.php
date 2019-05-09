@@ -23,7 +23,7 @@
 /**
  * @see Zend_Serializer_Adapter_Amf3
  */
-require_once 'Zend/Serializer/Adapter/Amf3.php';
+// require_once 'Zend/Serializer/Adapter/Amf3.php';
 
 /**
  * @category   Zend

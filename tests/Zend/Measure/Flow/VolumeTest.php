@@ -23,7 +23,7 @@
 /**
  * Zend_Measure_Flow_Volume
  */
-require_once 'Zend/Measure/Flow/Volume.php';
+// require_once 'Zend/Measure/Flow/Volume.php';
 
 /**
  * @category   Zend

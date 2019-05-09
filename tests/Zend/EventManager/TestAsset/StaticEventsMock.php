@@ -19,7 +19,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/EventManager/SharedEventCollection.php';
+// require_once 'Zend/EventManager/SharedEventCollection.php';
 
 /**
  * @category   Zend

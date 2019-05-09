@@ -25,13 +25,13 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_Helper_FlashMessengerTest::main");
 }
 
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Controller/Request/Http.php';
-require_once 'Zend/Controller/Response/Cli.php';
-require_once 'Zend/Controller/Action/HelperBroker.php';
-require_once 'Zend/Controller/Action/Helper/FlashMessenger.php';
-require_once 'Zend/Controller/Exception.php';
-require_once 'Zend/Session.php';
+// require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Response/Cli.php';
+// require_once 'Zend/Controller/Action/HelperBroker.php';
+// require_once 'Zend/Controller/Action/Helper/FlashMessenger.php';
+// require_once 'Zend/Controller/Exception.php';
+// require_once 'Zend/Session.php';
 require_once dirname(dirname(dirname(__FILE__))) . '/_files/HelperFlashMessengerController.php';
 
 /**

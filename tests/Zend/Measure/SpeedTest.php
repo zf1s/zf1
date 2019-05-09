@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Speed
  */
-require_once 'Zend/Measure/Speed.php';
+// require_once 'Zend/Measure/Speed.php';
 
 /**
  * @category   Zend

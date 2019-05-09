@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Tool/Framework/Manifest/MetadataManifestable.php';
-require_once 'Zend/Tool/Framework/Metadata/Basic.php';
+// require_once 'Zend/Tool/Framework/Manifest/MetadataManifestable.php';
+// require_once 'Zend/Tool/Framework/Metadata/Basic.php';
 
 /**
  * @category   Zend

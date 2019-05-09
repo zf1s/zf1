@@ -23,7 +23,7 @@
 /**
  * Zend_timeSync
  */
-require_once 'Zend/TimeSync.php';
+// require_once 'Zend/TimeSync.php';
 
 /**
  * @category   Zend

@@ -25,11 +25,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Text_TableTest::main");
 }
 
-require_once 'Zend/Text/Table.php';
-require_once 'Zend/Text/Table/Row.php';
-require_once 'Zend/Text/Table/Column.php';
-require_once 'Zend/Text/Table/Decorator/Unicode.php';
-require_once 'Zend/Text/Table/Decorator/Ascii.php';
+// require_once 'Zend/Text/Table.php';
+// require_once 'Zend/Text/Table/Row.php';
+// require_once 'Zend/Text/Table/Column.php';
+// require_once 'Zend/Text/Table/Decorator/Unicode.php';
+// require_once 'Zend/Text/Table/Decorator/Ascii.php';
 
 /**
  * @category   Zend

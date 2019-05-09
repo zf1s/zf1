@@ -20,11 +20,11 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Navigation/Page/Mvc.php';
-require_once 'Zend/Controller/Request/Http.php';
-require_once 'Zend/Controller/Router/Route.php';
-require_once 'Zend/Controller/Router/Route/Regex.php';
-require_once 'Zend/Controller/Router/Route/Chain.php';
+// require_once 'Zend/Navigation/Page/Mvc.php';
+// require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Router/Route.php';
+// require_once 'Zend/Controller/Router/Route/Regex.php';
+// require_once 'Zend/Controller/Router/Route/Chain.php';
 
 /**
  * Tests the class Zend_Navigation_Page_Mvc

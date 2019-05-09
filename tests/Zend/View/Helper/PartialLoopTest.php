@@ -26,13 +26,13 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_View_Helper_PartialLoop */
-require_once 'Zend/View/Helper/PartialLoop.php';
+// require_once 'Zend/View/Helper/PartialLoop.php';
 
 /** Zend_View */
-require_once 'Zend/View.php';
+// require_once 'Zend/View.php';
 
 /** Zend_Controller_Front */
-require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Front.php';
 
 /**
  * Test class for Zend_View_Helper_PartialLoop.

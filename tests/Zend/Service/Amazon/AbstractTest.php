@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Service/Amazon/Abstract.php';
+// require_once 'Zend/Service/Amazon/Abstract.php';
 
 /**
  * @todo: Rename class to Zend_Service_Amazon_AbstractTest

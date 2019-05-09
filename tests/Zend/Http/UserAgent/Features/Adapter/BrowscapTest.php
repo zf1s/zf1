@@ -23,7 +23,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_Http_UserAgent_Features_Adapter_Browscap::main');
 }
 
-require_once 'Zend/Http/UserAgent/Features/Adapter/Browscap.php';
+// require_once 'Zend/Http/UserAgent/Features/Adapter/Browscap.php';
 
 /**
  * @category   Zend

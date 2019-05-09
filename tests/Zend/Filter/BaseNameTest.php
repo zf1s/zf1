@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_BaseName
  */
-require_once 'Zend/Filter/BaseName.php';
+// require_once 'Zend/Filter/BaseName.php';
 
 
 /**

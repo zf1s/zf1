@@ -26,7 +26,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 require_once 'Zend/AllTests/StreamWrapper/PhpInput.php';
-require_once 'Zend/XmlRpc/Request/Http.php';
+// require_once 'Zend/XmlRpc/Request/Http.php';
 
 /**
  * Test case for Zend_XmlRpc_Request_Http

@@ -22,17 +22,17 @@
 /**
  * @see Zend_Cloud_StorageService_Adapter
  */
-require_once 'Zend/Cloud/StorageService/Adapter.php';
+// require_once 'Zend/Cloud/StorageService/Adapter.php';
 
 /**
  * @see Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @see Zend_Cloud_StorageService_Factory
  */
-require_once 'Zend/Cloud/StorageService/Factory.php';
+// require_once 'Zend/Cloud/StorageService/Factory.php';
 
 /**
  * This class forces the adapter tests to implement tests for all methods on

@@ -28,7 +28,7 @@ require_once 'Zend/Db/Adapter/TestCommon.php';
 /**
  * @see Zend_Db_Adapter_Db2
  */
-require_once 'Zend/Db/Adapter/Db2.php';
+// require_once 'Zend/Db/Adapter/Db2.php';
 
 /**
  * @category   Zend

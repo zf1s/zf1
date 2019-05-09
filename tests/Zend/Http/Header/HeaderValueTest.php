@@ -20,7 +20,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Http/Header/HeaderValue.php';
+// require_once 'Zend/Http/Header/HeaderValue.php';
 
 /**
  * @category   Zend

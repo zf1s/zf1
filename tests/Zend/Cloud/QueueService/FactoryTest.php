@@ -27,14 +27,14 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Config_Ini
  */
-require_once 'Zend/Config/Ini.php';
+// require_once 'Zend/Config/Ini.php';
 
 /**
  * @see Zend_Cloud_QueueService_Factory
  */
-require_once 'Zend/Cloud/QueueService/Factory.php';
+// require_once 'Zend/Cloud/QueueService/Factory.php';
 
-require_once 'Zend/Cloud/QueueService/Adapter/ZendQueue.php';
+// require_once 'Zend/Cloud/QueueService/Adapter/ZendQueue.php';
 
 /**
  * Test class for Zend_Cloud_QueueService_Factory

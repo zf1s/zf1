@@ -25,9 +25,9 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_Plugin_PutHandlerTest::main");
 }
 
-require_once 'Zend/Controller/Plugin/PutHandler.php';
-require_once 'Zend/Controller/Request/HttpTestCase.php';
-require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Plugin/PutHandler.php';
+// require_once 'Zend/Controller/Request/HttpTestCase.php';
+// require_once 'Zend/Controller/Front.php';
 
 /**
  * Test class for Zend_Controller_Plugin_PutHandler.

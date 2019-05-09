@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 require_once dirname(__FILE__) . '/TestAbstract.php';
-require_once 'Zend/View/Helper/Navigation/Breadcrumbs.php';
+// require_once 'Zend/View/Helper/Navigation/Breadcrumbs.php';
 
 /**
  * Tests Zend_View_Helper_Navigation_Breadcrumbs

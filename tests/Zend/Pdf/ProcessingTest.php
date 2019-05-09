@@ -21,7 +21,7 @@
  */
 
 /** Zend_Pdf */
-require_once 'Zend/Pdf.php';
+// require_once 'Zend/Pdf.php';
 
 /**
  * @category   Zend

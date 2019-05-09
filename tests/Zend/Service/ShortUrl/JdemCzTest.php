@@ -20,7 +20,7 @@
  */
 
 /** Zend_Service_ShortUrl_JdemCz */
-require_once 'Zend/Service/ShortUrl/JdemCz.php';
+// require_once 'Zend/Service/ShortUrl/JdemCz.php';
 
 /**
  * @package  Zend_Service

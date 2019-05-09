@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Navigation/Page.php';
+// require_once 'Zend/Navigation/Page.php';
 
 /**
  * Tests Zend_Navigation_Page::factory()

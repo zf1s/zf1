@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_Alnum
  */
-require_once 'Zend/Filter/Alnum.php';
+// require_once 'Zend/Filter/Alnum.php';
 
 
 /**

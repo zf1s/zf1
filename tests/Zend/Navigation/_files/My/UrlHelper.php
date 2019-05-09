@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Controller/Action/Helper/Url.php';
+// require_once 'Zend/Controller/Action/Helper/Url.php';
 
 /**
  * @category   Zend

@@ -23,12 +23,12 @@
 /**
  * @see Zend_Paginator
  */
-require_once 'Zend/Paginator.php';
+// require_once 'Zend/Paginator.php';
 
 /**
  * @see Zend_Paginator_Adapter_Null
  */
-require_once 'Zend/Paginator/Adapter/Null.php';
+// require_once 'Zend/Paginator/Adapter/Null.php';
 
 /**
  * @see PHPUnit_Framework_TestCase
