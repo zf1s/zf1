@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Validate_File_Count
  */
-require_once 'Zend/Validate/File/Count.php';
+// require_once 'Zend/Validate/File/Count.php';
 
 /**
  * @category   Zend

@@ -20,7 +20,7 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/MediaMimeStream.php';
+// require_once 'Zend/Gdata/MediaMimeStream.php';
 
 /**
  * @category   Zend

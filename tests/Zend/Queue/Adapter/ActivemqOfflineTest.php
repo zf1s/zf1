@@ -20,9 +20,9 @@
  * @version    $Id: ActivemqTest.php 20096 2010-01-06 02:05:09Z bkarwin $
  */
 
-require_once 'Zend/Queue/Adapter/Activemq.php';
-require_once 'Zend/Queue/Stomp/Client.php';
-require_once 'Zend/Queue/Stomp/Frame.php';
+// require_once 'Zend/Queue/Adapter/Activemq.php';
+// require_once 'Zend/Queue/Stomp/Client.php';
+// require_once 'Zend/Queue/Stomp/Frame.php';
 
 /**
  * @category   Zend

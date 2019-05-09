@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_Digits
  */
-require_once 'Zend/Filter/Digits.php';
+// require_once 'Zend/Filter/Digits.php';
 
 
 /**

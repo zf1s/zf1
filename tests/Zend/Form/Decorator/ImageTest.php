@@ -25,12 +25,12 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Decorator_ImageTest::main");
 }
 
-require_once 'Zend/Form/Decorator/Image.php';
+// require_once 'Zend/Form/Decorator/Image.php';
 
-require_once 'Zend/Form.php';
-require_once 'Zend/Form/Element.php';
-require_once 'Zend/Form/Element/Image.php';
-require_once 'Zend/View.php';
+// require_once 'Zend/Form.php';
+// require_once 'Zend/Form/Element.php';
+// require_once 'Zend/Form/Element/Image.php';
+// require_once 'Zend/View.php';
 
 /**
  * Test class for Zend_Form_Decorator_Image

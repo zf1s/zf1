@@ -23,18 +23,18 @@
 /**
  * @see Zend_Auth
  */
-require_once 'Zend/Auth.php';
+// require_once 'Zend/Auth.php';
 
 
 /**
  * @see Zend_Auth_Adapter_Interface
  */
-require_once 'Zend/Auth/Adapter/Interface.php';
+// require_once 'Zend/Auth/Adapter/Interface.php';
 
 /**
  * @see Zend_Session
  */
-require_once 'Zend/Session.php';
+// require_once 'Zend/Session.php';
 
 /**
  * @group ZF-7882 - temp solution provided by {@link http://www.alexatnet.com/node/12}

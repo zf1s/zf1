@@ -20,7 +20,7 @@
  */
 
 /** Zend_Service_ShortUrl_IsGd */
-require_once 'Zend/Service/ShortUrl/IsGd.php';
+// require_once 'Zend/Service/ShortUrl/IsGd.php';
 
 /**
  * @package  Zend_Service

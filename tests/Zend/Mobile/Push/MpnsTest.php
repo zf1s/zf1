@@ -20,12 +20,12 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Mobile/Push/Mpns.php';
-require_once 'Zend/Mobile/Push/Message/Mpns/Raw.php';
-require_once 'Zend/Mobile/Push/Message/Mpns/Tile.php';
-require_once 'Zend/Mobile/Push/Message/Mpns/Toast.php';
-require_once 'Zend/Http/Client.php';
-require_once 'Zend/Http/Client/Adapter/Test.php';
+// require_once 'Zend/Mobile/Push/Mpns.php';
+// require_once 'Zend/Mobile/Push/Message/Mpns/Raw.php';
+// require_once 'Zend/Mobile/Push/Message/Mpns/Tile.php';
+// require_once 'Zend/Mobile/Push/Message/Mpns/Toast.php';
+// require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client/Adapter/Test.php';
 
 /**
  * @category   Zend

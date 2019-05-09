@@ -19,7 +19,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Feed/Pubsubhubbub/Model/Subscription.php';
+// require_once 'Zend/Feed/Pubsubhubbub/Model/Subscription.php';
 /**
  * @category   Zend
  * @package    Zend_Feed

@@ -25,14 +25,14 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_Helper_JsonTest::main");
 }
 
-require_once 'Zend/Controller/Action/Helper/Json.php';
+// require_once 'Zend/Controller/Action/Helper/Json.php';
 
-require_once 'Zend/Controller/Action/HelperBroker.php';
-require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Controller/Response/Http.php';
-require_once 'Zend/Json.php';
-require_once 'Zend/Layout.php';
+// require_once 'Zend/Controller/Action/HelperBroker.php';
+// require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
+// require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Response/Http.php';
+// require_once 'Zend/Json.php';
+// require_once 'Zend/Layout.php';
 
 /**
  * Test class for Zend_Controller_Action_Helper_Json

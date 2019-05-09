@@ -23,7 +23,7 @@
 /**
  * @see Zend_Validate_Date
  */
-require_once 'Zend/Validate/Date.php';
+// require_once 'Zend/Validate/Date.php';
 
 /**
  * @category   Zend

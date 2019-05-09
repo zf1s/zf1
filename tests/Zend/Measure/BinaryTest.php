@@ -23,7 +23,7 @@
 /**
  * Zend_Measure_Binary
  */
-require_once 'Zend/Measure/Binary.php';
+// require_once 'Zend/Measure/Binary.php';
 
 /**
  * @category   Zend

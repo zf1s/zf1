@@ -23,7 +23,7 @@
 /**
  * Zend_Config_Ini
  */
-require_once 'Zend/Config/Yaml.php';
+// require_once 'Zend/Config/Yaml.php';
 
 /**
  * @category   Zend

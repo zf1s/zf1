@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Angle
  */
-require_once 'Zend/Measure/Angle.php';
+// require_once 'Zend/Measure/Angle.php';
 
 /**
  * @category   Zend

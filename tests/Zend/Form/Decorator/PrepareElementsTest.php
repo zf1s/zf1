@@ -25,9 +25,9 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Decorator_PrepareElementsTest::main");
 }
 
-require_once 'Zend/Form/Decorator/PrepareElements.php';
-require_once 'Zend/Form.php';
-require_once 'Zend/Form/SubForm.php';
+// require_once 'Zend/Form/Decorator/PrepareElements.php';
+// require_once 'Zend/Form.php';
+// require_once 'Zend/Form/SubForm.php';
 
 
 /**
@@ -78,7 +78,7 @@ class Zend_Form_Decorator_PrepareElementsTest extends PHPUnit_Framework_TestCase
 
     public function getView()
     {
-        require_once 'Zend/View.php';
+        // require_once 'Zend/View.php';
         $view = new Zend_View();
         return $view;
     }
@@ -133,7 +133,7 @@ class Zend_Form_Decorator_PrepareElementsTest extends PHPUnit_Framework_TestCase
     public function testEachElementShouldHaveUpdatedTranslatorProperty()
     {
         $this->prepareForm();
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $translator = new Zend_Translate('array', array('foo' => 'bar'), 'en');
         $this->form->setTranslator($translator);
         $this->form->render();

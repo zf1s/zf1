@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Zend/Loader/Autoloader.php';
+// require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance();
 $autoloader = Zend_Loader_Autoloader::getInstance();
 

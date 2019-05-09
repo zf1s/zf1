@@ -23,7 +23,7 @@
 /**
  * @see Zend_Validate_Int
  */
-require_once 'Zend/Validate/Int.php';
+// require_once 'Zend/Validate/Int.php';
 
 
 /**

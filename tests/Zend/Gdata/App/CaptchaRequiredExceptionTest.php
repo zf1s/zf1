@@ -20,7 +20,7 @@
  * @version    $Id $
  */
 
- require_once 'Zend/Gdata/App/CaptchaRequiredException.php';
+ // require_once 'Zend/Gdata/App/CaptchaRequiredException.php';
 
 /**
  * @category   Zend

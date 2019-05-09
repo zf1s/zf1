@@ -23,12 +23,12 @@
 /**
  * @see Zend_Ldap
  */
-require_once 'Zend/Ldap.php';
+// require_once 'Zend/Ldap.php';
 
 /**
  * @see Zend_Auth_Adapter_Ldap
  */
-require_once 'Zend/Auth/Adapter/Ldap.php';
+// require_once 'Zend/Auth/Adapter/Ldap.php';
 
 /**
  * @category   Zend

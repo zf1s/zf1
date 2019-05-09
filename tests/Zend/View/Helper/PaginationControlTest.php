@@ -25,9 +25,9 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_PaginationControlTest::main");
 }
 
-require_once 'Zend/View.php';
-require_once 'Zend/Paginator.php';
-require_once 'Zend/View/Helper/PaginationControl.php';
+// require_once 'Zend/View.php';
+// require_once 'Zend/Paginator.php';
+// require_once 'Zend/View/Helper/PaginationControl.php';
 
 /**
  * @category   Zend

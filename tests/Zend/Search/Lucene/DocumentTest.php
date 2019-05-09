@@ -23,32 +23,32 @@
 /**
  * Zend_Search_Lucene
  */
-require_once 'Zend/Search/Lucene.php';
+// require_once 'Zend/Search/Lucene.php';
 
 /**
  * Zend_Search_Lucene_Document
  */
-require_once 'Zend/Search/Lucene/Document.php';
+// require_once 'Zend/Search/Lucene/Document.php';
 
 /**
  * Zend_Search_Lucene_Document_Docx
  */
-require_once 'Zend/Search/Lucene/Document/Docx.php';
+// require_once 'Zend/Search/Lucene/Document/Docx.php';
 
 /**
  * Zend_Search_Lucene_Document_Pptx
  */
-require_once 'Zend/Search/Lucene/Document/Pptx.php';
+// require_once 'Zend/Search/Lucene/Document/Pptx.php';
 
 /**
  * Zend_Search_Lucene_Document_Xlsx
  */
-require_once 'Zend/Search/Lucene/Document/Xlsx.php';
+// require_once 'Zend/Search/Lucene/Document/Xlsx.php';
 
 /**
  * Zend_Search_Lucene_Document_Html
  */
-require_once 'Zend/Search/Lucene/Document/Html.php';
+// require_once 'Zend/Search/Lucene/Document/Html.php';
 
 /**
  * @category   Zend

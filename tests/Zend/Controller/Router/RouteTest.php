@@ -25,16 +25,16 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** @see Zend_Controller_Request_Http */
-require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Request/Http.php';
 
 /** @see Zend_Controller_Router_Route */
-require_once 'Zend/Controller/Router/Route.php';
+// require_once 'Zend/Controller/Router/Route.php';
 
 /** @see Zend_Translate */
-require_once 'Zend/Translate.php';
+// require_once 'Zend/Translate.php';
 
 /** @see Zend_Registry */
-require_once 'Zend/Registry.php';
+// require_once 'Zend/Registry.php';
 
 /**
  * @category   Zend
@@ -486,7 +486,7 @@ class Zend_Controller_Router_RouteTest extends PHPUnit_Framework_TestCase
 
     public function testGetInstance()
     {
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
 
         $routeConf = array(
             'route' => 'users/all',

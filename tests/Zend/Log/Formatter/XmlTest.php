@@ -25,7 +25,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log_Formatter_Xml */
-require_once 'Zend/Log/Formatter/Xml.php';
+// require_once 'Zend/Log/Formatter/Xml.php';
 
 /**
  * @category   Zend

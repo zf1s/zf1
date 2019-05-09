@@ -32,7 +32,7 @@ require_once 'Zend/Cloud/StorageService/TestCase.php';
 /**
  * @see Zend_Cloud_StorageService_Adapter_FileSystem
  */
-require_once 'Zend/Cloud/StorageService/Adapter/FileSystem.php';
+// require_once 'Zend/Cloud/StorageService/Adapter/FileSystem.php';
 
 /**
  * @category   Zend

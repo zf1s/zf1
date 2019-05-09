@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_Int
  */
-require_once 'Zend/Filter/Null.php';
+// require_once 'Zend/Filter/Null.php';
 
 /**
  * @category   Zend

@@ -29,15 +29,15 @@
  */
 
 /** Zend_Queue */
-require_once 'Zend/Queue.php';
+// require_once 'Zend/Queue.php';
 
 /** Zend_Queue */
-require_once 'Zend/Queue/Message.php';
+// require_once 'Zend/Queue/Message.php';
 
 /** Zend_Queue_Adapter_Array */
-require_once 'Zend/Queue/Adapter/Array.php';
+// require_once 'Zend/Queue/Adapter/Array.php';
 /** Zend_Queue_Adapter_Null */
-require_once 'Zend/Queue/Adapter/Null.php';
+// require_once 'Zend/Queue/Adapter/Null.php';
 
 /**
  * @category   Zend
@@ -79,7 +79,7 @@ class Zend_Queue_Message_IteratorTest extends PHPUnit_Framework_TestCase
 
         $classname = $this->queue->getMessageSetClass();
         if (!class_exists($classname)) {
-            require_once 'Zend/Loader.php';
+            // require_once 'Zend/Loader.php';
             Zend_Loader::loadClass($classname);
         }
         $this->messages = new $classname($options);

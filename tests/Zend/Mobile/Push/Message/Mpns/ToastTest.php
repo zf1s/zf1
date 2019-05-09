@@ -20,7 +20,7 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Mobile/Push/Message/Mpns/Toast.php';
+// require_once 'Zend/Mobile/Push/Message/Mpns/Toast.php';
 
 /**
  * @category   Zend

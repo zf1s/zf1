@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Oauth.php';
+// require_once 'Zend/Oauth.php';
 
 class Test_Http_Client_19485876 extends Zend_Http_Client {}
 
@@ -71,7 +71,7 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
      */
     public function testOauthClientOauthOptionsInConstructor($oauthOptions)
     {
-        require_once 'Zend/Oauth/Client.php';
+        // require_once 'Zend/Oauth/Client.php';
         $client = new Zend_Oauth_Client($oauthOptions);
         $this->assertEquals('GET', $client->getRequestMethod());
         $this->assertEquals('http://www.example.com', $client->getSiteUrl());
@@ -83,7 +83,7 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
      */
     public function testOauthClientConfigHttpClientInConstructor($configHttpClient, $expected)
     {
-        require_once 'Zend/Oauth/Client.php';
+        // require_once 'Zend/Oauth/Client.php';
         $client = new Zend_Oauth_Client(null, null, $configHttpClient);
         $config = $client->getAdapter()->getConfig();
         $this->assertEquals($expected['rfc'], $config['rfc3986_strict']);
@@ -98,7 +98,7 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
             'siteUrl'       => 'http://www.example.com'
         );
 
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
         return array(
             array($options),
             array(new Zend_Config($options))
@@ -153,7 +153,7 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
             'realm'			=> 'http://www.example.com'
         );
 
-        require_once 'Zend/Oauth/Client.php';
+        // require_once 'Zend/Oauth/Client.php';
         $client = new Zend_Oauth_Client($options);
         $this->assertEquals('http://www.example.com', $client->getRealm());
     }
@@ -163,7 +163,7 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
      */
     public function testOauthClientPreparationWithRealmConfigurationOption()
     {
-        require_once "Zend/Oauth/Token/Access.php";
+        // require_once "Zend/Oauth/Token/Access.php";
 
         $options = array(
             'requestMethod' => 'GET',
@@ -172,7 +172,7 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
         );
         $token = new Zend_Oauth_Token_Access();
 
-        require_once 'Zend/Oauth/Client.php';
+        // require_once 'Zend/Oauth/Client.php';
         $client = new Zend_Oauth_Client($options);
         $this->assertEquals(NULL,$client->getHeader('Authorization'));
 
@@ -189,7 +189,7 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
      */
     public function testOauthClientAcceptsGetParametersThroughSetter()
     {
-        require_once "Zend/Oauth/Token/Access.php";
+        // require_once "Zend/Oauth/Token/Access.php";
         $token = new Zend_Oauth_Token_Access();
         
         $options = array(
@@ -198,7 +198,7 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
             'realm'			=> 'someRealm'
         );
         
-        require_once 'Zend/Oauth/Client.php';
+        // require_once 'Zend/Oauth/Client.php';
         $client = new Zend_Oauth_Client($options);
         $client->setToken($token);
         $client->setUri('http://www.example.com/?test=FooBar');

@@ -29,13 +29,13 @@
  */
 
 /** Zend_Queue_Stomp_Frame */
-require_once 'Zend/Queue/Stomp/Frame.php';
+// require_once 'Zend/Queue/Stomp/Frame.php';
 
 /** Zend_Queue_Stomp_Client */
-require_once 'Zend/Queue/Stomp/Client.php';
+// require_once 'Zend/Queue/Stomp/Client.php';
 
 /** Zend_Queue_Stomp_Client_Interface */
-require_once 'Zend/Queue/Stomp/Client/Connection.php';
+// require_once 'Zend/Queue/Stomp/Client/Connection.php';
 
 /**
  * @category   Zend
@@ -54,7 +54,7 @@ class Zend_Queue_Stomp_Connection_Mock
      * @param array $config ('scheme', 'host', 'port')
      * @return true;
      */
-    public function open($scheme, $host, $port)
+    public function open($scheme, $host, $port, array $options = array())
     {
         if ( $port == 0 )  return false;
         return true;

@@ -20,8 +20,8 @@
  * @version    $Id:$
  */
 
-require_once 'Zend/Gdata/Gapps.php';
-require_once 'Zend/Gdata/Gapps/MemberFeed.php';
+// require_once 'Zend/Gdata/Gapps.php';
+// require_once 'Zend/Gdata/Gapps/MemberFeed.php';
 
 /**
  * @category   Zend

@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Pressure
  */
-require_once 'Zend/Measure/Pressure.php';
+// require_once 'Zend/Measure/Pressure.php';
 
 /**
  * @category   Zend

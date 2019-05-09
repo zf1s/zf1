@@ -22,7 +22,7 @@
 /**
  * Zend_Pdf_Filter_Ascii85
  */
-require_once 'Zend/Pdf/Filter/Ascii85.php';
+// require_once 'Zend/Pdf/Filter/Ascii85.php';
 
 /**
  * @category   Zend

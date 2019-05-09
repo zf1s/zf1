@@ -23,8 +23,8 @@
 /**
  * Zend_OpenId
  */
-require_once 'Zend/OpenId/Extension.php';
-require_once 'Zend/OpenId/Extension/Sreg.php';
+// require_once 'Zend/OpenId/Extension.php';
+// require_once 'Zend/OpenId/Extension/Sreg.php';
 
 
 /**

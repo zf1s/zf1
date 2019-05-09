@@ -25,11 +25,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Json_ServerTest::main");
 }
 
-require_once 'Zend/Json/Server.php';
-require_once 'Zend/Json/Server/Request.php';
-require_once 'Zend/Json/Server/Response.php';
-require_once 'Zend/Json.php';
-require_once 'Zend/Server/Exception.php';
+// require_once 'Zend/Json/Server.php';
+// require_once 'Zend/Json/Server/Request.php';
+// require_once 'Zend/Json/Server/Response.php';
+// require_once 'Zend/Json.php';
+// require_once 'Zend/Server/Exception.php';
 
 /**
  * Test class for Zend_Json_Server

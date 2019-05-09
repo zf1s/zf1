@@ -23,7 +23,7 @@
 /**
  * @see Zend_Feed_Entry_Atom
  */
-require_once 'Zend/Feed/Entry/Atom.php';
+// require_once 'Zend/Feed/Entry/Atom.php';
 
 /**
  * @category   Zend

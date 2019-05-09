@@ -24,8 +24,8 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_Tag_ItemTest::main');
 }
 
-require_once 'Zend/Config.php';
-require_once 'Zend/Tag/Item.php';
+// require_once 'Zend/Config.php';
+// require_once 'Zend/Tag/Item.php';
 
 /**
  * @category   Zend

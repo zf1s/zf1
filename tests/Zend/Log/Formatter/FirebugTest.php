@@ -25,7 +25,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log_Formatter_Firebug */
-require_once 'Zend/Log/Formatter/Firebug.php';
+// require_once 'Zend/Log/Formatter/Firebug.php';
 
 /**
  * @category   Zend

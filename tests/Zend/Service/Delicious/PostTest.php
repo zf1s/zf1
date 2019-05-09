@@ -23,12 +23,12 @@
 /**
  * @see Zend_Service_Delicious
  */
-require_once 'Zend/Service/Delicious.php';
+// require_once 'Zend/Service/Delicious.php';
 
 /**
  * @see Zend_Service_Delicious_Post
  */
-require_once 'Zend/Service/Delicious/Post.php';
+// require_once 'Zend/Service/Delicious/Post.php';
 
 
 /**

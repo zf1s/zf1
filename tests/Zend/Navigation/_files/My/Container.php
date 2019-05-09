@@ -19,7 +19,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-require_once 'Zend/Navigation/Container.php';
+// require_once 'Zend/Navigation/Container.php';
 
 /**
  * @category   Zend

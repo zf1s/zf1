@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 class Zend_Xml_TestAsset_Security extends Zend_Xml_Security
 {

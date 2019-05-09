@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_StringTrim
  */
-require_once 'Zend/Filter/StringTrim.php';
+// require_once 'Zend/Filter/StringTrim.php';
 
 /**
  * @category   Zend
@@ -122,7 +122,7 @@ class Zend_Filter_StringTrimTest extends PHPUnit_Framework_TestCase
      */
     public function testSetParamCharListToConstructor()
     {
-        require_once 'Zend/Config.php';
+        // require_once 'Zend/Config.php';
         $config = new Zend_Config(array('charlist' => '&'));
         $filter = new Zend_Filter_StringTrim($config);
         $this->assertEquals('&', $filter->getCharList());

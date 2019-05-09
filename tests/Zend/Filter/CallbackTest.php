@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_Callback
  */
-require_once 'Zend/Filter/Callback.php';
+// require_once 'Zend/Filter/Callback.php';
 
 /**
  * @category   Zend

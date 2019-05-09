@@ -24,8 +24,8 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Markup_BbcodeAndHtmlTest::main");
 }
 
-require_once 'Zend/Markup.php';
-require_once 'Zend/Filter/StringToUpper.php';
+// require_once 'Zend/Markup.php';
+// require_once 'Zend/Filter/StringToUpper.php';
 
 /**
  * @category   Zend

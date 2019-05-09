@@ -23,7 +23,7 @@
 /**
  * @see Zend_CodeGenerator_Php_Class
  */
-require_once 'Zend/CodeGenerator/Php/Docblock.php';
+// require_once 'Zend/CodeGenerator/Php/Docblock.php';
 
 /**
  * @category   Zend

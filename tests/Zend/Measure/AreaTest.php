@@ -23,7 +23,7 @@
 /**
  * Zend_Measure_Area
  */
-require_once 'Zend/Measure/Area.php';
+// require_once 'Zend/Measure/Area.php';
 
 /**
  * @category   Zend

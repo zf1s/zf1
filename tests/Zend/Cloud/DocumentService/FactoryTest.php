@@ -27,12 +27,12 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Config_Ini
  */
-require_once 'Zend/Config/Ini.php';
+// require_once 'Zend/Config/Ini.php';
 
 /**
  * @see Zend_Cloud_DocumentService_Factory
  */
-require_once 'Zend/Cloud/DocumentService/Factory.php';
+// require_once 'Zend/Cloud/DocumentService/Factory.php';
 
 /**
  * Test class for Zend_Cloud_DocumentService_Factory

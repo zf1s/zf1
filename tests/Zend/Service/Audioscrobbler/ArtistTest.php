@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_Audioscrobbler
  */
-require_once 'Zend/Service/Audioscrobbler.php';
+// require_once 'Zend/Service/Audioscrobbler.php';
 
 
 require_once "AudioscrobblerTestCase.php";

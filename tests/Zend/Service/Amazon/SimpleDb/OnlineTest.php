@@ -23,27 +23,27 @@
 /**
  * @see Zend_Service_Amazon_SimpleDb
  */
-require_once 'Zend/Service/Amazon/SimpleDb.php';
+// require_once 'Zend/Service/Amazon/SimpleDb.php';
 
 /**
  * @see Zend_Service_Amazon_SimpleDb_Attribute
  */
-require_once 'Zend/Service/Amazon/SimpleDb/Attribute.php';
+// require_once 'Zend/Service/Amazon/SimpleDb/Attribute.php';
 
 /**
  * @see Zend_Service_Amazon_SimpleDb_Page
  */
-require_once 'Zend/Service/Amazon/SimpleDb/Page.php';
+// require_once 'Zend/Service/Amazon/SimpleDb/Page.php';
 
 /**
  * @see Zend_Http_Client_Adapter_Socket
  */
-require_once 'Zend/Http/Client/Adapter/Socket.php';
+// require_once 'Zend/Http/Client/Adapter/Socket.php';
 
 /**
  * @see Zend_Config_Ini
  */
-require_once 'Zend/Config/Ini.php';
+// require_once 'Zend/Config/Ini.php';
 
 /**
  * @category   Zend

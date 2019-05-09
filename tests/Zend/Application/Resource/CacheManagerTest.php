@@ -27,27 +27,27 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
+// require_once 'Zend/Loader/Autoloader.php';
 
 /**
  * Zend_Controller_Front
  */
-require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Front.php';
 
 /**
  * Zend_Application_Resource_Cachemanager
  */
-require_once 'Zend/Application/Resource/Cachemanager.php';
+// require_once 'Zend/Application/Resource/Cachemanager.php';
 
 /**
  * Zend_Cache_Backend
  */
-require_once 'Zend/Cache/Backend.php';
+// require_once 'Zend/Cache/Backend.php';
 
 /**
  * Zend_Cache_Core
  */
-require_once 'Zend/Cache/Core.php';
+// require_once 'Zend/Cache/Core.php';
 
 /**
  * @category   Zend

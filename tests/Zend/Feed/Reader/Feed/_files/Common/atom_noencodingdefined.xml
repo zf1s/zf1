@@ -502,22 +502,22 @@ require_once $configFile;
 /**
  * @see Zend_Amf_Server
  */
-require_once 'Zend/Amf/Server.php';
+// require_once 'Zend/Amf/Server.php';
 
 /**
  * @see Zend_Db_Adapter_Pdo_Mysql
  */
-require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
+// require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
 
 /**
  * @see Zend_Paginator
  */
-require_once 'Zend/Paginator.php';
+// require_once 'Zend/Paginator.php';
 
 /**
  * @see Zend_Paginator_Adapter_DbSelect
  */
-require_once 'Zend/Paginator/Adapter/DbSelect.php';
+// require_once 'Zend/Paginator/Adapter/DbSelect.php';
 
 /**
  * Simple class to expose wordpress data through AMF

@@ -27,7 +27,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Filter_File_Rename
  */
-require_once 'Zend/Filter/File/Rename.php';
+// require_once 'Zend/Filter/File/Rename.php';
 
 /**
  * @category   Zend

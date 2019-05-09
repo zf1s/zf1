@@ -20,7 +20,7 @@
  * @version    $Id: AllTests.php 11973 2008-10-15 16:00:56Z matthew $
  */
 
-require_once 'Zend/Service/Amazon/Authentication/S3.php';
+// require_once 'Zend/Service/Amazon/Authentication/S3.php';
 
 /**
  * S3 authentication test case

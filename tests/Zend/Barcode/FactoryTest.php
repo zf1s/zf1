@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Barcode.php';
-require_once 'Zend/Config.php';
+// require_once 'Zend/Barcode.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @category   Zend

@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_Delicious_SimplePost
  */
-require_once 'Zend/Service/Delicious/SimplePost.php';
+// require_once 'Zend/Service/Delicious/SimplePost.php';
 
 
 /**

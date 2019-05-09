@@ -23,8 +23,8 @@
 /**
  * @see Zend_Tool_Framework_Action_Base
  */
-require_once 'Zend/Tool/Framework/Action/Repository.php';
-require_once 'Zend/Tool/Framework/Action/Base.php';
+// require_once 'Zend/Tool/Framework/Action/Repository.php';
+// require_once 'Zend/Tool/Framework/Action/Base.php';
 
 require_once '_files/Foo.php';
 

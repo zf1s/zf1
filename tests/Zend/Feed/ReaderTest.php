@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Feed/Reader.php';
-require_once 'Zend/Cache.php';
+// require_once 'Zend/Feed/Reader.php';
+// require_once 'Zend/Cache.php';
 
 /**
  * @category   Zend

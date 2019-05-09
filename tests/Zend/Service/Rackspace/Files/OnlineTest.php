@@ -19,8 +19,8 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Service/Rackspace/Files.php';
-require_once 'Zend/Http/Client/Adapter/Socket.php';
+// require_once 'Zend/Service/Rackspace/Files.php';
+// require_once 'Zend/Http/Client/Adapter/Socket.php';
 
 
 /**

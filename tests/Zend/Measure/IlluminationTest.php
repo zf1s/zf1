@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Illumination
  */
-require_once 'Zend/Measure/Illumination.php';
+// require_once 'Zend/Measure/Illumination.php';
 
 /**
  * @category   Zend

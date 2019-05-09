@@ -20,8 +20,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Spreadsheets.php';
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Gdata/Spreadsheets.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * @category   Zend

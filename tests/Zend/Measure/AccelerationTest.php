@@ -23,8 +23,8 @@
 /**
  * Zend_Measure_Acceleration
  */
-require_once 'Zend/Measure/Acceleration.php';
-require_once 'Zend/Locale.php';
+// require_once 'Zend/Measure/Acceleration.php';
+// require_once 'Zend/Locale.php';
 
 /**
  * @category   Zend

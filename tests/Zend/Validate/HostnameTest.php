@@ -23,7 +23,7 @@
 /**
  * @see Zend_Validate_Hostname
  */
-require_once 'Zend/Validate/Hostname.php';
+// require_once 'Zend/Validate/Hostname.php';
 
 
 /**
@@ -285,7 +285,7 @@ class Zend_Validate_HostnameTest extends PHPUnit_Framework_TestCase
      */
     public function testValidatorMessagesShouldBeTranslated()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $translations = array(
             'hostnameInvalidLocalName' => 'this is the IP error message',
         );

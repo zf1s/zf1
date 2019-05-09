@@ -20,8 +20,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Mobile/Push/Abstract.php';
-require_once 'Zend/Mobile/Push/Message/Abstract.php';
+// require_once 'Zend/Mobile/Push/Abstract.php';
+// require_once 'Zend/Mobile/Push/Message/Abstract.php';
 
 /**
  * @category   Zend

@@ -20,8 +20,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Gapps.php';
-require_once 'Zend/Gdata/Gapps/OwnerQuery.php';
+// require_once 'Zend/Gdata/Gapps.php';
+// require_once 'Zend/Gdata/Gapps/OwnerQuery.php';
 
 /**
  * @category   Zend

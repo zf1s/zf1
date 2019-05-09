@@ -26,11 +26,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Decorator_LabelTest::main");
 }
 
-require_once 'Zend/Form/Decorator/Label.php';
+// require_once 'Zend/Form/Decorator/Label.php';
 
-require_once 'Zend/Form/Element.php';
-require_once 'Zend/Form/Element/Text.php';
-require_once 'Zend/View.php';
+// require_once 'Zend/Form/Element.php';
+// require_once 'Zend/Form/Element/Text.php';
+// require_once 'Zend/View.php';
 
 /**
  * Test class for Zend_Form_Decorator_Label
@@ -265,7 +265,7 @@ class Zend_Form_Decorator_LabelTest extends PHPUnit_Framework_TestCase
 
     public function testRetrievingLabelRetrievesLabelWithTranslationAndPrefixAndSuffix()
     {
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $translate = new Zend_Translate('array', array('My Label' => 'Translation'), 'en');
         $translate->setLocale('en');
 
@@ -405,7 +405,7 @@ class Zend_Form_Decorator_LabelTest extends PHPUnit_Framework_TestCase
     public function testLabelIsNotTranslatedTwice()
     {
         // Init translator
-        require_once 'Zend/Translate.php';
+        // require_once 'Zend/Translate.php';
         $translate = new Zend_Translate(
             array(
                  'adapter' => 'array',

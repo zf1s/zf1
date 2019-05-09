@@ -27,7 +27,7 @@ require_once dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'TestCase.php';
 /**
  * @see Zend_Ldap_Ldif_Encoder
  */
-require_once 'Zend/Ldap/Ldif/Encoder.php';
+// require_once 'Zend/Ldap/Ldif/Encoder.php';
 
 /**
  * @category   Zend

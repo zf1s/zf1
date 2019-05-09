@@ -23,7 +23,7 @@
 /**
  * @see Zend_CodeGenerator_Php_Class
  */
-require_once 'Zend/CodeGenerator/Php/Docblock/Tag/Return.php';
+// require_once 'Zend/CodeGenerator/Php/Docblock/Tag/Return.php';
 
 /**
  * @category   Zend

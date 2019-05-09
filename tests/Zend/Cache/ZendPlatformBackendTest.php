@@ -23,8 +23,8 @@
 /**
  * Zend_Cache
  */
-require_once 'Zend/Cache.php';
-require_once 'Zend/Cache/Backend/ZendPlatform.php';
+// require_once 'Zend/Cache.php';
+// require_once 'Zend/Cache/Backend/ZendPlatform.php';
 
 /**
  * Common tests for backends

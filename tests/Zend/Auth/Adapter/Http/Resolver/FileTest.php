@@ -29,7 +29,7 @@
 /**
  * @see Zend_Auth_Adapter_Http_Resolver_File
  */
-require_once 'Zend/Auth/Adapter/Http/Resolver/File.php';
+// require_once 'Zend/Auth/Adapter/Http/Resolver/File.php';
 
 
 /**

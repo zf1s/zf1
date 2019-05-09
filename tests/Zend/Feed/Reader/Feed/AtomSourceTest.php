@@ -20,7 +20,7 @@
  * @version    $Id: AtomTest.php 19168 2009-11-21 17:17:18Z padraic $
  */
 
-require_once 'Zend/Feed/Reader.php';
+// require_once 'Zend/Feed/Reader.php';
 
 /**
  * @category   Zend

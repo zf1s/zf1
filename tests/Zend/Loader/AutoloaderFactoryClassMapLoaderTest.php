@@ -23,7 +23,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_Loader_AutoloaderFactoryClassMapLoaderTest::main');
 }
 
-require_once 'Zend/Loader/AutoloaderFactory.php';
+// require_once 'Zend/Loader/AutoloaderFactory.php';
 
 /**
  * @package    Zend_Loader

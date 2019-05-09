@@ -29,10 +29,10 @@
  */
 
 /** Zend_Queue */
-require_once 'Zend/Queue.php';
+// require_once 'Zend/Queue.php';
 
 /** Zend_Queue */
-require_once 'Zend/Queue/Message.php';
+// require_once 'Zend/Queue/Message.php';
 
 /** Zend_Queue_Message_Test */
 require_once 'MessageTestClass.php';
@@ -43,7 +43,7 @@ require_once 'Iterator2.php';
 /**
  * @see Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @category   Zend
@@ -134,7 +134,7 @@ abstract class Zend_Queue_Adapter_AdapterTest extends PHPUnit_Framework_TestCase
 
         // create queue
         if (!class_exists($class)) {
-            require_once 'Zend/Loader.php';
+            // require_once 'Zend/Loader.php';
             Zend_Loader::loadClass($class);
         }
 
@@ -198,7 +198,7 @@ abstract class Zend_Queue_Adapter_AdapterTest extends PHPUnit_Framework_TestCase
         /**
          * @see Zend_Loader
          */
-        require_once 'Zend/Loader.php';
+        // require_once 'Zend/Loader.php';
         Zend_Loader::loadClass($class);
 
         try {

@@ -28,7 +28,7 @@ require_once 'Zend/Db/Adapter/TestCommon.php';
 /**
  * @see Zend_Db_Adapter_Sqlsrv
  */
-require_once 'Zend/Db/Adapter/Sqlsrv.php';
+// require_once 'Zend/Db/Adapter/Sqlsrv.php';
 
 /**
  * @category   Zend

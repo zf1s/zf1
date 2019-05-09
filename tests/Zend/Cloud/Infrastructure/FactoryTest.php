@@ -27,17 +27,17 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Config_Ini
  */
-require_once 'Zend/Config/Ini.php';
+// require_once 'Zend/Config/Ini.php';
 
 /**
  * @see Zend_Cloud_Infrastructure_Factory
  */
-require_once 'Zend/Cloud/Infrastructure/Factory.php';
+// require_once 'Zend/Cloud/Infrastructure/Factory.php';
 
 /**
  * @see Zend_Cloud_Infrastructure_Adapter_Ec2
  */
-require_once 'Zend/Cloud/Infrastructure/Adapter/Ec2.php';
+// require_once 'Zend/Cloud/Infrastructure/Adapter/Ec2.php';
 
 /**
  * Test class for Zend_Cloud_Infrastructure_Factory

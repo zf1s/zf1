@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Oauth/Http/UserAuthorization.php';
+// require_once 'Zend/Oauth/Http/UserAuthorization.php';
 
 /**
  * @category   Zend

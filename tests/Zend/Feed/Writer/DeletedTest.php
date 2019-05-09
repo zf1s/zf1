@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Feed/Writer/Deleted.php';
+// require_once 'Zend/Feed/Writer/Deleted.php';
 
 /**
  * @category   Zend

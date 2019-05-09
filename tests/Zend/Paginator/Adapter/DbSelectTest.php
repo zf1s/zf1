@@ -23,14 +23,14 @@
 /**
  * @see Zend_Paginator_Adapter_DbSelect
  */
-require_once 'Zend/Paginator/Adapter/DbSelect.php';
+// require_once 'Zend/Paginator/Adapter/DbSelect.php';
 
 /**
  * @see Zend_Db_Adapter_Pdo_Sqlite
  */
-require_once 'Zend/Db/Adapter/Pdo/Sqlite.php';
-require_once 'Zend/Debug.php';
-require_once 'Zend/Db/Adapter/Abstract.php';
+// require_once 'Zend/Db/Adapter/Pdo/Sqlite.php';
+// require_once 'Zend/Debug.php';
+// require_once 'Zend/Db/Adapter/Abstract.php';
 
 /**
  * @see PHPUnit_Framework_TestCase

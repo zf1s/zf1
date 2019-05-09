@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Oauth/Token/AuthorizedRequest.php';
+// require_once 'Zend/Oauth/Token/AuthorizedRequest.php';
 
 /**
  * @category   Zend

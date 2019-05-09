@@ -20,7 +20,7 @@
  * @version $Id$
  */
 
-require_once 'Zend/XmlRpc/Fault.php';
+// require_once 'Zend/XmlRpc/Fault.php';
 
 /**
  * Test case for Zend_XmlRpc_Fault

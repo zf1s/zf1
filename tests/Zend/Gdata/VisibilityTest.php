@@ -20,8 +20,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Gdata/Extension/Visibility.php';
-require_once 'Zend/Gdata.php';
+// require_once 'Zend/Gdata/Extension/Visibility.php';
+// require_once 'Zend/Gdata.php';
 
 /**
  * @category   Zend

@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Validate_File_Upload
  */
-require_once 'Zend/Validate/File/Upload.php';
+// require_once 'Zend/Validate/File/Upload.php';
 
 /**
  * @category   Zend

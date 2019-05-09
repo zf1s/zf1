@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Tool/Framework/Provider/Abstract.php';
+// require_once 'Zend/Tool/Framework/Provider/Abstract.php';
 
 /**
  * @category   Zend

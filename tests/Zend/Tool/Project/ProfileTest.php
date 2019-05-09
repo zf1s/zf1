@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Tool/Project/Profile.php';
+// require_once 'Zend/Tool/Project/Profile.php';
 
 /**
  * @category   Zend

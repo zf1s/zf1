@@ -29,22 +29,22 @@
 /**
  * @see Zend_Db_Adapter_Pdo_Sqlite
  */
-require_once 'Zend/Db/Adapter/Pdo/Sqlite.php';
+// require_once 'Zend/Db/Adapter/Pdo/Sqlite.php';
 
 /**
  * @see Zend_Db_Table_Abstract
  */
-require_once 'Zend/Db/Table/Abstract.php';
+// require_once 'Zend/Db/Table/Abstract.php';
 
 /**
  * @see Zend_Validate_Db_Abstract.php
  */
-require_once 'Zend/Validate/Db/Abstract.php';
+// require_once 'Zend/Validate/Db/Abstract.php';
 
 /**
  * @see Zend_Validate_Db_RecordExists.php
  */
-require_once 'Zend/Validate/Db/RecordExists.php';
+// require_once 'Zend/Validate/Db/RecordExists.php';
 
 /**
  * Mock No Result Adapter

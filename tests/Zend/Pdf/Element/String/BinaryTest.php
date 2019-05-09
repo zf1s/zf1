@@ -23,7 +23,7 @@
 /**
  * Zend_Pdf_Element_String_Binary
  */
-require_once 'Zend/Pdf/Element/String/Binary.php';
+// require_once 'Zend/Pdf/Element/String/Binary.php';
 
 /**
  * @category   Zend

@@ -22,12 +22,12 @@
 /**
  * @see Zend_Cloud_DocumentService_Adapter
  */
-require_once 'Zend/Cloud/DocumentService/Adapter.php';
+// require_once 'Zend/Cloud/DocumentService/Adapter.php';
 
 /**
  * @see Zend_Cloud_DocumenteService_Document
  */
-require_once 'Zend/Cloud/DocumentService/Document.php';
+// require_once 'Zend/Cloud/DocumentService/Document.php';
 
 
 /**

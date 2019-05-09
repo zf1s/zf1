@@ -23,7 +23,7 @@
 /**
  * @see Zend_Paginator_Adapter_Iterator
  */
-require_once 'Zend/Paginator/Adapter/Iterator.php';
+// require_once 'Zend/Paginator/Adapter/Iterator.php';
 
 /**
  * @see PHPUnit_Framework_TestCase

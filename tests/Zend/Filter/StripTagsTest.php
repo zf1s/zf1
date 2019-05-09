@@ -28,7 +28,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Filter_StripTags
  */
-require_once 'Zend/Filter/StripTags.php';
+// require_once 'Zend/Filter/StripTags.php';
 
 
 /**

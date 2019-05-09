@@ -23,7 +23,7 @@
 /**
  * Zend_Http_Response
  */
-require_once 'Zend/Http/Response.php';
+// require_once 'Zend/Http/Response.php';
 
 /**
  * Zend_Http_Response unit tests

@@ -24,10 +24,10 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_Dojo_BuildLayerTest::main');
 }
 
-require_once 'Zend/Dojo/BuildLayer.php';
-require_once 'Zend/Dojo.php';
-require_once 'Zend/View.php';
-require_once 'Zend/Json.php';
+// require_once 'Zend/Dojo/BuildLayer.php';
+// require_once 'Zend/Dojo.php';
+// require_once 'Zend/View.php';
+// require_once 'Zend/Json.php';
 
 /**
  * @category   Zend

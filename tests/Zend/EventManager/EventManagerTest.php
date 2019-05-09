@@ -23,13 +23,13 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_EventManager_EventManagerTest::main');
 }
 
-require_once 'Zend/EventManager/Event.php';
-require_once 'Zend/EventManager/EventDescription.php';
-require_once 'Zend/EventManager/EventManager.php';
-require_once 'Zend/EventManager/ResponseCollection.php';
+// require_once 'Zend/EventManager/Event.php';
+// require_once 'Zend/EventManager/EventDescription.php';
+// require_once 'Zend/EventManager/EventManager.php';
+// require_once 'Zend/EventManager/ResponseCollection.php';
 require_once 'Zend/EventManager/TestAsset/Functor.php';
 require_once 'Zend/EventManager/TestAsset/MockAggregate.php';
-require_once 'Zend/Stdlib/CallbackHandler.php';
+// require_once 'Zend/Stdlib/CallbackHandler.php';
 
 /**
  * @category   Zend
@@ -569,7 +569,7 @@ class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
      */
     public function testInvalidArgumentExceptionCanBeThrown()
     {
-        require_once "Zend/EventManager/Exception/InvalidArgumentException.php";
+        // require_once "Zend/EventManager/Exception/InvalidArgumentException.php";
         throw new Zend_EventManager_Exception_InvalidArgumentException();
     }
 

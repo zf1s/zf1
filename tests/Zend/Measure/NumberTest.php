@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Number
  */
-require_once 'Zend/Measure/Number.php';
+// require_once 'Zend/Measure/Number.php';
 
 /**
  * @category   Zend

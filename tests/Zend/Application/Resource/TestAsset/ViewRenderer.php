@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
+// require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
 
 /**
  * @category   Zend

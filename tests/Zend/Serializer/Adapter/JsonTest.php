@@ -23,7 +23,7 @@
 /**
  * @see Zend_Serializer_Adapter_Json
  */
-require_once 'Zend/Serializer/Adapter/Json.php';
+// require_once 'Zend/Serializer/Adapter/Json.php';
 
 /**
  * @category   Zend

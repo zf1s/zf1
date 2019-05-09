@@ -23,7 +23,7 @@
 /**
  * Zend_OpenId
  */
-require_once 'Zend/OpenId/Consumer.php';
+// require_once 'Zend/OpenId/Consumer.php';
 
 /**
  * Zend_OpenId_ResponseHelper
@@ -33,17 +33,17 @@ require_once 'Zend/OpenId/ResponseHelper.php';
 /**
  * Zend_OpenId_Consumer_Storage_File
  */
-require_once 'Zend/OpenId/Consumer/Storage/File.php';
+// require_once 'Zend/OpenId/Consumer/Storage/File.php';
 
 /**
  * Zend_OpenId_Extensions_Sreg
  */
-require_once 'Zend/OpenId/Extension/Sreg.php';
+// require_once 'Zend/OpenId/Extension/Sreg.php';
 
 /**
  * Zend_Http_Client_Adapter_Test
  */
-require_once 'Zend/Http/Client/Adapter/Test.php';
+// require_once 'Zend/Http/Client/Adapter/Test.php';
 
 /**
  * @category   Zend

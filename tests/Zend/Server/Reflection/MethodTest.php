@@ -20,9 +20,9 @@
  * @version $Id$
  */
 
-require_once 'Zend/Server/Reflection/Method.php';
+// require_once 'Zend/Server/Reflection/Method.php';
 
-require_once 'Zend/Server/Reflection.php';
+// require_once 'Zend/Server/Reflection.php';
 
 /**
  * Test case for Zend_Server_Reflection_Method

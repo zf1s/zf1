@@ -20,7 +20,7 @@
  */
 
 /** Zend_Service_TinyUrlCom */
-require_once 'Zend/Service/ShortUrl/TinyUrlCom.php';
+// require_once 'Zend/Service/ShortUrl/TinyUrlCom.php';
 
 /**
  * @package  Zend_Service

@@ -28,12 +28,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_View_Helper_BaseUrl
  */
-require_once 'Zend/View/Helper/BaseUrl.php';
+// require_once 'Zend/View/Helper/BaseUrl.php';
 
 /**
  * @see Zend_Controller_Front
  */
-require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Front.php';
 
 /**
  * @category   Zend

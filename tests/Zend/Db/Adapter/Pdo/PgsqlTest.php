@@ -221,7 +221,7 @@ class Zend_Db_Adapter_Pdo_PgsqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         $this->_db->lastSequenceId('camelCase_id_seq');
         $this->_db->lastSequenceId($this->_db->quoteIdentifier('camelCase_id_seq', true));
 
-        require_once 'Zend/Db/Expr.php';
+        // require_once 'Zend/Db/Expr.php';
         $this->_db->lastSequenceId(new Zend_Db_Expr('camelCase_id_seq'));
         $lastId = $this->_db->lastSequenceId(new Zend_Db_Expr('camelCase_id_seq'));
         $this->assertEquals(2, $lastId);

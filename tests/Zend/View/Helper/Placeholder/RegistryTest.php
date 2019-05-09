@@ -26,7 +26,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_View_Helper_Placeholder_Registry */
-require_once 'Zend/View/Helper/Placeholder/Registry.php';
+// require_once 'Zend/View/Helper/Placeholder/Registry.php';
 
 /**
  * Test class for Zend_View_Helper_Placeholder_Registry.

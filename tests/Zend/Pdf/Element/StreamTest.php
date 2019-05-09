@@ -23,7 +23,7 @@
 /**
  * Zend_Pdf_Element_Stream
  */
-require_once 'Zend/Pdf/Element/Stream.php';
+// require_once 'Zend/Pdf/Element/Stream.php';
 
 /**
  * @category   Zend

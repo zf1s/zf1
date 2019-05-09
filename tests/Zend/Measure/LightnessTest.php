@@ -24,7 +24,7 @@
 /**
  * Zend_Measure_Lightness
  */
-require_once 'Zend/Measure/Lightness.php';
+// require_once 'Zend/Measure/Lightness.php';
 
 /**
  * @category   Zend

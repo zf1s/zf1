@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_Ebay_Finding
  */
-require_once 'Zend/Service/Ebay/Finding.php';
+// require_once 'Zend/Service/Ebay/Finding.php';
 
 /**
  * @category   Zend

@@ -23,7 +23,7 @@
 /**
  * @see Zend_Serializer_Adapter_PythonPickle
  */
-require_once 'Zend/Serializer/Adapter/PythonPickle.php';
+// require_once 'Zend/Serializer/Adapter/PythonPickle.php';
 
 /**
  * @category   Zend

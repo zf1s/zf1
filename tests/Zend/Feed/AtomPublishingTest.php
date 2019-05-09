@@ -23,12 +23,12 @@
 /**
  * @see Zend_Feed_Entry_Atom
  */
-require_once 'Zend/Feed/Entry/Atom.php';
+// require_once 'Zend/Feed/Entry/Atom.php';
 
 /**
  * @see Zend_Http_Client_File
  */
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * @category   Zend

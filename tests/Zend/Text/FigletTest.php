@@ -28,13 +28,13 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * Zend_Text_Figlet
  */
-require_once 'Zend/Text/Figlet.php';
-require_once 'Zend/Text/Figlet/Exception.php';
+// require_once 'Zend/Text/Figlet.php';
+// require_once 'Zend/Text/Figlet/Exception.php';
 
 /**
  * Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /**
  * @category   Zend

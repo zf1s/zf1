@@ -23,7 +23,7 @@
 /**
  * @see Zend_Serializer_Adapter_Amf0
  */
-require_once 'Zend/Serializer/Adapter/Amf0.php';
+// require_once 'Zend/Serializer/Adapter/Amf0.php';
 
 /**
  * @category   Zend

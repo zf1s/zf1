@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Oauth.php';
-require_once 'Zend/Oauth/Config.php';
+// require_once 'Zend/Oauth.php';
+// require_once 'Zend/Oauth/Config.php';
 
 /**
  * @category   Zend

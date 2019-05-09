@@ -23,14 +23,14 @@
 /**
  * Zend_Cache
  */
-require_once 'Zend/Cache.php';
-require_once 'Zend/Cache/Backend/File.php';
+// require_once 'Zend/Cache.php';
+// require_once 'Zend/Cache/Backend/File.php';
 
 /**
  * Zend_Log
  */
-require_once 'Zend/Log.php';
-require_once 'Zend/Log/Writer/Null.php';
+// require_once 'Zend/Log.php';
+// require_once 'Zend/Log/Writer/Null.php';
 
 /**
  * Common tests for backends

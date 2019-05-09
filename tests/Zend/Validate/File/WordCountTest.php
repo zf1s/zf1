@@ -28,7 +28,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * @see Zend_Validate_File_WordCount
  */
-require_once 'Zend/Validate/File/WordCount.php';
+// require_once 'Zend/Validate/File/WordCount.php';
 
 /**
  * @category   Zend

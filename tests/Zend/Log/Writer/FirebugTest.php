@@ -25,25 +25,25 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 /** Zend_Log */
-require_once 'Zend/Log.php';
+// require_once 'Zend/Log.php';
 
 /** Zend_Log_Writer_Firebug */
-require_once 'Zend/Log/Writer/Firebug.php';
+// require_once 'Zend/Log/Writer/Firebug.php';
 
 /** Zend_Log_Formatter_Firebug */
-require_once 'Zend/Log/Formatter/Firebug.php';
+// require_once 'Zend/Log/Formatter/Firebug.php';
 
 /** Zend_Wildfire_Channel_HttpHeaders */
-require_once 'Zend/Wildfire/Channel/HttpHeaders.php';
+// require_once 'Zend/Wildfire/Channel/HttpHeaders.php';
 
 /** Zend_Wildfire_Plugin_FirePhp */
-require_once 'Zend/Wildfire/Plugin/FirePhp.php';
+// require_once 'Zend/Wildfire/Plugin/FirePhp.php';
 
 /** Zend_Controller_Request_Http */
-require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Request/Http.php';
 
 /** Zend_Controller_Response_Http */
-require_once 'Zend/Controller/Response/Http.php';
+// require_once 'Zend/Controller/Response/Http.php';
 
 /**
  * @category   Zend

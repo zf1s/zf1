@@ -23,7 +23,7 @@
 /**
  * Zend_Measure_Cooking_Weight
  */
-require_once 'Zend/Measure/Cooking/Weight.php';
+// require_once 'Zend/Measure/Cooking/Weight.php';
 
 /**
  * @category   Zend

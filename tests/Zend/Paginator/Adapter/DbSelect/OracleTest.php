@@ -23,12 +23,12 @@
 /**
  * @see Zend_Paginator_Adapter_DbSelect
  */
-require_once 'Zend/Paginator/Adapter/DbSelect.php';
+// require_once 'Zend/Paginator/Adapter/DbSelect.php';
 
 /**
  * @see Zend_Db_Adapter_Oracle
  */
-require_once 'Zend/Db/Adapter/Oracle.php';
+// require_once 'Zend/Db/Adapter/Oracle.php';
 
 /**
  * @see Zend_Paginator_Adapter_DbSelectTest

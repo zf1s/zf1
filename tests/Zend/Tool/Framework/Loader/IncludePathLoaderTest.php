@@ -20,10 +20,10 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Tool/Framework/Loader/IncludePathLoader.php';
-require_once 'Zend/Tool/Framework/Manifest/Repository.php';
-require_once 'Zend/Tool/Framework/Action/Repository.php';
-require_once 'Zend/Tool/Framework/Provider/Repository.php';
+// require_once 'Zend/Tool/Framework/Loader/IncludePathLoader.php';
+// require_once 'Zend/Tool/Framework/Manifest/Repository.php';
+// require_once 'Zend/Tool/Framework/Action/Repository.php';
+// require_once 'Zend/Tool/Framework/Provider/Repository.php';
 
 /**
  * @category   Zend

@@ -20,7 +20,7 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Mobile/Push/Message/Apns.php';
+// require_once 'Zend/Mobile/Push/Message/Apns.php';
 
 /**
  * @category   Zend

@@ -26,7 +26,7 @@ if (! defined("PHPUnit_MAIN_METHOD")) {
 }
 
 /** Zend_View_Helper_Cycle */
-require_once 'Zend/View/Helper/Cycle.php';
+// require_once 'Zend/View/Helper/Cycle.php';
 
 /**
  * Test class for Zend_View_Helper_Cycle.

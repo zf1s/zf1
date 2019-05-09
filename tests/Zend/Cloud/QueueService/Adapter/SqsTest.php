@@ -32,7 +32,7 @@ require_once 'Zend/Cloud/QueueService/TestCase.php';
 /**
  * @see Zend_Cloud_QueueeService_Adapter_Sqs
  */
-require_once 'Zend/Cloud/QueueService/Adapter/Sqs.php';
+// require_once 'Zend/Cloud/QueueService/Adapter/Sqs.php';
 
 /**
  * @category   Zend

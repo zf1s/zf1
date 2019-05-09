@@ -26,18 +26,18 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 
-require_once 'Zend/Controller/Action/Helper/ContextSwitch.php';
+// require_once 'Zend/Controller/Action/Helper/ContextSwitch.php';
 
-require_once 'Zend/Config.php';
-require_once 'Zend/Controller/Action.php';
-require_once 'Zend/Controller/Action/HelperBroker.php';
-require_once 'Zend/Controller/Front.php';
-require_once 'Zend/Controller/Request/Http.php';
-require_once 'Zend/Controller/Response/Cli.php';
-require_once 'Zend/Json.php';
-require_once 'Zend/Layout.php';
-require_once 'Zend/View.php';
-require_once 'Zend/View/Interface.php';
+// require_once 'Zend/Config.php';
+// require_once 'Zend/Controller/Action.php';
+// require_once 'Zend/Controller/Action/HelperBroker.php';
+// require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Response/Cli.php';
+// require_once 'Zend/Json.php';
+// require_once 'Zend/Layout.php';
+// require_once 'Zend/View.php';
+// require_once 'Zend/View/Interface.php';
 
 /**
  * Test class for Zend_Controller_Action_Helper_ContextSwitch.

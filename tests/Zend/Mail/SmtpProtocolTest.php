@@ -23,12 +23,12 @@
 /**
  * Zend_Mail
  */
-require_once 'Zend/Mail.php';
+// require_once 'Zend/Mail.php';
 
 /**
  * Zend_Mail_Protocol_Smtp
  */
-require_once 'Zend/Mail/Protocol/Smtp.php';
+// require_once 'Zend/Mail/Protocol/Smtp.php';
 
 /**
  * @category   Zend

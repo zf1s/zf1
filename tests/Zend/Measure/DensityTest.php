@@ -23,7 +23,7 @@
 /**
  * Zend_Measure_Density
  */
-require_once 'Zend/Measure/Density.php';
+// require_once 'Zend/Measure/Density.php';
 
 /**
  * @category   Zend

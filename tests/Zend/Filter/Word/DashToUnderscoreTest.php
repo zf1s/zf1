@@ -26,7 +26,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 }
 
 
-require_once 'Zend/Filter/Word/DashToUnderscore.php';
+// require_once 'Zend/Filter/Word/DashToUnderscore.php';
 
 /**
  * Test class for Zend_Filter_Word_DashToUnderscore.

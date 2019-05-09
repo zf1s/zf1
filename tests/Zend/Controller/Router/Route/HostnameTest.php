@@ -21,10 +21,10 @@
  */
 
 /** Zend_Controller_Router_Route_Hostname */
-require_once 'Zend/Controller/Router/Route/Hostname.php';
+// require_once 'Zend/Controller/Router/Route/Hostname.php';
 
 /** Zend_Controller_Request_Http */
-require_once 'Zend/Controller/Request/Http.php';
+// require_once 'Zend/Controller/Request/Http.php';
 
 if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_Controller_Router_Route_HostnameTest::main');

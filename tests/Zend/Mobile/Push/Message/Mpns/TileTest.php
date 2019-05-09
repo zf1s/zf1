@@ -20,7 +20,7 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Mobile/Push/Message/Mpns/Tile.php';
+// require_once 'Zend/Mobile/Push/Message/Mpns/Tile.php';
 
 /**
  * @category   Zend

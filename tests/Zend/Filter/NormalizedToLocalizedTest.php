@@ -23,7 +23,7 @@
 /**
  * @see Zend_Filter_NormalizedToLocalized
  */
-require_once 'Zend/Filter/NormalizedToLocalized.php';
+// require_once 'Zend/Filter/NormalizedToLocalized.php';
 
 /**
  * @category   Zend

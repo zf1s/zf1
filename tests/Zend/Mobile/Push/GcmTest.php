@@ -20,9 +20,9 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Mobile/Push/Gcm.php';
-require_once 'Zend/Http/Client.php';
-require_once 'Zend/Http/Client/Adapter/Test.php';
+// require_once 'Zend/Mobile/Push/Gcm.php';
+// require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client/Adapter/Test.php';
 
 /**
  * @category   Zend

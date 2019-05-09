@@ -20,8 +20,8 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Mobile/Push/Response/Gcm.php';
-require_once 'Zend/Mobile/Push/Message/Gcm.php';
+// require_once 'Zend/Mobile/Push/Response/Gcm.php';
+// require_once 'Zend/Mobile/Push/Message/Gcm.php';
 
 /**
  * @category   Zend

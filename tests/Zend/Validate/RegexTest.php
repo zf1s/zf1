@@ -23,7 +23,7 @@
 /**
  * @see Zend_Validate_Regex
  */
-require_once 'Zend/Validate/Regex.php';
+// require_once 'Zend/Validate/Regex.php';
 
 
 /**

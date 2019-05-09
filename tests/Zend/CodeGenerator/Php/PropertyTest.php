@@ -20,9 +20,9 @@
  * @version    $Id $
  */
 
-require_once 'Zend/CodeGenerator/Php/Property.php';
+// require_once 'Zend/CodeGenerator/Php/Property.php';
 
-require_once 'Zend/Reflection/Class.php';
+// require_once 'Zend/Reflection/Class.php';
 
 /**
  * @category   Zend

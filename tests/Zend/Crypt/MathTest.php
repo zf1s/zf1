@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Crypt/Math.php';
-require_once 'Zend/Crypt/Exception.php';
+// require_once 'Zend/Crypt/Math.php';
+// require_once 'Zend/Crypt/Exception.php';
 
 /**
  * @category   Zend

@@ -24,7 +24,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_Stdlib_SplPriorityQueueTest::main');
 }
 
-require_once 'Zend/Stdlib/SplPriorityQueue.php';
+// require_once 'Zend/Stdlib/SplPriorityQueue.php';
 
 /**
  * @category   Zend

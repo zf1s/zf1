@@ -20,7 +20,7 @@
  */
 
 /** Zend_Service_ShortUrl_BitLy */
-require_once 'Zend/Service/ShortUrl/BitLy.php';
+// require_once 'Zend/Service/ShortUrl/BitLy.php';
 
 /**
  * @package  Zend_Service

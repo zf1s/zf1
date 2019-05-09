@@ -23,7 +23,7 @@
 /**
  * @see Zend_Serializer_Adapter_Wddx
  */
-require_once 'Zend/Serializer/Adapter/Wddx.php';
+// require_once 'Zend/Serializer/Adapter/Wddx.php';
 
 /**
  * @category   Zend

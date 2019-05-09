@@ -25,8 +25,8 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Decorator_CallbackTest::main");
 }
 
-require_once 'Zend/Form/Decorator/Callback.php';
-require_once 'Zend/Form/Element.php';
+// require_once 'Zend/Form/Decorator/Callback.php';
+// require_once 'Zend/Form/Element.php';
 
 /**
  * Test class for Zend_Form_Decorator_Callback

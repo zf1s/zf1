@@ -23,7 +23,7 @@
 /**
  * @see Zend_Reflection_Property
  */
-require_once 'Zend/Reflection/Property.php';
+// require_once 'Zend/Reflection/Property.php';
 
 /**
  * @category   Zend

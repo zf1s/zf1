@@ -29,7 +29,7 @@
 /**
  * Zend_Auth_Adapter_Digest
  */
-require_once 'Zend/Auth/Adapter/Digest.php';
+// require_once 'Zend/Auth/Adapter/Digest.php';
 
 
 /**

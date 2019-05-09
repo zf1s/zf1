@@ -21,28 +21,28 @@
  */
 
 /** Zend_Pdf */
-require_once 'Zend/Pdf.php';
+// require_once 'Zend/Pdf.php';
 
 /** Zend_Pdf_Page */
-require_once 'Zend/Pdf/Page.php';
+// require_once 'Zend/Pdf/Page.php';
 
 /** Zend_Pdf_Color_GrayScale */
-require_once 'Zend/Pdf/Color/GrayScale.php';
+// require_once 'Zend/Pdf/Color/GrayScale.php';
 
 /** Zend_Pdf_Color_Cmyk */
-require_once 'Zend/Pdf/Color/Cmyk.php';
+// require_once 'Zend/Pdf/Color/Cmyk.php';
 
 /** Zend_Pdf_Color_Rgb */
-require_once 'Zend/Pdf/Color/Rgb.php';
+// require_once 'Zend/Pdf/Color/Rgb.php';
 
 /** Zend_Pdf_Color_Html */
-require_once 'Zend/Pdf/Color/Html.php';
+// require_once 'Zend/Pdf/Color/Html.php';
 
 /** Zend_Pdf_Image */
-require_once 'Zend/Pdf/Image.php';
+// require_once 'Zend/Pdf/Image.php';
 
 /** Zend_Pdf_Font */
-require_once 'Zend/Pdf/Font.php';
+// require_once 'Zend/Pdf/Font.php';
 
 
 /**

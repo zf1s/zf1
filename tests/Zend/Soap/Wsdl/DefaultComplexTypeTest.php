@@ -20,8 +20,8 @@
  * @version    $Id$
  */
 
-require_once "Zend/Soap/Wsdl/Strategy/DefaultComplexType.php";
-require_once "Zend/Soap/Wsdl.php";
+// require_once "Zend/Soap/Wsdl/Strategy/DefaultComplexType.php";
+// require_once "Zend/Soap/Wsdl.php";
 
 /**
  * @category   Zend

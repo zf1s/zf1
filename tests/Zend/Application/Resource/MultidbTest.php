@@ -27,14 +27,14 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
+// require_once 'Zend/Loader/Autoloader.php';
 
 /**
  * @see Zend_Application_Resource_Multidb
  */
-require_once 'Zend/Application/Resource/Multidb.php';
+// require_once 'Zend/Application/Resource/Multidb.php';
 
-require_once 'Zend/Db/Table.php';
+// require_once 'Zend/Db/Table.php';
 
 
 /**
