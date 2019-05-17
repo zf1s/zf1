@@ -40,6 +40,10 @@ class Zend_Filter_Encrypt_McryptTest extends PHPUnit_Framework_TestCase
         if (!extension_loaded('mcrypt')) {
             $this->markTestSkipped('This adapter needs the mcrypt extension');
         }
+
+        if (PHP_VERSION_ID >= 70100) {
+            $this->markTestSkipped('mcrypt is deprecated in php 7.1');
+        }
     }
 
     /**
