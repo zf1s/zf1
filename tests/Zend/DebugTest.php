@@ -51,8 +51,8 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
         $data = 'string';
         $result = Zend_Debug::Dump($data, null, false);
         $result = str_replace(array(PHP_EOL, "\n"), '_', $result);
-        $expected = "__string(6) \"string\"__";
-        $this->assertEquals($expected, $result);
+        $expected = "__.*string\(6\) \"string\"__";
+        $this->assertRegExp('/^' . $expected . '$/', $result);
     }
 
     public function testDebugCgi()
@@ -61,12 +61,9 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
         $data = 'string';
         $result = Zend_Debug::Dump($data, null, false);
 
-        // Has to check for two strings, because xdebug internally handles CLI vs Web
-        $this->assertContains($result,
-            array(
-                "<pre>string(6) \"string\"\n</pre>",
-                "<pre>string(6) &quot;string&quot;\n</pre>",
-            )
+        $this->assertRegExp(
+            '/^<pre>.*string\(6\) ("|&quot;)string("|&quot;)' . "\n" . '<\/pre>$/s',
+            $result
         );
     }
 
@@ -90,8 +87,8 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
         $label = 'LABEL';
         $result = Zend_Debug::Dump($data, $label, false);
         $result = str_replace(array(PHP_EOL, "\n"), '_', $result);
-        $expected = "_{$label} _string(6) \"string\"__";
-        $this->assertEquals($expected, $result);
+        $expected = "_{$label} .*_string\(6\) \"string\"__";
+        $this->assertRegExp('/^' . $expected . '$/', $result);
     }
 
     /**
