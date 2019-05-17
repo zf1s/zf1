@@ -143,7 +143,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
             fwrite($f, $data);
             if (function_exists('symlink')) {
                 @unlink($name2);
-                if (symlink($name1, $name2)) {
+                if (@symlink($name1, $name2)) {
                     fclose($f);
                     fclose($lock);
                     return true;
@@ -486,7 +486,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
                 unset($nonceFiles);
             } else {
                 if (is_string($date)) {
-                    $time = time($date);
+                    $time = strtotime($date);
                 } else {
                     $time = $date;
                 }
