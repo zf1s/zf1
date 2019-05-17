@@ -418,7 +418,7 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
         $requiredFiles = $this->getRequiredFiles();
         if (!empty($requiredFiles)) {
             foreach ($requiredFiles as $requiredFile) {
-                $output .= '// require_once \'' . $requiredFile . '\';' . self::LINE_FEED;
+                $output .= 'require_once \'' . $requiredFile . '\';' . self::LINE_FEED;
             }
 
             $output .= self::LINE_FEED;
