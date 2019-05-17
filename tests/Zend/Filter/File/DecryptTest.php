@@ -42,6 +42,10 @@ class Zend_Filter_File_DecryptTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('This filter needs the mcrypt extension');
         }
 
+        if (PHP_VERSION_ID >= 70100) {
+            $this->markTestSkipped('mcrypt is deprecated in php 7.1');
+        }
+
         if (file_exists(dirname(__FILE__).'/../_files/newencryption.txt')) {
             unlink(dirname(__FILE__).'/../_files/newencryption.txt');
         }
