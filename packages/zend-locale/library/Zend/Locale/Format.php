@@ -925,7 +925,12 @@ class Zend_Locale_Format
                             $result['day']    = $splitted[0][$cnt];
                         }
                     } else {
-                        $result['day'] = iconv_substr($splitted[0][0], $split, 2);
+                        // iconv_substr changes since 7.0.11
+                        if (iconv_strlen($splitted[0][0]) === $split) {
+                            $result['day'] = false;
+                        } else {
+                            $result['day'] = iconv_substr($splitted[0][0], $split, 2);
+                        }
                         $split += 2;
                     }
                     ++$cnt;
@@ -936,7 +941,12 @@ class Zend_Locale_Format
                             $result['month']  = $splitted[0][$cnt];
                         }
                     } else {
-                        $result['month'] = iconv_substr($splitted[0][0], $split, 2);
+                        // iconv_substr changes since 7.0.11
+                        if (iconv_strlen($splitted[0][0]) === $split) {
+                            $result['month'] = false;
+                        } else {
+                            $result['month'] = iconv_substr($splitted[0][0], $split, 2);
+                        }
                         $split += 2;
                     }
                     ++$cnt;
@@ -953,7 +963,12 @@ class Zend_Locale_Format
                             $result['year']   = $splitted[0][$cnt];
                         }
                     } else {
-                        $result['year']   = iconv_substr($splitted[0][0], $split, $length);
+                        // iconv_substr changes since 7.0.11
+                        if (iconv_strlen($splitted[0][0]) === $split) {
+                            $result['year'] = false;
+                        } else {
+                            $result['year'] = iconv_substr($splitted[0][0], $split, $length);
+                        }
                         $split += $length;
                     }
 
@@ -965,7 +980,12 @@ class Zend_Locale_Format
                             $result['hour']   = $splitted[0][$cnt];
                         }
                     } else {
-                        $result['hour']   = iconv_substr($splitted[0][0], $split, 2);
+                        // iconv_substr changes since 7.0.11
+                        if (iconv_strlen($splitted[0][0]) === $split) {
+                            $result['hour'] = false;
+                        } else {
+                            $result['hour'] = iconv_substr($splitted[0][0], $split, 2);
+                        }
                         $split += 2;
                     }
                     ++$cnt;
@@ -976,7 +996,12 @@ class Zend_Locale_Format
                             $result['minute'] = $splitted[0][$cnt];
                         }
                     } else {
-                        $result['minute'] = iconv_substr($splitted[0][0], $split, 2);
+                        // iconv_substr changes since 7.0.11 */
+                        if (iconv_strlen($splitted[0][0]) === $split) {
+                            $result['minute'] = false;
+                        } else {
+                            $result['minute'] = iconv_substr($splitted[0][0], $split, 2);
+                        }
                         $split += 2;
                     }
                     ++$cnt;
@@ -987,7 +1012,12 @@ class Zend_Locale_Format
                             $result['second'] = $splitted[0][$cnt];
                         }
                     } else {
-                        $result['second'] = iconv_substr($splitted[0][0], $split, 2);
+                        // iconv_substr changes since 7.0.11
+                        if (iconv_strlen($splitted[0][0]) === $split) {
+                            $result['second'] = false;
+                        } else {
+                            $result['second'] = iconv_substr($splitted[0][0], $split, 2);
+                        }
                         $split += 2;
                     }
                     ++$cnt;
