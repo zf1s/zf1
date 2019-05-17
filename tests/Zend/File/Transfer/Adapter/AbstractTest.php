@@ -867,6 +867,10 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testSetDestinationWithNonExistingPathShouldThrowException()
     {
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
+            return;
+        }
+
         // Create temporary directory
         $directory = dirname(__FILE__) . '/_files/destination';
         if (!is_dir($directory)) {

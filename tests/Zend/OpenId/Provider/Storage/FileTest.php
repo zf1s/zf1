@@ -55,7 +55,7 @@ class Zend_OpenId_Provider_Storage_FileTest extends PHPUnit_Framework_TestCase
         $storage = new Zend_OpenId_Provider_Storage_File($dir);
         $this->assertTrue( is_dir($dir) );
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
             return;
         }
 
@@ -98,7 +98,7 @@ class Zend_OpenId_Provider_Storage_FileTest extends PHPUnit_Framework_TestCase
         $storage = new Zend_OpenId_Provider_Storage_File($dir);
         $this->assertTrue( is_dir($dir) );
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
             return;
         }
 
