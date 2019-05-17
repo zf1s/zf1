@@ -41,6 +41,10 @@ class Zend_Filter_DecryptTest extends PHPUnit_Framework_TestCase
         if (!extension_loaded('mcrypt') and !extension_loaded('openssl')) {
             $this->markTestSkipped('This filter needs the mcrypt or openssl extension');
         }
+
+        if (PHP_VERSION_ID >= 70100) {
+            $this->markTestSkipped('mcrypt is deprecated in php 7.1');
+        }
     }
 
     /**
