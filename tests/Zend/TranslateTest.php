@@ -637,7 +637,7 @@ class Zend_TranslateTest extends PHPUnit_Framework_TestCase
     public function testEmptyTranslation()
     {
         $lang = new Zend_Translate(Zend_Translate::AN_ARRAY, null, null, array('disableNotices' => true));
-        $this->assertEquals(0, count($lang->getList()));
+        $this->assertNull($lang->getList());
     }
 
     /**

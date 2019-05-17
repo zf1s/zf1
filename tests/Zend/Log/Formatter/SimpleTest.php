@@ -84,11 +84,11 @@ class Zend_Log_Formatter_SimpleTest extends PHPUnit_Framework_TestCase
 
         $fields['message'] = 10;
         $line = $f->format($fields);
-        $this->assertContains($fields['message'], $line);
+        $this->assertContains((string)$fields['message'], $line);
 
         $fields['message'] = 10.5;
         $line = $f->format($fields);
-        $this->assertContains($fields['message'], $line);
+        $this->assertContains((string)$fields['message'], $line);
 
         $fields['message'] = true;
         $line = $f->format($fields);

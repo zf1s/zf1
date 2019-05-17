@@ -82,7 +82,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
      */
     public function testDefaultHelperPath()
     {
-        $this->_testDefaultPath('helper');
+        $this->_testDefaultPath('helper', false);
     }
 
     /**

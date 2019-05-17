@@ -107,7 +107,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
             $exceptionCaught = true;
         }
         $this->assertTrue($exceptionCaught, 'Expected exception not caught: '
-                + 'Zend_Gdata_App_InvalidArgumentException');
+                . 'Zend_Gdata_App_InvalidArgumentException');
     }
 
     public function testMajorProtocolVersionCannotBeNull()
@@ -119,7 +119,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
             $exceptionCaught = true;
         }
         $this->assertTrue($exceptionCaught, 'Expected exception not caught: '
-                + 'Zend_Gdata_App_InvalidArgumentException');
+                . 'Zend_Gdata_App_InvalidArgumentException');
     }
 
     public function testMinorProtocolVersionCannotBeLessThanZero()
@@ -131,7 +131,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
             $exceptionCaught = true;
         }
         $this->assertTrue($exceptionCaught, 'Expected exception not caught: '
-                + 'Zend_Gdata_App_InvalidArgumentException');
+                . 'Zend_Gdata_App_InvalidArgumentException');
     }
 
     public function testNoGdataVersionHeaderSentWhenUsingV1()
@@ -196,7 +196,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'GData-Version: 2')
+            if ($header == 'GData-Version: 2.1')
                 $found = true;
         }
         $this->assertTrue($found, 'Version header not found or incorrect');
@@ -608,7 +608,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
     public function testLoadExtensionCausesFatalErrorWhenErrorHandlerIsOverridden()
     {
         // Override the error handler to throw an ErrorException
-        set_error_handler(create_function('$a, $b, $c, $d', 'throw new ErrorException($b, 0, $a, $c, $d);'), E_ALL);
+        set_error_handler(function($a, $b, $c, $d) { throw new ErrorException($b, 0, $a, $c, $d); }, E_ALL);
         try { 
             $eq = $this->service->newEventQuery();
             restore_error_handler();
