@@ -65,13 +65,11 @@ class Zend_Loader_Autoloader
     protected $_internalAutoloader;
 
     /**
-     * This used to also support the ZendX pseudo namespace which wasn't
-     * really used anywhere in zendframework1.
-     *
-     * @var array Supported namespace 'Zend' by default.
+     * @var array Supported namespaces 'Zend' and 'ZendX' by default.
      */
     protected $_namespaces = array(
         'Zend_'  => true,
+        'ZendX_' => true,
     );
 
     /**
