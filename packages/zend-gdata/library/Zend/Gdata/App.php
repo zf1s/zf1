@@ -817,7 +817,7 @@ class Zend_Gdata_App
         $className='Zend_Gdata_App_Feed', $majorProtocolVersion = null,
         $minorProtocolVersion = null)
     {
-        if (!class_exists($className, false)) {
+        if (!class_exists($className)) {
           // require_once 'Zend/Loader.php';
           @Zend_Loader::loadClass($className);
         }
@@ -975,7 +975,7 @@ class Zend_Gdata_App
     public function insertEntry($data, $uri, $className='Zend_Gdata_App_Entry',
         $extraHeaders = array())
     {
-        if (!class_exists($className, false)) {
+        if (!class_exists($className)) {
           // require_once 'Zend/Loader.php';
           @Zend_Loader::loadClass($className);
         }
@@ -1016,7 +1016,7 @@ class Zend_Gdata_App
             $className = 'Zend_Gdata_App_Entry';
         }
 
-        if (!class_exists($className, false)) {
+        if (!class_exists($className)) {
           // require_once 'Zend/Loader.php';
           @Zend_Loader::loadClass($className);
         }
@@ -1055,7 +1055,10 @@ class Zend_Gdata_App
                  try {
                      // Autoloading disabled on next line for compatibility
                      // with magic factories. See ZF-6660.
-                     if (!class_exists($name . '_' . $class, false)) {
+                     Zend_Loader_Autoloader::setDisabled();
+                     $found = class_exists($name . '_' . $class);
+                     Zend_Loader_Autoloader::setDisabled(false);
+                     if (!$found) {
                         // require_once 'Zend/Loader.php';
                         @Zend_Loader::loadClass($name . '_' . $class);
                      }

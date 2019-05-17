@@ -197,7 +197,9 @@ class Zend_Tool_Framework_System_Provider_Config extends Zend_Tool_Framework_Pro
      */
     public function enableProvider($className)
     {
-        Zend_Loader::loadClass($className);
+        if (!class_exists($className)) {
+            Zend_Loader::loadClass($className);
+        }
         $reflClass = new ReflectionClass($className);
         if (!in_array("Zend_Tool_Framework_Provider_Interface", $reflClass->getInterfaceNames())) {
             // require_once "Zend/Tool/Framework/Exception.php";
@@ -251,7 +253,9 @@ class Zend_Tool_Framework_System_Provider_Config extends Zend_Tool_Framework_Pro
      */
     public function enableManifest($className)
     {
-        Zend_Loader::loadClass($className);
+        if (!class_exists($className)) {
+            Zend_Loader::loadClass($className);
+        }
         $reflClass = new ReflectionClass($className);
         if (!in_array("Zend_Tool_Framework_Manifest_Interface", $reflClass->getInterfaceNames())) {
             // require_once "Zend/Tool/Framework/Exception.php";

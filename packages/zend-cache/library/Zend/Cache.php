@@ -88,7 +88,7 @@ abstract class Zend_Cache
      * @throws Zend_Cache_Exception
      * @return Zend_Cache_Core|Zend_Cache_Frontend
      */
-    public static function factory($frontend, $backend, $frontendOptions = array(), $backendOptions = array(), $customFrontendNaming = false, $customBackendNaming = false, $autoload = false)
+    public static function factory($frontend, $backend, $frontendOptions = array(), $backendOptions = array(), $customFrontendNaming = false, $customBackendNaming = false, $autoload = true)
     {
         if (is_string($backend)) {
             $backendObject = self::_makeBackend($backend, $backendOptions, $customBackendNaming, $autoload);
@@ -147,7 +147,7 @@ abstract class Zend_Cache
                 if (!(self::_isReadable($file))) {
                     self::throwException("file $file not found in include_path");
                 }
-                // require_once $file;
+                require_once $file;
             }
         }
         return new $backendClass($backendOptions);

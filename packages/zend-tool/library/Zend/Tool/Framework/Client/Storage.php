@@ -50,7 +50,9 @@ class Zend_Tool_Framework_Client_Storage
     {
         if (is_string($adapter)) {
             $storageAdapterClass = 'Zend_Tool_Framework_Client_Storage_' . ucfirst($adapter);
-            Zend_Loader::loadClass($storageAdapterClass);
+            if (!class_exists($storageAdapterClass)) {
+                Zend_Loader::loadClass($storageAdapterClass);
+            }
             $adapter = new $storageAdapterClass();
         }
         $this->_adapter = $adapter;

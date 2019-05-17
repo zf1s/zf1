@@ -169,7 +169,7 @@ class Zend_Cache_Manager
                 isset($this->_optionTemplates[$name]['backend']['options']) ? $this->_optionTemplates[$name]['backend']['options'] : array(),
                 isset($this->_optionTemplates[$name]['frontend']['customFrontendNaming']) ? $this->_optionTemplates[$name]['frontend']['customFrontendNaming'] : false,
                 isset($this->_optionTemplates[$name]['backend']['customBackendNaming']) ? $this->_optionTemplates[$name]['backend']['customBackendNaming'] : false,
-                isset($this->_optionTemplates[$name]['frontendBackendAutoload']) ? $this->_optionTemplates[$name]['frontendBackendAutoload'] : false
+                isset($this->_optionTemplates[$name]['frontendBackendAutoload']) ? $this->_optionTemplates[$name]['frontendBackendAutoload'] : true
             );
 
             return $this->_caches[$name];
