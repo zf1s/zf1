@@ -122,6 +122,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
             $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function testTableEmptyNamePullFromSavePath()
     {
         $config = $this->_saveHandlerTableConfig;
@@ -334,6 +337,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($saveHandler->getOverrideLifetime(), '');
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function testSessionSaving()
     {
         $this->_dropTable();

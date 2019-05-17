@@ -33,6 +33,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 // require_once 'Zend/Controller/Exception.php';
 // require_once 'Zend/Session.php';
 require_once dirname(dirname(dirname(__FILE__))) . '/_files/HelperFlashMessengerController.php';
+require_once 'Zend/Session/SessionHelper.php';
 
 /**
  * @category   Zend
@@ -108,6 +109,11 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework
         $this->response   = new Zend_Controller_Response_Cli();
         $this->controller = new HelperFlashMessengerController($this->request, $this->response, array());
         $this->helper     = new Zend_Controller_Action_Helper_FlashMessenger;
+    }
+
+    public function tearDown()
+    {
+        Zend_Session_SessionHelper::reset();
     }
 
     public function testLoadFlashMessenger()

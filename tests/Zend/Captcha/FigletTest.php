@@ -298,6 +298,7 @@ class Zend_Captcha_FigletTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group ZF-5728
+     * @runInSeparateProcess
      */
     public function testSetSessionWorks()
     {

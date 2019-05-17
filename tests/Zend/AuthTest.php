@@ -39,7 +39,7 @@
 /**
  * @group ZF-7882 - temp solution provided by {@link http://www.alexatnet.com/node/12}
  */
-Zend_Session::start();
+// Zend_Session::start();
 
 
 /**
@@ -94,6 +94,11 @@ class Zend_AuthTest extends PHPUnit_Framework_TestCase
      */
     public function testClearIdentity()
     {
+        // workaround for Undefined variable: _SESSION at Zend\Session\Abstract.php:122
+        if(!isset($_SESSION)) {
+            $_SESSION = array();
+        }
+
         $auth = Zend_Auth::getInstance();
         $auth->clearIdentity();
         $this->assertFalse($auth->hasIdentity());

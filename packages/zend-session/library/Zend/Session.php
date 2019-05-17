@@ -438,7 +438,7 @@ class Zend_Session extends Zend_Session_Abstract
         }
 
         // make sure our default options (at the least) have been set
-        if (!self::$_defaultOptionsSet) {
+        if (!self::$_unitTestEnabled && !self::$_defaultOptionsSet) {
             self::setOptions(is_array($options) ? $options : array());
         }
 
