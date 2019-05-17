@@ -58,7 +58,7 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
             );
         }
         $result = $this->_db->find($data['id']);
-        if (count($result)) {
+        if ($result && count($result)) {
             $data['created_time'] = $result->current()->created_time;
             $now = new Zend_Date;
             if (isset($data['lease_seconds'])) {
@@ -92,7 +92,7 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
                 .' of "' . $key . '" must be a non-empty string');
         }
         $result = $this->_db->find($key);
-        if (count($result)) {
+        if ($result && count($result)) {
             return $result->current()->toArray();
         }
         return false;
@@ -114,7 +114,7 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
                 .' of "' . $key . '" must be a non-empty string');
         }
         $result = $this->_db->find($key);
-        if (count($result)) {
+        if ($result && count($result)) {
             return true;
         }
         return false;
@@ -129,7 +129,7 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
     public function deleteSubscription($key)
     {
         $result = $this->_db->find($key);
-        if (count($result)) {
+        if ($result && count($result)) {
             $this->_db->delete(
                 $this->_db->getAdapter()->quoteInto('id = ?', $key)
             );
