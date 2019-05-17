@@ -861,7 +861,10 @@ class Zend_Gdata_Gapps extends Zend_Gdata
                  try {
                      // Autoloading disabled on next line for compatibility
                      // with magic factories. See ZF-6660.
-                     if (!class_exists($name . '_' . $class, false)) {
+                     Zend_Loader_Autoloader::setDisabled();
+                     $found = class_exists($name . '_' . $class);
+                     Zend_Loader_Autoloader::setDisabled(false);
+                     if (!$found) {
                         // require_once 'Zend/Loader.php';
                         @Zend_Loader::loadClass($name . '_' . $class);
                      }

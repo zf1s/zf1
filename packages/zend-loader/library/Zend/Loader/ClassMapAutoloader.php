@@ -145,7 +145,7 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
     public function autoload($class)
     {
         if (isset($this->map[$class])) {
-            // require_once $this->map[$class];
+            require_once $this->map[$class];
         }
     }
 
@@ -204,16 +204,16 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
      */
     public static function realPharPath($path)
     {
-        if (strpos($path, 'phar:///') !== 0) {
+        if (strpos($path, 'phar://') !== 0) {
             return;
         }
         
-        $parts = explode('/', str_replace(array('/','\\'), '/', substr($path, 8)));
+        $parts = explode('/', str_replace(array('/','\\'), '/', substr($path, 7)));
+        $prependSlash = $parts && $parts[0] === '' ? '/' : '';
         $parts = array_values(array_filter($parts, array(__CLASS__, 'concatPharParts')));
 
         array_walk($parts, array(__CLASS__, 'resolvePharParentPath'), $parts);
-
-        if (file_exists($realPath = 'phar:///' . implode('/', $parts))) {
+        if (file_exists($realPath = 'phar://' . $prependSlash . implode('/', $parts))) {
             return $realPath;
         }
     }

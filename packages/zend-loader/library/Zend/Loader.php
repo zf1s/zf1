@@ -51,7 +51,6 @@ class Zend_Loader
      */
     public static function loadClass($class, $dirs = null)
     {
-        return; // composer autoload should handle loading a class
         if (class_exists($class, false) || interface_exists($class, false)) {
             return;
         }

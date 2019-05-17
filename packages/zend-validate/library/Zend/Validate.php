@@ -202,8 +202,9 @@ class Zend_Validate implements Zend_Validate_Interface
                 foreach($namespaces as $namespace) {
                     $nsSeparator = (false !== strpos($namespace, '\\'))?'\\':'_';
                     $class = rtrim($namespace, $nsSeparator) . $nsSeparator . $className;
-                    if (!class_exists($class)) {
-                        continue;
+                    if (class_exists($class)) {
+                        $className = $class;
+                        break;
                     }
                     /*$file  = str_replace('_', DIRECTORY_SEPARATOR, $class) . '.php';
                     if (Zend_Loader::isReadable($file)) {

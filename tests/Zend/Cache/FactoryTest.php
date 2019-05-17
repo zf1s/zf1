@@ -97,7 +97,7 @@ class Zend_Cache_FactoryTest extends PHPUnit_Framework_TestCase
     public function testBadFrontend()
     {
         try {
-            Zend_Cache::factory('badFrontend', 'File');
+            Zend_Cache::factory('badFrontend', 'File', array(), array(), false, false, false);
         } catch (Zend_Exception $e) {
             return;
         }
@@ -107,7 +107,7 @@ class Zend_Cache_FactoryTest extends PHPUnit_Framework_TestCase
     public function testBadBackend()
     {
         try {
-            Zend_Cache::factory('Output', 'badBackend');
+            Zend_Cache::factory('Output', 'badBackend', array(), array(), false, false, false);
         } catch (Zend_Exception $e) {
             return;
         }
