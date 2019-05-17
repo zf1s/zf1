@@ -36,6 +36,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 require_once 'ServiceA.php';
 require_once 'ServiceB.php';
 // require_once 'Zend/Session.php';
+require_once 'Zend/Session/SessionHelper.php';
 
 /**
  * @category   Zend
@@ -1005,8 +1006,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $headerBody = $response->getAmfHeaders();
         $this->assertEquals('AppendToGatewayUrl',$headerBody[0]->name);
 
-        // Do not stop session since it still can be used by other tests
-        // Zend_Session::stop();
+        Zend_Session_SessionHelper::reset();
     }
 
     public function testAddDirectory()

@@ -25,6 +25,8 @@
  */
 // require_once 'Zend/Session.php';
 
+require_once 'Zend/Session/SessionHelper.php';
+
 
 /**
  * Black box testing for Zend_Session
@@ -35,6 +37,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Session
+ * @runTestsInSeparateProcesses
  */
 class Zend_SessionTest extends PHPUnit_Framework_TestCase
 {
@@ -85,25 +88,16 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-        ini_set('session.save_path', $this->_savePath);
+        Zend_Session_SessionHelper::reset();
+        Zend_Session::$_unitTestEnabled = true;
+
+        session_save_path($this->_savePath);
 
         $this->assertSame(
             E_ALL | E_STRICT,
             error_reporting( E_ALL | E_STRICT ),
             'A test altered error_reporting to something other than E_ALL | E_STRICT'
             );
-
-        Zend_Session_Namespace::unlockAll();
-
-        // unset all namespaces
-        foreach (Zend_Session::getIterator() as $space) {
-            try {
-                Zend_Session::namespaceUnset($space);
-            } catch (Zend_Session_Exception $e) {
-                $this->assertRegexp('/read.only/i', $e->getMessage());
-                return;
-            }
-        }
     }
 
     /**
@@ -265,6 +259,9 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
     public function testNamespaceIsset()
     {
         try {
+            Zend_Session::$_unitTestEnabled = true;
+            Zend_Session::start();
+
             $this->assertFalse(Zend_Session::namespaceIsset('trees'),
                 'namespaceIsset() should have returned false for a namespace with no keys set');
             $s = new Zend_Session_Namespace('trees');
@@ -777,7 +774,6 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
     /**
      * test expiration of namespaces and namespace variables by seconds; expect expiration of specified keys/namespace
      *
-     * @runInSeparateProcess
      * @return void
      */
     public function testSetExpirationSeconds()
