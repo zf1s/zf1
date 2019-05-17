@@ -35,10 +35,17 @@
 class Zend_Test_PHPUnit_Db_Operation_InsertTest extends PHPUnit_Framework_TestCase
 {
     private $operation = null;
+    private $libxmlDisableEntityLoader;
 
     public function setUp()
     {
         $this->operation = new Zend_Test_PHPUnit_Db_Operation_Insert();
+        $this->libxmlDisableEntityLoader = libxml_disable_entity_loader(false);
+    }
+
+    public function tearDown()
+    {
+        libxml_disable_entity_loader($this->libxmlDisableEntityLoader);
     }
 
     public function testInsertDataSetUsingAdapterInsert()
