@@ -66,13 +66,13 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _prepare()
     {
-        $frac   = microtime();
+        list($frac, $sec) = explode(' ', microtime());
         $fracba = ($frac & 0xff000000) >> 24;
         $fracbb = ($frac & 0x00ff0000) >> 16;
         $fracbc = ($frac & 0x0000ff00) >> 8;
         $fracbd = ($frac & 0x000000ff);
 
-        $sec   = (time() + 2208988800);
+        $sec = $sec + 2208988800;
         $secba = ($sec & 0xff000000) >> 24;
         $secbb = ($sec & 0x00ff0000) >> 16;
         $secbc = ($sec & 0x0000ff00) >> 8;
