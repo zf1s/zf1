@@ -71,6 +71,9 @@ class Zend_Application_Resource_SessionTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->resource->getSaveHandler() instanceof $saveHandlerClassName);
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function testSetOptions()
     {
         Zend_Session::setOptions(array(
