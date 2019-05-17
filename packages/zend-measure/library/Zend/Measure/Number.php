@@ -277,7 +277,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
      */
     private function _toDecimal($input, $type)
     {
-        $value = '';
+        $value = 0;
         // Convert base xx values
         if ($this->_units[$type][0] <= 16) {
             $split  = str_split($input);
