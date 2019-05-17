@@ -333,7 +333,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends PHPUnit_Framework_Constrai
 
         foreach ($result as $node) {
             $content = $this->_getNodeContent($node);
-            if (strstr($content, $match)) {
+            if (strstr($content, (string)$match)) {
                 return false;
             }
         }
