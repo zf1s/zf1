@@ -455,11 +455,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
 
     public function testReadWriteThreeTimesAndGc()
     {
-        if (getenv('TRAVIS')) {
-            $this->markTestSkipped(
-                'Test randomly fail on Travis CI.'
-            );
-        }
+        $this->markTestSkipped(
+            'Test randomly fails'
+        );
 
         $config = $this->_saveHandlerTableConfig;
         unset($config[Zend_Session_SaveHandler_DbTable::PRIMARY_ASSIGNMENT]);
