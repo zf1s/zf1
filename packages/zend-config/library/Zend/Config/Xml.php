@@ -112,6 +112,7 @@ class Zend_Config_Xml extends Zend_Config
                     );
                 }
             } catch (Zend_Xml_Exception $e) {
+                restore_error_handler();
                 // require_once 'Zend/Config/Exception.php';
                 throw new Zend_Config_Exception(
                     $e->getMessage()
