@@ -78,12 +78,12 @@ class Zend_Filter_Compress_RarTest extends PHPUnit_Framework_TestCase
             }
         }
 
-        if (!file_exists(dirname(__FILE__) . '/../_files/Compress/First/Second')) {
+        /*if (!file_exists(dirname(__FILE__) . '/../_files/Compress/First/Second')) {
             mkdir(dirname(__FILE__) . '/../_files/Compress/First/Second', 0777, true);
             file_put_contents(dirname(__FILE__) . '/../_files/Compress/First/Second/zipextracted.txt', 'compress me');
             file_put_contents(dirname(__FILE__) . '/../_files/Compress/First/zipextracted.txt', 'compress me');
             file_put_contents(dirname(__FILE__) . '/../_files/Compress/zipextracted.txt', 'compress me');
-        }
+        }*/
     }
 
     public function tearDown()
@@ -110,12 +110,12 @@ class Zend_Filter_Compress_RarTest extends PHPUnit_Framework_TestCase
             }
         }
 
-        if (!file_exists(dirname(__FILE__) . '/../_files/Compress/First/Second')) {
+        /*if (!file_exists(dirname(__FILE__) . '/../_files/Compress/First/Second')) {
             mkdir(dirname(__FILE__) . '/../_files/Compress/First/Second', 0777, true);
             file_put_contents(dirname(__FILE__) . '/../_files/Compress/First/Second/zipextracted.txt', 'compress me');
             file_put_contents(dirname(__FILE__) . '/../_files/Compress/First/zipextracted.txt', 'compress me');
             file_put_contents(dirname(__FILE__) . '/../_files/Compress/zipextracted.txt', 'compress me');
-        }
+        }*/
     }
 
     /**
