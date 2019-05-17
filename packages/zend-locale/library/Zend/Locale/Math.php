@@ -62,12 +62,13 @@ class Zend_Locale_Math
      * then try:
      *   Zend_Locale_Math::round('639.795', 2);
      */
-    public static function round($op1, $precision = 0)
+    public static function round($op1, $precision = 0, $normalize = false)
     {
         if (self::$_bcmathDisabled) {
             $op1 = round($op1, $precision);
             if (strpos((string) $op1, 'E') === false) {
-                return self::normalize(round($op1, $precision));
+                $value = round($op1, $precision);
+                return $normalize ? self::normalize($value) : $value;
             }
         }
 
@@ -75,7 +76,9 @@ class Zend_Locale_Math
             $op1 = self::floatalize($op1);
         }
 
-        $op1    = trim(self::normalize($op1));
+        if ($normalize) {
+            $op1 = trim(self::normalize($op1));
+        }
         $length = strlen($op1);
         if (($decPos = strpos($op1, '.')) === false) {
             $op1 .= '.0';
@@ -143,7 +146,13 @@ class Zend_Locale_Math
      */
     public static function floatalize($value)
     {
-        $value = strtoupper($value);
+        // https://stackoverflow.com/questions/17587581/php-locale-dependent-float-to-string-cast
+        // workaround for locale-dependent float->string conversion
+        $locale = setlocale(LC_NUMERIC, 0);
+        setlocale(LC_NUMERIC, 'C');
+        $value = strtoupper((string)$value);
+        setlocale(LC_NUMERIC, $locale);
+
         if (strpos($value, 'E') === false) {
             return $value;
         }
