@@ -609,8 +609,8 @@ class Zend_Gdata_App
         $major = $this->getMajorProtocolVersion();
         $minor = $this->getMinorProtocolVersion();
         if ($major >= 2) {
-            $headers['GData-Version'] = $major +
-                    (($minor === null) ? '.' + $minor : '');
+            $headers['GData-Version'] = $major .
+                    (($minor !== null) ? '.' . $minor : '');
         }
 
         // check the overridden method
