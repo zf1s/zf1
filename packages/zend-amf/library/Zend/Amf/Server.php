@@ -286,6 +286,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
         if(empty($this->_loader)) {
             // require_once 'Zend/Loader/PluginLoader.php';
             $this->_loader = new Zend_Loader_PluginLoader();
+            $this->_loader->useComposerAutoloader(false);
         }
         return $this->_loader;
     }
@@ -317,7 +318,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
                     throw new Zend_Amf_Server_Exception('Can not call "' . $className . '" - use setClass()');
                 }
                 try {
-                    $this->getLoader()->load($className);
+                    $this->getLoader()->load($className, true, false);
                 } catch (Exception $e) {
                     // require_once 'Zend/Amf/Server/Exception.php';
                     throw new Zend_Amf_Server_Exception('Class "' . $className . '" does not exist: '.$e->getMessage(), 0, $e);

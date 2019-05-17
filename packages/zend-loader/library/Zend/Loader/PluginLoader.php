@@ -105,6 +105,12 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
     protected $_useStaticRegistry = null;
 
     /**
+     * Use composer autoloader
+     * @var bool
+     */
+    protected $_useComposerAutoloader = true;
+
+    /**
      * Constructor
      *
      * @param array $prefixToPaths
@@ -395,10 +401,14 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
         foreach ($registry as $prefix => $paths) {
             $className = $prefix . $name;
 
-            if (class_exists($className)) {
-                $found = true;
+            // try to autoload the class, but with Zend Autoloader disabled - use composer autoload
+            Zend_Loader_Autoloader::setDisabled();
+            $found = class_exists($className, $this->_useComposerAutoloader);
+            Zend_Loader_Autoloader::setDisabled(false);
+            if ($found) {
                 break;
             }
+
             if (!self::$_useFallbackLoader) {
                 // composer autoload should handle loading a class. class_exists call is enough
                 continue;
@@ -521,8 +531,19 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
      *
      * @param bool $flag
      */
-    public static function useFallbackLoader($flag)
+    public static function useFallbackLoader($flag = true)
     {
         self::$_useFallbackLoader = (bool)$flag;
+    }
+
+    /**
+     * Toggle composer autoloader for this plugin loader
+     * @param bool $flag
+     * @return $this
+     */
+    public function useComposerAutoloader($flag = true)
+    {
+        $this->_useComposerAutoloader = (bool)$flag;
+        return $this;
     }
 }

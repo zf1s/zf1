@@ -90,8 +90,8 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
         'stats_update_factor' => 10,
         'slow_backend_custom_naming' => false,
         'fast_backend_custom_naming' => false,
-        'slow_backend_autoload' => false,
-        'fast_backend_autoload' => false,
+        'slow_backend_autoload' => true,
+        'fast_backend_autoload' => true,
         'auto_fill_fast_cache' => true,
         'auto_refresh_fast_cache' => true
     );
