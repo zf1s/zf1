@@ -2790,9 +2790,10 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
     */
     public function _setup9697()
     {
-        $callback = create_function('$value, $options',
-                                    'return (isset($options["bar"]["quo"]["foo"]) &&
-                                             "foo Value" === $options["bar"]["quo"]["foo"]);');
+        $callback = function($value, $options) {
+            return (isset($options["bar"]["quo"]["foo"]) &&
+                "foo Value" === $options["bar"]["quo"]["foo"]);
+        };
 
         $this->form->addElement('text', 'foo')
                    ->foo->setBelongsTo('bar[quo]');

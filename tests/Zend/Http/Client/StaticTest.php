@@ -724,7 +724,7 @@ class Zend_Http_Client_StaticTest extends PHPUnit_Framework_TestCase
         $httpClient->setMethod(Zend_Http_Client::GET);
         ob_start();
         $httpClient->setStream('php://output')->request();
-        ob_clean();
+        ob_end_clean();
     }
     /**
      * Data providers

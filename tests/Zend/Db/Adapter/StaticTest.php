@@ -33,7 +33,7 @@
 /**
  * @see Zend_Db_Adapter_Static
  */
-require_once 'Zend/Db/Adapter/Static.php';
+// require_once 'Zend/Db/Adapter/Static.php';
 
 
 /**
