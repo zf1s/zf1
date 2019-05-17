@@ -55,6 +55,7 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
 
     private $_cache  = null;
     private $_locale = null;
+    private $_httpAcceptLanguage;
 
     public function setUp()
     {
@@ -69,6 +70,7 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
 
         // compatibilityMode is true until 1.8 therefor we have to change it
         Zend_LocaleTestHelper::$compatibilityMode = false;
+        $this->_httpAcceptLanguage = getenv('HTTP_ACCEPT_LANGUAGE');
         putenv("HTTP_ACCEPT_LANGUAGE=,de,en-UK-US;q=0.5,fr_FR;q=0.2");
     }
 
@@ -82,9 +84,14 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
                 $locales[$tmp[0]] = $tmp[1];
             }
             setlocale(LC_ALL, $locales);
-            return;
+        } else {
+            setlocale(LC_ALL, $this->_locale);
         }
-        setlocale(LC_ALL, $this->_locale);
+
+        Zend_LocaleTestHelper::resetObject();
+        Zend_LocaleTestHelper::removeCache();
+        Zend_LocaleTestHelper::$compatibilityMode = false;
+        putenv('HTTP_ACCEPT_LANGUAGE' . ($this->_httpAcceptLanguage ? '='.$this->_httpAcceptLanguage : ''));
     }
 
     /**
