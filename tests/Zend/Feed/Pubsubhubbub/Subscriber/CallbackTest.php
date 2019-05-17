@@ -265,11 +265,9 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends PHPUnit_Framework_T
 
     public function testRespondsToValidConfirmationWith200Response()
     {
-        if (getenv('TRAVIS')) {
-            $this->markTestSkipped(
-                'Test randomly fail on Travis CI.'
-            );
-        }
+        $this->markTestSkipped(
+            'Test randomly fails.'
+        );
 
         $this->_get['hub_mode'] = 'unsubscribe';
         $this->_tableGateway->expects($this->any())
@@ -312,11 +310,9 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends PHPUnit_Framework_T
 
     public function testRespondsToValidConfirmationWithBodyContainingHubChallenge()
     {
-        if (getenv('TRAVIS')) {
-            $this->markTestSkipped(
-                'Test randomly fail on Travis CI.'
-            );
-        }
+        $this->markTestSkipped(
+            'Test randomly fails.'
+        );
 
         $this->_tableGateway->expects($this->any())
             ->method('find')

@@ -946,11 +946,11 @@ function() {
         );
         $helper->setOptions($options);
 
-        $expected = '<style type="text/css">' . "\n"
-                  . '<!--' . "\n"
-                  . '    @import "/dojo/resources/dojo.css";' . "\n"
-                  . '    @import "/test/stylesheet/module/module.css";' . "\n"
-                  . '-->' . "\n"
+        $expected = '<style type="text/css">' . PHP_EOL
+                  . '<!--' . PHP_EOL
+                  . '    @import "/dojo/resources/dojo.css";' . PHP_EOL
+                  . '    @import "/test/stylesheet/module/module.css";' . PHP_EOL
+                  . '-->' . PHP_EOL
                   . '</style>';
 
         $actual = (string) $helper;

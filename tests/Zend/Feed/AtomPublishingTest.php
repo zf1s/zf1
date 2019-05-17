@@ -122,8 +122,10 @@ class TestClient extends Zend_Http_Client
                 break;
 
             case self::PUT:
+                // DOMDocument::load() was sometimes failing in full test suite with "failed to load external entity" error...
+                $xml = file_get_contents(dirname(__FILE__) . '/_files/AtomPublishingTest-expected-update.xml');
                 $doc1 = new DOMDocument();
-                $doc1->load(dirname(__FILE__) . '/_files/AtomPublishingTest-expected-update.xml');
+                $doc1->loadXML($xml);
                 $doc2 = new DOMDocument();
                 $doc2->loadXML($this->raw_post_data);
                 if ($doc1->saveXml() == $doc2->saveXml()) {

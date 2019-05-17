@@ -433,7 +433,10 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
         }
         $this->assertTrue(file_exists($cacheFile));
         $cache = file_get_contents($cacheFile);
-        $this->assertContains('CacheTest.php', $cache);
+        if (substr(PHP_OS, 0, 3) !== 'WIN') {
+            // windows reads an empty string, without any error, if a file is flock-ed...
+            $this->assertContains('CacheTest.php', $cache);
+        }
     }
 
     /**
