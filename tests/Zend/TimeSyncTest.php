@@ -241,6 +241,9 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
      */
     public function testGetDate()
     {
+        $this->markTestSkipped('this test was taking too long - ~1 minute (timeout option not regarded?)');
+        return;
+
         $server = new Zend_TimeSync($this->timeservers);
 
         try {

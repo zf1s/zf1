@@ -39,8 +39,9 @@ class Zend_Reflection_FileTest extends PHPUnit_Framework_TestCase
 
     public function testFileConstructor()
     {
-        // require_once 'Zend/Version.php';
-        $reflectionFile = new Zend_Reflection_File('Zend/Version.php');
+        $fileToRequire = dirname(dirname(dirname(dirname(__FILE__)))) . '/packages/zend-version/library/Zend/Version.php';
+        require_once $fileToRequire;
+        $reflectionFile = new Zend_Reflection_File($fileToRequire);
         $this->assertEquals(get_class($reflectionFile), 'Zend_Reflection_File');
     }
 
@@ -90,15 +91,17 @@ class Zend_Reflection_FileTest extends PHPUnit_Framework_TestCase
     {
         $this->assertNull(Zend_Reflection_File::export());
 
-        // require_once 'Zend/Version.php';
-        $reflectionFile = new Zend_Reflection_File('Zend/Version.php');
+        $fileToRequire = dirname(dirname(dirname(dirname(__FILE__)))) . '/packages/zend-version/library/Zend/Version.php';
+        require_once $fileToRequire;
+        $reflectionFile = new Zend_Reflection_File($fileToRequire);
         $this->assertEquals('', $reflectionFile->__toString());
     }
 
     public function testFileGetFilenameReturnsCorrectFilename()
     {
-        // require_once 'Zend/Version.php';
-        $reflectionFile = new Zend_Reflection_File('Zend/Version.php');
+        $fileToRequire = dirname(dirname(dirname(dirname(__FILE__)))) . '/packages/zend-version/library/Zend/Version.php';
+        require_once $fileToRequire;
+        $reflectionFile = new Zend_Reflection_File($fileToRequire);
 
         // Make sure this test works on all platforms
         $this->assertRegExp('#^.*Zend.Version.php$#i', $reflectionFile->getFileName());

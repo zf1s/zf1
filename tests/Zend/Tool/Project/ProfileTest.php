@@ -54,7 +54,7 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
         Zend_Tool_Project_Context_Repository::resetInstance();
 
         $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
-        $contextRegistry->addContextsFromDirectory(dirname(__FILE__) . '/../../../../library/Zend/Tool/Project/Context/Zf/', 'Zend_Tool_Project_Context_Zf_');
+        $contextRegistry->addContextsFromDirectory(dirname(__FILE__) . '/../../../../packages/zend-tool/library/Zend/Tool/Project/Context/Zf/', 'Zend_Tool_Project_Context_Zf_');
 
         $this->_standardProfileFromData = new Zend_Tool_Project_Profile();
         $this->_standardProfileFromData->setAttribute('profileData',      file_get_contents($this->_projectProfileFile));

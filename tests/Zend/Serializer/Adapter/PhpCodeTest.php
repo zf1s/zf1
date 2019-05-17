@@ -86,7 +86,11 @@ class Zend_Serializer_Adapter_PhpCodeTest extends PHPUnit_Framework_TestCase
     public function testSerializeObject()
     {
         $value    = new stdClass();
-        $expected = "stdClass::__set_state(array(\n))";
+        if (PHP_VERSION_ID >= 70300) {
+            $expected = "(object) array(\n)";
+        } else {
+            $expected = "stdClass::__set_state(array(\n))";
+        }
 
         $data = $this->_adapter->serialize($value);
         $this->assertEquals($expected, $data);

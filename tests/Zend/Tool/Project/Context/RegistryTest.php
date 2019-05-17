@@ -86,6 +86,6 @@ class Zend_Tool_Project_Context_RepositoryTest extends PHPUnit_Framework_TestCas
     protected function _loadZfSystem()
     {
         $conextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
-        $conextRegistry->addContextsFromDirectory(dirname(__FILE__) . '/../../../../../library/Zend/Tool/Project/Context/Zf/', 'Zend_Tool_Project_Context_Zf_');
+        $conextRegistry->addContextsFromDirectory(dirname(__FILE__) . '/../../../../../packages/zend-tool/library/Zend/Tool/Project/Context/Zf/', 'Zend_Tool_Project_Context_Zf_');
     }
 }

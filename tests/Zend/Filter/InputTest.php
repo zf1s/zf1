@@ -825,9 +825,9 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
 
     public function testValidatorAllowEmptyNoValidatorChain()
     {
-        Zend_Loader::loadClass('Zend_Filter_StringTrim');
-        Zend_Loader::loadClass('Zend_Filter_StripTags');
-        Zend_Loader::loadClass('Zend_Validate_EmailAddress');
+        // Zend_Loader::loadClass('Zend_Filter_StringTrim');
+        // Zend_Loader::loadClass('Zend_Filter_StripTags');
+        // Zend_Loader::loadClass('Zend_Validate_EmailAddress');
 
         $data = array(
             'nick'    => '',

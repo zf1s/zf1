@@ -64,7 +64,8 @@ class Zend_Loader_AutoloaderFactoryClassMapLoaderTest extends PHPUnit_Framework_
         // Clear out other autoloaders to ensure those being tested are at the
         // top of the stack
         foreach ($this->_loaders as $loader) {
-            spl_autoload_unregister($loader);
+            // fix: do not unregister composer autoloader
+            //spl_autoload_unregister($loader);
         }
 
         // Store original include_path

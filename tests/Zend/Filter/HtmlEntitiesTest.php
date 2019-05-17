@@ -266,6 +266,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
         } catch (Zend_Filter_Exception $e) {
             $this->assertTrue($e instanceof Zend_Filter_Exception);
         }
+        restore_error_handler();
     }
 
     /**

@@ -628,8 +628,8 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
      */
     public function testIdnHostnameInEmaillAddress()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('idn_to_ascii() is available in intl in PHP 5.3.0+');
+        if (!function_exists('idn_to_ascii')) {
+            $this->markTestSkipped('idn_to_ascii() function is not available (intl extension required)');
         }
         $validator = new Zend_Validate_EmailAddress();
         $validator->setValidateMx(true);
