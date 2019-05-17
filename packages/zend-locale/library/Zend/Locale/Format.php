@@ -303,7 +303,6 @@ class Zend_Locale_Format
         // require_once 'Zend/Locale/Math.php';
 
         $value             = Zend_Locale_Math::floatalize($value);
-        $value             = Zend_Locale_Math::normalize($value);
         $options           = self::_checkOptions($options) + self::$_options;
         $options['locale'] = (string) $options['locale'];
 
@@ -319,7 +318,7 @@ class Zend_Locale_Format
             $format  = self::_seperateFormat($format, $value, $options['precision']);
 
             if ($options['precision'] !== null) {
-                $value   = Zend_Locale_Math::normalize(Zend_Locale_Math::round($value, $options['precision']));
+                $value   = Zend_Locale_Math::round($value, $options['precision']);
             }
         } else {
             // seperate negative format pattern when available
@@ -341,7 +340,6 @@ class Zend_Locale_Format
                 $value = Zend_Locale_Math::round($value, 0);
                 $options['precision'] = 0;
             }
-            $value = Zend_Locale_Math::normalize($value);
         }
 
         if (iconv_strpos($format, '0') === false) {
@@ -384,7 +382,6 @@ class Zend_Locale_Format
 
         $prec = call_user_func(Zend_Locale_Math::$sub, $value, $number, $options['precision']);
         $prec = Zend_Locale_Math::floatalize($prec);
-        $prec = Zend_Locale_Math::normalize($prec);
         if (iconv_strpos($prec, '-') !== false) {
             $prec = iconv_substr($prec, 1);
         }
