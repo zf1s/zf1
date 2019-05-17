@@ -62,7 +62,7 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
     public function __construct($options = array())
     {
         // require autoloader
-        Zend_Loader_Autoloader::getInstance();
+        // Zend_Loader_Autoloader::getInstance();
 
         // this might look goofy, but this is setting up the
         // registry for dependency injection into the client

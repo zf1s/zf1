@@ -40,6 +40,11 @@ class Zend_Loader_Autoloader
     protected static $_instance;
 
     /**
+     * @var bool A flag to temporarily disable the autoloader
+     */
+    protected static $_disabled;
+
+    /**
      * @var array Concrete autoloader callback implementations
      */
     protected $_autoloaders = array();
@@ -115,6 +120,10 @@ class Zend_Loader_Autoloader
      */
     public static function autoload($class)
     {
+        if (self::$_disabled) {
+            return false;
+        }
+
         $self = self::getInstance();
 
         foreach ($self->getClassAutoloaders($class) as $autoloader) {
@@ -587,5 +596,12 @@ class Zend_Loader_Autoloader
 
         uksort($versions, 'version_compare');
         return $versions;
+    }
+
+    /**
+     * Toggle disabled flag for the autoloader
+     */
+    public static function setDisabled($flag = true) {
+        self::$_disabled = (bool)$flag;
     }
 }

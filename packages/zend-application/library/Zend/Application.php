@@ -35,6 +35,11 @@ class Zend_Application
     protected $_autoloader;
 
     /**
+     * @var bool|null
+     */
+    protected $_suppressNotFoundWarnings;
+
+    /**
      * Bootstrap
      *
      * @var Zend_Application_Bootstrap_BootstrapAbstract
@@ -77,11 +82,7 @@ class Zend_Application
     public function __construct($environment, $options = null, $suppressNotFoundWarnings = null)
     {
         $this->_environment = (string) $environment;
-
-        // see https://github.com/zf1/zend-application/pull/2 for discussion
-        // require_once 'Zend/Loader/Autoloader.php';
-        // $this->_autoloader = Zend_Loader_Autoloader::getInstance();
-        // $this->_autoloader->suppressNotFoundWarnings($suppressNotFoundWarnings);
+        $this->_suppressNotFoundWarnings = $suppressNotFoundWarnings;
 
         if (null !== $options) {
             if (is_string($options)) {
@@ -116,6 +117,11 @@ class Zend_Application
      */
     public function getAutoloader()
     {
+        if (!$this->_autoloader) {
+            $this->_autoloader = Zend_Loader_Autoloader::getInstance();
+            $this->_autoloader->suppressNotFoundWarnings($this->_suppressNotFoundWarnings);
+        }
+
         return $this->_autoloader;
     }
 

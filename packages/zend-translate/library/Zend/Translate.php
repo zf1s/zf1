@@ -127,11 +127,9 @@ class Zend_Translate {
             $options = array('adapter' => $options);
         }
 
-        if (Zend_Loader::isReadable('Zend/Translate/Adapter/' . ucfirst($options['adapter']). '.php')) {
+        if (class_exists('Zend_Translate_Adapter_' . ucfirst($options['adapter']))) {
             $options['adapter'] = 'Zend_Translate_Adapter_' . ucfirst($options['adapter']);
-        }
-
-        if (!class_exists($options['adapter'])) {
+        } elseif (!class_exists($options['adapter'])) {
             Zend_Loader::loadClass($options['adapter']);
         }
 

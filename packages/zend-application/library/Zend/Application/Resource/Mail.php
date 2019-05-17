@@ -112,12 +112,12 @@ class Zend_Application_Resource_Mail extends Zend_Application_Resource_ResourceA
         }
 
         $transportName = $options['type'];
-        if (!Zend_Loader_Autoloader::autoload($transportName)) {
+        if (!class_exists($transportName)) {
             $transportName = ucfirst(strtolower($transportName));
 
-            if (!Zend_Loader_Autoloader::autoload($transportName)) {
+            if (!class_exists($transportName)) {
                 $transportName = 'Zend_Mail_Transport_' . $transportName;
-                if (!Zend_Loader_Autoloader::autoload($transportName)) {
+                if (!class_exists($transportName)) {
                     throw new Zend_Application_Resource_Exception(
                         "Specified Mail Transport '{$transportName}'"
                         . 'could not be found'
