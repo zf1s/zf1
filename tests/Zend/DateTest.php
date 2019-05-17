@@ -401,7 +401,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $date->setTimeZone('UTC');
         $this->assertSame('Feb 13, 2009 11:31:30 PM', $date->toString(null, 'en_US'));
 
-        $date->setTimeZone('Indian/Maldives');
+        $date->setTimeZone('Europe/Rome');
         $this->assertSame(      "xxyy'yyxx", $date->toString("xx'yy''yy'xx"));
         $this->assertSame(             'n.', $date->toString("GGGGG"));
         $this->assertSame(        'n. Chr.', $date->toString( "GGGG"));
@@ -438,28 +438,28 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(             '06', $date->toString(   "ee"));
         $this->assertSame(              '6', $date->toString(    "e"));
         $this->assertSame(          'vorm.', $date->toString(    "a"));
-        $this->assertSame(             '04', $date->toString(   "hh"));
-        $this->assertSame(              '4', $date->toString(    "h"));
-        $this->assertSame(             '04', $date->toString(   "HH"));
-        $this->assertSame(              '4', $date->toString(    "H"));
+        $this->assertSame(             '12', $date->toString(   "hh"));
+        $this->assertSame(             '12', $date->toString(    "h"));
+        $this->assertSame(             '00', $date->toString(   "HH"));
+        $this->assertSame(              '0', $date->toString(    "H"));
         $this->assertSame(             '31', $date->toString(   "mm"));
         $this->assertSame(             '31', $date->toString(    "m"));
         $this->assertSame(             '30', $date->toString(   "ss"));
         $this->assertSame(             '30', $date->toString(    "s"));
         $this->assertSame(              '0', $date->toString(    "S"));
-        $this->assertSame('Indian/Maldives', $date->toString( "zzzz"));
-        $this->assertSame(            'MVT', $date->toString(  "zzz"));
-        $this->assertSame(            'MVT', $date->toString(   "zz"));
-        $this->assertSame(            'MVT', $date->toString(    "z"));
-        $this->assertSame(         '+05:00', $date->toString( "ZZZZ"));
-        $this->assertSame(          '+0500', $date->toString(  "ZZZ"));
-        $this->assertSame(          '+0500', $date->toString(   "ZZ"));
-        $this->assertSame(          '+0500', $date->toString(    "Z"));
-        $this->assertSame(       '16290000', $date->toString("AAAAA"));
-        $this->assertSame(       '16290000', $date->toString( "AAAA"));
-        $this->assertSame(       '16290000', $date->toString(  "AAA"));
-        $this->assertSame(       '16290000', $date->toString(   "AA"));
-        $this->assertSame(       '16290000', $date->toString(    "A"));
+        $this->assertSame(    'Europe/Rome', $date->toString( "zzzz"));
+        $this->assertSame(            'CET', $date->toString(  "zzz"));
+        $this->assertSame(            'CET', $date->toString(   "zz"));
+        $this->assertSame(            'CET', $date->toString(    "z"));
+        $this->assertSame(         '+01:00', $date->toString( "ZZZZ"));
+        $this->assertSame(          '+0100', $date->toString(  "ZZZ"));
+        $this->assertSame(          '+0100', $date->toString(   "ZZ"));
+        $this->assertSame(          '+0100', $date->toString(    "Z"));
+        $this->assertSame(        '1890000', $date->toString("AAAAA"));
+        $this->assertSame(        '1890000', $date->toString( "AAAA"));
+        $this->assertSame(        '1890000', $date->toString(  "AAA"));
+        $this->assertSame(        '1890000', $date->toString(   "AA"));
+        $this->assertSame(        '1890000', $date->toString(    "A"));
 
         $date = new Zend_Date("1-1-01",null,$locale);
         $date->setTimezone(date_default_timezone_get());
@@ -547,7 +547,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(           $date->toValue(Zend_Date::RSS              ));
         $this->assertFalse(           $date->toValue(Zend_Date::W3C              ));
 
-        $date->setTimezone('Indian/Maldives');
+        $date->setTimezone('Europe/Rome');
         $this->assertFalse(           $date->toValue(Zend_Date::WEEKDAY_SHORT    ));
         $this->assertSame(        14, $date->toValue(Zend_Date::DAY_SHORT        ));
         $this->assertFalse(           $date->toValue(Zend_Date::WEEKDAY          ));
@@ -571,10 +571,10 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(         9, $date->toValue(Zend_Date::YEAR_SHORT_8601  ));
         $this->assertFalse(           $date->toValue(Zend_Date::MERIDIEM         ));
         $this->assertSame(        21, $date->toValue(Zend_Date::SWATCH           ));
-        $this->assertSame(         4, $date->toValue(Zend_Date::HOUR_SHORT_AM    ));
-        $this->assertSame(         4, $date->toValue(Zend_Date::HOUR_SHORT       ));
-        $this->assertSame(         4, $date->toValue(Zend_Date::HOUR_AM          ));
-        $this->assertSame(         4, $date->toValue(Zend_Date::HOUR             ));
+        $this->assertSame(        12, $date->toValue(Zend_Date::HOUR_SHORT_AM    ));
+        $this->assertSame(         0, $date->toValue(Zend_Date::HOUR_SHORT       ));
+        $this->assertSame(        12, $date->toValue(Zend_Date::HOUR_AM          ));
+        $this->assertSame(         0, $date->toValue(Zend_Date::HOUR             ));
         $this->assertSame(        31, $date->toValue(Zend_Date::MINUTE           ));
         $this->assertSame(        30, $date->toValue(Zend_Date::SECOND           ));
         $this->assertSame(         0, $date->toValue(Zend_Date::MILLISECOND      ));
@@ -582,10 +582,10 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(        30, $date->toValue(Zend_Date::SECOND_SHORT     ));
         $this->assertFalse(           $date->toValue(Zend_Date::TIMEZONE_NAME    ));
         $this->assertSame(         0, $date->toValue(Zend_Date::DAYLIGHT         ));
-        $this->assertSame(       500, $date->toValue(Zend_Date::GMT_DIFF         ));
+        $this->assertSame(       100, $date->toValue(Zend_Date::GMT_DIFF         ));
         $this->assertFalse(           $date->toValue(Zend_Date::GMT_DIFF_SEP     ));
         $this->assertFalse(           $date->toValue(Zend_Date::TIMEZONE         ));
-        $this->assertSame(     18000, $date->toValue(Zend_Date::TIMEZONE_SECS    ));
+        $this->assertSame(      3600, $date->toValue(Zend_Date::TIMEZONE_SECS    ));
         $this->assertFalse(           $date->toValue(Zend_Date::ISO_8601         ));
         $this->assertFalse(           $date->toValue(Zend_Date::RFC_2822         ));
         $this->assertSame(1234567890, $date->toValue(Zend_Date::TIMESTAMP        ));
@@ -764,7 +764,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame('Fri, 13 Feb 2009 23:31:30 +0000', $date->get(Zend_Date::RSS,               'es'));
         $this->assertSame(      '2009-02-13T23:31:30+00:00', $date->get(Zend_Date::W3C,               'es'));
 
-        $date->setTimezone('Indian/Maldives');
+        $date->setTimezone('Europe/Rome');
         $this->assertSame(                                  '1234567890', $date->get(                            ));
         $this->assertSame(                                          '14', $date->get(Zend_Date::DAY              ));
         $this->assertSame(                                         'Sam', $date->get(Zend_Date::WEEKDAY_SHORT    ));
@@ -790,23 +790,23 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(                                          '09', $date->get(Zend_Date::YEAR_SHORT_8601  ));
         $this->assertSame(                                       'vorm.', $date->get(Zend_Date::MERIDIEM         ));
         $this->assertSame(                                         '021', $date->get(Zend_Date::SWATCH           ));
-        $this->assertSame(                                           '4', $date->get(Zend_Date::HOUR_SHORT_AM    ));
-        $this->assertSame(                                           '4', $date->get(Zend_Date::HOUR_SHORT       ));
-        $this->assertSame(                                          '04', $date->get(Zend_Date::HOUR_AM          ));
-        $this->assertSame(                                          '04', $date->get(Zend_Date::HOUR             ));
+        $this->assertSame(                                          '12', $date->get(Zend_Date::HOUR_SHORT_AM    ));
+        $this->assertSame(                                           '0', $date->get(Zend_Date::HOUR_SHORT       ));
+        $this->assertSame(                                          '12', $date->get(Zend_Date::HOUR_AM          ));
+        $this->assertSame(                                          '00', $date->get(Zend_Date::HOUR             ));
         $this->assertSame(                                          '31', $date->get(Zend_Date::MINUTE           ));
         $this->assertSame(                                          '30', $date->get(Zend_Date::SECOND           ));
         $this->assertSame(                                           '0', $date->get(Zend_Date::MILLISECOND      ));
         $this->assertSame(                                          '31', $date->get(Zend_Date::MINUTE_SHORT     ));
         $this->assertSame(                                          '30', $date->get(Zend_Date::SECOND_SHORT     ));
-        $this->assertSame(                             'Indian/Maldives', $date->get(Zend_Date::TIMEZONE_NAME    ));
+        $this->assertSame(                                 'Europe/Rome', $date->get(Zend_Date::TIMEZONE_NAME    ));
         $this->assertSame(                                           '0', $date->get(Zend_Date::DAYLIGHT         ));
-        $this->assertSame(                                       '+0500', $date->get(Zend_Date::GMT_DIFF         ));
-        $this->assertSame(                                      '+05:00', $date->get(Zend_Date::GMT_DIFF_SEP     ));
-        $this->assertSame(                                         'MVT', $date->get(Zend_Date::TIMEZONE         ));
-        $this->assertSame(                                       '18000', $date->get(Zend_Date::TIMEZONE_SECS    ));
-        $this->assertSame(                   '2009-02-14T04:31:30+05:00', $date->get(Zend_Date::ISO_8601         ));
-        $this->assertSame(             'Sat, 14 Feb 2009 04:31:30 +0500', $date->get(Zend_Date::RFC_2822         ));
+        $this->assertSame(                                       '+0100', $date->get(Zend_Date::GMT_DIFF         ));
+        $this->assertSame(                                      '+01:00', $date->get(Zend_Date::GMT_DIFF_SEP     ));
+        $this->assertSame(                                         'CET', $date->get(Zend_Date::TIMEZONE         ));
+        $this->assertSame(                                        '3600', $date->get(Zend_Date::TIMEZONE_SECS    ));
+        $this->assertSame(                   '2009-02-14T00:31:30+01:00', $date->get(Zend_Date::ISO_8601         ));
+        $this->assertSame(             'Sat, 14 Feb 2009 00:31:30 +0100', $date->get(Zend_Date::RFC_2822         ));
         $this->assertSame(                                  '1234567890', $date->get(Zend_Date::TIMESTAMP        ));
         $this->assertSame(                                     'n. Chr.', $date->get(Zend_Date::ERA              ));
         $this->assertSame(                                     'n. Chr.', $date->get(Zend_Date::ERA_NAME         ));
@@ -815,25 +815,25 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(                            '14. Februar 2009', $date->get(Zend_Date::DATE_LONG        ));
         $this->assertSame(                                  '14.02.2009', $date->get(Zend_Date::DATE_MEDIUM      ));
         $this->assertSame(                                    '14.02.09', $date->get(Zend_Date::DATE_SHORT       ));
-        $this->assertSame(                                    '04:31:30', $date->get(Zend_Date::TIMES            ));
-        $this->assertSame(                    '04:31:30 Indian/Maldives', $date->get(Zend_Date::TIME_FULL        ));
-        $this->assertSame(                                '04:31:30 MVT', $date->get(Zend_Date::TIME_LONG        ));
-        $this->assertSame(                                    '04:31:30', $date->get(Zend_Date::TIME_MEDIUM      ));
-        $this->assertSame(                                       '04:31', $date->get(Zend_Date::TIME_SHORT       ));
-        $this->assertSame(                         '14.02.2009 04:31:30', $date->get(Zend_Date::DATETIME         ));
-        $this->assertSame('Samstag, 14. Februar 2009 04:31:30 Indian/Maldives', $date->get(Zend_Date::DATETIME_FULL    ));
-        $this->assertSame(               '14. Februar 2009 04:31:30 MVT', $date->get(Zend_Date::DATETIME_LONG    ));
-        $this->assertSame(                         '14.02.2009 04:31:30', $date->get(Zend_Date::DATETIME_MEDIUM  ));
-        $this->assertSame(                              '14.02.09 04:31', $date->get(Zend_Date::DATETIME_SHORT   ));
-        $this->assertSame(                   '2009-02-14T04:31:30+05:00', $date->get(Zend_Date::ATOM             ));
-        $this->assertSame('Saturday, 14-Feb-09 04:31:30 Indian/Maldives', $date->get(Zend_Date::COOKIE           ));
-        $this->assertSame(               'Sat, 14 Feb 09 04:31:30 +0500', $date->get(Zend_Date::RFC_822          ));
-        $this->assertSame('Saturday, 14-Feb-09 04:31:30 Indian/Maldives', $date->get(Zend_Date::RFC_850          ));
-        $this->assertSame(               'Sat, 14 Feb 09 04:31:30 +0500', $date->get(Zend_Date::RFC_1036         ));
-        $this->assertSame(             'Sat, 14 Feb 2009 04:31:30 +0500', $date->get(Zend_Date::RFC_1123         ));
-        $this->assertSame(                   '2009-02-14T04:31:30+05:00', $date->get(Zend_Date::RFC_3339         ));
-        $this->assertSame(             'Sat, 14 Feb 2009 04:31:30 +0500', $date->get(Zend_Date::RSS              ));
-        $this->assertSame(                   '2009-02-14T04:31:30+05:00', $date->get(Zend_Date::W3C              ));
+        $this->assertSame(                                    '00:31:30', $date->get(Zend_Date::TIMES            ));
+        $this->assertSame(                        '00:31:30 Europe/Rome', $date->get(Zend_Date::TIME_FULL        ));
+        $this->assertSame(                                '00:31:30 CET', $date->get(Zend_Date::TIME_LONG        ));
+        $this->assertSame(                                    '00:31:30', $date->get(Zend_Date::TIME_MEDIUM      ));
+        $this->assertSame(                                       '00:31', $date->get(Zend_Date::TIME_SHORT       ));
+        $this->assertSame(                         '14.02.2009 00:31:30', $date->get(Zend_Date::DATETIME         ));
+        $this->assertSame('Samstag, 14. Februar 2009 00:31:30 Europe/Rome', $date->get(Zend_Date::DATETIME_FULL    ));
+        $this->assertSame(               '14. Februar 2009 00:31:30 CET', $date->get(Zend_Date::DATETIME_LONG    ));
+        $this->assertSame(                         '14.02.2009 00:31:30', $date->get(Zend_Date::DATETIME_MEDIUM  ));
+        $this->assertSame(                              '14.02.09 00:31', $date->get(Zend_Date::DATETIME_SHORT   ));
+        $this->assertSame(                   '2009-02-14T00:31:30+01:00', $date->get(Zend_Date::ATOM             ));
+        $this->assertSame(    'Saturday, 14-Feb-09 00:31:30 Europe/Rome', $date->get(Zend_Date::COOKIE           ));
+        $this->assertSame(               'Sat, 14 Feb 09 00:31:30 +0100', $date->get(Zend_Date::RFC_822          ));
+        $this->assertSame(    'Saturday, 14-Feb-09 00:31:30 Europe/Rome', $date->get(Zend_Date::RFC_850          ));
+        $this->assertSame(               'Sat, 14 Feb 09 00:31:30 +0100', $date->get(Zend_Date::RFC_1036         ));
+        $this->assertSame(             'Sat, 14 Feb 2009 00:31:30 +0100', $date->get(Zend_Date::RFC_1123         ));
+        $this->assertSame(                   '2009-02-14T00:31:30+01:00', $date->get(Zend_Date::RFC_3339         ));
+        $this->assertSame(             'Sat, 14 Feb 2009 00:31:30 +0100', $date->get(Zend_Date::RSS              ));
+        $this->assertSame(                   '2009-02-14T00:31:30+01:00', $date->get(Zend_Date::W3C              ));
 
         // when get() receives a format string it responses like toString();
         $date->setTimezone('Indian/Maldives');
@@ -3818,44 +3818,78 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $result = Zend_Date_Cities::City('vienna');
         $this->assertTrue(is_array($result));
         $result = $date->getSunset($result);
-        $this->assertSame('2002-01-04T20:09:59+05:00', $result->get(Zend_Date::W3C));
+        // PHP's internal sunrise/sunset calculation changed in 7.2.0
+        // See comment in Zend/Date/DateObjectTest.php::testCalcSunInternal
+        // This applies to all of the version_compare blocks in this test
+        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            $this->assertSame('2002-01-04T20:09:40+05:00', $result->get(Zend_Date::W3C));
+        } else {
+            $this->assertSame('2002-01-04T20:09:59+05:00', $result->get(Zend_Date::W3C));
+        }
 
         unset($result);
         $result = Zend_Date_Cities::City('vienna', 'civil');
         $this->assertTrue(is_array($result));
         $result = $date->getSunset($result);
-        $this->assertSame('2002-01-04T20:09:20+05:00', $result->get(Zend_Date::W3C));
+        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            $this->assertSame('2002-01-04T20:09:01+05:00', $result->get(Zend_Date::W3C));
+        } else {
+            $this->assertSame('2002-01-04T20:09:20+05:00', $result->get(Zend_Date::W3C));
+        }
 
         unset($result);
         $result = Zend_Date_Cities::City('vienna', 'nautic');
         $this->assertTrue(is_array($result));
         $result = $date->getSunset($result);
-        $this->assertSame('2002-01-04T20:08:34+05:00', $result->get(Zend_Date::W3C));
+        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            $this->assertSame('2002-01-04T20:08:15+05:00', $result->get(Zend_Date::W3C));
+        } else {
+            $this->assertSame('2002-01-04T20:08:34+05:00', $result->get(Zend_Date::W3C));
+        }
 
         unset($result);
         $result = Zend_Date_Cities::City('vienna', 'astronomic');
         $this->assertTrue(is_array($result));
         $result = $date->getSunset($result);
-        $this->assertSame('2002-01-04T20:07:49+05:00', $result->get(Zend_Date::W3C));
+        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            $this->assertSame('2002-01-04T20:07:30+05:00', $result->get(Zend_Date::W3C));
+        } else {
+            $this->assertSame('2002-01-04T20:07:49+05:00', $result->get(Zend_Date::W3C));
+        }
 
         unset($result);
         $result = Zend_Date_Cities::City('BERLIN');
         $this->assertTrue(is_array($result));
         $result = $date->getSunrise($result);
-        $this->assertSame('2002-01-04T12:21:21+05:00', $result->get(Zend_Date::W3C));
+        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            $this->assertSame('2002-01-04T12:21:26+05:00', $result->get(Zend_Date::W3C));
+        } else {
+            $this->assertSame('2002-01-04T12:21:21+05:00', $result->get(Zend_Date::W3C));
+        }
 
         unset($result);
         $result = Zend_Date_Cities::City('London');
         $this->assertTrue(is_array($result));
         $result = $date->getSunInfo($result);
-        $this->assertSame('2002-01-04T13:10:10+05:00', $result['sunrise']['effective']->get(Zend_Date::W3C ));
-        $this->assertSame('2002-01-04T13:10:54+05:00', $result['sunrise']['civil']->get(Zend_Date::W3C     ));
-        $this->assertSame('2002-01-04T13:11:45+05:00', $result['sunrise']['nautic']->get(Zend_Date::W3C    ));
-        $this->assertSame('2002-01-04T13:12:35+05:00', $result['sunrise']['astronomic']->get(Zend_Date::W3C));
-        $this->assertSame('2002-01-04T21:00:52+05:00', $result['sunset']['effective']->get(Zend_Date::W3C  ));
-        $this->assertSame('2002-01-04T21:00:08+05:00', $result['sunset']['civil']->get(Zend_Date::W3C      ));
-        $this->assertSame('2002-01-04T20:59:18+05:00', $result['sunset']['nautic']->get(Zend_Date::W3C     ));
-        $this->assertSame('2002-01-04T20:58:28+05:00', $result['sunset']['astronomic']->get(Zend_Date::W3C ));
+        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            $this->assertSame('2002-01-04T13:10:15+05:00', $result['sunrise']['effective']->get(Zend_Date::W3C ));
+            $this->assertSame('2002-01-04T13:10:59+05:00', $result['sunrise']['civil']->get(Zend_Date::W3C     ));
+            $this->assertSame('2002-01-04T13:11:50+05:00', $result['sunrise']['nautic']->get(Zend_Date::W3C    ));
+            $this->assertSame('2002-01-04T13:12:40+05:00', $result['sunrise']['astronomic']->get(Zend_Date::W3C));
+            $this->assertSame('2002-01-04T21:00:32+05:00', $result['sunset']['effective']->get(Zend_Date::W3C  ));
+            $this->assertSame('2002-01-04T20:59:48+05:00', $result['sunset']['civil']->get(Zend_Date::W3C      ));
+            $this->assertSame('2002-01-04T20:58:57+05:00', $result['sunset']['nautic']->get(Zend_Date::W3C     ));
+            $this->assertSame('2002-01-04T20:58:07+05:00', $result['sunset']['astronomic']->get(Zend_Date::W3C ));
+        } else {
+            $this->assertSame('2002-01-04T13:10:10+05:00', $result['sunrise']['effective']->get(Zend_Date::W3C ));
+            $this->assertSame('2002-01-04T13:10:54+05:00', $result['sunrise']['civil']->get(Zend_Date::W3C     ));
+            $this->assertSame('2002-01-04T13:11:45+05:00', $result['sunrise']['nautic']->get(Zend_Date::W3C    ));
+            $this->assertSame('2002-01-04T13:12:35+05:00', $result['sunrise']['astronomic']->get(Zend_Date::W3C));
+            $this->assertSame('2002-01-04T21:00:52+05:00', $result['sunset']['effective']->get(Zend_Date::W3C  ));
+            $this->assertSame('2002-01-04T21:00:08+05:00', $result['sunset']['civil']->get(Zend_Date::W3C      ));
+            $this->assertSame('2002-01-04T20:59:18+05:00', $result['sunset']['nautic']->get(Zend_Date::W3C     ));
+            $this->assertSame('2002-01-04T20:58:28+05:00', $result['sunset']['astronomic']->get(Zend_Date::W3C ));
+        }
 
         unset($result);
         $result = array('longitude' => 0);
@@ -5263,10 +5297,11 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
     public function testToArray()
     {
         $date = new Zend_Date('2006-01-02 23:58:59', Zend_Date::ISO_8601, 'en_US');
+        $date->setTimeZone('Europe/Rome');
         $return = $date->toArray();
-        $orig = array('day' => 02, 'month' => 01, 'year' => 2006, 'hour' => 23, 'minute' => 58,
-                      'second' => 59, 'timezone' => 'MVT', 'timestamp' => 1136228339, 'weekday' => 1,
-                      'dayofyear' => 1, 'week' => '01', 'gmtsecs' => 18000);
+        $orig = array('day' => 02, 'month' => 01, 'year' => 2006, 'hour' => 19, 'minute' => 58,
+                      'second' => 59, 'timezone' => 'CET', 'timestamp' => 1136228339, 'weekday' => 1,
+                      'dayofyear' => 1, 'week' => '01', 'gmtsecs' => 3600);
         $this->assertEquals($orig, $return);
     }
 
