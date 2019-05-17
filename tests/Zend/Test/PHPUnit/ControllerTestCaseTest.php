@@ -97,8 +97,8 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
         if (isset($registry['viewRenderer'])) {
             unset($registry['viewRenderer']);
         }
-        Zend_Session::$_unitTestEnabled = false;
-        session_id(uniqid());
+        Zend_Session::$_unitTestEnabled = true;
+        $_SESSION = array();
     }
 
     public function bootstrap()
@@ -615,6 +615,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCas
 
     public function testResetShouldUnitTestEnableZendSession()
     {
+        Zend_Session::$_unitTestEnabled = false;
         $this->testCase->reset();
         $this->assertTrue(Zend_Session::$_unitTestEnabled);
     }
