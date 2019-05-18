@@ -281,7 +281,8 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
             $basename = $dirIteratorItem->getBasename();
             if (stristr($dirIteratorItem->getPathname(), '.svn')
                 || '.' === $basename
-                || '..' === $basename)
+                || '..' === $basename
+                || '.gitignore' === $basename)
             {
                 continue;
             }
