@@ -1,0 +1,2 @@
+response_chunked eol=crlf
+response_chunked_case eol=crlf

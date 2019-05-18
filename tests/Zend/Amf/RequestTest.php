@@ -433,7 +433,14 @@ class Zend_Amf_RequestTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($bodies[0] instanceof Zend_Amf_Value_MessageBody);
         $data = $bodies[0]->getData();
         // Make sure that the string was deserialized properly and check its value
-        $this->assertTrue(property_exists($data[0], 1));
+        // In PHP versions less than 7, get_object_vars doesn't return numerical
+        // keys. In PHP 7.2+ array_key_exists on this particular object returns false
+        // https://3v4l.org/ui8Fm
+        if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
+            $this->assertTrue(array_key_exists(1, get_object_vars($data[0])));
+        } else {
+            $this->assertTrue(array_key_exists(1, $data[0]));
+        }
         $this->assertEquals('two', $data[0]->two);
     }
 
