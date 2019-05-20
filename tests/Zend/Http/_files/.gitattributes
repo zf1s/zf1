@@ -1,2 +1,2 @@
-response_chunked eol=crlf
-response_chunked_case eol=crlf
+response_chunked text=false -crlf
+response_chunked_case text=false -crlf
