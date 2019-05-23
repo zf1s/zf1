@@ -18,4 +18,4 @@ composer require zf1s/zend-view
 
 - [Main Repository](https://github.com/zf1s/zf1)
 - [Original documentation](https://framework.zend.com/manual/1.12/en/manual.html) 
-- [Changelog](https://github.com/zf1s/zf1/CHANGELOG.md)
+- [Changelog](https://github.com/zf1s/zf1/blob/master/CHANGELOG.md)
