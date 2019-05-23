@@ -19,6 +19,7 @@
     - BC Zend_Amf_RequestTest fix from https://github.com/diablomedia/zf1/commit/ba8cf7aaf6542b7aadee79146709302d65e85bdd#diff-68d7be0100c43bc2df55377c9d27cd05 (thanks!)
     - tell git do not touch line-endings in zend-http-response test files - tests rely on mixed line-endings in raw responses
     - portability adjustments - mainly for windows & winux (wsl)
+    - added missing stdlib and xml tests to Zend/AllTests
 - zend-cloud
   - fix lettercase of loaded class Zend_Service_Amazon_Ec2_Availabilityzones
 - zend-codegenerator

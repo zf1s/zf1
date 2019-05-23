@@ -9,7 +9,7 @@ $rootDir = dirname(dirname(__FILE__));
 /**
  * Setup autoloading
  */
-require $rootDir . '/vendor/autoload.php';
+// composer autoloader is loaded automatically by phpunit when called through composer bin
 
 $zfTests = $rootDir . '/tests';
 /*
@@ -25,7 +25,9 @@ set_include_path(implode(PATH_SEPARATOR, $path));
 /*
  * Initial configuration
  */
-Zend_Session::$_unitTestEnabled = true;
+if (class_exists('Zend_Session')) {
+    Zend_Session::$_unitTestEnabled = true;
+}
 
 /*
  * Workarounds

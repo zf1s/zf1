@@ -89,6 +89,7 @@ require_once 'Zend/Server/AllTests.php';
 require_once 'Zend/Service/AllTests.php';
 require_once 'Zend/Session/AllTests.php';
 require_once 'Zend/Soap/AllTests.php';
+require_once 'Zend/Stdlib/AllTests.php';
 require_once 'Zend/Tag/AllTests.php';
 require_once 'Zend/Test/AllTests.php';
 require_once 'Zend/Text/AllTests.php';
@@ -106,6 +107,7 @@ require_once 'Zend/View/AllTests.php';
 if (PHP_OS != 'AIX') {
     require_once 'Zend/Wildfire/AllTests.php';
 }
+require_once 'Zend/Xml/AllTests.php';
 require_once 'Zend/XmlRpc/AllTests.php';
 
 /**
@@ -227,6 +229,7 @@ class Zend_AllTests
         $suite->addTest(Zend_Serializer_AllTests::suite());
         $suite->addTest(Zend_Server_AllTests::suite());
         $suite->addTest(Zend_Service_AllTests::suite());
+        $suite->addTest(Zend_Stdlib_AllTests::suite());
         $suite->addTest(Zend_Tag_AllTests::suite());
         $suite->addTest(Zend_Test_AllTests::suite());
         $suite->addTest(Zend_Text_AllTests::suite());
@@ -244,6 +247,7 @@ class Zend_AllTests
         if (PHP_OS != 'AIX') {
             $suite->addTest(Zend_Wildfire_AllTests::suite());
         }
+        $suite->addTest(Zend_Xml_AllTests::suite());
         $suite->addTest(Zend_XmlRpc_AllTests::suite());
 
         return $suite;
