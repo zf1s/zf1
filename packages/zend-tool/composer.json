@@ -1,36 +1,31 @@
 {
-	"name": "zf1s/zend-tool",
-	"description": "Zend Framework 1 Tool package",
-	"keywords": [
-		"framework",
-		"zf1",
-		"zend",
-		"tool"
-	],
-	"homepage": "http://framework.zend.com/",
-	"license": "BSD-3-Clause",
-	"require": {
-		"php": ">=5.2.11"
-	},
-	"autoload": {
-		"psr-0": {
-			"Zend_Tool": "library/"
-		}
-	},
-	"suggest": {
-		"zf1s/zend-config": "Used in special situations or with special adapters",
-		"zf1s/zend-loader": "Used in special situations or with special adapters"
-	},
-	"bin": [
-		"bin/zf.sh",
-		"bin/zf.php"
-	],
-	"replace": {
-    	"zf1/zend-tool": "^1.12"
+    "name": "zf1s/zend-tool",
+    "description": "Zend Framework 1 Tool package",
+    "keywords": ["framework", "zf1", "zend", "tool"],
+    "homepage": "http://framework.zend.com/",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.3.3"
     },
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.x-dev"
-		}
-	}
+    "autoload": {
+        "psr-0": {
+            "Zend_Tool": "library/"
+        }
+    },
+    "suggest": {
+        "zf1s/zend-config": "Used in special situations or with special adapters",
+        "zf1s/zend-loader": "Used in special situations or with special adapters"
+    },
+    "bin": [
+        "bin/zf.sh",
+        "bin/zf.php"
+    ],
+    "replace": {
+        "zf1/zend-tool": "^1.12"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
 }

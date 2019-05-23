@@ -1,34 +1,29 @@
 {
-	"name": "zf1s/zend-progressbar",
-	"description": "Zend Framework 1 ProgressBar package",
-	"keywords": [
-		"framework",
-		"zf1",
-		"zend",
-		"progressbar"
-	],
-	"homepage": "http://framework.zend.com/",
-	"license": "BSD-3-Clause",
-	"require": {
-		"php": ">=5.2.11",
-		"zf1s/zend-config": "^1.12",
-		"zf1s/zend-exception": "^1.12",
-		"zf1s/zend-json": "^1.12"
-	},
-	"autoload": {
-		"psr-0": {
-			"Zend_ProgressBar": "library/"
-		}
-	},
-	"suggest": {
-		"zf1s/zend-session": "Used in special situations or with special adapters"
-	},
-	"replace": {
-    	"zf1/zend-progressbar": "^1.12"
+    "name": "zf1s/zend-progressbar",
+    "description": "Zend Framework 1 ProgressBar package",
+    "keywords": ["framework", "zf1", "zend", "progressbar"],
+    "homepage": "http://framework.zend.com/",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.3.3",
+        "zf1s/zend-config": "^1.13",
+        "zf1s/zend-exception": "^1.13",
+        "zf1s/zend-json": "^1.13"
     },
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.x-dev"
-		}
-	}
+    "autoload": {
+        "psr-0": {
+            "Zend_ProgressBar": "library/"
+        }
+    },
+    "suggest": {
+        "zf1s/zend-session": "Used in special situations or with special adapters"
+    },
+    "replace": {
+        "zf1/zend-progressbar": "^1.12"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
 }

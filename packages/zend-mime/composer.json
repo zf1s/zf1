@@ -1,29 +1,24 @@
 {
-	"name": "zf1s/zend-mime",
-	"description": "Zend Framework 1 Mime package",
-	"keywords": [
-		"framework",
-		"zf1",
-		"zend",
-		"mime"
-	],
-	"homepage": "http://framework.zend.com/",
-	"license": "BSD-3-Clause",
-	"require": {
-		"php": ">=5.2.11",
-		"zf1s/zend-exception": "^1.12"
-	},
-	"autoload": {
-		"psr-0": {
-			"Zend_Mime": "library/"
-		}
-	},
-	"replace": {
-    	"zf1/zend-mime": "^1.12"
+    "name": "zf1s/zend-mime",
+    "description": "Zend Framework 1 Mime package",
+    "keywords": ["framework", "zf1", "zend", "mime"],
+    "homepage": "http://framework.zend.com/",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.3.3",
+        "zf1s/zend-exception": "^1.13"
     },
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.x-dev"
-		}
-	}
+    "autoload": {
+        "psr-0": {
+            "Zend_Mime": "library/"
+        }
+    },
+    "replace": {
+        "zf1/zend-mime": "^1.12"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
 }

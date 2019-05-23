@@ -1,30 +1,25 @@
 {
-	"name": "zf1s/zend-memory",
-	"description": "Zend Framework 1 Memory package",
-	"keywords": [
-		"framework",
-		"zf1",
-		"zend",
-		"memory"
-	],
-	"homepage": "http://framework.zend.com/",
-	"license": "BSD-3-Clause",
-	"require": {
-		"php": ">=5.2.11",
-		"zf1s/zend-cache": "^1.12",
-		"zf1s/zend-exception": "^1.12"
-	},
-	"autoload": {
-		"psr-0": {
-			"Zend_Memory": "library/"
-		}
-	},
-	"replace": {
-    	"zf1/zend-memory": "^1.12"
+    "name": "zf1s/zend-memory",
+    "description": "Zend Framework 1 Memory package",
+    "keywords": ["framework", "zf1", "zend", "memory"],
+    "homepage": "http://framework.zend.com/",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.3.3",
+        "zf1s/zend-cache": "^1.13",
+        "zf1s/zend-exception": "^1.13"
     },
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.x-dev"
-		}
-	}
+    "autoload": {
+        "psr-0": {
+            "Zend_Memory": "library/"
+        }
+    },
+    "replace": {
+        "zf1/zend-memory": "^1.12"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
 }

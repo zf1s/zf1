@@ -1,34 +1,29 @@
 {
-	"name": "zf1s/zend-codegenerator",
-	"description": "Zend Framework 1 CodeGenerator package",
-	"keywords": [
-		"framework",
-		"zf1",
-		"zend",
-		"codegenerator"
-	],
-	"homepage": "http://framework.zend.com/",
-	"license": "BSD-3-Clause",
-	"require": {
-		"php": ">=5.2.11",
-		"zf1s/zend-exception": "^1.12",
-		"zf1s/zend-reflection": "^1.12"
-	},
-	"autoload": {
-		"psr-0": {
-			"Zend_CodeGenerator": "library/"
-		}
-	},
-	"suggest": {
-		"zf1s/zend-config": "Used in special situations or with special adapters",
-		"zf1s/zend-loader": "Used in special situations or with special adapters"
-	},
-	"replace": {
-    	"zf1/zend-codegenerator": "^1.12"
+    "name": "zf1s/zend-codegenerator",
+    "description": "Zend Framework 1 CodeGenerator package",
+    "keywords": ["framework", "zf1", "zend", "codegenerator"],
+    "homepage": "http://framework.zend.com/",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.3.3",
+        "zf1s/zend-exception": "^1.13",
+        "zf1s/zend-reflection": "^1.13"
     },
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.x-dev"
-		}
-	}
+    "autoload": {
+        "psr-0": {
+            "Zend_CodeGenerator": "library/"
+        }
+    },
+    "suggest": {
+        "zf1s/zend-config": "Used in special situations or with special adapters",
+        "zf1s/zend-loader": "Used in special situations or with special adapters"
+    },
+    "replace": {
+        "zf1/zend-codegenerator": "^1.12"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
 }

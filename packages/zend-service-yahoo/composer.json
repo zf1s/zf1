@@ -1,36 +1,30 @@
 {
-	"name": "zf1s/zend-service-yahoo",
-	"description": "Zend Framework 1 Service Yahoo package",
-	"keywords": [
-		"framework",
-		"zf1",
-		"zend",
-		"service",
-		"yahoo"
-	],
-	"homepage": "http://framework.zend.com/",
-	"license": "BSD-3-Clause",
-	"require": {
-		"php": ">=5.2.11",
-		"zf1s/zend-exception": "^1.12",
-		"zf1s/zend-http": "^1.12",
-		"zf1s/zend-rest": "^1.12",
-		"zf1s/zend-xml": "^1.12"
-	},
-	"autoload": {
-		"psr-0": {
-			"Zend_Service_Yahoo": "library/"
-		}
-	},
-	"suggest": {
-		"zf1s/zend-validate": "Used in special situations or with special adapters"
-	},
-	"replace": {
-    	"zf1/zend-service-yahoo": "^1.12"
+    "name": "zf1s/zend-service-yahoo",
+    "description": "Zend Framework 1 Service Yahoo package",
+    "keywords": ["framework", "zf1", "zend", "service", "yahoo"],
+    "homepage": "http://framework.zend.com/",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.3.3",
+        "zf1s/zend-exception": "^1.13",
+        "zf1s/zend-http": "^1.13",
+        "zf1s/zend-rest": "^1.13",
+        "zf1s/zend-xml": "^1.13"
     },
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.x-dev"
-		}
-	}
+    "autoload": {
+        "psr-0": {
+            "Zend_Service_Yahoo": "library/"
+        }
+    },
+    "suggest": {
+        "zf1s/zend-validate": "Used in special situations or with special adapters"
+    },
+    "replace": {
+        "zf1/zend-service-yahoo": "^1.12"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
 }
