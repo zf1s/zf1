@@ -12,12 +12,6 @@
         "zf1s/zend-text": "^1.13",
         "zf1s/zend-validate": "^1.13"
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://composer.ovosdev.net"
-        }
-    ],
     "autoload": {
         "psr-0": {
             "Zend_Captcha": "library/"

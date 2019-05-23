@@ -15,7 +15,6 @@
     },
     "suggest": {
         "zf1s/zend-db": "Used in special situations or with special adapters",
-        "zf1s/zend-infocard": "Used in special situations or with special adapters",
         "zf1s/zend-ldap": "Used in special situations or with special adapters",
         "zf1s/zend-openid": "Used in special situations or with special adapters",
         "zf1s/zend-session": "Used in special situations or with special adapters"
