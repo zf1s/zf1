@@ -42,4 +42,9 @@ before_script:
   - cp ./tests/TestConfiguration.travis.php ./tests/TestConfiguration.php
 
 script:
+  # validate that every composer.json is valid
+  # https://github.com/zf1s/zf1/pull/6#issuecomment-495397170
+  - for json in packages/*/composer.json; do COMPOSER=$json composer validate; done
   - ./vendor/bin/phpunit
+
+# EOF
