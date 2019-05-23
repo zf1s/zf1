@@ -16,6 +16,10 @@
         }
     },
     "suggest": {
+        "ext-igbinary": "Used in special situations or with special adapters (Zend_Serializer_Adapter_Igbinary)",
+        "ext-json": "Used in special situations or with special adapters (Zend_Serializer_Adapter_Json)",
+        "ext-simplexml": "Used in special situations or with special adapters (Zend_Serializer_Adapter_Wddx)",
+        "ext-wddx": "Used in special situations or with special adapters (Zend_Serializer_Adapter_Wddx)",
         "zf1s/zend-json": "Used in special situations or with special adapters",
         "zf1s/zend-amf": "Used in special situations or with special adapters"
     },

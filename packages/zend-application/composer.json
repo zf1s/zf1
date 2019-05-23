@@ -15,6 +15,7 @@
         }
     },
     "suggest": {
+        "ext-date": "Used in special situations or with special adapters",
         "zf1s/zend-config": "Used in special situations or with special adapters"
     },
     "replace": {

@@ -15,6 +15,9 @@
             "Zend_Service_ReCaptcha": "library/"
         }
     },
+    "suggest": {
+        "ext-mcrypt": "Used in special situations or with special adapters (Zend_Service_ReCaptcha_MailHide)"
+    },
     "replace": {
         "zf1/zend-service-recaptcha": "^1.12"
     },

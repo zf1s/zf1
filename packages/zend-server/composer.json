@@ -6,6 +6,8 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
+        "ext-spl": "*",
+        "ext-reflection": "*",
         "zf1s/zend-exception": "^1.13"
     },
     "autoload": {

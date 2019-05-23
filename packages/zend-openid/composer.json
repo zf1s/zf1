@@ -16,6 +16,11 @@
             "Zend_OpenId": "library/"
         }
     },
+    "suggest": {
+        "ext-bcmath": "Used in special situations or with special adapters (dh key generation)",
+        "ext-gmp": "Used in special situations or with special adapters (dh key generation)",
+        "ext-openssl": "Used in special situations or with special adapters (dh key generation)"
+    },
     "replace": {
         "zf1/zend-openid": "^1.12"
     },

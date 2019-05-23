@@ -16,6 +16,9 @@
             "Zend_Translate": "library/"
         }
     },
+    "suggest": {
+        "ext-xml": "Used in special situations or with special adapters (Zend_Translate_Adapter_Qt, Zend_Translate_Adapter_Tmx, Zend_Translate_Adapter_Xliff)"
+    },
     "replace": {
         "zf1/zend-translate": "^1.12"
     },

@@ -6,6 +6,7 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
+        "ext-ctype": "*",
         "zf1s/zend-exception": "^1.13",
         "zf1s/zend-loader": "^1.13",
         "zf1s/zend-uri": "^1.13"
@@ -14,6 +15,10 @@
         "psr-0": {
             "Zend_Http": "library/"
         }
+    },
+    "suggest": {
+        "ext-curl": "Used in special situations or with special adapters (Zend_Http_Client_Adapter_Curl)",
+        "ext-fileinfo": "Used in special situations or with special adapters (Zend_Http_Client)"
     },
     "replace": {
         "zf1/zend-http": "^1.12"

@@ -14,6 +14,10 @@
         }
     },
     "suggest": {
+        "ext-apc": "Used in special situations or with special adapters",
+        "ext-memcache": "Used in special situations or with special adapters",
+        "ext-memcached": "Used in special situations or with special adapters",
+        "ext-sqlite": "Used in special situations or with special adapters",
         "zf1s/zend-log": "Used in special situations or with special adapters"
     },
     "replace": {
