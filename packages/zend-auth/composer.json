@@ -6,6 +6,7 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
+        "ext-ctype": "*",
         "zf1s/zend-exception": "^1.13"
     },
     "autoload": {
@@ -14,6 +15,7 @@
         }
     },
     "suggest": {
+        "ext-hash": "Used in special situations or with special adapters",
         "zf1s/zend-db": "Used in special situations or with special adapters",
         "zf1s/zend-ldap": "Used in special situations or with special adapters",
         "zf1s/zend-openid": "Used in special situations or with special adapters",

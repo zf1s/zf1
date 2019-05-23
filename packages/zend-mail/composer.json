@@ -17,6 +17,9 @@
             "Zend_Mail": "library/"
         }
     },
+    "suggest": {
+        "ext-posix": "Used in special situations or with special adapters"
+    },
     "replace": {
         "zf1/zend-mail": "^1.12"
     },

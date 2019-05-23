@@ -15,6 +15,10 @@
         }
     },
     "suggest": {
+        "ext-mysqli": "Used in special situations or with special adapters (Zend_Db_Adapter_Mysqli)",
+        "ext-pdo_mysql": "Used in special situations or with special adapters (Zend_Db_Adapter_Pdo_Mysql)",
+        "ext-pdo_pgsql": "Used in special situations or with special adapters (Zend_Db_Adapter_Pdo_Pgsql)",
+        "ext-pdo_sqlite": "Used in special situations or with special adapters (Zend_Db_Adapter_Pdo_Sqlite)",
         "zf1s/zend-registry": "Used in special situations or with special adapters",
         "zf1s/zend-wildfire": "Used in special situations or with special adapters"
     },

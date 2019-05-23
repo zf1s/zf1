@@ -6,6 +6,7 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
+        "ext-reflection": "*",
         "zf1s/zend-exception": "^1.13"
     },
     "autoload": {
@@ -14,6 +15,7 @@
         }
     },
     "suggest": {
+        "ext-dom": "Used in special situations or with special adapters (Zend_Log_Formatter_Xml)",
         "zf1s/zend-wildfire": "Used in special situations or with special adapters"
     },
     "replace": {

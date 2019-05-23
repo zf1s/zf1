@@ -6,6 +6,10 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
+        "ext-ctype": "*",
+        "ext-gd": "*",
+        "ext-iconv": "*",
+        "ext-zlib": "*",
         "zf1s/zend-exception": "^1.13",
         "zf1s/zend-log": "^1.13",
         "zf1s/zend-memory": "^1.13"

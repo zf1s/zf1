@@ -6,6 +6,7 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
+        "ext-reflection": "*",
         "zf1s/zend-exception": "^1.13",
         "zf1s/zend-loader": "^1.13",
         "zf1s/zend-server": "^1.13",
@@ -15,6 +16,9 @@
         "psr-0": {
             "Zend_Json": "library/"
         }
+    },
+    "suggest": {
+        "ext-json": "Used in special situations or with special adapters"
     },
     "replace": {
         "zf1/zend-json": "^1.12"

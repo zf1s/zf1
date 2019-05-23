@@ -6,6 +6,7 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
+        "ext-reflection": "*",
         "zf1s/zend-crypt": "^1.13",
         "zf1s/zend-exception": "^1.13",
         "zf1s/zend-loader": "^1.13",
@@ -17,6 +18,7 @@
         }
     },
     "suggest": {
+        "ext-zlib": "Used in special situations or with special adapters (Zend_Filter_Compress)",
         "zf1s/zend-locale": "Used in special situations or with special adapters"
     },
     "replace": {

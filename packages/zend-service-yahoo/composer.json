@@ -17,6 +17,7 @@
         }
     },
     "suggest": {
+        "ext-dom": "Used in special situations or with special adapters",
         "zf1s/zend-validate": "Used in special situations or with special adapters"
     },
     "replace": {

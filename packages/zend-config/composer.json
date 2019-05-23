@@ -14,6 +14,9 @@
             "Zend_Config": "library/"
         }
     },
+    "suggest": {
+        "ext-simplexml": "Used in special situations or with special adapters (Zend_Config_Xml)"
+    },
     "replace": {
         "zf1/zend-config": "^1.12"
     },
