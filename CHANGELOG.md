@@ -49,7 +49,6 @@
     - do not instantiate autoloader in Zend_Tool_Framework_Client
     - fixed loading zend-translate adapters, validators, encrypt filter adapters
     - fixes remaining loader & class_exists calls
-  - restore ZendX_ namespace in Zend_Loader_Autoloader - to be removed again properly later
 - zend-locale
   - format+math+phpmath overhaul
     - untangled normalization - removed when value is expected in already normalized form
