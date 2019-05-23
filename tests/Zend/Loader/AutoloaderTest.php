@@ -140,7 +140,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
     {
         $namespaces = $this->autoloader->getRegisteredNamespaces();
         $this->assertContains('Zend_', $namespaces);
-        $this->assertContains('ZendX_', $namespaces);
+        $this->assertNotContains('ZendX_', $namespaces);
     }
 
     public function testAutoloaderShouldAllowRegisteringArbitraryNamespaces()

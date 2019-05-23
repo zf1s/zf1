@@ -82,6 +82,7 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest extends PHPUnit_Framework
 
         Zend_Loader_Autoloader::resetInstance();
         $this->autoloader = Zend_Loader_Autoloader::getInstance();
+        $this->autoloader->registerNamespace('ZendX_');
 
         $this->application = new Zend_Application('testing');
         $this->error = false;
