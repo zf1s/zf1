@@ -5,8 +5,15 @@
 ; top-most EditorConfig file
 root = true
 
-[*.{php,json}]
+[*]
 charset = utf-8
+
+[*.yml]
+end_of_line = lf
+indent_size = 2
+indent_style = space
+
+[*.{php,json}]
 end_of_line = lf
 indent_size = 4
 indent_style = space
