@@ -30,14 +30,14 @@ services:
 install:
   - phpenv rehash
   - if [[ "$USE_XDEBUG" == false ]]; then phpenv config-rm xdebug.ini || return 0; fi
+  - if [[ "$TRAVIS_PHP_VERSION" == 5* ]]; then phpenv config-add tests/php5.travis.ini; fi
+  - if [[ "$TRAVIS_PHP_VERSION" = 5.3 ]]; then phpenv config-add tests/php53.travis.ini; fi
+  - if [[ "$TRAVIS_PHP_VERSION" == 7* ]]; then phpenv config-add tests/php7.travis.ini; fi
   - composer install
 
 before_script:
   - mysql -e 'create database zftest;'
   - psql -c 'create database zftest;' -U postgres
-
-  - if [[ "$TRAVIS_PHP_VERSION" == 5* ]]; then phpenv config-add tests/php5.travis.ini; fi
-  - if [[ "$TRAVIS_PHP_VERSION" == 7* ]]; then phpenv config-add tests/php7.travis.ini; fi
 
   - cp ./tests/TestConfiguration.travis.php ./tests/TestConfiguration.php
 
