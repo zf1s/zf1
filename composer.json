@@ -1,6 +1,20 @@
 {
     "name": "zf1s/zf1",
-    "require": {},
+    "require": {
+        "php": ">=5.3.3",
+        "ext-ctype": "*",
+        "ext-dom": "*",
+        "ext-gd": "*",
+        "ext-iconv": "*",
+        "ext-ldap": "*",
+        "ext-mbstring": "*",
+        "ext-reflection": "*",
+        "ext-session": "*",
+        "ext-simplexml": "*",
+        "ext-spl": "*",
+        "ext-xml": "*",
+        "ext-zlib": "*"
+    },
     "require-dev": {
         "zf1s/phpunit": "^3.7",
         "phpunit/dbunit": "1.3.*"
