@@ -64,11 +64,9 @@ class Zend_File_Transfer
      */
     public function setAdapter($adapter, $direction = false, $options = array())
     {
-        if (Zend_Loader::isReadable('Zend/File/Transfer/Adapter/' . ucfirst($adapter). '.php')) {
+        if (class_exists('Zend_File_Transfer_Adapter_' . ucfirst($adapter))) {
             $adapter = 'Zend_File_Transfer_Adapter_' . ucfirst($adapter);
-        }
-
-        if (!class_exists($adapter)) {
+        } elseif (!class_exists($adapter)) {
             Zend_Loader::loadClass($adapter);
         }
 
