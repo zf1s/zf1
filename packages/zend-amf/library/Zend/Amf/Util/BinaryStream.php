@@ -62,7 +62,8 @@ class Zend_Amf_Util_BinaryStream
      * by the methods in the class. Detect if the class should use big or
      * little Endian encoding.
      *
-     * @param  string $stream use '' if creating a new stream or pass a string if reading.
+     * @param string $stream use '' if creating a new stream or pass a string if reading.
+     * @throws Zend_Amf_Exception
      * @return void
      */
     public function __construct($stream)
@@ -140,7 +141,7 @@ class Zend_Amf_Util_BinaryStream
             );
         }
 
-        return ord($this->_stream{$this->_needle++});
+        return ord($this->_stream[$this->_needle++]);
     }
 
     /**
@@ -158,6 +159,7 @@ class Zend_Amf_Util_BinaryStream
     /**
      * Reads a signed 32-bit integer from the data stream.
      *
+     * @throws Zend_Amf_Exception
      * @return int Value is in the range of -2147483648 to 2147483647
      */
     public function readInt()
@@ -180,6 +182,7 @@ class Zend_Amf_Util_BinaryStream
     /**
      * Reads a UTF-8 string from the data stream
      *
+     * @throws Zend_Amf_Exception
      * @return string A UTF-8 string produced by the byte representation of characters
      */
     public function readUtf()
@@ -205,6 +208,7 @@ class Zend_Amf_Util_BinaryStream
     /**
      * Read a long UTF string
      *
+     * @throws Zend_Amf_Exception
      * @return string
      */
     public function readLongUtf()
@@ -216,8 +220,8 @@ class Zend_Amf_Util_BinaryStream
     /**
      * Write a long UTF string to the buffer
      *
-     * @param  string $stream
-     * @return Zend_Amf_Util_BinaryStream
+     * @param string $stream
+     * @return void
      */
     public function writeLongUtf($stream)
     {
@@ -228,6 +232,7 @@ class Zend_Amf_Util_BinaryStream
     /**
      * Read a long numeric value
      *
+     * @throws Zend_Amf_Exception
      * @return double
      */
     public function readLong()
@@ -249,8 +254,9 @@ class Zend_Amf_Util_BinaryStream
 
     /**
      * Read a 16 bit unsigned short.
-     *
      * @todo   This could use the unpack() w/ S,n, or v
+     *
+     * @throws Zend_Amf_Exception
      * @return double
      */
     public function readUnsignedShort()

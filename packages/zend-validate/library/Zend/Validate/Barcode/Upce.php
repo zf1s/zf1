@@ -58,7 +58,7 @@ class Zend_Validate_Barcode_Upce extends Zend_Validate_Barcode_AdapterAbstract
      */
     public function checkLength($value)
     {
-        if (strlen($value) != 8) {
+        if (strlen($value) !== 8) {
             $this->setCheck(false);
         } else {
             $this->setCheck(true);

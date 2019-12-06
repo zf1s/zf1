@@ -48,6 +48,10 @@ class Zend_Tool_Project_Context_Zf_ApplicationConfigFile extends Zend_Tool_Proje
      * @var string
      */
     protected $_content = null;
+    /**
+     * @var Zend_Tool_Project_Profile_Resource_Container
+     */
+    private $_type;
 
     /**
      * getName()
@@ -139,7 +143,7 @@ class Zend_Tool_Project_Context_Zf_ApplicationConfigFile extends Zend_Tool_Proje
             $newLines[] = $contentLine;
             if ($insideSection) {
                 // if its blank, or a section heading
-                if (isset($contentLines[$contentLineIndex + 1]{0}) && $contentLines[$contentLineIndex + 1]{0} == '[') {
+                if (isset($contentLines[$contentLineIndex + 1][0]) && $contentLines[$contentLineIndex + 1][0] == '[') {
                     $newLines[] = $key . ' = ' . $value;
                     $insideSection = null;
                 } else if (!isset($contentLines[$contentLineIndex + 1])){
@@ -171,12 +175,8 @@ class Zend_Tool_Project_Context_Zf_ApplicationConfigFile extends Zend_Tool_Proje
             RecursiveIteratorIterator::SELF_FIRST
             );
 
-        $lastDepth = 0;
-
         // loop through array structure recursively to create proper keys
         foreach ($rii as $name => $value) {
-            $lastDepth = $rii->getDepth();
-
             if (is_array($value)) {
                 array_push($configKeyNames, $name);
             } else {
@@ -231,12 +231,8 @@ class Zend_Tool_Project_Context_Zf_ApplicationConfigFile extends Zend_Tool_Proje
             RecursiveIteratorIterator::SELF_FIRST
             );
 
-        $lastDepth = 0;
-
         // loop through array structure recursively to create proper keys
         foreach ($rii as $name => $value) {
-            $lastDepth = $rii->getDepth();
-
             if (is_array($value)) {
                 array_push($configKeyNames, $name);
             } else {

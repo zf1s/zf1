@@ -52,6 +52,7 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
     /**
      * Class constructor
      *
+     * @throws Zend_Filter_Exception
      * @param string|array $options (Optional) Options to set
      */
     public function __construct($options = null)
@@ -77,7 +78,7 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
      * Sets the archive to use for de-/compression
      *
      * @param string $archive Archive to use
-     * @return Zend_Filter_Compress_Rar
+     * @return Zend_Filter_Compress_Zip
      */
     public function setArchive($archive)
     {
@@ -101,7 +102,8 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
      * Sets the target to use
      *
      * @param string $target
-     * @return Zend_Filter_Compress_Rar
+     * @throws Zend_Filter_Exception
+     * @return Zend_Filter_Compress_Zip
      */
     public function setTarget($target)
     {
@@ -118,7 +120,8 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
     /**
      * Compresses the given content
      *
-     * @param  string $content
+     * @param string $content
+     * @throws Zend_Filter_Exception
      * @return string Compressed archive
      */
     public function compress($content)
@@ -180,7 +183,7 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
             if (!is_dir($file)) {
                 $file = basename($file);
             } else {
-                $file = "zip.tmp";
+                $file = 'zip.tmp';
             }
 
             $res = $zip->addFromString($file, $content);
@@ -197,7 +200,8 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
     /**
      * Decompresses the given content
      *
-     * @param  string $content
+     * @param string $content
+     * @throws Zend_Filter_Exception
      * @return string
      */
     public function decompress($content)
@@ -237,9 +241,9 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
             for ($i = 0; $i < $zip->numFiles; $i++) {
                 $statIndex = $zip->statIndex($i);
                 $currName = $statIndex['name'];
-                if (($currName{0} == '/') ||
-                    (substr($currName, 0, 2) == '..') ||
-                    (substr($currName, 0, 4) == './..')
+                if (($currName[0] == '/') ||
+                    (strpos($currName, '..') === 0) ||
+                    (strpos($currName, './..') === 0)
                     )
                 {
                     // require_once 'Zend/Filter/Exception.php';
@@ -265,6 +269,7 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
      * Returns the proper string based on the given error constant
      *
      * @param string $error
+     * @return string
      */
     protected function _errorString($error)
     {

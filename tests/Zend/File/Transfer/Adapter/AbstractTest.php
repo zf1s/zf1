@@ -633,7 +633,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testAdapterShouldAllowRetrievingFileName()
     {
-        $path = dirname(__FILE__)
+        $path = __DIR__
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '..'
@@ -644,7 +644,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testAdapterShouldAllowRetrievingFileNameWithoutPath()
     {
-        $path = dirname(__FILE__)
+        $path = __DIR__
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '..'
@@ -655,27 +655,27 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testAdapterShouldAllowRetrievingAllFileNames()
     {
-        $path = dirname(__FILE__)
+        $path = __DIR__
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '_files';
         $this->adapter->setDestination($path);
         $files = $this->adapter->getFileName();
-        $this->assertTrue(is_array($files));
+        $this->assertInternalType('array', $files);
         $this->assertEquals($path . DIRECTORY_SEPARATOR . 'bar.png', $files['bar']);
     }
 
     public function testAdapterShouldAllowRetrievingAllFileNamesWithoutPath()
     {
-        $path = dirname(__FILE__)
+        $path = __DIR__
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '..'
               . DIRECTORY_SEPARATOR . '_files';
         $this->adapter->setDestination($path);
         $files = $this->adapter->getFileName(null, false);
-        $this->assertTrue(is_array($files));
+        $this->assertInternalType('array', $files);
         $this->assertEquals('bar.png', $files['bar']);
     }
 
@@ -699,19 +699,19 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
     public function testEmptyTempDirectoryDetection()
     {
         $this->adapter->_tmpDir = "";
-        $this->assertTrue(empty($this->adapter->_tmpDir), "Empty temporary directory");
+        $this->assertEmpty($this->adapter->_tmpDir, 'Empty temporary directory');
     }
 
     public function testTempDirectoryDetection()
     {
         $this->adapter->getTmpDir();
-        $this->assertTrue(!empty($this->adapter->_tmpDir), "Temporary directory filled");
+        $this->assertNotEmpty($this->adapter->_tmpDir, 'Temporary directory filled');
     }
 
     public function testTemporaryDirectoryAccessDetection()
     {
-        $this->adapter->_tmpDir = ".";
-        $path = "/NoPath/To/File";
+        $this->adapter->_tmpDir = '.';
+        $path = '/NoPath/To/File';
         $this->assertFalse($this->adapter->isPathWriteable($path));
         $this->assertTrue($this->adapter->isPathWriteable($this->adapter->_tmpDir));
     }
@@ -872,7 +872,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
         }
 
         // Create temporary directory
-        $directory = dirname(__FILE__) . '/_files/destination';
+        $directory = __DIR__ . '/_files/destination';
         if (!is_dir($directory)) {
             @mkdir($directory);
         }

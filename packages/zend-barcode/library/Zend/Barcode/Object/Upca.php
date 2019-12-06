@@ -140,7 +140,7 @@ class Zend_Barcode_Object_Upca extends Zend_Barcode_Object_Ean13
                     $fontSize *= 0.8;
                 }
                 $this->_addText(
-                    $text{$i},
+                    $text[$i],
                     $fontSize * $this->_factor,
                     $this->_rotate(
                         $leftPosition,
@@ -165,7 +165,7 @@ class Zend_Barcode_Object_Upca extends Zend_Barcode_Object_Ean13
                     default:
                         $factor = 0;
                 }
-                $leftPosition = $leftPosition + $characterWidth + ($factor * $this->_barThinWidth * $this->_factor);
+                $leftPosition += $characterWidth + ($factor * $this->_barThinWidth * $this->_factor);
             }
         }
     }

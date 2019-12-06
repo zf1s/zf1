@@ -123,7 +123,7 @@ class Zend_Barcode_Object_Ean8 extends Zend_Barcode_Object_Ean13
             $leftPosition = $this->getQuietZone() + (3 * $this->_barThinWidth) * $this->_factor;
             for ($i = 0; $i < $this->_barcodeLength; $i ++) {
                 $this->_addText(
-                    $text{$i},
+                    $text[$i],
                     $this->_fontSize * $this->_factor,
                     $this->_rotate(
                         $leftPosition,
@@ -142,7 +142,7 @@ class Zend_Barcode_Object_Ean8 extends Zend_Barcode_Object_Ean13
                     default:
                         $factor = 0;
                 }
-                $leftPosition = $leftPosition + $characterWidth + ($factor * $this->_barThinWidth * $this->_factor);
+                $leftPosition += $characterWidth + ($factor * $this->_barThinWidth * $this->_factor);
             }
         }
     }
@@ -152,8 +152,9 @@ class Zend_Barcode_Object_Ean8 extends Zend_Barcode_Object_Ean13
      * (to suppress checksum character substitution)
      *
      * @param string $value
-     * @param array  $options
+     * @param array $options
      * @throws Zend_Barcode_Object_Exception
+     * @throws Zend_Validate_Exception
      */
     protected function _validateText($value, $options = array())
     {

@@ -40,6 +40,8 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Constructor for Http File Transfers
      *
+     * @throws Zend_File_Transfer_Exception
+     * @throws Zend_Loader_Exception
      * @param array $options OPTIONAL Options to set
      */
     public function __construct($options = array())
@@ -57,9 +59,11 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Sets a validator for the class, erasing all previous set
      *
-     * @param  string|array $validator Validator to set
-     * @param  string|array $files     Files to limit this validator to
-     * @return Zend_File_Transfer_Adapter
+     * @param array $validators
+     * @param string|array $files Files to limit this validator to
+     * @throws Zend_File_Transfer_Exception
+     * @throws Zend_Loader_Exception
+     * @return Zend_File_Transfer_Adapter_Abstract
      */
     public function setValidators(array $validators, $files = null)
     {
@@ -85,7 +89,8 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Remove an individual validator
      *
-     * @param  string $name
+     * @throws Zend_File_Transfer_Exception
+     * @throws Zend_Loader_Exception
      * @return Zend_File_Transfer_Adapter_Abstract
      */
     public function clearValidators()
@@ -112,7 +117,8 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Checks if the files are valid
      *
-     * @param  string|array $files (Optional) Files to check
+     * @param string|array $files (Optional) Files to check
+     * @throws Zend_File_Transfer_Exception
      * @return boolean True if all checks are valid
      */
     public function isValid($files = null)
@@ -151,7 +157,8 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Receive the file from the client (Upload)
      *
-     * @param  string|array $files (Optional) Files to receive
+     * @param string|array $files (Optional) Files to receive
+     * @throws Zend_File_Transfer_Exception
      * @return bool
      */
     public function receive($files = null)
@@ -222,9 +229,9 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Checks if the file was already sent
      *
-     * @param  string|array $file Files to check
-     * @return bool
+     * @param  string|array $files Files to check
      * @throws Zend_File_Transfer_Exception Not implemented
+     * @return bool
      */
     public function isSent($files = null)
     {
@@ -235,7 +242,8 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Checks if the file was already received
      *
-     * @param  string|array $files (Optional) Files to check
+     * @param string|array $files (Optional) Files to check
+     * @throws Zend_File_Transfer_Exception
      * @return bool
      */
     public function isReceived($files = null)
@@ -257,7 +265,8 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Checks if the file was already filtered
      *
-     * @param  string|array $files (Optional) Files to check
+     * @param string|array $files (Optional) Files to check
+     * @throws Zend_File_Transfer_Exception
      * @return bool
      */
     public function isFiltered($files = null)
@@ -279,7 +288,8 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Has a file been uploaded ?
      *
-     * @param  array|string|null $file
+     * @param array|string|null $files
+     * @throws Zend_File_Transfer_Exception
      * @return bool
      */
     public function isUploaded($files = null)
@@ -301,7 +311,9 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Returns the actual progress of file up-/downloads
      *
-     * @param  string $id The upload to get the progress for
+     * @param string $id The upload to get the progress for
+     * @throws Zend_File_Transfer_Exception
+     * @throws Zend_ProgressBar_Exception
      * @return array|null
      */
     public static function getProgress($id = null)
@@ -429,8 +441,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
     /**
      * Prepare the $_FILES array to match the internal syntax of one file per entry
      *
-     * @param  array $files
-     * @return array
+     * @return Zend_File_Transfer_Adapter_Http
      */
     protected function _prepareFiles()
     {

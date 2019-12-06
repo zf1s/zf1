@@ -69,6 +69,8 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_Te
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      *
+     * @throws Zend_Controller_Exception
+     * @throws Zend_Controller_Request_Exception
      * @return void
      */
     public function setUp()
@@ -82,7 +84,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_Te
 
         $this->front = Zend_Controller_Front::getInstance();
         $this->front->resetInstance();
-        $this->front->addModuleDirectory(dirname(__FILE__) . '/../../_files/modules');
+        $this->front->addModuleDirectory(__DIR__ . '/../../_files/modules');
 
         $this->layout = Zend_Layout::startMvc();
 
@@ -92,8 +94,8 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_Te
         $this->response = new Zend_Controller_Response_Cli();
 
         $this->front->setRequest($this->request)->setResponse($this->response);
-        $this->view = new Zend_VIew();
-        $this->view->addHelperPath(dirname(__FILE__) . '/../../../../../library/Zend/View/Helper/');
+        $this->view = new Zend_View();
+        $this->view->addHelperPath(__DIR__ . '/../../../../../library/Zend/View/Helper/');
         $this->viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
         $this->viewRenderer->setView($this->view);
 

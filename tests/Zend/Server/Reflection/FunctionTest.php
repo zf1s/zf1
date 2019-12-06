@@ -53,11 +53,11 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
 
         $argv = array('string1', 'string2');
         $r = new Zend_Server_Reflection_Function($function, 'namespace', $argv);
-        $this->assertTrue(is_array($r->getInvokeArguments()));
-        $this->assertTrue($argv === $r->getInvokeArguments());
+        $this->assertInternalType('array', $r->getInvokeArguments());
+        $this->assertSame($argv, $r->getInvokeArguments());
 
         $prototypes = $r->getPrototypes();
-        $this->assertTrue(is_array($prototypes));
+        $this->assertInternalType('array', $prototypes);
         $this->assertTrue(0 < count($prototypes));
     }
 
@@ -95,9 +95,9 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         $r = new Zend_Server_Reflection_Function($function);
 
         $prototypes = $r->getPrototypes();
-        $this->assertTrue(is_array($prototypes));
+        $this->assertInternalType('array', $prototypes);
         $this->assertTrue(0 < count($prototypes));
-        $this->assertEquals(8, count($prototypes));
+        $this->assertCount(8, $prototypes);
 
         foreach ($prototypes as $p) {
             $this->assertTrue($p instanceof Zend_Server_Reflection_Prototype);
@@ -110,9 +110,9 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         $r = new Zend_Server_Reflection_Function($function);
 
         $prototypes = $r->getPrototypes();
-        $this->assertTrue(is_array($prototypes));
+        $this->assertInternalType('array', $prototypes);
         $this->assertTrue(0 < count($prototypes));
-        $this->assertEquals(1, count($prototypes));
+        $this->assertCount(1, $prototypes);
 
         foreach ($prototypes as $p) {
             $this->assertTrue($p instanceof Zend_Server_Reflection_Prototype);
@@ -125,21 +125,24 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         $function = new ReflectionFunction('Zend_Server_Reflection_FunctionTest_function');
         $r = new Zend_Server_Reflection_Function($function);
         $args = $r->getInvokeArguments();
-        $this->assertTrue(is_array($args));
-        $this->assertEquals(0, count($args));
+        $this->assertInternalType('array', $args);
+        $this->assertCount(0, $args);
 
         $argv = array('string1', 'string2');
         $r = new Zend_Server_Reflection_Function($function, null, $argv);
         $args = $r->getInvokeArguments();
-        $this->assertTrue(is_array($args));
-        $this->assertEquals(2, count($args));
-        $this->assertTrue($argv === $args);
+        $this->assertInternalType('array', $args);
+        $this->assertCount(2, $args);
+        $this->assertSame($argv, $args);
     }
 
     public function test__wakeup()
     {
         $function = new ReflectionFunction('Zend_Server_Reflection_FunctionTest_function');
         $r = new Zend_Server_Reflection_Function($function);
+        if (PHP_VERSION_ID >= 70400) {
+            $this->setExpectedException('Exception', "Serialization of 'ReflectionFunction' is not allowed");
+        }
         $s = serialize($r);
         $u = unserialize($s);
         $this->assertTrue($u instanceof Zend_Server_Reflection_Function);
@@ -152,14 +155,14 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         $r = new Zend_Server_Reflection_Function($function);
 
         $prototypes = $r->getPrototypes();
-        $this->assertTrue(is_array($prototypes));
+        $this->assertInternalType('array', $prototypes);
         $this->assertTrue(0 < count($prototypes));
-        $this->assertEquals(1, count($prototypes));
+        $this->assertCount(1, $prototypes);
 
         $proto = $prototypes[0];
         $params = $proto->getParameters();
-        $this->assertTrue(is_array($params));
-        $this->assertEquals(1, count($params));
+        $this->assertInternalType('array', $params);
+        $this->assertCount(1, $params);
         $this->assertEquals('string', $params[0]->getType());
     }
 

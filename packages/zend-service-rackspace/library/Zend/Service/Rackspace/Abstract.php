@@ -191,10 +191,8 @@ abstract class Zend_Service_Rackspace_Abstract
      */     
     public function getManagementUrl()
     {
-        if (empty($this->managementUrl)) {
-            if (!$this->authenticate()) {
-                return false;
-            }
+        if (empty($this->managementUrl) && !$this->authenticate()) {
+            return false;
         }
         return $this->managementUrl;
     }

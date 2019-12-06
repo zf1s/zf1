@@ -740,9 +740,9 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
             // but exist in the object
             foreach($members as $just_name => $value) {
 
-                $name = $raw_name = $just_name;
+                $name = (string)$raw_name = $just_name;
 
-                if ($name{0} == "\0") {
+                if ($name[0] == "\0") {
                     $parts = explode("\0", $name);
                     $name = $parts[2];
                 }

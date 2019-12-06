@@ -65,9 +65,9 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 {
 
-    protected $_controller = null;
-    protected $_request = null;
-    protected $_response = null;
+    protected $_controller;
+    protected $_request;
+    protected $_response;
 
     /**
      * Runs the test methods of this class.
@@ -77,7 +77,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Wildfire_WildfireTest");
+        $suite  = new PHPUnit_Framework_TestSuite('Zend_Wildfire_WildfireTest');
         $result = PHPUnit_TextUI_TestRunner::run($suite);
     }
 
@@ -101,7 +101,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $this->_response   = new Zend_Wildfire_WildfireTest_Response();
         $this->_controller = Zend_Controller_Front::getInstance();
         $this->_controller->resetInstance();
-        $this->_controller->setControllerDirectory(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files')
+        $this->_controller->setControllerDirectory(__DIR__ . DIRECTORY_SEPARATOR . '_files')
                           ->setRequest($this->_request)
                           ->setResponse($this->_response)
                           ->setParam('noErrorHandler', true)
@@ -568,10 +568,10 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         Zend_Wildfire_Plugin_FirePhp::send($table);
 
         $cell = new ArrayObject();
-        $cell->append("item1");
-        $cell->append("item2");
+        $cell->append('item1');
+        $cell->append('item2');
 
-        $table->addRow(array("row1", $cell));
+        $table->addRow(array('row1', $cell));
 
         Zend_Wildfire_Channel_HttpHeaders::getInstance()->flush();
 
@@ -742,7 +742,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $this->_setupWithoutFrontController();
         try {
             Zend_Wildfire_Channel_HttpHeaders::getInstance();
-            Zend_Wildfire_Channel_HttpHeaders::init(null);
+            Zend_Wildfire_Channel_HttpHeaders::init();
             $this->fail('Should not be able to re-initialize');
         } catch (Exception $e) {
             // success
@@ -1079,9 +1079,9 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $messages = $protocol->getMessages();
         $messages = $messages[Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE][Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI];
 
-        for( $i=0 ; $i<sizeof($messages) ; $i++ ) {
+        for($i=0, $iMax = count($messages); $i< $iMax; $i++ ) {
             if(!preg_match_all('/WildfireTest\.php","Line":' . $lines[$i] . '/', $messages[$i], $m)) {
-                $this->fail("File and line does not match for message number: " . ($i+1));
+                $this->fail('File and line does not match for message number: ' . ($i+1));
             }
 
         }

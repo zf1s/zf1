@@ -45,11 +45,13 @@ class Zend_Ldap_Converter
      */
     public static function ascToHex32($string)
     {
-        for ($i = 0; $i<strlen($string); $i++) {
+        for ($i = 0, $iMax = strlen($string); $i< $iMax; $i++) {
             $char = substr($string, $i, 1);
             if (ord($char)<32) {
                 $hex = dechex(ord($char));
-                if (strlen($hex) == 1) $hex = '0' . $hex;
+                if (strlen($hex) === 1) {
+                    $hex = '0' . $hex;
+                }
                 $string = str_replace($char, '\\' . $hex, $string);
             }
         }
@@ -76,14 +78,15 @@ class Zend_Ldap_Converter
 
     /**
      * Convert a single slash-prefixed character from Hex32 to ASCII.
-     * Used as a callback in @see hex32ToAsc()
-     * @param array $matches
+     * Used as a callback in @param array $matches
      *
+     * @see hex32ToAsc()
+     * @throws Exception
      * @return string
      */
     private static function _charHex32ToAsc(array $matches)
     {
-        return chr(hexdec($matches[0]));
+        return chr(hexdec(ltrim($matches[0], '\\')));
     }
 
     /**
@@ -95,7 +98,7 @@ class Zend_Ldap_Converter
      * @todo write more tests
      *
      * @param    mixed     $value     The value to convert
-     * @param    int       $ytpe      The conversion type to use
+     * @param    int       $type      The conversion type to use
      * @return    string
      * @throws    Zend_Ldap_Converter_Exception
      */
@@ -142,14 +145,15 @@ class Zend_Ldap_Converter
      * Converts a date-entity to an LDAP-compatible date-string
      *
      * The date-entity <var>$date</var> can be either a timestamp, a
-     * DateTime Object, a string that is parseable by strtotime() or a Zend_Date
+     * DateTime Object, a string that is parsable by strtotime() or a Zend_Date
      * Object.
      *
-     * @param    integer|string|DateTimt|Zend_Date        $date    The date-entity
-     * @param    boolean                                    $asUtc    Whether to return the LDAP-compatible date-string
+     * @param integer|string|DateTimt|Zend_Date $date The date-entity
+     * @param boolean $asUtc Whether to return the LDAP-compatible date-string
      *                                                          as UTC or as local value
-     * @return    string
-     * @throws    InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws Zend_Date_Exception
+     * @return string
      */
     public static function toLdapDateTime($date, $asUtc = true)
     {
@@ -216,7 +220,7 @@ class Zend_Ldap_Converter
      * type can be forced
      * .
      * @param    string    $value             The value to convert
-     * @param    int        $ytpe              The conversion type to use
+     * @param    int        $type              The conversion type to use
      * @param    boolean    $dateTimeAsUtc    Return DateTime values in UTC timezone
      * @return    mixed
      * @throws    Zend_Ldap_Converter_Exception
@@ -251,12 +255,13 @@ class Zend_Ldap_Converter
     /**
      * Convert an LDAP-Generalized-Time-entry into a DateTime-Object
      *
-     * CAVEAT: The DateTime-Object returned will alwasy be set to UTC-Timezone.
+     * CAVEAT: The DateTime-Object returned will always be set to UTC-Timezone.
      *
-     * @param    string        $date    The generalized-Time
-     * @param    boolean        $asUtc    Return the DateTime with UTC timezone
-     * @return    DateTime
-     * @throws    InvalidArgumentException if a non-parseable-format is given
+     * @param string $date The generalized-Time
+     * @param boolean $asUtc Return the DateTime with UTC timezone
+     * @throws InvalidArgumentException if a non-parsable-format is given
+     * @throws Exception
+     * @return DateTime
      */
     public static function fromLdapDateTime($date, $asUtc = true)
     {

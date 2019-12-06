@@ -84,7 +84,7 @@ class Zend_Cloud_Infrastructure_Instance
     {
         if (!($adapter instanceof Zend_Cloud_Infrastructure_Adapter)) {
             // require_once 'Zend/Cloud/Infrastructure/Exception.php';
-            throw new Zend_Cloud_Infrastructure_Exception("You must pass a Zend_Cloud_Infrastructure_Adapter instance");
+            throw new Zend_Cloud_Infrastructure_Exception('You must pass a Zend_Cloud_Infrastructure_Adapter instance');
         }
 
         if (is_object($data)) {
@@ -97,7 +97,7 @@ class Zend_Cloud_Infrastructure_Instance
         
         if (empty($data) || !is_array($data)) {
             // require_once 'Zend/Cloud/Infrastructure/Exception.php';
-            throw new Zend_Cloud_Infrastructure_Exception("You must pass an array of parameters");
+            throw new Zend_Cloud_Infrastructure_Exception('You must pass an array of parameters');
         }
 
         foreach ($this->attributeRequired as $key) {
@@ -118,7 +118,7 @@ class Zend_Cloud_Infrastructure_Instance
     /**
      * Get Attribute with a specific key
      *
-     * @param array $data
+     * @param string $key
      * @return misc|false
      */
     public function getAttribute($key) 

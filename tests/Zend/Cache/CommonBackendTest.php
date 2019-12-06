@@ -40,7 +40,7 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
     public function __construct($name = null, array $data = array(), $dataName = '')
     {
         $this->_className = $name;
-        $this->_root = dirname(__FILE__);
+        $this->_root = __DIR__;
         date_default_timezone_set('UTC');
         parent::__construct($name, $data, $dataName);
     }
@@ -79,7 +79,7 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         if ($date) {
             $suffix = date('mdyHis');
         }
-        if (is_writeable($this->_root)) {
+        if (is_writable($this->_root)) {
             return $this->_root . DIRECTORY_SEPARATOR . 'zend_cache_tmp_dir_' . $suffix;
         } else {
             if (getenv('TMPDIR')){

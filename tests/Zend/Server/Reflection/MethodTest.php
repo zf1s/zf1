@@ -84,7 +84,7 @@ class Zend_Server_Reflection_MethodTest extends PHPUnit_Framework_TestCase
         $class = $r->getDeclaringClass();
 
         $this->assertTrue($class instanceof Zend_Server_Reflection_Class);
-        $this->assertTrue($this->_class === $class);
+        $this->assertSame($this->_class, $class);
     }
 
     /**
@@ -97,6 +97,9 @@ class Zend_Server_Reflection_MethodTest extends PHPUnit_Framework_TestCase
     public function test__wakeup()
     {
         $r = new Zend_Server_Reflection_Method($this->_class, $this->_method);
+        if (PHP_VERSION_ID >= 70400) {
+            $this->setExpectedException('Exception', "Serialization of 'ReflectionMethod' is not allowed");
+        }
         $s = serialize($r);
         $u = unserialize($s);
 

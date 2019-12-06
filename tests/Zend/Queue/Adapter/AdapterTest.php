@@ -689,7 +689,7 @@ abstract class Zend_Queue_Adapter_AdapterTest extends PHPUnit_Framework_TestCase
         // keep in mind that some queue services are on forigen machines and need network time.
 
         if (false) { // easy comment/uncomment, set to true or false
-            $this->markTestSkipped('Visibility testing takes ' . $default_timeout+$extra_delay . ' seconds per adapter, if you wish to test this, uncomment the test case in ' . __FILE__ . ' line ' . __LINE__);
+            $this->markTestSkipped('Visibility testing takes ' . ($default_timeout + $extra_delay) . ' seconds per adapter, if you wish to test this, uncomment the test case in ' . __FILE__ . ' line ' . __LINE__);
             return;
         }
 

@@ -253,10 +253,10 @@ class Zend_View_Helper_Navigation_Sitemap
     {
         $href = $page->getHref();
 
-        if (!isset($href{0})) {
+        if (!isset($href[0])) {
             // no href
             return '';
-        } elseif ($href{0} == '/') {
+        } elseif ($href[0] == '/') {
             // href is relative to root; use serverUrl helper
             $url = $this->getServerUrl() . $href;
         } elseif (preg_match('/^[a-z]+:/im', (string) $href)) {
@@ -404,15 +404,13 @@ class Zend_View_Helper_Navigation_Sitemap
         }
 
         // validate using schema if specified
-        if ($this->getUseSchemaValidation()) {
-            if (!@$dom->schemaValidate(self::SITEMAP_XSD)) {
-                // require_once 'Zend/View/Exception.php';
-                $e = new Zend_View_Exception(sprintf(
-                        'Sitemap is invalid according to XML Schema at "%s"',
-                        self::SITEMAP_XSD));
-                $e->setView($this->view);
-                throw $e;
-            }
+        if ($this->getUseSchemaValidation() && !@$dom->schemaValidate(self::SITEMAP_XSD)) {
+            // require_once 'Zend/View/Exception.php';
+            $e = new Zend_View_Exception(sprintf(
+                    'Sitemap is invalid according to XML Schema at "%s"',
+                    self::SITEMAP_XSD));
+            $e->setView($this->view);
+            throw $e;
         }
 
         return $dom;
@@ -425,10 +423,11 @@ class Zend_View_Helper_Navigation_Sitemap
      *
      * Implements {@link Zend_View_Helper_Navigation_Helper::render()}.
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param Zend_Navigation_Container $container [optional] container to
      *                                               render. Default is to
      *                                               render the container
      *                                               registered in the helper.
+     * @throws Zend_View_Exception
      * @return string                                helper output
      */
     public function render(Zend_Navigation_Container $container = null)
