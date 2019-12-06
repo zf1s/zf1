@@ -37,16 +37,32 @@ class Zend_Config_JsonTest extends PHPUnit_Framework_TestCase
     protected $_iniFileConfig;
     protected $_iniFileAllSectionsConfig;
     protected $_iniFileCircularConfig;
+    /**
+     * @var string
+     */
+    private $_nonReadableConfig;
+    /**
+     * @var string
+     */
+    private $_iniFileMultipleInheritanceConfig;
+    /**
+     * @var string
+     */
+    private $_iniFileNoSectionsConfig;
+    /**
+     * @var string
+     */
+    private $_iniFileInvalid;
 
     public function setUp()
     {
-        $this->_iniFileConfig = dirname(__FILE__) . '/_files/config.json';
-        $this->_iniFileAllSectionsConfig = dirname(__FILE__) . '/_files/allsections.json';
-        $this->_iniFileCircularConfig = dirname(__FILE__) . '/_files/circular.json';
-        $this->_iniFileMultipleInheritanceConfig = dirname(__FILE__) . '/_files/multipleinheritance.json';
-        $this->_nonReadableConfig = dirname(__FILE__) . '/_files/nonreadable.json';
-        $this->_iniFileNoSectionsConfig = dirname(__FILE__) . '/_files/nosections.json';
-        $this->_iniFileInvalid = dirname(__FILE__) . '/_files/invalid.json';
+        $this->_iniFileConfig = __DIR__ . '/_files/config.json';
+        $this->_iniFileAllSectionsConfig = __DIR__ . '/_files/allsections.json';
+        $this->_iniFileCircularConfig = __DIR__ . '/_files/circular.json';
+        $this->_iniFileMultipleInheritanceConfig = __DIR__ . '/_files/multipleinheritance.json';
+        $this->_nonReadableConfig = __DIR__ . '/_files/nonreadable.json';
+        $this->_iniFileNoSectionsConfig = __DIR__ . '/_files/nosections.json';
+        $this->_iniFileInvalid = __DIR__ . '/_files/invalid.json';
     }
 
     public function testLoadSingleSection()
@@ -268,7 +284,7 @@ EOJ;
             define('ZEND_CONFIG_JSON_ENV', 'testing');
         }
         if (!defined('ZEND_CONFIG_JSON_ENV_PATH')) {
-            define('ZEND_CONFIG_JSON_ENV_PATH', dirname(__FILE__));
+            define('ZEND_CONFIG_JSON_ENV_PATH', __DIR__);
         }
         if (!defined('ZEND_CONFIG_JSON_ENV_INT')) {
             define('ZEND_CONFIG_JSON_ENV_INT', 42);

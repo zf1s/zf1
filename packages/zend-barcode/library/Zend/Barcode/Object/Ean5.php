@@ -115,7 +115,8 @@ class Zend_Barcode_Object_Ean5 extends Zend_Barcode_Object_Ean13
     /**
      * Get barcode checksum
      *
-     * @param  string $text
+     * @param string $text
+     * @throws Zend_Barcode_Object_Exception
      * @return int
      */
     public function getChecksum($text)
@@ -124,7 +125,7 @@ class Zend_Barcode_Object_Ean5 extends Zend_Barcode_Object_Ean13
         $checksum = 0;
 
         for ($i = 0 ; $i < $this->_barcodeLength; $i ++) {
-            $checksum += intval($text{$i}) * ($i % 2 ? 9 : 3);
+            $checksum += (int)$text[$i] * (($i % 2) ? 9 : 3);
         }
 
         return ($checksum % 10);

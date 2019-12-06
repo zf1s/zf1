@@ -76,6 +76,7 @@ class Zend_Barcode_Object_Code25 extends Zend_Barcode_Object_ObjectAbstract
 
     /**
      * Partial check of interleaved 2 of 5 barcode
+     * @throws Zend_Barcode_Object_Exception
      * @return void
      */
     protected function _checkParams()
@@ -122,7 +123,8 @@ class Zend_Barcode_Object_Code25 extends Zend_Barcode_Object_ObjectAbstract
     /**
      * Get barcode checksum
      *
-     * @param  string $text
+     * @param string $text
+     * @throws Zend_Barcode_Object_Exception
      * @return int
      */
     public function getChecksum($text)
@@ -132,7 +134,7 @@ class Zend_Barcode_Object_Code25 extends Zend_Barcode_Object_ObjectAbstract
         $checksum = 0;
 
         for ($i = strlen($text); $i > 0; $i --) {
-            $checksum += intval($text{$i - 1}) * $factor;
+            $checksum += (int)$text[$i - 1] * $factor;
             $factor    = 4 - $factor;
         }
 

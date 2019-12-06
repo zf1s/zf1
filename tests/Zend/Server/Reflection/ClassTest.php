@@ -55,7 +55,7 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('', $r->getNamespace());
 
         $methods = $r->getMethods();
-        $this->assertTrue(is_array($methods));
+        $this->assertInternalType('array', $methods);
         foreach ($methods as $m) {
             $this->assertTrue($m instanceof Zend_Server_Reflection_Method);
         }
@@ -78,7 +78,7 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit_Framework_TestCase
     public function test__call()
     {
         $r = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'));
-        $this->assertTrue(is_string($r->getName()));
+        $this->assertInternalType('string', $r->getName());
         $this->assertEquals('Zend_Server_Reflection', $r->getName());
     }
 
@@ -104,7 +104,7 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit_Framework_TestCase
         $r = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'));
 
         $methods = $r->getMethods();
-        $this->assertTrue(is_array($methods));
+        $this->assertInternalType('array', $methods);
         foreach ($methods as $m) {
             $this->assertTrue($m instanceof Zend_Server_Reflection_Method);
         }
@@ -131,6 +131,9 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit_Framework_TestCase
     public function test__wakeup()
     {
         $r = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'));
+        if (PHP_VERSION_ID >= 70400) {
+            $this->setExpectedException('Exception', "Serialization of 'ReflectionMethod' is not allowed");
+        }
         $s = serialize($r);
         $u = unserialize($s);
 
@@ -140,6 +143,6 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit_Framework_TestCase
         $rMethods = $r->getMethods();
         $uMethods = $r->getMethods();
 
-        $this->assertEquals(count($rMethods), count($uMethods));
+        $this->assertCount(count($rMethods), $uMethods);
     }
 }

@@ -38,7 +38,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Feed
  */
-class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
+abstract class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
 {
     public $baseUri;
 
@@ -61,7 +61,7 @@ class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
             return parent::tearDown();
         }
 
-        $basePath = dirname(__FILE__) . '/_files/';
+        $basePath = __DIR__ . '/_files/';
         foreach ($this->remoteFeedNames as $file) {
             $filename = $basePath . $file;
             if (!file_exists($filename)) {
@@ -73,7 +73,7 @@ class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
 
     public function prepareFeed($filename)
     {
-        $basePath = dirname(__FILE__) . '/_files/';
+        $basePath = __DIR__ . '/_files/';
         $path     = $basePath . $filename;
         $remote   = str_replace('.xml', '.remote.xml', $filename);
         $string   = file_get_contents($path);

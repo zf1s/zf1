@@ -124,7 +124,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
         if (isset($options[self::RACKSPACE_REGION])) {
             switch ($options[self::RACKSPACE_REGION]) {
                 case self::RACKSPACE_ZONE_UK:
-                    $this->region= Zend_Service_Rackspace_Servers::UK_AUTH_URL;
+                    $this->region = Zend_Service_Rackspace_Servers::UK_AUTH_URL;
                     break;
                 case self::RACKSPACE_ZONE_USA:
                     $this->region = Zend_Service_Rackspace_Servers::US_AUTH_URL;
@@ -168,8 +168,8 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
             } else {
                 $result[Zend_Cloud_Infrastructure_Instance::INSTANCE_ZONE] = self::RACKSPACE_ZONE_UK;
             }
-            $result[Zend_Cloud_Infrastructure_Instance::INSTANCE_RAM]     = $this->flavors[$attr['flavorId']]['ram'];
-            $result[Zend_Cloud_Infrastructure_Instance::INSTANCE_STORAGE] = $this->flavors[$attr['flavorId']]['disk'];
+            $result[Zend_Cloud_Infrastructure_Instance::INSTANCE_RAM]     = isset($this->flavors[$attr['flavorId']]['ram']) ? $this->flavors[$attr['flavorId']]['ram'] : null;
+            $result[Zend_Cloud_Infrastructure_Instance::INSTANCE_STORAGE] = isset($this->flavors[$attr['flavorId']]['disk']) ? $this->flavors[$attr['flavorId']]['disk'] : null;
         }
         return $result;
     }
@@ -230,13 +230,16 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
     {
         return $this->rackspace->rebootServer($id,true);
     }
+
     /**
      * Create a new instance
      *
      * @param string $name
      * @param array $options
+     * @throws Zend_Cloud_Infrastructure_Exception
+     * @throws Zend_Service_Rackspace_Exception
      * @return Instance|boolean
-     */ 
+     */
     public function createInstance($name, $options)
     {
         if (empty($name)) {
@@ -260,7 +263,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
         }
         $options['name']= $name;
         $this->adapterResult = $this->rackspace->createServer($options,$metadata,$files);
-        if ($this->adapterResult===false) {
+        if ($this->adapterResult === false) {
             return false;
         }
         return new Zend_Cloud_Infrastructure_Instance($this, $this->convertAttributes($this->adapterResult->toArray()));

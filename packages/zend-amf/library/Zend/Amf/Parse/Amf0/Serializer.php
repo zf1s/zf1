@@ -187,9 +187,10 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
      * Check if the given object is in the reference table, write the reference if it exists,
      * otherwise add the object to the reference table
      *
-     * @param mixed  $object object reference to check for reference
+     * @param mixed $object object reference to check for reference
      * @param string $markerType AMF type of the object to write
-     * @param mixed  $objectByVal object to check for reference
+     * @param mixed $objectByVal object to check for reference
+     * @throws Zend_Amf_Exception
      * @return Boolean true, if the reference was written, false otherwise
      */
     protected function writeObjectReference(&$object, $markerType, $objectByVal = false)
@@ -221,7 +222,8 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
     /**
      * Write a PHP array with string or mixed keys.
      *
-     * @param object $data
+     * @param $object
+     * @throws Zend_Amf_Exception
      * @return Zend_Amf_Parse_Amf0_Serializer
      */
     public function writeObject($object)
@@ -229,7 +231,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
         // Loop each element and write the name of the property.
         foreach ($object as $key => &$value) {
             // skip variables starting with an _ private transient
-            if( $key[0] == "_") continue;
+            if(is_string($key) && strpos($key, '_') === 0) continue;
             $this->_stream->writeUTF($key);
             $this->writeTypeMarker($value);
         }
@@ -245,12 +247,13 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
      * is encountered call writeTypeMarker with mixed array.
      *
      * @param array $array
+     * @throws Zend_Amf_Exception
      * @return Zend_Amf_Parse_Amf0_Serializer
      */
     public function writeArray(&$array)
     {
         $length = count($array);
-        if (!$length < 0) {
+        if ($length === 0) {
             // write the length of the array
             $this->_stream->writeLong(0);
         } else {
@@ -267,7 +270,8 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
     /**
      * Convert the DateTime into an AMF Date
      *
-     * @param  DateTime|Zend_Date $data
+     * @param DateTime|Zend_Date $data
+     * @throws Zend_Amf_Exception
      * @return Zend_Amf_Parse_Amf0_Serializer
      */
     public function writeDate($data)
@@ -294,7 +298,8 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
     /**
      * Write a class mapped object to the output stream.
      *
-     * @param  object $data
+     * @param object $data
+     * @throws Zend_Amf_Exception
      * @return Zend_Amf_Parse_Amf0_Serializer
      */
     public function writeTypedObject($data)
@@ -308,7 +313,8 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
      * Encountered and AMF3 Type Marker use AMF3 serializer. Once AMF3 is
      * encountered it will not return to AMf0.
      *
-     * @param  string $data
+     * @param string $data
+     * @throws Zend_Amf_Exception
      * @return Zend_Amf_Parse_Amf0_Serializer
      */
     public function writeAmf3TypeMarker(&$data)
@@ -330,7 +336,6 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
     {
         // require_once 'Zend/Amf/Parse/TypeLoader.php';
         //Check to see if the object is a typed object and we need to change
-        $className = '';
         switch (true) {
             // the return class mapped name back to actionscript class name.
             case Zend_Amf_Parse_TypeLoader::getMappedClassName(get_class($object)):
@@ -350,10 +355,10 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
                 break;
         // By default, use object's class name
             default:
-        $className = get_class($object);
+                $className = get_class($object);
                 break;
         }
-        if(!$className == '') {
+        if($className !== '') {
             return $className;
         } else {
             return false;

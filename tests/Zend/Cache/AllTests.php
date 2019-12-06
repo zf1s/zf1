@@ -79,6 +79,7 @@ class Zend_Cache_AllTests
         /*
          * Check if SQLite tests are enabled, and if extension and driver are available.
          */
+
         if (!defined('TESTS_ZEND_CACHE_SQLITE_ENABLED') ||
             constant('TESTS_ZEND_CACHE_SQLITE_ENABLED') === false) {
             $skipTest = new Zend_Cache_SqliteBackendTest_SkipTests();

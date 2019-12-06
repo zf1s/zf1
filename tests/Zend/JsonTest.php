@@ -79,7 +79,8 @@ class Zend_JsonTest extends PHPUnit_Framework_TestCase
 
     /**
      * Test encoding and decoding in a single step
-     * @param array $values   array of values to test against encode/decode
+     * @throws Zend_Json_Exception
+     * @param array $values array of values to test against encode/decode
      */
     protected function _testJson($values)
     {
@@ -140,7 +141,7 @@ class Zend_JsonTest extends PHPUnit_Framework_TestCase
                 )
             )
         );
-        $pretty = Zend_Json::prettyPrint(Zend_Json::encode($test), array("indent"  => " "));
+        $pretty = Zend_Json::prettyPrint(Zend_Json::encode($test), array('indent' => ' '));
         $expected = <<<EOB
 {
  "simple":"simple test string",
@@ -285,7 +286,7 @@ EOB;
 
         $encoded = Zend_Json_Encoder::encode($value);
         $decoded = Zend_Json_Decoder::decode($encoded, Zend_Json::TYPE_OBJECT);
-        $this->assertTrue(is_object($decoded), 'Not decoded as an object');
+        $this->assertInternalType('object', $decoded, 'Not decoded as an object');
         $this->assertTrue($decoded instanceof StdClass, 'Not a StdClass object');
         $this->assertTrue(isset($decoded->one), 'Expected property not set');
         $this->assertEquals($value->one, $decoded->one, 'Unexpected value');
@@ -321,7 +322,8 @@ EOB;
 
     /**
      * Test encoding and decoding in a single step
-     * @param array $values   array of values to test against encode/decode
+     * @throws Zend_Json_Exception
+     * @param array $values array of values to test against encode/decode
      */
     protected function _testEncodeDecode($values)
     {
@@ -566,16 +568,16 @@ EOB;
     {
         $data = array(
             0 => array(
-                "alpha" => new Zend_Json_Expr("function(){}"),
-                "beta"  => "gamma",
+                'alpha' => new Zend_Json_Expr('function(){}'),
+                'beta' => 'gamma',
             ),
             1 => array(
-                "alpha" => "gamma",
-                "beta"  => new Zend_Json_Expr("function(){}"),
+                'alpha' => 'gamma',
+                'beta' => new Zend_Json_Expr('function(){}'),
             ),
             2 => array(
-                "alpha" => "gamma",
-                "beta" => "gamma",
+                'alpha' => 'gamma',
+                'beta' => 'gamma',
             )
         );
         $result = Zend_Json::encode($data, false, array('enableJsonExprFinder' => true));
@@ -595,19 +597,19 @@ EOB;
     {
         $data = array(
             0 => array(
-                "alpha" => "alpha"
+                'alpha' => 'alpha'
             ),
             1 => array(
-                "alpha" => "beta",
+                'alpha' => 'beta',
             ),
             2 => array(
-                "alpha" => new Zend_Json_Expr("gamma"),
+                'alpha' => new Zend_Json_Expr('gamma'),
             ),
             3 => array(
-                "alpha" => "delta",
+                'alpha' => 'delta',
             ),
             4 => array(
-                "alpha" => new Zend_Json_Expr("epsilon"),
+                'alpha' => new Zend_Json_Expr('epsilon'),
             )
         );
         $result = Zend_Json::encode($data, false, array('enableJsonExprFinder' => true));
@@ -621,8 +623,8 @@ EOB;
 
         $data = array(
             0 => array(
-                "alpha" => new Zend_Json_Expr("function(){}"),
-                "beta"  => "gamma",
+                'alpha' => new Zend_Json_Expr('function(){}'),
+                'beta' => 'gamma',
             ),
         );
         $result = Zend_Json::encode($data);
@@ -638,7 +640,7 @@ EOB;
      */
     public function testEncodeWithUtf8IsTransformedToPackedSyntax()
     {
-        $data = array("Отмена");
+        $data = array('Отмена');
         $result = Zend_Json_Encoder::encode($data);
 
         $this->assertEquals('["\u041e\u0442\u043c\u0435\u043d\u0430"]', $result);
@@ -705,7 +707,7 @@ EOB;
      */
     public function testEncodeWithUtf8IsTransformedSolarRegressionEqualsJsonExt()
     {
-        if(function_exists('json_encode') == false) {
+        if(function_exists('json_encode') === false) {
             $this->markTestSkipped('Test can only be run, when ext/json is installed.');
         }
 
@@ -725,7 +727,7 @@ EOB;
      */
     public function testUtf8JsonExprFinder()
     {
-        $data = array("Отмена" => new Zend_Json_Expr("foo"));
+        $data = array('Отмена' => new Zend_Json_Expr('foo'));
 
         Zend_Json::$useBuiltinEncoderDecoder = true;
         $result = Zend_Json::encode($data, false, array('enableJsonExprFinder' => true));
@@ -743,12 +745,12 @@ EOB;
     {
         $localeInfo = localeconv();
         if($localeInfo['decimal_point'] != ",") {
-            $this->markTestSkipped("This test only works for platforms where , is the decimal point separator.");
+            $this->markTestSkipped('This test only works for platforms where , is the decimal point separator.');
         }
 
         Zend_Json::$useBuiltinEncoderDecoder = true;
-        $this->assertEquals("[1.20, 1.68]", Zend_Json_Encoder::encode(array(
-            (float)"1,20", (float)"1,68"
+        $this->assertEquals('[1.20, 1.68]', Zend_Json_Encoder::encode(array(
+            (float)'1,20', (float)'1,68'
         )));
     }
 
@@ -782,7 +784,7 @@ EOB;
      */
     public function testNativeJsonEncoderWillProperlyEncodeSolidusInStringValues()
     {
-        $source = "</foo><foo>bar</foo>";
+        $source = '</foo><foo>bar</foo>';
         $target = '"<\\/foo><foo>bar<\\/foo>"';
 
         // first test ext/json
@@ -795,7 +797,7 @@ EOB;
      */
     public function testBuiltinJsonEncoderWillProperlyEncodeSolidusInStringValues()
     {
-        $source = "</foo><foo>bar</foo>";
+        $source = '</foo><foo>bar</foo>';
         $target = '"<\\/foo><foo>bar<\\/foo>"';
 
         // first test ext/json
@@ -833,7 +835,7 @@ EOB;
             $this->markTestSkipped('Namespaces not available in PHP < 5.3.0');
         }
         
-        require_once dirname(__FILE__ ) . "/Json/_files/ZF11356-NamespacedClass.php";        
+        require_once __DIR__ . '/Json/_files/ZF11356-NamespacedClass.php';
         $className = '\Zend\JsonTest\ZF11356\NamespacedClass';
         $inputValue = new $className(array('foo'));
         

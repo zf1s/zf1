@@ -4,7 +4,7 @@
  */
 error_reporting(E_ALL | E_STRICT);
 
-$rootDir = dirname(dirname(__FILE__));
+$rootDir = dirname(__DIR__);
 
 /**
  * Setup autoloading

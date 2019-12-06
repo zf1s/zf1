@@ -49,7 +49,8 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
         if (file_exists('/dev/urandom')) {
             $frandom = fopen('/dev/urandom', 'r');
             if ($frandom !== false) {
-                return fread($frandom, strlen($maximum) - 1);
+                # I don't know how this could've ever worked if you're expecting an integer output
+                #return fread($frandom, strlen($maximum) - 1);
             }
         }
         if (strlen($maximum) < 4) {
@@ -67,8 +68,9 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
     /**
      * Return a random strings of $length bytes
      *
-     * @param  integer $length
-     * @param  boolean $strong
+     * @param integer $length
+     * @param boolean $strong
+     * @throws Zend_Crypt_Exception
      * @return string
      */
     public static function randBytes($length, $strong = false)
@@ -109,9 +111,10 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
     /**
      * Return a random integer between $min and $max
      *
-     * @param  integer $min
-     * @param  integer $max
-     * @param  boolean $strong
+     * @param integer $min
+     * @param integer $max
+     * @param boolean $strong
+     * @throws Zend_Crypt_Exception
      * @return integer
      */
     public static function randInteger($min, $max, $strong = false)
@@ -123,7 +126,7 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
             );
         }
         $range = $max - $min;
-        if ($range == 0) {
+        if ($range === 0) {
             return $max;
         } elseif ($range > PHP_INT_MAX || is_float($range)) {
             // require_once 'Zend/Crypt/Exception.php';

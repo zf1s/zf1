@@ -113,7 +113,10 @@ abstract class Zend_Measure_Abstract
      * Sets a new locale for the value representation
      *
      * @param string|Zend_Locale $locale (Optional) New locale to set
-     * @param boolean            $check  False, check but don't set; True, set the new locale
+     * @param boolean $check False, check but don't set; True, set the new locale
+     * @throws Zend_Exception
+     * @throws Zend_Locale_Exception
+     * @throws Zend_Measure_Exception
      * @return Zend_Measure_Abstract
      */
     public function setLocale($locale = null, $check = false)
@@ -147,9 +150,12 @@ abstract class Zend_Measure_Abstract
     /**
      * Returns the internal value
      *
-     * @param integer            $round  (Optional) Rounds the value to an given precision,
+     * @param integer $round (Optional) Rounds the value to an given precision,
      *                                              Default is -1 which returns without rounding
      * @param string|Zend_Locale $locale (Optional) Locale for number representation
+     * @throws Zend_Exception
+     * @throws Zend_Locale_Exception
+     * @throws Zend_Measure_Exception
      * @return integer|string
      */
     public function getValue($round = -1, $locale = null)
@@ -171,9 +177,11 @@ abstract class Zend_Measure_Abstract
     /**
      * Set a new value
      *
-     * @param  integer|string      $value   Value as string, integer, real or float
-     * @param  string              $type    OPTIONAL A measure type f.e. Zend_Measure_Length::METER
-     * @param  string|Zend_Locale  $locale  OPTIONAL Locale for parsing numbers
+     * @param integer|string $value Value as string, integer, real or float
+     * @param string $type OPTIONAL A measure type f.e. Zend_Measure_Length::METER
+     * @param string|Zend_Locale $locale OPTIONAL Locale for parsing numbers
+     * @throws Zend_Exception
+     * @throws Zend_Locale_Exception
      * @throws Zend_Measure_Exception
      * @return Zend_Measure_Abstract
      */
@@ -286,10 +294,11 @@ abstract class Zend_Measure_Abstract
                 $value = call_user_func(Zend_Locale_Math::$div, $value, $this->_units[$type][0], 25);
             }
 
+            $sValue = (string) $value;
             $slength = strlen($value);
             $length  = 0;
             for($i = 1; $i <= $slength; ++$i) {
-                if ($value[$slength - $i] != '0') {
+                if ($sValue[$slength - $i] != '0') {
                     $length = 26 - $i;
                     break;
                 }

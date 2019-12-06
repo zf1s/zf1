@@ -461,9 +461,9 @@ abstract class Zend_Barcode_Object_ObjectAbstract
     public function setForeColor($value)
     {
         if (preg_match('`\#[0-9A-F]{6}`', $value)) {
-            $this->_foreColor = hexdec($value);
+            $this->_foreColor = hexdec(ltrim($value, '#'));
         } elseif (is_numeric($value) && $value >= 0 && $value <= 16777125) {
-            $this->_foreColor = intval($value);
+            $this->_foreColor = (int)$value;
         } else {
             // require_once 'Zend/Barcode/Object/Exception.php';
             throw new Zend_Barcode_Object_Exception(
@@ -493,9 +493,9 @@ abstract class Zend_Barcode_Object_ObjectAbstract
     public function setBackgroundColor($value)
     {
         if (preg_match('`\#[0-9A-F]{6}`', $value)) {
-            $this->_backgroundColor = hexdec($value);
+            $this->_backgroundColor = hexdec(ltrim($value, '#'));
         } elseif (is_numeric($value) && $value >= 0 && $value <= 16777125) {
-            $this->_backgroundColor = intval($value);
+            $this->_backgroundColor = (int)$value;
         } else {
             // require_once 'Zend/Barcode/Object/Exception.php';
             throw new Zend_Barcode_Object_Exception(
@@ -1322,7 +1322,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
                 for ($i = 0; $i < $textLength; $i ++) {
                     $leftPosition = $this->getQuietZone() + $space * ($i + 0.5);
                     $this->_addText(
-                        $text{$i},
+                        $text[$i],
                         $this->_fontSize * $this->_factor,
                         $this->_rotate(
                             $leftPosition,

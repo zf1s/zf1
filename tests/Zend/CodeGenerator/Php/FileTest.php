@@ -287,7 +287,7 @@ EOS;
 
         $targetLength = strlen('require_once \'SampleClass.php\';');
         $this->assertEquals($targetLength, strlen($lines[2]));
-        $this->assertEquals(';', $lines[2]{$targetLength-1});
+        $this->assertEquals(';', $lines[2][$targetLength-1]);
     }
 
     /**
