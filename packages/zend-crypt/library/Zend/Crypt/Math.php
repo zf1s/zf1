@@ -46,13 +46,6 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
      */
     public function rand($minimum, $maximum)
     {
-        if (file_exists('/dev/urandom')) {
-            $frandom = fopen('/dev/urandom', 'r');
-            if ($frandom !== false) {
-                # I don't know how this could've ever worked if you're expecting an integer output
-                #return fread($frandom, strlen($maximum) - 1);
-            }
-        }
         if (strlen($maximum) < 4) {
             return mt_rand($minimum, $maximum - 1);
         }
