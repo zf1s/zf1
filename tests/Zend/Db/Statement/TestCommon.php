@@ -847,7 +847,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         try {
             $this->assertEquals($value, $stmt->getAttribute(1234), "Expected '$value' #1");
         } catch (Zend_Exception $e) {
-            $this->assertContains('This driver doesn\'t support getting attributes', $e->getMessage());
+            $this->assertContains('driver doesn\'t support getting', $e->getMessage());
             return;
         }
 
