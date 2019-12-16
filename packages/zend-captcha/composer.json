@@ -7,11 +7,11 @@
     "require": {
         "php": ">=5.3.3",
         "ext-gd": "*",
-        "zf1s/zend-crypt": "^1.13",
-        "zf1s/zend-exception": "^1.13",
-        "zf1s/zend-service-recaptcha": "^1.13",
-        "zf1s/zend-text": "^1.13",
-        "zf1s/zend-validate": "^1.13"
+        "zf1s/zend-crypt": "^1.13.1",
+        "zf1s/zend-exception": "^1.13.1",
+        "zf1s/zend-service-recaptcha": "^1.13.1",
+        "zf1s/zend-text": "^1.13.1",
+        "zf1s/zend-validate": "^1.13.1"
     },
     "autoload": {
         "psr-0": {

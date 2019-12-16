@@ -6,11 +6,11 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
-        "zf1s/zend-exception": "^1.13",
-        "zf1s/zend-form": "^1.13",
-        "zf1s/zend-json": "^1.13",
-        "zf1s/zend-registry": "^1.13",
-        "zf1s/zend-view": "^1.13"
+        "zf1s/zend-exception": "^1.13.1",
+        "zf1s/zend-form": "^1.13.1",
+        "zf1s/zend-json": "^1.13.1",
+        "zf1s/zend-registry": "^1.13.1",
+        "zf1s/zend-view": "^1.13.1"
     },
     "autoload": {
         "psr-0": {
