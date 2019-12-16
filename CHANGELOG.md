@@ -1,5 +1,16 @@
 ## Changelog:
 
+### 1.13.1
+- general
+  - php 7.4 compatibility ([#16](https://github.com/zf1s/zf1/pull/16))
+- zend-crypt
+  - fixed Zend_Crypt_Math::rand() method returning random bytes when random integer was expected (removed broken /dev/urandom implementation) ([#16](https://github.com/zf1s/zf1/pull/16))
+- zend-file-transfer
+  - adjust setAdapter method for compatibility with composer autoloader ([#12](https://github.com/zf1s/zf1/pull/12))
+  - now suggests adding zend-validate as http adapter requires it ([#12](https://github.com/zf1s/zf1/pull/12))
+- zend-view
+  - fix @method annotations in Zend_View_Helper_Navigation ([#13](https://github.com/zf1s/zf1/pull/13))
+
 ### 1.13.0
 - general
   - re-introduce original tests suite and adjust it to run on php 5.3-7.3 (using modded [zf1s/phpunit](https://github.com/zf1s/phpunit))
