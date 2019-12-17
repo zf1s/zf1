@@ -516,10 +516,13 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
                                         &$prevTermInfo, Zend_Search_Lucene_Index_TermInfo $termInfo)
     {
         if (isset($prevTerm) && $prevTerm->field == $term->field) {
+            $prevTermText = (string)$prevTerm->text;
+            $termText = (string)$term->text;
+
             $matchedBytes = 0;
-            $maxBytes = min(strlen($prevTerm->text), strlen($term->text));
+            $maxBytes = min(strlen($prevTermText), strlen($termText));
             while ($matchedBytes < $maxBytes  &&
-                   $prevTerm->text[$matchedBytes] == $term->text[$matchedBytes]) {
+                $prevTermText[$matchedBytes] == $termText[$matchedBytes]) {
                 $matchedBytes++;
             }
 
@@ -528,11 +531,11 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
             $prefixChars = 0;
             while ($prefixBytes < $matchedBytes) {
                 $charBytes = 1;
-                if ((ord($term->text[$prefixBytes]) & 0xC0) == 0xC0) {
+                if ((ord($termText[$prefixBytes]) & 0xC0) == 0xC0) {
                     $charBytes++;
-                    if (ord($term->text[$prefixBytes]) & 0x20 ) {
+                    if (ord($termText[$prefixBytes]) & 0x20 ) {
                         $charBytes++;
-                        if (ord($term->text[$prefixBytes]) & 0x10 ) {
+                        if (ord($termText[$prefixBytes]) & 0x10 ) {
                             $charBytes++;
                         }
                     }
