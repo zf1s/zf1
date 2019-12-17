@@ -522,7 +522,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
             $matchedBytes = 0;
             $maxBytes = min(strlen($prevTermText), strlen($termText));
             while ($matchedBytes < $maxBytes  &&
-                $prevTermText[$matchedBytes] == $termText[$matchedBytes]) {
+                    $prevTermText[$matchedBytes] == $termText[$matchedBytes]) {
                 $matchedBytes++;
             }
 
