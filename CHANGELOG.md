@@ -1,5 +1,11 @@
 ## Changelog:
 
+### 1.13.2
+- zend-search-lucene
+  - fixed "Trying to access array offset on value of type int" when passed a non-string value to `Zend_Search_Lucene_Index_Term` ([#19](https://github.com/zf1s/zf1/pull/19))
+- zend-service-rackspace
+  - restore back `array_key_exists` in place of `isset` - reverted unnecessary changes from [#16](https://github.com/zf1s/zf1/pull/16/files#diff-7d8cdc4dbd5afcd88fca225eaf9a353f)
+
 ### 1.13.1
 - general
   - php 7.4 compatibility ([#16](https://github.com/zf1s/zf1/pull/16))
