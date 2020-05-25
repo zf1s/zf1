@@ -106,4 +106,35 @@ and (backwards compatible) adjustments (optimisations for composer autoloader mo
 Original README: [click](README.orig.md)
 
 
+---
 
+### How to Release
+
+1. Install [symplify/monorepo-builder](https://github.com/symplify/monorepo-builder)
+  
+    ```bash
+    composer create-project symplify/monorepo-builder ../monorepo-builder
+    ```
+
+2. Bump interdependencies of packages to the next version
+
+    ```bash
+    ../monorepo-builder/bin/monorepo-builder bump-interdependency "^1.13.3"
+    ```
+   
+3. Add git tag and push to this monorepo
+
+4. Push to the individual repos
+
+    _Note: you may need to cache your credentials otherwise git will ask for them on every operation (and there will be many)_ 
+    ```bash
+    git config --global credential.helper store
+    ```
+   
+    Split operation:
+    ```bash
+    ../monorepo-builder/bin/monorepo-builder split --max-processes=1 --tag=1.13.3
+    ```
+
+_Note: I had no success splitting this repo on win os, so unix-based system is recommended. (or WSL)
+Please also note that `monorepo-builder` needs a LOT of disk space for the split operation. (I measured 15GB)_
