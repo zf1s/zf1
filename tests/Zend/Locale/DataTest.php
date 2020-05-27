@@ -2579,7 +2579,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
   'ES' => '039 EU',
   'GI' => '039',
   'GR' => '039 EU',
-  'HR' => '039',
+  'HR' => '039 EU',
   'IT' => '039 EU',
   'ME' => '039',
   'MK' => '039',
