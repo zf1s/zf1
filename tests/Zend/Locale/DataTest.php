@@ -2357,7 +2357,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             '054' => 'FJ NC PG SB VU', '057' => 'FM GU KI MH MP NR PW',
             '061' => 'AS CK NU PF PN TK TO TV WF WS', '034' => 'AF BD BT IN IR LK MV NP PK',
             '009' => '053 054 057 061 QO', 'QO' => 'AQ BV CC CX GS HM IO TF UM AC CP DG TA',
-            'EU' => 'AT BE CY CZ DE DK EE ES FI FR GB GR HU IE IT LT LU LV MT NL PL PT SE SI SK BG RO');
+            'EU' => 'AT BE CY CZ DE DK EE ES FI FR GB GR HR HU IE IT LT LU LV MT NL PL PT SE SI SK BG RO');
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'regiontoterritory', '143');
@@ -2579,7 +2579,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
   'ES' => '039 EU',
   'GI' => '039',
   'GR' => '039 EU',
-  'HR' => '039',
+  'HR' => '039 EU',
   'IT' => '039 EU',
   'ME' => '039',
   'MK' => '039',
