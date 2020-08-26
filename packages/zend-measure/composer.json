@@ -6,9 +6,9 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
-        "zf1s/zend-exception": "^1.13.2",
-        "zf1s/zend-locale": "^1.13.2",
-        "zf1s/zend-registry": "^1.13.2"
+        "zf1s/zend-exception": "^1.13.3",
+        "zf1s/zend-locale": "^1.13.3",
+        "zf1s/zend-registry": "^1.13.3"
     },
     "autoload": {
         "psr-0": {

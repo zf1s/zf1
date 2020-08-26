@@ -1,5 +1,11 @@
 ## Changelog:
 
+### 1.13.3
+- zend-locale
+  - Add Croatia to the European Union ([#21](https://github.com/zf1s/zf1/pull/21))
+- zend-validate
+  - fixed Zend_Validate_Barcode_IntelligentMail class name for psr-0 autoloading compatibility with composer 2.0 ([#24](https://github.com/zf1s/zf1/pull/24))
+
 ### 1.13.2
 - zend-search-lucene
   - fixed "Trying to access array offset on value of type int" when passed a non-string value to `Zend_Search_Lucene_Index_Term` ([#19](https://github.com/zf1s/zf1/pull/19))
