@@ -38,6 +38,7 @@ class Zend_Text_MultiByte
      * @param  boolean $cut
      * @param  string  $charset
      * @return string
+     * @throws Zend_Text_Exception
      */
     public static function wordWrap($string, $width = 75, $break = "\n", $cut = false, $charset = 'utf-8')
     {

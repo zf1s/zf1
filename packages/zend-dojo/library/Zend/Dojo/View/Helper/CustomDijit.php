@@ -51,6 +51,7 @@ class Zend_Dojo_View_Helper_CustomDijit extends Zend_Dojo_View_Helper_DijitConta
      * @param  array $params
      * @param  array $attribs
      * @return string|Zend_Dojo_View_Helper_CustomDijit
+     * @throws Zend_Dojo_View_Exception
      */
     public function customDijit($id = null, $value = null, array $params = array(), array $attribs = array())
     {
@@ -90,6 +91,7 @@ class Zend_Dojo_View_Helper_CustomDijit extends Zend_Dojo_View_Helper_DijitConta
      * @param  array $params
      * @param  array $attribs
      * @return void
+     * @throws Zend_Dojo_View_Exception
      */
     public function captureStart($id, array $params = array(), array $attribs = array())
     {

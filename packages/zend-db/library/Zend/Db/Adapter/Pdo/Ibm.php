@@ -145,6 +145,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      * Creates a PDO DSN for the adapter from $this->_config settings.
      *
      * @return string
+     * @throws Zend_Db_Adapter_Exception
      */
     protected function _dsn()
     {
@@ -189,6 +190,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      * @param string $sql The SQL statement with placeholders.
      * @param array $bind An array of data to bind to the placeholders.
      * @return PDOStatement
+     * @throws Zend_Db_Adapter_Exception
      */
     public function prepare($sql)
     {
@@ -203,6 +205,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      * Returns a list of the tables in the database.
      *
      * @return array
+     * @throws Zend_Db_Adapter_Exception
      */
     public function listTables()
     {
@@ -238,6 +241,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      * @param string $tableName
      * @param string $schemaName OPTIONAL
      * @return array
+     * @throws Zend_Db_Adapter_Exception
      */
     public function describeTable($tableName, $schemaName = null)
     {
@@ -253,6 +257,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      * @param mixed $table The table to insert data into.
      * @param array $bind Column-value pairs.
      * @return int The number of affected rows.
+     * @throws Zend_Db_Adapter_Exception
      */
     public function insert($table, array $bind)
     {
@@ -276,6 +281,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      * @param integer $count
      * @param integer $offset OPTIONAL
      * @return string
+     * @throws Zend_Db_Adapter_Exception
      */
     public function limit($sql, $count, $offset = 0)
     {
@@ -290,6 +296,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      * @param string $tableName OPTIONAL
      * @param string $primaryKey OPTIONAL
      * @return integer
+     * @throws Zend_Db_Adapter_Exception
      */
     public function lastInsertId($tableName = null, $primaryKey = null)
     {
@@ -314,6 +321,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      *
      * @param string $sequenceName
      * @return integer
+     * @throws Zend_Db_Adapter_Exception
      */
     public function lastSequenceId($sequenceName)
     {
@@ -327,6 +335,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      *
      * @param string $sequenceName
      * @return integer
+     * @throws Zend_Db_Adapter_Exception
      */
     public function nextSequenceId($sequenceName)
     {
@@ -338,6 +347,8 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      * Retrieve server version in PHP style
      * Pdo_Idm doesn't support getAttribute(PDO::ATTR_SERVER_VERSION)
      * @return string
+     * @throws Zend_Db_Adapter_Exception
+     * @throws Zend_Db_Statement_Exception
      */
     public function getServerVersion()
     {

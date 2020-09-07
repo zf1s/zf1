@@ -76,6 +76,7 @@ class Zend_Tool_Project_Provider_Form extends Zend_Tool_Project_Provider_Abstrac
      * @param Zend_Tool_Project_Profile $profile
      * @param string $moduleName
      * @return Zend_Tool_Project_Profile_Resource
+     * @throws Zend_Tool_Project_Profile_Exception
      */
     protected static function _getFormsDirectoryResource(Zend_Tool_Project_Profile $profile, $moduleName = null)
     {
@@ -119,6 +120,8 @@ class Zend_Tool_Project_Provider_Form extends Zend_Tool_Project_Provider_Abstrac
      *
      * @param string $name
      * @param string $module
+     * @throws Zend_Tool_Project_Exception
+     * @throws Zend_Tool_Project_Provider_Exception
      */
     public function create($name, $module = null)
     {

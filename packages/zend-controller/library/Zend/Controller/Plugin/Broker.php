@@ -47,6 +47,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      * @param  Zend_Controller_Plugin_Abstract $plugin
      * @param  int $stackIndex
      * @return Zend_Controller_Plugin_Broker
+     * @throws Zend_Controller_Exception
      */
     public function registerPlugin(Zend_Controller_Plugin_Abstract $plugin, $stackIndex = null)
     {
@@ -90,6 +91,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      *
      * @param string|Zend_Controller_Plugin_Abstract $plugin Plugin object or class name
      * @return Zend_Controller_Plugin_Broker
+     * @throws Zend_Controller_Exception
      */
     public function unregisterPlugin($plugin)
     {
@@ -229,6 +231,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      *
      * @param Zend_Controller_Request_Abstract $request
      * @return void
+     * @throws Zend_Controller_Exception
      */
     public function routeStartup(Zend_Controller_Request_Abstract $request)
     {
@@ -252,6 +255,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      *
      * @param  Zend_Controller_Request_Abstract $request
      * @return void
+     * @throws Zend_Controller_Exception
      */
     public function routeShutdown(Zend_Controller_Request_Abstract $request)
     {
@@ -279,6 +283,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      *
      * @param  Zend_Controller_Request_Abstract $request
      * @return void
+     * @throws Zend_Controller_Exception
      */
     public function dispatchLoopStartup(Zend_Controller_Request_Abstract $request)
     {
@@ -301,6 +306,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      *
      * @param  Zend_Controller_Request_Abstract $request
      * @return void
+     * @throws Zend_Controller_Exception
      */
     public function preDispatch(Zend_Controller_Request_Abstract $request)
     {
@@ -325,6 +331,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      *
      * @param  Zend_Controller_Request_Abstract $request
      * @return void
+     * @throws Zend_Controller_Exception
      */
     public function postDispatch(Zend_Controller_Request_Abstract $request)
     {
@@ -347,6 +354,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      *
      * @param  Zend_Controller_Request_Abstract $request
      * @return void
+     * @throws Zend_Controller_Exception
      */
     public function dispatchLoopShutdown()
     {
