@@ -42,6 +42,7 @@ class Zend_Test_PHPUnit_Db_Operation_Truncate implements PHPUnit_Extensions_Data
      * @param PHPUnit_Extensions_Database_DB_IDatabaseConnection $connection
      * @param PHPUnit_Extensions_Database_DataSet_IDataSet $dataSet
      * @return void
+     * @throws Zend_Test_PHPUnit_Db_Exception
      */
     public function execute(PHPUnit_Extensions_Database_DB_IDatabaseConnection $connection, PHPUnit_Extensions_Database_DataSet_IDataSet $dataSet)
     {
@@ -66,6 +67,7 @@ class Zend_Test_PHPUnit_Db_Operation_Truncate implements PHPUnit_Extensions_Data
      * @param Zend_Db_Adapter_Abstract $db
      * @param string $tableName
      * @return void
+     * @throws Zend_Db_Adapter_Exception
      */
     protected function _truncate(Zend_Db_Adapter_Abstract $db, $tableName)
     {

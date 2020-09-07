@@ -348,6 +348,8 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
      * @param string $strQuery
      * @param string $encoding
      * @return Zend_Search_Lucene_Search_Query
+     * @throws Zend_Search_Exception
+     * @throws Zend_Search_Lucene_Exception
      * @throws Zend_Search_Lucene_Search_QueryParserException
      */
     public static function parse($strQuery, $encoding = null)
@@ -411,10 +413,10 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
 
 
                 return $query;
-            } else {
-                // require_once 'Zend/Search/Lucene/Exception.php';
-                throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
             }
+
+            // require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
         }
     }
 
@@ -546,6 +548,7 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
      * Process last range query term (opened interval)
      *
      * @throws Zend_Search_Lucene_Search_QueryParserException
+     * @throws Zend_Search_Lucene_Exception
      */
     public function openedRQLastTerm()
     {
@@ -553,7 +556,9 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
         if (count($tokens) > 1) {
             // require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
             throw new Zend_Search_Lucene_Search_QueryParserException('Range query boundary terms must be non-multiple word terms');
-        } else if (count($tokens) == 1) {
+        }
+
+        if (count($tokens) == 1) {
             // require_once 'Zend/Search/Lucene/Index/Term.php';
             $from = new Zend_Search_Lucene_Index_Term(reset($tokens)->getTermText(), $this->_context->getField());
         } else {
@@ -564,7 +569,9 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
         if (count($tokens) > 1) {
             // require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
             throw new Zend_Search_Lucene_Search_QueryParserException('Range query boundary terms must be non-multiple word terms');
-        } else if (count($tokens) == 1) {
+        }
+
+        if (count($tokens) == 1) {
             // require_once 'Zend/Search/Lucene/Index/Term.php';
             $to = new Zend_Search_Lucene_Index_Term(reset($tokens)->getTermText(), $this->_context->getField());
         } else {
@@ -595,6 +602,7 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
      * Process last range query term (closed interval)
      *
      * @throws Zend_Search_Lucene_Search_QueryParserException
+     * @throws Zend_Search_Lucene_Exception
      */
     public function closedRQLastTerm()
     {
@@ -602,7 +610,9 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
         if (count($tokens) > 1) {
             // require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
             throw new Zend_Search_Lucene_Search_QueryParserException('Range query boundary terms must be non-multiple word terms');
-        } else if (count($tokens) == 1) {
+        }
+
+        if (count($tokens) == 1) {
             // require_once 'Zend/Search/Lucene/Index/Term.php';
             $from = new Zend_Search_Lucene_Index_Term(reset($tokens)->getTermText(), $this->_context->getField());
         } else {
@@ -613,7 +623,9 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
         if (count($tokens) > 1) {
             // require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
             throw new Zend_Search_Lucene_Search_QueryParserException('Range query boundary terms must be non-multiple word terms');
-        } else if (count($tokens) == 1) {
+        }
+
+        if (count($tokens) == 1) {
             // require_once 'Zend/Search/Lucene/Index/Term.php';
             $to = new Zend_Search_Lucene_Index_Term(reset($tokens)->getTermText(), $this->_context->getField());
         } else {

@@ -55,6 +55,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      *
      * @param  array|Zend_Config $options
      * @return void
+     * @throws Zend_Cloud_QueueService_Exception
      */
     public function __construct ($options = array())
     {
@@ -77,10 +78,11 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
         // Build Zend_Service_WindowsAzure_Storage_Blob instance
         if (!isset($options[self::ADAPTER])) {
             throw new Zend_Cloud_QueueService_Exception('No Zend_Queue adapter provided');
-        } else {
-            $adapter = $options[self::ADAPTER];
-            unset($options[self::ADAPTER]);
         }
+
+        $adapter = $options[self::ADAPTER];
+        unset($options[self::ADAPTER]);
+
         try {
             $this->_queue = new Zend_Queue($adapter, $options);
         } catch (Zend_Queue_Exception $e) {
@@ -96,6 +98,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      * @param  string $name
      * @param  array  $options
      * @return string Queue ID (typically URL)
+     * @throws Zend_Cloud_QueueService_Exception
      */
     public function createQueue($name, $options = null)
     {
@@ -113,6 +116,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      * @param  string $queueId
      * @param  array  $options
      * @return boolean true if successful, false otherwise
+     * @throws Zend_Cloud_QueueService_Exception
      */
     public function deleteQueue($queueId, $options = null)
     {
@@ -134,6 +138,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      *
      * @param  array $options
      * @return array Queue IDs
+     * @throws Zend_Cloud_QueueService_Exception
      */
     public function listQueues($options = null)
     {
@@ -150,6 +155,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      * @param  string $queueId
      * @param  array  $options
      * @return array
+     * @throws Zend_Cloud_QueueService_Exception
      */
     public function fetchQueueMetadata($queueId, $options = null)
     {
@@ -172,6 +178,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      * @param  array  $metadata
      * @param  array  $options
      * @return void
+     * @throws Zend_Cloud_QueueService_Exception
      */
     public function storeQueueMetadata($queueId, $metadata, $options = null)
     {
@@ -192,6 +199,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      * @param  string $message
      * @param  array  $options
      * @return string Message ID
+     * @throws Zend_Cloud_QueueService_Exception
      */
     public function sendMessage($queueId, $message, $options = null)
     {
@@ -213,6 +221,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      * @param  int    $max
      * @param  array  $options
      * @return array
+     * @throws Zend_Cloud_QueueService_Exception
      */
     public function receiveMessages($queueId, $max = 1, $options = null)
     {
@@ -256,6 +265,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      * @param  Zend_Cloud_QueueService_Message $message Message ID or message
      * @param  array  $options
      * @return void
+     * @throws Zend_Cloud_QueueService_Exception
      */
     public function deleteMessage($queueId, $message, $options = null)
     {
@@ -283,6 +293,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      * @param  int $num How many messages
      * @param  array  $options
      * @return Zend_Cloud_QueueService_Message[]
+     * @throws Zend_Cloud_OperationNotAvailableException
      */
     public function peekMessages($queueId, $num = 1, $options = null)
     {

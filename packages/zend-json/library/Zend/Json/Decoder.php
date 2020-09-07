@@ -147,7 +147,9 @@ class Zend_Json_Decoder
         if (null === $source) {
             // require_once 'Zend/Json/Exception.php';
             throw new Zend_Json_Exception('Must specify JSON encoded source for decoding');
-        } elseif (!is_string($source)) {
+        }
+
+        if (!is_string($source)) {
             // require_once 'Zend/Json/Exception.php';
             throw new Zend_Json_Exception('Can only decode JSON encoded strings');
         }
@@ -163,6 +165,7 @@ class Zend_Json_Decoder
      *
      * @throws Zend_Json_Exception
      * @return mixed
+     * @throws Zend_Json_Exception
      */
     protected function _decodeValue()
     {
@@ -313,6 +316,7 @@ class Zend_Json_Decoder
      *
      * @throws Zend_Json_Exception
      * @return int Token constant value specified in class definition
+     * @throws Zend_Json_Exception
      */
     protected function _getNextToken()
     {
@@ -447,11 +451,11 @@ class Zend_Json_Decoder
                     if (preg_match('/^0\d+$/', $datum)) {
                         // require_once 'Zend/Json/Exception.php';
                         throw new Zend_Json_Exception("Octal notation not supported by JSON (value: $datum)");
-                    } else {
-                        $val  = (int)$datum;
-                        $fVal = (float)$datum;
-                        $this->_tokenValue = ($val == $fVal ? $val : $fVal);
                     }
+
+                    $val  = (int)$datum;
+                    $fVal = (float)$datum;
+                    $this->_tokenValue = ($val == $fVal ? $val : $fVal);
                 } else {
                     // require_once 'Zend/Json/Exception.php';
                     throw new Zend_Json_Exception("Illegal number format: $datum");

@@ -289,7 +289,9 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
         ) {
             // require_once 'Zend/Service/Amazon/Sqs/Exception.php';
             throw new Zend_Service_Amazon_Sqs_Exception($result->Error->Code);
-        } else if ((string) $result->SendMessageResult->MD5OfMessageBody != $checksum) {
+        }
+
+        if ((string) $result->SendMessageResult->MD5OfMessageBody != $checksum) {
             // require_once 'Zend/Service/Amazon/Sqs/Exception.php';
             throw new Zend_Service_Amazon_Sqs_Exception('MD5 of body does not match message sent');
         }

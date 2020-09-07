@@ -90,6 +90,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setTitle(DOMDocument $dom, DOMElement $root)
     {
@@ -100,10 +101,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $exception = new Zend_Feed_Exception($message);
             if (!$this->_ignoreExceptions) {
                 throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
             }
+
+            $this->_exceptions[] = $exception;
+            return;
         }
         $title = $dom->createElement('title');
         $root->appendChild($title);
@@ -139,6 +140,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setDateModified(DOMDocument $dom, DOMElement $root)
     {
@@ -149,10 +151,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $exception = new Zend_Feed_Exception($message);
             if (!$this->_ignoreExceptions) {
                 throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
             }
+
+            $this->_exceptions[] = $exception;
+            return;
         }
 
         $updated = $dom->createElement('updated');
@@ -265,6 +267,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
@@ -278,10 +281,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $exception = new Zend_Feed_Exception($message);
             if (!$this->_ignoreExceptions) {
                 throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
             }
+
+            $this->_exceptions[] = $exception;
+            return;
         }
 
         if (!$this->getDataContainer()->getId()) {
@@ -339,6 +342,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setContent(DOMDocument $dom, DOMElement $root)
     {
@@ -352,10 +356,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $exception = new Zend_Feed_Exception($message);
             if (!$this->_ignoreExceptions) {
                 throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
             }
+
+            $this->_exceptions[] = $exception;
+            return;
         }
         if (!$content) {
             return;

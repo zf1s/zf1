@@ -143,7 +143,8 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
             // require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, 'No LDAP connection specified.', Zend_Ldap_Exception::LDAP_OTHER);
         }
-        else return $this->_ldap;
+
+        return $this->_ldap;
     }
 
     /**
@@ -816,20 +817,24 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
             // require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, 'DN cannot be changed.');
         }
-        else if (array_key_exists($name, $rdn)) {
+
+        if (array_key_exists($name, $rdn)) {
             /**
              * @see Zend_Ldap_Exception
              */
             // require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, 'Cannot change attribute because it\'s part of the RDN');
-        } else if (in_array($name, self::$_systemAttributes)) {
+        }
+
+        if (in_array($name, self::$_systemAttributes)) {
             /**
              * @see Zend_Ldap_Exception
              */
             // require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, 'Cannot change attribute because it\'s read-only');
         }
-        else return true;
+
+        return true;
     }
 
     /**

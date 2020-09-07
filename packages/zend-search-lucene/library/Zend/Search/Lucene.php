@@ -202,6 +202,8 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      *
      * @param mixed $directory
      * @return Zend_Search_Lucene_Interface
+     * @throws Zend_Search_Exception
+     * @throws Zend_Search_Lucene_Exception
      */
     public static function create($directory)
     {
@@ -216,6 +218,8 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      *
      * @param mixed $directory
      * @return Zend_Search_Lucene_Interface
+     * @throws Zend_Search_Exception
+     * @throws Zend_Search_Lucene_Exception
      */
     public static function open($directory)
     {
@@ -504,6 +508,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      *
      * @param Zend_Search_Lucene_Storage_Directory_Filesystem|string $directory
      * @throws Zend_Search_Lucene_Exception
+     * @throws Zend_Search_Exception
      */
     public function __construct($directory = null, $create = false)
     {
@@ -537,9 +542,9 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
 
                 if (strpos($e->getMessage(), 'Can\'t obtain exclusive index lock') === false) {
                     throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
-                } else {
-                    throw new Zend_Search_Lucene_Exception('Can\'t create index. It\'s under processing now', 0, $e);
                 }
+
+                throw new Zend_Search_Lucene_Exception('Can\'t create index. It\'s under processing now', 0, $e);
             }
 
             if ($this->_generation == -1) {
@@ -564,7 +569,9 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
         if ($this->_generation == -1) {
             // require_once 'Zend/Search/Lucene/Exception.php';
             throw new Zend_Search_Lucene_Exception('Index doesn\'t exists in the specified directory.');
-        } else if ($this->_generation == 0) {
+        }
+
+        if ($this->_generation == 0) {
             $this->_readPre21SegmentsFile();
         } else {
             $this->_readSegmentsFile();
@@ -916,6 +923,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      * @param Zend_Search_Lucene_Search_QueryParser|string $query
      * @return array Zend_Search_Lucene_Search_QueryHit
      * @throws Zend_Search_Lucene_Exception
+     * @throws Zend_Search_Exception
      */
     public function find($query)
     {
@@ -1021,9 +1029,9 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
                             } catch (Zend_Search_Lucene_Exception $e) {
                                 if (strpos($e->getMessage(), 'not found') === false) {
                                     throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
-                                } else {
-                                    $value = null;
                                 }
+
+                                $value = null;
                             }
 
                             $valuesArray[] = $value;
@@ -1231,13 +1239,15 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
 
         if (count($subResults) == 0) {
             return array();
-        } else if (count($subResults) == 1) {
+        }
+
+        if (count($subResults) == 1) {
             // Index is optimized (only one segment)
             // Do not perform array reindexing
             return reset($subResults);
-        } else {
-            $result = call_user_func_array('array_merge', $subResults);
         }
+
+        $result = call_user_func_array('array_merge', $subResults);
 
         return $result;
     }

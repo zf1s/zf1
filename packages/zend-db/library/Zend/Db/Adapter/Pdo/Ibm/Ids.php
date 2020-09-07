@@ -252,7 +252,9 @@ class Zend_Db_Adapter_Pdo_Ibm_Ids
             /** @see Zend_Db_Adapter_Exception */
             // require_once 'Zend/Db/Adapter/Exception.php';
             throw new Zend_Db_Adapter_Exception("LIMIT argument count=$count is not valid");
-        } else if ($count == 0) {
+        }
+
+        if ($count == 0) {
               $limit_sql = str_ireplace("SELECT", "SELECT * FROM (SELECT", $sql);
               $limit_sql .= ") WHERE 0 = 1";
         } else {

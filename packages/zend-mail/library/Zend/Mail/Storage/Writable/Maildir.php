@@ -78,11 +78,13 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
                 $dir = dirname($dir);
                 if (!file_exists($dir)) {
                     throw new Zend_Mail_Storage_Exception("parent $dir not found");
-                } else if (!is_dir($dir)) {
-                    throw new Zend_Mail_Storage_Exception("parent $dir not a directory");
-                } else {
-                    throw new Zend_Mail_Storage_Exception('cannot create maildir');
                 }
+
+                if (!is_dir($dir)) {
+                    throw new Zend_Mail_Storage_Exception("parent $dir not a directory");
+                }
+
+                throw new Zend_Mail_Storage_Exception('cannot create maildir');
             }
         }
 

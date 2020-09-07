@@ -174,13 +174,17 @@ class Zend_Service_Audioscrobbler
              */
             // require_once 'Zend/Http/Client/Exception.php';
             throw new Zend_Http_Client_Exception('Could not find: ' . $this->_client->getUri());
-        } elseif (preg_match('/No user exists with this name/', $responseBody)) {
+        }
+
+        if (preg_match('/No user exists with this name/', $responseBody)) {
             /**
              * @see Zend_Http_Client_Exception
              */
             // require_once 'Zend/Http/Client/Exception.php';
             throw new Zend_Http_Client_Exception('No user exists with this name');
-        } elseif (!$response->isSuccessful()) {
+        }
+
+        if (!$response->isSuccessful()) {
             /**
              * @see Zend_Http_Client_Exception
              */

@@ -615,9 +615,9 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
         if ($this->_attached) {
             // require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Page is attached to other documen. Use clone $page to get it context free.');
-        } else {
-            $objFactory->attach($this->_objFactory);
         }
+
+        $objFactory->attach($this->_objFactory);
     }
 
     /**

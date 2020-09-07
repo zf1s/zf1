@@ -108,11 +108,11 @@ class Zend_Mobile_Push_Message_Apns extends Zend_Mobile_Push_Message_Abstract
         if ($locArgs !== null) {
             if (!is_array($locArgs)) {
                 throw new Zend_Mobile_Push_Message_Exception('$locArgs must be an array of strings');
-            } else {
-                foreach ($locArgs as $str) {
-                    if (!is_string($str)) {
-                        throw new Zend_Mobile_Push_Message_Exception('$locArgs contains an item that is not a string');
-                    }
+            }
+
+            foreach ($locArgs as $str) {
+                if (!is_string($str)) {
+                    throw new Zend_Mobile_Push_Message_Exception('$locArgs contains an item that is not a string');
                 }
             }
         }

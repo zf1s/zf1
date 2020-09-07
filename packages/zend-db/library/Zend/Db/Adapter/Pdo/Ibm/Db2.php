@@ -170,33 +170,34 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
             /** @see Zend_Db_Adapter_Exception */
             // require_once 'Zend/Db/Adapter/Exception.php';
             throw new Zend_Db_Adapter_Exception("LIMIT argument count=$count is not valid");
-        } else {
-            $offset = intval($offset);
-            if ($offset < 0) {
-                /** @see Zend_Db_Adapter_Exception */
-                // require_once 'Zend/Db/Adapter/Exception.php';
-                throw new Zend_Db_Adapter_Exception("LIMIT argument offset=$offset is not valid");
-            }
-
-            if ($offset == 0 && $count > 0) {
-                $limit_sql = $sql . " FETCH FIRST $count ROWS ONLY";
-                return $limit_sql;
-            }
-            /**
-             * DB2 does not implement the LIMIT clause as some RDBMS do.
-             * We have to simulate it with subqueries and ROWNUM.
-             * Unfortunately because we use the column wildcard "*",
-             * this puts an extra column into the query result set.
-             */
-            $limit_sql = "SELECT z2.*
-              FROM (
-                  SELECT ROW_NUMBER() OVER() AS \"ZEND_DB_ROWNUM\", z1.*
-                  FROM (
-                      " . $sql . "
-                  ) z1
-              ) z2
-              WHERE z2.zend_db_rownum BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
         }
+
+        $offset = (int)$offset;
+        if ($offset < 0) {
+            /** @see Zend_Db_Adapter_Exception */
+            // require_once 'Zend/Db/Adapter/Exception.php';
+            throw new Zend_Db_Adapter_Exception("LIMIT argument offset=$offset is not valid");
+        }
+
+        if ($offset == 0 && $count > 0) {
+            $limit_sql = $sql . " FETCH FIRST $count ROWS ONLY";
+            return $limit_sql;
+        }
+        /**
+         * DB2 does not implement the LIMIT clause as some RDBMS do.
+         * We have to simulate it with subqueries and ROWNUM.
+         * Unfortunately because we use the column wildcard "*",
+         * this puts an extra column into the query result set.
+         */
+        $limit_sql = "SELECT z2.*
+          FROM (
+              SELECT ROW_NUMBER() OVER() AS \"ZEND_DB_ROWNUM\", z1.*
+              FROM (
+                  " . $sql . "
+              ) z1
+          ) z2
+          WHERE z2.zend_db_rownum BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
+
         return $limit_sql;
     }
 

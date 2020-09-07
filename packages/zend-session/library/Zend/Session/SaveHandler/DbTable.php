@@ -225,6 +225,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param int $lifetime
      * @param boolean $overrideLifetime (optional)
      * @return Zend_Session_SaveHandler_DbTable
+     * @throws Zend_Session_SaveHandler_Exception
      */
     public function setLifetime($lifetime, $overrideLifetime = null)
     {
@@ -234,7 +235,9 @@ class Zend_Session_SaveHandler_DbTable
              */
             // require_once 'Zend/Session/SaveHandler/Exception.php';
             throw new Zend_Session_SaveHandler_Exception();
-        } else if (empty($lifetime)) {
+        }
+
+        if (empty($lifetime)) {
             $this->_lifetime = (int) ini_get('session.gc_maxlifetime');
         } else {
             $this->_lifetime = (int) $lifetime;

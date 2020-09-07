@@ -1778,7 +1778,9 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
         if (count($argList) > 2) {
             // require_once 'Zend/Search/Lucene/Exception.php';
             throw new Zend_Search_Lucene_Exception('Wrong number of arguments');
-        } else if (count($argList) == 2) {
+        }
+
+        if (count($argList) == 2) {
             $startId = $argList[0];
             $mode    = $argList[1];
         } else if (count($argList) == 1) {

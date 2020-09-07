@@ -1464,7 +1464,10 @@ class Zend_Ldap
                 // require_once 'Zend/Ldap/Exception.php';
                 throw new Zend_Ldap_Exception($this, 'renaming ' . $from . ' to ' . $to);
             }
-            else if (!$this->exists($to)) $emulate = true;
+
+            if (!$this->exists($to)) {
+                $emulate = true;
+            }
         }
         if ($emulate) {
             $this->copy($from, $to, $recursively);

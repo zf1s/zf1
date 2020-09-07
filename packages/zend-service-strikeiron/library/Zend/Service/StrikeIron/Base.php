@@ -150,7 +150,9 @@ class Zend_Service_StrikeIron_Base
                      */
                     // require_once 'Zend/Service/StrikeIron/Exception.php';
                     throw new Zend_Service_StrikeIron_Exception('Header must be instance of SoapHeader');
-                } else if ($header->name == 'LicenseInfo') {
+                }
+
+                if ($header->name == 'LicenseInfo') {
                     $foundLicenseInfo = true;
                     break;
                 }
