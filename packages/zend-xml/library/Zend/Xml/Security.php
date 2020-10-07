@@ -46,6 +46,19 @@ class Zend_Xml_Security
     }
 
     /**
+     * Wrapper for libxml_disable_entity_loader which is deprecated in PHP 8. libxml 2.9.0 disables external entity
+     * loading by default. PHP 8.0 has deprecated libxml_disable_entity_loader() method and it requires libxml 2.9.0+.
+     * @see https://github.com/php/php-src/pull/5867
+     *
+     * @param bool $disable
+     * @return bool the previous value (true = disabled)
+     */
+    private static function disableEntityLoader($disable = true)
+    {
+        return LIBXML_VERSION < 20900 ? libxml_disable_entity_loader($disable) : true;
+    }
+
+    /**
      * @param integer $errno
      * @param string $errstr
      * @param string $errfile
@@ -83,7 +96,7 @@ class Zend_Xml_Security
         }
 
         if (!self::isPhpFpm()) {
-            $loadEntities = libxml_disable_entity_loader(true);
+            $loadEntities = self::disableEntityLoader(true);
             $useInternalXmlErrors = libxml_use_internal_errors(true);
         }
 
@@ -97,7 +110,7 @@ class Zend_Xml_Security
         if (!$result) {
             // Entity load to previous setting
             if (!self::isPhpFpm()) {
-                libxml_disable_entity_loader($loadEntities);
+                self::disableEntityLoader($loadEntities);
                 libxml_use_internal_errors($useInternalXmlErrors);
             }
             return false;
@@ -117,7 +130,7 @@ class Zend_Xml_Security
 
         // Entity load to previous setting
         if (!self::isPhpFpm()) {
-            libxml_disable_entity_loader($loadEntities);
+            self::disableEntityLoader($loadEntities);
             libxml_use_internal_errors($useInternalXmlErrors);
         }
 
