@@ -1,5 +1,16 @@
 ## Changelog:
 
+### 1.13.4
+- zend-xml
+  - fix version comparison operator ([#26])
+  - PHP 8 compatibility: wrap deprecated libxml_disable_entity_loader(). ([#27])
+- zend-db
+  - Fix Zend_Db_Adapter_Pdo_Pgsql being broken on Postgres 12 that removed d.adsrc ([#29])
+
+[#26]: https://github.com/zf1s/zf1/pull/26
+[#27]: https://github.com/zf1s/zf1/pull/27
+[#29]: https://github.com/zf1s/zf1/pull/29
+
 ### 1.13.3 - 2020-08-26
 
 - zend-locale
