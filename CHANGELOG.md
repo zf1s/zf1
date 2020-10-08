@@ -1,18 +1,21 @@
 ## Changelog:
 
-### 1.13.3
+### 1.13.3 - 2020-08-26
+
 - zend-locale
   - Add Croatia to the European Union ([#21](https://github.com/zf1s/zf1/pull/21))
 - zend-validate
   - fixed Zend_Validate_Barcode_IntelligentMail class name for psr-0 autoloading compatibility with composer 2.0 ([#24](https://github.com/zf1s/zf1/pull/24))
 
-### 1.13.2
+### 1.13.2 - 2020-05-25
+
 - zend-search-lucene
   - fixed "Trying to access array offset on value of type int" when passed a non-string value to `Zend_Search_Lucene_Index_Term` ([#19](https://github.com/zf1s/zf1/pull/19))
 - zend-service-rackspace
   - restore back `array_key_exists` in place of `isset` - reverted unnecessary changes from [#16](https://github.com/zf1s/zf1/pull/16/files#diff-7d8cdc4dbd5afcd88fca225eaf9a353f)
 
-### 1.13.1
+### 1.13.1 - 2019-12-16
+
 - general
   - php 7.4 compatibility ([#16](https://github.com/zf1s/zf1/pull/16))
 - zend-crypt
@@ -23,7 +26,8 @@
 - zend-view
   - fix @method annotations in Zend_View_Helper_Navigation ([#13](https://github.com/zf1s/zf1/pull/13))
 
-### 1.13.0
+### 1.13.0 - 2019-05-28
+
 - general
   - re-introduce original tests suite and adjust it to run on php 5.3-7.3 (using modded [zf1s/phpunit](https://github.com/zf1s/phpunit))
   - tests adjustments
@@ -113,9 +117,9 @@
 - zend-xmlrpc
   - fix regression in loading values introduced in 1.12.21 [zf1s/zend-xmlrpc@ea5a62](https://github.com/zf1s/zend-xmlrpc/commit/ea5a62283b03d9226c44c5f0ec1442158c1f780e)
   + restore php 5.3 compatibility
-    
 
 ### 1.12.22
+
 - zend-loader
     - make the introduced performance optimization for PluginLoader optional ([zf1s/zend-loader#4](https://github.com/zf1s/zend-loader/pull/4))
 - zend-view
