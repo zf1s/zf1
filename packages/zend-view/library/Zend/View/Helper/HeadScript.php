@@ -416,6 +416,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
      */
     public function itemToString($item, $indent, $escapeStart, $escapeEnd)
     {
+        $isHTML5 = $this->view instanceof Zend_View_Abstract && $this->view->doctype()->isHtml5();
         $attrString = '';
         if (!empty($item->attributes)) {
             foreach ($item->attributes as $key => $value) {
@@ -424,10 +425,10 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
                 {
                     continue;
                 }
-                if ('defer' === $key && !$this->view->doctype()->isHtml5()) {
+                if ('defer' === $key && !$isHTML5) {
                     $value = 'defer';
                 }
-                if ($this->view->doctype()->isHtml5() && empty($value)) {
+                if ($isHTML5 && empty($value)) {
                     $attrString .= sprintf(' %s', $key);
                 } else {
                     $attrString .= sprintf(' %s="%s"', $key, ($this->_autoEscape) ? $this->_escape($value) : $value);
