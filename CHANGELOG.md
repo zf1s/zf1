@@ -1,18 +1,29 @@
 ## Changelog:
 
-### 1.13.3
+### 1.13.4 - 2020-11-23
+- zend-db
+  - Fix Zend_Db_Adapter_Pdo_Pgsql being broken on Postgres 12 that removed d.adsrc ([#29])
+- zend-xml
+  - fix version comparison operator ([#26])
+  - php 8 compatibility: wrap deprecated libxml_disable_entity_loader() ([#27])
+  
+[#26]: https://github.com/zf1s/zf1/pull/26
+[#27]: https://github.com/zf1s/zf1/pull/27
+[#29]: https://github.com/zf1s/zf1/pull/29
+  
+### 1.13.3 - 2020-08-26
 - zend-locale
   - Add Croatia to the European Union ([#21](https://github.com/zf1s/zf1/pull/21))
 - zend-validate
   - fixed Zend_Validate_Barcode_IntelligentMail class name for psr-0 autoloading compatibility with composer 2.0 ([#24](https://github.com/zf1s/zf1/pull/24))
 
-### 1.13.2
+### 1.13.2 - 2020-05-25
 - zend-search-lucene
   - fixed "Trying to access array offset on value of type int" when passed a non-string value to `Zend_Search_Lucene_Index_Term` ([#19](https://github.com/zf1s/zf1/pull/19))
 - zend-service-rackspace
   - restore back `array_key_exists` in place of `isset` - reverted unnecessary changes from [#16](https://github.com/zf1s/zf1/pull/16/files#diff-7d8cdc4dbd5afcd88fca225eaf9a353f)
 
-### 1.13.1
+### 1.13.1 - 2019-12-16
 - general
   - php 7.4 compatibility ([#16](https://github.com/zf1s/zf1/pull/16))
 - zend-crypt
@@ -23,7 +34,7 @@
 - zend-view
   - fix @method annotations in Zend_View_Helper_Navigation ([#13](https://github.com/zf1s/zf1/pull/13))
 
-### 1.13.0
+### 1.13.0 - 2019-05-28
 - general
   - re-introduce original tests suite and adjust it to run on php 5.3-7.3 (using modded [zf1s/phpunit](https://github.com/zf1s/phpunit))
   - tests adjustments

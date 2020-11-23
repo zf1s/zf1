@@ -8,7 +8,7 @@
         "php": ">=5.3.3",
         "ext-spl": "*",
         "ext-reflection": "*",
-        "zf1s/zend-exception": "^1.13.3"
+        "zf1s/zend-exception": "^1.13.4"
     },
     "autoload": {
         "psr-0": {

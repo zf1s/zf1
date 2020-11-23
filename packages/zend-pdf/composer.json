@@ -10,9 +10,9 @@
         "ext-gd": "*",
         "ext-iconv": "*",
         "ext-zlib": "*",
-        "zf1s/zend-exception": "^1.13.3",
-        "zf1s/zend-log": "^1.13.3",
-        "zf1s/zend-memory": "^1.13.3"
+        "zf1s/zend-exception": "^1.13.4",
+        "zf1s/zend-log": "^1.13.4",
+        "zf1s/zend-memory": "^1.13.4"
     },
     "autoload": {
         "psr-0": {
