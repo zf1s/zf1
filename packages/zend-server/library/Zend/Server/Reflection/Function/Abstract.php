@@ -310,9 +310,13 @@ abstract class Zend_Server_Reflection_Function_Abstract
             // Try and auto-determine type, based on reflection
             $paramTypesTmp = array();
             foreach ($parameters as $i => $param) {
-                $paramType = 'mixed';
-                if ($param->isArray()) {
-                    $paramType = 'array';
+                if (PHP_VERSION_ID < 80000) {
+                    $paramType = 'mixed';
+                    if ($param->isArray()) {
+                        $paramType = 'array';
+                    }
+                } else {
+                    $paramType = $param->hasType() ? $param->getType() : 'mixed';
                 }
                 $paramTypesTmp[$i] = $paramType;
             }
