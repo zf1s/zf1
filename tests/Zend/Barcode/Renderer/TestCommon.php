@@ -34,7 +34,7 @@ abstract class Zend_Barcode_Renderer_TestCommon extends PHPUnit_Framework_TestCa
 {
 
     /**
-     * @var Zend_Barcode_Renderer
+     * @var Zend_Barcode_Renderer_RendererAbstract
      */
     protected $_renderer = null;
 
