@@ -233,7 +233,7 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
      * @param  array $parts 
      * @return void
      */
-    public static function resolvePharParentPath($value, $key, &$parts)
+    public static function resolvePharParentPath($value, $key, $parts)
     {
         if ($value !== '...') {
             return;
