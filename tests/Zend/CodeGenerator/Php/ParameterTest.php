@@ -134,11 +134,15 @@ class Zend_CodeGenerator_Php_ParameterTest extends PHPUnit_Framework_TestCase
         $reflParam = $this->getFirstReflectionParameter('hasNativeDocTypes');
         $codeGenParam = Zend_CodeGenerator_Php_Parameter::fromReflection($reflParam);
 
-        $this->assertNotEquals('int', $codeGenParam->getType());
-        $this->assertEquals('', $codeGenParam->getType());
+        if (PHP_VERSION_ID < 80000) {
+            $this->assertEquals('', $codeGenParam->getType());
+            $this->assertNotEquals('int', $codeGenParam->getType());
+        } else {
+            $this->assertEquals('int', $codeGenParam->getType());
+        }
     }
 
-    static public function dataFromReflection_Generate()
+    public static function dataFromReflection_Generate()
     {
         return array(
             array('name', '$param'),
@@ -147,7 +151,7 @@ class Zend_CodeGenerator_Php_ParameterTest extends PHPUnit_Framework_TestCase
             array('defaultValue', '$value = \'foo\''),
             array('defaultNull', '$value = null'),
             array('fromArray', 'array $array'),
-            array('hasNativeDocTypes', '$integer'),
+            array('hasNativeDocTypes', PHP_VERSION_ID >= 80000 ? 'int $integer' : '$integer'),
             array('defaultArray', '$array = array ()'),
             array('defaultArrayWithValues', '$array = array (  0 => 1,  1 => 2,  2 => 3,)'),
             array('defaultFalse', '$val = false'),
