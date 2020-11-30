@@ -88,8 +88,15 @@ class Zend_Pdf_Element_Reference extends Zend_Pdf_Element
      * @param Zend_Pdf_ElementFactory $factory
      * @throws Zend_Pdf_Exception
      */
-    public function __construct($objNum, $genNum = 0, Zend_Pdf_Element_Reference_Context $context, Zend_Pdf_ElementFactory $factory)
+    public function __construct($objNum, $genNum, Zend_Pdf_Element_Reference_Context $context, Zend_Pdf_ElementFactory $factory)
     {
+        /**
+         * This was changed as PHP8 errors out if there's an optional parameter before a required param
+         */
+        if (empty($genNum)) {
+            $genNum = 0;
+        }
+
         if ( !(is_integer($objNum) && $objNum > 0) ) {
             // require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Object number must be positive integer');
