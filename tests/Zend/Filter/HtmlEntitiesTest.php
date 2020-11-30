@@ -214,7 +214,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
      */
     public function testCorrectsForEncodingMismatch()
     {
-        if (PHP_VERSION_ID >= 50400) {
+        if (PHP_VERSION_ID >= 70000 && PHP_VERSION_ID < 70100) {
             $this->markTestIncomplete('Tested feature ZF-11344 is not available because of PHP bug #63450');
         }
 
@@ -234,7 +234,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
      */
     public function testStripsUnknownCharactersWhenEncodingMismatchDetected()
     {
-        if (PHP_VERSION_ID >= 50400) {
+        if (PHP_VERSION_ID >= 70000 && PHP_VERSION_ID < 70100) {
             $this->markTestIncomplete('Tested feature ZF-11344 is not available because of PHP bug #63450');
         }
 
