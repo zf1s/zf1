@@ -188,6 +188,9 @@ abstract class Zend_Queue_QueueBaseTest extends PHPUnit_Framework_TestCase
             $this->fail('send() $mesage must be a string');
         } catch (Exception $e) {
             $this->assertTrue(true);
+        } catch (Error $e) {
+            $this->assertTrue($e instanceof TypeError);
+            $this->assertContains('must be of type string', $e->getMessage());
         }
 
         $message = 'Hello world'; // never gets boring!

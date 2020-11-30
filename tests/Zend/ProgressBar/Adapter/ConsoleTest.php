@@ -266,6 +266,9 @@ class Zend_ProgressBar_Adapter_ConsoleTest extends PHPUnit_Framework_TestCase
             $adapter->setOutputStream(null);
             $this->fail('Expected Zend_ProgressBar_Adapter_Exception');
         } catch (Zend_ProgressBar_Adapter_Exception $e) {
+        } catch (Error $e) {
+            $this->assertTrue($e instanceof ValueError);
+            $this->assertContains('cannot be empty', $e->getMessage());
         }
     }
 
