@@ -48,8 +48,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - run: |
+
+      - name: Setup environment
+        run: |
           cp tests/TestConfiguration.travis.php tests/TestConfiguration.php
+          locale -a
 
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
