@@ -161,7 +161,7 @@ class Zend_Cache_FileBackendTest extends Zend_Cache_CommonExtendedBackendTest {
 
     public function testSaveWithABadCacheDir()
     {
-        if (getenv('TRAVIS')) {
+        if (getenv('CI')) {
             $this->markTestSkipped(
                 'Test randomly fail on Travis CI.'
             );
