@@ -27,6 +27,7 @@ jobs:
       MYSQL_PASSWORD: "password"
       MYSQL_DATABASE: "zftest"
       MYSQL_HOST: "127.0.0.1"
+      LOCALES: "fr_FR@euro fr_BE.UTF-8 de en_US"
 
     services:
       memcache:
@@ -53,6 +54,24 @@ jobs:
         run: |
           cp tests/TestConfiguration.travis.php tests/TestConfiguration.php
           locale -a
+
+          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen pt_BR.UTF-8
+          sudo localectl set-locale LANG="pt_BR.UTF-8"
+          export LANG="pt_BR.UTF-8"
+          sudo update-locale
+          echo "Testing language settings"
+          echo "All languages..."
+          locale -a
+          echo "Actual locale"
+          locale
+          echo "Actual numeric settings"
+          locale -c -k LC_NUMERIC
+          echo "LANG Variable"
+          echo "$LANG"
+          echo "LocaleCtl"
+          localectl status
+          echo "Printing decimal"
+          printf "%'.3f\n" 123123,123
 
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
