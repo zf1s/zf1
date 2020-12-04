@@ -218,6 +218,8 @@ class Zend_Validate_Date extends Zend_Validate_Abstract
         } catch (Exception $e) {
             // Date can not be parsed
             return false;
+        } catch (Error $e) {
+            return false;
         }
 
         if (((strpos($this->_format, 'Y') !== false) or (strpos($this->_format, 'y') !== false)) and
