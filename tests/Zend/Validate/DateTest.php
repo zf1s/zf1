@@ -208,11 +208,7 @@ class Zend_Validate_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testNonStringValidation()
     {
-        try {
-            $this->assertFalse($this->_validator->isValid(array(1 => 1)));
-        } catch (Error $e) {
-            $this->assertTrue($e instanceof TypeError);
-        }
+        $this->assertFalse($this->_validator->isValid(array(1 => 1)));
     }
 
     /**
