@@ -36,6 +36,12 @@
 class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * Constant for Non-breaking space UTF-8 encoded value.
+     * https://en.wikipedia.org/wiki/Non-breaking_space
+     */
+    const NBSP = " ";
+
+    /**
      * teardown / cleanup
      */
     public function tearDown()
@@ -944,7 +950,7 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
         $myFloat = 1234.5;
         $test1 = Zend_Locale_Format::toFloat($myFloat, $params_fr);
         $test2 = Zend_Locale_Format::toFloat($myFloat, $params_en);
-        $this->assertEquals("1 234,50", $test1);
+        $this->assertEquals("1" . self::NBSP . "234,50", $test1);
         $this->assertEquals("1,234.50", $test2);
         // placing tearDown here (i.e. restoring locale) won't work, if test already failed/aborted above.
     }
