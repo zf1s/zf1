@@ -192,7 +192,7 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
         $lcAll = setlocale(LC_ALL, 'de_AT');
         $lcNumeric = setlocale(LC_NUMERIC, 'de_AT');
         $valid = new Zend_Validate_Float('de_AT');
-        $isValid = $valid->isValid('1,3');
+        $isValid0 = $valid->isValid('1,3');
         $isValid1 = $valid->isValid('1000,3');
         $isValid2 = $valid->isValid('1.000,3');
         $isValid3 = $valid->isValid('1.3');
@@ -200,7 +200,7 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
         $isValid5 = $valid->isValid('1,000.3');
         setlocale(LC_ALL, $lcAll);
         setlocale(LC_NUMERIC, $lcNumeric);
-        $this->assertTrue($isValid);
+        $this->assertTrue($isValid0);
         $this->assertTrue($isValid1);
         $this->assertTrue($isValid2);
         $this->assertFalse($isValid3);

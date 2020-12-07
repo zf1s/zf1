@@ -1116,9 +1116,10 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
         try {
             $locale = setlocale(LC_ALL, 'en_US'); // test setup
             Zend_Locale_Format::setOptions(array('date_format' => 'yyyy-MM-dd'));
-            setlocale(LC_ALL, $locale);// XXX Missing restore
+            $checkDateFormat = Zend_Locale_Format::checkDateFormat('2011-10-21', array());
+            setlocale(LC_ALL, $locale);
 
-            $this->assertTrue(Zend_Locale_Format::checkDateFormat('2011-10-21', array()));
+            $this->assertTrue($checkDateFormat);
         } catch ( PHPUnit_Framework_Error_Notice $ex ) {
             $this->fail('Zend_Locale_Format::checkDateFormat emitted unexpected E_NOTICE');
         }
