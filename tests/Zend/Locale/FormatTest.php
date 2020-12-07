@@ -950,7 +950,7 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
         $myFloat = 1234.5;
         $test1 = Zend_Locale_Format::toFloat($myFloat, $params_fr);
         $test2 = Zend_Locale_Format::toFloat($myFloat, $params_en);
-        setlocale(LC_ALL, $locale); // XXX missing restore
+        setlocale(LC_ALL, $locale);
         $this->assertEquals("1" . self::NBSP . "234,50", $test1);
         $this->assertEquals("1,234.50", $test2);
     }
