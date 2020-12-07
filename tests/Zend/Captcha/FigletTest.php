@@ -39,6 +39,9 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Captcha_FigletTest extends PHPUnit_Framework_TestCase
 {
+    /** @var Zend_Captcha_Adapter */
+    private $captcha;
+
     /**
      * Runs the test methods of this class.
      *
