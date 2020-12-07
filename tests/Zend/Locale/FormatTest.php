@@ -48,14 +48,12 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
     {
         // if the setlocale option is enabled, then don't change the setlocale below
         if (defined('TESTS_ZEND_LOCALE_FORMAT_SETLOCALE') && TESTS_ZEND_LOCALE_FORMAT_SETLOCALE === false) {
-            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
             // I'm anticipating possible platform inconsistencies, so I'm leaving some debug comments for now.
             echo '<<<', setlocale(LC_NUMERIC, '0'); // show locale before changing
             setlocale(LC_ALL, 'C'); // attempt to restore global setting i.e. test teardown
             echo '>>>', setlocale(LC_NUMERIC, '0'); // show locale after changing
             echo "\n";
         } else if (defined('TESTS_ZEND_LOCALE_FORMAT_SETLOCALE')) {
-            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
             setlocale(LC_ALL, TESTS_ZEND_LOCALE_FORMAT_SETLOCALE);
         }
 
@@ -1116,7 +1114,6 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
     public function testCheckDateFormatDoesNotEmitNoticeWhenNoOptionsAreNotProvided()
     {
         try {
-            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
             $locale = setlocale(LC_ALL, 'en_US'); // test setup
             Zend_Locale_Format::setOptions(array('date_format' => 'yyyy-MM-dd'));
             setlocale(LC_ALL, $locale);// XXX Missing restore

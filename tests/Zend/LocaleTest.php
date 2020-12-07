@@ -59,7 +59,6 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
         $this->_locale = setlocale(LC_ALL, 0);
         setlocale(LC_ALL, 'de');
         // require_once 'Zend/Cache.php';
@@ -84,10 +83,8 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
                 $tmp = explode('=', $l);
                 $locales[$tmp[0]] = $tmp[1];
             }
-            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
             setlocale(LC_ALL, $locales);
         } else {
-            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
             setlocale(LC_ALL, $this->_locale);
         }
 

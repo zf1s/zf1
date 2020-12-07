@@ -863,7 +863,6 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
 
     public function testSelectWhereWithTypeFloat()
     {
-        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
         $locale = setlocale(LC_ALL, 0);
 
         $select = $this->_selectWhereWithTypeFloat();
@@ -873,7 +872,6 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $this->assertEquals(200.45, $result[0]['price_total']);
 
         try {
-            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
             setlocale(LC_ALL, 'fr_BE.UTF-8');
             $select = $this->_selectWhereWithTypeFloat();
             $stmt = $this->_db->query($select);
@@ -881,12 +879,10 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
             $this->assertEquals(1, count($result));
             $this->assertEquals(200.45, $result[0]['price_total']);
         } catch (Zend_Exception $e) {
-            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
             setlocale(LC_ALL, $locale);
             throw $e;
         }
 
-        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
         setlocale(LC_ALL, $locale);
     }
 
