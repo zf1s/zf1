@@ -66,7 +66,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           tools: composer:v1
-          extensions: ldap, memcache, memcached, pdo_sqlite, bcmath
+          extensions: ldap, memcache, memcached, pdo_sqlite, bcmath, gd
 
       - name: Validate composer.json and composer.lock
         run: composer validate
