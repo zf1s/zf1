@@ -85,6 +85,6 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --verbose --debug
 
 # vim:ft=yaml:et:ts=2:sw=2
