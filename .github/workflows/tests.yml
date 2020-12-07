@@ -28,7 +28,7 @@ jobs:
       MYSQL_DATABASE: "zftest"
       MYSQL_HOST: "127.0.0.1"
       # Default locales are: C C.UTF-8 POSIX en_US.utf8
-      LOCALES: "fr_FR@euro fr_BE.UTF-8 de en_US"
+      LOCALES: "fr_FR@euro fr_FR fr_BE.UTF-8 de en_US"
 
     services:
       memcache:
