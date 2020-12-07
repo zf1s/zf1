@@ -35,6 +35,8 @@ jobs:
       - name: Lint PHP source files
         run: |
           # Lint All PHP source files
+          # Remove source expected to have syntax error
+          git rm tests/Zend/Loader/_files/ParseError.php
           git ls-files '**/*.php' | xargs -l1 php -l
 
 # vim:ft=yaml:et:ts=2:sw=2
