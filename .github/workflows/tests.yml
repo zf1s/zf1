@@ -32,4 +32,9 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
 
+      - name: Lint PHP source files
+        run: |
+          # Lint All PHP source files
+          git ls-files '**/*.php' | xargs -l1 php -l
+
 # vim:ft=yaml:et:ts=2:sw=2
