@@ -58,7 +58,7 @@ class Zend_Measure_TemperatureTest extends PHPUnit_Framework_TestCase
         }
         Zend_Locale_Data::removeCache();
 
-        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
+        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
         $this->_locale = setlocale(LC_ALL, 0);
         setlocale(LC_ALL, 'de');
     }
@@ -71,11 +71,11 @@ class Zend_Measure_TemperatureTest extends PHPUnit_Framework_TestCase
                 $tmp = explode('=', $l);
                 $locales[$tmp[0]] = $tmp[1];
             }
-            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
+            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
             setlocale(LC_ALL, $locales);
             return;
         }
-        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
+        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__));
         setlocale(LC_ALL, $this->_locale);
     }
 
