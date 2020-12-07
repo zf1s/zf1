@@ -85,7 +85,7 @@ class Zend_Cache_Backend_Sqlite extends Zend_Cache_Backend implements Zend_Cache
     {
         parent::__construct($options);
         if ($this->_options['cache_db_complete_path'] === null) {
-            Zend_Cache::throwException('cache_db_complete_path option has to set');
+            Zend_Cache::throwException('cache_db_complete_path option has to be set');
         }
         if (!extension_loaded('sqlite')) {
             Zend_Cache::throwException("Cannot use SQLite storage because the 'sqlite' extension is not loaded in the current PHP environment");
