@@ -35,6 +35,7 @@
  */
 class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
 {
+    const NBSP = ' ';
     /**
      * Zend_Validate_Float object
      *
@@ -215,7 +216,7 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
         $valid = new Zend_Validate_Float('fr_FR');
         $this->assertTrue($valid->isValid('1,3'));
         $this->assertTrue($valid->isValid('1000,3'));
-        $this->assertTrue($valid->isValid('1 000,3'));
+        $this->assertTrue($valid->isValid('1' . self::NBSP . '000,3'));
         $this->assertFalse($valid->isValid('1.3'));
         $this->assertFalse($valid->isValid('1000.3'));
         $this->assertFalse($valid->isValid('1,000.3'));
