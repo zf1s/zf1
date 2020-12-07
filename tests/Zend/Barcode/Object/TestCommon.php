@@ -38,7 +38,7 @@ abstract class Zend_Barcode_Object_TestCommon extends PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var Zend_Barcode_Object
+     * @var Zend_Barcode_Object_ObjectAbstract
      */
     protected $_object = null;
 
