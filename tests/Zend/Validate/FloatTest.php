@@ -49,6 +49,7 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
         $this->_locale = setlocale(LC_ALL, 0); //backup locale
 
         // require_once 'Zend/Registry.php';
@@ -68,9 +69,11 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
                 $tmp = explode('=', $l);
                 $locales[$tmp[0]] = $tmp[1];
             }
+            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
             setlocale(LC_ALL, $locales);
             return;
         }
+        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
         setlocale(LC_ALL, $this->_locale);
     }
 
@@ -136,6 +139,7 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testNoZendLocaleButPhpLocale()
     {
+        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
         setlocale(LC_ALL, 'de');
         $valid = new Zend_Validate_Float();
         $this->assertTrue($valid->isValid(123,456));
@@ -157,6 +161,7 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpLocaleDeFloatType()
     {
+        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
         setlocale(LC_ALL, 'de');
         $valid = new Zend_Validate_Float();
         $this->assertTrue($valid->isValid(10.5));
@@ -167,6 +172,7 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpLocaleFrFloatType()
     {
+        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
         setlocale(LC_ALL, 'fr');
         $valid = new Zend_Validate_Float();
         $this->assertTrue($valid->isValid(10.5));
@@ -177,7 +183,9 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpLocaleDeStringType()
     {
+        error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
         setlocale(LC_ALL, 'de_AT');
+        error_log("setlocale(LC_NUMERIC) :: ". sprintf("%s:%d", __FILE__, __LINE__);
         setlocale(LC_NUMERIC, 'de_AT');
         $valid = new Zend_Validate_Float('de_AT');
         $this->assertTrue($valid->isValid('1,3'));

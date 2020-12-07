@@ -46,7 +46,9 @@ class AllTests
 
         if (defined('TESTS_ZEND_LOCALE_FORMAT_SETLOCALE') && TESTS_ZEND_LOCALE_FORMAT_SETLOCALE) {
             // run all tests in a special locale
-            setlocale(LC_ALL, TESTS_ZEND_LOCALE_FORMAT_SETLOCALE);
+            throw new \Exception;setlocale(LC_ALL, TESTS_ZEND_LOCALE_FORMAT_SETLOCALE);
+        } else {
+            error_log("TESTS_ZEND_LOCALE_FORMAT_SETLOCALE: ".var_export(TESTS_ZEND_LOCALE_FORMAT_SETLOCALE,1));
         }
 
         // Run buffered tests as a separate suite first

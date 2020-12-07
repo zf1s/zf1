@@ -44,8 +44,11 @@ class Zend_Locale_MathTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+        error_log("setlocale(LC_NUMERIC) :: ". sprintf("%s:%d", __FILE__, __LINE__);
+
         self::$savedLocale = setlocale(LC_NUMERIC, '0');
         if (self::$savedLocale != 'C') {
+            error_log("setlocale(LC_NUMERIC) :: ". sprintf("%s:%d", __FILE__, __LINE__);
             setlocale(LC_NUMERIC, 'C');
         }
     }
@@ -56,6 +59,7 @@ class Zend_Locale_MathTest extends PHPUnit_Framework_TestCase
     public function tearDown()
     {
         if (self::$savedLocale != 'C') {
+            error_log("setlocale(LC_NUMERIC) :: ". sprintf("%s:%d", __FILE__, __LINE__);
             setlocale(LC_NUMERIC, self::$savedLocale);
         }
     }

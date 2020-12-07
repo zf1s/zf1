@@ -148,6 +148,7 @@ class Zend_Locale_Math
     {
         // https://stackoverflow.com/questions/17587581/php-locale-dependent-float-to-string-cast
         // workaround for locale-dependent float->string conversion
+        error_log("setlocale(LC_NUMERIC) :: ". __FILE__);
         $locale = setlocale(LC_NUMERIC, 0);
         setlocale(LC_NUMERIC, 'C');
         $value = strtoupper((string)$value);

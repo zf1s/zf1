@@ -46,6 +46,7 @@ class Zend_Locale_AllTests
     {
         if (defined('TESTS_ZEND_LOCALE_FORMAT_SETLOCALE') && TESTS_ZEND_LOCALE_FORMAT_SETLOCALE) {
             // run all tests in a special locale
+            error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
             setlocale(LC_ALL, TESTS_ZEND_LOCALE_FORMAT_SETLOCALE);
         }
 

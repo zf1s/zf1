@@ -1234,6 +1234,7 @@ class Zend_Locale
 
         // require_once 'Zend/Locale/Data/Translation.php';
 
+        error_log("setlocale(LC_ALL, 0) :: ". __FILE__);
         $language      = setlocale(LC_ALL, 0);
         $languages     = explode(';', $language);
         $languagearray = array();
