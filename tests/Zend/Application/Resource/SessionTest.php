@@ -73,6 +73,7 @@ class Zend_Application_Resource_SessionTest extends PHPUnit_Framework_TestCase
 
     /**
      * @runInSeparateProcess
+     * @requires php >= 5.4
      */
     public function testSetOptions()
     {
