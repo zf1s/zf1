@@ -49,7 +49,7 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
 
     public function setUp()
     {
-        parent::setUp();
+        @parent::setUp();
 
         $this->_table['accounts']      = $this->_getTable('My_ZendDbTable_TableAccounts');
         $this->_table['bugs']          = $this->_getTable('My_ZendDbTable_TableBugs');
