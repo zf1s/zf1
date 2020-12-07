@@ -142,9 +142,11 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
     {
         $locale = setlocale(LC_ALL, 'de');
         $valid = new Zend_Validate_Float();
-        $this->assertTrue($valid->isValid(123.456));
-        $this->assertTrue($valid->isValid('123,456'));
+        $isValid = $valid->isValid(123.456);
+        $isValid1 = $valid->isValid('123,456');
         setlocale(LC_ALL, $locale);
+        $this->assertTrue($isValid);
+        $this->assertTrue($isValid1);
     }
 
     /**
@@ -164,8 +166,9 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
     {
         $locale = setlocale(LC_ALL, 'de');
         $valid = new Zend_Validate_Float();
-        $this->assertTrue($valid->isValid(10.5));
+        $isValid = $valid->isValid(10.5);
         setlocale(LC_ALL, $locale);
+        $this->assertTrue($isValid);
     }
 
     /**
@@ -175,8 +178,9 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
     {
         $locale = setlocale(LC_ALL, 'fr');
         $valid = new Zend_Validate_Float();
-        $this->assertTrue($valid->isValid(10.5));
+        $isValid = $valid->isValid(10.5);
         setlocale(LC_ALL, $locale);
+        $this->assertTrue($isValid);
     }
 
     /**
@@ -187,14 +191,20 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
         $lcAll = setlocale(LC_ALL, 'de_AT');
         $lcNumeric = setlocale(LC_NUMERIC, 'de_AT');
         $valid = new Zend_Validate_Float('de_AT');
-        $this->assertTrue($valid->isValid('1,3'));
-        $this->assertTrue($valid->isValid('1000,3'));
-        $this->assertTrue($valid->isValid('1.000,3'));
-        $this->assertFalse($valid->isValid('1.3'));
-        $this->assertFalse($valid->isValid('1000.3'));
-        $this->assertFalse($valid->isValid('1,000.3'));
+        $isValid = $valid->isValid('1,3');
+        $isValid1 = $valid->isValid('1000,3');
+        $isValid2 = $valid->isValid('1.000,3');
+        $isValid3 = $valid->isValid('1.3');
+        $isValid4 = $valid->isValid('1000.3');
+        $isValid5 = $valid->isValid('1,000.3');
         setlocale(LC_ALL, $lcAll);
         setlocale(LC_NUMERIC, $lcNumeric);
+        $this->assertTrue($isValid);
+        $this->assertTrue($isValid1);
+        $this->assertTrue($isValid2);
+        $this->assertFalse($isValid3);
+        $this->assertFalse($isValid4);
+        $this->assertFalse($isValid5);
     }
 
     /**
