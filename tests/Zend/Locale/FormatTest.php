@@ -49,10 +49,10 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
         // if the setlocale option is enabled, then don't change the setlocale below
         if (defined('TESTS_ZEND_LOCALE_FORMAT_SETLOCALE') && TESTS_ZEND_LOCALE_FORMAT_SETLOCALE === false) {
             // I'm anticipating possible platform inconsistencies, so I'm leaving some debug comments for now.
-            //echo '<<<', setlocale(LC_NUMERIC, '0'); // show locale before changing
+            echo '<<<', setlocale(LC_NUMERIC, '0'); // show locale before changing
             setlocale(LC_ALL, 'C'); // attempt to restore global setting i.e. test teardown
-            //echo '>>>', setlocale(LC_NUMERIC, '0'); // show locale after changing
-            //echo "\n";
+            echo '>>>', setlocale(LC_NUMERIC, '0'); // show locale after changing
+            echo "\n";
         } else if (defined('TESTS_ZEND_LOCALE_FORMAT_SETLOCALE')) {
             setlocale(LC_ALL, TESTS_ZEND_LOCALE_FORMAT_SETLOCALE);
         }
