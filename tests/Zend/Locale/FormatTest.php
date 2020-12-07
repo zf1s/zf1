@@ -942,7 +942,7 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
      */
     public function testToFloatSetlocale()
     {
-        setlocale(LC_ALL, 'fr_FR@euro'); // test setup
+        $locale = setlocale(LC_ALL, 'fr_FR@euro'); // test setup
 
         //var_dump( setlocale(LC_NUMERIC, '0')); // this is the specific setting of interest
         $locale_fr = new Zend_Locale('fr_FR');
@@ -952,9 +952,9 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
         $myFloat = 1234.5;
         $test1 = Zend_Locale_Format::toFloat($myFloat, $params_fr);
         $test2 = Zend_Locale_Format::toFloat($myFloat, $params_en);
+        setlocale(LC_ALL, $locale); // XXX missing restore
         $this->assertEquals("1" . self::NBSP . "234,50", $test1);
         $this->assertEquals("1,234.50", $test2);
-        // placing tearDown here (i.e. restoring locale) won't work, if test already failed/aborted above.
     }
 
     /**
@@ -1117,8 +1117,9 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
     {
         try {
             error_log("setlocale(LC_ALL) :: ". sprintf("%s:%d", __FILE__, __LINE__);
-            setlocale(LC_ALL, 'en_US'); // test setup
+            $locale = setlocale(LC_ALL, 'en_US'); // test setup
             Zend_Locale_Format::setOptions(array('date_format' => 'yyyy-MM-dd'));
+            setlocale(LC_ALL, $locale);// XXX Missing restore
 
             $this->assertTrue(Zend_Locale_Format::checkDateFormat('2011-10-21', array()));
         } catch ( PHPUnit_Framework_Error_Notice $ex ) {
