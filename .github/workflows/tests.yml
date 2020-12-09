@@ -1,0 +1,44 @@
+name: "Tests"
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  test:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        php:
+          - "5.3"
+          - "5.4"
+          - "5.5"
+          - "5.6"
+          - "7.0"
+          - "7.1"
+          - "7.2"
+          - "7.3"
+          - "7.4"
+          - "8.0"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          ini-values: display_errors=off, log_errors=on
+
+      - name: Lint PHP source files
+        run: |
+          # Lint All PHP source files
+          # Remove source expected to have syntax error
+          git rm tests/Zend/Loader/_files/ParseError.php
+          git ls-files '**/*.php' | while read f; do php -l "$f" > /dev/null || touch failed && echo -n .; done
+          test ! -f failed
+
+# vim:ft=yaml:et:ts=2:sw=2
