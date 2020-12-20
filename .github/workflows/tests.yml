@@ -52,22 +52,22 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Setup environment
-        run: |
-          cp tests/TestConfiguration.travis.php tests/TestConfiguration.php
-
-          echo "Existing locales"
-          locale -a
-          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen $LOCALES
-          echo "All languages..."
-          locale -a
-
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           tools: composer:v1
           extensions: ldap, memcache, pdo_sqlite, bcmath, gd
+          ini-values: display_errors=off, log_errors=on
+
+      - name: Lint PHP source files
+        run: |
+          # Lint All PHP source files
+          # Remove source expected to have syntax error
+          git rm tests/Zend/Loader/_files/ParseError.php
+          git ls-files '**/*.php' | while read f; do php -l "$f" > /dev/null || touch failed && echo -n .; done
+          test ! -f failed
+
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -84,6 +84,16 @@ jobs:
       - name: Install dependencies
         if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Setup environment for PHPUnit
+        run: |
+          cp tests/TestConfiguration.travis.php tests/TestConfiguration.php
+
+          echo "Existing locales"
+          locale -a
+          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen $LOCALES
+          echo "All languages..."
+          locale -a
 
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit --verbose --debug
