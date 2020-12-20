@@ -42,4 +42,10 @@ jobs:
           git ls-files '**/*.php' | while read f; do php -l "$f" > /dev/null || touch failed && echo -n .; done
           test ! -f failed
 
+      # https://github.com/zf1s/zf1/pull/6#issuecomment-495397170
+      - name: Validate composer.json for all packages
+        run: |
+          for json in packages/*/composer.json; do COMPOSER=$json composer validate || touch failed; done
+          test ! -f failed
+
 # vim:ft=yaml:et:ts=2:sw=2
