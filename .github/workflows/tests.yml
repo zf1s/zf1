@@ -32,6 +32,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           ini-values: display_errors=off, log_errors=on
+          extensions: :xdebug
 
       - name: Lint PHP source files
         run: |
