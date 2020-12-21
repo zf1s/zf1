@@ -57,7 +57,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           tools: composer:v1
-          extensions: :xdebug, ldap, memcache, pdo_sqlite, bcmath, gd
+          extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache, pdo_sqlite, bcmath
           ini-values: display_errors=off, log_errors=on
 
       - name: Lint PHP source files
