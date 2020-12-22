@@ -32,7 +32,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           ini-values: display_errors=off, log_errors=on
-          extensions: :xdebug
+          extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache, pdo_sqlite, bcmath
 
       - name: Lint PHP source files
         run: |
@@ -47,5 +47,8 @@ jobs:
         run: |
           for json in composer.json packages/*/composer.json; do COMPOSER=$json composer validate || touch failed; done
           test ! -f failed
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
 
 # vim:ft=yaml:et:ts=2:sw=2
