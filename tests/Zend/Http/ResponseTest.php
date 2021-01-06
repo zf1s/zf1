@@ -20,10 +20,14 @@
  * @version    $Id$
  */
 
+use Zend\Http\StreamObject;
+
 /**
  * Zend_Http_Response
  */
 // require_once 'Zend/Http/Response.php';
+
+require_once __DIR__ . '/StreamObject.php';
 
 /**
  * Zend_Http_Response unit tests
@@ -38,8 +42,18 @@
  */
 class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
 {
+    /** @var null|string */
+    private $tempFile;
+
     public function setUp()
     { }
+
+    public function tearDown()
+    {
+        if ($this->tempFile !== null && file_exists($this->tempFile)) {
+            unlink($this->tempFile);
+        }
+    }
 
     public function testGzipResponse ()
     {
@@ -171,6 +185,23 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($response->isRedirect(), 'Response is a redirection, but isRedirect() returned false');
         $this->assertFalse($response->isError(), 'Response is a redirection, but isError() returned true');
         $this->assertFalse($response->isSuccessful(), 'Response is a redirection, but isSuccessful() returned true');
+    }
+
+    /**
+     * @see https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3007
+     */
+    public function testDestructionDoesNothingIfStreamIsNotAResourceAndStreamNameIsNotAString()
+    {
+        $this->tempFile = tempnam(sys_get_temp_dir(), 'lhrs');
+        $streamObject = new StreamObject($this->tempFile);
+
+        $response = new Zend_Http_Response_Stream(200, array());
+        $response->setCleanup(true);
+        $response->setStreamName($streamObject);
+
+        unset($response);
+
+        $this->assertFileExists($this->tempFile);
     }
 
     public function test200Ok()
