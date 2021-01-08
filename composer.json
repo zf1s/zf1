@@ -1,5 +1,7 @@
 {
     "name": "zf1s/zf1",
+    "description": "Monorepo for zf1s (Zend Framework 1) packages",
+    "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
         "ext-ctype": "*",
@@ -16,8 +18,8 @@
         "ext-zlib": "*"
     },
     "require-dev": {
-        "zf1s/phpunit": "^3.7",
-        "phpunit/dbunit": "1.3.*"
+        "zf1s/phpunit": "3.7.39",
+        "phpunit/dbunit": "1.3.2"
     },
     "autoload": {
         "psr-0": {
