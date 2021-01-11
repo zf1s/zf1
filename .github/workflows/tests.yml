@@ -56,9 +56,9 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          tools: composer:v1
-          extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache, pdo_sqlite, bcmath
           ini-values: display_errors=off, log_errors=on
+          extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache, pdo_sqlite, bcmath
+          tools: composer:v1
 
       - name: Lint PHP source files
         run: |
@@ -68,13 +68,10 @@ jobs:
           git ls-files '**/*.php' | while read f; do php -l "$f" > /dev/null || touch failed && echo -n .; done
           test ! -f failed
 
-      - name: Validate composer.json and composer.lock
-        run: composer validate
-
       # https://github.com/zf1s/zf1/pull/6#issuecomment-495397170
       - name: Validate composer.json for all packages
         run: |
-          for json in packages/*/composer.json; do COMPOSER=$json composer validate || touch failed; done
+          for json in composer.json packages/*/composer.json; do COMPOSER=$json composer validate || touch failed; done
           test ! -f failed
 
       - name: Cache Composer packages
