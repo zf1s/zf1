@@ -121,7 +121,7 @@ class Zend_Ldap_ConverterTest extends PHPUnit_Framework_TestCase
             );
         }
 
-        if (getenv('TRAVIS') && version_compare(PHP_VERSION, '5.4.0', '>=')) {
+        if (getenv('CI') && version_compare(PHP_VERSION, '5.4.0', '>=')) {
             return array(
                 array('N;', null),
                 array('i:1;', 1),

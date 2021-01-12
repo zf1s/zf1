@@ -21,7 +21,6 @@ jobs:
           - "7.2"
           - "7.3"
           - "7.4"
-          - "8.0"
 
     steps:
       - name: Checkout Code
@@ -50,5 +49,8 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit --verbose
 
 # vim:ft=yaml:et:ts=2:sw=2
