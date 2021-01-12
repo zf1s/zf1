@@ -34,6 +34,8 @@ jobs:
       MYSQL_PASSWORD: "zftest"
       MYSQL_DATABASE: "zftest"
       MYSQL_HOST: "127.0.0.1"
+      # Default locales are: C C.UTF-8 POSIX en_US.utf8
+      LOCALES: "fr_FR@euro fr_FR fr_BE.UTF-8 de en_US"
 
     services:
       memcache:
@@ -81,6 +83,11 @@ jobs:
       - name: Setup environment for PHPUnit
         run: |
           cp tests/TestConfiguration.ci.php tests/TestConfiguration.php
+          echo "Existing locales"
+          locale -a
+          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen $LOCALES
+          echo "All languages..."
+          locale -a
 
       - name: "Run PHPUnit tests (Experimental: ${{ matrix.experimental }})"
         env:
