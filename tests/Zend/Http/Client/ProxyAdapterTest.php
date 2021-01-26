@@ -30,7 +30,7 @@ require_once dirname(__FILE__) . '/SocketTest.php';
  * In order to run, TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY must point to a working
  * proxy server, which can access TESTS_ZEND_HTTP_CLIENT_BASEURI.
  *
- * See TestConfiguration.php.dist for more information.
+ * See TestConfiguration.dist.php for more information.
  *
  * @category   Zend
  * @package    Zend_Http_Client

@@ -50,7 +50,7 @@ if (!defined('PHP_OS_WSL')) {
 if (is_readable($zfTests . '/TestConfiguration.php')) {
     require_once $zfTests . '/TestConfiguration.php';
 } else {
-    require_once $zfTests . '/TestConfiguration.php.dist';
+    require_once $zfTests . '/TestConfiguration.dist.php';
 }
 
 /*

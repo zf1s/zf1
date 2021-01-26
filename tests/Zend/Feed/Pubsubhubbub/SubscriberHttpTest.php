@@ -28,7 +28,7 @@
  * Note that $this->_baseuri must point to a directory on a web server
  * containing all the files under the _files directory. You should symlink
  * or copy these files and set '_baseuri' properly using the constant in
- * TestConfiguration.php (based on TestConfiguration.php.dist)
+ * TestConfiguration.php (based on TestConfiguration.dist.php)
  *
  * You can also set the proper constant in your test configuration file to
  * point to the right place.
