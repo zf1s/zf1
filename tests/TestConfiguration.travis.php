@@ -82,4 +82,4 @@ defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD') || define('TESTS_ZEND_DB_ADA
 defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE', 'zftest');
 
 
-require_once dirname(__FILE__) . '/TestConfiguration.php.dist';
+require_once dirname(__FILE__) . '/TestConfiguration.dist.php';

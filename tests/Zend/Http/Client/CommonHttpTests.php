@@ -56,7 +56,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
 {
     /**
      * The bast URI for this test, containing all files in the _files directory
-     * Should be set in TestConfiguration.php or TestConfiguration.php.dist
+     * Should be set in TestConfiguration.php or TestConfiguration.dist.php
      *
      * @var string
      */
