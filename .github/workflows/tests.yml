@@ -56,6 +56,10 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
+      - name: Setup environment for PHPUnit
+        run: |
+          cp tests/TestConfiguration.ci.php tests/TestConfiguration.php
+
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit --verbose
 
