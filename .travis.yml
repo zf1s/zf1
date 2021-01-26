@@ -10,7 +10,6 @@ jobs:
     - php: 5.5
       dist: trusty
     - php: 5.6
-      # travis has issues with memcached extension and php5.6 on newer distros
       dist: trusty
     - php: 7.0
     - php: 7.1
@@ -29,7 +28,6 @@ cache:
 services:
   - mysql
   - postgresql
-  - memcached
 
 install:
   - phpenv rehash
