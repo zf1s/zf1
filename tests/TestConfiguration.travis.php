@@ -43,15 +43,9 @@ defined('TESTS_ZEND_AUTH_ADAPTER_DBTABLE_PDO_SQLITE_ENABLED') || define('TESTS_Z
  * TESTS_ZEND_CACHE_SQLITE_ENABLED     => sqlite extension has to be enabled
  * TESTS_ZEND_CACHE_APC_ENABLED        => apc extension has to be enabled
  * TESTS_ZEND_CACHE_WINCACHE_ENABLED   => wincache extension has to be enabled
- * TESTS_ZEND_CACHE_MEMCACHED_ENABLED  => memcache extension has to be enabled and
- *                                        a memcached server has to be available
- * TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED => memcached extension has to be enabled and
- *                                          a memcached server has to be available
  * TESTS_ZEND_CACHE_XCACHE_ENABLED     => xcache extension has to be enabled
  */
 defined('TESTS_ZEND_CACHE_SQLITE_ENABLED') || define('TESTS_ZEND_CACHE_SQLITE_ENABLED', true);
-defined('TESTS_ZEND_CACHE_MEMCACHED_ENABLED') || define('TESTS_ZEND_CACHE_MEMCACHED_ENABLED', true);
-defined('TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED') || define('TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED', true);
 
 /**
  * Zend_Db_Adapter_Pdo_Mysql and Zend_Db_Adapter_Mysqli

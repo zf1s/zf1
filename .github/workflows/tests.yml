@@ -22,6 +22,12 @@ jobs:
           - "7.3"
           - "7.4"
 
+    services:
+      memcache:
+        image: memcached:1-alpine
+        ports:
+          - 11211:11211
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -49,6 +55,10 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Setup environment for PHPUnit
+        run: |
+          cp tests/TestConfiguration.ci.php tests/TestConfiguration.php
 
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit --verbose
