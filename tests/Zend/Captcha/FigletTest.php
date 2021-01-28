@@ -39,6 +39,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Captcha_FigletTest extends PHPUnit_Framework_TestCase
 {
+    /** @var Zend_Captcha_Adapter */
+    private $captcha;
+    /** @var Zend_Form_Element_Captcha */
+    private $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -299,6 +304,7 @@ class Zend_Captcha_FigletTest extends PHPUnit_Framework_TestCase
     /**
      * @group ZF-5728
      * @runInSeparateProcess
+     * @requires php >= 5.4
      */
     public function testSetSessionWorks()
     {

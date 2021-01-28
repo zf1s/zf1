@@ -35,12 +35,17 @@
  */
 class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
 {
+    const NBSP = ' ';
     /**
      * Zend_Validate_Float object
      *
      * @var Zend_Validate_Float
      */
     protected $_validator;
+    /**
+     * @var string
+     */
+    private $_locale;
 
     /**
      * Creates a new Zend_Validate_Float object for each test method
@@ -136,10 +141,13 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testNoZendLocaleButPhpLocale()
     {
-        setlocale(LC_ALL, 'de');
+        $locale = setlocale(LC_ALL, 'de');
         $valid = new Zend_Validate_Float();
-        $this->assertTrue($valid->isValid(123,456));
-        $this->assertTrue($valid->isValid('123,456'));
+        $isValid1 = $valid->isValid(123.456);
+        $isValid2 = $valid->isValid('123,456');
+        setlocale(LC_ALL, $locale);
+        $this->assertTrue($isValid1);
+        $this->assertTrue($isValid2);
     }
 
     /**
@@ -157,9 +165,11 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpLocaleDeFloatType()
     {
-        setlocale(LC_ALL, 'de');
+        $locale = setlocale(LC_ALL, 'de');
         $valid = new Zend_Validate_Float();
-        $this->assertTrue($valid->isValid(10.5));
+        $isValid = $valid->isValid(10.5);
+        setlocale(LC_ALL, $locale);
+        $this->assertTrue($isValid);
     }
 
     /**
@@ -167,9 +177,11 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpLocaleFrFloatType()
     {
-        setlocale(LC_ALL, 'fr');
+        $locale = setlocale(LC_ALL, 'fr');
         $valid = new Zend_Validate_Float();
-        $this->assertTrue($valid->isValid(10.5));
+        $isValid = $valid->isValid(10.5);
+        setlocale(LC_ALL, $locale);
+        $this->assertTrue($isValid);
     }
 
     /**
@@ -177,15 +189,23 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpLocaleDeStringType()
     {
-        setlocale(LC_ALL, 'de_AT');
-        setlocale(LC_NUMERIC, 'de_AT');
+        $lcAll = setlocale(LC_ALL, 'de_AT');
+        $lcNumeric = setlocale(LC_NUMERIC, 'de_AT');
         $valid = new Zend_Validate_Float('de_AT');
-        $this->assertTrue($valid->isValid('1,3'));
-        $this->assertTrue($valid->isValid('1000,3'));
-        $this->assertTrue($valid->isValid('1.000,3'));
-        $this->assertFalse($valid->isValid('1.3'));
-        $this->assertFalse($valid->isValid('1000.3'));
-        $this->assertFalse($valid->isValid('1,000.3'));
+        $isValid0 = $valid->isValid('1,3');
+        $isValid1 = $valid->isValid('1000,3');
+        $isValid2 = $valid->isValid('1.000,3');
+        $isValid3 = $valid->isValid('1.3');
+        $isValid4 = $valid->isValid('1000.3');
+        $isValid5 = $valid->isValid('1,000.3');
+        setlocale(LC_ALL, $lcAll);
+        setlocale(LC_NUMERIC, $lcNumeric);
+        $this->assertTrue($isValid0);
+        $this->assertTrue($isValid1);
+        $this->assertTrue($isValid2);
+        $this->assertFalse($isValid3);
+        $this->assertFalse($isValid4);
+        $this->assertFalse($isValid5);
     }
 
     /**
@@ -196,7 +216,7 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
         $valid = new Zend_Validate_Float('fr_FR');
         $this->assertTrue($valid->isValid('1,3'));
         $this->assertTrue($valid->isValid('1000,3'));
-        $this->assertTrue($valid->isValid('1 000,3'));
+        $this->assertTrue($valid->isValid('1' . self::NBSP . '000,3'));
         $this->assertFalse($valid->isValid('1.3'));
         $this->assertFalse($valid->isValid('1000.3'));
         $this->assertFalse($valid->isValid('1,000.3'));

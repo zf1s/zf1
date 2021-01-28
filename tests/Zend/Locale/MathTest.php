@@ -44,6 +44,7 @@ class Zend_Locale_MathTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+
         self::$savedLocale = setlocale(LC_NUMERIC, '0');
         if (self::$savedLocale != 'C') {
             setlocale(LC_NUMERIC, 'C');

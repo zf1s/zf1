@@ -21,6 +21,32 @@ jobs:
           - "7.2"
           - "7.3"
           - "7.4"
+#          - "8.0"
+
+    env:
+      MYSQL_USER: "travis"
+      MYSQL_PASSWORD: "password"
+      MYSQL_DATABASE: "zftest"
+      MYSQL_HOST: "127.0.0.1"
+      # Default locales are: C C.UTF-8 POSIX en_US.utf8
+      LOCALES: "fr_FR@euro fr_FR fr_BE.UTF-8 de en_US"
+
+    services:
+      memcache:
+        image: memcached:1-alpine
+        ports:
+          - 11211:11211
+
+      mysql:
+        image: mysql/mysql-server:5.6
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_USER: "travis"
+          MYSQL_PASSWORD: "password"
+          MYSQL_DATABASE: "zftest"
+          MYSQL_ALLOW_EMPTY_PASSWORD: "1"
+        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
 
     services:
       memcache:
@@ -38,6 +64,7 @@ jobs:
           php-version: ${{ matrix.php }}
           ini-values: display_errors=off, log_errors=on
           extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache, pdo_sqlite, bcmath
+          tools: composer:v1
 
       - name: Lint PHP source files
         run: |
@@ -53,14 +80,31 @@ jobs:
           for json in composer.json packages/*/composer.json; do COMPOSER=$json composer validate || touch failed; done
           test ! -f failed
 
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
       - name: Install dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Setup environment for PHPUnit
         run: |
           cp tests/TestConfiguration.ci.php tests/TestConfiguration.php
+          cp tests/TestConfiguration.travis.php tests/TestConfiguration.php
+
+          echo "Existing locales"
+          locale -a
+          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen $LOCALES
+          echo "All languages..."
+          locale -a
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --verbose
+        run: vendor/bin/phpunit --verbose --debug
 
 # vim:ft=yaml:et:ts=2:sw=2
