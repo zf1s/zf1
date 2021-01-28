@@ -49,8 +49,10 @@ defined('TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED') || define('TESTS_ZEND_CACHE_LIB
  * the native Mysqli adapters, but the other properties are shared between the
  * two MySQL-related Zend_Db adapters.
  */
-defined('TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED',  true);
-defined('TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED',  true);
+// Skip testing ext/mysqli for PHP 5.4/5.5, as the error is not fixable
+// https://github.com/zf1s/zf1/pull/49/files#r565875073
+defined('TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED', true);
+defined('TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED', !(PHP_VERSION_ID >= 50400 && PHP_VERSION_ID < 50600));
 defined('TESTS_ZEND_DB_ADAPTER_MYSQL_HOSTNAME') || define('TESTS_ZEND_DB_ADAPTER_MYSQL_HOSTNAME', getenv('MYSQL_HOST'));
 defined('TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME') || define('TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME', getenv('MYSQL_USER'));
 defined('TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD') || define('TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD', getenv('MYSQL_PASSWORD'));
