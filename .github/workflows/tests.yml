@@ -48,6 +48,12 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: "1"
         options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
 
+    services:
+      memcache:
+        image: memcached:1-alpine
+        ports:
+          - 11211:11211
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -89,6 +95,7 @@ jobs:
 
       - name: Setup environment for PHPUnit
         run: |
+          cp tests/TestConfiguration.ci.php tests/TestConfiguration.php
           cp tests/TestConfiguration.travis.php tests/TestConfiguration.php
 
           echo "Existing locales"
