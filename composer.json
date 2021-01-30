@@ -18,8 +18,9 @@
         "ext-zlib": "*"
     },
     "require-dev": {
-        "zf1s/phpunit": "3.7.39",
-        "phpunit/dbunit": "1.3.2"
+        "php-parallel-lint/php-parallel-lint": "1.0.0",
+        "phpunit/dbunit": "1.3.2",
+        "zf1s/phpunit": "3.7.39"
     },
     "autoload": {
         "psr-0": {
@@ -203,6 +204,7 @@
         "zf1s/zend-xmlrpc": "self.version"
     },
     "scripts": {
+        "lint": "parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php .",
         "test": "phpunit"
     }
 }
