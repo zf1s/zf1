@@ -301,12 +301,14 @@ abstract class Zend_Gdata_App_Base
     public function transferFromXML($xml)
     {
         if ($xml) {
+            error_clear_last();
+            
             // Load the feed as an XML DOMDocument object
             $doc = new DOMDocument();
             $doc = @Zend_Xml_Security::scan($xml, $doc);
             if (!$doc) {
                 $err = error_get_last();
-                $phpErrormsg = isset($err) ? $err['message'] : '';
+                $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
                 // require_once 'Zend/Gdata/App/Exception.php';
                 throw new Zend_Gdata_App_Exception("DOMDocument cannot parse XML: $phpErrormsg");
             }

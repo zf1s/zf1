@@ -80,6 +80,7 @@ abstract class Zend_Feed_Entry_Abstract extends Zend_Feed_Element
         if (!($element instanceof DOMElement)) {
             if ($element) {
                 // Load the feed as an XML DOMDocument object
+                error_clear_last();
                 $doc = new DOMDocument();
                 $doc = @Zend_Xml_Security::scan($element, $doc);
 

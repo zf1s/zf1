@@ -194,12 +194,13 @@ class Zend_Feed_Entry_Atom extends Zend_Feed_Entry_Abstract
         }
 
         // Update internal properties using $client->responseBody;
+        error_clear_last();
         $newEntry = new DOMDocument;
         $newEntry = @Zend_Xml_Security::scan($response->getBody(), $newEntry);
 
         if (!$newEntry) {
             $err = error_get_last();
-            $phpErrormsg = isset($err) ? $err['message'] : null;
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             // prevent the class to generate an undefined variable notice (ZF-2590)
             if (!isset($phpErrormsg)) {
                 if (function_exists('xdebug_is_enabled')) {

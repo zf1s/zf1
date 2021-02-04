@@ -852,13 +852,13 @@ class Zend_Gdata_App
      * @throws Zend_Gdata_App_Exception
      * @return Zend_Gdata_App_Feed
      */
-    public static function importFile($filename,
-            $className='Zend_Gdata_App_Feed', $useIncludePath = false)
+    public static function importFile($filename, $className='Zend_Gdata_App_Feed', $useIncludePath = false)
     {
+        error_clear_last();
         $feed = @file_get_contents($filename, $useIncludePath);
         if ($feed === false) {
             $err = error_get_last();
-            $phpErrormsg = $err['message'];
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             // require_once 'Zend/Gdata/App/Exception.php';
             throw new Zend_Gdata_App_Exception(
                 "File could not be loaded: $phpErrormsg");

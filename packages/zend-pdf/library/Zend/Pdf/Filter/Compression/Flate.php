@@ -47,10 +47,10 @@ class Zend_Pdf_Filter_Compression_Flate extends Zend_Pdf_Filter_Compression
         }
 
         if (extension_loaded('zlib')) {
-
+            error_clear_last();
             if (($output = @gzcompress($data)) === false) {
                 $err = error_get_last();
-                $phpErrormsg = $err['message'];
+                $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
                 // require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception($phpErrormsg);
             }
@@ -73,9 +73,10 @@ class Zend_Pdf_Filter_Compression_Flate extends Zend_Pdf_Filter_Compression
     public static function decode($data, $params = null)
     {
         if (extension_loaded('zlib')) {
+            error_clear_last();
             if (($output = @gzuncompress($data)) === false) {
                 $err = error_get_last();
-                $phpErrormsg = $err['message'];
+                $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
                 // require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception($phpErrormsg);
             }

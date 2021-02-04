@@ -388,6 +388,7 @@ class Zend_Feed_Reader
      */
     public static function importFile($filename)
     {
+        error_clear_last();
         $feed = @file_get_contents($filename);
         if ($feed === false) {
             /**
@@ -454,6 +455,7 @@ class Zend_Feed_Reader
         } elseif($feed instanceof DOMDocument) {
             $dom = $feed;
         } elseif(is_string($feed) && !empty($feed)) {
+            error_clear_last();
             //$oldValue = libxml_disable_entity_loader(true);
             $dom = new DOMDocument;
             try {
@@ -467,7 +469,7 @@ class Zend_Feed_Reader
             //libxml_disable_entity_loader($oldValue);
             if (!$dom) {
                 $err = error_get_last();
-                $phpErrormsg = isset($err) ? $err['message'] : null;
+                $phpErrormsg = isset($err['messsage'][0]) ? $err['message'] : null;
                 if (!isset($phpErrormsg)) {
                     if (function_exists('xdebug_is_enabled')) {
                         $phpErrormsg = '(error message not available, when XDebug is running)';

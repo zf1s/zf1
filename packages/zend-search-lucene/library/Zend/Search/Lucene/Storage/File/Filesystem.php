@@ -55,12 +55,12 @@ class Zend_Search_Lucene_Storage_File_Filesystem extends Zend_Search_Lucene_Stor
             throw new Zend_Search_Lucene_Exception('File \'' . $filename . '\' is not readable.');
         }
 
-
+        error_clear_last();
         $this->_fileHandle = @fopen($filename, $mode);
 
         if ($this->_fileHandle === false) {
             $err = error_get_last();
-            $phpErrormsg = $err['message'];
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             // require_once 'Zend/Search/Lucene/Exception.php';
             throw new Zend_Search_Lucene_Exception($phpErrormsg);
         }

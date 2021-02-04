@@ -111,12 +111,13 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
      */
     public function __wakeup()
     {
+        error_clear_last();
         $doc = new DOMDocument;
         $doc = @Zend_Xml_Security::scan($this->_element, $doc);
 
         if (!$doc) {
             $err = error_get_last();
-            $phpErrormsg = isset($err) ? $err['message'] : null;
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             // prevent the class to generate an undefined variable notice (ZF-2590)
             if (!isset($phpErrormsg)) {
                 if (function_exists('xdebug_is_enabled')) {

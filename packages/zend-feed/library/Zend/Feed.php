@@ -257,6 +257,7 @@ class Zend_Feed
      */
     public static function importFile($filename)
     {
+        error_clear_last();
         $feed = @file_get_contents($filename);
         if ($feed === false) {
             /**
@@ -264,7 +265,7 @@ class Zend_Feed
              */
             // require_once 'Zend/Feed/Exception.php';
             $err = error_get_last();
-            $phpErrormsg = $err['message'];
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             throw new Zend_Feed_Exception("File could not be loaded: $phpErrormsg");
         }
         return self::importString($feed);
@@ -297,6 +298,7 @@ class Zend_Feed
         $contents = $response->getBody();
 
         // Parse the contents for appropriate <link ... /> tags
+        error_clear_last();
         $pattern = '~(<link[^>]+)/?>~i';
         $result = @preg_match_all($pattern, $contents, $matches);
         if ($result === false) {
@@ -305,7 +307,7 @@ class Zend_Feed
              */
             // require_once 'Zend/Feed/Exception.php';
             $err = error_get_last();
-            $phpErrormsg = $err['message'];
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             throw new Zend_Feed_Exception("Internal error: $phpErrormsg");
         }
 

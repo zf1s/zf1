@@ -15,7 +15,8 @@
         "ext-simplexml": "*",
         "ext-spl": "*",
         "ext-xml": "*",
-        "ext-zlib": "*"
+        "ext-zlib": "*",
+        "symfony/polyfill-php70": "^1.19"
     },
     "require-dev": {
         "zf1s/phpunit": "3.7.39",

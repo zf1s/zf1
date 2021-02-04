@@ -207,9 +207,10 @@ class Zend_Search_Lucene_Storage_Directory_Filesystem extends Zend_Search_Lucene
         }
         unset($this->_fileHandlers[$filename]);
 
+        error_clear_last();
         if (!@unlink($this->_dirPath . '/' . $filename)) {
             $err = error_get_last();
-            $phpErrormsg = $err['message'];
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             // require_once 'Zend/Search/Lucene/Exception.php';
             throw new Zend_Search_Lucene_Exception('Can\'t delete file: ' . $phpErrormsg);
         }
