@@ -171,16 +171,12 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
         $cipher = $this->_openCipher();
         $size   = mcrypt_enc_get_iv_size($cipher);
         if (empty($vector)) {
-            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' && version_compare(PHP_VERSION, '5.3.0', '<')) {
-                $method = MCRYPT_RAND;
+            if (file_exists('/dev/urandom') || (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')) {
+                $method = MCRYPT_DEV_URANDOM;
+            } elseif (file_exists('/dev/random')) {
+                $method = MCRYPT_DEV_RANDOM;
             } else {
-                if (file_exists('/dev/urandom') || (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')) {
-                    $method = MCRYPT_DEV_URANDOM;
-                } elseif (file_exists('/dev/random')) {
-                    $method = MCRYPT_DEV_RANDOM;
-                } else {
-                    $method = MCRYPT_RAND;
-                }
+                $method = MCRYPT_RAND;
             }
             $vector = mcrypt_create_iv($size, $method);
         } else if (strlen($vector) != $size) {
