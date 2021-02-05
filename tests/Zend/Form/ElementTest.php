@@ -2030,9 +2030,6 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
      */
     protected function _checkZf2794()
     {
-        if (strtolower(substr(PHP_OS, 0, 3)) == 'win' && version_compare(PHP_VERSION, '5.1.4', '=')) {
-            $this->markTestIncomplete('Error occurs for PHP 5.1.4 on Windows');
-        }
     }
 
     /**
@@ -2202,16 +2199,12 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
         $validator = $username->getValidator('regex');
         $this->assertTrue($validator->zfBreakChainOnFailure);
     }
-    
+
     /**
      * @group ZF-12173
      */
     public function testCanAddPluginLoaderPrefixPathsWithBackslashes()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped(__CLASS__ . '::' . __METHOD__ . ' requires PHP 5.3.0 or greater');
-            return;
-        }
         $validatorLoader = new Zend_Loader_PluginLoader();
         $filterLoader    = new Zend_Loader_PluginLoader();
         $decoratorLoader = new Zend_Loader_PluginLoader();

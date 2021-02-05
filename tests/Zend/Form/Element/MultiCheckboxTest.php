@@ -213,9 +213,6 @@ class Zend_Form_Element_MultiCheckboxTest extends PHPUnit_Framework_TestCase
      */
     protected function _checkZf2794()
     {
-        if (strtolower(substr(PHP_OS, 0, 3)) == 'win' && version_compare(PHP_VERSION, '5.1.4', '=')) {
-            $this->markTestIncomplete('Error occurs for PHP 5.1.4 on Windows');
-        }
     }
 
     /**#+
@@ -290,28 +287,28 @@ class Zend_Form_Element_MultiCheckboxTest extends PHPUnit_Framework_TestCase
             'baz' => 'Baz',
         ));
         $this->element->setRegisterInArrayValidator(true);
-    
+
         $this->assertTrue($this->element->isValid(array('foo')));
         $this->assertTrue($this->element->isValid(array('foo','baz')));
-        
+
         $this->element->setAllowEmpty(true);
         $this->assertTrue($this->element->isValid(array()));
 
         // Empty value + AllowEmpty=true = no error messages
         $messages = $this->element->getMessages();
         $this->assertEquals(0, count($messages), 'Received unexpected error message(s)');
-        
+
         $this->element->setAllowEmpty(false);
         $this->assertFalse($this->element->isValid(array()));
-        
+
         // Empty value + AllowEmpty=false = notInArray error message
         $messages = $this->element->getMessages();
         $this->assertTrue(is_array($messages), 'Expected error message');
         $this->assertArrayHasKey('notInArray', $messages, 'Expected \'notInArray\' error message');
-        
+
         $this->element->setRequired(true)->setAllowEmpty(false);
         $this->assertFalse($this->element->isValid(array()));
-        
+
         // Empty value + Required=true + AllowEmpty=false = isEmpty error message
         $messages = $this->element->getMessages();
         $this->assertTrue(is_array($messages), 'Expected error message');

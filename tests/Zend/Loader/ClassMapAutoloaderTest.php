@@ -216,10 +216,6 @@ class Zend_Loader_ClassMapAutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testCanLoadNamespacedClassFromPhar()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('Namespace support is valid for PHP >= 5.3.0 only');
-        }
-
         $map = 'phar://' . __DIR__ . '/_files/classmap.phar/test/.//../autoload_classmap.php';
         $this->loader->registerAutoloadMap($map);
         $this->loader->autoload('some\namespacedclass');

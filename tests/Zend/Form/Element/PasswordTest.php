@@ -143,9 +143,6 @@ class Zend_Form_Element_PasswordTest extends PHPUnit_Framework_TestCase
      */
     protected function _checkZf2794()
     {
-        if (strtolower(substr(PHP_OS, 0, 3)) == 'win' && version_compare(PHP_VERSION, '5.1.4', '=')) {
-            $this->markTestIncomplete('Error occurs for PHP 5.1.4 on Windows');
-        }
     }
 
     public function testRenderPasswordAttributeShouldDefaultToFalse()
