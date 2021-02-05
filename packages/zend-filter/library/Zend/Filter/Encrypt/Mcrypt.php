@@ -171,7 +171,6 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
         $cipher = $this->_openCipher();
         $size   = mcrypt_enc_get_iv_size($cipher);
         if (empty($vector)) {
-            $this->_srand();
             if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' && version_compare(PHP_VERSION, '5.3.0', '<')) {
                 $method = MCRYPT_RAND;
             } else {
@@ -331,7 +330,6 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
 
         $keysizes = mcrypt_enc_get_supported_key_sizes($cipher);
         if (empty($keysizes) || ($this->_encryption['salt'] == true)) {
-            $this->_srand();
             $keysize = mcrypt_enc_get_key_size($cipher);
             $key     = substr(md5($key), 0, $keysize);
         } else if (!in_array(strlen($key), $keysizes)) {
@@ -346,21 +344,5 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
         }
 
         return $this;
-    }
-
-    /**
-     * _srand() interception
-     *
-     * @see ZF-8742
-     */
-    protected function _srand()
-    {
-        if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
-            return;
-        }
-        if (!self::$_srandCalled) {
-            srand(Zend_Crypt_Math::randInteger(0, PHP_INT_MAX));
-            self::$_srandCalled = true;
-        }
     }
 }
