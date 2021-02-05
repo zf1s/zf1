@@ -37,21 +37,6 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
     protected $serial = PHP_INT_MAX;
 
     /**
-     * @var bool
-     */
-    protected $isPhp53;
-
-    /**
-     * Constructor
-     * 
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->isPhp53 = version_compare(PHP_VERSION, '5.3', '>=');
-    }
-
-    /**
      * Insert a value with a given priority
      *
      * Utilizes {@var $serial} to ensure that values of equal priority are 
@@ -67,10 +52,8 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
         // hack around it to ensure that items registered at the same priority
         // return in the order registered. In the userland version, this is not
         // necessary.
-        if ($this->isPhp53) {
-            if (!is_array($priority)) {
-                $priority = array($priority, $this->serial--);
-            }
+        if (!is_array($priority)) {
+            $priority = array($priority, $this->serial--);
         }
         parent::insert($datum, $priority);
     }
