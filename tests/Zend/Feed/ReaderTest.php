@@ -343,6 +343,19 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
          $this->setExpectedException('Zend_Feed_Exception');
          $feed = Zend_Feed_Reader::importString($string);
      }
+
+     public function testDetectTypeException()
+     {
+         try {
+             Zend_Feed_Reader::detectType('foo');
+         } catch (Zend_Feed_Exception $e) {
+             self::assertInstanceOf('Zend_Feed_Exception', $e);
+
+             return;
+         }
+
+         self::fail('Illegal string should create an exception');
+     }
  
     protected function _getTempDirectory()
     {

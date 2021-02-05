@@ -823,15 +823,15 @@ class Zend_Gdata_App
         }
 
         // Load the feed as an XML DOMDocument object
-        @ini_set('track_errors', 1);
         $doc = new DOMDocument();
         $doc = @Zend_Xml_Security::scan($string, $doc);
-        @ini_restore('track_errors');
 
         if (!$doc) {
+            $err = error_get_last();
+            $phpErrormsg = $err['message'];
             // require_once 'Zend/Gdata/App/Exception.php';
             throw new Zend_Gdata_App_Exception(
-                "DOMDocument cannot parse XML: $php_errormsg");
+                "DOMDocument cannot parse XML: $phpErrormsg");
         }
 
         $feed = new $className();
@@ -852,16 +852,16 @@ class Zend_Gdata_App
      * @throws Zend_Gdata_App_Exception
      * @return Zend_Gdata_App_Feed
      */
-    public static function importFile($filename,
-            $className='Zend_Gdata_App_Feed', $useIncludePath = false)
+    public static function importFile($filename, $className='Zend_Gdata_App_Feed', $useIncludePath = false)
     {
-        @ini_set('track_errors', 1);
+        error_clear_last();
         $feed = @file_get_contents($filename, $useIncludePath);
-        @ini_restore('track_errors');
         if ($feed === false) {
+            $err = error_get_last();
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             // require_once 'Zend/Gdata/App/Exception.php';
             throw new Zend_Gdata_App_Exception(
-                "File could not be loaded: $php_errormsg");
+                "File could not be loaded: $phpErrormsg");
         }
         return self::importString($feed, $className);
     }

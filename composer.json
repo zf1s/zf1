@@ -15,7 +15,8 @@
         "ext-simplexml": "*",
         "ext-spl": "*",
         "ext-xml": "*",
-        "ext-zlib": "*"
+        "ext-zlib": "*",
+        "symfony/polyfill-php70": "^1.19"
     },
     "require-dev": {
         "php-parallel-lint/php-parallel-lint": "1.0.0",
