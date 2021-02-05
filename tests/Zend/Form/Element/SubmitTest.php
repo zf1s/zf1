@@ -98,8 +98,6 @@ class Zend_Form_Element_SubmitTest extends PHPUnit_Framework_TestCase
 
     public function testSubmitElementUsesViewHelperDecoratorByDefault()
     {
-        $this->_checkZf2794();
-
         $decorator = $this->element->getDecorator('viewHelper');
         $this->assertTrue($decorator instanceof Zend_Form_Decorator_ViewHelper);
     }
@@ -126,8 +124,6 @@ class Zend_Form_Element_SubmitTest extends PHPUnit_Framework_TestCase
 
     public function testTranslatedLabelIsRendered()
     {
-        $this->_checkZf2794();
-
         $this->testGetLabelReturnsTranslatedLabelIfTranslatorIsRegistered();
         $this->element->setView($this->getView());
         $decorator = $this->element->getDecorator('ViewHelper');
@@ -253,16 +249,6 @@ class Zend_Form_Element_SubmitTest extends PHPUnit_Framework_TestCase
     public function testSetDefaultIgnoredToTrueWhenNotDefined()
     {
         $this->assertTrue($this->element->getIgnore());
-    }
-
-    /**
-     * Used by test methods susceptible to ZF-2794, marks a test as incomplete
-     *
-     * @link   http://framework.zend.com/issues/browse/ZF-2794
-     * @return void
-     */
-    protected function _checkZf2794()
-    {
     }
 
     /**

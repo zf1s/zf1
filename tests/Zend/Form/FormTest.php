@@ -2012,8 +2012,6 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
 
     public function testCanValidateFullFormContainingOnlyElements()
     {
-        $this->_checkZf2794();
-
         $this->setupElements();
         $this->assertTrue($this->form->isValid($this->elementValues));
         $values = array(

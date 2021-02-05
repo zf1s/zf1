@@ -85,8 +85,6 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
 
     public function testNoteElementUsesNoteHelperInViewHelperDecoratorByDefault()
     {
-        $this->_checkZf2794();
-
         $decorator = $this->element->getDecorator('viewHelper');
         $this->assertTrue($decorator instanceof Zend_Form_Decorator_ViewHelper);
 
@@ -213,16 +211,6 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
             // Remove validator
             $this->element->removeValidator($validator['options'][0]);
         }
-    }
-
-    /**
-     * Used by test methods susceptible to ZF-2794, marks a test as incomplete
-     *
-     * @link   http://framework.zend.com/issues/browse/ZF-2794
-     * @return void
-     */
-    protected function _checkZf2794()
-    {
     }
 }
 
