@@ -382,10 +382,6 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
      */
     public function testClosuresRegisteredWithAutoloaderShouldBeUtilized()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped(__METHOD__ . ' requires PHP version 5.3.0 or greater');
-        }
-
         $closure = require_once dirname(__FILE__) . '/_files/AutoloaderClosure.php';
         $this->autoloader->pushAutoloader($closure);
         $this->assertTrue(Zend_Loader_Autoloader::autoload('AutoloaderTest_AutoloaderClosure'));

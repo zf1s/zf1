@@ -257,10 +257,6 @@ class Zend_Validate_File_MimeTypeTest extends PHPUnit_Framework_TestCase
      */
     public function testDisablingTryCommonMagicFilesIgnoresCommonLocations()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('Behavior is only applicable and testable for PHP 5.3+');
-        }
-
         $filetest = dirname(__FILE__) . '/_files/picture.jpg';
         $files = array(
             'name'     => 'picture.jpg',

@@ -526,10 +526,6 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
 
     public function testFactorySupportsPHP53Namespaces()
     {
-        if (version_compare(PHP_VERSION, '5.3.0') < 0) {
-            $this->markTestSkipped('PHP < 5.3.0 does not support namespaces');
-        }
-
         // preload namespaced class from custom path
         Zend_Loader::loadClass('\Zfns\Writer', array(dirname(__FILE__) . '/_files'));
 

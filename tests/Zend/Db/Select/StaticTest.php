@@ -794,9 +794,6 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
      */
     public function testPhp53Assembly()
     {
-        if (version_compare(PHP_VERSION, 5.3) == -1 ) {
-            $this->markTestSkipped('This test needs at least PHP 5.3');
-        }
         $select = $this->_db->select();
         $select->from('table1', '*');
         $select->joinLeft(array('table2'), 'table1.id=table2.id');

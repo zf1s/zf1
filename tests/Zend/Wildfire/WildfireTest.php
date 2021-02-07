@@ -609,7 +609,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
     public function testMessageGroupsWithCollapsedTrueOption()
     {
         $this->_setupWithFrontController();
- 
+
         Zend_Wildfire_Plugin_FirePhp::group('Test Group', array('Collapsed' => true));
         Zend_Wildfire_Plugin_FirePhp::send('Test Message');
         Zend_Wildfire_Plugin_FirePhp::groupEnd();
@@ -633,7 +633,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
     public function testMessageGroupsWithCollapsedFalseOption()
     {
         $this->_setupWithFrontController();
- 
+
         Zend_Wildfire_Plugin_FirePhp::group('Test Group', array('Collapsed' => false));
         Zend_Wildfire_Plugin_FirePhp::send('Test Message');
         Zend_Wildfire_Plugin_FirePhp::groupEnd();
@@ -925,16 +925,8 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
                             [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI]
                             [0];
 
-        if (version_compare(phpversion(), '5.3' , '<')) {
-
-          $this->assertEquals($message,
-                              '[{"Type":"LOG"},{"__className":"Zend_Wildfire_WildfireTest_TestObject1","public:name":"Name","public:value":"Value","protected:static:protectedStatic":"** Need PHP 5.3 to get value **"}]');
-        } else
-        if (version_compare(phpversion(), '5.3' , '>=')) {
-
-          $this->assertEquals($message,
-                              '[{"Type":"LOG"},{"__className":"Zend_Wildfire_WildfireTest_TestObject1","public:name":"Name","public:value":"Value","protected:static:protectedStatic":"ProtectedStatic"}]');
-        }
+        $this->assertEquals($message,
+            '[{"Type":"LOG"},{"__className":"Zend_Wildfire_WildfireTest_TestObject1","public:name":"Name","public:value":"Value","protected:static:protectedStatic":"ProtectedStatic"}]');
 
         $message = $messages[Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE]
                             [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI]
@@ -962,17 +954,8 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
                             [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI]
                             [0];
 
-        if (version_compare(phpversion(), '5.3' , '<')) {
-
-          $this->assertEquals($message,
-                              '[{"Type":"LOG"},{"__className":"Zend_Wildfire_WildfireTest_TestObject2","public:public":"Public","private:private":"Private","protected:protected":"Protected","public:static:static":"Static","private:static:staticPrivate":"** Need PHP 5.3 to get value **","protected:static:staticProtected":"** Need PHP 5.3 to get value **"}]');
-
-        } else
-        if (version_compare(phpversion(), '5.3' , '>=')) {
-
-          $this->assertEquals($message,
-                              '[{"Type":"LOG"},{"__className":"Zend_Wildfire_WildfireTest_TestObject2","public:public":"Public","private:private":"Private","protected:protected":"Protected","public:static:static":"Static","private:static:staticPrivate":"StaticPrivate","protected:static:staticProtected":"StaticProtected"}]');
-        }
+        $this->assertEquals($message,
+            '[{"Type":"LOG"},{"__className":"Zend_Wildfire_WildfireTest_TestObject2","public:public":"Public","private:private":"Private","protected:protected":"Protected","public:static:static":"Static","private:static:staticPrivate":"StaticPrivate","protected:static:staticProtected":"StaticProtected"}]');
     }
 
     /**
