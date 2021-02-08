@@ -145,7 +145,7 @@ class Zend_Serializer_Adapter_PhpCodeTest extends PHPUnit_Framework_TestCase
 
     public function testUnserialzeInvalid()
     {
-        if (version_compare(PHP_VERSION, '7', '>=')) {
+        if (PHP_VERSION_ID >= 70000) {
             $this->markTestSkipped('Evaling of invalid input is PHP Parse error in PHP7+');
         }
         $value = 'not a serialized string';

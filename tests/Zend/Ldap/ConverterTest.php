@@ -112,7 +112,7 @@ class Zend_Ldap_ConverterTest extends PHPUnit_Framework_TestCase
     }
 
     public function toLdapSerializeProvider(){
-        if (getenv('CI') && version_compare(PHP_VERSION, '5.4.0', '>=')) {
+        if (getenv('CI') && PHP_VERSION_ID >= 50400) {
             return array(
                 array('N;', null),
                 array('i:1;', 1),
@@ -121,7 +121,7 @@ class Zend_Ldap_ConverterTest extends PHPUnit_Framework_TestCase
             );
         }
 
-        if (version_compare(PHP_VERSION, '5.6.0beta4', '>=')) {
+        if (PHP_VERSION_ID >= 50400) {
             return array(
                 array('N;', null),
                 array('i:1;', 1),

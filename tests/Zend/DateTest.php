@@ -3821,7 +3821,9 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         // PHP's internal sunrise/sunset calculation changed in 7.2.0
         // See comment in Zend/Date/DateObjectTest.php::testCalcSunInternal
         // This applies to all of the version_compare blocks in this test
-        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+        $isPhp72 = PHP_VERSION_ID >= 70200;
+
+        if ($isPhp72) {
             $this->assertSame('2002-01-04T20:09:40+05:00', $result->get(Zend_Date::W3C));
         } else {
             $this->assertSame('2002-01-04T20:09:59+05:00', $result->get(Zend_Date::W3C));
@@ -3831,7 +3833,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $result = Zend_Date_Cities::City('vienna', 'civil');
         $this->assertTrue(is_array($result));
         $result = $date->getSunset($result);
-        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+        if ($isPhp72) {
             $this->assertSame('2002-01-04T20:09:01+05:00', $result->get(Zend_Date::W3C));
         } else {
             $this->assertSame('2002-01-04T20:09:20+05:00', $result->get(Zend_Date::W3C));
@@ -3841,7 +3843,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $result = Zend_Date_Cities::City('vienna', 'nautic');
         $this->assertTrue(is_array($result));
         $result = $date->getSunset($result);
-        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+        if ($isPhp72) {
             $this->assertSame('2002-01-04T20:08:15+05:00', $result->get(Zend_Date::W3C));
         } else {
             $this->assertSame('2002-01-04T20:08:34+05:00', $result->get(Zend_Date::W3C));
@@ -3851,7 +3853,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $result = Zend_Date_Cities::City('vienna', 'astronomic');
         $this->assertTrue(is_array($result));
         $result = $date->getSunset($result);
-        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+        if ($isPhp72) {
             $this->assertSame('2002-01-04T20:07:30+05:00', $result->get(Zend_Date::W3C));
         } else {
             $this->assertSame('2002-01-04T20:07:49+05:00', $result->get(Zend_Date::W3C));
@@ -3861,7 +3863,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $result = Zend_Date_Cities::City('BERLIN');
         $this->assertTrue(is_array($result));
         $result = $date->getSunrise($result);
-        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+        if ($isPhp72) {
             $this->assertSame('2002-01-04T12:21:26+05:00', $result->get(Zend_Date::W3C));
         } else {
             $this->assertSame('2002-01-04T12:21:21+05:00', $result->get(Zend_Date::W3C));
@@ -3871,7 +3873,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $result = Zend_Date_Cities::City('London');
         $this->assertTrue(is_array($result));
         $result = $date->getSunInfo($result);
-        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+        if ($isPhp72) {
             $this->assertSame('2002-01-04T13:10:15+05:00', $result['sunrise']['effective']->get(Zend_Date::W3C ));
             $this->assertSame('2002-01-04T13:10:59+05:00', $result['sunrise']['civil']->get(Zend_Date::W3C     ));
             $this->assertSame('2002-01-04T13:11:50+05:00', $result['sunrise']['nautic']->get(Zend_Date::W3C    ));

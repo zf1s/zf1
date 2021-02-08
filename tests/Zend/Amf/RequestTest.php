@@ -436,7 +436,7 @@ class Zend_Amf_RequestTest extends PHPUnit_Framework_TestCase
         // In PHP versions less than 7, get_object_vars doesn't return numerical
         // keys. In PHP 7.2+ array_key_exists on this particular object returns false
         // https://3v4l.org/ui8Fm
-        if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
+        if (PHP_VERSION_ID >= 70000) {
             $this->assertTrue(array_key_exists(1, get_object_vars($data[0])));
         } else {
             $this->assertTrue(array_key_exists(1, $data[0]));
