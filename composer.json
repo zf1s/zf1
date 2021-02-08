@@ -19,7 +19,7 @@
         "symfony/polyfill-php70": "^1.19"
     },
     "require-dev": {
-        "php-parallel-lint/php-parallel-lint": "1.0.0",
+        "php-parallel-lint/php-parallel-lint": "^1.0.0",
         "phpunit/dbunit": "1.3.2",
         "zf1s/phpunit": "3.7.39"
     },
