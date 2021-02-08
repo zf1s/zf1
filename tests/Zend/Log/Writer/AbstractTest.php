@@ -64,8 +64,6 @@ class Zend_Log_Writer_AbstractTest extends PHPUnit_Framework_TestCase
 
         // require_once 'Zend/Log/Formatter/Simple.php';
         $this->_writer->setFormatter(new Zend_Log_Formatter_Simple());
-        $this->setExpectedException('PHPUnit_Framework_Error');
-        $this->_writer->setFormatter(new StdClass());
     }
 
     public function testAddFilter()
