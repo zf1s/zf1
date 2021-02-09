@@ -313,8 +313,8 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
         foreach($message->getCustomData() as $k => $v) {
             $payload[$k] = $v;
         }
-        
-        if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
+
+        if (PHP_VERSION_ID >= 50400) {
             $payload = json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } else {
             $payload = json_encode($payload);

@@ -138,7 +138,7 @@ class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
      */
     public function testThrowStrictSetFormatter()
     {
-        if (version_compare(phpversion(), '7', '>=')) {
+        if (PHP_VERSION_ID >= 70000) {
             $this->markTestSkipped('Invalid typehinting is PHP Fatal error in PHP7+');
         }
 

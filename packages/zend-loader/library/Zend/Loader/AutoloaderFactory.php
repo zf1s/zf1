@@ -114,7 +114,7 @@ abstract class Zend_Loader_AutoloaderFactory
 
                 // unfortunately is_subclass_of is broken on some 5.3 versions
                 // additionally instanceof is also broken for this use case
-                if (version_compare(PHP_VERSION, '5.3.7', '>=')) {
+                if (PHP_VERSION_ID >= 50307) {
                         if (!is_subclass_of($class, 'Zend_Loader_SplAutoloader')) {
                         // require_once 'Exception/InvalidArgumentException.php';
                         throw new Zend_Loader_Exception_InvalidArgumentException(sprintf(

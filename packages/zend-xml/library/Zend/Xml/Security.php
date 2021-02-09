@@ -179,18 +179,9 @@ class Zend_Xml_Security
      */
     public static function isPhpFpm()
     {
-        $isVulnerableVersion = (
-            version_compare(PHP_VERSION, '5.5.22', 'lt')
-            || (
-                version_compare(PHP_VERSION, '5.6', 'ge')
-                && version_compare(PHP_VERSION, '5.6.6', 'lt')
-            )
-        );
+        $isVulnerableVersion = PHP_VERSION_ID < 50522 || (PHP_VERSION_ID >= 50600 && PHP_VERSION_ID < 50606);
 
-        if (substr(php_sapi_name(), 0, 3) === 'fpm' && $isVulnerableVersion) {
-            return true;
-        }
-        return false;
+        return $isVulnerableVersion && strpos(php_sapi_name(), 'fpm') === 0;
     }
 
     /**
