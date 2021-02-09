@@ -11,6 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        experimental:
+          - false
         php:
           - "5.3"
           - "5.4"
@@ -21,6 +23,10 @@ jobs:
           - "7.2"
           - "7.3"
           - "7.4"
+        # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#example-including-additional-values-into-combinations
+        include:
+          - php: "8.0"
+            experimental: true
 
     services:
       memcache:
@@ -56,7 +62,9 @@ jobs:
         run: |
           cp tests/TestConfiguration.ci.php tests/TestConfiguration.php
 
-      - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --verbose
+      - name: "Run PHPUnit tests (Experimental: ${{ matrix.experimental }})"
+        env:
+          FAILURE_ACTION: "${{ matrix.experimental == true }}"
+        run: vendor/bin/phpunit --verbose || $FAILURE_ACTION
 
 # vim:ft=yaml:et:ts=2:sw=2
