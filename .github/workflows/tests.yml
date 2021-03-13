@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     name: PHP ${{ matrix.php }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-16.04
     strategy:
       fail-fast: false
       matrix:
@@ -27,6 +27,7 @@ jobs:
         include:
           - php: "8.0"
             experimental: true
+            runs-on: ubuntu-20.04
 
     services:
       memcache:
