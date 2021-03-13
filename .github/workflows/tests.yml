@@ -79,7 +79,7 @@ jobs:
 
       - name: Lint PHP source files
         run: |
-          composer lint
+          composer lint.checkstyle | cs2pr
 
       - name: Setup environment for PHPUnit
         run: |
