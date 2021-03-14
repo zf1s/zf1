@@ -352,8 +352,12 @@ class Zend_Barcode_FactoryTest extends PHPUnit_Framework_TestCase
                     'GD extension is required to run this test');
         }
         $resource = Zend_Barcode::draw('code25', 'image');
-        $this->assertTrue(gettype($resource) == 'resource', 'Image must be a resource');
-        $this->assertTrue(get_resource_type($resource) == 'gd', 'Image must be a GD resource');
+        if (PHP_VERSION_ID < 80000) {
+            $this->assertTrue(gettype($resource) == 'resource', 'Image must be a resource');
+            $this->assertTrue(get_resource_type($resource) == 'gd', 'Image must be a GD resource');
+        } else {
+            $this->assertTrue(get_class($resource) === 'GdImage');
+        }
     }
 
     public function testProxyBarcodeRendererDrawAsPdf()
