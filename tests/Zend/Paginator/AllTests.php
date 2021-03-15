@@ -28,9 +28,7 @@ require_once 'Zend/PaginatorTest.php';
 
 require_once 'Zend/Paginator/Adapter/ArrayTest.php';
 require_once 'Zend/Paginator/Adapter/DbSelectTest.php';
-require_once 'Zend/Paginator/Adapter/DbSelect/OracleTest.php';
 require_once 'Zend/Paginator/Adapter/DbTableSelectTest.php';
-require_once 'Zend/Paginator/Adapter/DbTableSelect/OracleTest.php';
 require_once 'Zend/Paginator/Adapter/IteratorTest.php';
 require_once 'Zend/Paginator/Adapter/NullTest.php';
 

@@ -20,7 +20,6 @@
  * @version    $Id $
  */
 
-require_once 'Zend/Db/Select/OracleTest.php';
 
 
 /**
