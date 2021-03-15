@@ -140,7 +140,14 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
     {
         $line = $this->_formatter->format($event);
 
-        if (false === @fwrite($this->_stream, $line)) {
+        try {
+            $result = @fwrite($this->_stream, $line);
+        } catch (TypeError $e) {
+            // require_once 'Zend/Log/Exception.php';
+            throw new Zend_Log_Exception($e->getMessage(), $e->getCode());
+        }
+
+        if ($result === false) {
             // require_once 'Zend/Log/Exception.php';
             throw new Zend_Log_Exception("Unable to write to stream");
         }
