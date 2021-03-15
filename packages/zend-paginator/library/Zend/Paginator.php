@@ -168,7 +168,7 @@ class Zend_Paginator implements Countable, IteratorAggregate
     /**
      * Pages
      *
-     * @var array
+     * @var stdClass
      */
     protected $_pages = null;
 
