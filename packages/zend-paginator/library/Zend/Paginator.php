@@ -854,7 +854,7 @@ class Zend_Paginator implements Countable, IteratorAggregate
      * Returns the page collection.
      *
      * @param  string $scrollingStyle Scrolling style
-     * @return array
+     * @return stdClass
      */
     public function getPages($scrollingStyle = null)
     {
