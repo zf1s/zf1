@@ -342,7 +342,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
                 );
         } catch (Exception $e) {
             set_include_path($oldIncludePath);
-            $this->assertContains('failed to open stream', $e->getMessage());
+            $this->assertContains('failed to open stream', strtolower($e->getMessage()));
             return;
         }
 

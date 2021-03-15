@@ -55,6 +55,8 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/not a stream/i', $e->getMessage());
+        } catch (TypeError $e) {
+            $this->assertRegExp('/must be of t/i', $e->getMessage());
         }
         xml_parser_free($resource);
     }
@@ -90,6 +92,9 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/cannot be opened/i', $e->getMessage());
+        } catch (Error $e) {
+            $this->assertTrue($e instanceof ValueError);
+            $this->assertRegExp('/cannot be empty/i', $e->getMessage());
         }
     }
 
@@ -119,7 +124,9 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
             $this->fail();
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
-            $this->assertRegExp('/unable to write/i', $e->getMessage());
+        } catch (Error $e) {
+            $this->assertTrue($e instanceof TypeError);
+            $this->assertRegExp('/resource is not a valid/i', $e->getMessage());
         }
     }
 
@@ -136,6 +143,9 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/unable to write/i', $e->getMessage());
+        } catch (Error $e) {
+            $this->assertTrue($e instanceof TypeError);
+            $this->assertRegExp('/resource is not a valid/i', $e->getMessage());
         }
     }
 
