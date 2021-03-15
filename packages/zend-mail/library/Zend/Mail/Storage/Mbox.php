@@ -337,6 +337,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
     {
         if ($this->_fh && 'Unknown' !== get_resource_type($this->_fh)) {
             @fclose($this->_fh);
+            $this->_fh = null;
         }
         $this->_positions = array();
     }
