@@ -100,7 +100,9 @@ abstract class Zend_Db_TestSetup extends PHPUnit_Framework_TestCase
         if ($this->_util) {
             $this->_util->tearDown();
         }
-        $this->_db->closeConnection();
+        if ($this->_db) {
+            $this->_db->closeConnection();
+        }
         $this->_db = null;
     }
 
