@@ -62,6 +62,9 @@ jobs:
           php-version: ${{ matrix.php }}
           ini-values: display_errors=off, log_errors=on
           extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache, pdo_sqlite, bcmath
+        env:
+          # https://github.com/shivammathur/setup-php/issues/407#issuecomment-773675741
+          fail-fast: true
 
       # https://github.com/zf1s/zf1/pull/6#issuecomment-495397170
       - name: Validate composer.json for all packages
