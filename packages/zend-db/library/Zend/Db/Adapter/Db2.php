@@ -79,7 +79,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
      *
      * @var int execution flag (DB2_AUTOCOMMIT_ON or DB2_AUTOCOMMIT_OFF)
      */
-    protected $_execute_mode = DB2_AUTOCOMMIT_ON;
+    protected $_execute_mode;
 
     /**
      * Default class name for a DB statement.
@@ -110,6 +110,17 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
         'DECIMAL'            => Zend_Db::FLOAT_TYPE,
         'NUMERIC'            => Zend_Db::FLOAT_TYPE
     );
+
+    public function __construct($config)
+    {
+        // Only assign the value if constant is present
+        // The required extension check is performed in _connect()
+        if (defined('DB2_AUTOCOMMIT_ON')) {
+            $this->_execute_mode = DB2_AUTOCOMMIT_ON;
+        }
+
+        parent::__construct($config);
+    }
 
     /**
      * Creates a connection resource.

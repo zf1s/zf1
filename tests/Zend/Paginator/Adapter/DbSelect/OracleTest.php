@@ -28,7 +28,6 @@
 /**
  * @see Zend_Db_Adapter_Oracle
  */
-// require_once 'Zend/Db/Adapter/Oracle.php';
 
 /**
  * @see Zend_Paginator_Adapter_DbSelectTest
