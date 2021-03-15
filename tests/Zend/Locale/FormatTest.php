@@ -39,7 +39,7 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
      * Constant for Non-breaking space UTF-8 encoded value.
      * https://en.wikipedia.org/wiki/Non-breaking_space
      */
-    const NBSP = " ";
+    const NBSP = "\xC2\xA0";
 
     /**
      * teardown / cleanup
