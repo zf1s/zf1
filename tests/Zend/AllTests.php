@@ -63,7 +63,6 @@ require_once 'Zend/LoaderTest.php';
 require_once 'Zend/Loader/AllTests.php';
 require_once 'Zend/LocaleTest.php';
 require_once 'Zend/Locale/AllTests.php';
-require_once 'Zend/Log/AllTests.php';
 require_once 'Zend/Mail/AllTests.php';
 require_once 'Zend/Markup/AllTests.php';
 require_once 'Zend/Measure/AllTests.php';
