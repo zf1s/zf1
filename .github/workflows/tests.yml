@@ -13,20 +13,9 @@ jobs:
       matrix:
         experimental:
           - false
-        php:
-          - "5.3"
-          - "5.4"
-          - "5.5"
-          - "5.6"
-          - "7.0"
-          - "7.1"
-          - "7.2"
-          - "7.3"
-          - "7.4"
         # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#example-including-additional-values-into-combinations
         include:
           - php: "8.0"
-            experimental: true
             runs-on: ubuntu-20.04
 
     env:

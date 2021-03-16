@@ -75,7 +75,17 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
                 $streamOrUrl = $streamOrUrl['stream'];
             }
 
-            if (! $this->_stream = @fopen($streamOrUrl, $mode, false)) {
+            try {
+                $this->_stream = @fopen($streamOrUrl, $mode, false);
+            } catch (ValueError $e) {
+                // require_once 'Zend/Log/Exception.php';
+                throw new Zend_Log_Exception($e->getMessage(), $e->getCode());
+            } catch (TypeError $e) {
+                // require_once 'Zend/Log/Exception.php';
+                throw new Zend_Log_Exception($e->getMessage(), $e->getCode());
+            }
+
+            if (!$this->_stream) {
                 // require_once 'Zend/Log/Exception.php';
                 $msg = "\"$streamOrUrl\" cannot be opened with mode \"$mode\"";
                 throw new Zend_Log_Exception($msg);
@@ -130,7 +140,14 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
     {
         $line = $this->_formatter->format($event);
 
-        if (false === @fwrite($this->_stream, $line)) {
+        try {
+            $result = @fwrite($this->_stream, $line);
+        } catch (TypeError $e) {
+            // require_once 'Zend/Log/Exception.php';
+            throw new Zend_Log_Exception($e->getMessage(), $e->getCode());
+        }
+
+        if ($result === false) {
             // require_once 'Zend/Log/Exception.php';
             throw new Zend_Log_Exception("Unable to write to stream");
         }
