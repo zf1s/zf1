@@ -98,6 +98,12 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
             $connect->setHeader('passcode', $options['password']);
         }
 
+        // Support for durable subscriptions
+        // Must send client-id header in CONNECT AND activemq.subscriptionName in SUBSCRIBE
+        if(isset($options['client-id'])) {
+            $connect->setHeader('client-id', $options['client-id']);
+        }
+
         $response = $this->_client->send($connect)->receive();
 
         if ((false !== $response)
@@ -204,6 +210,14 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         $frame->setCommand('SUBSCRIBE');
         $frame->setHeader('destination', $queue->getName());
         $frame->setHeader('ack', 'client');
+
+        // Support for durable subscriptions
+        // If a client-id is configured in the driver options,
+        // set the activemq.subscriptionName header with client-id as the value
+        if(isset($this->_options['driverOptions']['client-id'])) {
+            $frame->setHeader('activemq.subscriptionName', $this->_options['driverOptions']['client-id']);
+        }
+
         $this->_client->send($frame);
         $this->_subscribed[$queue->getName()] = true;
     }
@@ -292,6 +306,12 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         $frame->setCommand('SEND');
         $frame->setHeader('destination', $queue->getName());
         $frame->setHeader('content-length', strlen($message));
+
+        // If persistent driver option is present, set the persistent header
+        if(isset($this->_options['driverOptions']['persistent'])) {
+            $frame->setHeader('persistent', $this->_options['driverOptions']['persistent']);
+        }
+
         $frame->setBody((string) $message);
         $this->_client->send($frame);
 
