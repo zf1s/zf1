@@ -453,6 +453,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
         'fr',
         'frl',
         'frogans',
+        'fun',
         'fund',
         'furniture',
         'futbol',
