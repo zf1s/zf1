@@ -2207,6 +2207,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                     // ldh: alpha / digit / dash
 
                     // Match TLD against known list
+                    $removedTld = false;
                     $this->_tld = $matches[1];
                     if ($this->_options['tld']) {
                         if (!in_array(strtolower($this->_tld), $this->_validTlds)
@@ -2218,6 +2219,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                         // We have already validated that the TLD is fine. We don't want it to go through the below
                         // checks as new UTF-8 TLDs will incorrectly fail if there is no IDN regex for it.
                         array_pop($domainParts);
+                        $removedTld = true;
                     }
 
                     /**
@@ -2236,6 +2238,10 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
 
                     // Check each hostname part
                     $check = 0;
+                    $lastDomainPart = end($domainParts);
+                    if (! $removedTld) {
+                        $lastDomainPart = prev($domainParts);
+                    }
                     foreach ($domainParts as $domainPart) {
                         // If some domain part is empty (i.e. zend..com), it's invalid
                         if (empty($domainPart) && $domainPart !== '0') {
@@ -2262,7 +2268,9 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
 
                         // Check each domain part
                         $checked = false;
-                        foreach($regexChars as $regexKey => $regexChar) {
+                        $isSubDomain = $domainPart != $lastDomainPart;
+                        $partRegexChars = $isSubDomain ? ['/^[a-z0-9_\x2d]{1,63}$/i'] + $regexChars : $regexChars;
+                        foreach ($partRegexChars as $regexKey => $regexChar) {
                             $status = preg_match($regexChar, $domainPart);
                             if ($status > 0) {
                                 $length = 63;
@@ -2273,6 +2281,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
 
                                 if (iconv_strlen($domainPart, 'UTF-8') > $length) {
                                     $this->_error(self::INVALID_HOSTNAME);
+                                    $status = false;
                                 } else {
                                     $checked = true;
                                     break;
