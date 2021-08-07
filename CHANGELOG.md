@@ -1,5 +1,69 @@
 ## Changelog:
 
+### 1.13.5 - 2021-08-??
+
+- zend-acl
+  - Increase Performance in unsetting rules in ACL ([#60])
+- PHP 8.0 compatibility
+  - Remove default values from method signatures ([#78])
+  - Fix iterators usage ([#82])
+  - Fix Zend_Form_ElementTest ([#81])
+  - Enforce types for PHP 8.0 ([#80])
+  - Fix vsprintf TypeError for php 8.0 ([#79])
+  - Fixed reflection deprecations for php 8.0 ([#76])
+  - Make Zend_Validate_Date work as expected under PHP 8.0 ([#75])
+  - Remove openssl deprecation for php 8.0 ([#73])
+  - Remove libxml deprecations for php 8.0 ([#65])
+  - Missing default values caused errorHandlerIgnore to fail under PHP 8.0 ([#63])
+  - Replace version_compare on PHP_VERSION with PHP_VERSION_ID check ([#53])
+  - Do not check get_magic_quotes_gpc value for php 5.4+ ([#56])
+  - Remove usage of $php_errormsg ([#42])
+  - Drop tests covering php older than 5.3.3 ([#55])
+  - Drop code supporting php older than 5.3.3 ([#54])
+- Security
+  - Backport of fix for CVE-2021-3007 in Zend_Http_Response_Stream ([#43])
+- Infrastructure
+  - Restore locales before calling test assertions ([#45])
+  - Enable "fail-fast" env for setup-php ([#52])
+  - Move MySQL testing from Travis to GitHub Actions ([#49])
+  - Use ubuntu-16.04 by default for faster setup-php ([#72])
+  - Add php 8.0 to GitHub Actions ignoring its errors ([#59])
+  - Allow newer php-parallel-lint/php-parallel-lint for php 8.0 ([#58])
+  - Move composer.json validate of sub-packages to GitHub Actions ([#40])
+  - Use parallel-lint for GitHub actions ([#50])
+  - Move memcache testing from Travis to GitHub Actions ([#47])
+  - GitHub Actions: Install composer dependencies ([#41])
+  - Use staabm/annotate-pull-request-from-checkstyle to report violatons in GitHub ([#66])
+
+[#40]: https://github.com/zf1s/zf1/pull/40
+[#41]: https://github.com/zf1s/zf1/pull/41
+[#42]: https://github.com/zf1s/zf1/pull/42
+[#43]: https://github.com/zf1s/zf1/pull/43
+[#45]: https://github.com/zf1s/zf1/pull/45
+[#47]: https://github.com/zf1s/zf1/pull/47
+[#49]: https://github.com/zf1s/zf1/pull/49
+[#50]: https://github.com/zf1s/zf1/pull/50
+[#52]: https://github.com/zf1s/zf1/pull/52
+[#53]: https://github.com/zf1s/zf1/pull/53
+[#54]: https://github.com/zf1s/zf1/pull/54
+[#55]: https://github.com/zf1s/zf1/pull/55
+[#56]: https://github.com/zf1s/zf1/pull/56
+[#58]: https://github.com/zf1s/zf1/pull/58
+[#59]: https://github.com/zf1s/zf1/pull/59
+[#60]: https://github.com/zf1s/zf1/pull/60
+[#63]: https://github.com/zf1s/zf1/pull/63
+[#65]: https://github.com/zf1s/zf1/pull/65
+[#66]: https://github.com/zf1s/zf1/pull/66
+[#72]: https://github.com/zf1s/zf1/pull/72
+[#73]: https://github.com/zf1s/zf1/pull/73
+[#75]: https://github.com/zf1s/zf1/pull/75
+[#76]: https://github.com/zf1s/zf1/pull/76
+[#78]: https://github.com/zf1s/zf1/pull/78
+[#79]: https://github.com/zf1s/zf1/pull/79
+[#80]: https://github.com/zf1s/zf1/pull/80
+[#81]: https://github.com/zf1s/zf1/pull/81
+[#82]: https://github.com/zf1s/zf1/pull/82
+
 ### 1.13.4 - 2020-11-23
 - zend-db
   - Fix Zend_Db_Adapter_Pdo_Pgsql being broken on Postgres 12 that removed d.adsrc ([#29])
