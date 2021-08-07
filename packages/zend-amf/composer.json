@@ -7,9 +7,9 @@
     "require": {
         "php": ">=5.3.3",
         "ext-dom": "*",
-        "zf1s/zend-exception": "^1.13.4",
-        "zf1s/zend-server": "^1.13.4",
-        "zf1s/zend-xml": "^1.13.4"
+        "zf1s/zend-exception": "^1.13.5",
+        "zf1s/zend-server": "^1.13.5",
+        "zf1s/zend-xml": "^1.13.5"
     },
     "autoload": {
         "psr-0": {
