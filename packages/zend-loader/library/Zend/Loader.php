@@ -131,9 +131,13 @@ class Zend_Loader
          * Try finding for the plain filename in the include_path.
          */
         if ($once) {
-            include_once $filename;
+            if (stream_resolve_include_path($filename)) {
+                @include_once $filename;
+            }
         } else {
-            include $filename;
+            if (stream_resolve_include_path($filename)) {
+                @include $filename;
+            }
         }
 
         /**
