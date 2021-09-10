@@ -9,12 +9,12 @@
         "ext-dom": "*",
         "ext-mbstring": "*",
         "ext-simplexml": "*",
-        "zf1s/zend-exception": "^1.13.4",
-        "zf1s/zend-http": "^1.13.4",
-        "zf1s/zend-loader": "^1.13.4",
-        "zf1s/zend-uri": "^1.13.4",
-        "zf1s/zend-version": "^1.13.4",
-        "zf1s/zend-xml": "^1.13.4",
+        "zf1s/zend-exception": "^1.14.0",
+        "zf1s/zend-http": "^1.14.0",
+        "zf1s/zend-loader": "^1.14.0",
+        "zf1s/zend-uri": "^1.14.0",
+        "zf1s/zend-version": "^1.14.0",
+        "zf1s/zend-xml": "^1.14.0",
         "symfony/polyfill-php70": "^1.19"
     },
     "autoload": {
