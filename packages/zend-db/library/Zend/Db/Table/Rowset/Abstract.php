@@ -238,7 +238,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      * Similar to the current() function for arrays in PHP
      * Required by interface Iterator.
      *
-     * @return Zend_Db_Table_Row_Abstract current element from the collection
+     * @return Zend_Db_Table_Row_Abstract|null current element from the collection
      */
     public function current()
     {
