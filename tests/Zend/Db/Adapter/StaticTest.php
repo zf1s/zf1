@@ -59,16 +59,11 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
 
     public function testDbConstructorExceptionInvalidOptions()
     {
-        list($major, $minor, $revision) = explode('.', PHP_VERSION);
-        if ($minor >= 2) {
-            try {
-                $db = new Zend_Db_Adapter_Static('scalar');
-                $this->fail('Expected exception not thrown');
-            } catch (Exception $e) {
-                $this->assertContains('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
-            }
-        } else {
-            $this->markTestIncomplete('Failure to meet type hint results in fatal error in PHP < 5.2.0');
+        try {
+            $db = new Zend_Db_Adapter_Static('scalar');
+            $this->fail('Expected exception not thrown');
+        } catch (Exception $e) {
+            $this->assertContains('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
         }
     }
 
@@ -152,31 +147,21 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
 
     public function testDbFactoryExceptionInvalidOptions()
     {
-        list($major, $minor, $revision) = explode('.', PHP_VERSION);
-        if ($minor >= 2) {
-            try {
-                $db = Zend_Db::factory('Static', 'scalar');
-                $this->fail('Expected exception not thrown');
-            } catch (Exception $e) {
-                $this->assertContains('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
-            }
-        } else {
-            $this->markTestIncomplete('Failure to meet type hint results in fatal error in PHP < 5.2.0');
+        try {
+            $db = Zend_Db::factory('Static', 'scalar');
+            $this->fail('Expected exception not thrown');
+        } catch (Exception $e) {
+            $this->assertContains('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
         }
     }
 
     public function testDbFactoryExceptionNoConfig()
     {
-        list($major, $minor, $revision) = explode('.', PHP_VERSION);
-        if ($minor >= 2) {
-            try {
-                $db = Zend_Db::factory('Static');
-                $this->fail('Expected exception not thrown');
-            } catch (Exception $e) {
-                $this->assertContains('Configuration must have a key for \'dbname\' that names the database instance', $e->getMessage());
-            }
-        } else {
-            $this->markTestIncomplete('Failure to meet type hint results in fatal error in PHP < 5.2.0');
+        try {
+            $db = Zend_Db::factory('Static');
+            $this->fail('Expected exception not thrown');
+        } catch (Exception $e) {
+            $this->assertContains('Configuration must have a key for \'dbname\' that names the database instance', $e->getMessage());
         }
     }
 
