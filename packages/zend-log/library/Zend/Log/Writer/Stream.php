@@ -70,7 +70,7 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
             }
 
             $this->_stream = $streamOrUrl;
-        } else {
+        } else if (is_string($streamOrUrl) || is_array($streamOrUrl)) {
             if (is_array($streamOrUrl) && isset($streamOrUrl['stream'])) {
                 $streamOrUrl = $streamOrUrl['stream'];
             }
@@ -80,6 +80,8 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
                 $msg = "\"$streamOrUrl\" cannot be opened with mode \"$mode\"";
                 throw new Zend_Log_Exception($msg);
             }
+        } else {
+            throw new Zend_Log_Exception('Input is not a stream or url');
         }
 
         $this->_formatter = new Zend_Log_Formatter_Simple();
