@@ -23,10 +23,7 @@ jobs:
           - "7.2"
           - "7.3"
           - "7.4"
-        # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#example-including-additional-values-into-combinations
-        include:
-          - php: "8.0"
-            experimental: true
+          - "8.0"
 
     env:
       MYSQL_USER: "zftest"
