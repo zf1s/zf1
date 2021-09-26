@@ -176,6 +176,10 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
             throw new Zend_Queue_Exception('Queue does not exist:' . $queue->getName());
         }
 
+        if (!is_string($message)) {
+            throw new Zend_Queue_Exception('$message must be a string');
+        }
+
         // create the message
         $data = array(
             'message_id' => md5(uniqid(rand(), true)),
