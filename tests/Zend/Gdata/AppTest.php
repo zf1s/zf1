@@ -641,4 +641,32 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
 
         $this->assertContains('<id>12345678901234567890</id>', $feed);
     }
+
+    public function testImportStringException()
+    {
+        try {
+            Zend_Gdata_App::importString('foo');
+        } catch (Exception $e) {
+            self::assertInstanceOf('Zend_Gdata_App_Exception', $e);
+            self::assertContains('DOMDocument', $e->getMessage());
+
+            return;
+        }
+
+        self::fail('This test should throw an exception and return early');
+    }
+
+    public function testImportFileException()
+    {
+        try {
+            Zend_Gdata_App::importFile('foo');
+        } catch (Exception $e) {
+            self::assertInstanceOf('Zend_Gdata_App_Exception', $e);
+            self::assertContains('could not be loaded', $e->getMessage());
+
+            return;
+        }
+
+        self::fail('This test should throw an exception and return early');
+    }
 }

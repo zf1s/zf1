@@ -246,7 +246,7 @@ class Zend_Controller_Router_Route_Regex extends Zend_Controller_Router_Route_Ab
 
         ksort($mergedData);
 
-        $return = @vsprintf($this->_reverse, $mergedData);
+        $return = !empty($mergedData) ? @vsprintf($this->_reverse, $mergedData) : false;
 
         if ($return === false) {
             // require_once 'Zend/Controller/Router/Exception.php';

@@ -53,7 +53,7 @@ class Zend_Soap_AllTests
 
         //early exit because of segfault in this specific version
         //https://github.com/zendframework/zf1/issues/650
-        if (getenv('CI') && version_compare(PHP_VERSION, '5.4.37', '=')) {
+        if (getenv('CI') && PHP_VERSION_ID >= 50437) {
             return $suite;
         }
 

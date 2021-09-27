@@ -208,7 +208,11 @@ class Zend_Validate_DateTest extends PHPUnit_Framework_TestCase
      */
     public function testNonStringValidation()
     {
-        $this->assertFalse($this->_validator->isValid(array(1 => 1)));
+        try {
+            $this->assertFalse($this->_validator->isValid(array(1 => 1)));
+        } catch (Error $e) {
+            $this->assertTrue($e instanceof TypeError);
+        }
     }
 
     /**
@@ -251,7 +255,7 @@ class Zend_Validate_DateTest extends PHPUnit_Framework_TestCase
      * @return void
      * @group ZF-2789
      */
-    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext)
+    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = array())
     {
         $this->_errorOccurred = true;
     }

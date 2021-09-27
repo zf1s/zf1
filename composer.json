@@ -15,11 +15,14 @@
         "ext-simplexml": "*",
         "ext-spl": "*",
         "ext-xml": "*",
-        "ext-zlib": "*"
+        "ext-zlib": "*",
+        "symfony/polyfill-php70": "^1.19"
     },
     "require-dev": {
+        "php-parallel-lint/php-parallel-lint": "1.3.0",
+        "phpunit/dbunit": "1.3.2",
         "zf1s/phpunit": "3.7.39",
-        "phpunit/dbunit": "1.3.2"
+        "staabm/annotate-pull-request-from-checkstyle": "1.5.0"
     },
     "autoload": {
         "psr-0": {
@@ -203,6 +206,8 @@
         "zf1s/zend-xmlrpc": "self.version"
     },
     "scripts": {
+        "lint": "parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php .",
+        "lint.checkstyle": "@lint --checkstyle",
         "test": "phpunit"
     }
 }

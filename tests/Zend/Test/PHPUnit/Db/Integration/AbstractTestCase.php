@@ -48,12 +48,16 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
 
     public function setUp()
     {
-        $this->libxmlDisableEntityLoader = libxml_disable_entity_loader(false);
+        if (LIBXML_VERSION < 20900) {
+            $this->libxmlDisableEntityLoader = libxml_disable_entity_loader(false);
+        }
     }
 
     public function tearDown()
     {
-        libxml_disable_entity_loader($this->libxmlDisableEntityLoader);
+        if (LIBXML_VERSION < 20900) {
+            libxml_disable_entity_loader($this->libxmlDisableEntityLoader);
+        }
     }
 
     public function testZendDbTableDataSet()

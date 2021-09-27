@@ -92,11 +92,6 @@ class Zend_Memory_ValueTest extends PHPUnit_Framework_TestCase
         $valueObject = new Zend_Memory_Value('0123456789', new Zend_Memory_Container_Movable_Dummy());
         $this->assertEquals($valueObject->__toString(), '0123456789');
 
-        if (version_compare(PHP_VERSION, '5.2') < 0) {
-            // Skip following tests for PHP versions before 5.2
-            return;
-        }
-
         $this->assertEquals(strlen($valueObject), 10);
         $this->assertEquals((string)$valueObject, '0123456789');
     }
@@ -106,11 +101,6 @@ class Zend_Memory_ValueTest extends PHPUnit_Framework_TestCase
      */
     public function testArrayAccess()
     {
-        if (version_compare(PHP_VERSION, '5.2') < 0) {
-            // Skip following tests for PHP versions before 5.2
-            return;
-        }
-
         $valueObject = new Zend_Memory_Value('0123456789', new Zend_Memory_Container_Movable_Dummy());
         $this->assertEquals($valueObject[8], '8');
 

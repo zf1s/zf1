@@ -11,6 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        experimental:
+          - false
         php:
           - "5.3"
           - "5.4"
@@ -21,11 +23,14 @@ jobs:
           - "7.2"
           - "7.3"
           - "7.4"
-#          - "8.0"
+        # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#example-including-additional-values-into-combinations
+        include:
+          - php: "8.0"
+            experimental: true
 
     env:
-      MYSQL_USER: "travis"
-      MYSQL_PASSWORD: "password"
+      MYSQL_USER: "zftest"
+      MYSQL_PASSWORD: "zftest"
       MYSQL_DATABASE: "zftest"
       MYSQL_HOST: "127.0.0.1"
       # Default locales are: C C.UTF-8 POSIX en_US.utf8
@@ -42,17 +47,11 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_USER: "travis"
-          MYSQL_PASSWORD: "password"
+          MYSQL_USER: "zftest"
+          MYSQL_PASSWORD: "zftest"
           MYSQL_DATABASE: "zftest"
           MYSQL_ALLOW_EMPTY_PASSWORD: "1"
         options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
-
-    services:
-      memcache:
-        image: memcached:1-alpine
-        ports:
-          - 11211:11211
 
     steps:
       - name: Checkout Code
@@ -63,22 +62,16 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           ini-values: display_errors=off, log_errors=on
+          tools: cs2pr
           extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache, pdo_sqlite, bcmath
-          tools: composer:v1
-
-      - name: Lint PHP source files
-        run: |
-          # Lint All PHP source files
-          # Remove source expected to have syntax error
-          git rm tests/Zend/Loader/_files/ParseError.php
-          git ls-files '**/*.php' | while read f; do php -l "$f" > /dev/null || touch failed && echo -n .; done
-          test ! -f failed
+        env:
+          # https://github.com/shivammathur/setup-php/issues/407#issuecomment-773675741
+          fail-fast: true
 
       # https://github.com/zf1s/zf1/pull/6#issuecomment-495397170
       - name: Validate composer.json for all packages
         run: |
-          for json in composer.json packages/*/composer.json; do COMPOSER=$json composer validate || touch failed; done
-          test ! -f failed
+          for json in composer.json packages/*/composer.json; do echo COMPOSER=$json; done | parallel env {} composer validate
 
       - name: Cache Composer packages
         id: composer-cache
@@ -93,18 +86,22 @@ jobs:
         if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress --no-suggest
 
+      - name: Lint PHP source files
+        run: |
+          composer lint.checkstyle | cs2pr
+
       - name: Setup environment for PHPUnit
         run: |
           cp tests/TestConfiguration.ci.php tests/TestConfiguration.php
-          cp tests/TestConfiguration.travis.php tests/TestConfiguration.php
-
           echo "Existing locales"
           locale -a
           sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen $LOCALES
           echo "All languages..."
           locale -a
 
-      - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --verbose --debug
+      - name: "Run PHPUnit tests (Experimental: ${{ matrix.experimental }})"
+        env:
+          FAILURE_ACTION: "${{ matrix.experimental == true }}"
+        run: vendor/bin/phpunit --verbose || $FAILURE_ACTION
 
 # vim:ft=yaml:et:ts=2:sw=2

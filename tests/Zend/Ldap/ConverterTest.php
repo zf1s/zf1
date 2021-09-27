@@ -112,16 +112,7 @@ class Zend_Ldap_ConverterTest extends PHPUnit_Framework_TestCase
     }
 
     public function toLdapSerializeProvider(){
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            return array(
-                array('N;', null),
-                array('i:1;', 1),
-                array('O:8:"DateTime":0:{}', new DateTime('@0')),
-                array('a:3:{i:0;s:4:"test";i:1;i:1;s:3:"foo";s:3:"bar";}', array('test',1,'foo'=>'bar')),
-            );
-        }
-
-        if (getenv('CI') && version_compare(PHP_VERSION, '5.4.0', '>=')) {
+        if (getenv('CI') && PHP_VERSION_ID >= 50400) {
             return array(
                 array('N;', null),
                 array('i:1;', 1),
@@ -130,7 +121,7 @@ class Zend_Ldap_ConverterTest extends PHPUnit_Framework_TestCase
             );
         }
 
-        if (version_compare(PHP_VERSION, '5.6.0beta4', '>=')) {
+        if (PHP_VERSION_ID >= 50400) {
             return array(
                 array('N;', null),
                 array('i:1;', 1),

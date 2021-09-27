@@ -12,7 +12,8 @@
         "ext-zlib": "*",
         "zf1s/zend-exception": "^1.13.4",
         "zf1s/zend-log": "^1.13.4",
-        "zf1s/zend-memory": "^1.13.4"
+        "zf1s/zend-memory": "^1.13.4",
+        "symfony/polyfill-php70": "^1.19"
     },
     "autoload": {
         "psr-0": {

@@ -807,9 +807,6 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             $meta = $stmt->getColumnMeta($i);
             $this->assertTrue(is_array($meta));
             foreach ($this->_getColumnMetaKeys as $key) {
-                if ($key == 'table' && version_compare(PHP_VERSION, '5.2.0', '<')) {
-                    continue;
-                }
                 $this->assertContains($key, array_keys($meta));
             }
         }

@@ -129,9 +129,13 @@ class Zend_Barcode_Renderer_ImageTest extends Zend_Barcode_Renderer_TestCommon
         $barcode = new Zend_Barcode_Object_Code39(array('text' => '0123456789'));
         $this->_renderer->setBarcode($barcode);
         $resource = $this->_renderer->draw();
-        $this->assertTrue(gettype($resource) == 'resource', 'Image must be a resource');
-        $this->assertTrue(get_resource_type($resource) == 'gd',
+        if (PHP_VERSION_ID < 80000) {
+            $this->assertTrue(gettype($resource) == 'resource', 'Image must be a resource');
+            $this->assertTrue(get_resource_type($resource) == 'gd',
                 'Image must be a GD resource');
+        } else {
+            $this->assertTrue(get_class($resource) === 'GdImage');
+        }
     }
 
     public function testDrawWithExistantResourceReturnResource()
@@ -143,9 +147,13 @@ class Zend_Barcode_Renderer_ImageTest extends Zend_Barcode_Renderer_TestCommon
         $imageResource = imagecreatetruecolor(500, 500);
         $this->_renderer->setResource($imageResource);
         $resource = $this->_renderer->draw();
-        $this->assertTrue(gettype($resource) == 'resource', 'Image must be a resource');
-        $this->assertTrue(get_resource_type($resource) == 'gd',
+        if (PHP_VERSION_ID < 80000) {
+            $this->assertTrue(gettype($resource) == 'resource', 'Image must be a resource');
+            $this->assertTrue(get_resource_type($resource) == 'gd',
                 'Image must be a GD resource');
+        } else {
+            $this->assertTrue(get_class($resource) === 'GdImage');
+        }
         $this->assertSame($resource, $imageResource);
     }
 

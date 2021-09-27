@@ -918,10 +918,6 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
 
     public function testEachDataFileShouldPresentAsLocaleData()
     {
-        if (version_compare(PHP_VERSION, '5.3.2', 'lt')) {
-            $this->markTestSkipped('ReflectionMethod::setAccessible can only be run under 5.3.2 or later');
-        }
-
         $dir = new DirectoryIterator(
             dirname(__FILE__) . '/../../packages/zend-locale/library/Zend/Locale/Data'
         );
@@ -973,7 +969,7 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
      * @param  array   $errcontext
      * @return void
      */
-    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext)
+    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = array())
     {
         $this->_errorOccurred = true;
     }

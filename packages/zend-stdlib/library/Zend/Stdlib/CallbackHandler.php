@@ -184,7 +184,7 @@ class Zend_Stdlib_CallbackHandler
     {
         $callback = $this->getCallback();
 
-        $isPhp54 = version_compare(PHP_VERSION, '5.4.0rc1', '>=');
+        $isPhp54 = PHP_VERSION_ID >= 50400;
 
         if ($isPhp54 && is_string($callback)) {
             $this->validateStringCallbackFor54($callback);

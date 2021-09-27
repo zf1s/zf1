@@ -39,7 +39,7 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
      * Constant for Non-breaking space UTF-8 encoded value.
      * https://en.wikipedia.org/wiki/Non-breaking_space
      */
-    const NBSP = " ";
+    const NBSP = "\xC2\xA0";
 
     /**
      * teardown / cleanup
@@ -940,19 +940,29 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
      */
     public function testToFloatSetlocale()
     {
-        $locale = setlocale(LC_ALL, 'fr_FR@euro'); // test setup
+        $locale = setlocale(LC_ALL, 0);
+        try {
+            setlocale(LC_ALL, 'fr_FR@euro');
 
-        //var_dump( setlocale(LC_NUMERIC, '0')); // this is the specific setting of interest
-        $locale_fr = new Zend_Locale('fr_FR');
-        $locale_en = new Zend_Locale('en_US');
-        $params_fr = array('precision' => 2, 'locale' => $locale_fr);
-        $params_en = array('precision' => 2, 'locale' => $locale_en);
-        $myFloat = 1234.5;
-        $test1 = Zend_Locale_Format::toFloat($myFloat, $params_fr);
-        $test2 = Zend_Locale_Format::toFloat($myFloat, $params_en);
+            $locale_fr = new Zend_Locale('fr_FR');
+            $locale_en = new Zend_Locale('en_US');
+            $params_fr = array('precision' => 2, 'locale' => $locale_fr);
+            $params_en = array('precision' => 2, 'locale' => $locale_en);
+            $myFloat = 1234.5;
+            $test1 = Zend_Locale_Format::toFloat($myFloat, $params_fr);
+            $test2 = Zend_Locale_Format::toFloat($myFloat, $params_en);
+
+            $this->assertEquals("1" . self::NBSP . "234,50", $test1);
+            $this->assertEquals("1,234.50", $test2);
+
+        } catch (Exception $e) {
+            setlocale(LC_ALL, $locale);
+            throw $e;
+        } catch (Throwable $e) {
+            setlocale(LC_ALL, $locale);
+            throw $e;
+        }
         setlocale(LC_ALL, $locale);
-//        $this->assertEquals("1" . self::NBSP . "234,50", $test1); // FIXME later
-        $this->assertEquals("1,234.50", $test2);
     }
 
     /**
@@ -1113,16 +1123,19 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckDateFormatDoesNotEmitNoticeWhenNoOptionsAreNotProvided()
     {
+        $locale = setlocale(LC_ALL, 0); // read current locale
         try {
             $locale = setlocale(LC_ALL, 'en_US'); // test setup
             Zend_Locale_Format::setOptions(array('date_format' => 'yyyy-MM-dd'));
             $checkDateFormat = Zend_Locale_Format::checkDateFormat('2011-10-21', array());
-            setlocale(LC_ALL, $locale);
 
             $this->assertTrue($checkDateFormat);
         } catch ( PHPUnit_Framework_Error_Notice $ex ) {
+            setlocale(LC_ALL, $locale); // restore previous locale
+
             $this->fail('Zend_Locale_Format::checkDateFormat emitted unexpected E_NOTICE');
         }
+        setlocale(LC_ALL, $locale); // restore previous locale
     }
 
     /**

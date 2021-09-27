@@ -35,13 +35,23 @@
  */
 class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
 {
-    const NBSP = ' ';
+    /**
+     * Constant for Non-breaking space UTF-8 encoded value.
+     * https://en.wikipedia.org/wiki/Non-breaking_space
+     */
+    const NBSP = "\xC2\xA0";
+
     /**
      * Zend_Validate_Float object
      *
      * @var Zend_Validate_Float
      */
     protected $_validator;
+    /**
+     * @var string
+     */
+    private $_locale;
+
     /**
      * @var string
      */
@@ -141,7 +151,8 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testNoZendLocaleButPhpLocale()
     {
-        $locale = setlocale(LC_ALL, 'de');
+        $locale = setlocale(LC_ALL, 0);
+        setlocale(LC_ALL, 'de');
         $valid = new Zend_Validate_Float();
         $isValid1 = $valid->isValid(123.456);
         $isValid2 = $valid->isValid('123,456');
@@ -165,7 +176,8 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpLocaleDeFloatType()
     {
-        $locale = setlocale(LC_ALL, 'de');
+        $locale = setlocale(LC_ALL, 0);
+        setlocale(LC_ALL, 'de');
         $valid = new Zend_Validate_Float();
         $isValid = $valid->isValid(10.5);
         setlocale(LC_ALL, $locale);
@@ -177,7 +189,8 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpLocaleFrFloatType()
     {
-        $locale = setlocale(LC_ALL, 'fr');
+        $locale = setlocale(LC_ALL, 0);
+        setlocale(LC_ALL, 'fr');
         $valid = new Zend_Validate_Float();
         $isValid = $valid->isValid(10.5);
         setlocale(LC_ALL, $locale);
@@ -189,8 +202,10 @@ class Zend_Validate_FloatTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpLocaleDeStringType()
     {
-        $lcAll = setlocale(LC_ALL, 'de_AT');
-        $lcNumeric = setlocale(LC_NUMERIC, 'de_AT');
+        $lcAll = setlocale(LC_ALL, 0);
+        setlocale(LC_ALL, 'de_AT');
+        $lcNumeric = setlocale(LC_NUMERIC, 0);
+        setlocale(LC_NUMERIC, 'de_AT');
         $valid = new Zend_Validate_Float('de_AT');
         $isValid0 = $valid->isValid('1,3');
         $isValid1 = $valid->isValid('1000,3');

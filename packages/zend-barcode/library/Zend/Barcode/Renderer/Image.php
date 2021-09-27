@@ -93,7 +93,7 @@ class Zend_Barcode_Renderer_Image extends Zend_Barcode_Renderer_RendererAbstract
      * Set height of the result image
      *
      * @param null|integer $value
-     * @return Zend_Image_Barcode_Abstract
+     * @return self
      * @throws Zend_Barcode_Renderer_Exception
      */
     public function setHeight($value)
@@ -151,26 +151,25 @@ class Zend_Barcode_Renderer_Image extends Zend_Barcode_Renderer_RendererAbstract
      * Set an image resource to draw the barcode inside
      *
      * @param $image
-     * @return Zend_Barcode_Renderer
+     * @return self
      * @throws Zend_Barcode_Renderer_Exception
      */
     public function setResource($image)
     {
-        if (gettype($image) != 'resource' || get_resource_type($image) != 'gd') {
-            // require_once 'Zend/Barcode/Renderer/Exception.php';
-            throw new Zend_Barcode_Renderer_Exception(
-                'Invalid image resource provided to setResource()'
-            );
+        if ((gettype($image) === 'resource' && get_resource_type($image) === 'gd') || get_class($image) === 'GdImage') {
+            $this->_resource = $image;
+            return $this;
         }
-        $this->_resource = $image;
-        return $this;
+        throw new Zend_Barcode_Renderer_Exception(
+            'Invalid image resource provided to setResource()'
+        );
     }
 
     /**
      * Set the image type to produce (png, jpeg, gif)
      *
      * @param string $value
-     * @return Zend_Barcode_RendererAbstract
+     * @return self
      * @throws Zend_Barcode_Renderer_Exception
      */
     public function setImageType($value)

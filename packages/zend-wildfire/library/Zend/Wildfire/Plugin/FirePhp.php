@@ -534,7 +534,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
 
                 $spliceOffset = 2;
                 //Debug backtrace changed in PHP 7.0.0
-                if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
+                if (PHP_VERSION_ID >= 70000) {
                     $spliceOffset = 1;
                 }
                 $trace = array_splice($trace, $spliceOffset);

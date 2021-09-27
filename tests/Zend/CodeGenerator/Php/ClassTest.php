@@ -52,11 +52,6 @@ class Zend_CodeGenerator_Php_ClassTest extends PHPUnit_Framework_TestCase
 
     }
 
-    public function testClassDocblockAccessors()
-    {
-        $this->markTestSkipped();
-    }
-
     public function testAbstractAccessors()
     {
         $codeGenClass = new Zend_CodeGenerator_Php_Class();

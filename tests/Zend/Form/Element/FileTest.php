@@ -484,7 +484,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
      * @param  array   $errcontext
      * @return void
      */
-    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext)
+    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = array())
     {
         $this->_errorOccurred = true;
     }
@@ -500,18 +500,12 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     {
         $this->assertSame($this->element, $this->element->loadDefaultDecorators());
     }
-    
+
     /**
      * @group ZF-12173
      */
     public function testElementShouldAllowAdapterWithBackslahes()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped(
-                __CLASS__ . '::' . __METHOD__ . ' requires PHP 5.3.0 or greater'
-            );
-            return;
-        }
         $this->element->addPrefixPath(
             'Zend\Form\Element\FileTest\Adapter',
             __DIR__ . '/_files/TransferAdapter',
@@ -519,7 +513,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
         );
         $this->element->setTransferAdapter('Bar');
         $test = $this->element->getTransferAdapter();
-        
+
         $expectedType = 'Zend\Form\Element\FileTest\Adapter\Bar';
         $this->assertTrue(
             $test instanceof $expectedType

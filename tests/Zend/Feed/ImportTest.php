@@ -213,6 +213,8 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
     {
         $feed = Zend_Feed::importArray($this->_getFullArray(), 'rss');
         $this->assertTrue($feed instanceof Zend_Feed_Rss);
+
+        return $feed;
     }
 
     /**
@@ -464,5 +466,37 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(
             'http://www.planet-php.org:80/rss/', 'http://www.planet-php.org:80/rdf/'
         ), array_keys($feeds));
+    }
+
+    /**
+     * @depends testRssImportFullArray
+     */
+    public function testWakeupException(Zend_Feed_Abstract $feed)
+    {
+        $serialized = serialize($feed);
+
+        $damaged = str_replace('<', '>', $serialized);
+
+        try {
+            $obj = unserialize($damaged);
+        } catch (Exception $e) {
+            self::assertInstanceOf('Zend_Feed_Exception', $e);
+
+            return;
+        }
+
+        self::fail('This test should create a mangled object that throws when deserialized');
+    }
+
+    public function testFindFeedsMissingLinkException()
+    {
+        self::markTestSkipped('Not yet implemented. Currently the only way to reliably test this is to spawn a server process');
+
+        try {
+            Zend_Feed::setHttpClient(new Zend_Http_Client());
+            Zend_Feed::findFeeds('https://www.microsoft.com/');
+        } catch (Exception $e) {
+            #var_dump($e);
+        }
     }
 }

@@ -284,7 +284,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         // (which was later reverted in php < 7.2.0)
         // Example of the difference: https://3v4l.org/v46rk
         // Not really something we can test the same in all versions, so doing a version_compare here.
-        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+        if (PHP_VERSION_ID >= 70200) {
             $this->assertSame( 9961716, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, true ));
             $this->assertSame(10010341, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, false));
             $this->assertSame( 9966981, $date->calcSun(array('latitude' => -38.4, 'longitude' => -29), -0.0145439, true ));
@@ -321,7 +321,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         }
 
         $date = new Zend_Date_DateObjectTestHelper(-148309884);
-        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+        if (PHP_VERSION_ID >= 70200) {
             $this->assertSame(-148322626, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, true ));
             $this->assertSame(-148274784, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, false));
             $this->assertSame(-148318143, $date->calcSun(array('latitude' => -38.4, 'longitude' => -29), -0.0145439, true ));
@@ -613,6 +613,20 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
             $date->toString(Zend_Date::ATOM),
             $date->toString(DateTime::ATOM, 'php')
         );
+    }
+
+    public function testIncompleteTimeData()
+    {
+        try {
+            $date = new Zend_Date();
+            $date->set(0, Zend_Date::TIMES);
+        } catch (Exception $e) {
+            $this->fail('This usually stems from iconv_substr returnvalues in Zend_Locale_Format not being handled properly');
+        } catch (Throwable $e) {
+            $this->fail('This usually stems from iconv_substr returnvalues in Zend_Locale_Format not being handled properly');
+        }
+
+        $this->assertInstanceOf('Zend_Date', $date);
     }
 }
 

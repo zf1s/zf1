@@ -388,15 +388,16 @@ class Zend_Feed_Reader
      */
     public static function importFile($filename)
     {
-        @ini_set('track_errors', 1);
+        error_clear_last();
         $feed = @file_get_contents($filename);
-        @ini_restore('track_errors');
         if ($feed === false) {
             /**
              * @see Zend_Feed_Exception
              */
             // require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception("File could not be loaded: $php_errormsg");
+            $err = error_get_last();
+            $phpErrormsg = isset($err["message"]) ? $err["message"] : '';
+            throw new Zend_Feed_Exception("File could not be loaded: $phpErrormsg");
         }
         return self::importString($feed);
     }
@@ -416,10 +417,14 @@ class Zend_Feed_Reader
         }
         $responseHtml = $response->getBody();
         $libxml_errflag = libxml_use_internal_errors(true);
-        $oldValue = libxml_disable_entity_loader(true);
+        if (LIBXML_VERSION < 20900) {
+            $oldValue = libxml_disable_entity_loader(true);
+        }
         $dom = new DOMDocument;
         $status = $dom->loadHTML($responseHtml);
-        libxml_disable_entity_loader($oldValue);
+        if (LIBXML_VERSION < 20900) {
+            libxml_disable_entity_loader($oldValue);
+        }
         libxml_use_internal_errors($libxml_errflag);
         if (!$status) {
             // Build error message
@@ -454,7 +459,7 @@ class Zend_Feed_Reader
         } elseif($feed instanceof DOMDocument) {
             $dom = $feed;
         } elseif(is_string($feed) && !empty($feed)) {
-            @ini_set('track_errors', 1);
+            error_clear_last();
             //$oldValue = libxml_disable_entity_loader(true);
             $dom = new DOMDocument;
             try {
@@ -466,17 +471,18 @@ class Zend_Feed_Reader
                 );
             }
             //libxml_disable_entity_loader($oldValue);
-            @ini_restore('track_errors');
             if (!$dom) {
-                if (!isset($php_errormsg)) {
+                $err = error_get_last();
+                $phpErrormsg = isset($err['messsage'][0]) ? $err['message'] : null;
+                if (!isset($phpErrormsg)) {
                     if (function_exists('xdebug_is_enabled')) {
-                        $php_errormsg = '(error message not available, when XDebug is running)';
+                        $phpErrormsg = '(error message not available, when XDebug is running)';
                     } else {
-                        $php_errormsg = '(error message not available)';
+                        $phpErrormsg = '(error message not available)';
                     }
                 }
                 // require_once 'Zend/Feed/Exception.php';
-                throw new Zend_Feed_Exception("DOMDocument cannot parse XML: $php_errormsg");
+                throw new Zend_Feed_Exception("DOMDocument cannot parse XML: $phpErrormsg");
             }
         } else {
             // require_once 'Zend/Feed/Exception.php';

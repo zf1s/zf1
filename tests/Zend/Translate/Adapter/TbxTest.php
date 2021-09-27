@@ -62,7 +62,7 @@ class Zend_Translate_Adapter_TbxTest extends PHPUnit_Framework_TestCase
             $adapter = new Zend_Translate_Adapter_Tbx(dirname(__FILE__) . '/_files/failed.tbx', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('Mismatched tag at line', $e->getMessage());
+            $this->assertContains('Mismatched tag at line', $e->getMessage(), '', true);
         }
     }
 
@@ -244,7 +244,7 @@ class Zend_Translate_Adapter_TbxTest extends PHPUnit_Framework_TestCase
      * @param  array   $errcontext
      * @return void
      */
-    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext)
+    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = array())
     {
         $this->_errorOccurred = true;
     }

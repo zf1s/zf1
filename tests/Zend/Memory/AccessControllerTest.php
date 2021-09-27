@@ -121,11 +121,6 @@ class Zend_Memory_Container_AccessControllerTest extends PHPUnit_Framework_TestC
         $valueRef[3] = '_';
         $this->assertEquals($memObject->getRef(), '012_456789');
 
-        if (version_compare(PHP_VERSION, '5.2') < 0) {
-            // Skip next tests for PHP versions before 5.2
-            return;
-        }
-
         // value property
         $this->assertEquals((string)$memObject->value, '012_456789');
 
