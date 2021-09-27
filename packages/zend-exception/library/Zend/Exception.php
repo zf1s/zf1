@@ -32,10 +32,10 @@ class Zend_Exception extends Exception
      *
      * @param  string $msg
      * @param  int $code
-     * @param  Exception $previous
+     * @param  Exception|Throwable $previous
      * @return void
      */
-    public function __construct($msg = '', $code = 0, Exception $previous = null)
+    public function __construct($msg = '', $code = 0, $previous = null)
     {
         parent::__construct($msg, (int) $code, $previous);
     }
