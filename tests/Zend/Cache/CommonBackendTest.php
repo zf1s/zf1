@@ -235,7 +235,7 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
             && getenv('CI')
         ) {
             $this->markTestSkipped(
-                'Test randomly fail on Travis CI.'
+                'Test fails on CI - memcache->flush() returns false.'
             );
         }
 
