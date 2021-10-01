@@ -70,16 +70,23 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
             }
 
             $this->_stream = $streamOrUrl;
-        } else {
+        } else if (is_string($streamOrUrl) || is_array($streamOrUrl)) {
             if (is_array($streamOrUrl) && isset($streamOrUrl['stream'])) {
                 $streamOrUrl = $streamOrUrl['stream'];
             }
 
-            if (! $this->_stream = @fopen($streamOrUrl, $mode, false)) {
+            // catch and ignore ValueError which PHP 8.0+ may throw on invalid values passed to internal function
+            try {
+                $this->_stream = @fopen($streamOrUrl, $mode, false);
+            } catch (ValueError $e) {}
+
+            if (! $this->_stream) {
                 // require_once 'Zend/Log/Exception.php';
                 $msg = "\"$streamOrUrl\" cannot be opened with mode \"$mode\"";
                 throw new Zend_Log_Exception($msg);
             }
+        } else {
+            throw new Zend_Log_Exception('Input is not a stream or url');
         }
 
         $this->_formatter = new Zend_Log_Formatter_Simple();
@@ -130,7 +137,13 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
     {
         $line = $this->_formatter->format($event);
 
-        if (false === @fwrite($this->_stream, $line)) {
+        $res = false;
+        // catch and ignore TypeError which PHP 8.0+ may throw when there was a problem with the stream (closed/unusable)
+        try {
+            $res = @fwrite($this->_stream, $line);
+        } catch (TypeError $e) {}
+
+        if (false === $res) {
             // require_once 'Zend/Log/Exception.php';
             throw new Zend_Log_Exception("Unable to write to stream");
         }
