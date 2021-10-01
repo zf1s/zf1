@@ -30,6 +30,10 @@ jobs:
       MYSQL_PASSWORD: "zftest"
       MYSQL_DATABASE: "zftest"
       MYSQL_HOST: "127.0.0.1"
+      POSTGRES_USER: "zftest"
+      POSTGRES_PASSWORD: "zftest"
+      POSTGRES_DB: "zftest"
+      POSTGRES_HOST: "127.0.0.1"
       # Default locales are: C C.UTF-8 POSIX en_US.utf8
       LOCALES: "fr_FR@euro fr_FR fr_BE.UTF-8 de en_US"
 
@@ -49,6 +53,21 @@ jobs:
           MYSQL_DATABASE: "zftest"
           MYSQL_ALLOW_EMPTY_PASSWORD: "1"
         options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
+
+      postgres:
+        image: postgres:12
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout Code
