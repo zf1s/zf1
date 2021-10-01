@@ -254,7 +254,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
             return $this->_stmt->fetch($style, $cursor, $offset);
         } catch (ValueError $e) {
             // PHP 8.0+ throws ValueError on invalid arguments
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode());
+            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
         } catch (PDOException $e) {
             // require_once 'Zend/Db/Statement/Exception.php';
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
@@ -295,7 +295,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
             }
         } catch (ValueError $e) {
             // PHP 8.0+ throws ValueError on invalid arguments
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode());
+            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
         } catch (PDOException $e) {
             // require_once 'Zend/Db/Statement/Exception.php';
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
@@ -439,7 +439,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
             return $this->_stmt->setFetchMode($mode);
         } catch (ValueError $e) {
             // PHP 8.0+ throws ValueError on invalid arguments
-            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode());
+            throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
         } catch (PDOException $e) {
             // require_once 'Zend/Db/Statement/Exception.php';
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
