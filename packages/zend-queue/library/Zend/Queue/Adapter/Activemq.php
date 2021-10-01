@@ -302,6 +302,8 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
             $queue = $this->_queue;
         }
 
+        $message = (string)$message;
+
         $frame = $this->_client->createFrame();
         $frame->setCommand('SEND');
         $frame->setHeader('destination', $queue->getName());
@@ -312,7 +314,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
             $frame->setHeader('persistent', $this->_options['driverOptions']['persistent']);
         }
 
-        $frame->setBody((string) $message);
+        $frame->setBody($message);
         $this->_client->send($frame);
 
         $data = array(

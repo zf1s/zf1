@@ -342,7 +342,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
         $msg->queue_id = $this->getQueueId($queue->getName());
         $msg->created  = time();
         $msg->body     = $message;
-        $msg->md5      = md5($message);
+        $msg->md5      = md5((string)$message);
         // $msg->timeout = ??? @TODO
 
         try {
