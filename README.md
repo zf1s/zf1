@@ -97,7 +97,7 @@ where `*` may be one of:
 [xmlrpc](https://github.com/zf1s/zend-xmlrpc).
 
 These packages will be maintained as long as we're using them, mainly just to keep it all working on new versions of PHP as they're released.
-Currently everything should be compatible with **PHP 5.3-7.4**. _5.2 support is dropped._
+Currently everything should be compatible with **PHP 5.3-8.0**. _5.2 support is dropped._
 
 They may also contain some fixes, either for long-standing bugs, which haven't made their way into zf1 official repo before EOL, or newly found ones
 and (backwards compatible) adjustments (optimisations for composer autoloader mostly). Maybe even one or two new features.
@@ -119,7 +119,7 @@ Original README: [click](README.orig.md)
 2. Bump interdependencies of packages to the next version
 
     ```bash
-    ../monorepo-builder/bin/monorepo-builder bump-interdependency "^1.13.5"
+    ../monorepo-builder/bin/monorepo-builder bump-interdependency "^1.14.1"
     ```
    
 3. Add git tag and push to this monorepo
@@ -133,7 +133,7 @@ Original README: [click](README.orig.md)
    
     Split operation:
     ```bash
-    ../monorepo-builder/bin/monorepo-builder split --max-processes=1 --tag=1.13.5
+    ../monorepo-builder/bin/monorepo-builder split --max-processes=1 --tag=1.14.1
     ```
 
 _Note: I had no success splitting this repo on win os, so unix-based system is recommended. (or WSL)

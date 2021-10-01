@@ -1,5 +1,113 @@
 ## Changelog:
 
+### 1.14.0 - 2021-10-01
+- general: php 8.0 compatibility ([#51])
+  - Remove default values from method signatures ([#78])
+  - Fix iterators usage ([#82])
+  - Fix Zend_Form_ElementTest ([#81])
+  - Enforce types for PHP 8.0 ([#80])
+  - Fix vsprintf TypeError for php 8.0 ([#79])
+  - Fixed reflection deprecations for php 8.0 ([#76])
+  - Make Zend_Validate_Date work as expected under PHP 8.0 ([#75])
+  - Zend_Session Fix error handler for PHP8 usage ([#99])
+  - Remove openssl deprecation for php 8.0 ([#73])
+  - Remove libxml deprecations for php 8.0 ([#65])
+  - Missing default values caused errorHandlerIgnore to fail under PHP 8.0 ([#63])
+  - Replace version_compare on PHP_VERSION with PHP_VERSION_ID check ([#53])
+  - Do not check get_magic_quotes_gpc value for php 5.4+ ([#56])
+  - Remove usage of $php_errormsg ([#42])
+  - Drop tests covering php older than 5.3.3 ([#55])
+  - Drop code supporting php older than 5.3.3 ([#54])
+  - Add guard on fclose in Zend_Mail_Storage_Mbox ([#70])
+  - Fix Zend_Db issues with php8 ([#106])
+  - php8 Zend_Log compatibility fixes ([#107])
+  - [zend-paginator] prevent fatal error on php8 ([#109])
+  - [zend-queue] prevent TypeError on md5 of non-string message ([#110])
+  - [zend-loader] refactor broken resolvePharParentPath static method ([#111])
+- zend-acl
+  - Increase Performance in unsetting rules in ACL ([#60])
+- zend-application
+  - fix autoloading of Useragent class ([#113])
+- zend-db
+  - Fix PHPDoc @return statement for Zend_Db_Select::query() ([#95])
+  - Fix PHPDoc typings on Zend_Db_Table_Rowset_Abstract::current ([#98])
+- zend-exception
+  - allow Throwable in $previous ([#112])
+- zend-paginator
+  - fixed phpdoc typo ([#86])
+- zend-queue
+  - Adding support for durable subscribers and persistent message sending ([#105])
+- zend-view
+  - fix Zend_View_Abstract::__get() phpdoc ([#87])
+- Security
+  - Backport of fix for CVE-2021-3007 in Zend_Http_Response_Stream ([#43])
+- Infrastructure
+  - Restore locales before calling test assertions ([#45])
+  - Enable "fail-fast" env for setup-php ([#52])
+  - Move MySQL testing from Travis to GitHub Actions ([#49])
+  - Use ubuntu-16.04 by default for faster setup-php ([#72])
+  - Add php 8.0 to GitHub Actions ignoring its errors ([#59])
+  - Allow newer php-parallel-lint/php-parallel-lint for php 8.0 ([#58])
+  - Move composer.json validate of sub-packages to GitHub Actions ([#40])
+  - Use parallel-lint for GitHub actions ([#50])
+  - Move memcache testing from Travis to GitHub Actions ([#47])
+  - GitHub Actions: Install composer dependencies ([#41])
+  - Use staabm/annotate-pull-request-from-checkstyle to report violatons in GitHub ([#66])
+  - Use gnu parallel for validating composer.json ([#84])
+  - CI: Switch to Ubuntu 20.04 ([#94])
+  - ditch travis in favor of gha workflow ([#108])
+  - enable postgres on gha ([#114])
+  - use mysql v5.7 in gha ([#115])
+
+[#40]: https://github.com/zf1s/zf1/pull/40
+[#41]: https://github.com/zf1s/zf1/pull/41
+[#42]: https://github.com/zf1s/zf1/pull/42
+[#43]: https://github.com/zf1s/zf1/pull/43
+[#45]: https://github.com/zf1s/zf1/pull/45
+[#47]: https://github.com/zf1s/zf1/pull/47
+[#49]: https://github.com/zf1s/zf1/pull/49
+[#50]: https://github.com/zf1s/zf1/pull/50
+[#51]: https://github.com/zf1s/zf1/issues/51
+[#52]: https://github.com/zf1s/zf1/pull/52
+[#53]: https://github.com/zf1s/zf1/pull/53
+[#54]: https://github.com/zf1s/zf1/pull/54
+[#55]: https://github.com/zf1s/zf1/pull/55
+[#56]: https://github.com/zf1s/zf1/pull/56
+[#58]: https://github.com/zf1s/zf1/pull/58
+[#59]: https://github.com/zf1s/zf1/pull/59
+[#60]: https://github.com/zf1s/zf1/pull/60
+[#63]: https://github.com/zf1s/zf1/pull/63
+[#65]: https://github.com/zf1s/zf1/pull/65
+[#66]: https://github.com/zf1s/zf1/pull/66
+[#70]: https://github.com/zf1s/zf1/pull/70
+[#72]: https://github.com/zf1s/zf1/pull/72
+[#73]: https://github.com/zf1s/zf1/pull/73
+[#75]: https://github.com/zf1s/zf1/pull/75
+[#76]: https://github.com/zf1s/zf1/pull/76
+[#78]: https://github.com/zf1s/zf1/pull/78
+[#79]: https://github.com/zf1s/zf1/pull/79
+[#80]: https://github.com/zf1s/zf1/pull/80
+[#81]: https://github.com/zf1s/zf1/pull/81
+[#82]: https://github.com/zf1s/zf1/pull/82
+[#84]: https://github.com/zf1s/zf1/pull/84
+[#86]: https://github.com/zf1s/zf1/pull/86
+[#87]: https://github.com/zf1s/zf1/pull/87
+[#94]: https://github.com/zf1s/zf1/pull/94
+[#95]: https://github.com/zf1s/zf1/pull/95
+[#98]: https://github.com/zf1s/zf1/pull/98
+[#99]: https://github.com/zf1s/zf1/pull/99
+[#105]: https://github.com/zf1s/zf1/pull/105
+[#106]: https://github.com/zf1s/zf1/pull/106
+[#107]: https://github.com/zf1s/zf1/pull/107
+[#108]: https://github.com/zf1s/zf1/pull/108
+[#109]: https://github.com/zf1s/zf1/pull/109
+[#110]: https://github.com/zf1s/zf1/pull/110
+[#111]: https://github.com/zf1s/zf1/pull/111
+[#112]: https://github.com/zf1s/zf1/pull/112
+[#113]: https://github.com/zf1s/zf1/pull/113
+[#114]: https://github.com/zf1s/zf1/pull/114
+[#115]: https://github.com/zf1s/zf1/pull/115
+
 ### 1.13.4 - 2020-11-23
 - zend-db
   - Fix Zend_Db_Adapter_Pdo_Pgsql being broken on Postgres 12 that removed d.adsrc ([#29])
@@ -126,13 +234,13 @@
   + restore php 5.3 compatibility
     
 
-### 1.12.22
+### 1.12.22 - 2019-05-07
 - zend-loader
     - make the introduced performance optimization for PluginLoader optional ([zf1s/zend-loader#4](https://github.com/zf1s/zend-loader/pull/4))
 - zend-view
     - php 5.3 compatibility fixes ([zf1s/zend-view#2](https://github.com/zf1s/zend-view/pull/4))
 
-### 1.12.21
+### 1.12.21 - various dates
 - zend-application
     - disable require once call and the autoloader ([zf1s/zend-application#1](https://github.com/zf1s/zend-application/pull/1))
 - zend-cache
@@ -172,5 +280,5 @@
 - zend-xmlrpc
     - php 7.2 compatibility fixes
 
-### 1.12.20
+### 1.12.20 - 2016-10-23
 - Final release of the original project, split into individual `zf1s/zend-*` packages.
