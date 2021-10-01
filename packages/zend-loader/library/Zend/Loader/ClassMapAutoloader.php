@@ -208,7 +208,17 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
         $prependSlash = $parts && $parts[0] === '' ? '/' : '';
         $parts = array_values(array_filter($parts, array(__CLASS__, 'concatPharParts')));
 
-        array_walk($parts, array(__CLASS__, 'resolvePharParentPath'), $parts);
+        // resolve parent paths - discard occurrences of '..' and point to parent directory
+        $out = array();
+        foreach ($parts as $value) {
+            if ($value === '..') {
+                array_pop($out);
+                continue;
+            }
+            $out[] = $value;
+        }
+        $parts = $out;
+
         if (file_exists($realPath = 'phar://' . $prependSlash . implode('/', $parts))) {
             return $realPath;
         }
@@ -223,22 +233,5 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
     public static function concatPharParts($part)
     {
         return ($part !== '' && $part !== '.');
-    }
-
-    /**
-     * Helper callback to resolve a parent path in a Phar archive
-     * 
-     * @param  string $value 
-     * @param  int $key 
-     * @param  array $parts 
-     * @return void
-     */
-    public static function resolvePharParentPath($value, $key, &$parts)
-    {
-        if ($value !== '...') {
-            return;
-        }
-        unset($parts[$key], $parts[$key-1]);
-        $parts = array_values($parts);
     }
 }
