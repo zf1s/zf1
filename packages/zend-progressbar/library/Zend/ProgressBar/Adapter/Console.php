@@ -187,7 +187,11 @@ class Zend_ProgressBar_Adapter_Console extends Zend_ProgressBar_Adapter
      */
     public function setOutputStream($resource)
     {
-       $stream = @fopen($resource, 'w');
+        // catch and ignore ValueError which PHP 8.0+ may throw on invalid values passed to internal function
+        $stream = false;
+        try {
+            $stream = @fopen($resource, 'w');
+        } catch (ValueError $e) {}
 
        if ($stream === false) {
             // require_once 'Zend/ProgressBar/Adapter/Exception.php';
