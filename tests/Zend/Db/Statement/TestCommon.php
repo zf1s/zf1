@@ -328,7 +328,12 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         } catch (Zend_Exception $e) {
             $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
                 'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
-            $this->assertRegExp('#invalid fetch mode#i', $e->getMessage());
+            if (PHP_VERSION_ID >= 80000 && substr($this->getDriver(), 0, 4) === 'Pdo_') {
+                // PDO on PHP 8.0+ throws different error message on invalid arguments
+                $this->assertContains('must be a bitmask of PDO::FETCH_* constants', $e->getMessage());
+            } else {
+                $this->assertRegExp('#invalid fetch mode#i', $e->getMessage());
+            }
         }
     }
 
