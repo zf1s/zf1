@@ -44,13 +44,13 @@ jobs:
           - 11211:11211
 
       mysql:
-        image: mysql/mysql-server:5.6
+        image: mysql/mysql-server:5.7
         ports:
           - 3306:3306
         env:
-          MYSQL_USER: "zftest"
-          MYSQL_PASSWORD: "zftest"
-          MYSQL_DATABASE: "zftest"
+          MYSQL_USER: ${{ env.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
           MYSQL_ALLOW_EMPTY_PASSWORD: "1"
         options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
 
