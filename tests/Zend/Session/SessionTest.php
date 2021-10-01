@@ -778,12 +778,6 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
      */
     public function testSetExpirationSeconds()
     {
-        if (getenv('CI')) {
-            $this->markTestSkipped(
-                'Test randomly fail on Travis CI.'
-            );
-        }
-
         // Calculate common script execution time
         $startTime = time();
         exec($this->_script, $result, $returnValue);
