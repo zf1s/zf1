@@ -297,7 +297,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
         $this->_filemtime = filemtime($this->_filename);
 
         if (!$this->_isMboxFile($this->_fh, false)) {
-            @fclose($this->_fh);
+            $this->close();
             /**
              * @see Zend_Mail_Storage_Exception
              */
@@ -335,7 +335,10 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
      */
     public function close()
     {
-        @fclose($this->_fh);
+        if ($this->_fh && 'Unknown' !== get_resource_type($this->_fh)) {
+            @fclose($this->_fh);
+            $this->_fh = null;
+        }
         $this->_positions = array();
     }
 
