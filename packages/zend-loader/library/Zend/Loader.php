@@ -46,13 +46,13 @@ class Zend_Loader
      * @param string $class      - The full class name of a Zend component.
      * @param string|array $dirs - OPTIONAL Either a path or an array of paths
      *                             to search.
-     * @return void
+     * @return boolean
      * @throws Zend_Exception
      */
     public static function loadClass($class, $dirs = null)
     {
         if (class_exists($class, false) || interface_exists($class, false)) {
-            return;
+            return true;
         }
 
         if ((null !== $dirs) && !is_string($dirs) && !is_array($dirs)) {
@@ -61,6 +61,7 @@ class Zend_Loader
         }
 
         $file = self::standardiseFile($class);
+        $fileLoaded = false;
 
         if (!empty($dirs)) {
             // use the autodiscovered path
@@ -77,14 +78,36 @@ class Zend_Loader
                 }
             }
             $file = basename($file);
-            self::loadFile($file, $dirs, true);
+            $fileLoaded = self::loadFile($file, $dirs, true);
         } else {
-            self::loadFile($file, null, true);
+            $fileLoaded = self::loadFile($file, null, true);
+        }
+
+        if (!$fileLoaded) {
+            throw new Zend_Loader_Exception_FileNotFoundException("File \"$file\" could not be found within configured include_path.");
         }
 
         if (!class_exists($class, false) && !interface_exists($class, false)) {
-            // require_once 'Zend/Exception.php';
-            throw new Zend_Exception("File \"$file\" does not exist or class \"$class\" was not found in the file");
+            throw new Zend_Loader_Exception_ClassNotFoundException("Class \"$class\" was not found in the file \"$file\".");
+        }
+        return true;
+    }
+
+    /**
+     * Try to load a class from a PHP file.
+     * Similar to `loadClass` but it will not throw when a file matching class name is not found.
+     *
+     * @param string $class      - The full class name of a Zend component.
+     * @param string|array $dirs - OPTIONAL Either a path or an array of paths
+     *                             to search.
+     * @return boolean
+     */
+    public static function tryLoadClass($class, $dirs = null)
+    {
+        try {
+            return self::loadClass($class, $dirs);
+        } catch (Zend_Loader_Exception_FileNotFoundException $e) {
+            return false;
         }
     }
 
@@ -125,6 +148,16 @@ class Zend_Loader
             }
             $incPath = get_include_path();
             set_include_path($dirs . PATH_SEPARATOR . $incPath);
+        }
+
+        /**
+         * Bail early when file is not readable - avoid throwing file not found warnings
+         */
+        if (!self::isReadable($filename)) {
+            if ($incPath) {
+                set_include_path($incPath);
+            }
+            return false;
         }
 
         /**

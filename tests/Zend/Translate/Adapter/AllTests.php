@@ -33,6 +33,7 @@ require_once 'Zend/Translate/Adapter/TbxTest.php';
 require_once 'Zend/Translate/Adapter/TmxTest.php';
 require_once 'Zend/Translate/Adapter/XliffTest.php';
 require_once 'Zend/Translate/Adapter/XmlTmTest.php';
+require_once 'Zend/Translate/Adapter/CustomAdapterTest.php';
 
 /**
  * @category   Zend
@@ -62,6 +63,7 @@ class Zend_Translate_Adapter_AllTests
         $suite->addTestSuite('Zend_Translate_Adapter_TmxTest');
         $suite->addTestSuite('Zend_Translate_Adapter_XliffTest');
         $suite->addTestSuite('Zend_Translate_Adapter_XmlTmTest');
+        $suite->addTestSuite('Zend_Translate_Adapter_CustomAdapterTest');
 
         return $suite;
     }

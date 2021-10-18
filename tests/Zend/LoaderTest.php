@@ -131,7 +131,8 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
     {
         $dir = implode(DIRECTORY_SEPARATOR, array(__DIR__, '_files', '_testDir1'));
 
-        Zend_Loader::loadClass('Class1', $dir);
+        $this->assertTrue(Zend_Loader::loadClass('Class1', $dir));
+        $this->assertTrue(class_exists('Class1', false));
     }
 
     public function testLoaderInterfaceViaLoadClass()
@@ -173,13 +174,65 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testLoaderClassNonexistent()
     {
+        $this->setErrorHandler();
         $dir = implode(DIRECTORY_SEPARATOR, array(__DIR__, '_files', '_testDir1'));
 
         try {
             Zend_Loader::loadClass('ClassNonexistent', $dir);
             $this->fail('Zend_Exception was expected but never thrown.');
         } catch (Zend_Exception $e) {
-            $this->assertRegExp('/file(.*)does not exist or class(.*)not found/i', $e->getMessage());
+            $this->assertEquals('Class "ClassNonexistent" was not found in the file "ClassNonexistent.php".', $e->getMessage());
+            $this->assertNull($this->error);
+        }
+    }
+
+    /**
+     * Tests that an exception is thrown when a file is not found
+     */
+    public function testLoaderFileNonexistent()
+    {
+        $this->setErrorHandler();
+        $dir = implode(DIRECTORY_SEPARATOR, array(__DIR__, '_files', '_testDir1'));
+
+        try {
+            Zend_Loader::loadClass('FileNotexistent', $dir);
+            $this->fail('Zend_Exception was expected but never thrown.');
+        } catch (Zend_Exception $e) {
+            $this->assertRegExp('/file "(.*)" could not be found within configured include_path/i', $e->getMessage());
+            // "file not found" warning is not emitted anymore
+            $this->assertNull($this->error);
+        }
+    }
+
+    /**
+     * Tests that an exception is not thrown
+     * using `tryLoadClass` to silently fail when file is not found
+     */
+    public function testLoaderTryLoadFileNonexistent()
+    {
+        $this->setErrorHandler();
+        $dir = implode(DIRECTORY_SEPARATOR, array(__DIR__, '_files', '_testDir1'));
+
+        $this->assertFalse(Zend_Loader::tryLoadClass('FileNotexistent', $dir));
+        // "file not found" warning is not emitted anymore
+        $this->assertNull($this->error);
+    }
+
+    /**
+     * Tests that an exception is still thrown when class in a file does not exist
+     * while using `tryLoadClass`
+     */
+    public function testLoaderTryLoadClassNonexistent()
+    {
+        $this->setErrorHandler();
+        $dir = implode(DIRECTORY_SEPARATOR, array(__DIR__, '_files', '_testDir1'));
+
+        try {
+            Zend_Loader::tryLoadClass('ClassNonexistent', $dir);
+            $this->fail('Zend_Exception was expected but never thrown.');
+        } catch (Zend_Exception $e) {
+            $this->assertEquals('Class "ClassNonexistent" was not found in the file "ClassNonexistent.php".', $e->getMessage());
+            $this->assertNull($this->error);
         }
     }
 

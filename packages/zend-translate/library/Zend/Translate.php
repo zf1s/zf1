@@ -130,7 +130,9 @@ class Zend_Translate {
         if (class_exists('Zend_Translate_Adapter_' . ucfirst($options['adapter']))) {
             $options['adapter'] = 'Zend_Translate_Adapter_' . ucfirst($options['adapter']);
         } elseif (!class_exists($options['adapter'])) {
-            Zend_Loader::loadClass($options['adapter']);
+            if (!Zend_Loader::tryLoadClass('Zend_Translate_Adapter_' . ucfirst($options['adapter']))) {
+                Zend_Loader::loadClass($options['adapter']);
+            }
         }
 
         if (array_key_exists('cache', $options)) {

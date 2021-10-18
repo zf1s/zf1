@@ -106,6 +106,9 @@ class Zend_Loader_Autoloader
      */
     public static function resetInstance()
     {
+        if (null !== self::$_instance) {
+            spl_autoload_unregister(array(__CLASS__, 'autoload'));
+        }
         self::$_instance = null;
     }
 
