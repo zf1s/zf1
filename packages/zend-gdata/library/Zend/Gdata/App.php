@@ -828,7 +828,7 @@ class Zend_Gdata_App
 
         if (!$doc) {
             $err = error_get_last();
-            $phpErrormsg = $err['message'];
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             // require_once 'Zend/Gdata/App/Exception.php';
             throw new Zend_Gdata_App_Exception(
                 "DOMDocument cannot parse XML: $phpErrormsg");
