@@ -208,19 +208,7 @@ class Zend_Loader
             return false;
         }
 
-        foreach (self::explodeIncludePath() as $path) {
-            if ($path == '.') {
-                if (is_readable($filename)) {
-                    return true;
-                }
-                continue;
-            }
-            $file = $path . '/' . $filename;
-            if (is_readable($file)) {
-                return true;
-            }
-        }
-        return false;
+        return stream_resolve_include_path($filename) !== false;
     }
 
     /**
