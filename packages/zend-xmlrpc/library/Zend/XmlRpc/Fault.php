@@ -140,7 +140,7 @@ class Zend_XmlRpc_Fault
     /**
      * Retrieve fault message
      *
-     * @param string
+     * @param string $message
      * @return Zend_XmlRpc_Fault
      */
     public function setMessage($message)
