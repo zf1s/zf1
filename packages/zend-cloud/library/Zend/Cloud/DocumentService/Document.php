@@ -172,6 +172,7 @@ class Zend_Cloud_DocumentService_Document
      * @param  string $name
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($name)
     {
         return $this->getField($name);

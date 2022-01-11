@@ -436,6 +436,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      * @return array
      * @throws Zend_Ldap_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($name)
     {
         return $this->getAttribute($name, null);

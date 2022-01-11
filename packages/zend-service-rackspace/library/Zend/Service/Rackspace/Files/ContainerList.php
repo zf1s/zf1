@@ -180,6 +180,7 @@ class Zend_Service_Rackspace_Files_ContainerList implements Countable, Iterator,
      * @throws  Zend_Service_Rackspace_Files_Exception
      * @return  Zend_Service_Rackspace_Files_Container
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if ($this->offsetExists($offset)) {

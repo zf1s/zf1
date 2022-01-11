@@ -120,6 +120,7 @@ class Zend_Pdf_NameTree implements ArrayAccess, Iterator, Countable
     }
 
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->_items[$offset];

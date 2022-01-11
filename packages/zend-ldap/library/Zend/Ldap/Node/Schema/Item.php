@@ -119,6 +119,7 @@ abstract class Zend_Ldap_Node_Schema_Item implements ArrayAccess, Countable
      * @param  string $name
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($name)
     {
         return $this->__get($name);

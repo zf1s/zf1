@@ -136,7 +136,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery34 extends PHPUnit_Framework_Constrai
      * @param  null|string Assertion type
      * @return bool
      */
-    public function evaluate($other, $assertType = null)
+    public function evaluate($other, $assertType = null, $returnResult = \false)
     {
         if (strstr($assertType, 'Not')) {
             $this->setNegate(true);
