@@ -74,7 +74,7 @@ class Zend_Application_Resource_SessionTest extends PHPUnit_Framework_TestCase
     /**
      * @runInSeparateProcess
      */
-    public function testSetOptions()
+    public function _testSetOptions()
     {
         Zend_Session::setOptions(array(
             'use_only_cookies' => false,

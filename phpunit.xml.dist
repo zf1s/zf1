@@ -12,5 +12,6 @@
 
     <php>
         <ini name="date.timezone" value="UTC"/>
+        <ini name="memory_limit" value="1G"/>
     </php>
 </phpunit>

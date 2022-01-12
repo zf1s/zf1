@@ -1006,6 +1006,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * @return boolean
      * @throws Zend_Ldap_Exception
      */
+    #[\ReturnTypeWillChange]
     public function hasChildren()
     {
         if (!is_array($this->_children)) {
@@ -1027,6 +1028,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * @return Zend_Ldap_Node_ChildrenIterator
      * @throws Zend_Ldap_Exception
      */
+    #[\ReturnTypeWillChange]
     public function getChildren()
     {
         if (!is_array($this->_children)) {
@@ -1069,6 +1071,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this;
@@ -1080,6 +1083,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->getRdnString();
@@ -1089,6 +1093,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * Move forward to next attribute.
      * Implements Iterator
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->_iteratorRewind = false;
@@ -1098,6 +1103,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * Rewind the Iterator to the first attribute.
      * Implements Iterator
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->_iteratorRewind = true;
@@ -1110,6 +1116,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return $this->_iteratorRewind;

@@ -51,6 +51,7 @@ class Zend_Cloud_DocumentService_DocumentSet implements Countable, IteratorAggre
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return $this->_documentCount;
@@ -61,6 +62,7 @@ class Zend_Cloud_DocumentService_DocumentSet implements Countable, IteratorAggre
      *
      * @return Traversable
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return $this->_documents;

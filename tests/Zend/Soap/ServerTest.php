@@ -93,7 +93,7 @@ class Zend_Soap_ServerTest extends PHPUnit_Framework_TestCase
         $server = new Zend_Soap_Server(null, $options);
         $this->assertTrue($server->getWsiCompliant());
     }
-    
+
     public function testSetWsiCompliant()
     {
         $server = new Zend_Soap_Server();
@@ -102,7 +102,7 @@ class Zend_Soap_ServerTest extends PHPUnit_Framework_TestCase
         $server->setWsiCompliant(false);
         $this->assertFalse($server->getWsiCompliant());
     }
-    
+
     /**
      * @group ZF-9816
      */
@@ -592,7 +592,7 @@ class Zend_Soap_ServerTest extends PHPUnit_Framework_TestCase
         $server->setReturnResponse(true);
 
         $server->setClass('Zend_Soap_Server_TestClass');
-        
+
         $request =
             '<?xml version="1.0" encoding="UTF-8"?>' . "\n"
           . '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" '
@@ -607,8 +607,8 @@ class Zend_Soap_ServerTest extends PHPUnit_Framework_TestCase
           .         '</ns1:testFunc2>'
           .     '</SOAP-ENV:Body>'
           . '</SOAP-ENV:Envelope>' . "\n";
-        
-        $expectedResult = 
+
+        $expectedResult =
             '<?xml version="1.0" encoding="UTF-8"?>' . "\n"
           . '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" '
                              . 'xmlns:ns1="http://framework.zend.com" '
@@ -627,13 +627,13 @@ class Zend_Soap_ServerTest extends PHPUnit_Framework_TestCase
           .             '</return>'
           .         '</ns1:testFunc2Response>'
           .     '</SOAP-ENV:Body>'
-          . '</SOAP-ENV:Envelope>' . "\n";     
-        
+          . '</SOAP-ENV:Envelope>' . "\n";
+
         $response = $server->handle($request);
-        
+
         $this->assertEquals($response, $expectedResult);
     }
-    
+
     public function testSetReturnResponse()
     {
         $server = new Zend_Soap_Server();
@@ -970,7 +970,7 @@ class Zend_Soap_ServerTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(isset($options['cache_wsdl']));
         $this->assertEquals(100, $options['cache_wsdl']);
     }
-    
+
     /**
      * @group ZF-11411
      */
@@ -1040,6 +1040,7 @@ class Zend_Soap_Server_TestLocalSoapClient extends SoapClient
         parent::__construct($wsdl, $options);
     }
 
+    #[\ReturnTypeWillChange]
     function __doRequest($request, $location, $action, $version, $one_way = 0)
     {
         ob_start();
@@ -1064,7 +1065,7 @@ class MockSoapServer {
 class Zend_Soap_MockServer extends Zend_Soap_Server {
     public $mockSoapServer = null;
     protected function _getSoap() {
-        $this->mockSoapServer = new MockSoapServer(); 
+        $this->mockSoapServer = new MockSoapServer();
         return $this->mockSoapServer;
     }
 }

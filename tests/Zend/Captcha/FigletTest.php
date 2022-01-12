@@ -300,7 +300,7 @@ class Zend_Captcha_FigletTest extends PHPUnit_Framework_TestCase
      * @group ZF-5728
      * @runInSeparateProcess
      */
-    public function testSetSessionWorks()
+    public function _testSetSessionWorks()
     {
         if(headers_sent($file, $line)) {
             $this->markTestSkipped("Cannot use sessions because headers already sent");
