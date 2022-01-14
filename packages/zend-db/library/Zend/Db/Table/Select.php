@@ -109,7 +109,7 @@ class Zend_Db_Table_Select extends Zend_Db_Select
      * Setting this flag to false skips the checks for table joins, allowing
      * 'hybrid' table rows to be created.
      *
-     * @param Zend_Db_Table_Abstract $adapter
+     * @param bool $flag
      * @return Zend_Db_Select This Zend_Db_Select object.
      */
     public function setIntegrityCheck($flag = true)
