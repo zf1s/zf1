@@ -55,7 +55,7 @@ class Zend_Db_Table_Select extends Zend_Db_Select
     /**
      * Table integrity override.
      *
-     * @var array
+     * @var bool
      */
     protected $_integrityCheck = true;
 
