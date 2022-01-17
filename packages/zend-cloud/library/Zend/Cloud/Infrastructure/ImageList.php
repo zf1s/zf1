@@ -87,6 +87,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->images);
@@ -99,6 +100,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      *
      * @return Image
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->images[$this->iteratorKey];
@@ -111,6 +113,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->iteratorKey;
@@ -123,6 +126,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->iteratorKey++;
@@ -135,6 +139,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->iteratorKey = 0;
@@ -147,6 +152,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         $numItems = $this->count();
@@ -164,6 +170,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      * @param   int     $offset
      * @return  bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return ($offset < $this->count());
@@ -196,6 +203,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      * @param   string  $value
      * @throws  Zend_Cloud_Infrastructure_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         // require_once 'Zend/Cloud/Infrastructure/Exception.php';
@@ -210,6 +218,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      * @param   int     $offset
      * @throws  Zend_Cloud_Infrastructure_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         // require_once 'Zend/Cloud/Infrastructure/Exception.php';

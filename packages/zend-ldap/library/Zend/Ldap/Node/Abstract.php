@@ -421,6 +421,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      * @return null
      * @throws BadMethodCallException
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($name, $value)
     {
         throw new BadMethodCallException();
@@ -453,6 +454,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      * @return null
      * @throws BadMethodCallException
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($name)
     {
         throw new BadMethodCallException();
@@ -467,6 +469,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      * @param  string $name
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($name)
     {
         return $this->existsAttribute($name, false);
@@ -478,6 +481,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_currentData);

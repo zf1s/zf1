@@ -25,6 +25,7 @@
         "staabm/annotate-pull-request-from-checkstyle": "1.5.0"
     },
     "autoload": {
+        "classmap": ["polyfill/ReturnTypeWillChange.php"],
         "psr-0": {
             "Zend_Acl": "packages/zend-acl/library/",
             "Zend_Amf": "packages/zend-amf/library/",

@@ -176,6 +176,7 @@ class Zend_Tool_Project_Context_Repository implements Countable
         return $this->_contexts[$index]['isOverwritable'];
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_contexts);

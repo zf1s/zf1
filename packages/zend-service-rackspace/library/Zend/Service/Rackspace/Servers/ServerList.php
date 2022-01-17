@@ -109,6 +109,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->servers);
@@ -120,6 +121,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      *
      * @return Zend_Service_Rackspace_Servers_Server
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->servers[$this->iteratorKey];
@@ -131,6 +133,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->iteratorKey;
@@ -142,6 +145,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->iteratorKey += 1;
@@ -153,6 +157,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->iteratorKey = 0;
@@ -164,6 +169,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         $numItems = $this->count();
@@ -181,6 +187,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      * @param   int     $offset
      * @return  bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return ($offset < $this->count());
@@ -213,6 +220,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      * @param   string  $value
      * @throws  Zend_Service_Rackspace_Servers_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         // require_once 'Zend/Service/Rackspace/Servers/Exception.php';
@@ -227,6 +235,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      * @param   int     $offset
      * @throws  Zend_Service_Rackspace_Servers_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         // require_once 'Zend/Service/Rackspace/Servers/Exception.php';

@@ -369,6 +369,7 @@ class Zend_Feed_Element implements ArrayAccess
      * @param  string $offset
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         if (strpos($offset, ':') !== false) {
@@ -404,6 +405,7 @@ class Zend_Feed_Element implements ArrayAccess
      * @param  string $value
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         $this->ensureAppended();
@@ -424,6 +426,7 @@ class Zend_Feed_Element implements ArrayAccess
      * @param  string $offset
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         if (strpos($offset, ':') !== false) {

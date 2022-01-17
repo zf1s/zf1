@@ -215,11 +215,13 @@ class Zend_Uri_Mock extends Zend_Uri
 {
     protected function __construct($scheme, $schemeSpecific = '') { }
     public function getUri() { }
+    #[\ReturnTypeWillChange]
     public function valid() { }
 }
 class Zend_Uri_ExceptionCausing extends Zend_Uri
 {
     protected function __construct($scheme, $schemeSpecific = '') { }
+    #[\ReturnTypeWillChange]
     public function valid() { }
     public function getUri()
     {

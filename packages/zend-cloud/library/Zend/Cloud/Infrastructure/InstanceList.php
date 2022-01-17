@@ -88,6 +88,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->instances);
@@ -100,6 +101,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      *
      * @return Instance
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->instances[$this->iteratorKey];
@@ -112,6 +114,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->iteratorKey;
@@ -124,6 +127,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->iteratorKey++;
@@ -136,6 +140,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->iteratorKey = 0;
@@ -148,6 +153,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         $numItems = $this->count();
@@ -165,6 +171,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      * @param  int $offset
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return ($offset < $this->count());
@@ -197,6 +204,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      * @param   string  $value
      * @throws  Zend_Cloud_Infrastructure_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         // require_once 'Zend/Cloud/Infrastructure/Exception.php';
@@ -211,6 +219,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      * @param   int     $offset
      * @throws  Zend_Cloud_Infrastructure_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         // require_once 'Zend/Cloud/Infrastructure/Exception.php';

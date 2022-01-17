@@ -242,12 +242,11 @@ class Zend_Config_IniTest extends PHPUnit_Framework_TestCase
     public function testZF3196_InvalidIniFile()
     {
         try {
-            $config = new Zend_Config_Ini($this->_iniFileInvalid);
+            new Zend_Config_Ini($this->_iniFileInvalid);
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            $this->assertRegexp('/(Error parsing|parse error|syntax error, unexpected)/', $expected->getMessage());
+            $this->assertRegExp('/(Error parsing|parse error|syntax error(, unexpected| in ))|/', $expected->getMessage());
         }
-
     }
 
     /**

@@ -81,6 +81,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->_key;
@@ -91,6 +92,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->_key++;
@@ -101,6 +103,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->_key = 0;
@@ -111,6 +114,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return $this->_key >= 0 && $this->_key < $this->count();
@@ -121,6 +125,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return $this->_nodes ? $this->_nodes->length : 0;

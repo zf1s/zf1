@@ -288,6 +288,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
      * @return integer
      * @throws Zend_Queue_Exception
      */
+    #[\ReturnTypeWillChange]
     public function count(Zend_Queue $queue = null)
     {
         if ($queue === null) {

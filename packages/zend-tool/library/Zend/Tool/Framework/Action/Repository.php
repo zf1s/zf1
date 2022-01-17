@@ -120,6 +120,7 @@ class Zend_Tool_Framework_Action_Repository
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_actions);
@@ -130,6 +131,7 @@ class Zend_Tool_Framework_Action_Repository
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->_actions);

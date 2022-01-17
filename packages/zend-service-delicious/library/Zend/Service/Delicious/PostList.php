@@ -161,6 +161,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_posts);
@@ -173,6 +174,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      *
      * @return Zend_Service_Delicious_SimplePost
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->_posts[$this->_iteratorKey];
@@ -185,6 +187,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->_iteratorKey;
@@ -197,6 +200,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->_iteratorKey += 1;
@@ -209,6 +213,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->_iteratorKey = 0;
@@ -221,6 +226,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         $numItems = $this->count();
@@ -240,6 +246,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      * @param   int     $offset
      * @return  bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return ($offset < $this->count());
@@ -272,6 +279,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      * @param   string  $value
      * @throws  Zend_Service_Delicious_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         /**
@@ -289,6 +297,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      * @param   int     $offset
      * @throws  Zend_Service_Delicious_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         /**

@@ -665,6 +665,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return $this->_docCount;

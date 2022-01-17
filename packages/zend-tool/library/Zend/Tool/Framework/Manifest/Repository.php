@@ -295,6 +295,7 @@ class Zend_Tool_Framework_Manifest_Repository
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_metadatas);
@@ -305,6 +306,7 @@ class Zend_Tool_Framework_Manifest_Repository
      *
      * @return ArrayIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->_metadatas);
