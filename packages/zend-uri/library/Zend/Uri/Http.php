@@ -269,6 +269,7 @@ class Zend_Uri_Http extends Zend_Uri
      *
      * @return boolean
      */
+    #[ReturnTypeWillChange]
     public function valid()
     {
         // Return true if and only if all parts of the URI have passed validation

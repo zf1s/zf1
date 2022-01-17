@@ -31,6 +31,7 @@
  */
 class Zf4207 extends ArrayObject implements Zend_Paginator_Adapter_Interface
 {
+    #[ReturnTypeWillChange]
     public function count()
     {
         return 10;

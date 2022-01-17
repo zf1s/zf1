@@ -67,31 +67,37 @@ class Zend_Feed_Reader_Feed_Atom_Source extends Zend_Feed_Reader_Feed_Atom
     /**
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function count() {}
 
     /**
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function current() {}
 
     /**
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function key() {}
 
     /**
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function next() {}
 
     /**
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function rewind() {}
 
     /**
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function valid() {}
 
     /**

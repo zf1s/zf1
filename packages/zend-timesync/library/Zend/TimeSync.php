@@ -93,6 +93,7 @@ class Zend_TimeSync implements IteratorAggregate
      *
      * @return ArrayObject
      */
+    #[ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayObject($this->_timeservers);

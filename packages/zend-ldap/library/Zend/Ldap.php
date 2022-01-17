@@ -1056,6 +1056,7 @@ class Zend_Ldap
      * @return integer
      * @throws Zend_Ldap_Exception
      */
+    #[ReturnTypeWillChange]
     public function count($filter, $basedn = null, $scope = self::SEARCH_SCOPE_SUB)
     {
         try {

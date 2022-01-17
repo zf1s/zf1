@@ -1040,6 +1040,7 @@ class Zend_Soap_Server_TestLocalSoapClient extends SoapClient
         parent::__construct($wsdl, $options);
     }
 
+    #[ReturnTypeWillChange]
     function __doRequest($request, $location, $action, $version, $one_way = 0)
     {
         ob_start();

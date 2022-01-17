@@ -71,6 +71,7 @@ class Zend_File_ClassFileLocator extends FilterIterator
      *
      * @return bool
      */
+    #[ReturnTypeWillChange]
     public function accept()
     {
         $file = $this->getInnerIterator()->current();

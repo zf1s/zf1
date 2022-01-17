@@ -344,6 +344,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @return integer
      * @throws Zend_Queue_Exception (not supported)
      */
+    #[ReturnTypeWillChange]
     public function count(Zend_Queue $queue=null)
     {
         // require_once 'Zend/Queue/Exception.php';
