@@ -16,6 +16,7 @@
         "ext-spl": "*",
         "ext-xml": "*",
         "ext-zlib": "*",
+        "jworman/polyfill-php81": "^1.25",
         "symfony/polyfill-php70": "^1.19"
     },
     "require-dev": {
@@ -25,7 +26,6 @@
         "staabm/annotate-pull-request-from-checkstyle": "1.5.0"
     },
     "autoload": {
-        "classmap": ["polyfill/ReturnTypeWillChange.php"],
         "psr-0": {
             "Zend_Acl": "packages/zend-acl/library/",
             "Zend_Amf": "packages/zend-amf/library/",
@@ -210,5 +210,8 @@
         "lint": "parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php .",
         "lint.checkstyle": "@lint --checkstyle",
         "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
     }
 }
