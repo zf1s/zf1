@@ -4,7 +4,8 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
-        "symfony/polyfill-php70": "^1.19"
+        "symfony/polyfill-php70": "^1.19",
+        "zf1s/polyfill-php81": "^1.25"
     },
     "require-dev": {
         "ext-ctype": "*",

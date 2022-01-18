@@ -5,6 +5,7 @@
     "homepage": "http://framework.zend.com/",
     "license": "BSD-3-Clause",
     "require": {
+        "zf1s/polyfill-php81": "^1.25",
         "php": ">=5.3.3",
         "ext-spl": "*",
         "ext-reflection": "*",
