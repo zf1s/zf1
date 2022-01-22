@@ -386,6 +386,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function hasChildren()
     {
         return count($this->_subResources) > 0;
@@ -396,6 +397,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function getChildren()
     {
         return $this->current();

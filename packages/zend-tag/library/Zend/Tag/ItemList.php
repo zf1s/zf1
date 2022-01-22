@@ -119,6 +119,7 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      * @throws OutOfBoundsException When the seek position is invalid
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function seek($index)
     {
         $this->rewind();
@@ -206,6 +207,7 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      * @param  mixed $offset
      * @return Zend_Tag_Taggable
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset) {
         return $this->_items[$offset];
     }

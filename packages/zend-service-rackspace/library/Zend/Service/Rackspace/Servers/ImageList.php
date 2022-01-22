@@ -90,8 +90,8 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
     }
     /**
      * To Array
-     * 
-     * @return array 
+     *
+     * @return array
      */
     public function toArray()
     {
@@ -200,6 +200,7 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
      * @throws  Zend_Service_Rackspace_Servers_Exception
      * @return  Zend_Service_Rackspace_Servers_Image
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if ($this->offsetExists($offset)) {

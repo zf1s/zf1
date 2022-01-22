@@ -75,6 +75,7 @@ class Zend_Mail_Storage_Folder implements RecursiveIterator
      *
      * @return bool current element has children
      */
+    #[\ReturnTypeWillChange]
     public function hasChildren()
     {
         $current = $this->current();
@@ -86,6 +87,7 @@ class Zend_Mail_Storage_Folder implements RecursiveIterator
      *
      * @return Zend_Mail_Storage_Folder same as self::current()
      */
+    #[\ReturnTypeWillChange]
     public function getChildren()
     {
         return $this->current();

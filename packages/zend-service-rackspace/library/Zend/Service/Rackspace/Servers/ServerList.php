@@ -91,8 +91,8 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
     }
     /**
      * To Array
-     * 
-     * @return array 
+     *
+     * @return array
      */
     public function toArray()
     {
@@ -201,6 +201,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      * @throws  Zend_Service_Rackspace_Servers_Exception
      * @return  Zend_Service_Rackspace_Servers_Server
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if ($this->offsetExists($offset)) {

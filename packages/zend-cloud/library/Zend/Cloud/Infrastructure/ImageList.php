@@ -32,7 +32,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
 
     /**
      * The Image adapter (if exists)
-     * 
+     *
      * @var object
      */
     protected $adapter;
@@ -185,6 +185,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
      * @throws  Zend_Cloud_Infrastructure_Exception
      * @return  Image
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if (!$this->offsetExists($offset)) {

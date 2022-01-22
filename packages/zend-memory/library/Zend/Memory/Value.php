@@ -99,6 +99,7 @@ class Zend_Memory_Value implements ArrayAccess {
      * @param integer $offset
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->_value[$offset];

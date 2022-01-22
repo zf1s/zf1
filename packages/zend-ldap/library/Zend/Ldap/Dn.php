@@ -435,6 +435,7 @@ class Zend_Ldap_Dn implements ArrayAccess
      * @param  int $offset
      * @return array
      */
+    #[\ReturnTypeWillChange]
      public function offsetGet($offset)
      {
          return $this->get($offset, 1, null);

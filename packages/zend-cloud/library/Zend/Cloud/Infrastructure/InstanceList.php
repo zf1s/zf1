@@ -186,6 +186,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      * @return Instance
      * @throws Zend_Cloud_Infrastructure_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if (!$this->offsetExists($offset)) {

@@ -169,6 +169,7 @@ class Zend_Service_Flickr_ResultSet implements SeekableIterator
      * @throws OutOfBoundsException
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function seek($index)
     {
         $indexInt = (int) $index;

@@ -247,6 +247,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @param    int $id
       * @return   Zend_Mail_Message message object
       */
+    #[\ReturnTypeWillChange]
      public function offsetGet($id)
      {
         return $this->getMessage($id);
@@ -360,6 +361,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @return void
       * @throws OutOfBoundsException
       */
+    #[\ReturnTypeWillChange]
      public function seek($pos)
      {
         if ($this->_iterationMax === null) {

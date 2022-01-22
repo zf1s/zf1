@@ -90,8 +90,8 @@ class Zend_Service_Rackspace_Servers_SharedIpGroupList implements Countable, Ite
     }
     /**
      * To Array
-     * 
-     * @return array 
+     *
+     * @return array
      */
     public function toArray()
     {
@@ -200,6 +200,7 @@ class Zend_Service_Rackspace_Servers_SharedIpGroupList implements Countable, Ite
      * @throws  Zend_Service_Rackspace_Servers_Exception
      * @return  Zend_Service_Rackspace_Servers_SharedIpGroup
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if ($this->offsetExists($offset)) {

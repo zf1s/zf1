@@ -286,6 +286,7 @@ abstract class Zend_View_Helper_Placeholder_Container_Standalone extends Zend_Vi
      * @param  string|int $offset
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->getContainer()->offsetGet($offset);
