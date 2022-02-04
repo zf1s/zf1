@@ -126,7 +126,7 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
             );
         }
 
-        if (in_array(strtoupper($tableName), $tableList)) {
+        if (in_array(strtoupper((string) $tableName), $tableList)) {
             return null;
         }
         return 'CREATE TABLE ' . $this->_db->quoteIdentifier($tableName, true);
@@ -144,7 +144,7 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
             );
         }
 
-        if (in_array(strtoupper($tableName), $tableList)) {
+        if (in_array(strtoupper((string) $tableName), $tableList)) {
             return 'DROP TABLE ' . $this->_db->quoteIdentifier($tableName, true);
         }
         return null;
@@ -162,7 +162,7 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
 
         $seqList = $this->_db->fetchCol($sequenceQuery);
 
-        if (in_array(strtoupper($sequenceName), $seqList)) {
+        if (in_array(strtoupper((string) $sequenceName), $seqList)) {
             return null;
         }
         return 'CREATE SEQUENCE ' . $this->_db->quoteIdentifier($sequenceName, true) . ' AS INT START WITH 1 INCREMENT BY 1 MINVALUE 1';
@@ -180,7 +180,7 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
 
         $seqList = $this->_db->fetchCol($sequenceQuery);
 
-        if (in_array(strtoupper($sequenceName), $seqList)) {
+        if (in_array(strtoupper((string) $sequenceName), $seqList)) {
             return 'DROP SEQUENCE ' . $this->_db->quoteIdentifier($sequenceName, true) . ' RESTRICT';
         }
         return null;

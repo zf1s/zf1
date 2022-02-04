@@ -70,12 +70,12 @@ class Zend_Tool_Project_Context_Repository implements Countable
 
     public function addContextsFromDirectory($directory, $prefix)
     {
-        $prefix = trim($prefix, '_') . '_';
+        $prefix = \trim((string) $prefix, '_') . '_';
         foreach (new DirectoryIterator($directory) as $directoryItem) {
-            if ($directoryItem->isDot() || (substr($directoryItem->getFilename(), -4) !== '.php')) {
+            if ($directoryItem->isDot() || (substr((string) $directoryItem->getFilename(), -4) !== '.php')) {
                 continue;
             }
-            $class = $prefix . substr($directoryItem->getFilename(), 0, -4);
+            $class = $prefix . substr((string) $directoryItem->getFilename(), 0, -4);
             $this->addContextClass($class);
         }
     }
@@ -176,6 +176,7 @@ class Zend_Tool_Project_Context_Repository implements Countable
         return $this->_contexts[$index]['isOverwritable'];
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_contexts);
@@ -183,7 +184,7 @@ class Zend_Tool_Project_Context_Repository implements Countable
 
     protected function _normalizeName($name)
     {
-        return strtolower($name);
+        return strtolower((string) $name);
     }
 
 }

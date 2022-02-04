@@ -126,9 +126,9 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader37 extends PHPUnit_Framework_Co
             throw new Zend_Test_PHPUnit_Constraint_Exception('Header constraint assertions require a response object');
         }
 
-        if (strstr($assertType, 'Not')) {
+        if (strstr((string) $assertType, 'Not')) {
             $this->setNegate(true);
-            $assertType = str_replace('Not', '', $assertType);
+            $assertType = str_replace((string) 'Not', '', $assertType);
         }
 
         if (!in_array($assertType, $this->_assertTypes)) {
@@ -334,7 +334,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader37 extends PHPUnit_Framework_Co
     protected function _getHeader(Zend_Controller_Response_Abstract $response, $header)
     {
         $headers = $response->sendHeaders();
-        $header  = strtolower($header);
+        $header  = strtolower((string) $header);
         if (array_key_exists($header, $headers)) {
             return $headers[$header];
         }
@@ -355,9 +355,9 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader37 extends PHPUnit_Framework_Co
             return false;
         }
 
-        $contents = str_replace($header . ': ', '', $fullHeader);
+        $contents = str_replace((string) $header . ': ', '', $fullHeader);
 
-        return (strstr($contents, $match) !== false);
+        return (strstr((string) $contents, $match) !== false);
     }
 
     /**
@@ -374,9 +374,9 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader37 extends PHPUnit_Framework_Co
             return true;
         }
 
-        $contents = str_replace($header . ': ', '', $fullHeader);
+        $contents = str_replace((string) $header . ': ', '', $fullHeader);
 
-        return (strstr($contents, $match) === false);
+        return (strstr((string) $contents, $match) === false);
     }
 
     /**
@@ -393,7 +393,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader37 extends PHPUnit_Framework_Co
             return false;
         }
 
-        $contents = str_replace($header . ': ', '', $fullHeader);
+        $contents = str_replace((string) $header . ': ', '', $fullHeader);
 
         return preg_match($pattern, $contents);
     }
@@ -412,7 +412,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader37 extends PHPUnit_Framework_Co
             return true;
         }
 
-        $contents = str_replace($header . ': ', '', $fullHeader);
+        $contents = str_replace((string) $header . ': ', '', $fullHeader);
 
         return !preg_match($pattern, $contents);
     }

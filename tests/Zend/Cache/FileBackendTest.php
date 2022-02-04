@@ -195,8 +195,8 @@ class Zend_Cache_FileBackendTest extends Zend_Cache_CommonExtendedBackendTest {
         $file = fopen($fn, 'a+');
         fclose($file);
 
-        $this->assertTrue(file_exists($fn));
+        $this->assertTrue(file_exists((string) $fn));
         $this->assertTrue($this->_instance->clean(Zend_Cache::CLEANING_MODE_ALL));
-        $this->assertFalse(file_exists($fn));
+        $this->assertFalse(file_exists((string) $fn));
     }
 }

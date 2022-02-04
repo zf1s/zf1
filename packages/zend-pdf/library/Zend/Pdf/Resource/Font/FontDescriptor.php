@@ -182,7 +182,7 @@ class Zend_Pdf_Resource_Font_FontDescriptor
                  */
                 $fontFile = $fontParser->getDataSource()->readAllBytes();
                 $fontFileObject = $font->getFactory()->newStreamObject($fontFile);
-                $fontFileObject->dictionary->Length1 = new Zend_Pdf_Element_Numeric(strlen($fontFile));
+                $fontFileObject->dictionary->Length1 = new Zend_Pdf_Element_Numeric(strlen((string) $fontFile));
                 if (!($embeddingOptions & Zend_Pdf_Font::EMBED_DONT_COMPRESS)) {
                     /* Compress the font file using Flate. This generally cuts file
                      * sizes by about half!

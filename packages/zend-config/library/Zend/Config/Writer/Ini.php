@@ -153,7 +153,7 @@ class Zend_Config_Writer_Ini extends Zend_Config_Writer_FileAbstract
             return $value;
         } elseif (is_bool($value)) {
             return ($value ? 'true' : 'false');
-        } elseif (strpos($value, '"') === false) {
+        } elseif (strpos((string) $value, '"') === false) {
             return '"' . $value .  '"';
         } else {
             /** @see Zend_Config_Exception */

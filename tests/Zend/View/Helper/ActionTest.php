@@ -86,7 +86,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
         $this->response->headersSentThrowsException = false;
         $front->setRequest($this->request)
               ->setResponse($this->response)
-              ->addModuleDirectory(dirname(__FILE__) . '/_files/modules');
+              ->addModuleDirectory(__DIR__ . '/_files/modules');
 
         $this->view   = new Zend_View();
         $this->helper = new Zend_View_Helper_Action();
@@ -236,7 +236,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
         $response = new Zend_Controller_Response_Http();
         $response->headersSentThrowsException = false;
         $front->setResponse($response)
-              ->addModuleDirectory(dirname(__FILE__) . '/_files/modules');
+              ->addModuleDirectory(__DIR__ . '/_files/modules');
         try {
             $helper = new Zend_View_Helper_Action();
             $this->fail('No request in front controller should cause action helper to throw exception');
@@ -254,7 +254,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
 
         $request = new Zend_Controller_Request_Http('http://framework.zend.com/foo');
         $front->setRequest($this->request)
-              ->addModuleDirectory(dirname(__FILE__) . '/_files/modules');
+              ->addModuleDirectory(__DIR__ . '/_files/modules');
         try {
             $helper = new Zend_View_Helper_Action();
             $this->fail('No response in front controller should cause action helper to throw exception');
@@ -285,7 +285,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
     {
         // require_once 'Zend/View/Helper/Partial.php';
         $partial = new Zend_View_Helper_Partial();
-        $this->view->setScriptPath(dirname(__FILE__) . '/_files/modules/default/views/scripts/');
+        $this->view->setScriptPath(__DIR__ . '/_files/modules/default/views/scripts/');
         $partial->setView($this->view);
 
         Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer')->view = $this->view;

@@ -47,7 +47,7 @@ class Zend_Search_Lucene_Index_TermsPriorityQueueTest extends PHPUnit_Framework_
 {
     public function testQueue()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentsList = array('_0', '_1', '_2', '_3', '_4');
 
         $segmentInfoQueue = new Zend_Search_Lucene_Index_TermsPriorityQueue();

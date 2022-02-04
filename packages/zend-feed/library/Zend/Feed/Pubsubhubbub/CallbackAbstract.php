@@ -234,8 +234,8 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
                 $scheme = 'https';
             }
             $schemeAndHttpHost = $scheme . '://' . $this->_getHttpHost();
-            if (strpos($callbackUrl, $schemeAndHttpHost) === 0) {
-                $callbackUrl = substr($callbackUrl, strlen($schemeAndHttpHost));
+            if (strpos((string) $callbackUrl, $schemeAndHttpHost) === 0) {
+                $callbackUrl = substr((string) $callbackUrl, strlen((string) $schemeAndHttpHost));
             }
         } elseif (isset($_SERVER['ORIG_PATH_INFO'])) {
             $callbackUrl= $_SERVER['ORIG_PATH_INFO'];
@@ -279,11 +279,11 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
      */
     protected function _getHeader($header)
     {
-        $temp = strtoupper(str_replace('-', '_', $header));
+        $temp = strtoupper((string) str_replace((string) '-', '_', $header));
         if (!empty($_SERVER[$temp])) {
             return $_SERVER[$temp];
         }
-        $temp = 'HTTP_' . strtoupper(str_replace('-', '_', $header));
+        $temp = 'HTTP_' . strtoupper((string) str_replace((string) '-', '_', $header));
         if (!empty($_SERVER[$temp])) {
             return $_SERVER[$temp];
         }
@@ -304,10 +304,10 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
     protected function _getRawBody()
     {
         $body = file_get_contents('php://input');
-        if (strlen(trim($body)) == 0 && isset($GLOBALS['HTTP_RAW_POST_DATA'])) {
+        if (strlen((string) \trim((string) $body)) == 0 && isset($GLOBALS['HTTP_RAW_POST_DATA'])) {
             $body = $GLOBALS['HTTP_RAW_POST_DATA'];
         }
-        if (strlen(trim($body)) > 0) {
+        if (strlen((string) \trim((string) $body)) > 0) {
             return $body;
         }
         return false;

@@ -251,7 +251,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
             $style = $this->_fetchMode;
         }
         try {
-            return $this->_stmt->fetch($style, $cursor, $offset);
+            return $this->_stmt->fetch($style, (int) $cursor, (int) $offset);
         } catch (ValueError $e) {
             // PHP 8.0+ throws ValueError on invalid arguments
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
@@ -266,6 +266,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      *
      * @return IteratorIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new IteratorIterator($this->_stmt);

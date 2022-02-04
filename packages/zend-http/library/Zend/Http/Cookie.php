@@ -266,7 +266,7 @@ class Zend_Http_Cookie
     public function __toString()
     {
         if ($this->encodeValue) {
-            return $this->name . '=' . urlencode($this->value) . ';';
+            return $this->name . '=' . urlencode((string) $this->value) . ';';
         }
         return $this->name . '=' . $this->value . ';';
     }
@@ -297,26 +297,26 @@ class Zend_Http_Cookie
         $parts   = explode(';', $cookieStr);
 
         // If first part does not include '=', fail
-        if (strpos($parts[0], '=') === false) return false;
+        if (strpos((string) $parts[0], '=') === false) return false;
 
         // Get the name and value of the cookie
-        list($name, $value) = explode('=', trim(array_shift($parts)), 2);
-        $name  = trim($name);
+        list($name, $value) = explode('=', \trim((string) array_shift($parts)), 2);
+        $name  = \trim((string) $name);
         if ($encodeValue) {
-            $value = urldecode(trim($value));
+            $value = urldecode(\trim((string) $value));
         }
 
         // Set default domain and path
         if ($refUri instanceof Zend_Uri_Http) {
             $domain = $refUri->getHost();
             $path = $refUri->getPath();
-            $path = substr($path, 0, strrpos($path, '/'));
+            $path = substr((string) $path, 0, strrpos($path, '/'));
         }
 
         // Set other cookie parameters
         foreach ($parts as $part) {
-            $part = trim($part);
-            if (strtolower($part) == 'secure') {
+            $part = \trim((string) $part);
+            if (strtolower((string) $part) == 'secure') {
                 $secure = true;
                 continue;
             }
@@ -324,7 +324,7 @@ class Zend_Http_Cookie
             $keyValue = explode('=', $part, 2);
             if (count($keyValue) == 2) {
                 list($k, $v) = $keyValue;
-                switch (strtolower($k))    {
+                switch (strtolower((string) $k))    {
                     case 'expires':
                         if(($expires = strtotime($v)) === false) {
                             /**
@@ -386,11 +386,11 @@ class Zend_Http_Cookie
             throw new Zend_Http_Exception("\$host is expected to be a host name");
         }
 
-        $cookieDomain = strtolower($cookieDomain);
-        $host = strtolower($host);
+        $cookieDomain = strtolower((string) $cookieDomain);
+        $host = strtolower((string) $host);
 
         if ($cookieDomain[0] == '.') {
-            $cookieDomain = substr($cookieDomain, 1);
+            $cookieDomain = substr((string) $cookieDomain, 1);
         }
 
         // Check for either exact match or suffix match
@@ -419,6 +419,6 @@ class Zend_Http_Cookie
             throw new Zend_Http_Exception("\$path is expected to be a host name");
         }
 
-        return (strpos($path, $cookiePath) === 0);
+        return (strpos((string) $path, $cookiePath) === 0);
     }
 }

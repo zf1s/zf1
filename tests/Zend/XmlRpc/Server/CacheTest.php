@@ -68,7 +68,7 @@ class Zend_XmlRpc_Server_CacheTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->_file = realpath(dirname(__FILE__)) . '/xmlrpc.cache';
+        $this->_file = realpath(__DIR__) . '/xmlrpc.cache';
         $this->_server = new Zend_XmlRpc_Server();
         $this->_server->setClass('Zend_XmlRpc_Server_Cache', 'cache');
     }
@@ -78,7 +78,7 @@ class Zend_XmlRpc_Server_CacheTest extends PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-        if (file_exists($this->_file)) {
+        if (file_exists((string) $this->_file)) {
             unlink($this->_file);
         }
         unset($this->_server);

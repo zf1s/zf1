@@ -124,8 +124,8 @@ class Zend_Validate_Int extends Zend_Validate_Abstract
         $this->_setValue($value);
         if ($this->_locale === null) {
             $locale        = localeconv();
-            $valueFiltered = str_replace($locale['decimal_point'], '.', $value);
-            $valueFiltered = str_replace($locale['thousands_sep'], '', $valueFiltered);
+            $valueFiltered = str_replace((string) $locale['decimal_point'], '.', $value);
+            $valueFiltered = str_replace((string) $locale['thousands_sep'], '', $valueFiltered);
 
             if (strval(intval($valueFiltered)) != $valueFiltered) {
                 $this->_error(self::NOT_INT);

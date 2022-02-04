@@ -189,7 +189,7 @@ class Zend_Filter_Input
 
         foreach ($namespaces as $namespace) {
             $prefix = $namespace;
-            $path = str_replace('_', DIRECTORY_SEPARATOR, $prefix);
+            $path = str_replace((string) '_', DIRECTORY_SEPARATOR, $prefix);
             $this->addFilterPrefixPath($prefix, $path);
             $this->addValidatorPrefixPath($prefix, $path);
         }
@@ -235,7 +235,7 @@ class Zend_Filter_Input
      */
     public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)
     {
-        $type = strtolower($type);
+        $type = strtolower((string) $type);
         switch ($type) {
             case self::FILTER:
             case self::VALIDATE:
@@ -265,7 +265,7 @@ class Zend_Filter_Input
      */
     public function getPluginLoader($type)
     {
-        $type = strtolower($type);
+        $type = strtolower((string) $type);
         if (!isset($this->_loaders[$type])) {
             switch ($type) {
                 case self::FILTER:
@@ -537,7 +537,7 @@ class Zend_Filter_Input
                     foreach($value AS $prefix) {
                         $this->addValidatorPrefixPath(
                                 $prefix,
-                                str_replace('_', DIRECTORY_SEPARATOR, $prefix)
+                                str_replace((string) '_', DIRECTORY_SEPARATOR, $prefix)
                         );
                     }
                     break;
@@ -549,7 +549,7 @@ class Zend_Filter_Input
                     foreach($value AS $prefix) {
                         $this->addFilterPrefixPath(
                                 $prefix,
-                                str_replace('_', DIRECTORY_SEPARATOR, $prefix)
+                                str_replace((string) '_', DIRECTORY_SEPARATOR, $prefix)
                         );
                     }
                     break;
@@ -751,8 +751,8 @@ class Zend_Filter_Input
             }
         }
 
-        $message = str_replace('%rule%', $rule, $message);
-        $message = str_replace('%field%', $field, $message);
+        $message = str_replace((string) '%rule%', $rule, $message);
+        $message = str_replace((string) '%field%', $field, $message);
         return $message;
     }
 
@@ -771,8 +771,8 @@ class Zend_Filter_Input
             }
         }
 
-        $message = str_replace('%rule%', $rule, $message);
-        $message = str_replace('%field%', $field, $message);
+        $message = str_replace((string) '%rule%', $rule, $message);
+        $message = str_replace((string) '%field%', $field, $message);
         return $message;
     }
 
@@ -801,8 +801,8 @@ class Zend_Filter_Input
             $this->_data = array();
             return;
         }
-        
-        // remember the default not empty message in case we want to temporarily change it        
+
+        // remember the default not empty message in case we want to temporarily change it
         $preserveDefaultNotEmptyMessage = $this->_defaults[self::NOT_EMPTY_MESSAGE];
 
         foreach ($this->_validatorRules as $ruleName => &$validatorRule) {
@@ -840,14 +840,14 @@ class Zend_Filter_Input
             }
             if (!isset($validatorRule[self::ALLOW_EMPTY])) {
                 $foundNotEmptyValidator = false;
-                
+
                 foreach ($validatorRule as $rule) {
                     if ($rule === 'NotEmpty') {
                         $foundNotEmptyValidator = true;
                         // field may not be empty, we are ready
                         break 1;
                     }
-                    
+
                     if (is_array($rule)) {
                         $keys      = array_keys($rule);
                         $classKey  = array_shift($keys);
@@ -866,14 +866,14 @@ class Zend_Filter_Input
                         // it cannot be a NotEmpty validator, skip this one
                         continue;
                     }
-                    
+
                     if($rule instanceof Zend_Validate_NotEmpty) {
                         $foundNotEmptyValidator = true;
                         // field may not be empty, we are ready
                         break 1;
                     }
                 }
-                
+
                 if (!$foundNotEmptyValidator) {
                     $validatorRule[self::ALLOW_EMPTY] = $this->_defaults[self::ALLOW_EMPTY];
                 } else {
@@ -923,7 +923,7 @@ class Zend_Filter_Input
                             /** we are changing the defaults here, this is alright if all subsequent validators are also a not empty
                             * validator, but it goes wrong if one of them is not AND is required!!!
                             * that is why we restore the default value at the end of this loop
-                            */ 
+                            */
                             if (is_array($value)) {
                                 $temp = $value; // keep the original value
                                 $this->_defaults[self::NOT_EMPTY_MESSAGE] = array_pop($temp);
@@ -951,11 +951,11 @@ class Zend_Filter_Input
             } else {
                 $this->_validateRule($validatorRule);
             }
-            
+
             // reset the default not empty message
             $this->_defaults[self::NOT_EMPTY_MESSAGE] = $preserveDefaultNotEmptyMessage;
         }
-        
+
 
 
         /**
@@ -1035,8 +1035,8 @@ class Zend_Filter_Input
                     if (!($notEmptyValidator = $this->_getNotEmptyValidatorInstance($validatorRule))) {
                         $notEmptyValidator = $this->_getValidator('NotEmpty');
                         $notEmptyValidator->setMessage($this->_getNotEmptyMessage($validatorRule[self::RULE], $fieldKey));
-                    }            
-                            
+                    }
+
                     if (!$notEmptyValidator->isValid($field)) {
                         foreach ($notEmptyValidator->getMessages() as $messageKey => $message) {
                             if (!isset($messages[$messageKey])) {
@@ -1078,7 +1078,7 @@ class Zend_Filter_Input
                 $notEmptyValidator = $this->_getValidator('NotEmpty');
                 $notEmptyValidator->setMessage($this->_getNotEmptyMessage($validatorRule[self::RULE], $fieldName));
             }
-            
+
             if ($validatorRule[self::ALLOW_EMPTY]) {
                 $validatorChain = $validatorRule[self::VALIDATOR_CHAIN];
             } else {
@@ -1136,10 +1136,10 @@ class Zend_Filter_Input
             }
         }
     }
-    
+
     /**
      * Check a validatorRule for the presence of a NotEmpty validator instance.
-     * The purpose is to preserve things like a custom message, that may have been 
+     * The purpose is to preserve things like a custom message, that may have been
      * set on the validator outside Zend_Filter_Input.
      * @param array $validatorRule
      * @return mixed false if none is found, Zend_Validate_NotEmpty instance if found
@@ -1150,7 +1150,7 @@ class Zend_Filter_Input
                 return $value;
             }
         }
-        
+
         return false;
     }
 

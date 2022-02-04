@@ -179,7 +179,7 @@ class Zend_Service_Rackspace_Servers_OfflineTest extends PHPUnit_Framework_TestC
      */
     public function testChangeServerPassword()
     {
-        self::$adminPass= md5(time().rand());
+        self::$adminPass= md5((string) time().rand());
         $this->assertTrue($this->rackspace->changeServerPassword(self::$serverId,self::$adminPass));
     }
     /**

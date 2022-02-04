@@ -43,7 +43,7 @@ class Zend_Crypt_MathTest extends PHPUnit_Framework_TestCase
         try {
             $math = new Zend_Crypt_Math_BigInteger();
         } catch (Zend_Crypt_Math_BigInteger_Exception $e) {
-            if (strpos($e->getMessage(), 'big integer precision math support not detected') !== false) {
+            if (strpos((string) $e->getMessage(), 'big integer precision math support not detected') !== false) {
                 $this->markTestSkipped($e->getMessage());
             } else {
                 throw $e;
@@ -63,7 +63,7 @@ class Zend_Crypt_MathTest extends PHPUnit_Framework_TestCase
         for ($length = 1; $length < 4096; $length++) {
             $rand = Zend_Crypt_Math::randBytes($length);
             $this->assertTrue(false !== $rand);
-            $this->assertEquals($length, strlen($rand));
+            $this->assertEquals($length, strlen((string) $rand));
         }
     }
 

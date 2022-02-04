@@ -358,8 +358,8 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
      */
     public function testDoesNotAllowExternalEntities()
     {
-        $payload = file_get_contents(dirname(__FILE__) . '/_files/ZF12293-request.xml');
-        $payload = sprintf($payload, 'file://' . realpath(dirname(__FILE__) . '/_files/ZF12293-payload.txt'));
+        $payload = file_get_contents(__DIR__ . '/_files/ZF12293-request.xml');
+        $payload = sprintf($payload, 'file://' . realpath(__DIR__ . '/_files/ZF12293-payload.txt'));
         $this->_request->loadXml($payload);
         $method = $this->_request->getMethod();
         $this->assertTrue(empty($method));
@@ -370,8 +370,8 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
 
      public function testShouldDisallowsDoctypeInRequestXmlAndReturnFalseOnLoading()
      {
-         $payload = file_get_contents(dirname(__FILE__) . '/_files/ZF12293-request.xml');
-         $payload = sprintf($payload, 'file://' . realpath(dirname(__FILE__) . '/_files/ZF12293-payload.txt'));
+         $payload = file_get_contents(__DIR__ . '/_files/ZF12293-request.xml');
+         $payload = sprintf($payload, 'file://' . realpath(__DIR__ . '/_files/ZF12293-payload.txt'));
          $this->assertFalse($this->_request->loadXml($payload));
      }
 }

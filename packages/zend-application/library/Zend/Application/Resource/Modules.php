@@ -73,7 +73,7 @@ class Zend_Application_Resource_Modules extends Zend_Application_Resource_Resour
             $bootstrapClass = $this->_formatModuleName($module) . '_Bootstrap';
             if (!class_exists($bootstrapClass, false)) {
                 $bootstrapPath = dirname($moduleDirectory) . '/Bootstrap.php';
-                if (file_exists($bootstrapPath)) {
+                if (file_exists((string) $bootstrapPath)) {
                     $eMsgTpl = 'Bootstrap file found for module "%s" but bootstrap class "%s" not found';
                     include_once $bootstrapPath;
                     if (($default != $module)
@@ -149,10 +149,10 @@ class Zend_Application_Resource_Modules extends Zend_Application_Resource_Resour
      */
     protected function _formatModuleName($name)
     {
-        $name = strtolower($name);
+        $name = strtolower((string) $name);
         $name = str_replace(array('-', '.'), ' ', $name);
         $name = ucwords($name);
-        $name = str_replace(' ', '', $name);
+        $name = str_replace((string) ' ', '', $name);
         return $name;
     }
 }

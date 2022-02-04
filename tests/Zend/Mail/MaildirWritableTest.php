@@ -42,7 +42,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_originalDir = dirname(__FILE__) . '/_files/test.maildir/';
+        $this->_originalDir = __DIR__ . '/_files/test.maildir/';
 
         if (!is_dir($this->_originalDir . '/cur/')) {
             $this->markTestSkipped('You have to unpack maildir.tar in Zend/Mail/_files/test.maildir/ '
@@ -54,9 +54,9 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
             if (TESTS_ZEND_MAIL_TEMPDIR != null) {
                 $this->_tmpdir = TESTS_ZEND_MAIL_TEMPDIR;
             } else {
-                $this->_tmpdir = dirname(__FILE__) . '/_files/test.tmp/';
+                $this->_tmpdir = __DIR__ . '/_files/test.tmp/';
             }
-            if (!file_exists($this->_tmpdir)) {
+            if (!file_exists((string) $this->_tmpdir)) {
                 mkdir($this->_tmpdir);
             }
             $count = 0;
@@ -80,7 +80,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
                 mkdir($this->_tmpdir . $dir);
             }
             foreach (array('cur', 'new') as $subdir) {
-                if (!file_exists($this->_originalDir . $dir . '/' . $subdir)) {
+                if (!file_exists((string) $this->_originalDir . $dir . '/' . $subdir)) {
                     continue;
                 }
                 mkdir($this->_tmpdir . $dir . '/' . $subdir);
@@ -101,11 +101,11 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
     public function tearDown()
     {
         foreach (array_reverse($this->_subdirs) as $dir) {
-            if (!file_exists($this->_tmpdir . $dir)) {
+            if (!file_exists((string) $this->_tmpdir . $dir)) {
                 continue;
             }
             foreach (array('cur', 'new', 'tmp') as $subdir) {
-                if (!file_exists($this->_tmpdir . $dir . '/' . $subdir)) {
+                if (!file_exists((string) $this->_tmpdir . $dir . '/' . $subdir)) {
                     continue;
                 }
                 $dh = opendir($this->_tmpdir . $dir . '/' . $subdir);

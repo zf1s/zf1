@@ -79,9 +79,9 @@ class Zend_Translate_Adapter_Gettext extends Zend_Translate_Adapter {
 
         // get Endian
         $input = $this->_readMOData(1);
-        if (strtolower(substr(dechex($input[1]), -8)) == "950412de") {
+        if (strtolower((string) substr((string) dechex($input[1]), -8)) == "950412de") {
             $this->_bigEndian = false;
-        } else if (strtolower(substr(dechex($input[1]), -8)) == "de120495") {
+        } else if (strtolower((string) substr((string) dechex($input[1]), -8)) == "de120495") {
             $this->_bigEndian = true;
         } else {
             @fclose($this->_file);
@@ -133,10 +133,10 @@ class Zend_Translate_Adapter_Gettext extends Zend_Translate_Adapter {
                 }
             }
         }
-        
+
         @fclose($this->_file);
 
-        $this->_data[$locale][''] = trim($this->_data[$locale]['']);
+        $this->_data[$locale][''] = \trim((string) $this->_data[$locale]['']);
         if (empty($this->_data[$locale][''])) {
             $this->_adapterInfo[$filename] = 'No adapter information available';
         } else {

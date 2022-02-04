@@ -45,14 +45,14 @@ class Zend_Ldap_Converter
      */
     public static function ascToHex32($string)
     {
-        for ($i = 0, $iMax = strlen($string); $i< $iMax; $i++) {
-            $char = substr($string, $i, 1);
-            if (ord($char)<32) {
-                $hex = dechex(ord($char));
-                if (strlen($hex) === 1) {
+        for ($i = 0, $iMax = strlen((string) $string); $i< $iMax; $i++) {
+            $char = substr((string) $string, $i, 1);
+            if (ord((string) $char)<32) {
+                $hex = dechex(ord((string) $char));
+                if (strlen((string) $hex) === 1) {
                     $hex = '0' . $hex;
                 }
-                $string = str_replace($char, '\\' . $hex, $string);
+                $string = str_replace((string) $char, '\\' . $hex, $string);
             }
         }
         return $string;
@@ -86,7 +86,7 @@ class Zend_Ldap_Converter
      */
     private static function _charHex32ToAsc(array $matches)
     {
-        return chr(hexdec(ltrim($matches[0], '\\')));
+        return chr(hexdec(ltrim((string) $matches[0], '\\')));
     }
 
     /**
@@ -196,7 +196,7 @@ class Zend_Ldap_Converter
         if (!is_scalar($value)) {
             return $return;
         }
-        if (true === $value || 'true' === strtolower($value) || 1 === $value) {
+        if (true === $value || 'true' === strtolower((string) $value) || 1 === $value) {
             $return = 'TRUE';
         }
         return $return;
@@ -287,11 +287,11 @@ class Zend_Ldap_Converter
             'offsetminutes' => 0
         );
 
-        $length = strlen($date);
+        $length = strlen((string) $date);
 
         // Check for month.
         if ($length >= 6) {
-            $month = substr($date, 4, 2);
+            $month = substr((string) $date, 4, 2);
             if ($month < 1 || $month > 12) {
                 throw new InvalidArgumentException('Invalid date format found (invalid month)');
             }
@@ -300,7 +300,7 @@ class Zend_Ldap_Converter
 
         // Check for day
         if ($length >= 8) {
-            $day = substr($date, 6, 2);
+            $day = substr((string) $date, 6, 2);
             if ($day < 1 || $day > 31) {
                 throw new InvalidArgumentException('Invalid date format found (invalid day)');
             }
@@ -309,7 +309,7 @@ class Zend_Ldap_Converter
 
         // Check for Hour
         if ($length >= 10) {
-            $hour = substr($date, 8, 2);
+            $hour = substr((string) $date, 8, 2);
             if ($hour < 0 || $hour > 23) {
                 throw new InvalidArgumentException('Invalid date format found (invalid hour)');
             }
@@ -318,7 +318,7 @@ class Zend_Ldap_Converter
 
         // Check for minute
         if ($length >= 12) {
-            $minute = substr($date, 10, 2);
+            $minute = substr((string) $date, 10, 2);
             if ($minute < 0 || $minute > 59) {
                 throw new InvalidArgumentException('Invalid date format found (invalid minute)');
             }
@@ -327,7 +327,7 @@ class Zend_Ldap_Converter
 
         // Check for seconds
         if ($length >= 14) {
-            $second = substr($date, 12, 2);
+            $second = substr((string) $date, 12, 2);
             if ($second < 0 || $second > 59) {
                 throw new InvalidArgumentException('Invalid date format found (invalid second)');
             }
@@ -343,14 +343,14 @@ class Zend_Ldap_Converter
                 $time['offdir'] = $offset;
                 // we have an offset, so lets calculate it.
                 if (isset($off[2])) {
-                    $offsetHours = substr($off[2], 0, 2);
+                    $offsetHours = substr((string) $off[2], 0, 2);
                     if ($offsetHours < 0 || $offsetHours > 12) {
                         throw new InvalidArgumentException('Invalid date format found (invalid offset hour)');
                     }
                     $time['offsethours'] = $offsetHours;
                 }
                 if (isset($off[3])) {
-                    $offsetMinutes = substr($off[3], 0, 2);
+                    $offsetMinutes = substr((string) $off[3], 0, 2);
                     if ($offsetMinutes < 0 || $offsetMinutes > 59) {
                         throw new InvalidArgumentException('Invalid date format found (invalid offset minute)');
                     }

@@ -59,8 +59,8 @@ class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        if (file_exists(dirname(__FILE__) . '/../_files/compressed.gz')) {
-            unlink(dirname(__FILE__) . '/../_files/compressed.gz');
+        if (file_exists((string) __DIR__ . '/../_files/compressed.gz')) {
+            unlink(__DIR__ . '/../_files/compressed.gz');
         }
     }
 
@@ -179,7 +179,7 @@ class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
     public function testGzCompressToFile()
     {
         $filter   = new Zend_Filter_Compress_Gz();
-        $archive = dirname(__FILE__) . '/../_files/compressed.gz';
+        $archive = __DIR__ . '/../_files/compressed.gz';
         $filter->setArchive($archive);
 
         $content = $filter->compress('compress me');

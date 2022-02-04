@@ -171,10 +171,10 @@ class Zend_Crypt_Math_BigInteger_Bcmath implements Zend_Crypt_Math_BigInteger_In
     public function binaryToInteger($operand)
     {
         $result = '0';
-        while (strlen($operand)) {
-            $ord = ord(substr($operand, 0, 1));
+        while (strlen((string) $operand)) {
+            $ord = ord((string) substr((string) $operand, 0, 1));
             $result = bcadd(bcmul($result, 256), $ord);
-            $operand = substr($operand, 1);
+            $operand = substr((string) $operand, 1);
         }
         return $result;
     }
@@ -194,7 +194,7 @@ class Zend_Crypt_Math_BigInteger_Bcmath implements Zend_Crypt_Math_BigInteger_In
             $return = chr(bcmod($operand, 256)) . $return;
             $operand = bcdiv($operand, 256);
         }
-        if (ord($return[0]) > 127) {
+        if (ord((string) $return[0]) > 127) {
             $return = "\0" . $return;
         }
         return $return;
@@ -217,10 +217,10 @@ class Zend_Crypt_Math_BigInteger_Bcmath implements Zend_Crypt_Math_BigInteger_In
     public function hexToDecimal($operand)
     {
         $return = '0';
-        while(strlen($hex)) {
-            $hex = hexdec(substr($operand, 0, 4));
+        while(strlen((string) $hex)) {
+            $hex = hexdec(substr((string) $operand, 0, 4));
             $dec = bcadd(bcmul($return, 65536), $hex);
-            $operand = substr($operand, 4);
+            $operand = substr((string) $operand, 4);
         }
         return $return;
     }

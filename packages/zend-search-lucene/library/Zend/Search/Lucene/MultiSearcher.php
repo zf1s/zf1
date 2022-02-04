@@ -25,7 +25,7 @@
 
 /**
  * Import Zend_Search_Lucene_Interface_MultiSearcher for BC (see ZF-12067)
- * @see Zend_Search_Lucene_Interface_MultiSearcher 
+ * @see Zend_Search_Lucene_Interface_MultiSearcher
  */
 // require_once 'Zend/Search/Lucene/Interface/MultiSearcher.php';
 
@@ -145,6 +145,7 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         $count = 0;

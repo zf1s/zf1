@@ -202,8 +202,8 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         // and colons are field delimiters in the password file.
         if (empty($config['realm']) ||
             !ctype_print($config['realm']) ||
-            strpos($config['realm'], ':') !== false ||
-            strpos($config['realm'], '"') !== false) {
+            strpos((string) $config['realm'], ':') !== false ||
+            strpos((string) $config['realm'], '"') !== false) {
             /**
              * @see Zend_Auth_Adapter_Exception
              */
@@ -217,7 +217,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         if (in_array('digest', $this->_acceptSchemes)) {
             if (empty($config['digest_domains']) ||
                 !ctype_print($config['digest_domains']) ||
-                strpos($config['digest_domains'], '"') !== false) {
+                strpos((string) $config['digest_domains'], '"') !== false) {
                 /**
                  * @see Zend_Auth_Adapter_Exception
                  */
@@ -384,7 +384,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         }
 
         list($clientScheme) = explode(' ', $authHeader);
-        $clientScheme = strtolower($clientScheme);
+        $clientScheme = strtolower((string) $clientScheme);
 
         // The server can issue multiple challenges, but the client should
         // answer with only the selected auth scheme.
@@ -514,7 +514,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         }
 
         // Decode the Authorization header
-        $auth = substr($header, strlen('Basic '));
+        $auth = substr((string) $header, strlen((string) 'Basic '));
         $auth = base64_decode($auth);
         if (!$auth) {
             /**
@@ -703,7 +703,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         $ret = preg_match('/username="([^"]+)"/', $header, $temp);
         if (!$ret || empty($temp[1])
                   || !ctype_print($temp[1])
-                  || strpos($temp[1], ':') !== false) {
+                  || strpos((string) $temp[1], ':') !== false) {
             $data['username'] = '::invalid::';
         } else {
             $data['username'] = $temp[1];
@@ -714,7 +714,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         if (!$ret || empty($temp[1])) {
             return false;
         }
-        if (!ctype_print($temp[1]) || strpos($temp[1], ':') !== false) {
+        if (!ctype_print($temp[1]) || strpos((string) $temp[1], ':') !== false) {
             return false;
         } else {
             $data['realm'] = $temp[1];
@@ -760,7 +760,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         if (!$ret || empty($temp[1])) {
             return false;
         }
-        if (32 != strlen($temp[1]) || !ctype_xdigit($temp[1])) {
+        if (32 != strlen((string) $temp[1]) || !ctype_xdigit($temp[1])) {
             return false;
         } else {
             $data['response'] = $temp[1];
@@ -797,7 +797,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
             if (!$ret || empty($temp[1])) {
 
                 // Big surprise: IE isn't RFC 2617-compliant.
-                if (false !== strpos($this->_request->getHeader('User-Agent'), 'MSIE')) {
+                if (false !== strpos((string) $this->_request->getHeader('User-Agent'), 'MSIE')) {
                     $temp[1] = '';
                     $this->_ieNoOpaque = true;
                 } else {
@@ -806,7 +806,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
             }
             // This implementation only sends MD5 hex strings in the opaque value
             if (!$this->_ieNoOpaque &&
-                (32 != strlen($temp[1]) || !ctype_xdigit($temp[1]))) {
+                (32 != strlen((string) $temp[1]) || !ctype_xdigit($temp[1]))) {
                 return false;
             } else {
                 $data['opaque'] = $temp[1];
@@ -834,7 +834,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         if (!$ret || empty($temp[1])) {
             return false;
         }
-        if (8 != strlen($temp[1]) || !ctype_xdigit($temp[1])) {
+        if (8 != strlen((string) $temp[1]) || !ctype_xdigit($temp[1])) {
             return false;
         } else {
             $data['nc'] = $temp[1];
@@ -856,12 +856,12 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
      */
     protected function _secureStringCompare($a, $b)
     {
-        if (strlen($a) !== strlen($b)) {
+        if (strlen((string) $a) !== strlen((string) $b)) {
             return false;
         }
         $result = 0;
-        for ($i = 0; $i < strlen($a); $i++) {
-            $result |= ord($a[$i]) ^ ord($b[$i]);
+        for ($i = 0; $i < strlen((string) $a); $i++) {
+            $result |= ord((string) $a[$i]) ^ ord((string) $b[$i]);
         }
         return $result == 0;
     }

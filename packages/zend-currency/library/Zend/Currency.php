@@ -194,10 +194,10 @@ class Zend_Currency
                                                                'precision'     => $options['precision']));
 
         if ($options['position'] !== self::STANDARD) {
-            $value = str_replace('¤', '', $value);
+            $value = str_replace((string) '¤', '', $value);
             $space = '';
             if (iconv_strpos($value, ' ') !== false) {
-                $value = str_replace(' ', '', $value);
+                $value = str_replace((string) ' ', '', $value);
                 $space = ' ';
             }
 
@@ -232,12 +232,12 @@ class Zend_Currency
 
                 default:
                     $sign = '';
-                    $value = str_replace(' ', '', $value);
+                    $value = str_replace((string) ' ', '', $value);
                     break;
             }
         }
 
-        $value = str_replace('¤', $sign, $value);
+        $value = str_replace((string) '¤', $sign, $value);
         return $value;
     }
 
@@ -251,24 +251,24 @@ class Zend_Currency
      */
     private function _extractPattern($pattern, $value)
     {
-        if (strpos($pattern, '|') === false) {
+        if (strpos((string) $pattern, '|') === false) {
             return $pattern;
         }
 
         $patterns = explode('|', $pattern);
         $token    = $pattern;
-        $value    = trim(str_replace('¤', '', $value));
+        $value    = \trim((string) str_replace((string) '¤', '', $value));
         krsort($patterns);
         foreach($patterns as $content) {
-            if (strpos($content, '<') !== false) {
-                $check = iconv_substr($content, 0, iconv_strpos($content, '<'));
-                $token = iconv_substr($content, iconv_strpos($content, '<') + 1);
+            if (strpos((string) $content, '<') !== false) {
+                $check = iconv_substr((string) $content, 0, iconv_strpos($content, '<'));
+                $token = iconv_substr((string) $content, iconv_strpos($content, '<') + 1);
                 if ($check < $value) {
                     return $token;
                 }
             } else {
-                $check = iconv_substr($content, 0, iconv_strpos($content, '≤'));
-                $token = iconv_substr($content, iconv_strpos($content, '≤') + 1);
+                $check = iconv_substr((string) $content, 0, iconv_strpos($content, '≤'));
+                $token = iconv_substr((string) $content, iconv_strpos($content, '≤') + 1);
                 if ($check <= $value) {
                     return $token;
                 }
@@ -312,8 +312,8 @@ class Zend_Currency
 
         // Validate the locale and get the country short name
         $country = null;
-        if ((Zend_Locale::isLocale($locale, true, false)) and (strlen($locale) > 4)) {
-            $country = substr($locale, (strpos($locale, '_') + 1));
+        if ((Zend_Locale::isLocale($locale, true, false)) and (strlen((string) $locale) > 4)) {
+            $country = substr((string) $locale, (strpos((string) $locale, '_') + 1));
         } else {
             // require_once 'Zend/Currency/Exception.php';
             throw new Zend_Currency_Exception("No region found within the locale '" . (string) $locale . "'");
@@ -457,8 +457,8 @@ class Zend_Currency
     public function getCurrencyList($region = null)
     {
         if (empty($region) === true) {
-            if (strlen($this->_options['locale']) > 4) {
-                $region = substr($this->_options['locale'], (strpos($this->_options['locale'], '_') + 1));
+            if (strlen((string) $this->_options['locale']) > 4) {
+                $region = substr((string) $this->_options['locale'], (strpos((string) $this->_options['locale'], '_') + 1));
             }
         }
 
@@ -554,7 +554,7 @@ class Zend_Currency
         // require_once 'Zend/Locale.php';
         try {
             $locale = Zend_Locale::findLocale($locale);
-            if (strlen($locale) > 4) {
+            if (strlen((string) $locale) > 4) {
                 $this->_options['locale'] = $locale;
             } else {
                 // require_once 'Zend/Currency/Exception.php';
@@ -800,7 +800,7 @@ class Zend_Currency
         if (is_string($service)) {
             // require_once 'Zend/Loader.php';
             if (!class_exists($service)) {
-                $file = str_replace('_', DIRECTORY_SEPARATOR, $service) . '.php';
+                $file = str_replace((string) '_', DIRECTORY_SEPARATOR, $service) . '.php';
                 if (Zend_Loader::isReadable($file)) {
                     Zend_Loader::loadClass($service);
                 }
@@ -837,10 +837,10 @@ class Zend_Currency
         }
 
         foreach ($options as $name => $value) {
-            $name = strtolower($name);
+            $name = strtolower((string) $name);
             if ($name !== 'format') {
                 if (gettype($value) === 'string') {
-                    $value = strtolower($value);
+                    $value = strtolower((string) $value);
                 }
             }
 
@@ -855,7 +855,7 @@ class Zend_Currency
 
                 case 'format':
                     if ((empty($value) === false) and (Zend_Locale::isLocale($value, null, false) === false)) {
-                        if (!is_string($value) || (strpos($value, '0') === false)) {
+                        if (!is_string($value) || (strpos((string) $value, '0') === false)) {
                             // require_once 'Zend/Currency/Exception.php';
                             throw new Zend_Currency_Exception("'" .
                                 ((gettype($value) === 'object') ? get_class($value) : $value)

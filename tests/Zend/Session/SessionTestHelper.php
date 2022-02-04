@@ -24,7 +24,7 @@
  * @see Zend_Session
  */
 // require_once 'Zend/Session.php';
-require dirname(dirname(dirname(dirname(__FILE__)))) .'/vendor/autoload.php';
+require dirname(dirname(dirname(__DIR__))) .'/vendor/autoload.php';
 
 
 /**

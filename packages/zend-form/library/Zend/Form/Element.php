@@ -338,8 +338,8 @@ class Zend_Form_Element implements Zend_Validate_Interface
      * Used to resolve and return an element ID
      *
      * Passed to the HtmlTag decorator as a callback in order to provide an ID.
-     * 
-     * @param  Zend_Form_Decorator_Interface $decorator 
+     *
+     * @param  Zend_Form_Decorator_Interface $decorator
      * @return string
      */
     public static function resolveElementId(Zend_Form_Decorator_Interface $decorator)
@@ -554,17 +554,17 @@ class Zend_Form_Element implements Zend_Validate_Interface
         $id = $this->getFullyQualifiedName();
 
         // Bail early if no array notation detected
-        if (!strstr($id, '[')) {
+        if (!strstr((string) $id, '[')) {
             return $id;
         }
 
         // Strip array notation
-        if ('[]' == substr($id, -2)) {
-            $id = substr($id, 0, strlen($id) - 2);
+        if ('[]' == substr((string) $id, -2)) {
+            $id = substr((string) $id, 0, strlen((string) $id) - 2);
         }
-        $id = str_replace('][', '-', $id);
+        $id = str_replace((string) '][', '-', $id);
         $id = str_replace(array(']', '['), '-', $id);
-        $id = trim($id, '-');
+        $id = \trim((string) $id, '-');
 
         return $id;
     }
@@ -913,7 +913,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         $attribs = get_object_vars($this);
         unset($attribs['helper']);
         foreach ($attribs as $key => $value) {
-            if ('_' == substr($key, 0, 1)) {
+            if ('_' == substr((string) $key, 0, 1)) {
                 unset($attribs[$key]);
             }
         }
@@ -989,11 +989,11 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function __call($method, $args)
     {
-        if ('render' == substr($method, 0, 6)) {
+        if ('render' == substr((string) $method, 0, 6)) {
             $this->_isPartialRendering = true;
             $this->render();
             $this->_isPartialRendering = false;
-            $decoratorName = substr($method, 6);
+            $decoratorName = substr((string) $method, 6);
             if (false !== ($decorator = $this->getDecorator($decoratorName))) {
                 $decorator->setElement($this);
                 $seed = '';
@@ -1023,7 +1023,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         switch ($type) {
             case self::DECORATOR:
             case self::FILTER:
@@ -1048,11 +1048,11 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function getPluginLoader($type)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         switch ($type) {
             case self::FILTER:
             case self::VALIDATE:
-                $prefixSegment = ucfirst(strtolower($type));
+                $prefixSegment = ucfirst(strtolower((string) $type));
                 $pathSegment   = $prefixSegment;
             case self::DECORATOR:
                 if (!isset($prefixSegment)) {
@@ -1091,7 +1091,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function addPrefixPath($prefix, $path, $type = null)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         switch ($type) {
             case self::DECORATOR:
             case self::FILTER:
@@ -1100,11 +1100,11 @@ class Zend_Form_Element implements Zend_Validate_Interface
                 $loader->addPrefixPath($prefix, $path);
                 return $this;
             case null:
-                $nsSeparator = (false !== strpos($prefix, '\\'))?'\\':'_';
-                $prefix = rtrim($prefix, $nsSeparator) . $nsSeparator;
-                $path   = rtrim($path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+                $nsSeparator = (false !== strpos((string) $prefix, '\\'))?'\\':'_';
+                $prefix = rtrim((string) $prefix, $nsSeparator) . $nsSeparator;
+                $path   = rtrim((string) $path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
                 foreach (array(self::DECORATOR, self::FILTER, self::VALIDATE) as $type) {
-                    $cType        = ucfirst(strtolower($type));
+                    $cType        = ucfirst(strtolower((string) $type));
                     $loader       = $this->getPluginLoader($type);
                     $loader->addPrefixPath($prefix . $cType, $path . $cType . DIRECTORY_SEPARATOR);
                 }
@@ -1267,9 +1267,9 @@ class Zend_Form_Element implements Zend_Validate_Interface
     public function getValidator($name)
     {
         if (!isset($this->_validators[$name])) {
-            $len = strlen($name);
+            $len = strlen((string) $name);
             foreach ($this->_validators as $localName => $validator) {
-                if ($len > strlen($localName)) {
+                if ($len > strlen((string) $localName)) {
                     continue;
                 }
                 if (0 === substr_compare($localName, $name, -$len, $len, true)) {
@@ -1319,9 +1319,9 @@ class Zend_Form_Element implements Zend_Validate_Interface
         if (isset($this->_validators[$name])) {
             unset($this->_validators[$name]);
         } else {
-            $len = strlen($name);
+            $len = strlen((string) $name);
             foreach (array_keys($this->_validators) as $validator) {
-                if ($len > strlen($validator)) {
+                if ($len > strlen((string) $validator)) {
                     continue;
                 }
                 if (0 === substr_compare($validator, $name, -$len, $len, true)) {
@@ -1734,9 +1734,9 @@ class Zend_Form_Element implements Zend_Validate_Interface
     public function getFilter($name)
     {
         if (!isset($this->_filters[$name])) {
-            $len = strlen($name);
+            $len = strlen((string) $name);
             foreach ($this->_filters as $localName => $filter) {
-                if ($len > strlen($localName)) {
+                if ($len > strlen((string) $localName)) {
                     continue;
                 }
 
@@ -1787,9 +1787,9 @@ class Zend_Form_Element implements Zend_Validate_Interface
         if (isset($this->_filters[$name])) {
             unset($this->_filters[$name]);
         } else {
-            $len = strlen($name);
+            $len = strlen((string) $name);
             foreach (array_keys($this->_filters) as $filter) {
-                if ($len > strlen($filter)) {
+                if ($len > strlen((string) $filter)) {
                     continue;
                 }
                 if (0 === substr_compare($filter, $name, -$len, $len, true)) {
@@ -1974,9 +1974,9 @@ class Zend_Form_Element implements Zend_Validate_Interface
     public function getDecorator($name)
     {
         if (!isset($this->_decorators[$name])) {
-            $len = strlen($name);
+            $len = strlen((string) $name);
             foreach ($this->_decorators as $localName => $decorator) {
-                if ($len > strlen($localName)) {
+                if ($len > strlen((string) $localName)) {
                     continue;
                 }
 
@@ -2023,9 +2023,9 @@ class Zend_Form_Element implements Zend_Validate_Interface
         if (isset($this->_decorators[$name])) {
             unset($this->_decorators[$name]);
         } else {
-            $len = strlen($name);
+            $len = strlen((string) $name);
             foreach (array_keys($this->_decorators) as $decorator) {
-                if ($len > strlen($decorator)) {
+                if ($len > strlen((string) $decorator)) {
                     continue;
                 }
                 if (0 === substr_compare($decorator, $name, -$len, $len, true)) {
@@ -2274,18 +2274,18 @@ class Zend_Form_Element implements Zend_Validate_Interface
             if ($this->isArray() || is_array($value)) {
                 $aggregateMessages = array();
                 foreach ($value as $val) {
-                    $aggregateMessages[] = str_replace('%value%', $val, $message);
+                    $aggregateMessages[] = str_replace((string) '%value%', $val, $message);
                 }
                 if (count($aggregateMessages)) {
                     if ($this->_concatJustValuesInErrorMessage) {
                         $values = implode($this->getErrorMessageSeparator(), $value);
-                        $messages[$key] = str_replace('%value%', $values, $message);
+                        $messages[$key] = str_replace((string) '%value%', $values, $message);
                     } else {
                         $messages[$key] = implode($this->getErrorMessageSeparator(), $aggregateMessages);
                     }
                 }
             } else {
-                $messages[$key] = str_replace('%value%', $value, $message);
+                $messages[$key] = str_replace('%value%', (string) $value, $message);
             }
         }
         return $messages;

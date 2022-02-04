@@ -147,7 +147,7 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
         $this->assertTrue($res);
 
         $perms = fileperms($this->_instance->getOption('public_dir') . '/foo');
-        $this->assertEquals('777', substr(decoct($perms), -3));
+        $this->assertEquals('777', substr((string) decoct($perms), -3));
 
         unlink($this->_instance->getOption('public_dir') . '/foo/bar.html');
         rmdir($this->_instance->getOption('public_dir') . '/foo');

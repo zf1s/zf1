@@ -102,7 +102,7 @@ class Zend_Service_Audioscrobbler_AudioscrobblerTest extends Zend_Service_Audios
 
     public static function readTestResponse($file)
     {
-        $message = file_get_contents(sprintf('%s/_files/%s', dirname(__FILE__), $file));
+        $message = file_get_contents(sprintf('%s/_files/%s', __DIR__, $file));
         // Line endings are sometimes an issue inside the canned responses; the
         // following is a negative lookbehind assertion, and replaces any \n
         // not preceded by \r with the sequence \r\n, ensuring that the message

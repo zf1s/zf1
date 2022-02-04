@@ -338,8 +338,8 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
             $word     .= $consonant . $vowel;
         }
 
-        if (strlen($word) > $wordLen) {
-            $word = substr($word, 0, $wordLen);
+        if (strlen((string) $word) > $wordLen) {
+            $word = substr((string) $word, 0, $wordLen);
         }
 
         return $word;
@@ -364,7 +364,7 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
 
     protected function _generateRandomId()
     {
-        return md5(Zend_Crypt_Math::randBytes(32));
+        return md5((string) Zend_Crypt_Math::randBytes(32));
     }
 
     /**
@@ -395,7 +395,7 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
             $this->_error(self::MISSING_VALUE);
             return false;
         }
-        $input = strtolower($value['input']);
+        $input = strtolower((string) $value['input']);
         $this->_setValue($input);
 
         if (!isset($value['id'])) {

@@ -176,7 +176,7 @@ class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_A
         $params = array();
 
         if (!$partial) {
-            $path = trim($path, self::URI_DELIMITER);
+            $path = \trim((string) $path, self::URI_DELIMITER);
         } else {
             $matchedPath = $path;
         }
@@ -258,16 +258,16 @@ class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_A
         unset($params[$this->_actionKey]);
 
         foreach ($params as $key => $value) {
-            $key = ($encode) ? urlencode($key) : $key;
+            $key = ($encode) ? urlencode((string) $key) : $key;
             if (is_array($value)) {
                 foreach ($value as $arrayValue) {
-                    $arrayValue = ($encode) ? urlencode($arrayValue) : $arrayValue;
+                    $arrayValue = ($encode) ? urlencode((string) $arrayValue) : $arrayValue;
                     $url .= self::URI_DELIMITER . $key;
                     $url .= self::URI_DELIMITER . $arrayValue;
                 }
             } else {
                 if ($encode) {
-                    $value = urlencode($value);
+                    $value = urlencode((string) $value);
                 }
                 $url .= self::URI_DELIMITER . $key;
                 $url .= self::URI_DELIMITER . $value;
@@ -276,26 +276,26 @@ class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_A
 
         if (!empty($url) || $action !== $this->_defaults[$this->_actionKey]) {
             if ($encode) {
-                $action = urlencode($action);
+                $action = urlencode((string) $action);
             }
             $url = self::URI_DELIMITER . $action . $url;
         }
 
         if (!empty($url) || $controller !== $this->_defaults[$this->_controllerKey]) {
             if ($encode) {
-                $controller = urlencode($controller);
+                $controller = urlencode((string) $controller);
             }
             $url = self::URI_DELIMITER . $controller . $url;
         }
 
         if (isset($module)) {
             if ($encode) {
-                $module = urlencode($module);
+                $module = urlencode((string) $module);
             }
             $url = self::URI_DELIMITER . $module . $url;
         }
 
-        return ltrim($url, self::URI_DELIMITER);
+        return ltrim((string) $url, self::URI_DELIMITER);
     }
 
     /**

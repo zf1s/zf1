@@ -248,7 +248,7 @@ class Zend_Http_Client_Adapter_Proxy extends Zend_Http_Client_Adapter_Socket
 
         // Process provided headers, including important ones to CONNECT request
         foreach ($headers as $k => $v) {
-            switch (strtolower(substr($v,0,strpos($v,':')))) {
+            switch (strtolower((string) substr((string) $v,0,strpos((string) $v,':')))) {
                 case 'proxy-authorization':
                     // break intentionally omitted
 
@@ -277,7 +277,7 @@ class Zend_Http_Client_Adapter_Proxy extends Zend_Http_Client_Adapter_Socket
         $response = '';
         $gotStatus = false;
         while ($line = @fgets($this->socket)) {
-            $gotStatus = $gotStatus || (strpos($line, 'HTTP') !== false);
+            $gotStatus = $gotStatus || (strpos((string) $line, 'HTTP') !== false);
             if ($gotStatus) {
                 $response .= $line;
                 if (!chop($line)) {

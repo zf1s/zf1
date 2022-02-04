@@ -114,7 +114,7 @@ class Zend_Mail_Protocol_Pop3
 
         strtok($welcome, '<');
         $this->_timestamp = strtok('>');
-        if (!strpos($this->_timestamp, '@')) {
+        if (!strpos((string) $this->_timestamp, '@')) {
             $this->_timestamp = null;
         } else {
             $this->_timestamp = '<' . $this->_timestamp . '>';
@@ -174,8 +174,8 @@ class Zend_Mail_Protocol_Pop3
             throw new Zend_Mail_Protocol_Exception('read failed - connection closed?');
         }
 
-        $result = trim($result);
-        if (strpos($result, ' ')) {
+        $result = \trim((string) $result);
+        if (strpos((string) $result, ' ')) {
             list($status, $message) = explode(' ', $result, 2);
         } else {
             $status = $result;
@@ -193,9 +193,9 @@ class Zend_Mail_Protocol_Pop3
         if ($multiline) {
             $message = '';
             $line = fgets($this->_socket);
-            while ($line && rtrim($line, "\r\n") != '.') {
+            while ($line && rtrim((string) $line, "\r\n") != '.') {
                 if ($line[0] == '.') {
-                    $line = substr($line, 1);
+                    $line = substr((string) $line, 1);
                 }
                 $message .= $line;
                 $line = fgets($this->_socket);
@@ -271,7 +271,7 @@ class Zend_Mail_Protocol_Pop3
     {
         if ($tryApop && $this->_timestamp) {
             try {
-                $this->request("APOP $user " . md5($this->_timestamp . $password));
+                $this->request("APOP $user " . md5((string) $this->_timestamp . $password));
                 return;
             } catch (Zend_Mail_Protocol_Exception $e) {
                 // ignore
@@ -321,7 +321,7 @@ class Zend_Mail_Protocol_Pop3
         $messages = array();
         $line = strtok($result, "\n");
         while ($line) {
-            list($no, $size) = explode(' ', trim($line));
+            list($no, $size) = explode(' ', \trim((string) $line));
             $messages[(int)$no] = (int)$size;
             $line = strtok("\n");
         }
@@ -354,7 +354,7 @@ class Zend_Mail_Protocol_Pop3
             if (!$line) {
                 continue;
             }
-            list($no, $id) = explode(' ', trim($line), 2);
+            list($no, $id) = explode(' ', \trim((string) $line), 2);
             $messages[(int)$no] = $id;
         }
 

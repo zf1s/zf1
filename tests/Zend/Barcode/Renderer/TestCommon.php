@@ -42,7 +42,7 @@ abstract class Zend_Barcode_Renderer_TestCommon extends PHPUnit_Framework_TestCa
 
     public function setUp()
     {
-        Zend_Barcode::setBarcodeFont(dirname(__FILE__) . '/../Object/_fonts/Vera.ttf');
+        Zend_Barcode::setBarcodeFont(__DIR__ . '/../Object/_fonts/Vera.ttf');
         $this->_renderer = $this->_getRendererObject();
     }
 
@@ -213,7 +213,7 @@ abstract class Zend_Barcode_Renderer_TestCommon extends PHPUnit_Framework_TestCa
      */
     public function testRendererWithUnknownInstructionProvideByObject()
     {
-        require_once dirname(__FILE__) . '/../Object/_files/BarcodeTest.php';
+        require_once __DIR__ . '/../Object/_files/BarcodeTest.php';
         $object = new Zend_Barcode_Object_Test();
         $object->setText('test');
         $object->addInstruction(array('type' => 'unknown'));

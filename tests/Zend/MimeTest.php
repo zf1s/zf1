@@ -80,7 +80,7 @@ class Zend_MimeTest extends PHPUnit_Framework_TestCase
     {
         $raw = str_repeat('x',72) . '0';
         $quoted = Zend_Mime::encodeQuotedPrintable($raw, 72);
-        $expected = quoted_printable_decode($quoted);        
+        $expected = quoted_printable_decode($quoted);
         $this->assertEquals($expected, $raw);
     }
 
@@ -156,14 +156,14 @@ class Zend_MimeTest extends PHPUnit_Framework_TestCase
         $subject = "Alle meine Entchen schwimmen in dem See, schwimmen in dem See, Köpfchen in das Wasser, Schwänzchen in die Höh!";
         $encoded = Zend_Mime::encodeQuotedPrintableHeader($subject, "UTF-8", 100);
         foreach(explode(Zend_Mime::LINEEND, $encoded) AS $line ) {
-            if(strlen($line) > 100) {
-                $this->fail("Line '".$line."' is ".strlen($line)." chars long, only 100 allowed.");
+            if(strlen((string) $line) > 100) {
+                $this->fail("Line '".$line."' is ".strlen((string) $line)." chars long, only 100 allowed.");
             }
         }
         $encoded = Zend_Mime::encodeQuotedPrintableHeader($subject, "UTF-8", 40);
         foreach(explode(Zend_Mime::LINEEND, $encoded) AS $line ) {
-            if(strlen($line) > 40) {
-                $this->fail("Line '".$line."' is ".strlen($line)." chars long, only 40 allowed.");
+            if(strlen((string) $line) > 40) {
+                $this->fail("Line '".$line."' is ".strlen((string) $line)." chars long, only 40 allowed.");
             }
         }
     }

@@ -77,7 +77,7 @@ class Zend_Form_Decorator_FormTest extends PHPUnit_Framework_TestCase
     {
         // require_once 'Zend/View.php';
         $view = new Zend_View();
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
         return $view;
     }
 

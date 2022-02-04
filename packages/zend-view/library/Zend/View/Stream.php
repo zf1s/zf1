@@ -66,7 +66,7 @@ class Zend_View_Stream
     public function stream_open($path, $mode, $options, &$opened_path)
     {
         // get the view script source
-        $path        = str_replace('zend.view://', '', $path);
+        $path        = str_replace((string) 'zend.view://', '', $path);
         $this->_data = file_get_contents($path);
 
         /**
@@ -110,8 +110,8 @@ class Zend_View_Stream
      */
     public function stream_read($count)
     {
-        $ret = substr($this->_data, $this->_pos, $count);
-        $this->_pos += strlen($ret);
+        $ret = substr((string) $this->_data, $this->_pos, $count);
+        $this->_pos += strlen((string) $ret);
         return $ret;
     }
 
@@ -130,7 +130,7 @@ class Zend_View_Stream
      */
     public function stream_eof()
     {
-        return $this->_pos >= strlen($this->_data);
+        return $this->_pos >= strlen((string) $this->_data);
     }
 
 
@@ -150,7 +150,7 @@ class Zend_View_Stream
     {
         switch ($whence) {
             case SEEK_SET:
-                if ($offset < strlen($this->_data) && $offset >= 0) {
+                if ($offset < strlen((string) $this->_data) && $offset >= 0) {
                 $this->_pos = $offset;
                     return true;
                 } else {
@@ -168,8 +168,8 @@ class Zend_View_Stream
                 break;
 
             case SEEK_END:
-                if (strlen($this->_data) + $offset >= 0) {
-                    $this->_pos = strlen($this->_data) + $offset;
+                if (strlen((string) $this->_data) + $offset >= 0) {
+                    $this->_pos = strlen((string) $this->_data) + $offset;
                     return true;
                 } else {
                     return false;

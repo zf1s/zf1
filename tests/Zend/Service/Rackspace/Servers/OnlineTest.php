@@ -125,7 +125,7 @@ class Zend_Service_Rackspace_Servers_OnlineTest extends PHPUnit_Framework_TestCa
     {
         $info['status']= null;
         $i=0;
-        while ((strtoupper($info['status'])!==strtoupper($status)) && ($i<$timeout)) {
+        while ((strtoupper((string) $info['status'])!==strtoupper((string) $status)) && ($i<$timeout)) {
             $info= $this->rackspace->getServer(self::$serverId)->toArray();
             $i+=5;
             sleep(5);
@@ -202,7 +202,7 @@ class Zend_Service_Rackspace_Servers_OnlineTest extends PHPUnit_Framework_TestCa
      */
     public function testChangeServerPassword()
     {
-        self::$adminPass= md5(time().rand());
+        self::$adminPass= md5((string) time().rand());
         $this->assertTrue($this->rackspace->changeServerPassword(self::$serverId,self::$adminPass));
     }
     /**

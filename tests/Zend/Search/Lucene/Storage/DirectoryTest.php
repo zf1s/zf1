@@ -37,7 +37,7 @@ class Zend_Search_Lucene_Storage_DirectoryTest extends PHPUnit_Framework_TestCas
 {
     public function testFilesystem()
     {
-        $tempPath = dirname(__FILE__) . '/_tempFiles/_files';
+        $tempPath = __DIR__ . '/_tempFiles/_files';
 
         if (is_dir($tempPath)) {
             // remove files from temporary direcytory
@@ -104,13 +104,13 @@ class Zend_Search_Lucene_Storage_DirectoryTest extends PHPUnit_Framework_TestCas
 
     public function testFilesystemSubfoldersAutoCreation()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_tempFiles/_files/dir1/dir2/dir3');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_tempFiles/_files/dir1/dir2/dir3');
         $this->assertTrue($directory instanceof Zend_Search_Lucene_Storage_Directory);
         $directory->close();
 
-        rmdir(dirname(__FILE__) . '/_tempFiles/_files/dir1/dir2/dir3');
-        rmdir(dirname(__FILE__) . '/_tempFiles/_files/dir1/dir2');
-        rmdir(dirname(__FILE__) . '/_tempFiles/_files/dir1');
+        rmdir(__DIR__ . '/_tempFiles/_files/dir1/dir2/dir3');
+        rmdir(__DIR__ . '/_tempFiles/_files/dir1/dir2');
+        rmdir(__DIR__ . '/_tempFiles/_files/dir1');
     }
 }
 

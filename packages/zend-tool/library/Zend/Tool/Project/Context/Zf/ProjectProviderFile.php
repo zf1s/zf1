@@ -66,7 +66,7 @@ class Zend_Tool_Project_Context_Zf_ProjectProviderFile extends Zend_Tool_Project
         $this->_actionNames = $this->_resource->getAttribute('actionNames');
         $this->_filesystemName = ucfirst($this->_projectProviderName) . 'Provider.php';
 
-        if (strpos($this->_actionNames, ',')) {
+        if (strpos((string) $this->_actionNames, ',')) {
             $this->_actionNames = explode(',', $this->_actionNames);
         } else {
             $this->_actionNames = ($this->_actionNames) ? array($this->_actionNames) : array();

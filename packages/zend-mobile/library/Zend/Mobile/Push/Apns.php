@@ -109,7 +109,7 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
         if (!is_string($cert)) {
             throw new Zend_Mobile_Push_Exception('$cert must be a string');
         }
-        if (!file_exists($cert)) {
+        if (!file_exists((string) $cert)) {
             throw new Zend_Mobile_Push_Exception('$cert must be a valid path to the certificate');
         }
         $this->_certificate = $cert;
@@ -184,7 +184,7 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
 
     /**
     * Read from the Socket Server
-    * 
+    *
     * @param int $length
     * @return string
     */
@@ -198,7 +198,7 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
 
     /**
     * Write to the Socket Server
-    * 
+    *
     * @param string $payload
     * @return int
     */
@@ -257,7 +257,7 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
 
         $tokens = array();
         while ($token = $this->_read(38)) {
-            if (strlen($token) < 38) {
+            if (strlen((string) $token) < 38) {
                 continue;
             }
             $token = unpack('Ntime/ntokenLength/H*token', $token);
@@ -330,7 +330,7 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
         }
 
         $payload = pack('CNNnH*', 1, $id, $expire, 32, $message->getToken())
-            . pack('n', strlen($payload))
+            . pack('n', strlen((string) $payload))
             . $payload;
         $ret = $this->_write($payload);
         if ($ret === false) {
@@ -339,7 +339,7 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
         }
         // check for errors from apple
         $err = $this->_read(1024);
-        if (strlen($err) > 0) {
+        if (strlen((string) $err) > 0) {
             $err = unpack('Ccmd/Cerrno/Nid', $err);
             switch ($err['errno']) {
                 case 0:

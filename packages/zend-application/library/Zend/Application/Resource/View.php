@@ -69,7 +69,7 @@ class Zend_Application_Resource_View extends Zend_Application_Resource_ResourceA
             $this->_view = new Zend_View($options);
 
             if (isset($options['doctype'])) {
-                $this->_view->doctype()->setDoctype(strtoupper($options['doctype']));
+                $this->_view->doctype()->setDoctype(strtoupper((string) $options['doctype']));
                 if (isset($options['charset']) && $this->_view->doctype()->isHtml5()) {
                     $this->_view->headMeta()->setCharset($options['charset']);
                 }

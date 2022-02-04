@@ -528,7 +528,7 @@ class Zend_Navigation_Page_Mvc extends Zend_Navigation_Page
      */
     public function setRoute($route)
     {
-        if (null !== $route && (!is_string($route) || strlen($route) < 1)) {
+        if (null !== $route && (!is_string($route) || strlen((string) $route) < 1)) {
             // require_once 'Zend/Navigation/Exception.php';
             throw new Zend_Navigation_Exception(
                 'Invalid argument: $route must be a non-empty string or null'

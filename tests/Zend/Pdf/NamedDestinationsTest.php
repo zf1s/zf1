@@ -72,6 +72,6 @@ class Zend_Pdf_NamedDestinationsTest extends PHPUnit_Framework_TestCase
         $action3 = Zend_Pdf_Action_GoTo::create(Zend_Pdf_Destination_Fit::create($page3));
         $pdf->setNamedDestination('GoToPage3', $action3);
 
-        $this->assertTrue(strpos($pdf->render(), '[(GoToPage1) <</Type /Action /S /GoTo /D [3 0 R /Fit ] >> (Page1) [3 0 R /Fit ] (Page1_1) [1 /Fit ] (Page2) [4 0 R /Fit ] ]') !== false);
+        $this->assertTrue(strpos((string) $pdf->render(), '[(GoToPage1) <</Type /Action /S /GoTo /D [3 0 R /Fit ] >> (Page1) [3 0 R /Fit ] (Page1_1) [1 /Fit ] (Page2) [4 0 R /Fit ] ]') !== false);
     }
 }

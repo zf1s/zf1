@@ -127,7 +127,7 @@ class Zend_Search_Lucene_Document_Xlsx extends Zend_Search_Lucene_Document_OpenX
                 // Loop relations for workbook and extract worksheets...
                 foreach ($workbookRelations->Relationship as $workbookRelation) {
                     if ($workbookRelation["Type"] == Zend_Search_Lucene_Document_Xlsx::SCHEMA_WORKSHEETRELATION) {
-                        $worksheets[ str_replace( 'rId', '', (string)$workbookRelation["Id"]) ] = Zend_Xml_Security::scan(
+                        $worksheets[ str_replace((string)  'rId', '', (string)$workbookRelation["Id"]) ] = Zend_Xml_Security::scan(
                             $package->getFromName( $this->absoluteZipPath(dirname($rel["Target"]) . "/" . dirname($workbookRelation["Target"]) . "/" . basename($workbookRelation["Target"])) )
                         );
                     }

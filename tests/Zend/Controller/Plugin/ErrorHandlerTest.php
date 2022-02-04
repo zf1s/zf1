@@ -24,7 +24,7 @@
 if (!defined("PHPUnit_MAIN_METHOD"))
 {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_Plugin_ErrorHandlerTest::main");
-    $basePath = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
+    $basePath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
     set_include_path(
         $basePath . DIRECTORY_SEPARATOR . 'tests'
         . PATH_SEPARATOR . $basePath . DIRECTORY_SEPARATOR . 'library'

@@ -96,13 +96,13 @@ class Zend_Pdf_Resource_Image_Png extends Zend_Pdf_Resource_Image
         $width = $wtmp['i'];
         $htmp = unpack('Ni',fread($imageFile, 4));
         $height = $htmp['i'];
-        $bits = ord(fread($imageFile, 1)); //Higher than 8 bit depths are only supported in later versions of PDF.
-        $color = ord(fread($imageFile, 1));
+        $bits = ord((string) fread($imageFile, 1)); //Higher than 8 bit depths are only supported in later versions of PDF.
+        $color = ord((string) fread($imageFile, 1));
 
-        $compression = ord(fread($imageFile, 1));
-        $prefilter = ord(fread($imageFile,1));
+        $compression = ord((string) fread($imageFile, 1));
+        $prefilter = ord((string) fread($imageFile,1));
 
-        if (($interlacing = ord(fread($imageFile,1))) != Zend_Pdf_Resource_Image_Png::PNG_INTERLACING_DISABLED) {
+        if (($interlacing = ord((string) fread($imageFile,1))) != Zend_Pdf_Resource_Image_Png::PNG_INTERLACING_DISABLED) {
             // require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception( "Only non-interlaced images are currently supported." );
         }
@@ -154,15 +154,15 @@ class Zend_Pdf_Resource_Image_Png extends Zend_Pdf_Resource_Image
                     $trnsData = fread($imageFile, $chunkLength);
                     switch ($color) {
                         case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_GRAY:
-                            $baseColor = ord(substr($trnsData, 1, 1));
+                            $baseColor = ord((string) substr((string) $trnsData, 1, 1));
                             $transparencyData = array(new Zend_Pdf_Element_Numeric($baseColor),
                                                       new Zend_Pdf_Element_Numeric($baseColor));
                             break;
 
                         case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_RGB:
-                            $red = ord(substr($trnsData,1,1));
-                            $green = ord(substr($trnsData,3,1));
-                            $blue = ord(substr($trnsData,5,1));
+                            $red = ord((string) substr((string) $trnsData,1,1));
+                            $green = ord((string) substr((string) $trnsData,3,1));
+                            $blue = ord((string) substr((string) $trnsData,5,1));
                             $transparencyData = array(new Zend_Pdf_Element_Numeric($red),
                                                       new Zend_Pdf_Element_Numeric($red),
                                                       new Zend_Pdf_Element_Numeric($green),
@@ -173,7 +173,7 @@ class Zend_Pdf_Resource_Image_Png extends Zend_Pdf_Resource_Image
 
                         case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_INDEXED:
                             //Find the first transparent color in the index, we will mask that. (This is a bit of a hack. This should be a SMask and mask all entries values).
-                            if(($trnsIdx = strpos($trnsData, "\0")) !== false) {
+                            if(($trnsIdx = strpos((string) $trnsData, "\0")) !== false) {
                                 $transparencyData = array(new Zend_Pdf_Element_Numeric($trnsIdx),
                                                           new Zend_Pdf_Element_Numeric($trnsIdx));
                             }
@@ -220,7 +220,7 @@ class Zend_Pdf_Resource_Image_Png extends Zend_Pdf_Resource_Image
                 $colorSpace = new Zend_Pdf_Element_Array();
                 $colorSpace->items[] = new Zend_Pdf_Element_Name('Indexed');
                 $colorSpace->items[] = new Zend_Pdf_Element_Name('DeviceRGB');
-                $colorSpace->items[] = new Zend_Pdf_Element_Numeric((strlen($paletteData)/3-1));
+                $colorSpace->items[] = new Zend_Pdf_Element_Numeric((strlen((string) $paletteData)/3-1));
                 $paletteObject = $this->_objectFactory->newObject(new Zend_Pdf_Element_String_Binary($paletteData));
                 $colorSpace->items[] = $paletteObject;
                 break;

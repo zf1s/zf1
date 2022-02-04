@@ -108,7 +108,7 @@ class Zend_Barcode_Object_Code39 extends Zend_Barcode_Object_ObjectAbstract
     {
         $quietZone       = $this->getQuietZone();
         $characterLength = (6 * $this->_barThinWidth + 3 * $this->_barThickWidth + 1) * $this->_factor;
-        $encodedData     = strlen($this->getText()) * $characterLength - $this->_factor;
+        $encodedData     = strlen((string) $this->getText()) * $characterLength - $this->_factor;
         return $quietZone + $encodedData + $quietZone;
     }
 
@@ -139,7 +139,7 @@ class Zend_Barcode_Object_Code39 extends Zend_Barcode_Object_ObjectAbstract
     public function getTextToDisplay()
     {
         $text = parent::getTextToDisplay();
-        if (substr($text, 0, 1) != '*' && substr($text, -1) != '*') {
+        if (substr((string) $text, 0, 1) != '*' && substr((string) $text, -1) != '*') {
             return '*' . $text . '*';
         } else {
             return $text;

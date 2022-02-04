@@ -117,9 +117,9 @@ class Zend_XmlRpc_GeneratorTest extends PHPUnit_Framework_TestCase
 
     public function assertXml($expected, $actual)
     {
-        $expected = trim($expected);
-        $this->assertSame($expected, trim($actual));
+        $expected = \trim((string) $expected);
+        $this->assertSame($expected, \trim((string) $actual));
         $xmlDecl = '<?xml version="1.0" encoding="' . $actual->getEncoding() . '"?>' . "\n";
-        $this->assertSame($xmlDecl . $expected, trim($actual->saveXml()));
+        $this->assertSame($xmlDecl . $expected, \trim((string) $actual->saveXml()));
     }
 }

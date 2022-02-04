@@ -23,7 +23,7 @@
 /**
  * Zend_Ldap_OnlineTestCase
  */
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'OnlineTestCase.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'OnlineTestCase.php';
 
 /**
  * @category   Zend
@@ -102,8 +102,8 @@ class Zend_Ldap_ChangePasswordTest extends Zend_Ldap_OnlineTestCase
                 $this->fail('Expected exception not thrown');
             } catch (Zend_Ldap_Exception $zle) {
                 $message = $zle->getMessage();
-                $this->assertTrue(strstr($message, 'Invalid credentials') ||
-                    strstr($message, 'Server is unwilling to perform'));
+                $this->assertTrue(strstr((string) $message, 'Invalid credentials') ||
+                    strstr((string) $message, 'Server is unwilling to perform'));
             }
 
             $this->assertTrue(
@@ -202,8 +202,8 @@ class Zend_Ldap_ChangePasswordTest extends Zend_Ldap_OnlineTestCase
                 $this->fail('Expected exception not thrown');
             } catch (Zend_Ldap_Exception $zle) {
                 $message = $zle->getMessage();
-                $this->assertTrue(strstr($message, 'Invalid credentials') ||
-                    strstr($message, 'Server is unwilling to perform'));
+                $this->assertTrue(strstr((string) $message, 'Invalid credentials') ||
+                    strstr((string) $message, 'Server is unwilling to perform'));
             }
 
             $this->assertTrue(

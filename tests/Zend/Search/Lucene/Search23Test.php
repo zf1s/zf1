@@ -118,7 +118,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
                                   '(f1:word) (-(f1:word) +(f1:word))');
 
 
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         foreach ($queries as $id => $queryString) {
             $query = Zend_Search_Lucene_Search_QueryParser::parse($queryString);
@@ -161,7 +161,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testEmptyQuery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('');
 
@@ -170,7 +170,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testTermQuery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('submitting');
 
@@ -188,7 +188,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testMultiTermQuery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('submitting AND wishlists');
 
@@ -201,7 +201,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testPraseQuery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('"reporting bugs"');
 
@@ -220,7 +220,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testQueryParserKeywordsHandlingPhrase()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
 
         $query = Zend_Search_Lucene_Search_QueryParser::parse('"IndexSource/contributing.wishlist.html" AND Home');
@@ -245,7 +245,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testQueryParserKeywordsHandlingTerm()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
 
         $query = Zend_Search_Lucene_Search_QueryParser::parse('IndexSource\/contributing\.wishlist\.html AND Home');
@@ -278,7 +278,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testBooleanQuery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('submitting AND (wishlists OR requirements)');
 
@@ -295,7 +295,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testBooleanQueryWithPhraseSubquery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('"PEAR developers" AND Home');
 
@@ -311,7 +311,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testBooleanQueryWithNonExistingPhraseSubquery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $query = Zend_Search_Lucene_Search_QueryParser::parse('"Non-existing phrase" AND Home');
 
@@ -323,7 +323,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testFilteredTokensQueryParserProcessing()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $this->assertEquals(count(Zend_Search_Lucene_Analysis_Analyzer::getDefault()->tokenize('123456787654321')), 0);
 
@@ -342,7 +342,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testWildcardQuery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $wildcardMinPrefix = Zend_Search_Lucene_Search_Query_Wildcard::getMinPrefixLength();
         Zend_Search_Lucene_Search_Query_Wildcard::setMinPrefixLength(0);
@@ -371,7 +371,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testFuzzyQuery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $defaultPrefixLength = Zend_Search_Lucene_Search_Query_Fuzzy::getDefaultPrefixLength();
         Zend_Search_Lucene_Search_Query_Fuzzy::setDefaultPrefixLength(0);
@@ -400,7 +400,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testInclusiveRangeQuery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('[xml TO zzzzz]');
 
@@ -420,7 +420,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testNonInclusiveRangeQuery()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('{xml TO zzzzz}');
 
@@ -440,7 +440,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testDefaultSearchField()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $storedDefaultSearchField = Zend_Search_Lucene::getDefaultSearchField();
 
@@ -468,7 +468,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
         // Restore default search field if it wasn't done by previous test because of failure
         Zend_Search_Lucene::setDefaultSearchField(null);
 
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('submitting AND wishlists');
         $hit = $hits[0];
@@ -485,7 +485,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testDelayedResourceCleanUp()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('submitting AND wishlists');
         unset($index);
@@ -503,7 +503,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testSortingResult()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('"reporting bugs"', 'path');
 
@@ -522,7 +522,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testSortingResultByScore()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $hits = $index->find('"reporting bugs"', 'score', SORT_NUMERIC, SORT_ASC,
                                                  'path',  SORT_STRING,  SORT_ASC);
@@ -555,7 +555,7 @@ class Zend_Search_Lucene_Search23Test extends PHPUnit_Framework_TestCase
 
     public function testLimitingResult()
     {
-        $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_index23Sample/_files');
+        $index = Zend_Search_Lucene::open(__DIR__ . '/_index23Sample/_files');
 
         $storedResultSetLimit = Zend_Search_Lucene::getResultSetLimit();
 

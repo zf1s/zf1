@@ -111,7 +111,7 @@ class Zend_Pdf_Resource_Image_Jpeg extends Zend_Pdf_Resource_Image
             }
 
             $this->_resource->value .= $nextBlock;
-            $byteCount -= strlen($nextBlock);
+            $byteCount -= strlen((string) $nextBlock);
         }
         if ($byteCount != 0) {
             // require_once 'Zend/Pdf/Exception.php';

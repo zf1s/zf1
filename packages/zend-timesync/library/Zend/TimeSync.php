@@ -93,6 +93,7 @@ class Zend_TimeSync implements IteratorAggregate
      *
      * @return ArrayObject
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayObject($this->_timeservers);
@@ -263,22 +264,22 @@ class Zend_TimeSync implements IteratorAggregate
      */
     protected function _addServer($target, $alias)
     {
-        if ($pos = strpos($target, '://')) {
-            $protocol = substr($target, 0, $pos);
-            $adress = substr($target, $pos + 3);
+        if ($pos = strpos((string) $target, '://')) {
+            $protocol = substr((string) $target, 0, $pos);
+            $adress = substr((string) $target, $pos + 3);
         } else {
             $adress = $target;
             $protocol = self::DEFAULT_PROTOCOL;
         }
 
         if ($pos = strrpos($adress, ':')) {
-            $posbr = strpos($adress, ']');
+            $posbr = strpos((string) $adress, ']');
             if ($posbr and ($pos > $posbr)) {
-                $port = substr($adress, $pos + 1);
-                $adress = substr($adress, 0, $pos);
+                $port = substr((string) $adress, $pos + 1);
+                $adress = substr((string) $adress, 0, $pos);
             } else if (!$posbr and $pos) {
-                $port = substr($adress, $pos + 1);
-                $adress = substr($adress, 0, $pos);
+                $port = substr((string) $adress, $pos + 1);
+                $adress = substr((string) $adress, 0, $pos);
             } else {
                 $port = null;
             }
@@ -286,7 +287,7 @@ class Zend_TimeSync implements IteratorAggregate
             $port = null;
         }
 
-        $protocol = ucfirst(strtolower($protocol));
+        $protocol = ucfirst(strtolower((string) $protocol));
         if (!in_array($protocol, $this->_allowedSchemes)) {
             // require_once 'Zend/TimeSync/Exception.php';
             throw new Zend_TimeSync_Exception("'$protocol' is not a supported protocol");

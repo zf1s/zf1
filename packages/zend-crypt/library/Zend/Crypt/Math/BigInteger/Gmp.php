@@ -178,10 +178,10 @@ class Zend_Crypt_Math_BigInteger_Gmp implements Zend_Crypt_Math_BigInteger_Inter
     public function binaryToInteger($operand)
     {
         $result = '0';
-        while (strlen($operand)) {
-            $ord = ord(substr($operand, 0, 1));
+        while (strlen((string) $operand)) {
+            $ord = ord((string) substr((string) $operand, 0, 1));
             $result = gmp_add(gmp_mul($result, 256), $ord);
-            $operand = substr($operand, 1);
+            $operand = substr((string) $operand, 1);
         }
         return gmp_strval($result);
     }
@@ -193,7 +193,7 @@ class Zend_Crypt_Math_BigInteger_Gmp implements Zend_Crypt_Math_BigInteger_Inter
     public function integerToBinary($operand)
     {
         $bigInt = gmp_strval($operand, 16);
-        if (strlen($bigInt) % 2 != 0) {
+        if (strlen((string) $bigInt) % 2 != 0) {
             $bigInt = '0' . $bigInt;
         } else if ($bigInt[0] > '7') {
             $bigInt = '00' . $bigInt;
@@ -209,10 +209,10 @@ class Zend_Crypt_Math_BigInteger_Gmp implements Zend_Crypt_Math_BigInteger_Inter
     public function hexToDecimal($operand)
     {
         $return = '0';
-        while(strlen($hex)) {
-            $hex = hexdec(substr($operand, 0, 4));
+        while(strlen((string) $hex)) {
+            $hex = hexdec(substr((string) $operand, 0, 4));
             $dec = gmp_add(gmp_mul($return, 65536), $hex);
-            $operand = substr($operand, 4);
+            $operand = substr((string) $operand, 4);
         }
         return $return;
     }

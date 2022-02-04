@@ -27,12 +27,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Serializer_Adapter_AllTests
  */
-require_once dirname(__FILE__) . '/Adapter/AllTests.php';
+require_once __DIR__ . '/Adapter/AllTests.php';
 
 /**
  * @see Zend_Serializer_SerializerTest
  */
-require_once dirname(__FILE__) . '/SerializerTest.php';
+require_once __DIR__ . '/SerializerTest.php';
 
 /**
  * @category   Zend

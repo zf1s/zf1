@@ -201,7 +201,7 @@ abstract class Zend_Db_TestUtil_Common
     {
         $param = $this->getParams();
 
-        if (isset($param['dbname']) && strpos($param['dbname'], ':') === false) {
+        if (isset($param['dbname']) && strpos((string) $param['dbname'], ':') === false) {
             return $param['dbname'];
         }
 

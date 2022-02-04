@@ -420,7 +420,7 @@ class Zend_Log_Writer_MailTest extends PHPUnit_Framework_TestCase
     {
     	$config = array(
     	    'layoutOptions' => array(
-    	        'layoutPath' => dirname(__FILE__) . '/_files'
+    	        'layoutPath' => __DIR__ . '/_files'
     	    )
     	);
 

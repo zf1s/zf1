@@ -58,8 +58,8 @@ class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
      */
     public function checkChars($value)
     {
-        if (strlen($value) != 8) {
-            if (strpos($value, 'X') !== false) {
+        if (strlen((string) $value) != 8) {
+            if (strpos((string) $value, 'X') !== false) {
                 return false;
             }
         }
@@ -75,7 +75,7 @@ class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
      */
     public function checksum($value)
     {
-        if (strlen($value) == 8) {
+        if (strlen((string) $value) == 8) {
             $this->_checksum = '_issn';
         } else {
             $this->_checksum = '_gtin';
@@ -93,8 +93,8 @@ class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
      */
     protected function _issn($value)
     {
-        $checksum = substr($value, -1, 1);
-        $values   = str_split(substr($value, 0, -1));
+        $checksum = substr((string) $value, -1, 1);
+        $values   = str_split(substr((string) $value, 0, -1));
         $check    = 0;
         $multi    = 8;
         foreach($values as $token) {

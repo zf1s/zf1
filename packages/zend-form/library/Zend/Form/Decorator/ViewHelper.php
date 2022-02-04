@@ -91,7 +91,7 @@ class Zend_Form_Decorator_ViewHelper extends Zend_Form_Decorator_Abstract
                     } else {
                         $type = $element->getType();
                         if ($pos = strrpos($type, '_')) {
-                            $type = substr($type, $pos + 1);
+                            $type = substr((string) $type, $pos + 1);
                         }
                         $this->setHelper('form' . ucfirst($type));
                     }

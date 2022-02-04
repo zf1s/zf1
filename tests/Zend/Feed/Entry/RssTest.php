@@ -38,7 +38,7 @@ class Zend_Feed_Entry_RssTest extends PHPUnit_Framework_TestCase
 
     public function testContentEncodedSupport()
     {
-        $feed = Zend_Feed::importFile(dirname(__FILE__) . '/../_files/TestFeedEntryRssContentEncoded.xml');
+        $feed = Zend_Feed::importFile(__DIR__ . '/../_files/TestFeedEntryRssContentEncoded.xml');
         $this->assertTrue($feed instanceof Zend_Feed_Rss);
 
         $item = $feed->current();
@@ -59,7 +59,7 @@ class Zend_Feed_Entry_RssTest extends PHPUnit_Framework_TestCase
 
     public function testContentEncodedNullIfEmpty()
     {
-        $feed = Zend_Feed::importFile(dirname(__FILE__) . '/../_files/TestFeedEntryRssContentEncoded.xml');
+        $feed = Zend_Feed::importFile(__DIR__ . '/../_files/TestFeedEntryRssContentEncoded.xml');
         $this->assertTrue($feed instanceof Zend_Feed_Rss);
 
         $feed->next();

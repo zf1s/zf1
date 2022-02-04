@@ -875,7 +875,7 @@ class Zend_View_Helper_Navigation_Menu
                 $html    .= $myIndent . $innerIndent . '</li>' . $this->getEOL()
                          . $myIndent . '</ul>' . $this->getEOL();
             }
-            $html = rtrim($html, $this->getEOL());
+            $html = rtrim((string) $html, $this->getEOL());
         }
 
         return $html;

@@ -148,13 +148,13 @@ class Zend_Oauth_Http_Utility
         $hashAlgo  = null;
         $parts     = explode('-', $signatureMethod);
         if (count($parts) > 1) {
-            $className = 'Zend_Oauth_Signature_' . ucfirst(strtolower($parts[0]));
+            $className = 'Zend_Oauth_Signature_' . ucfirst(strtolower((string) $parts[0]));
             $hashAlgo  = $parts[1];
         } else {
-            $className = 'Zend_Oauth_Signature_' . ucfirst(strtolower($signatureMethod));
+            $className = 'Zend_Oauth_Signature_' . ucfirst(strtolower((string) $signatureMethod));
         }
 
-        // require_once str_replace('_', '/', $className) . '.php';
+        // require_once str_replace((string) '_', '/', $className) . '.php';
         $signatureObject = new $className($consumerSecret, $tokenSecret, $hashAlgo);
         return $signatureObject->sign($params, $method, $url);
     }
@@ -189,7 +189,7 @@ class Zend_Oauth_Http_Utility
      */
     public function generateNonce()
     {
-        return md5(uniqid(rand(), true));
+        return md5((string) uniqid(rand(), true));
     }
 
     /**
@@ -210,8 +210,8 @@ class Zend_Oauth_Http_Utility
      */
     public static function urlEncode($value)
     {
-        $encoded = rawurlencode($value);
-        $encoded = str_replace('%7E', '~', $encoded);
+        $encoded = rawurlencode((string) $value);
+        $encoded = str_replace((string) '%7E', '~', $encoded);
         return $encoded;
     }
 }

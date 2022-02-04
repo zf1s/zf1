@@ -155,9 +155,9 @@ class Zend_Pdf_Element_Dictionary extends Zend_Pdf_Element
                 throw new Zend_Pdf_Exception('Wrong data');
             }
 
-            if (strlen($outStr) - $lastNL > 128)  {
+            if (strlen((string) $outStr) - $lastNL > 128)  {
                 $outStr .= "\n";
-                $lastNL = strlen($outStr);
+                $lastNL = strlen((string) $outStr);
             }
 
             $nameObj = new Zend_Pdf_Element_Name($name);

@@ -66,8 +66,8 @@ class Zend_Controller_Request_Apache404 extends Zend_Controller_Request_Http
         } elseif (!is_string($requestUri)) {
             return $this;
         } else {
-            if (false !== ($pos = strpos($requestUri, '?'))) {
-                $parseUriGetVars = substr($requestUri, $pos + 1);
+            if (false !== ($pos = strpos((string) $requestUri, '?'))) {
+                $parseUriGetVars = substr((string) $requestUri, $pos + 1);
             }
         }
 

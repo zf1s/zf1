@@ -146,8 +146,8 @@ class Zend_Feed_Pubsubhubbub
      */
     public static function urlencode($string)
     {
-        $rawencoded = rawurlencode($string);
-        $rfcencoded = str_replace('%7E', '~', $rawencoded);
+        $rawencoded = rawurlencode((string) $string);
+        $rfcencoded = str_replace((string) '%7E', '~', $rawencoded);
         return $rfcencoded;
     }
 }

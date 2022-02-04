@@ -89,7 +89,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
     {
         $this->_style = $style;
         $this->_message = $message;
-        $this->_ruid = md5(microtime().mt_rand());
+        $this->_ruid = md5((string) microtime().mt_rand());
     }
 
     /**

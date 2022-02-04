@@ -167,10 +167,10 @@ class Zend_Memory_Manager
         $this->_backend = $backend;
         $this->_generateMemManagerId();
 
-        $memoryLimitStr = trim(ini_get('memory_limit'));
+        $memoryLimitStr = \trim((string) ini_get('memory_limit'));
         if ($memoryLimitStr != ''  &&  $memoryLimitStr != -1) {
             $this->_memoryLimit = (integer)$memoryLimitStr;
-            switch (strtolower($memoryLimitStr[strlen($memoryLimitStr)-1])) {
+            switch (strtolower((string) $memoryLimitStr[strlen((string) $memoryLimitStr)-1])) {
                 case 'g':
                     $this->_memoryLimit *= 1024;
                     // Break intentionally omitted
@@ -371,7 +371,7 @@ class Zend_Memory_Manager
         $id = $container->getId();
 
         // Calculate new object size and increase used memory size by this value
-        $this->_memorySize += ($this->_sizes[$id] = strlen($container->getRef()));
+        $this->_memorySize += ($this->_sizes[$id] = strlen((string) $container->getRef()));
 
         if ($this->_sizes[$id] > $this->_minSize) {
             // Move object to "unload candidates list"
@@ -449,7 +449,7 @@ class Zend_Memory_Manager
 
         // Try to swap other objects if necessary
         // (do not include specified object into check)
-        $this->_memorySize += strlen($value);
+        $this->_memorySize += strlen((string) $value);
         $this->_swapCheck();
 
         // Add loaded obect to the end of loaded objects list

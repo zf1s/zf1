@@ -138,14 +138,14 @@ class Zend_Test_PHPUnit_Constraint_DomQuery34 extends PHPUnit_Framework_Constrai
      */
     public function evaluate($other, $assertType = null)
     {
-        if (strstr($assertType, 'Not')) {
+        if (strstr((string) $assertType, 'Not')) {
             $this->setNegate(true);
-            $assertType = str_replace('Not', '', $assertType);
+            $assertType = str_replace((string) 'Not', '', $assertType);
         }
 
-        if (strstr($assertType, 'Xpath')) {
+        if (strstr((string) $assertType, 'Xpath')) {
             $this->setUseXpath(true);
-            $assertType = str_replace('Xpath', 'Query', $assertType);
+            $assertType = str_replace((string) 'Xpath', 'Query', $assertType);
         }
 
         if (!in_array($assertType, $this->_assertTypes)) {
@@ -298,7 +298,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery34 extends PHPUnit_Framework_Constrai
 
         foreach ($result as $node) {
             $content = $this->_getNodeContent($node);
-            if (strstr($content, $match)) {
+            if (strstr((string) $content, $match)) {
                 return true;
             }
         }
@@ -321,7 +321,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery34 extends PHPUnit_Framework_Constrai
 
         foreach ($result as $node) {
             $content = $this->_getNodeContent($node);
-            if (strstr($content, $match)) {
+            if (strstr((string) $content, $match)) {
                 return false;
             }
         }

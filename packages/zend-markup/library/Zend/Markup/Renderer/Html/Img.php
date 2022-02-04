@@ -66,10 +66,10 @@ class Zend_Markup_Renderer_Html_Img extends Zend_Markup_Renderer_Html_HtmlAbstra
             $alt = $token->getAttribute('alt');
         } else {
             // try to get the alternative from the URL
-            $alt = rtrim($text, '/');
+            $alt = rtrim((string) $text, '/');
             $alt = strrchr($alt, '/');
-            if (false !== strpos($alt, '.')) {
-                $alt = substr($alt, 1, strpos($alt, '.') - 1);
+            if (false !== strpos((string) $alt, '.')) {
+                $alt = substr((string) $alt, 1, strpos((string) $alt, '.') - 1);
             }
         }
 

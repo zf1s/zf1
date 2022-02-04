@@ -160,20 +160,20 @@ class Zend_Validate_Ip extends Zend_Validate_Abstract
      *                 False otherwise
      */
     protected function _validateIPv6($value) {
-        if (strlen($value) < 3) {
+        if (strlen((string) $value) < 3) {
             return $value == '::';
         }
 
-        if (strpos($value, '.')) {
+        if (strpos((string) $value, '.')) {
             $lastcolon = strrpos($value, ':');
-            if (!($lastcolon && $this->_validateIPv4(substr($value, $lastcolon + 1)))) {
+            if (!($lastcolon && $this->_validateIPv4(substr((string) $value, $lastcolon + 1)))) {
                 return false;
             }
 
-            $value = substr($value, 0, $lastcolon) . ':0:0';
+            $value = substr((string) $value, 0, $lastcolon) . ':0:0';
         }
 
-        if (strpos($value, '::') === false) {
+        if (strpos((string) $value, '::') === false) {
             return preg_match('/\A(?:[a-f0-9]{1,4}:){7}[a-f0-9]{1,4}\z/i', $value);
         }
 

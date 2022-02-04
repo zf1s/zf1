@@ -121,9 +121,7 @@ class Zend_Validate_File_Extension extends Zend_Validate_Abstract
      */
     public function getExtension()
     {
-        $extension = explode(',', $this->_extension);
-
-        return $extension;
+        return explode(',', (string) $this->_extension);
     }
 
     /**
@@ -157,7 +155,7 @@ class Zend_Validate_File_Extension extends Zend_Validate_Abstract
                 continue;
             }
 
-            $extensions[] = trim($content);
+            $extensions[] = \trim((string) $content);
         }
         $extensions = array_unique($extensions);
 
@@ -192,7 +190,7 @@ class Zend_Validate_File_Extension extends Zend_Validate_Abstract
         }
 
         if ($file !== null) {
-            $info['extension'] = substr($file['name'], strrpos($file['name'], '.') + 1);
+            $info['extension'] = substr((string) $file['name'], strrpos($file['name'], '.') + 1);
         } else {
             $info = pathinfo($value);
             if (!array_key_exists('extension', $info)) {
@@ -209,7 +207,7 @@ class Zend_Validate_File_Extension extends Zend_Validate_Abstract
             return true;
         } else if (!$this->getCase()) {
             foreach ($extensions as $extension) {
-                if (strtolower($extension) == strtolower($info['extension'])) {
+                if (strtolower((string) $extension) == strtolower((string) $info['extension'])) {
                     return true;
                 }
             }

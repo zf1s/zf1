@@ -104,7 +104,7 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
      */
     public function setType($type)
     {
-        $type = strtolower($type);
+        $type = strtolower((string) $type);
         if (!in_array($type, $this->_allowedTypes)) {
             // require_once 'Zend/Form/Element/Exception.php';
             throw new Zend_Form_Element_Exception(sprintf('Invalid numeric type "%s" specified', $type));

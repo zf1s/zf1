@@ -194,10 +194,10 @@ class Zend_Mobile_Push_Message_Mpns_Toast extends Zend_Mobile_Push_Message_Mpns
         $ret = '<?xml version="1.0" encoding="utf-8"?>'
             . '<wp:Notification xmlns:wp="WPNotification">'
             . '<wp:Toast>'
-            . '<wp:Text1>' . htmlspecialchars($this->_title) . '</wp:Text1>'
-            . '<wp:Text2>' . htmlspecialchars($this->_msg) . '</wp:Text2>';
+            . '<wp:Text1>' . htmlspecialchars((string) $this->_title) . '</wp:Text1>'
+            . '<wp:Text2>' . htmlspecialchars((string) $this->_msg) . '</wp:Text2>';
         if (!empty($this->_params)) {
-            $ret .= '<wp:Param>' . htmlspecialchars($this->_params) . '</wp:Param>';
+            $ret .= '<wp:Param>' . htmlspecialchars((string) $this->_params) . '</wp:Param>';
         }
         $ret .= '</wp:Toast>'
             . '</wp:Notification>';
@@ -211,7 +211,7 @@ class Zend_Mobile_Push_Message_Mpns_Toast extends Zend_Mobile_Push_Message_Mpns
      */
     public function validate()
     {
-        if (!isset($this->_token) || strlen($this->_token) === 0) {
+        if (!isset($this->_token) || strlen((string) $this->_token) === 0) {
             return false;
         }
         if (empty($this->_title)) {

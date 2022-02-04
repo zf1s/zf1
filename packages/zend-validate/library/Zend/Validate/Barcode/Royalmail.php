@@ -76,8 +76,8 @@ class Zend_Validate_Barcode_Royalmail extends Zend_Validate_Barcode_AdapterAbstr
      */
     protected function _royalmail($value)
     {
-        $checksum = substr($value, -1, 1);
-        $values   = str_split(substr($value, 0, -1));
+        $checksum = substr((string) $value, -1, 1);
+        $values   = str_split(substr((string) $value, 0, -1));
         $rowvalue = 0;
         $colvalue = 0;
         foreach($values as $row) {
@@ -107,10 +107,10 @@ class Zend_Validate_Barcode_Royalmail extends Zend_Validate_Barcode_AdapterAbstr
     public function checkChars($value)
     {
         if ($value[0] == '(') {
-            $value = substr($value, 1);
+            $value = substr((string) $value, 1);
 
-            if ($value[strlen($value) - 1] == ')') {
-                $value = substr($value, 0, -1);
+            if ($value[strlen((string) $value) - 1] == ')') {
+                $value = substr((string) $value, 0, -1);
             } else {
                 return false;
             }

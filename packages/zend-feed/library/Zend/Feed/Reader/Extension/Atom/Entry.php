@@ -163,7 +163,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
             $content = $this->getDescription();
         }
 
-        $this->_data['content'] = trim($content);
+        $this->_data['content'] = \trim((string) $content);
 
         return $this->_data['content'];
     }
@@ -606,15 +606,15 @@ class Zend_Feed_Reader_Extension_Atom_Entry
         $nameNode  = $element->getElementsByTagName('name');
         $uriNode   = $element->getElementsByTagName('uri');
 
-        if ($emailNode->length && strlen($emailNode->item(0)->nodeValue) > 0) {
+        if ($emailNode->length && strlen((string) $emailNode->item(0)->nodeValue) > 0) {
             $author['email'] = $emailNode->item(0)->nodeValue;
         }
 
-        if ($nameNode->length && strlen($nameNode->item(0)->nodeValue) > 0) {
+        if ($nameNode->length && strlen((string) $nameNode->item(0)->nodeValue) > 0) {
             $author['name'] = $nameNode->item(0)->nodeValue;
         }
 
-        if ($uriNode->length && strlen($uriNode->item(0)->nodeValue) > 0) {
+        if ($uriNode->length && strlen((string) $uriNode->item(0)->nodeValue) > 0) {
             $author['uri'] = $uriNode->item(0)->nodeValue;
         }
 

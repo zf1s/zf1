@@ -42,47 +42,47 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
      * @var Zend_Http_Client_Adapter_Test
      */
     protected $httpClientAdapterTest;
-    
+
     /**
      * Image ID of the instance
-     * 
+     *
      * @var string
      */
     protected static $instanceId;
-    
+
     /**
      * Setup for each test
      */
     public function setUp()
     {
-        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter(array( 
-            Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Rackspace', 
-            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_USER   => 'foo', 
-            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_KEY    => 'bar', 
-            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_REGION => 'USA'   
-        )); 
+        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter(array(
+            Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Rackspace',
+            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_USER   => 'foo',
+            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_KEY    => 'bar',
+            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_REGION => 'USA'
+        ));
 
         $this->httpClientAdapterTest = new Zend_Http_Client_Adapter_Test();
 
         $this->infrastructure->getAdapter()
                              ->getHttpClient()
                              ->setAdapter($this->httpClientAdapterTest);
-        
+
         // load the HTTP response (from a file)
         $shortClassName = 'RackspaceTest';
         $filename= __DIR__ . '/_files/' . $shortClassName . '_'. $this->getName().'.response';
-        
-        if (file_exists($filename)) {
+
+        if (file_exists((string) $filename)) {
             // authentication (from file)
             $content = __DIR__ . '/_files/'.$shortClassName . '_testAuthenticate.response';
             $this->httpClientAdapterTest->setResponse($this->loadResponse($content));
             $this->assertTrue($this->infrastructure->getAdapter()->authenticate(),'Authentication failed');
-            
-            $this->httpClientAdapterTest->setResponse($this->loadResponse($filename)); 
+
+            $this->httpClientAdapterTest->setResponse($this->loadResponse($filename));
         }
-        
+
     }
-    
+
     /**
      * Utility method for returning a string HTTP response, which is loaded from a file
      *
@@ -98,12 +98,12 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
         // not preceded by \r with the sequence \r\n, ensuring that the message
         // is well-formed.
         return preg_replace("#(?<!\r)\n#", "\r\n", $response);
-    }    
+    }
     /**
      * Get Config Array
-     * 
+     *
      * @return array
-     */ 
+     */
     static function getConfigArray()
     {
          return array(
@@ -113,7 +113,7 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
             Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_REGION => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_REGION')
         );
     }
-    
+
     /**
      * Test all the constants of the class
      */
@@ -129,7 +129,7 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
     /**
      * Test construct with missing params
      */
-    public function testConstructExceptionMissingParams() 
+    public function testConstructExceptionMissingParams()
     {
         $this->setExpectedException(
             'Zend_Cloud_Infrastructure_Exception',
@@ -212,14 +212,14 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
      */
     public function testStartInstance()
     {
-        $this->markTestSkipped('Test start instance skipped');   
+        $this->markTestSkipped('Test start instance skipped');
     }
     /**
      * Test reboot and instance
      */
     public function testRebootInstance()
     {
-        $this->assertTrue($this->infrastructure->rebootInstance(self::$instanceId));    
+        $this->assertTrue($this->infrastructure->rebootInstance(self::$instanceId));
     }
     /**
      * Test destroy instance

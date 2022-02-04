@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_Ebay_Abstract
  */
-require_once dirname(__FILE__) . '/_files/Concrete.php';
+require_once __DIR__ . '/_files/Concrete.php';
 
 /**
  * @see Zend_Config

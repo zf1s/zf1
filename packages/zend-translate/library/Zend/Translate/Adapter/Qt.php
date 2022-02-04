@@ -77,7 +77,7 @@ class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter {
         xml_parser_set_option($this->_file, XML_OPTION_CASE_FOLDING, 0);
         xml_set_element_handler($this->_file, "_startElement", "_endElement");
         xml_set_character_data_handler($this->_file, "_contentElement");
-        
+
         try {
             Zend_Xml_Security::scanFile($filename);
         } catch (Zend_Xml_Exception $e) {
@@ -102,7 +102,7 @@ class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter {
 
     private function _startElement($file, $name, $attrib)
     {
-        switch(strtolower($name)) {
+        switch(strtolower((string) $name)) {
             case 'message':
                 $this->_source = null;
                 $this->_stag = false;
@@ -123,7 +123,7 @@ class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter {
 
     private function _endElement($file, $name)
     {
-        switch (strtolower($name)) {
+        switch (strtolower((string) $name)) {
             case 'source':
                 $this->_stag = false;
                 break;
@@ -154,10 +154,10 @@ class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter {
 
     private function _findEncoding($filename)
     {
-        $file = file_get_contents($filename, null, null, 0, 100);
-        if (strpos($file, "encoding") !== false) {
-            $encoding = substr($file, strpos($file, "encoding") + 9);
-            $encoding = substr($encoding, 1, strpos($encoding, $encoding[0], 1) - 1);
+        $file = file_get_contents($filename, false, null, 0, 100);
+        if (strpos((string) $file, "encoding") !== false) {
+            $encoding = substr((string) $file, strpos((string) $file, "encoding") + 9);
+            $encoding = substr((string) $encoding, 1, strpos((string) $encoding, $encoding[0], 1) - 1);
             return $encoding;
         }
         return 'UTF-8';

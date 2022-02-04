@@ -166,7 +166,7 @@ abstract class Zend_Date_DateObject {
         }
 
         if (isset(self::$_cache)) {
-            $id = strtr('Zend_DateObject_mkTime_' . $this->_offset . '_' . $year.$month.$day.'_'.$hour.$minute.$second . '_'.(int)$gmt, '-','_');
+            $id = strtr((string) 'Zend_DateObject_mkTime_' . $this->_offset . '_' . $year.$month.$day.'_'.$hour.$minute.$second . '_'.(int)$gmt, '-','_');
             if ($result = self::$_cache->load($id)) {
                 return unserialize($result);
             }
@@ -313,10 +313,10 @@ abstract class Zend_Date_DateObject {
 
         if (abs($timestamp) <= 0x7FFFFFFF) {
             // See ZF-11992
-            // "o" will sometimes resolve to the previous year (see 
-            // http://php.net/date ; it's part of the ISO 8601 
-            // standard). However, this is not desired, so replacing 
-            // all occurrences of "o" not preceded by a backslash 
+            // "o" will sometimes resolve to the previous year (see
+            // http://php.net/date ; it's part of the ISO 8601
+            // standard). However, this is not desired, so replacing
+            // all occurrences of "o" not preceded by a backslash
             // with "Y"
             $format = preg_replace('/(?<!\\\\)o/', 'Y', $format);
             $result = ($gmt) ? @gmdate($format, $timestamp) : @date($format, $timestamp);
@@ -327,7 +327,7 @@ abstract class Zend_Date_DateObject {
         $jump      = false;
         $origstamp = $timestamp;
         if (isset(self::$_cache)) {
-            $idstamp = strtr('Zend_DateObject_date_' . $this->_offset . '_'. $timestamp . '_'.(int)$gmt, '-','_');
+            $idstamp = strtr((string) 'Zend_DateObject_date_' . $this->_offset . '_'. $timestamp . '_'.(int)$gmt, '-','_');
             if ($result2 = self::$_cache->load($idstamp)) {
                 $timestamp = unserialize($result2);
                 $jump = true;
@@ -366,7 +366,7 @@ abstract class Zend_Date_DateObject {
 
         date_default_timezone_set($oldzone);
         $date   = $this->getDateParts($timestamp, true);
-        $length = strlen($format);
+        $length = strlen((string) $format);
         $output = '';
 
         for ($i = 0; $i < $length; $i++) {
@@ -464,7 +464,7 @@ abstract class Zend_Date_DateObject {
                     break;
 
                 case 'y':  // year number, 2 digits
-                    $output .= substr($date['year'], strlen($date['year']) - 2, 2);
+                    $output .= substr((string) $date['year'], strlen((string) $date['year']) - 2, 2);
                     break;
 
 
@@ -557,7 +557,7 @@ abstract class Zend_Date_DateObject {
                 case 'P':  // difference to GMT with colon
                     $gmtstr = ($gmt === true) ? 0 : $this->getGmtOffset();
                     $gmtstr = sprintf('%s%04d', ($gmtstr <= 0) ? '+' : '-', abs($gmtstr) / 36);
-                    $output = $output . substr($gmtstr, 0, 3) . ':' . substr($gmtstr, 3);
+                    $output = $output . substr((string) $gmtstr, 0, 3) . ':' . substr((string) $gmtstr, 3);
                     break;
 
                 case 'T':  // timezone settings
@@ -579,7 +579,7 @@ abstract class Zend_Date_DateObject {
                 case 'c':  // ISO 8601 date format
                     $difference = $this->getGmtOffset();
                     $difference = sprintf('%s%04d', ($difference <= 0) ? '+' : '-', abs($difference) / 36);
-                    $difference = substr($difference, 0, 3) . ':' . substr($difference, 3);
+                    $difference = substr((string) $difference, 0, 3) . ':' . substr((string) $difference, 3);
                     $output .= $date['year'] . '-'
                              . (($date['mon']     < 10) ? '0' . $date['mon']     : $date['mon'])     . '-'
                              . (($date['mday']    < 10) ? '0' . $date['mday']    : $date['mday'])    . 'T'
@@ -685,7 +685,7 @@ abstract class Zend_Date_DateObject {
         }
 
         if (isset(self::$_cache)) {
-            $id = strtr('Zend_DateObject_getDateParts_' . $timestamp.'_'.(int)$fast, '-','_');
+            $id = strtr((string) 'Zend_DateObject_getDateParts_' . $timestamp.'_'.(int)$fast, '-','_');
             if ($result = self::$_cache->load($id)) {
                 return unserialize($result);
             }
@@ -915,10 +915,10 @@ abstract class Zend_Date_DateObject {
         // timestamp within 32bit
         if (abs($this->_unixTimestamp) <= 0x7FFFFFFF) {
             if ($rise === false) {
-                return date_sunset($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
+                return @date_sunset($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
                                    $location['longitude'], 90 + $horizon, $this->getGmtOffset() / 3600);
             }
-            return date_sunrise($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
+            return @date_sunrise($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
                                 $location['longitude'], 90 + $horizon, $this->getGmtOffset() / 3600);
         }
 

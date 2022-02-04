@@ -65,7 +65,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
         $this->_adapter = new Zend_Http_Client_Adapter_Test();
         Zend_Feed::setHttpClient(new Zend_Http_Client(null, array('adapter' => $this->_adapter)));
         $this->_client = Zend_Feed::getHttpClient();
-        $this->_feedDir = dirname(__FILE__) . '/_files';
+        $this->_feedDir = __DIR__ . '/_files';
     }
 
     /**
@@ -475,7 +475,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
     {
         $serialized = serialize($feed);
 
-        $damaged = str_replace('<', '>', $serialized);
+        $damaged = str_replace((string) '<', '>', $serialized);
 
         try {
             $obj = unserialize($damaged);

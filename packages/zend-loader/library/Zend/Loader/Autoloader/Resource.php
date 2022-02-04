@@ -114,8 +114,8 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
      */
     public function __call($method, $args)
     {
-        if ('get' == substr($method, 0, 3)) {
-            $type  = strtolower(substr($method, 3));
+        if ('get' == substr((string) $method, 0, 3)) {
+            $type  = strtolower((string) substr((string) $method, 3));
             if (!$this->hasResourceType($type)) {
                 // require_once 'Zend/Loader/Exception.php';
                 throw new Zend_Loader_Exception("Invalid resource type $type; cannot load resource");
@@ -177,9 +177,9 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
             return false;
         }
 
-        $final = substr($class, strlen($lastMatch) + 1);
+        $final = substr((string) $class, strlen((string) $lastMatch) + 1);
         $path = $this->_components[$lastMatch];
-        $classPath = $path . '/' . str_replace('_', '/', $final) . '.php';
+        $classPath = $path . '/' . str_replace((string) '_', '/', $final) . '.php';
 
         if (Zend_Loader::isReadable($classPath)) {
             return $classPath;
@@ -281,14 +281,14 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
      */
     public function addResourceType($type, $path, $namespace = null)
     {
-        $type = strtolower($type);
+        $type = strtolower((string) $type);
         if (!isset($this->_resourceTypes[$type])) {
             if (null === $namespace) {
                 // require_once 'Zend/Loader/Exception.php';
                 throw new Zend_Loader_Exception('Initial definition of a resource type must include a namespace');
             }
             $namespaceTopLevel = $this->getNamespace();
-            $namespace = ucfirst(trim($namespace, '_'));
+            $namespace = ucfirst(\trim((string) $namespace, '_'));
             $this->_resourceTypes[$type] = array(
                 'namespace' => empty($namespaceTopLevel) ? $namespace : $namespaceTopLevel . '_' . $namespace,
             );
@@ -297,7 +297,7 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
             // require_once 'Zend/Loader/Exception.php';
             throw new Zend_Loader_Exception('Invalid path specification provided; must be string');
         }
-        $this->_resourceTypes[$type]['path'] = $this->getBasePath() . '/' . rtrim($path, '\/');
+        $this->_resourceTypes[$type]['path'] = $this->getBasePath() . '/' . rtrim((string) $path, '\/');
 
         $component = $this->_resourceTypes[$type]['namespace'];
         $this->_components[$component] = $this->_resourceTypes[$type]['path'];

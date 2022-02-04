@@ -70,7 +70,7 @@ class Zend_View_Helper_FormButton extends Zend_View_Helper_FormElement
         // Ensure type is sane
         $type = 'button';
         if (isset($attribs['type'])) {
-            $attribs['type'] = strtolower($attribs['type']);
+            $attribs['type'] = strtolower((string) $attribs['type']);
             if (in_array($attribs['type'], array('submit', 'reset', 'button'))) {
                 $type = $attribs['type'];
             }

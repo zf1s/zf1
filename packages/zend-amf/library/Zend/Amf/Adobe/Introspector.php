@@ -88,7 +88,7 @@ class Zend_Amf_Adobe_Introspector
         }
 
         // Transform com.foo.Bar into com_foo_Bar
-        $serviceClass = str_replace('.' , '_', $serviceClass);
+        $serviceClass = str_replace((string) '.' , '_', $serviceClass);
 
         // Introspect!
         if (!class_exists($serviceClass)) {
@@ -166,7 +166,7 @@ class Zend_Amf_Adobe_Introspector
         foreach ($refclass->getMethods() as $method) {
             if (!$method->isPublic()
                 || $method->isConstructor()
-                || ('__' == substr($method->name, 0, 2))
+                || ('__' == substr((string) (string) $method->name, 0, 2))
             ) {
                 continue;
             }
@@ -223,7 +223,7 @@ class Zend_Amf_Adobe_Introspector
         }
 
         $tag = $docBlock->getTag('var');
-        return trim($tag->getDescription());
+        return \trim((string) $tag->getDescription());
     }
 
     /**

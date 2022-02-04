@@ -342,8 +342,8 @@ class Zend_Loader_Autoloader
             if ('' == $ns) {
                 continue;
             }
-            if (0 === strpos($class, $ns)) {
-                if ((false === $namespace) || (strlen($ns) > strlen($namespace))) {
+            if (0 === strpos((string) $class, $ns)) {
+                if ((false === $namespace) || (strlen((string) $ns) > strlen((string) $namespace))) {
                     $namespace = $ns;
                     $autoloaders = $this->getNamespaceAutoloaders($ns);
                 }
@@ -352,7 +352,7 @@ class Zend_Loader_Autoloader
 
         // Add internal namespaced autoloader
         foreach ($this->getRegisteredNamespaces() as $ns) {
-            if (0 === strpos($class, $ns)) {
+            if (0 === strpos((string) $class, $ns)) {
                 $namespace     = $ns;
                 $autoloaders[] = $this->_internalAutoloader;
                 break;
@@ -539,7 +539,7 @@ class Zend_Loader_Autoloader
      */
     protected function _getVersionType($version)
     {
-        if (strtolower($version) == 'latest') {
+        if (strtolower((string) $version) == 'latest') {
             return 'latest';
         }
 
@@ -570,13 +570,13 @@ class Zend_Loader_Autoloader
             throw new Zend_Loader_Exception('Invalid ZF path provided');
         }
 
-        $path       = rtrim($path, '/');
-        $path       = rtrim($path, '\\');
-        $versionLen = strlen($version);
+        $path       = rtrim((string) $path, '/');
+        $path       = rtrim((string) $path, '\\');
+        $versionLen = strlen((string) $version);
         $versions   = array();
         $dirs       = glob("$path/*", GLOB_ONLYDIR);
         foreach ((array) $dirs as $dir) {
-            $dirName = substr($dir, strlen($path) + 1);
+            $dirName = substr((string) $dir, strlen((string) $path) + 1);
             if (!preg_match('/^(?:ZendFramework-)?(\d+\.\d+\.\d+((a|b|pl|pr|p|rc)\d+)?)(?:-minimal)?$/i', $dirName, $matches)) {
                 continue;
             }
@@ -584,8 +584,8 @@ class Zend_Loader_Autoloader
             $matchedVersion = $matches[1];
 
             if (('latest' == $version)
-                || ((strlen($matchedVersion) >= $versionLen)
-                    && (0 === strpos($matchedVersion, $version)))
+                || ((strlen((string) $matchedVersion) >= $versionLen)
+                    && (0 === strpos((string) $matchedVersion, $version)))
             ) {
                 $versions[$matchedVersion] = $dir . '/library';
             }

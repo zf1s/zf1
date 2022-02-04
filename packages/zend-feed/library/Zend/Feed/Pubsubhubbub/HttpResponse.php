@@ -205,7 +205,7 @@ class Zend_Feed_Pubsubhubbub_HttpResponse
     public function setBody($content)
     {
         $this->_body = (string) $content;
-        $this->setHeader('content-length', strlen($content));
+        $this->setHeader('content-length', strlen((string) $content));
         return $this;
     }
 
@@ -228,8 +228,8 @@ class Zend_Feed_Pubsubhubbub_HttpResponse
     protected function _normalizeHeader($name)
     {
         $filtered = str_replace(array('-', '_'), ' ', (string) $name);
-        $filtered = ucwords(strtolower($filtered));
-        $filtered = str_replace(' ', '-', $filtered);
+        $filtered = ucwords(strtolower((string) $filtered));
+        $filtered = str_replace((string) ' ', '-', $filtered);
         return $filtered;
     }
 }

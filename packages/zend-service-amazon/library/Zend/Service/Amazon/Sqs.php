@@ -85,7 +85,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
     public function __construct($accessKey = null, $secretKey = null, $region = null)
     {
         parent::__construct($accessKey, $secretKey, $region);
-        
+
         if (null !== $region) {
             $this->_setEndpoint($region);
         }
@@ -108,7 +108,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
             throw new Zend_Service_Amazon_Sqs_Exception('Invalid SQS region specified.');
         }
     }
-    
+
     /**
      * Set SQS endpoint
      *
@@ -133,8 +133,8 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
 
     /**
      * Get the SQS endpoint
-     * 
-     * @return string 
+     *
+     * @return string
      */
     public function getEndpoint()
     {
@@ -155,7 +155,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
     {
         return $this->_sqsEndpoints;
     }
-    
+
     /**
      * Create a new queue
      *
@@ -262,6 +262,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      * @return integer
      * @throws Zend_Service_Amazon_Sqs_Exception
      */
+    #[\ReturnTypeWillChange]
     public function count($queue_url)
     {
         return (int)$this->getAttribute($queue_url, 'ApproximateNumberOfMessages');
@@ -278,9 +279,9 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
     public function send($queue_url, $message)
     {
         $params = array();
-        $params['MessageBody'] = urlencode($message);
+        $params['MessageBody'] = urlencode((string) $message);
 
-        $checksum = md5($params['MessageBody']);
+        $checksum = md5((string) $params['MessageBody']);
 
         $result = $this->_makeRequest($queue_url, 'SendMessage', $params);
 
@@ -530,7 +531,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
 
         $arrData = array();
         foreach($paramaters as $key => $value) {
-            $arrData[] = $key . '=' . str_replace('%7E', '~', urlencode($value));
+            $arrData[] = $key . '=' . str_replace((string) '%7E', '~', urlencode((string) $value));
         }
 
         $data .= implode('&', $arrData);

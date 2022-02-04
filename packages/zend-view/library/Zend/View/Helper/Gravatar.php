@@ -120,7 +120,7 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
     public function setOptions(array $options)
     {
         foreach ($options as $key => $value) {
-            $method = 'set' . str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
+            $method = 'set' . str_replace((string) ' ', '', ucwords(str_replace((string) '_', ' ', $key)));
             if (method_exists($this, $method)) {
                 $this->{$method}($value);
             }
@@ -171,7 +171,7 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
      */
     public function setDefaultImg($defaultImg)
     {
-        $this->_options['default_img'] = urlencode($defaultImg);
+        $this->_options['default_img'] = urlencode((string) $defaultImg);
         return $this;
     }
 
@@ -310,7 +310,7 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
     {
         $src = $this->_getGravatarUrl()
              . '/'
-             . md5(strtolower(trim($this->getEmail())))
+             . md5((string) strtolower((string) \trim((string) $this->getEmail())))
              . '?s='
              . $this->getImgSize()
              . '&d='

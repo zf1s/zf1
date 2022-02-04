@@ -56,7 +56,7 @@ class Zend_Controller_Action_Helper_NamespaceTest extends PHPUnit_Framework_Test
      */
     public function testGetNameWithNamespace()
     {
-        require_once dirname(__FILE__) . '/../../_files/Helpers/NamespacedHelper.php';
+        require_once __DIR__ . '/../../_files/Helpers/NamespacedHelper.php';
 
         $className = 'MyApp\Controller\Action\Helper\NamespacedHelper';
         $helper = new $className;

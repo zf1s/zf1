@@ -50,7 +50,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
     public function __construct($data)
     {
         set_error_handler(array($this, 'handleXmlErrors'));
-        $this->_sxml = Zend_Xml_Security::scan($data); 
+        $this->_sxml = Zend_Xml_Security::scan($data);
         restore_error_handler();
         if($this->_sxml === false) {
             if ($this->_errstr === null) {
@@ -169,6 +169,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
      *
      * @return SimpleXMLIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return $this->_sxml;
@@ -183,8 +184,8 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
     {
         $status = $this->_sxml->xpath('//status/text()');
         if ( !isset($status[0]) ) return false;
-        
-        $status = strtolower($status[0]);
+
+        $status = strtolower((string) $status[0]);
 
         if (ctype_alpha($status) && $status == 'success') {
             return true;

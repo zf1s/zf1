@@ -157,7 +157,7 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
         ));
 
         $test   = $build->generateLayerScript();
-        $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayer.js');
+        $script = file_get_contents(__DIR__ . '/_files/BuildLayer.js');
 
         $test   = $this->stripWhitespace($test);
         $script = $this->stripWhitespace($script);
@@ -177,7 +177,7 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
         ));
 
         $test   = $build->generateLayerScript();
-        $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayerOnLoad.js');
+        $script = file_get_contents(__DIR__ . '/_files/BuildLayerOnLoad.js');
 
         $test   = $this->stripWhitespace($test);
         $script = $this->stripWhitespace($script);
@@ -196,7 +196,7 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
         ));
 
         $test   = $build->generateLayerScript();
-        $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayer.js');
+        $script = file_get_contents(__DIR__ . '/_files/BuildLayer.js');
 
         $test   = $this->stripWhitespace($test);
         $script = $this->stripWhitespace($script);
@@ -216,7 +216,7 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
         ));
 
         $test   = $build->generateLayerScript();
-        $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayerJavascript.js');
+        $script = file_get_contents(__DIR__ . '/_files/BuildLayerJavascript.js');
 
         $test   = $this->stripWhitespace($test);
         $script = $this->stripWhitespace($script);
@@ -235,7 +235,7 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
         ));
 
         $test   = $build->generateLayerScript();
-        $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayer.js');
+        $script = file_get_contents(__DIR__ . '/_files/BuildLayer.js');
 
         $test   = $this->stripWhitespace($test);
         $script = $this->stripWhitespace($script);
@@ -314,7 +314,7 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
             'layerName'       => 'zend.main',
         ));
         $profile  = $build->generateBuildProfile();
-        $expected = file_get_contents(dirname(__FILE__) . '/_files/BuildProfile.js');
+        $expected = file_get_contents(__DIR__ . '/_files/BuildProfile.js');
 
         $decodedProfile  = $this->decodeProfileJson($profile);
         $decodedExpected = $this->decodeProfileJson($expected);
@@ -335,7 +335,7 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
             'layerName'       => 'zend.main',
         ));
         $profile  = $build->generateBuildProfile();
-        $expected = file_get_contents(dirname(__FILE__) . '/_files/BuildProfileWithDependencies.js');
+        $expected = file_get_contents(__DIR__ . '/_files/BuildProfileWithDependencies.js');
 
         $decodedProfile  = $this->decodeProfileJson($profile);
         $decodedExpected = $this->decodeProfileJson($expected);

@@ -175,7 +175,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
     public function getMessage($id)
     {
         // TODO that's ugly, would be better to let the message class decide
-        if (strtolower($this->_messageClass) == 'zend_mail_message_file' || is_subclass_of($this->_messageClass, 'zend_mail_message_file')) {
+        if (strtolower((string) $this->_messageClass) == 'zend_mail_message_file' || is_subclass_of($this->_messageClass, 'zend_mail_message_file')) {
             return new $this->_messageClass(array('file'  => $this->_getFileData($id, 'filename'),
                                                   'flags' => $this->_getFileData($id, 'flags')));
         }
@@ -209,7 +209,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
         $content = '';
         while (!feof($fh)) {
             $line = fgets($fh);
-            if (!trim($line)) {
+            if (!\trim((string) $line)) {
                 break;
             }
             $content .= $line;
@@ -242,7 +242,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
 
         while (!feof($fh)) {
             $line = fgets($fh);
-            if (!trim($line)) {
+            if (!\trim((string) $line)) {
                 break;
             }
         }
@@ -295,10 +295,10 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
      */
     protected function _isMaildir($dirname)
     {
-        if (file_exists($dirname . '/new') && !is_dir($dirname . '/new')) {
+        if (file_exists((string) $dirname . '/new') && !is_dir($dirname . '/new')) {
             return false;
         }
-        if (file_exists($dirname . '/tmp') && !is_dir($dirname . '/tmp')) {
+        if (file_exists((string) $dirname . '/tmp') && !is_dir($dirname . '/tmp')) {
             return false;
         }
         return is_dir($dirname . '/cur');
@@ -332,7 +332,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
         if ($dh) {
             $this->_getMaildirFiles($dh, $dirname . '/new/', array(Zend_Mail_Storage::FLAG_RECENT));
             closedir($dh);
-        } else if (file_exists($dirname . '/new/')) {
+        } else if (file_exists((string) $dirname . '/new/')) {
             /**
              * @see Zend_Mail_Storage_Exception
              */
@@ -359,7 +359,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
             @list($uniq, $info) = explode(':', $entry, 2);
             @list(,$size) = explode(',', $uniq, 2);
             if ($size && $size[0] == 'S' && $size[1] == '=') {
-                $size = substr($size, 2);
+                $size = substr((string) $size, 2);
             }
             if (!ctype_digit($size)) {
                 $size = null;
@@ -370,7 +370,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
             }
 
             $named_flags = $default_flags;
-            $length = strlen($flags);
+            $length = strlen((string) $flags);
             for ($i = 0; $i < $length; ++$i) {
                 $flag = $flags[$i];
                 $named_flags[$flag] = isset(self::$_knownFlags[$flag]) ? self::$_knownFlags[$flag] : $flag;

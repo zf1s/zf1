@@ -73,7 +73,7 @@ class Zend_Json_Encoder
      */
     public static function encode($value, $cycleCheck = false, $options = array())
     {
-        $encoder = new self(($cycleCheck) ? true : false, $options);
+        $encoder = new self((bool) $cycleCheck, $options);
         return $encoder->_encodeValue($value);
     }
 
@@ -92,7 +92,7 @@ class Zend_Json_Encoder
     {
         if (is_object($value)) {
             return $this->_encodeObject($value);
-        } else if (is_array($value)) {
+        } elseif (is_array($value)) {
             return $this->_encodeArray($value);
         }
 
@@ -237,7 +237,7 @@ class Zend_Json_Encoder
 
         if (is_int($value) || is_float($value)) {
             $result = (string) $value;
-            $result = str_replace(',', '.', $result);
+            $result = str_replace((string) ',', '.', $result);
         } elseif (is_string($value)) {
             $result = $this->_encodeString($value);
         } elseif (is_bool($value)) {
@@ -454,7 +454,7 @@ class Zend_Json_Encoder
      */
     public static function encodeUnicodeString($value)
     {
-        $strlen_var = strlen($value);
+        $strlen_var = strlen((string) $value);
         $ascii = "";
 
         /**
@@ -462,7 +462,7 @@ class Zend_Json_Encoder
          * escaping with a slash or encoding to UTF-8 where necessary
          */
         for($i = 0; $i < $strlen_var; $i++) {
-            $ord_var_c = ord($value[$i]);
+            $ord_var_c = ord((string) $value[$i]);
 
             switch (true) {
                 case (($ord_var_c >= 0x20) && ($ord_var_c <= 0x7F)):
@@ -473,7 +473,7 @@ class Zend_Json_Encoder
                 case (($ord_var_c & 0xE0) == 0xC0):
                     // characters U-00000080 - U-000007FF, mask 110XXXXX
                     // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $char = pack('C*', $ord_var_c, ord($value[$i + 1]));
+                    $char = pack('C*', $ord_var_c, ord((string) $value[$i + 1]));
                     $i += 1;
                     $utf16 = self::_utf82utf16($char);
                     $ascii .= sprintf('\u%04s', bin2hex($utf16));
@@ -483,8 +483,8 @@ class Zend_Json_Encoder
                     // characters U-00000800 - U-0000FFFF, mask 1110XXXX
                     // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
                     $char = pack('C*', $ord_var_c,
-                                 ord($value[$i + 1]),
-                                 ord($value[$i + 2]));
+                                 ord((string) $value[$i + 1]),
+                                 ord((string) $value[$i + 2]));
                     $i += 2;
                     $utf16 = self::_utf82utf16($char);
                     $ascii .= sprintf('\u%04s', bin2hex($utf16));
@@ -494,9 +494,9 @@ class Zend_Json_Encoder
                     // characters U-00010000 - U-001FFFFF, mask 11110XXX
                     // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
                     $char = pack('C*', $ord_var_c,
-                                 ord($value[$i + 1]),
-                                 ord($value[$i + 2]),
-                                 ord($value[$i + 3]));
+                                 ord((string) $value[$i + 1]),
+                                 ord((string) $value[$i + 2]),
+                                 ord((string) $value[$i + 3]));
                     $i += 3;
                     $utf16 = self::_utf82utf16($char);
                     $ascii .= sprintf('\u%04s', bin2hex($utf16));
@@ -506,10 +506,10 @@ class Zend_Json_Encoder
                     // characters U-00200000 - U-03FFFFFF, mask 111110XX
                     // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
                     $char = pack('C*', $ord_var_c,
-                                 ord($value[$i + 1]),
-                                 ord($value[$i + 2]),
-                                 ord($value[$i + 3]),
-                                 ord($value[$i + 4]));
+                                 ord((string) $value[$i + 1]),
+                                 ord((string) $value[$i + 2]),
+                                 ord((string) $value[$i + 3]),
+                                 ord((string) $value[$i + 4]));
                     $i += 4;
                     $utf16 = self::_utf82utf16($char);
                     $ascii .= sprintf('\u%04s', bin2hex($utf16));
@@ -519,11 +519,11 @@ class Zend_Json_Encoder
                     // characters U-04000000 - U-7FFFFFFF, mask 1111110X
                     // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
                     $char = pack('C*', $ord_var_c,
-                                 ord($value[$i + 1]),
-                                 ord($value[$i + 2]),
-                                 ord($value[$i + 3]),
-                                 ord($value[$i + 4]),
-                                 ord($value[$i + 5]));
+                                 ord((string) $value[$i + 1]),
+                                 ord((string) $value[$i + 2]),
+                                 ord((string) $value[$i + 3]),
+                                 ord((string) $value[$i + 4]),
+                                 ord((string) $value[$i + 5]));
                     $i += 5;
                     $utf16 = self::_utf82utf16($char);
                     $ascii .= sprintf('\u%04s', bin2hex($utf16));
@@ -554,7 +554,7 @@ class Zend_Json_Encoder
             return mb_convert_encoding($utf8, 'UTF-16', 'UTF-8');
         }
 
-        switch (strlen($utf8)) {
+        switch (strlen((string) $utf8)) {
             case 1:
                 // this case should never be reached, because we are in ASCII range
                 // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
@@ -563,17 +563,17 @@ class Zend_Json_Encoder
             case 2:
                 // return a UTF-16 character from a 2-byte UTF-8 char
                 // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                return chr(0x07 & (ord($utf8[0]) >> 2))
-                     . chr((0xC0 & (ord($utf8[0]) << 6))
-                         | (0x3F & ord($utf8[1])));
+                return chr(0x07 & (ord((string) $utf8[0]) >> 2))
+                     . chr((0xC0 & (ord((string) $utf8[0]) << 6))
+                         | (0x3F & ord((string) $utf8[1])));
 
             case 3:
                 // return a UTF-16 character from a 3-byte UTF-8 char
                 // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                return chr((0xF0 & (ord($utf8[0]) << 4))
-                         | (0x0F & (ord($utf8[1]) >> 2)))
-                     . chr((0xC0 & (ord($utf8[1]) << 6))
-                         | (0x7F & ord($utf8[2])));
+                return chr((0xF0 & (ord((string) $utf8[0]) << 4))
+                         | (0x0F & (ord((string) $utf8[1]) >> 2)))
+                     . chr((0xC0 & (ord((string) $utf8[1]) << 6))
+                         | (0x7F & ord((string) $utf8[2])));
         }
 
         // ignoring UTF-32 for now, sorry

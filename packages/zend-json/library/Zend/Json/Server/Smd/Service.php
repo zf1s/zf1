@@ -145,7 +145,7 @@ class Zend_Json_Server_Smd_Service
     {
         $methods = get_class_methods($this);
         foreach ($options as $key => $value) {
-            if ('options' == strtolower($key)) {
+            if ('options' == strtolower((string) $key)) {
                 continue;
             }
             $method = 'set' . ucfirst($key);

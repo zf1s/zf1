@@ -81,7 +81,7 @@ class Zend_Controller_Router_Route_Static extends Zend_Controller_Router_Route_A
      */
     public function __construct($route, $defaults = array())
     {
-        $this->_route    = trim($route, self::URI_DELIMITER);
+        $this->_route    = \trim((string) $route, self::URI_DELIMITER);
         $this->_defaults = (array) $defaults;
     }
 
@@ -96,14 +96,14 @@ class Zend_Controller_Router_Route_Static extends Zend_Controller_Router_Route_A
     {
         if ($partial) {
             if ((empty($path) && empty($this->_route))
-                || (substr($path, 0, strlen($this->_route)) === $this->_route)
+                || (substr((string) $path, 0, strlen((string) $this->_route)) === $this->_route)
             ) {
                 $this->setMatchedPath($this->_route);
 
                 return $this->_defaults;
             }
         } else {
-            if (trim($path, self::URI_DELIMITER) == $this->_route) {
+            if (\trim((string) $path, self::URI_DELIMITER) == $this->_route) {
                 return $this->_defaults;
             }
         }

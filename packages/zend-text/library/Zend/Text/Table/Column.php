@@ -119,7 +119,7 @@ class Zend_Text_Table_Column
         if ($charset === null) {
             $inputCharset = Zend_Text_Table::getInputCharset();
         } else {
-            $inputCharset = strtolower($charset);
+            $inputCharset = strtolower((string) $charset);
         }
 
         $outputCharset = Zend_Text_Table::getOutputCharset();

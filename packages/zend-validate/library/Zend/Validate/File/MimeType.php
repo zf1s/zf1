@@ -309,7 +309,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
             if (empty($content) || !is_string($content)) {
                 continue;
             }
-            $mimetypes[] = trim($content);
+            $mimetypes[] = \trim((string) $content);
         }
         $mimetypes = array_unique($mimetypes);
 

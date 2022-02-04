@@ -54,7 +54,7 @@ class Zend_Service_Console_Command_ParameterSource_ConfigFile
 		foreach ($argv as $parameterInput) {
 			$parameterInput = explode('=', $parameterInput, 2);
 
-			if (strtolower($parameterInput[0]) == '--configfile' || strtolower($parameterInput[0]) == '-f') {
+			if (strtolower((string) $parameterInput[0]) == '--configfile' || strtolower((string) $parameterInput[0]) == '-f') {
 				if (!isset($parameterInput[1])) {
 					// require_once 'Zend/Service/Console/Exception.php';
 					throw new Zend_Service_Console_Exception("No path to a configuration file is given. Specify the path using the --ConfigFile or -F switch.");
@@ -68,7 +68,7 @@ class Zend_Service_Console_Command_ParameterSource_ConfigFile
 		if (is_null($configurationFilePath)) {
 			return null;
 		}
-		if (!file_exists($configurationFilePath)) {
+		if (!file_exists((string) $configurationFilePath)) {
 			// require_once 'Zend/Service/Console/Exception.php';
 			throw new Zend_Service_Console_Exception("Invalid configuration file given. Specify the correct path using the --ConfigFile or -F switch.");
 		}
@@ -83,18 +83,18 @@ class Zend_Service_Console_Command_ParameterSource_ConfigFile
 		foreach ($parameter->aliases as $alias) {
 			if (array_key_exists($alias, $iniValues)) {
 				$parameterValue = $iniValues[$alias]; break;
-			} else if (array_key_exists(strtolower($alias), $iniValues)) {
-				$parameterValue = $iniValues[strtolower($alias)]; break;
-			} else if (array_key_exists(str_replace('-', '', $alias), $iniValues)) {
-				$parameterValue = $iniValues[str_replace('-', '', $alias)]; break;
-			} else if (array_key_exists(strtolower(str_replace('-', '', $alias)), $iniValues)) {
-				$parameterValue = $iniValues[strtolower(str_replace('-', '', $alias))]; break;
+			} else if (array_key_exists(strtolower((string) $alias), $iniValues)) {
+				$parameterValue = $iniValues[strtolower((string) $alias)]; break;
+			} else if (array_key_exists(str_replace((string) '-', '', $alias), $iniValues)) {
+				$parameterValue = $iniValues[str_replace((string) '-', '', $alias)]; break;
+			} else if (array_key_exists(strtolower((string) str_replace((string) '-', '', $alias)), $iniValues)) {
+				$parameterValue = $iniValues[strtolower((string) str_replace((string) '-', '', $alias))]; break;
 			}
 		}
 
-		if (strtolower($parameterValue) == 'true') {
+		if (strtolower((string) $parameterValue) == 'true') {
 			$parameterValue = true;
-		} else if (strtolower($parameterValue) == 'false') {
+		} else if (strtolower((string) $parameterValue) == 'false') {
 			$parameterValue = false;
 		}
 

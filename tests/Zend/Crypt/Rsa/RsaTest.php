@@ -43,7 +43,7 @@ class Zend_Crypt_RsaTest extends PHPUnit_Framework_TestCase
         if (!extension_loaded('openssl')) {
             $this->markTestSkipped('Zend_Crypt_Rsa requires openssl extension to be loaded.');
         }
-        
+
         $this->_testPemString = <<<RSAKEY
 -----BEGIN RSA PRIVATE KEY-----
 MIIBOgIBAAJBANDiE2+Xi/WnO+s120NiiJhNyIButVu6zxqlVzz0wy2j4kQVUC4Z
@@ -86,9 +86,9 @@ l9Nwj3KnPKFdqzJchujP2TLNwSYoQnxgyoMxdho=
 
 CERT;
 
-        $this->_testPemPath = dirname(__FILE__) . '/_files/test.pem';
+        $this->_testPemPath = __DIR__ . '/_files/test.pem';
 
-        $this->_testCertificatePath = dirname(__FILE__) . '/_files/test.cert';
+        $this->_testCertificatePath = __DIR__ . '/_files/test.cert';
     }
 
     public function testConstructorSetsPemString()
@@ -335,7 +335,7 @@ CERT;
         if (!$test) {
             $this->markTestSkipped('Cannot generate a private key with openssl_pkey_new()');
         }
-        
+
         $config = array(
             'privateKeyBits' => 512,
             'passPhrase' => '0987654321'

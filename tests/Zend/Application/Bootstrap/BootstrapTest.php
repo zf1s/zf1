@@ -109,7 +109,7 @@ class Zend_Application_Bootstrap_BootstrapTest extends PHPUnit_Framework_TestCas
         $this->bootstrap->setOptions(array(
             'resources' => array(
                 'frontcontroller' => array(
-                    'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
+                    'moduleDirectory' => __DIR__ . '/../_files/modules',
                 ),
             ),
         ));
@@ -194,7 +194,7 @@ class Zend_Application_Bootstrap_BootstrapTest extends PHPUnit_Framework_TestCas
         $this->bootstrap->setOptions(array(
             'resources' => array(
                 'frontcontroller' => array(
-                    'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
+                    'moduleDirectory' => __DIR__ . '/../_files/modules',
                     'returnresponse'  => true,
                 ),
             ),

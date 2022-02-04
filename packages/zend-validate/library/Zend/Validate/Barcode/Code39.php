@@ -81,8 +81,8 @@ class Zend_Validate_Barcode_Code39 extends Zend_Validate_Barcode_AdapterAbstract
      */
     protected function _code39($value)
     {
-        $checksum = substr($value, -1, 1);
-        $value    = str_split(substr($value, 0, -1));
+        $checksum = substr((string) $value, -1, 1);
+        $value    = str_split(substr((string) $value, 0, -1));
         $count    = 0;
         foreach($value as $char) {
             $count += $this->_check[$char];

@@ -78,7 +78,7 @@ class Zend_Service_Amazon_S3_StreamTest extends PHPUnit_Framework_TestCase
         $this->_amazon->unregisterStreamWrapper();
         $buckets = $this->_amazon->getBuckets();
         foreach($buckets as $bucket) {
-            if(substr($bucket, 0, strlen($this->_bucket)) != $this->_bucket) {
+            if(substr((string) $bucket, 0, strlen((string) $this->_bucket)) != $this->_bucket) {
                 continue;
             }
             $this->_amazon->cleanBucket($bucket);
@@ -117,7 +117,7 @@ class Zend_Service_Amazon_S3_StreamTest extends PHPUnit_Framework_TestCase
 
         // Write to an object
         $size = file_put_contents($this->_fileName, $data);
-        $this->assertEquals(strlen($data), $size);
+        $this->assertEquals(strlen((string) $data), $size);
 
         // Write to an object
         $f = fopen($this->_fileName, 'w');
@@ -154,7 +154,7 @@ class Zend_Service_Amazon_S3_StreamTest extends PHPUnit_Framework_TestCase
 
         // Write to an object
         $size = file_put_contents($this->_fileName, $data);
-        $this->assertEquals(strlen($data), $size);
+        $this->assertEquals(strlen((string) $data), $size);
 
         // Read from an object
         $new_data = file_get_contents($this->_fileName);
@@ -169,11 +169,11 @@ class Zend_Service_Amazon_S3_StreamTest extends PHPUnit_Framework_TestCase
         while (!feof($f)) {
             $chunk =  fread($f, 1000);
             $new_data .= $chunk;
-            $this->assertEquals(strlen($chunk), 1000);
+            $this->assertEquals(strlen((string) $chunk), 1000);
         }
         fclose($f);
 
-        $this->assertEquals(substr($data, 1000), $new_data);
+        $this->assertEquals(substr((string) $data, 1000), $new_data);
 
         unset($data);
         unset($new_data);
@@ -233,7 +233,7 @@ class Zend_Service_Amazon_S3_StreamTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_dir($this->_bucketName));
 
         $data = str_repeat('x', 10000);
-        $len = strlen($data);
+        $len = strlen((string) $data);
 
         // Write to an object
         $size = file_put_contents($this->_fileName, $data);

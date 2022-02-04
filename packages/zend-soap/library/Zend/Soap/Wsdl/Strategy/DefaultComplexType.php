@@ -71,7 +71,7 @@ class Zend_Soap_Wsdl_Strategy_DefaultComplexType extends Zend_Soap_Wsdl_Strategy
                  */
                 $element = $dom->createElement('xsd:element');
                 $element->setAttribute('name', $propertyName = $property->getName());
-                $element->setAttribute('type', $this->getContext()->getType(trim($matches[1][0])));
+                $element->setAttribute('type', $this->getContext()->getType(\trim((string) $matches[1][0])));
 
                 // If the default value is null, then this property is nillable.
                 if ($defaultProperties[$propertyName] === null) {

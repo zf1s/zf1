@@ -236,13 +236,13 @@ class Zend_Barcode_Renderer_Image extends Zend_Barcode_Renderer_RendererAbstract
                 $foreColor & 0x0000FF
             );
         } else {
-            $width = $barcodeWidth;
-            $height = $barcodeHeight;
+            $width = (int) $barcodeWidth;
+            $height = (int) $barcodeHeight;
             if ($this->_userWidth && $this->_barcode->getType() != 'error') {
-                $width = $this->_userWidth;
+                $width = (int) $this->_userWidth;
             }
             if ($this->_userHeight && $this->_barcode->getType() != 'error') {
-                $height = $this->_userHeight;
+                $height = (int) $this->_userHeight;
             }
 
             $foreColor       = $this->_barcode->getForeColor();
@@ -267,11 +267,11 @@ class Zend_Barcode_Renderer_Image extends Zend_Barcode_Renderer_RendererAbstract
         $this->_adjustPosition(imagesy($this->_resource), imagesx($this->_resource));
         imagefilledrectangle(
             $this->_resource,
-            $this->_leftOffset,
-            $this->_topOffset,
-            $this->_leftOffset + $barcodeWidth - 1,
-            $this->_topOffset + $barcodeHeight - 1,
-            $this->_imageBackgroundColor
+            (int) $this->_leftOffset,
+            (int) $this->_topOffset,
+            (int) ($this->_leftOffset + $barcodeWidth - 1),
+            (int) ($this->_topOffset + $barcodeHeight - 1),
+            (int) $this->_imageBackgroundColor
         );
     }
 
@@ -377,7 +377,11 @@ class Zend_Barcode_Renderer_Image extends Zend_Barcode_Renderer_RendererAbstract
         );
 
         if ($filled) {
-            imagefilledpolygon($this->_resource, $newPoints, 4, $allocatedColor);
+            if (\PHP_VERSION_ID >= 80100) {
+                imagefilledpolygon($this->_resource, $newPoints, $allocatedColor);
+            } else {
+                imagefilledpolygon($this->_resource, $newPoints, 4, $allocatedColor);
+            }
         } else {
             imagepolygon($this->_resource, $newPoints, 4, $allocatedColor);
         }
@@ -431,10 +435,10 @@ class Zend_Barcode_Renderer_Image extends Zend_Barcode_Renderer_RendererAbstract
                     $positionX = $position[0];
                     break;
                 case 'center':
-                    $positionX = $position[0] - ceil(($fontWidth * strlen($text)) / 2);
+                    $positionX = $position[0] - ceil(($fontWidth * strlen((string) $text)) / 2);
                     break;
                 case 'right':
-                    $positionX = $position[0] - ($fontWidth * strlen($text));
+                    $positionX = $position[0] - ($fontWidth * strlen((string) $text));
                     break;
             }
             imagestring($this->_resource, $font, $positionX, $positionY, $text, $color);
@@ -463,8 +467,8 @@ class Zend_Barcode_Renderer_Image extends Zend_Barcode_Renderer_RendererAbstract
                 $this->_resource,
                 $size,
                 $orientation,
-                $position[0] - ($width * cos(pi() * $orientation / 180)),
-                $position[1] + ($width * sin(pi() * $orientation / 180)),
+                (int) ($position[0] - ($width * cos(pi() * $orientation / 180))),
+                (int) ($position[1] + ($width * sin(pi() * $orientation / 180))),
                 $allocatedColor,
                 $font,
                 $text

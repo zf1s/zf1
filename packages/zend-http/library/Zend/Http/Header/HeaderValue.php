@@ -53,10 +53,10 @@ final class Zend_Http_Header_HeaderValue
     public static function filter($value)
     {
         $value  = (string) $value;
-        $length = strlen($value);
+        $length = strlen((string) $value);
         $string = '';
         for ($i = 0; $i < $length; $i += 1) {
-            $ascii = ord($value[$i]);
+            $ascii = ord((string) $value[$i]);
 
             // Non-visible, non-whitespace characters
             // 9 === horizontal tab
@@ -90,9 +90,9 @@ final class Zend_Http_Header_HeaderValue
     public static function isValid($value)
     {
         $value  = (string) $value;
-        $length = strlen($value);
+        $length = strlen((string) $value);
         for ($i = 0; $i < $length; $i += 1) {
-            $ascii = ord($value[$i]);
+            $ascii = ord((string) $value[$i]);
 
             // Non-visible, non-whitespace characters
             // 9 === horizontal tab

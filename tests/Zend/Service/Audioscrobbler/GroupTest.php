@@ -74,7 +74,7 @@ class Zend_Service_Audioscrobbler_GroupTest extends Zend_Service_Audioscrobbler_
         $this->setAudioscrobblerResponse($testing_response);
 
         $as = $this->getAudioscrobblerService();
-        $as->set('group', urlencode('Jazz Club'));
+        $as->set('group', urlencode((string) 'Jazz Club'));
         $response = $as->groupGetWeeklyChartList();
         $chart = $response->chart[0];
 
@@ -162,7 +162,7 @@ class Zend_Service_Audioscrobbler_GroupTest extends Zend_Service_Audioscrobbler_
         $this->setAudioscrobblerResponse($testing_response);
         $as = $this->getAudioscrobblerService();
 
-        $as->set('group', urlencode('Jazz Club'));
+        $as->set('group', urlencode((string) 'Jazz Club'));
         $response = $as->groupGetWeeklyArtistChartList();
         $this->assertNotNull(count($response));
         $artist = $response->artist[1];
@@ -261,7 +261,7 @@ class Zend_Service_Audioscrobbler_GroupTest extends Zend_Service_Audioscrobbler_
 ';
         $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
 
-        $as->set('group', urlencode('Jazz Club'));
+        $as->set('group', urlencode((string) 'Jazz Club'));
         $response = $as->groupGetWeeklyAlbumChartList();
         $this->assertNotNull(count($response));
         $album = $response->album[0];
@@ -282,7 +282,7 @@ class Zend_Service_Audioscrobbler_GroupTest extends Zend_Service_Audioscrobbler_
         $this->setAudioscrobblerResponse($testing_response);
 
         $as = $this->getAudioscrobblerService();
-        $as->set('group', urlencode('Jazz Club'));
+        $as->set('group', urlencode((string) 'Jazz Club'));
         $from = 1114965332;
         $to = 1115570132;
         $response = $as->groupGetWeeklyChartList($from, $to);

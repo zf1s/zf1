@@ -38,7 +38,7 @@
 require_once 'MessageTestClass.php';
 
 /** Base Adapter test class */
-require_once dirname(__FILE__) . '/AdapterTest.php';
+require_once __DIR__ . '/AdapterTest.php';
 
 /**
  * @category   Zend
@@ -64,7 +64,7 @@ class Zend_Queue_Adapter_MemcacheqTest extends Zend_Queue_Adapter_AdapterTest
         date_default_timezone_set('GMT');
         parent::setUp();
     }
-    
+
     /**
      * getAdapterName() is an method to help make AdapterTest work with any
      * new adapters
@@ -115,7 +115,7 @@ class Zend_Queue_Adapter_MemcacheqTest extends Zend_Queue_Adapter_AdapterTest
         $this->assertTrue(is_integer(Zend_Queue_Adapter_Memcacheq::DEFAULT_PORT));
         $this->assertTrue(is_string(Zend_Queue_Adapter_Memcacheq::EOL));
     }
-    
+
     /**
      * @group ZF-7650
      */

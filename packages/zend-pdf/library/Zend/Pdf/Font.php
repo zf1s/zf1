@@ -591,7 +591,7 @@ abstract class Zend_Pdf_Font
     {
         /* First check the cache. Don't duplicate font objects.
          */
-        $filePathKey = md5($filePath);
+        $filePathKey = md5((string) $filePath);
         if (isset(Zend_Pdf_Font::$_fontFilePaths[$filePathKey])) {
             return Zend_Pdf_Font::$_fontFilePaths[$filePathKey];
         }
@@ -605,7 +605,7 @@ abstract class Zend_Pdf_Font
         /* Attempt to determine the type of font. We can't always trust file
          * extensions, but try that first since it's fastest.
          */
-        $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+        $fileExtension = strtolower((string) pathinfo($filePath, PATHINFO_EXTENSION));
 
         /* If it turns out that the file is named improperly and we guess the
          * wrong type, we'll get null instead of a font object.
@@ -656,7 +656,7 @@ abstract class Zend_Pdf_Font
              */
             $fontName = $font->getFontName(Zend_Pdf_Font::NAME_POSTSCRIPT, '', '');
             Zend_Pdf_Font::$_fontNames[$fontName] = $font;
-            $filePathKey = md5($filePath);
+            $filePathKey = md5((string) $filePath);
             Zend_Pdf_Font::$_fontFilePaths[$filePathKey] = $font;
             return $font;
 

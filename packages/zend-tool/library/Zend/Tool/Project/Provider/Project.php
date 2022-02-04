@@ -50,15 +50,15 @@ class Zend_Tool_Project_Provider_Project
         if ($path == null) {
             $path = getcwd();
         } else {
-            $path = trim($path);
-            if (!file_exists($path)) {
+            $path = \trim((string) $path);
+            if (!file_exists((string) $path)) {
                 $created = mkdir($path);
                 if (!$created) {
                     // require_once 'Zend/Tool/Framework/Client/Exception.php';
                     throw new Zend_Tool_Framework_Client_Exception('Could not create requested project directory \'' . $path . '\'');
                 }
             }
-            $path = str_replace('\\', '/', realpath($path));
+            $path = str_replace((string) '\\', '/', realpath($path));
         }
 
         $profile = $this->_loadProfile(self::NO_PROFILE_RETURN_FALSE, $path);
@@ -70,7 +70,7 @@ class Zend_Tool_Project_Provider_Project
 
         $profileData = null;
 
-        if ($fileOfProfile != null && file_exists($fileOfProfile)) {
+        if ($fileOfProfile != null && file_exists((string) $fileOfProfile)) {
             $profileData = file_get_contents($fileOfProfile);
         }
 
@@ -102,7 +102,7 @@ class Zend_Tool_Project_Provider_Project
             $response->appendContent('Testing Note: ', array('separator' => false, 'color' => 'yellow'));
             $response->appendContent('PHPUnit was not found in your include_path, therefore no testing actions will be created.');
         }
-            
+
         foreach ($newProfile->getIterator() as $resource) {
             $resource->create();
         }
@@ -129,7 +129,7 @@ class Zend_Tool_Project_Provider_Project
         if (Zend_Tool_Project_Provider_Test::isPHPUnitAvailable()) {
             $testAction = '                    	<testApplicationActionMethod forActionName="index" />';
         }
-        
+
         $version = Zend_Version::VERSION;
 
         $data = <<<EOS
@@ -211,7 +211,7 @@ EOS;
     {
         $projectDirResource = $caller->getResource()->getProfile()->search('projectDirectory');
         if ($projectDirResource) {
-            $name = ltrim(strrchr($projectDirResource->getPath(), DIRECTORY_SEPARATOR), DIRECTORY_SEPARATOR);
+            $name = ltrim((string) strrchr($projectDirResource->getPath(), DIRECTORY_SEPARATOR), DIRECTORY_SEPARATOR);
             $path = $projectDirResource->getPath() . '/public';
         } else {
             $path = '/path/to/public';

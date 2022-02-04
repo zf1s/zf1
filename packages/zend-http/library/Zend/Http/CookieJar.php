@@ -181,7 +181,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
     {
         $cookies = $this->_flattenCookiesArray($this->cookies, $ret_as);
         if($ret_as == self::COOKIE_STRING_CONCAT_STRICT) {
-            $cookies = rtrim(trim($cookies), ';');
+            $cookies = rtrim((string) \trim((string) $cookies), ';');
         }
         return $cookies;
     }
@@ -220,7 +220,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
         // Now, use self::_flattenCookiesArray again - only to convert to the return format ;)
         $ret = $this->_flattenCookiesArray($ret, $ret_as);
         if($ret_as == self::COOKIE_STRING_CONCAT_STRICT) {
-            $ret = rtrim(trim($ret), ';');
+            $ret = rtrim((string) \trim((string) $ret), ';');
         }
 
         return $ret;
@@ -247,7 +247,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
 
         // Get correct cookie path
         $path = $uri->getPath();
-        $path = substr($path, 0, strrpos($path, '/'));
+        $path = substr((string) $path, 0, strrpos($path, '/'));
         if (! $path) $path = '/';
 
         if (isset($this->cookies[$uri->getHost()][$path][$cookie_name])) {
@@ -259,7 +259,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
                     break;
 
                 case self::COOKIE_STRING_CONCAT_STRICT:
-                    return rtrim(trim($cookie->__toString()), ';');
+                    return rtrim((string) \trim((string) $cookie->__toString()), ';');
                     break;
 
                 case self::COOKIE_STRING_ARRAY:
@@ -390,6 +390,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_rawCookies);
@@ -400,6 +401,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
      *
      * @return ArrayIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->_rawCookies);

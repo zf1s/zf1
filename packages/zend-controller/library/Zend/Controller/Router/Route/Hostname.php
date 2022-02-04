@@ -168,15 +168,15 @@ class Zend_Controller_Router_Route_Hostname extends Zend_Controller_Router_Route
      */
     public function __construct($route, $defaults = array(), $reqs = array(), $scheme = null)
     {
-        $route               = trim($route, '.');
+        $route               = \trim((string) $route, '.');
         $this->_defaults     = (array) $defaults;
         $this->_requirements = (array) $reqs;
         $this->_scheme       = $scheme;
 
         if ($route != '') {
             foreach (explode('.', $route) as $pos => $part) {
-                if (substr($part, 0, 1) == $this->_hostVariable) {
-                    $name                   = substr($part, 1);
+                if (substr((string) $part, 0, 1) == $this->_hostVariable) {
+                    $name                   = substr((string) $part, 1);
                     $this->_parts[$pos]     = (isset($reqs[$name]) ? $reqs[$name] : $this->_defaultRegex);
                     $this->_variables[$pos] = $name;
                 } else {
@@ -208,13 +208,13 @@ class Zend_Controller_Router_Route_Hostname extends Zend_Controller_Router_Route
         // Get the host and remove unnecessary port information
         $host = $request->getHttpHost();
         if (preg_match('#:\d+$#', $host, $result) === 1) {
-            $host = substr($host, 0, -strlen($result[0]));
+            $host = substr((string) $host, 0, -strlen((string) $result[0]));
         }
 
         $hostStaticCount = 0;
         $values          = array();
 
-        $host = trim($host, '.');
+        $host = \trim((string) $host, '.');
 
         if ($host != '') {
             $host = explode('.', $host);
@@ -318,14 +318,14 @@ class Zend_Controller_Router_Route_Hostname extends Zend_Controller_Router_Route
                 || $partial
             ) {
                 if ($encode) {
-                    $value = urlencode($value);
+                    $value = urlencode((string) $value);
                 }
                 $return = '.' . $value . $return;
                 $flag   = true;
             }
         }
 
-        $url = trim($return, '.');
+        $url = \trim((string) $return, '.');
 
         if ($this->_scheme !== null) {
             $scheme = $this->_scheme;

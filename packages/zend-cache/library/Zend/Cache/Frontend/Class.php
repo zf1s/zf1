@@ -270,6 +270,6 @@ class Zend_Cache_Frontend_Class extends Zend_Cache_Core
      */
     public function makeId($name, array $args = array())
     {
-        return md5($this->_cachedEntityLabel . '__' . $name . '__' . serialize($args));
+        return md5((string) $this->_cachedEntityLabel . '__' . $name . '__' . serialize($args));
     }
 }

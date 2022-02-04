@@ -42,7 +42,7 @@ class Zend_Reflection_ClassTest extends PHPUnit_Framework_TestCase
     {
         // ensure we are only required this file once per runtime
         if (self::$_sampleClassFileRequired === false) {
-            $fileToRequire = dirname(__FILE__) . '/_files/TestSampleClass.php';
+            $fileToRequire = __DIR__ . '/_files/TestSampleClass.php';
             require_once $fileToRequire;
             self::$_sampleClassFileRequired = true;
         }
@@ -118,6 +118,7 @@ class Zend_Reflection_ClassTest extends PHPUnit_Framework_TestCase
         return \$this->_prop2;
     }
 
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return array();
@@ -133,8 +134,8 @@ EOS;
     {
         $reflectionClass = new Zend_Reflection_Class('Zend_Reflection_TestSampleClass5');
 
-        $this->assertEquals(87, $reflectionClass->getStartLine());
-        $this->assertEquals(76, $reflectionClass->getStartLine(true));
+        $this->assertEquals(88, $reflectionClass->getStartLine());
+        $this->assertEquals(77, $reflectionClass->getStartLine(true));
     }
 
 

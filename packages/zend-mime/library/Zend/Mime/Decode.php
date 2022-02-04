@@ -45,35 +45,35 @@ class Zend_Mime_Decode
     public static function splitMime($body, $boundary)
     {
         // TODO: we're ignoring \r for now - is this function fast enough and is it safe to asume noone needs \r?
-        $body = str_replace("\r", '', $body);
+        $body = str_replace((string) "\r", '', $body);
 
         $start = 0;
         $res   = array();
         // find every mime part limiter and cut out the
         // string before it.
         // the part before the first boundary string is discarded:
-        $p = strpos($body, '--' . $boundary . "\n", $start);
+        $p = strpos((string) $body, '--' . $boundary . "\n", $start);
         if ($p === false) {
             // no parts found!
             return array();
         }
 
         // position after first boundary line
-        $start = $p + 3 + strlen($boundary);
+        $start = $p + 3 + strlen((string) $boundary);
 
-        while (($p = strpos($body, '--' . $boundary . "\n", $start)) !== false) {
-            $res[] = substr($body, $start, $p-$start);
-            $start = $p + 3 + strlen($boundary);
+        while (($p = strpos((string) $body, '--' . $boundary . "\n", $start)) !== false) {
+            $res[] = substr((string) $body, $start, $p-$start);
+            $start = $p + 3 + strlen((string) $boundary);
         }
 
         // no more parts, find end boundary
-        $p = strpos($body, '--' . $boundary . '--', $start);
+        $p = strpos((string) $body, '--' . $boundary . '--', $start);
         if ($p === false) {
             throw new Zend_Exception('Not a valid Mime Message: End Missing');
         }
 
         // the remaining part also needs to be parsed:
-        $res[] = substr($body, $start, $p - $start);
+        $res[] = substr((string) $body, $start, $p - $start);
 
         return $res;
     }
@@ -144,15 +144,15 @@ class Zend_Mime_Decode
 
         // find an empty line between headers and body
         // default is set new line
-        if (strpos($message, $EOL . $EOL)) {
+        if (strpos((string) $message, $EOL . $EOL)) {
             list($headers, $body) = explode($EOL . $EOL, $message, 2);
             // next is the standard new line
         } else {
-            if ($EOL != "\r\n" && strpos($message, "\r\n\r\n")) {
+            if ($EOL != "\r\n" && strpos((string) $message, "\r\n\r\n")) {
                 list($headers, $body) = explode("\r\n\r\n", $message, 2);
                 // next is the other "standard" new line
             } else {
-                if ($EOL != "\n" && strpos($message, "\n\n")) {
+                if ($EOL != "\n" && strpos((string) $message, "\n\n")) {
                     list($headers, $body) = explode("\n\n", $message, 2);
                     // at last resort find anything that looks like a new line
                 } else {
@@ -173,7 +173,7 @@ class Zend_Mime_Decode
 
         // normalize header names
         foreach ($headers as $name => $header) {
-            $lower = strtolower($name);
+            $lower = strtolower((string) $name);
             if ($lower == $name) {
                 continue;
             }
@@ -218,14 +218,14 @@ class Zend_Mime_Decode
         $field, $wantedPart = null, $firstName = 0
     )
     {
-        $wantedPart = strtolower($wantedPart);
-        $firstName  = strtolower($firstName);
+        $wantedPart = strtolower((string) $wantedPart);
+        $firstName  = strtolower((string) $firstName);
 
         // special case - a bit optimized
         if ($firstName === $wantedPart) {
             $field = strtok($field, ';');
 
-            return $field[0] == '"' ? substr($field, 1, -1) : $field;
+            return $field[0] == '"' ? substr((string) $field, 1, -1) : $field;
         }
 
         $field = $firstName . '=' . $field;
@@ -242,7 +242,7 @@ class Zend_Mime_Decode
                     return $matches[2][$key];
                 }
 
-                return substr($matches[2][$key], 1, -1);
+                return substr((string) $matches[2][$key], 1, -1);
             }
 
             return null;
@@ -250,9 +250,9 @@ class Zend_Mime_Decode
 
         $split = array();
         foreach ($matches[1] as $key => $name) {
-            $name = strtolower($name);
+            $name = strtolower((string) $name);
             if ($matches[2][$key][0] == '"') {
-                $split[$name] = substr($matches[2][$key], 1, -1);
+                $split[$name] = substr((string) $matches[2][$key], 1, -1);
             } else {
                 $split[$name] = $matches[2][$key];
             }

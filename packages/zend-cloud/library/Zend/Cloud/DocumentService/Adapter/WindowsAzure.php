@@ -178,7 +178,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
         try {
             $this->_storageClient->createTable($name);
         } catch(Zend_Service_WindowsAzure_Exception $e) {
-            if (strpos($e->getMessage(), "table specified already exists") === false) {
+            if (strpos((string) $e->getMessage(), "table specified already exists") === false) {
                 throw new Zend_Cloud_DocumentService_Exception('Error on collection creation: '.$e->getMessage(), $e->getCode(), $e);
             }
         }
@@ -197,7 +197,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
         try {
             $this->_storageClient->deleteTable($name);
         } catch(Zend_Service_WindowsAzure_Exception $e) {
-            if (strpos($e->getMessage(), "does not exist") === false) {
+            if (strpos((string) $e->getMessage(), "does not exist") === false) {
                 throw new Zend_Cloud_DocumentService_Exception('Error on collection deletion: '.$e->getMessage(), $e->getCode(), $e);
             }
         }
@@ -404,7 +404,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
             }
             $this->_storageClient->deleteEntity($collectionName, $entity, isset($options[self::VERIFY_ETAG]));
         } catch(Zend_Service_WindowsAzure_Exception $e) {
-            if (strpos($e->getMessage(), "does not exist") === false) {
+            if (strpos((string) $e->getMessage(), "does not exist") === false) {
                 throw new Zend_Cloud_DocumentService_Exception('Error on document deletion: '.$e->getMessage(), $e->getCode(), $e);
             }
         }
@@ -426,7 +426,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
             $documentClass = $this->getDocumentClass();
             return new $documentClass($this->_resolveAttributes($entity), array($entity->getPartitionKey(), $entity->getRowKey()));
         } catch (Zend_Service_WindowsAzure_Exception $e) {
-            if (strpos($e->getMessage(), "does not exist") !== false) {
+            if (strpos((string) $e->getMessage(), "does not exist") !== false) {
                 return false;
             }
             throw new Zend_Cloud_DocumentService_Exception('Error on document fetch: '.$e->getMessage(), $e->getCode(), $e);

@@ -49,7 +49,7 @@ class Zend_Config_Writer_IniTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_tempName = @tempnam(dirname(__FILE__) . '/temp', 'tmp');
+        $this->_tempName = @tempnam(__DIR__ . '/temp', 'tmp');
     }
 
     public function tearDown()
@@ -120,7 +120,7 @@ class Zend_Config_Writer_IniTest extends PHPUnit_Framework_TestCase
 
     public function testWriteAndReadOriginalFile()
     {
-        $config = new Zend_Config_Ini(dirname(__FILE__) . '/files/allsections.ini', null, array('skipExtends' => true));
+        $config = new Zend_Config_Ini(__DIR__ . '/files/allsections.ini', null, array('skipExtends' => true));
 
         $writer = new Zend_Config_Writer_Ini(array('config' => $config, 'filename' => $this->_tempName));
         $writer->write();
@@ -135,7 +135,7 @@ class Zend_Config_Writer_IniTest extends PHPUnit_Framework_TestCase
 
     public function testWriteAndReadSingleSection()
     {
-        $config = new Zend_Config_Ini(dirname(__FILE__) . '/files/allsections.ini', 'staging', array('skipExtends' => true));
+        $config = new Zend_Config_Ini(__DIR__ . '/files/allsections.ini', 'staging', array('skipExtends' => true));
 
         $writer = new Zend_Config_Writer_Ini(array('config' => $config, 'filename' => $this->_tempName));
         $writer->write();
@@ -198,7 +198,7 @@ ECS;
 
     public function testRenderWithoutSections2()
     {
-        $config = new Zend_Config_Ini(dirname(__FILE__) . '/files/allsections.ini', null, array('skipExtends' => true));
+        $config = new Zend_Config_Ini(__DIR__ . '/files/allsections.ini', null, array('skipExtends' => true));
 
         $writer = new Zend_Config_Writer_Ini();
         $writer->setRenderWithoutSections();

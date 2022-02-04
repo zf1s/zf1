@@ -43,13 +43,13 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
     public static function encode($data, $params = null)
     {
         $output = '';
-        $dataLength = strlen($data);
+        $dataLength = strlen((string) $data);
 
         for ($i = 0; $i < $dataLength; $i += 4) {
             //convert the 4 characters into a 32-bit number
-            $chunk = substr($data, $i, 4);
+            $chunk = substr((string) $data, $i, 4);
 
-            if (strlen($chunk) < 4) {
+            if (strlen((string) $chunk) < 4) {
                 //partial chunk
                 break;
             }
@@ -74,7 +74,7 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
         //encode partial chunk
         if ($i < $dataLength) {
             $n = $dataLength - $i;
-            $chunk = substr($data, -$n);
+            $chunk = substr((string) $data, -$n);
 
             //0 pad the rest
             for ($j = $n;$j < 4;$j++) {
@@ -99,7 +99,7 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
         $output = chunk_split($output, 76, "\n");
 
         //get rid of new line at the end
-        $output = substr($output, 0, -1);
+        $output = substr((string) $output, 0, -1);
         return $output;
     }
 
@@ -119,27 +119,27 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
         $whiteSpace = array("\x00", "\x09", "\x0A", "\x0C", "\x0D", "\x20");
         $data = str_replace($whiteSpace, '', $data);
 
-        if (substr($data, -2) != '~>') {
+        if (substr((string) $data, -2) != '~>') {
             // require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Invalid EOF marker');
             return '';
         }
 
-        $data = substr($data, 0, (strlen($data) - 2));
-        $dataLength = strlen($data);
+        $data = substr((string) $data, 0, (strlen((string) $data) - 2));
+        $dataLength = strlen((string) $data);
 
         for ($i = 0; $i < $dataLength; $i += 5) {
             $b = 0;
 
-            if (substr($data, $i, 1) == "z") {
+            if (substr((string) $data, $i, 1) == "z") {
                 $i -= 4;
                 $output .= pack("N", 0);
                 continue;
             }
 
-            $c = substr($data, $i, 5);
+            $c = substr((string) $data, $i, 5);
 
-            if(strlen($c) < 5) {
+            if(strlen((string) $c) < 5) {
                 //partial chunk
                 break;
             }
@@ -157,8 +157,8 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
         //decode partial
         if ($i < $dataLength) {
             $value = 0;
-            $chunk = substr($data, $i);
-            $partialLength = strlen($chunk);
+            $chunk = substr((string) $data, $i);
+            $partialLength = strlen((string) $chunk);
 
             //pad the rest of the chunk with u's
             //until the lenght of the chunk is 5
@@ -173,7 +173,7 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
             }
 
             $foo = pack("N", $value);
-            $output .= substr($foo, 0, ($partialLength - 1));
+            $output .= substr((string) $foo, 0, ($partialLength - 1));
         }
 
         return $output;

@@ -195,7 +195,7 @@ class Zend_CodeGenerator_Php_Docblock extends Zend_CodeGenerator_Php_Abstract
             $output .= $tag->generate() . self::LINE_FEED;
         }
 
-        return $this->_docCommentize(trim($output));
+        return $this->_docCommentize(\trim((string) $output));
     }
 
     /**
@@ -219,7 +219,7 @@ class Zend_CodeGenerator_Php_Docblock extends Zend_CodeGenerator_Php_Abstract
             $output .= self::LINE_FEED;
         }
 
-        $output = rtrim($output, ' *' . self::LINE_FEED) . self::LINE_FEED;
+        $output = rtrim((string) $output, ' *' . self::LINE_FEED) . self::LINE_FEED;
 
         $output .= $indent . ' */' . self::LINE_FEED;
         return $output;

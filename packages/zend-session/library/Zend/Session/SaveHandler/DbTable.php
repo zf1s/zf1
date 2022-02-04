@@ -425,7 +425,7 @@ class Zend_Session_SaveHandler_DbTable
             throw new Zend_Session_SaveHandler_Exception('session.save_path is a path and not a table name.');
         }
 
-        if (strpos($this->_name, '.')) {
+        if (strpos((string) $this->_name, '.')) {
             list($this->_schema, $this->_name) = explode('.', $this->_name);
         }
     }

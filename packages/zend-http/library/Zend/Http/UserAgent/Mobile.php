@@ -279,7 +279,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
     {
         //  To have a quick identification, try light-weight tests first
         if (isset($server['all_http'])) {
-            if (strpos(strtolower(str_replace(' ', '', $server['all_http'])), 'operam') !== false) {
+            if (strpos((string) strtolower((string) str_replace((string) ' ', '', $server['all_http'])), 'operam') !== false) {
                 // Opera Mini or Opera Mobi
                 return true;
             }
@@ -315,7 +315,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
     public static function userAgentStart($userAgent)
     {
 
-        $mobile_ua = strtolower(substr($userAgent, 0, 4));
+        $mobile_ua = strtolower((string) substr((string) $userAgent, 0, 4));
 
         return (in_array($mobile_ua, self::$_uaBegin));
     }

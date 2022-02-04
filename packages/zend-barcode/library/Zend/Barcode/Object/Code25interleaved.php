@@ -80,7 +80,7 @@ class Zend_Barcode_Object_Code25interleaved extends Zend_Barcode_Object_Code25
         $quietZone       = $this->getQuietZone();
         $startCharacter  = (4 * $this->_barThinWidth) * $this->_factor;
         $characterLength = (3 * $this->_barThinWidth + 2 * $this->_barThickWidth) * $this->_factor;
-        $encodedData     = strlen($this->getText()) * $characterLength;
+        $encodedData     = strlen((string) $this->getText()) * $characterLength;
         $stopCharacter   = ($this->_barThickWidth + 2 * $this->_barThinWidth) * $this->_factor;
         return $quietZone + $startCharacter + $encodedData + $stopCharacter + $quietZone;
     }
@@ -103,21 +103,21 @@ class Zend_Barcode_Object_Code25interleaved extends Zend_Barcode_Object_Code25
 
         // Encoded $text
         $text = $this->getText();
-        for ($i = 0; $i < strlen($text); $i += 2) { // Draw 2 chars at a time
-            $char1 = substr($text, $i, 1);
-            $char2 = substr($text, $i + 1, 1);
+        for ($i = 0; $i < strlen((string) $text); $i += 2) { // Draw 2 chars at a time
+            $char1 = substr((string) $text, $i, 1);
+            $char2 = substr((string) $text, $i + 1, 1);
 
             // Interleave
             for ($ibar = 0; $ibar < 5; $ibar ++) {
                 // Draws char1 bar (fore color)
-                $barWidth = (substr($this->_codingMap[$char1], $ibar, 1))
+                $barWidth = (substr((string) $this->_codingMap[$char1], $ibar, 1))
                           ? $this->_barThickWidth
                           : $this->_barThinWidth;
 
                 $barcodeTable[] = array(1, $barWidth, 0, 1);
 
                 // Left space corresponding to char2 (background color)
-                $barWidth = (substr($this->_codingMap[$char2], $ibar, 1))
+                $barWidth = (substr((string) $this->_codingMap[$char2], $ibar, 1))
                           ? $this->_barThickWidth
                           : $this->_barThinWidth;
                 $barcodeTable[] = array(0, $barWidth, 0 , 1);

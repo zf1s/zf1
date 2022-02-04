@@ -35,7 +35,7 @@
  */
 require_once 'Zend/Paginator/Adapter/DbSelectTest.php';
 
-require_once dirname(__FILE__) . '/../../_files/TestTable.php';
+require_once __DIR__ . '/../../_files/TestTable.php';
 
 /**
  * @category   Zend

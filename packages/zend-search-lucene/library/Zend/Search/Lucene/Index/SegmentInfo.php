@@ -272,7 +272,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
                 // Compound file is found
                 $this->_isCompound = true;
             } catch (Zend_Search_Lucene_Exception $e) {
-                if (strpos($e->getMessage(), 'is not readable') !== false) {
+                if (strpos((string) $e->getMessage(), 'is not readable') !== false) {
                     // Compound file is not found or is not readable
                     $this->_isCompound = false;
                 } else {
@@ -389,7 +389,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
             } else {
                 $deletions = array();
                 for ($count = 0; $count < $byteCount; $count++) {
-                    $byte = ord($delBytes[$count]);
+                    $byte = ord((string) $delBytes[$count]);
                     for ($bit = 0; $bit < 8; $bit++) {
                         if ($byte & (1<<$bit)) {
                             $deletions[$count*8 + $bit] = 1;
@@ -400,7 +400,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
                 return $deletions;
             }
         } catch(Zend_Search_Lucene_Exception $e) {
-            if (strpos($e->getMessage(), 'is not readable') === false) {
+            if (strpos((string) $e->getMessage(), 'is not readable') === false) {
                 throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
             }
             // There is no deletion file
@@ -476,7 +476,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
             } else {
                 $deletions = array();
                 for ($count = 0; $count < $byteCount; $count++) {
-                    $byte = ord($delBytes[$count]);
+                    $byte = ord((string) $delBytes[$count]);
                     for ($bit = 0; $bit < 8; $bit++) {
                         if ($byte & (1<<$bit)) {
                             $deletions[$count*8 + $bit] = 1;
@@ -684,6 +684,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      *
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return $this->_docCount;
@@ -1412,7 +1413,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
             $this->_loadNorm($fieldNum);
         }
 
-        return Zend_Search_Lucene_Search_Similarity::decodeNorm( ord($this->_norms[$fieldNum][$id]) );
+        return Zend_Search_Lucene_Search_Similarity::decodeNorm( ord((string) $this->_norms[$fieldNum][$id]) );
     }
 
     /**

@@ -46,11 +46,11 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
      */
     public function rand($minimum, $maximum)
     {
-        if (strlen($maximum) < 4) {
+        if (strlen((string) $maximum) < 4) {
             return mt_rand($minimum, $maximum - 1);
         }
         $rand = '';
-        $i2 = strlen($maximum) - 1;
+        $i2 = strlen((string) $maximum) - 1;
         for ($i = 1; $i < $i2; $i++) {
             $rand .= mt_rand(0, 9);
         }
@@ -77,11 +77,11 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
         }
         if (function_exists('mcrypt_create_iv')) {
             $bytes = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
-            if ($bytes !== false && strlen($bytes) === $length) {
+            if ($bytes !== false && strlen((string) $bytes) === $length) {
                 return $bytes;
             }
         }
-        if (file_exists('/dev/urandom') && is_readable('/dev/urandom')) {
+        if (file_exists((string) '/dev/urandom') && is_readable('/dev/urandom')) {
             $frandom = fopen('/dev/urandom', 'r');
             if ($frandom !== false) {
                 return fread($frandom, $length);
@@ -156,7 +156,7 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
      */
     public function btwoc($long)
     {
-        if (ord($long[0]) > 127) {
+        if (ord((string) $long[0]) > 127) {
             return "\x00" . $long;
         }
         return $long;

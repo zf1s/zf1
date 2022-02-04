@@ -130,7 +130,7 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
      */
     public function setAdapter($adapter, $options = null)
     {
-        $adapter = ucfirst(strtolower($adapter));
+        $adapter = ucfirst(strtolower((string) $adapter));
         if (class_exists('Zend_Validate_Barcode_' . $adapter)) {
             $adapter = 'Zend_Validate_Barcode_' . $adapter;
         } elseif (!class_exists($adapter)) {
@@ -198,7 +198,7 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
                     $this->_length .= $length;
                 }
 
-                $this->_length = substr($this->_length, 1);
+                $this->_length = substr((string) $this->_length, 1);
             }
 
             $this->_error(self::INVALID_LENGTH);

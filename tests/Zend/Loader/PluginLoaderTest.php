@@ -61,12 +61,12 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        if (file_exists($this->_includeCache)) {
+        if (file_exists((string) $this->_includeCache)) {
             unlink($this->_includeCache);
         }
         Zend_Loader_PluginLoader::setIncludeFileCache(null);
-        $this->_includeCache = dirname(__FILE__) . '/_files/includeCache.inc.php';
-        $this->libPath = realpath(dirname(__FILE__) . '/../../../library');
+        $this->_includeCache = __DIR__ . '/_files/includeCache.inc.php';
+        $this->libPath = realpath(__DIR__ . '/../../../library');
         $this->key = null;
     }
 
@@ -80,7 +80,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
     {
         $this->clearStaticPaths();
         Zend_Loader_PluginLoader::setIncludeFileCache(null);
-        if (file_exists($this->_includeCache)) {
+        if (file_exists((string) $this->_includeCache)) {
             unlink($this->_includeCache);
         }
     }
@@ -191,7 +191,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
     public function testRemovePrefixPathThrowsExceptionIfPrefixPathPairNotRegistered()
     {
         $loader = new Zend_Loader_PluginLoader();
-        $loader->addPrefixPath('Foo_Bar', realpath(dirname(__FILE__)));
+        $loader->addPrefixPath('Foo_Bar', realpath(__DIR__));
         $paths = $loader->getPaths();
         $this->assertTrue(isset($paths['Foo_Bar_']));
         try {
@@ -356,7 +356,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
     {
         $loader = new Zend_Loader_PluginLoader(array());
         $loader->addPrefixPath('Zend_View_Helper', $this->libPath . '/Zend/View/Helper');
-        $loader->addPrefixPath('ZfTest', dirname(__FILE__) . '/_files/ZfTest');
+        $loader->addPrefixPath('ZfTest', __DIR__ . '/_files/ZfTest');
         try {
             $className = $loader->load('FormSubmit');
         } catch (Exception $e) {
@@ -409,7 +409,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testPluginLoaderShouldThrowExceptionWhenPathDoesNotExist()
     {
-        $cacheFile = dirname(__FILE__) . '/_filesDoNotExist/includeCache.inc.php';
+        $cacheFile = __DIR__ . '/_filesDoNotExist/includeCache.inc.php';
         $this->testIncludeCacheShouldBeNullByDefault();
         Zend_Loader_PluginLoader::setIncludeFileCache($cacheFile);
         $this->fail('Should not allow specifying invalid cache file path');
@@ -424,16 +424,16 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
         Zend_Loader_PluginLoader::setIncludeFileCache($cacheFile);
         $loader = new Zend_Loader_PluginLoader(array());
         $loader->addPrefixPath('Zend_View_Helper', $this->libPath . '/Zend/View/Helper');
-        $loader->addPrefixPath('ZfTest', dirname(__FILE__) . '/_files/ZfTest');
+        $loader->addPrefixPath('ZfTest', __DIR__ . '/_files/ZfTest');
         try {
             $className = $loader->load('CacheTest');
         } catch (Exception $e) {
             $paths = $loader->getPaths();
             $this->fail(sprintf("Failed loading helper; paths: %s", var_export($paths, 1)));
         }
-        $this->assertTrue(file_exists($cacheFile));
+        $this->assertTrue(file_exists((string) $cacheFile));
         $cache = file_get_contents($cacheFile);
-        if (substr(PHP_OS, 0, 3) !== 'WIN') {
+        if (substr((string) PHP_OS, 0, 3) !== 'WIN') {
             // windows reads an empty string, without any error, if a file is flock-ed...
             $this->assertContains('CacheTest.php', $cache);
         }
@@ -464,7 +464,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
 
         $loader = new Zend_Loader_PluginLoader(array());
         $loader->addPrefixPath('Zend_View_Helper', $this->libPath . '/Zend/View/Helper');
-        $loader->addPrefixPath('ZfTest', dirname(__FILE__) . '/_files/ZfTest');
+        $loader->addPrefixPath('ZfTest', __DIR__ . '/_files/ZfTest');
         try {
             // Class in /Zend/View/Helper and not in /_files/ZfTest
             $className = $loader->load('DeclareVars');
@@ -483,7 +483,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
     public function testPrefixesEndingInBackslashDenoteNamespacedClasses()
     {
         $loader = new Zend_Loader_PluginLoader(array());
-        $loader->addPrefixPath('Zfns\\', dirname(__FILE__) . '/_files/Zfns');
+        $loader->addPrefixPath('Zfns\\', __DIR__ . '/_files/Zfns');
         try {
             $className = $loader->load('Foo');
         } catch (Exception $e) {
@@ -516,7 +516,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
     public function testLoadClassesWithBackslashInName()
     {
         $loader = new Zend_Loader_PluginLoader(array());
-        $loader->addPrefixPath('Zfns\\', dirname(__FILE__) . '/_files/Zfns');
+        $loader->addPrefixPath('Zfns\\', __DIR__ . '/_files/Zfns');
         try {
             $className = $loader->load('Foo\\Bar');
         } catch (Exception $e) {
@@ -531,7 +531,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
     public function testLoadClassesWithBackslashAndUnderscoreInName()
     {
         $loader = new Zend_Loader_PluginLoader(array());
-        $loader->addPrefixPath('Zfns\\Foo_', dirname(__FILE__) . '/_files/Zfns/Foo');
+        $loader->addPrefixPath('Zfns\\Foo_', __DIR__ . '/_files/Zfns/Foo');
 
         try {
             $className = $loader->load('Demo');

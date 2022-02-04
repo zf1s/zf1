@@ -94,7 +94,7 @@ class Zend_Tool_Project_Context_System_ProjectDirectory
             throw new Zend_Tool_Project_Exception('projectDirectory cannot find the directory for this project.');
         }
 
-        $this->_baseDirectory = rtrim($projectDirectory, '\\/');
+        $this->_baseDirectory = rtrim((string) $projectDirectory, '\\/');
         return $this;
     }
 
@@ -105,7 +105,7 @@ class Zend_Tool_Project_Context_System_ProjectDirectory
      */
     public function create()
     {
-        if (file_exists($this->getPath())) {
+        if (file_exists((string) $this->getPath())) {
             /*
             foreach (new DirectoryIterator($this->getPath()) as $item) {
                 if (!$item->isDot()) {

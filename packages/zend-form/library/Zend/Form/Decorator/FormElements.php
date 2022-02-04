@@ -50,15 +50,15 @@ class Zend_Form_Decorator_FormElements extends Zend_Form_Decorator_Abstract
      */
     public function mergeBelongsTo($baseBelongsTo, $belongsTo)
     {
-        $endOfArrayName = strpos($belongsTo, '[');
+        $endOfArrayName = strpos((string) $belongsTo, '[');
 
         if ($endOfArrayName === false) {
             return $baseBelongsTo . '[' . $belongsTo . ']';
         }
 
-        $arrayName = substr($belongsTo, 0, $endOfArrayName);
+        $arrayName = substr((string) $belongsTo, 0, $endOfArrayName);
 
-        return $baseBelongsTo . '[' . $arrayName . ']' . substr($belongsTo, $endOfArrayName);
+        return $baseBelongsTo . '[' . $arrayName . ']' . substr((string) $belongsTo, $endOfArrayName);
     }
 
     /**

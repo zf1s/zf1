@@ -119,7 +119,7 @@ class Zend_Service_Audioscrobbler_AlbumDataTest extends Zend_Service_Audioscrobb
             $this->assertEquals((string)$track->url, 'http://www.last.fm/music/Metallica/_/Enter+Sandman+%28LP+Version%29');
             $this->assertEquals(count($response->tracks->track), 12);
         } catch (Exception $e ) {
-            $this->fail("Exception: [" . $e->getMessage() . "] thrown by test");
+            $this->fail("Exception: [" . $e->__toString() . "] thrown by test");
         }
     }
 }

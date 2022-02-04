@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once dirname(__FILE__) . '/_files/BarcodeTest.php';
+require_once __DIR__ . '/_files/BarcodeTest.php';
 
 /**
  * @see Zend_Config
@@ -46,7 +46,7 @@ abstract class Zend_Barcode_Object_TestCommon extends PHPUnit_Framework_TestCase
 
     protected function loadInstructionsFile($fileName)
     {
-        return include_once (dirname(__FILE__) . "/_files/$fileName.php");
+        return include_once (__DIR__ . "/_files/$fileName.php");
     }
 
     public function setUp()

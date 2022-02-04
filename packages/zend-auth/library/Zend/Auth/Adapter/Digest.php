@@ -199,7 +199,7 @@ class Zend_Auth_Adapter_Digest implements Zend_Auth_Adapter_Interface
         }
 
         $id       = "$this->_username:$this->_realm";
-        $idLength = strlen($id);
+        $idLength = strlen((string) $id);
 
         $result = array(
             'code'  => Zend_Auth_Result::FAILURE,
@@ -210,9 +210,9 @@ class Zend_Auth_Adapter_Digest implements Zend_Auth_Adapter_Interface
             'messages' => array()
             );
 
-        while ($line = trim(fgets($fileHandle))) {
-            if (substr($line, 0, $idLength) === $id) {
-                if ($this->_secureStringCompare(substr($line, -32), md5("$this->_username:$this->_realm:$this->_password"))) {
+        while ($line = \trim((string) fgets($fileHandle))) {
+            if (substr((string) $line, 0, $idLength) === $id) {
+                if ($this->_secureStringCompare(substr((string) $line, -32), md5((string) "$this->_username:$this->_realm:$this->_password"))) {
                     $result['code'] = Zend_Auth_Result::SUCCESS;
                 } else {
                     $result['code'] = Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID;
@@ -239,12 +239,12 @@ class Zend_Auth_Adapter_Digest implements Zend_Auth_Adapter_Interface
      */
     protected function _secureStringCompare($a, $b)
     {
-        if (strlen($a) !== strlen($b)) {
+        if (strlen((string) $a) !== strlen((string) $b)) {
             return false;
         }
         $result = 0;
-        for ($i = 0; $i < strlen($a); $i++) {
-            $result |= ord($a[$i]) ^ ord($b[$i]);
+        for ($i = 0; $i < strlen((string) $a); $i++) {
+            $result |= ord((string) $a[$i]) ^ ord((string) $b[$i]);
         }
         return $result == 0;
     }

@@ -79,16 +79,16 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
         $label_attribs = array();
         foreach ($attribs as $key => $val) {
             $tmp    = false;
-            $keyLen = strlen($key);
-            if ((6 < $keyLen) && (substr($key, 0, 6) == 'label_')) {
-                $tmp = substr($key, 6);
-            } elseif ((5 < $keyLen) && (substr($key, 0, 5) == 'label')) {
-                $tmp = substr($key, 5);
+            $keyLen = strlen((string) $key);
+            if ((6 < $keyLen) && (substr((string) $key, 0, 6) == 'label_')) {
+                $tmp = substr((string) $key, 6);
+            } elseif ((5 < $keyLen) && (substr((string) $key, 0, 5) == 'label')) {
+                $tmp = substr((string) $key, 5);
             }
 
             if ($tmp) {
                 // make sure first char is lowercase
-                $tmp[0] = strtolower($tmp[0]);
+                $tmp[0] = strtolower((string) $tmp[0]);
                 $label_attribs[$tmp] = $val;
                 unset($attribs[$key]);
             }
@@ -96,10 +96,10 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
 
         $labelPlacement = 'append';
         foreach ($label_attribs as $key => $val) {
-            switch (strtolower($key)) {
+            switch (strtolower((string) $key)) {
                 case 'placement':
                     unset($label_attribs[$key]);
-                    $val = strtolower($val);
+                    $val = strtolower((string) $val);
                     if (in_array($val, array('prepend', 'append'))) {
                         $labelPlacement = $val;
                     }
@@ -116,7 +116,7 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
 
         // should the name affect an array collection?
         $name = $this->view->escape($name);
-        if ($this->_isArray && ('[]' != substr($name, -2))) {
+        if ($this->_isArray && ('[]' != substr((string) $name, -2))) {
             $name .= '[]';
         }
 
@@ -125,11 +125,11 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
 
         // Set up the filter - Alnum + hyphen + underscore
         // require_once 'Zend/Filter/PregReplace.php';
-        $pattern = @preg_match('/\pL/u', 'a') 
+        $pattern = @preg_match('/\pL/u', 'a')
             ? '/[^\p{L}\p{N}\-\_]/u'    // Unicode
             : '/[^a-zA-Z0-9\-\_]/';     // No Unicode
         $filter = new Zend_Filter_PregReplace($pattern, "");
-        
+
         // add radio buttons to the list.
         foreach ($options as $opt_value => $opt_label) {
 
@@ -173,10 +173,10 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
             // add to the array of radio buttons
             $list[] = $radio;
         }
-        
+
         // XHTML or HTML for standard list separator?
-        if (!$this->_isXhtml() && false !== strpos($listsep, '<br />')) {
-            $listsep = str_replace('<br />', '<br>', $listsep);
+        if (!$this->_isXhtml() && false !== strpos((string) $listsep, '<br />')) {
+            $listsep = str_replace((string) '<br />', '<br>', $listsep);
         }
 
         // done!

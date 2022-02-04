@@ -376,17 +376,17 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
         $id = $this->getFullyQualifiedName();
 
         // Bail early if no array notation detected
-        if (!strstr($id, '[')) {
+        if (!strstr((string) $id, '[')) {
             return $id;
         }
 
         // Strip array notation
-        if ('[]' == substr($id, -2)) {
-            $id = substr($id, 0, strlen($id) - 2);
+        if ('[]' == substr((string) $id, -2)) {
+            $id = substr((string) $id, 0, strlen((string) $id) - 2);
         }
-        $id = str_replace('][', '-', $id);
+        $id = str_replace((string) '][', '-', $id);
         $id = str_replace(array(']', '['), '-', $id);
-        $id = trim($id, '-');
+        $id = \trim((string) $id, '-');
 
         return $id;
     }
@@ -805,9 +805,9 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
     public function getDecorator($name)
     {
         if (!isset($this->_decorators[$name])) {
-            $len = strlen($name);
+            $len = strlen((string) $name);
             foreach ($this->_decorators as $localName => $decorator) {
-                if ($len > strlen($localName)) {
+                if ($len > strlen((string) $localName)) {
                     continue;
                 }
 
@@ -1020,8 +1020,8 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      */
     public function __call($method, $args)
     {
-        if ('render' == substr($method, 0, 6)) {
-            $decoratorName = substr($method, 6);
+        if ('render' == substr((string) $method, 0, 6)) {
+            $decoratorName = substr((string) $method, 6);
             if (false !== ($decorator = $this->getDecorator($decoratorName))) {
                 $decorator->setElement($this);
                 $seed = '';
@@ -1046,6 +1046,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      *
      * @return Zend_Form_Element
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         $this->_sort();
@@ -1059,6 +1060,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         $this->_sort();
@@ -1070,6 +1072,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->_sort();
@@ -1081,6 +1084,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->_sort();
@@ -1092,6 +1096,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         $this->_sort();
@@ -1103,6 +1108,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_elements);

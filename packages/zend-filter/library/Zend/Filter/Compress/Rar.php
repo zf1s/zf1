@@ -157,7 +157,7 @@ class Zend_Filter_Compress_Rar extends Zend_Filter_Compress_CompressAbstract
      */
     public function setTarget($target)
     {
-        if (!file_exists(dirname($target))) {
+        if (!file_exists((string) dirname($target))) {
             // require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception("The directory '$target' does not exist");
         }
@@ -202,9 +202,9 @@ class Zend_Filter_Compress_Rar extends Zend_Filter_Compress_CompressAbstract
     public function decompress($content)
     {
         $archive = $this->getArchive();
-        if (file_exists($content)) {
+        if (file_exists((string) $content)) {
             $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
-        } elseif (empty($archive) || !file_exists($archive)) {
+        } elseif (empty($archive) || !file_exists((string) $archive)) {
             // require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('RAR Archive not found');
         }

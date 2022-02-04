@@ -439,8 +439,8 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
 
         $lis = substr_count($string, "\n        <li>");
         $this->assertEquals(3, $lis);
-        $this->assertTrue((strstr($string, "    <ul>\n")) ? true : false, $string);
-        $this->assertTrue((strstr($string, "\n    </ul>")) ? true : false);
+        $this->assertTrue((strstr((string) $string, "    <ul>\n")) ? true : false, $string);
+        $this->assertTrue((strstr((string) $string, "\n    </ul>")) ? true : false);
     }
 
     /**

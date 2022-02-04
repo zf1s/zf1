@@ -114,7 +114,7 @@ class Zend_Form_Element_CaptchaTest extends PHPUnit_Framework_TestCase
             array(
                  'prefixPath' => array(
                      'prefix' => 'Zend_Form_Element_CaptchaTest',
-                     'path'   => dirname(__FILE__) . '/_files',
+                     'path'   => __DIR__ . '/_files',
                  ),
                  'captcha'    => 'Foo',
             )

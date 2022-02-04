@@ -40,7 +40,7 @@ if (PHP_VERSION_ID >= 70300 && PCRE_VERSION_MAJOR === 10 && PCRE_VERSION_MINOR <
 // workaround for Microsoft WSL
 if (!defined('PHP_OS_WSL')) {
     $uname = php_uname();
-    define('PHP_OS_WSL', strpos($uname, 'Linux') === 0 && strpos($uname, 'Microsoft'));
+    define('PHP_OS_WSL', strpos((string) $uname, 'Linux') === 0 && strpos((string) $uname, 'Microsoft'));
 }
 
 /*

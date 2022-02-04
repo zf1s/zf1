@@ -102,9 +102,9 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
             $msg = $zle->getMessage();
-            $this->assertTrue(strstr($msg, 'Invalid credentials') ||
-                strstr($msg, 'No such object') ||
-                strstr($msg, 'No object found'));
+            $this->assertTrue(strstr((string) $msg, 'Invalid credentials') ||
+                strstr((string) $msg, 'No such object') ||
+                strstr((string) $msg, 'No object found'));
         }
     }
 

@@ -40,10 +40,10 @@ class Zend_Gdata_App_EntryTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->enryText = $this->loadResponse(
-            dirname(__FILE__) . '/../App/_files/EntrySample1.xml'
+            __DIR__ . '/../App/_files/EntrySample1.xml'
         );
         $this->httpEntrySample = $this->loadResponse(
-            dirname(__FILE__) . '/../App/_files/EntrySampleHttp1.txt'
+            __DIR__ . '/../App/_files/EntrySampleHttp1.txt'
         );
         $this->enry = new Zend_Gdata_App_Entry();
 

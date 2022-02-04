@@ -24,7 +24,7 @@
 if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_FrontTest::main");
 
-    $basePath = realpath(dirname(__FILE__) . str_repeat(DIRECTORY_SEPARATOR . '..', 3));
+    $basePath = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 3));
 
     set_include_path(
         $basePath . DIRECTORY_SEPARATOR . 'tests'
@@ -73,7 +73,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
     {
         $this->_controller = Zend_Controller_Front::getInstance();
         $this->_controller->resetInstance();
-        $this->_controller->setControllerDirectory(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files')
+        $this->_controller->setControllerDirectory(__DIR__ . DIRECTORY_SEPARATOR . '_files')
                           ->setParam('noErrorHandler', true)
                           ->setParam('noViewRenderer', true)
                           ->returnResponse(true)
@@ -191,7 +191,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
     public function testSetGetControllerDirectory()
     {
         $test = $this->_controller->getControllerDirectory();
-        $expected = array('default' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files');
+        $expected = array('default' => __DIR__ . DIRECTORY_SEPARATOR . '_files');
         $this->assertSame($expected, $test);
     }
 
@@ -374,7 +374,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
      */
     public function testDispatch7()
     {
-        if ('cli' == strtolower(php_sapi_name())) {
+        if ('cli' == strtolower((string) php_sapi_name())) {
             $this->markTestSkipped('Issues with $_GET in CLI interface prevents test from passing');
         }
         $request = new Zend_Controller_Request_Http('http://framework.zend.com/index.php?controller=foo&action=bar');
@@ -392,7 +392,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
     public function _testRunThrowsException()
     {
         try {
-            $this->_controller->run(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files');
+            $this->_controller->run(__DIR__ . DIRECTORY_SEPARATOR . '_files');
             $this->fail('Should not be able to call run() from object instance');
         } catch (Exception $e) {
             // success
@@ -466,7 +466,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
     public function testThrowExceptionsThrows()
     {
         $this->_controller->throwExceptions(true);
-        $this->_controller->setControllerDirectory(dirname(__FILE__));
+        $this->_controller->setControllerDirectory(__DIR__);
         $request = new Zend_Controller_Request_Http('http://framework.zend.com/bogus/baz');
         $this->_controller->setResponse(new Zend_Controller_Response_Cli());
         $this->_controller->setRouter(new Zend_Controller_Router_Rewrite());
@@ -518,19 +518,19 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
     {
         $request = new Zend_Controller_Request_Http('http://example.com/index/index');
         $this->_controller->setRequest($request);
-        Zend_Controller_Front::run(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files');
+        Zend_Controller_Front::run(__DIR__ . DIRECTORY_SEPARATOR . '_files');
     }
 
     public function testRunDynamically()
     {
         $request = new Zend_Controller_Request_Http('http://example.com/index/index');
         $this->_controller->setRequest($request);
-        $this->_controller->run(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files');
+        $this->_controller->run(__DIR__ . DIRECTORY_SEPARATOR . '_files');
     }
 
     public function testModulePathDispatched()
     {
-        $this->_controller->addControllerDirectory(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . '/Admin', 'admin');
+        $this->_controller->addControllerDirectory(__DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . '/Admin', 'admin');
         $request = new Zend_Controller_Request_Http('http://example.com/admin/foo/bar');
         $this->_controller->setResponse(new Zend_Controller_Response_Cli());
         $response = $this->_controller->dispatch($request);
@@ -548,7 +548,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
 
     public function testAddModuleDirectory()
     {
-        $moduleDir = dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'modules';
+        $moduleDir = __DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'modules';
         $this->_controller->addModuleDirectory($moduleDir);
         $controllerDirs = $this->_controller->getControllerDirectory();
         $this->assertTrue(isset($controllerDirs['foo']));
@@ -595,7 +595,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
      */
     public function testCanRemoveIndividualModuleDirectory()
     {
-        $moduleDir = dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'modules';
+        $moduleDir = __DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'modules';
         $this->_controller->addModuleDirectory($moduleDir);
         $controllerDirs = $this->_controller->getControllerDirectory();
         $this->_controller->removeControllerDirectory('foo');
@@ -620,7 +620,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
 
     public function testGetControllerDirectoryByModuleName()
     {
-        $moduleDir = dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'modules';
+        $moduleDir = __DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'modules';
         $this->_controller->addModuleDirectory($moduleDir);
         $barDir = $this->_controller->getControllerDirectory('bar');
         $this->assertNotNull($barDir);
@@ -629,7 +629,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
 
     public function testGetControllerDirectoryByModuleNameReturnsNullOnBadModule()
     {
-        $moduleDir = dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'modules';
+        $moduleDir = __DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'modules';
         $this->_controller->addModuleDirectory($moduleDir);
         $dir = $this->_controller->getControllerDirectory('_bazbat');
         $this->assertNull($dir);

@@ -45,7 +45,7 @@ class Zend_Search_Lucene_Analysis_TokenFilter_LowerCase extends Zend_Search_Luce
      */
     public function normalize(Zend_Search_Lucene_Analysis_Token $srcToken)
     {
-        $srcToken->setTermText(strtolower($srcToken->getTermText()));
+        $srcToken->setTermText(strtolower((string) $srcToken->getTermText()));
         return $srcToken;
     }
 }

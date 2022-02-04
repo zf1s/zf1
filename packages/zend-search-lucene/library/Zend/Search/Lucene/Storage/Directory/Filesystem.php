@@ -117,7 +117,7 @@ class Zend_Search_Lucene_Storage_Directory_Filesystem extends Zend_Search_Lucene
     public function __construct($path)
     {
         if (!is_dir($path)) {
-            if (file_exists($path)) {
+            if (file_exists((string) $path)) {
                 // require_once 'Zend/Search/Lucene/Exception.php';
                 throw new Zend_Search_Lucene_Exception('Path exists, but it\'s not a directory');
             } else {
@@ -242,7 +242,7 @@ class Zend_Search_Lucene_Storage_Directory_Filesystem extends Zend_Search_Lucene
     public function fileExists($filename)
     {
         return isset($this->_fileHandlers[$filename]) ||
-               file_exists($this->_dirPath . '/' . $filename);
+               file_exists((string) $this->_dirPath . '/' . $filename);
     }
 
 
@@ -293,7 +293,7 @@ class Zend_Search_Lucene_Storage_Directory_Filesystem extends Zend_Search_Lucene
         }
         unset($this->_fileHandlers[$to]);
 
-        if (file_exists($this->_dirPath . '/' . $to)) {
+        if (file_exists((string) $this->_dirPath . '/' . $to)) {
             if (!unlink($this->_dirPath . '/' . $to)) {
                 // require_once 'Zend/Search/Lucene/Exception.php';
                 throw new Zend_Search_Lucene_Exception('Delete operation failed');

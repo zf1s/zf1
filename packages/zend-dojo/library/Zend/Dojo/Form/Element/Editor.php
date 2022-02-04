@@ -478,7 +478,7 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
     public function addStyleSheet($styleSheet)
     {
         $stylesheets = $this->getStyleSheets();
-        if (strstr($stylesheets, ';')) {
+        if (strstr((string) $stylesheets, ';')) {
             $stylesheets = explode(';', $stylesheets);
         } elseif (!empty($stylesheets)) {
             $stylesheets = (array) $stylesheets;

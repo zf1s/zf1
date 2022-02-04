@@ -132,7 +132,7 @@ class Zend_Dojo_View_Helper_Editor extends Zend_Dojo_View_Helper_Dijit
                . '</noscript>';
 
         $html  .= '<input' . $this->_htmlAttribs($hiddenAttribs) . $this->getClosingBracket();
-        
+
         return $html;
     }
 
@@ -163,8 +163,8 @@ class Zend_Dojo_View_Helper_Editor extends Zend_Dojo_View_Helper_Dijit
      */
     protected function _normalizeEditorName($name)
     {
-        if ('[]' == substr($name, -2)) {
-            $name = substr($name, 0, strlen($name) - 2);
+        if ('[]' == substr((string) $name, -2)) {
+            $name = substr((string) $name, 0, strlen((string) $name) - 2);
             $name .= '[Editor][]';
         } else {
             $name .= '[Editor]';

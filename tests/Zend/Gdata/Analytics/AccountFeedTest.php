@@ -40,7 +40,7 @@ class Zend_Gdata_Analytics_AccountFeedTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->accountFeed = new Zend_Gdata_Analytics_AccountFeed(
-            file_get_contents(dirname(__FILE__) . '/_files/TestAccountFeed.xml')
+            file_get_contents(__DIR__ . '/_files/TestAccountFeed.xml')
         );
     }
 

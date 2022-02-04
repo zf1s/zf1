@@ -358,7 +358,7 @@ class Zend_Http_Client
         }
 
         foreach ($config as $k => $v) {
-            $this->config[strtolower($k)] = $v;
+            $this->config[strtolower((string) $k)] = $v;
         }
 
         // Pass configuration options to the adapter if it exists
@@ -436,7 +436,7 @@ class Zend_Http_Client
         }
 
         // Check if $name needs to be split
-        if ($value === null && (strpos($name, ':') > 0)) {
+        if ($value === null && (strpos((string) $name, ':') > 0)) {
             list($name, $value) = explode(':', $name, 2);
         }
 
@@ -446,7 +446,7 @@ class Zend_Http_Client
             throw new Zend_Http_Client_Exception("{$name} is not a valid HTTP header name");
         }
 
-        $normalized_name = strtolower($name);
+        $normalized_name = strtolower((string) $name);
 
         // If $value is null or false, unset the header
         if ($value === null || $value === false) {
@@ -459,7 +459,7 @@ class Zend_Http_Client
 
         // Header names are stored lowercase internally.
         if (is_string($value)) {
-            $value = trim($value);
+            $value = \trim((string) $value);
         }
         $this->headers[$normalized_name] = array($name, $value);
 
@@ -477,7 +477,7 @@ class Zend_Http_Client
      */
     public function getHeader($key)
     {
-        $key = strtolower($key);
+        $key = strtolower((string) $key);
         if (isset($this->headers[$key])) {
             return $this->headers[$key][1];
         } else {
@@ -534,7 +534,7 @@ class Zend_Http_Client
     protected function _setParameter($type, $name, $value)
     {
         $parray = array();
-        $type = strtolower($type);
+        $type = strtolower((string) $type);
         switch ($type) {
             case 'get':
                 $parray = &$this->paramsGet;
@@ -604,7 +604,7 @@ class Zend_Http_Client
         // Else, set up authentication
         } else {
             // Check we got a proper authentication type
-            if (! defined('self::AUTH_' . strtoupper($type))) {
+            if (! defined('self::AUTH_' . strtoupper((string) $type))) {
                 /** @see Zend_Http_Client_Exception */
                 // require_once 'Zend/Http/Client/Exception.php';
                 throw new Zend_Http_Client_Exception("Invalid or not supported authentication type: '$type'");
@@ -689,7 +689,7 @@ class Zend_Http_Client
         }
 
         if ($value !== null && $this->config['encodecookies']) {
-            $value = urlencode($value);
+            $value = urlencode((string) $value);
         }
 
         if (isset($this->cookiejar)) {
@@ -871,11 +871,11 @@ class Zend_Http_Client
             $this->last_response = null;
         } else {
             // Clear outdated headers
-            if (isset($this->headers[strtolower(self::CONTENT_TYPE)])) {
-                unset($this->headers[strtolower(self::CONTENT_TYPE)]);
+            if (isset($this->headers[strtolower((string) self::CONTENT_TYPE)])) {
+                unset($this->headers[strtolower((string) self::CONTENT_TYPE)]);
             }
-            if (isset($this->headers[strtolower(self::CONTENT_LENGTH)])) {
-                unset($this->headers[strtolower(self::CONTENT_LENGTH)]);
+            if (isset($this->headers[strtolower((string) self::CONTENT_LENGTH)])) {
+                unset($this->headers[strtolower((string) self::CONTENT_LENGTH)]);
             }
         }
 
@@ -1038,9 +1038,9 @@ class Zend_Http_Client
                    if (! empty($query)) {
                        $query .= '&';
                    }
-                $query .= http_build_query($this->paramsGet, null, '&');
+                $query .= http_build_query($this->paramsGet, '', '&');
                 if ($this->config['rfc3986_strict']) {
-                    $query = str_replace('+', '%20', $query);
+                    $query = str_replace((string) '+', '%20', $query);
                 }
 
                 // @see ZF-11671 to unmask for some services to foo=val1&foo=val2
@@ -1117,7 +1117,7 @@ class Zend_Http_Client
 
                 // Avoid problems with buggy servers that add whitespace at the
                 // end of some headers (See ZF-11283)
-                $location = trim($location);
+                $location = \trim((string) $location);
 
                 // Check whether we send the exact same request again, or drop the parameters
                 // and send a GET request
@@ -1130,14 +1130,14 @@ class Zend_Http_Client
                 }
 
                 // If we got a well formed absolute URI
-                if (($scheme = substr($location, 0, 6)) && ($scheme == 'http:/' || $scheme == 'https:')) {
+                if (($scheme = substr((string) $location, 0, 6)) && ($scheme == 'http:/' || $scheme == 'https:')) {
                     $this->setHeaders('host', null);
                     $this->setUri($location);
 
                 } else {
 
                     // Split into path and query and set the query
-                    if (strpos($location, '?') !== false) {
+                    if (strpos((string) $location, '?') !== false) {
                         list($location, $query) = explode('?', $location, 2);
                     } else {
                         $query = '';
@@ -1145,14 +1145,14 @@ class Zend_Http_Client
                     $this->uri->setQuery($query);
 
                     // Else, if we got just an absolute path, set it
-                    if(strpos($location, '/') === 0) {
+                    if(strpos((string) $location, '/') === 0) {
                         $this->uri->setPath($location);
 
                         // Else, assume we have a relative path
                     } else {
                         // Get the current path directory, removing any trailing slashes
                         $path = $this->uri->getPath();
-                        $path = rtrim(substr($path, 0, strrpos($path, '/')), "/");
+                        $path = rtrim((string) substr((string) $path, 0, strrpos($path, '/')), "/");
                         $this->uri->setPath($path . '/' . $location);
                     }
                 }
@@ -1209,7 +1209,7 @@ class Zend_Http_Client
 
         // Set the Content-Type header
         if (($this->method == self::POST || $this->method == self::PUT) &&
-           (! isset($this->headers[strtolower(self::CONTENT_TYPE)]) && isset($this->enctype))) {
+           (! isset($this->headers[strtolower((string) self::CONTENT_TYPE)]) && isset($this->enctype))) {
 
             $headers[] = self::CONTENT_TYPE . ': ' . $this->enctype;
         }
@@ -1275,7 +1275,7 @@ class Zend_Http_Client
 
         // If we have raw_post_data set, just use it as the body.
         if (isset($this->raw_post_data)) {
-            $this->setHeaders(self::CONTENT_LENGTH, strlen($this->raw_post_data));
+            $this->setHeaders(self::CONTENT_LENGTH, strlen((string) $this->raw_post_data));
             if (isset($mbIntEnc)) {
                 mb_internal_encoding($mbIntEnc);
             }
@@ -1295,7 +1295,7 @@ class Zend_Http_Client
             switch($this->enctype) {
                 case self::ENC_FORMDATA:
                     // Encode body as multipart/form-data
-                    $boundary = '---ZENDHTTPCLIENT-' . md5(microtime());
+                    $boundary = '---ZENDHTTPCLIENT-' . md5((string) microtime());
                     $this->setHeaders(self::CONTENT_TYPE, self::ENC_FORMDATA . "; boundary={$boundary}");
 
                     // Encode all files and POST vars in the order they were given
@@ -1348,7 +1348,7 @@ class Zend_Http_Client
 
         // Set the Content-Length if we have a body or if request is POST/PUT
         if ($body || $this->method == self::POST || $this->method == self::PUT) {
-            $this->setHeaders(self::CONTENT_LENGTH, strlen($body));
+            $this->setHeaders(self::CONTENT_LENGTH, strlen((string) $body));
         }
 
         if (isset($mbIntEnc)) {
@@ -1388,7 +1388,7 @@ class Zend_Http_Client
 
         foreach ($parray as $name => $value) {
             if ($urlencode) {
-                $name = urlencode($name);
+                $name = urlencode((string) $name);
             }
 
             // If $value is an array, iterate over it
@@ -1396,13 +1396,13 @@ class Zend_Http_Client
                 $name .= ($urlencode ? '%5B%5D' : '[]');
                 foreach ($value as $subval) {
                     if ($urlencode) {
-                        $subval = urlencode($subval);
+                        $subval = urlencode((string) $subval);
                     }
                     $parameters[] = array($name, $subval);
                 }
             } else {
                 if ($urlencode) {
-                    $value = urlencode($value);
+                    $value = urlencode((string) $value);
                 }
                 $parameters[] = array($name, $value);
             }
@@ -1499,7 +1499,7 @@ class Zend_Http_Client
         switch ($type) {
             case self::AUTH_BASIC:
                 // In basic authentication, the user name cannot contain ":"
-                if (strpos($user, ':') !== false) {
+                if (strpos((string) $user, ':') !== false) {
                     /** @see Zend_Http_Client_Exception */
                     // require_once 'Zend/Http/Client/Exception.php';
                     throw new Zend_Http_Client_Exception("The user name cannot contain ':' in 'Basic' HTTP authentication");

@@ -82,7 +82,7 @@ class Zend_Json
 
             // php < 5.3
             if (!function_exists('json_last_error')) {
-                if (strtolower($encodedValue) === 'null') {
+                if (strtolower((string) $encodedValue) === 'null') {
                     return null;
                 } elseif ($decode === null) {
                     // require_once 'Zend/Json/Exception.php';
@@ -167,7 +167,7 @@ class Zend_Json
                 $magicKey = $javascriptExpressions[$i]['magicKey'];
                 $value    = $javascriptExpressions[$i]['value'];
 
-                $encodedResult = str_replace(
+                $encodedResult = str_replace((string) 
                     //instead of replacing "key:magicKey", we replace directly magicKey by value because "key" never changes.
                     '"' . $magicKey . '"',
                     $value,
@@ -239,7 +239,7 @@ class Zend_Json
         if ($match) {
             return new Zend_Json_Expr($matchings[1]);
         } else {
-            return (trim(strval($simpleXmlElementObject)));
+            return (\trim((string) strval($simpleXmlElementObject)));
         }
     }
     /**
@@ -286,7 +286,7 @@ class Zend_Json
                 }
                 if (!empty($value)) {
                     $attributes['@text'] = $value;
-                } 
+                }
                 return array($name => $attributes);
             } else {
                return array($name => $value);
@@ -367,7 +367,7 @@ class Zend_Json
         return($jsonStringOutput);
     }
 
-    
+
 
     /**
      * Pretty-print JSON string
@@ -419,7 +419,7 @@ class Zend_Json
             $prefix = str_repeat($ind, $indent);
             if (!$inLiteral && ($token == '{' || $token == '[')) {
                 $indent++;
-                if (($result != '') && ($result[(strlen($result)-1)] == $lineBreak)) {
+                if (($result != '') && ($result[(strlen((string) $result)-1)] == $lineBreak)) {
                     $result .= $prefix;
                 }
                 $result .= $token . $lineBreak;
@@ -431,9 +431,9 @@ class Zend_Json
                 $result .= $token . $lineBreak;
             } else {
                 $result .= ( $inLiteral ? '' : $prefix ) . $token;
-                
+
                 // Count # of unescaped double-quotes in token, subtract # of
-                // escaped double-quotes and if the result is odd then we are 
+                // escaped double-quotes and if the result is odd then we are
                 // inside a string literal
                 if ((substr_count($token, "\"")-substr_count($token, "\\\"")) % 2 != 0) {
                     $inLiteral = !$inLiteral;

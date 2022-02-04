@@ -42,7 +42,7 @@ class Zend_Pdf_Resource_ImageFactory
          * There are plans to use Zend_Mime and not file extension. In the mean time, if you need to
          * use an alternate file extension just spin up the right processor directly.
          */
-        switch (strtolower($extension)) {
+        switch (strtolower((string) $extension)) {
             case 'tif':
                 //Fall through to next case;
             case 'tiff':

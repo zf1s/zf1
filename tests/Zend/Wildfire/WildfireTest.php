@@ -323,7 +323,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $headers['X-Wf-Protocol-1'] = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
         $headers['X-Wf-1-Structure-1'] = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
         $headers['X-Wf-1-Plugin-1'] = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
-        $headers['X-Wf-1-1-1-1'] = (strlen($encodedMessage)+19).'|[{"Type":"LOG"},"'.$encodedMessage.'"]|';
+        $headers['X-Wf-1-1-1-1'] = (strlen((string) $encodedMessage)+19).'|[{"Type":"LOG"},"'.$encodedMessage.'"]|';
 
         $this->assertTrue($this->_response->verifyHeaders($headers));
     }
@@ -843,7 +843,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
                             [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI]
                             [0];
 
-        $this->assertEquals(substr($message,0,41)
+        $this->assertEquals(substr((string) $message,0,41)
                             , '[{"Type":"LOG"},{"file":"** Resource id #');
     }
 
@@ -868,10 +868,10 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         $messages = $this->_response->getHeadersForTesting();
 
-        $this->assertTrue(substr($messages[3]['value'],0,10)=='6308|[{"Ty'
-                          && substr($messages[3]['value'],-8,8)==',"Test|\\'
-                          && substr($messages[4]['value'],0,10)=='| Data 318'
-                          && substr($messages[4]['value'],-7,7)=='399"]]|');
+        $this->assertTrue(substr((string) $messages[3]['value'],0,10)=='6308|[{"Ty'
+                          && substr((string) $messages[3]['value'],-8,8)==',"Test|\\'
+                          && substr((string) $messages[4]['value'],0,10)=='| Data 318'
+                          && substr((string) $messages[4]['value'],-7,7)=='399"]]|');
     }
 
     /**

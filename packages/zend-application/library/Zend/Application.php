@@ -228,7 +228,7 @@ class Zend_Application
      */
     public function hasOption($key)
     {
-        return in_array(strtolower($key), $this->_optionKeys);
+        return in_array(strtolower((string) $key), $this->_optionKeys);
     }
 
     /**
@@ -242,7 +242,7 @@ class Zend_Application
         if ($this->hasOption($key)) {
             $options = $this->getOptions();
             $options = array_change_key_case($options, CASE_LOWER);
-            return $options[strtolower($key)];
+            return $options[strtolower((string) $key)];
         }
         return null;
     }
@@ -406,7 +406,7 @@ class Zend_Application
                      ? pathinfo(basename($file, ".$suffix"), PATHINFO_EXTENSION)
                      : $suffix;
 
-        switch (strtolower($suffix)) {
+        switch (strtolower((string) $suffix)) {
             case 'ini':
                 $config = new Zend_Config_Ini($file, $environment);
                 break;

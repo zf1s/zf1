@@ -38,7 +38,7 @@ class Zend_Gdata_Spreadsheets_WorksheetFeedTest extends PHPUnit_Framework_TestCa
     public function setUp()
     {
         $this->wksFeed = new Zend_Gdata_Spreadsheets_WorksheetFeed(
-                file_get_contents(dirname(__FILE__) . '/_files/TestDataWorksheetFeedSample1.xml'),
+                file_get_contents(__DIR__ . '/_files/TestDataWorksheetFeedSample1.xml'),
                 true);
     }
 

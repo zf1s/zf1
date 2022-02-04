@@ -124,7 +124,7 @@ class Zend_Db_Profiler_FirebugTest extends PHPUnit_Framework_TestCase
 
         $messages = $protocol->getMessages();
 
-        $this->assertEquals(substr($messages[Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE]
+        $this->assertEquals(substr((string) $messages[Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE]
                                             [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI][0],0,55),
                             '[{"Type":"TABLE","Label":"Zend_Db_Profiler_Firebug (1 @');
     }
@@ -159,7 +159,7 @@ class Zend_Db_Profiler_FirebugTest extends PHPUnit_Framework_TestCase
 
         $messages = $protocol->getMessages();
 
-        $this->assertEquals(substr($messages[Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE]
+        $this->assertEquals(substr((string) $messages[Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE]
                                             [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI][0],0,38),
                             '[{"Type":"TABLE","Label":"Label 1 (1 @');
     }

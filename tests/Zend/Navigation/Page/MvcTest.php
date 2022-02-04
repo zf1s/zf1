@@ -134,7 +134,7 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
                 'page' => 1337
             )
         ));
- 
+
         $this->_front->getRouter()->addRoute(
             'myroute',
             new Zend_Controller_Router_Route(
@@ -147,9 +147,9 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
                 )
             )
         );
- 
+
         $this->assertEquals('/lolcat/myaction/1337#qux', $page->getHref());
-    } 
+    }
 
     public function testIsActiveReturnsTrueOnIdenticalModuleControllerAction()
     {
@@ -421,7 +421,7 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
         $page->setParams(array());
         $this->assertEquals(array(), $page->getParams());
     }
-    
+
     /**
      * @group ZF-10727
      */
@@ -432,15 +432,15 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             'action' => 'index',
             'controller' => 'index'
         ));
-        
+
         $page->setParam('foo', 'bar');
         $this->assertEquals('bar', $page->getParam('foo'));
-        
+
         // Check type conversion
         $page->setParam(null, null);
         $this->assertEquals(null, $page->getParam('null'));
     }
-    
+
     /**
      * @group ZF-10727
      */
@@ -451,18 +451,18 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             'action' => 'index',
             'controller' => 'index'
         ));
-        
+
         $params = array('foo' => 'bar', 'baz' => 'bat');
-        
+
         $page->addParams($params);
         $this->assertEquals($params, $page->getParams());
-        
+
         $params2 = array('qux' => 'foobar');
-        
+
         $page->addParams($params2);
         $this->assertEquals(array_merge($params, $params2), $page->getParams());
     }
-    
+
     /**
      * @group ZF-10727
      */
@@ -473,17 +473,17 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             'action' => 'index',
             'controller' => 'index'
         ));
-        
+
         $params = array('foo' => 'bar', 'baz' => 'bat');
-        
+
         $page->setParams($params);
         $page->removeParam('foo');
-        
+
         $this->assertEquals(array('baz' => 'bat'), $page->getParams());
-        
+
         $this->assertNull($page->getParam('foo'));
     }
-    
+
     /**
      * @group ZF-10727
      */
@@ -494,12 +494,12 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             'action' => 'index',
             'controller' => 'index'
         ));
-        
+
         $params = array('foo' => 'bar', 'baz' => 'bat');
-        
+
         $page->setParams($params);
         $page->clearParams();
-        
+
         $this->assertEquals(array(), $page->getParams());
     }
 
@@ -536,11 +536,11 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             'action'     => 'index',
             'controller' => 'index',
         ));
-        
+
         $page->setEncodeUrl(false);
         $this->assertEquals(false, $page->getEncodeUrl());
     }
-    
+
     /**
      * @group ZF-10465
      */
@@ -554,7 +554,7 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
                 'contentKey' => 'pagexy/subpage',
             )
         ));
- 
+
         $this->_front->getRouter()->addRoute(
             'myroute',
             new Zend_Controller_Router_Route_Regex(
@@ -695,7 +695,7 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
 
     public function testSpecifyingAnotherUrlHelperToGenerateHrefs()
     {
-        $path = dirname(dirname(__FILE__)) . '/_files/My/UrlHelper.php';
+        $path = dirname(__DIR__) . '/_files/My/UrlHelper.php';
         require_once $path;
 
         $newHelper = new My_UrlHelper();
@@ -717,7 +717,7 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
      */
     public function testSpecifyingAnotherSchemeHelperToGenerateHrefs()
     {
-        $path = dirname(dirname(__FILE__)) . '/_files/My/SchemeHelper.php';
+        $path = dirname(__DIR__) . '/_files/My/SchemeHelper.php';
         require_once $path;
 
         $newHelper = new My_SchemeHelper();

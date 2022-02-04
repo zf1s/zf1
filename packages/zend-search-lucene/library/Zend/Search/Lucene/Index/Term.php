@@ -67,6 +67,7 @@ class Zend_Search_Lucene_Index_Term
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->field . chr(0) . $this->text;
@@ -83,19 +84,19 @@ class Zend_Search_Lucene_Index_Term
     {
         $prefixBytes = 0;
         $prefixChars = 0;
-        while ($prefixBytes < strlen($str)  &&  $prefixChars < $length) {
+        while ($prefixBytes < strlen((string) $str)  &&  $prefixChars < $length) {
             $charBytes = 1;
-            if ((ord($str[$prefixBytes]) & 0xC0) == 0xC0) {
+            if ((ord((string) $str[$prefixBytes]) & 0xC0) == 0xC0) {
                 $charBytes++;
-                if (ord($str[$prefixBytes]) & 0x20 ) {
+                if (ord((string) $str[$prefixBytes]) & 0x20 ) {
                     $charBytes++;
-                    if (ord($str[$prefixBytes]) & 0x10 ) {
+                    if (ord((string) $str[$prefixBytes]) & 0x10 ) {
                         $charBytes++;
                     }
                 }
             }
 
-            if ($prefixBytes + $charBytes > strlen($str)) {
+            if ($prefixBytes + $charBytes > strlen((string) $str)) {
                 // wrong character
                 break;
             }
@@ -104,7 +105,7 @@ class Zend_Search_Lucene_Index_Term
             $prefixBytes += $charBytes;
         }
 
-        return substr($str, 0, $prefixBytes);
+        return substr((string) $str, 0, $prefixBytes);
     }
 
     /**
@@ -117,19 +118,19 @@ class Zend_Search_Lucene_Index_Term
     {
         $bytes = 0;
         $chars = 0;
-        while ($bytes < strlen($str)) {
+        while ($bytes < strlen((string) $str)) {
             $charBytes = 1;
-            if ((ord($str[$bytes]) & 0xC0) == 0xC0) {
+            if ((ord((string) $str[$bytes]) & 0xC0) == 0xC0) {
                 $charBytes++;
-                if (ord($str[$bytes]) & 0x20 ) {
+                if (ord((string) $str[$bytes]) & 0x20 ) {
                     $charBytes++;
-                    if (ord($str[$bytes]) & 0x10 ) {
+                    if (ord((string) $str[$bytes]) & 0x10 ) {
                         $charBytes++;
                     }
                 }
             }
 
-            if ($bytes + $charBytes > strlen($str)) {
+            if ($bytes + $charBytes > strlen((string) $str)) {
                 // wrong character
                 break;
             }

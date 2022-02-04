@@ -730,7 +730,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
         if ($server_info !== false) {
             $version = $server_info->DBMS_VER;
             if ($this->_isI5) {
-                $version = (int) substr($version, 0, 2) . '.' . (int) substr($version, 2, 2) . '.' . (int) substr($version, 4);
+                $version = (int) substr((string) $version, 0, 2) . '.' . (int) substr((string) $version, 2, 2) . '.' . (int) substr((string) $version, 4);
             }
             return $version;
         } else {
@@ -765,7 +765,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
 
         // if this is set, then us it
         if (isset($this->_config['os'])){
-            if (strtolower($this->_config['os']) === 'i5') {
+            if (strtolower((string) $this->_config['os']) === 'i5') {
                 $this->_isI5 = true;
             } else {
                 // any other value passed in, its null
@@ -823,14 +823,14 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
             return $value;
         }
 
-        if (strtoupper($idType) === 'S'){
+        if (strtoupper((string) $idType) === 'S'){
             //check i5_lib option
             $sequenceName = $objectName;
             return $this->lastSequenceId($sequenceName);
         }
 
             //returns last identity value for the specified table
-        //if (strtoupper($idType) === 'I') {
+        //if (strtoupper((string) $idType) === 'I') {
         $tableName = $objectName;
         return $this->fetchOne('SELECT IDENTITY_VAL_LOCAL() from ' . $this->quoteIdentifier($tableName));
     }

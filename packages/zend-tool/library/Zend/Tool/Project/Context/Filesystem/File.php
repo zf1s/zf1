@@ -128,7 +128,7 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
         }
 
 
-        if (file_exists($this->getPath())) {
+        if (file_exists((string) $this->getPath())) {
             // @todo propt user to determine if its ok to overwrite file
         }
 

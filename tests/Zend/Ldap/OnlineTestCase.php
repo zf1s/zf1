@@ -23,7 +23,7 @@
 /**
  * Zend_Ldap_TestCase
  */
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'TestCase.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'TestCase.php';
 /**
  * @see Zend_Ldap
  */
@@ -99,7 +99,7 @@ abstract class Zend_Ldap_OnlineTestCase extends Zend_Ldap_TestCase
 
     protected function _createDn($dn)
     {
-        if (substr($dn, -1)!==',') {
+        if (substr((string) $dn, -1)!==',') {
             $dn.=',';
         }
         $dn = $dn . TESTS_ZEND_LDAP_WRITEABLE_SUBTREE;

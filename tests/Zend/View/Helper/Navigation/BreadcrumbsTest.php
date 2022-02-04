@@ -19,7 +19,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-require_once dirname(__FILE__) . '/TestAbstract.php';
+require_once __DIR__ . '/TestAbstract.php';
 // require_once 'Zend/View/Helper/Navigation/Breadcrumbs.php';
 
 /**
@@ -127,7 +127,7 @@ class Zend_View_Helper_Navigation_BreadcrumbsTest
         $this->_helper->setIndent(8);
 
         $expected = '        <a';
-        $actual = substr($this->_helper->render(), 0, strlen($expected));
+        $actual = substr((string) $this->_helper->render(), 0, strlen((string) $expected));
 
         $this->assertEquals($expected, $actual);
     }

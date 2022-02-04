@@ -62,7 +62,7 @@ class Zend_Service_WindowsAzure_CommandLine_Package
 	{
 		// Default parameter value
 		if ($scaffolder == '') {
-			$scaffolder = dirname(__FILE__) . '/Scaffolders/DefaultScaffolder.phar';
+			$scaffolder = __DIR__ . '/Scaffolders/DefaultScaffolder.phar';
 		}
 		$scaffolder = realpath($scaffolder);
 
@@ -84,8 +84,8 @@ class Zend_Service_WindowsAzure_CommandLine_Package
 		$options = array();
 		foreach ($argv as $arg) {
 			list($key, $value) = explode(':', $arg, 2);
-			while (substr($key, 0, 1) == '-') {
-				$key = substr($key, 1);
+			while (substr((string) $key, 0, 1) == '-') {
+				$key = substr((string) $key, 1);
 			}
 			$options[$key] = $value;
 		}
@@ -128,7 +128,7 @@ class Zend_Service_WindowsAzure_CommandLine_Package
 
 		// Open the ServiceDefinition.csdef file and check for role paths
 		$serviceDefinitionFile = $path . '/ServiceDefinition.csdef';
-		if (!file_exists($serviceDefinitionFile)) {
+		if (!file_exists((string) $serviceDefinitionFile)) {
 			// require_once 'Zend/Service/Console/Exception.php';
 			throw new Zend_Service_Console_Exception('Could not locate ServiceDefinition.csdef at ' . $serviceDefinitionFile . '.');
 		}
@@ -172,7 +172,7 @@ class Zend_Service_WindowsAzure_CommandLine_Package
 		// Can we copy a configuration file?
 		$serviceConfigurationFile = $path . '/ServiceConfiguration.cscfg';
 		$serviceConfigurationFileOut = $outputPath . '/ServiceConfiguration.cscfg';
-		if (file_exists($serviceConfigurationFile) && !file_exists($serviceConfigurationFileOut)) {
+		if (file_exists((string) $serviceConfigurationFile) && !file_exists((string) $serviceConfigurationFileOut)) {
 			copy($serviceConfigurationFile, $serviceConfigurationFileOut);
 		}
 

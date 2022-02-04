@@ -48,9 +48,9 @@ class Zend_Tool_Framework_Client_Console_ResponseDecorator_AlignCenter
         if(!is_numeric($lineLength)) {
             $lineLength = 72;
         }
-        if(strlen($content) < $lineLength) {
+        if(strlen((string) $content) < $lineLength) {
             $append = false;
-            $len = strlen($content);
+            $len = strlen((string) $content);
             for($i = $len; $i < $lineLength; $i++) {
                 if($append == true) {
                     $content = $content." ";

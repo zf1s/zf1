@@ -88,7 +88,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
     {
         if ((null !== $content) && (null !== $keyValue)) {
             $item   = $this->createData($keyType, $keyValue, $content, $modifiers);
-            $action = strtolower($placement);
+            $action = strtolower((string) $placement);
             switch ($action) {
                 case 'append':
                 case 'prepend':
@@ -258,6 +258,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
      * @return void
      * @throws Zend_View_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($index, $value)
     {
         if (!$this->_isValid($value)) {
@@ -277,6 +278,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
      * @return void
      * @throws Zend_View_Exception
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($index)
     {
         if (!in_array($index, $this->getContainer()->getKeys())) {
@@ -394,7 +396,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             && !empty($item->modifiers['conditional'])
             && is_string($item->modifiers['conditional']))
         {
-            if (str_replace(' ', '', $item->modifiers['conditional']) === '!IE') {
+            if (str_replace((string) ' ', '', $item->modifiers['conditional']) === '!IE') {
                 $meta = '<!-->' . $meta . '<!--';
             }
             $meta = '<!--[if ' . $this->_escape($item->modifiers['conditional']) . ']>' . $meta . '<![endif]-->';

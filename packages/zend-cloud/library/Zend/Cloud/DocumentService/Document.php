@@ -161,6 +161,7 @@ class Zend_Cloud_DocumentService_Document
      * @param  string $name
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($name)
     {
         return isset($this->_fields[$name]);
@@ -172,6 +173,7 @@ class Zend_Cloud_DocumentService_Document
      * @param  string $name
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($name)
     {
         return $this->getField($name);
@@ -184,6 +186,7 @@ class Zend_Cloud_DocumentService_Document
      * @param  mixed $value
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($name, $value)
     {
         $this->setField($name, $value);
@@ -195,6 +198,7 @@ class Zend_Cloud_DocumentService_Document
      * @param  string $name
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($name)
     {
         if ($this->offsetExists($name)) {
@@ -211,14 +215,14 @@ class Zend_Cloud_DocumentService_Document
      */
     public function __call($name, $args)
     {
-        $prefix = substr($name, 0, 3);
+        $prefix = substr((string) $name, 0, 3);
         if ($prefix == 'get') {
             // Get value
-            $option = substr($name, 3);
+            $option = substr((string) $name, 3);
             return $this->getField($option);
         } elseif ($prefix == 'set') {
             // set value
-            $option = substr($name, 3);
+            $option = substr((string) $name, 3);
             return $this->setField($option, $args[0]);
         }
 
@@ -231,6 +235,7 @@ class Zend_Cloud_DocumentService_Document
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_fields);
@@ -241,6 +246,7 @@ class Zend_Cloud_DocumentService_Document
      *
      * @return Iterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->_fields);

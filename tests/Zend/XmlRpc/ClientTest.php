@@ -721,7 +721,7 @@ class Zend_XmlRpc_ClientTest extends PHPUnit_Framework_TestCase
               $this->xmlrpcClient->call('get', array(1))
           );
     }
-    
+
     /**
      * @group ZF-1897
      */
@@ -730,13 +730,13 @@ class Zend_XmlRpc_ClientTest extends PHPUnit_Framework_TestCase
         $baseUri = "http://foo:80";
         $this->httpAdapter = new Zend_Http_Client_Adapter_Test();
         $this->httpClient = new Zend_Http_Client(null, array('adapter' => $this->httpAdapter));
-        
-        $respBody = file_get_contents(dirname(__FILE__) . "/_files/ZF1897-response-chunked.txt");
+
+        $respBody = file_get_contents(__DIR__ . "/_files/ZF1897-response-chunked.txt");
         $this->httpAdapter->setResponse($respBody);
 
         $this->xmlrpcClient = new Zend_XmlRpc_Client($baseUri);
         $this->xmlrpcClient->setHttpClient($this->httpClient);
-        
+
         $this->assertEquals('FOO', $this->xmlrpcClient->call('foo'));
     }
 
@@ -762,7 +762,7 @@ class Zend_XmlRpc_ClientTest extends PHPUnit_Framework_TestCase
         $headers = array("HTTP/1.1 $status $message",
                          "Status: $status",
                          'Content_Type: text/xml; charset=utf-8',
-                         'Content-Length: ' . strlen($data)
+                         'Content-Length: ' . strlen((string) $data)
                          );
         return implode("\r\n", $headers) . "\r\n\r\n$data\r\n\r\n";
     }

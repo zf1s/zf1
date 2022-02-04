@@ -184,7 +184,7 @@ class Zend_Dojo_Form_Decorator_DijitContainerTest extends PHPUnit_Framework_Test
         $this->assertFalse(empty($this->errors), var_export($this->errors, 1));
         $found = false;
         foreach ($this->errors as $error) {
-            if (strstr($error, 'Duplicate')) {
+            if (strstr((string) $error, 'Duplicate')) {
                 $found = true;
                 break;
             }

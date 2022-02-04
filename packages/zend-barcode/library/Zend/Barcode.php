@@ -165,9 +165,9 @@ class Zend_Barcode
             $barcodeNamespace = $barcodeConfig['barcodeNamespace'];
         }
 
-        $barcodeName = strtolower($barcodeNamespace . '_' . $barcode);
-        $barcodeName = str_replace(' ', '_', ucwords(
-            str_replace( '_', ' ', $barcodeName)
+        $barcodeName = strtolower((string) $barcodeNamespace . '_' . $barcode);
+        $barcodeName = str_replace((string) ' ', '_', ucwords(
+            str_replace((string)  '_', ' ', $barcodeName)
         ));
 
         /*
@@ -267,9 +267,9 @@ class Zend_Barcode
             $rendererNamespace = $rendererConfig['rendererNamespace'];
         }
 
-        $rendererName = strtolower($rendererNamespace . '_' . $renderer);
-        $rendererName = str_replace(' ', '_', ucwords(
-            str_replace( '_', ' ', $rendererName)
+        $rendererName = strtolower((string) $rendererNamespace . '_' . $renderer);
+        $rendererName = str_replace((string) ' ', '_', ucwords(
+            str_replace((string)  '_', ' ', $rendererName)
         ));
 
         /*

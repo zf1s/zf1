@@ -55,12 +55,12 @@ class Zend_Tool_Framework_Client_Console_ResponseDecorator_Blockize
         $lines = explode(PHP_EOL, wordwrap($content, $lineLength, PHP_EOL, false));
         $content = array();
         foreach($lines AS $line) {
-            if(strlen(trim($line)) == 0) {
+            if(strlen((string) \trim((string) $line)) == 0) {
                 continue;
             }
 
-            if(strlen($line) < $lineLength) {
-                $line .= str_repeat(" ", $lineLength-strlen($line));
+            if(strlen((string) $line) < $lineLength) {
+                $line .= str_repeat(" ", $lineLength-strlen((string) $line));
             }
             $content[] = $line;
         }

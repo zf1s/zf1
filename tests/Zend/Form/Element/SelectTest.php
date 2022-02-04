@@ -77,7 +77,7 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
         $view = new Zend_View(array(
             'encoding' => 'UTF-8',
         ));
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
         return $view;
     }
 

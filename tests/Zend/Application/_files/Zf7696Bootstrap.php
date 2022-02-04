@@ -56,11 +56,11 @@ class Zf7696Bootstrap extends Zend_Application_Bootstrap_BootstrapAbstract
         $o->baz = 'Baz';
         return $o;
     }
-    
+
     protected function _initFrontController()
     {
         $front = Zend_Controller_Front::getInstance();
-        $front->addModuleDirectory(dirname(__FILE__) . '/modules');
+        $front->addModuleDirectory(__DIR__ . '/modules');
         return $front;
     }
 

@@ -150,7 +150,7 @@ class Zend_Pdf_StringParser
             while (true) {
                 $this->offset += strspn($this->data, "\x00\t\n\f\r ", $this->offset);
 
-                if ($this->offset < strlen($this->data)  &&  $this->data[$this->offset] == '%') {
+                if ($this->offset < strlen((string) $this->data)  &&  $this->data[$this->offset] == '%') {
                     // Skip comment
                     $this->offset += strcspn($this->data, "\r\n", $this->offset);
                 } else {
@@ -164,10 +164,10 @@ class Zend_Pdf_StringParser
 
 //        /** Original (non-optimized) implementation. */
 //
-//        while ($this->offset < strlen($this->data)) {
-//            if (strpos("\x00\t\n\f\r ", $this->data[$this->offset]) !== false) {
+//        while ($this->offset < strlen((string) $this->data)) {
+//            if (strpos((string) "\x00\t\n\f\r ", $this->data[$this->offset]) !== false) {
 //                $this->offset++;
-//            } else if (ord($this->data[$this->offset]) == 0x25 && $skipComment) { // '%'
+//            } else if (ord((string) $this->data[$this->offset]) == 0x25 && $skipComment) { // '%'
 //                $this->skipComment();
 //            } else {
 //                return;
@@ -181,10 +181,10 @@ class Zend_Pdf_StringParser
      */
     public function skipComment()
     {
-        while ($this->offset < strlen($this->data))
+        while ($this->offset < strlen((string) $this->data))
         {
-            if (ord($this->data[$this->offset]) != 0x0A || // Line feed
-                ord($this->data[$this->offset]) != 0x0d    // Carriage return
+            if (ord((string) $this->data[$this->offset]) != 0x0A || // Line feed
+                ord((string) $this->data[$this->offset]) != 0x0d    // Carriage return
                ) {
                 $this->offset++;
             } else {
@@ -209,16 +209,16 @@ class Zend_Pdf_StringParser
         }
 
         for ($start = $this->offset;
-             $this->offset < strlen($this->data);
+             $this->offset < strlen((string) $this->data);
              $this->offset++) {
-            if (ord($this->data[$this->offset]) == 0x0A || // Line feed
-                ord($this->data[$this->offset]) == 0x0d    // Carriage return
+            if (ord((string) $this->data[$this->offset]) == 0x0A || // Line feed
+                ord((string) $this->data[$this->offset]) == 0x0d    // Carriage return
                ) {
                 break;
             }
         }
 
-        return substr($this->data, $start, $this->offset-$start);
+        return substr((string) $this->data, $start, $this->offset-$start);
     }
 
 
@@ -233,21 +233,21 @@ class Zend_Pdf_StringParser
         while (true) {
             $this->offset += strspn($this->data, "\x00\t\n\f\r ", $this->offset);
 
-            if ($this->offset < strlen($this->data)  &&  $this->data[$this->offset] == '%') {
+            if ($this->offset < strlen((string) $this->data)  &&  $this->data[$this->offset] == '%') {
                 $this->offset += strcspn($this->data, "\r\n", $this->offset);
             } else {
                 break;
             }
         }
 
-        if ($this->offset >= strlen($this->data)) {
+        if ($this->offset >= strlen((string) $this->data)) {
             return '';
         }
 
-        if ( /* self::isDelimiter( ord($this->data[$start]) ) */
-             strpos('()<>[]{}/%', $this->data[$this->offset]) !== false ) {
+        if ( /* self::isDelimiter( ord((string) $this->data[$start]) ) */
+             strpos((string) '()<>[]{}/%', $this->data[$this->offset]) !== false ) {
 
-            switch (substr($this->data, $this->offset, 2)) {
+            switch (substr((string) $this->data, $this->offset, 2)) {
                 case '<<':
                     $this->offset += 2;
                     return '<<';
@@ -268,7 +268,7 @@ class Zend_Pdf_StringParser
 
             $this->offset += strcspn($this->data, $compare, $this->offset);
 
-            return substr($this->data, $start, $this->offset - $start);
+            return substr((string) $this->data, $start, $this->offset - $start);
         }
     }
 
@@ -356,8 +356,8 @@ class Zend_Pdf_StringParser
 
         $this->offset += strcspn($this->data, '()\\', $this->offset);
 
-        while ($this->offset < strlen($this->data)) {
-            switch (ord( $this->data[$this->offset] )) {
+        while ($this->offset < strlen((string) $this->data)) {
+            switch (ord((string)  $this->data[$this->offset] )) {
                 case 0x28: // '(' - opened bracket in the string, needs balanced pair.
                     $this->offset++;
                     $openedBrackets++;
@@ -383,7 +383,7 @@ class Zend_Pdf_StringParser
             throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Unexpected end of file while string reading. Offset - 0x%X. \')\' expected.', $start));
         }
 
-        return new Zend_Pdf_Element_String(Zend_Pdf_Element_String::unescape( substr($this->data,
+        return new Zend_Pdf_Element_String(Zend_Pdf_Element_String::unescape( substr((string) $this->data,
                                                                                      $start,
                                                                                      $this->offset - $start - 1) ));
     }
@@ -402,7 +402,7 @@ class Zend_Pdf_StringParser
 
         $this->offset += strspn($this->data, "\x00\t\n\f\r 0123456789abcdefABCDEF", $this->offset);
 
-        if ($this->offset >= strlen($this->data) - 1) {
+        if ($this->offset >= strlen((string) $this->data) - 1) {
             // require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Unexpected end of file while reading binary string. Offset - 0x%X. \'>\' expected.', $start));
         }
@@ -413,7 +413,7 @@ class Zend_Pdf_StringParser
         }
 
         return new Zend_Pdf_Element_String_Binary(
-                       Zend_Pdf_Element_String_Binary::unescape( substr($this->data,
+                       Zend_Pdf_Element_String_Binary::unescape( substr((string) $this->data,
                                                                         $start,
                                                                         $this->offset - $start - 1) ));
     }
@@ -430,7 +430,7 @@ class Zend_Pdf_StringParser
     {
         $elements = array();
 
-        while ( strlen($nextLexeme = $this->readLexeme()) != 0 ) {
+        while ( strlen((string) $nextLexeme = $this->readLexeme()) != 0 ) {
             if ($nextLexeme != ']') {
                 $elements[] = $this->readElement($nextLexeme);
             } else {
@@ -454,9 +454,9 @@ class Zend_Pdf_StringParser
     {
         $dictionary = new Zend_Pdf_Element_Dictionary();
 
-        while ( strlen($nextLexeme = $this->readLexeme()) != 0 ) {
+        while ( strlen((string) $nextLexeme = $this->readLexeme()) != 0 ) {
             if ($nextLexeme != '>>') {
-                $nameStart = $this->offset - strlen($nextLexeme);
+                $nameStart = $this->offset - strlen((string) $nextLexeme);
 
                 $name  = $this->readElement($nextLexeme);
                 $value = $this->readElement();
@@ -554,19 +554,19 @@ class Zend_Pdf_StringParser
         $objNum = $this->readLexeme();
         if (!ctype_digit($objNum)) {
             // require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Object number expected.', $this->offset - strlen($objNum)));
+            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Object number expected.', $this->offset - strlen((string) $objNum)));
         }
 
         $genNum = $this->readLexeme();
         if (!ctype_digit($genNum)) {
             // require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Object generation number expected.', $this->offset - strlen($genNum)));
+            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Object generation number expected.', $this->offset - strlen((string) $genNum)));
         }
 
         $objKeyword = $this->readLexeme();
         if ($objKeyword != 'obj') {
             // require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'obj\' keyword expected.', $this->offset - strlen($objKeyword)));
+            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'obj\' keyword expected.', $this->offset - strlen((string) $objKeyword)));
         }
 
         $objValue = $this->readElement();
@@ -595,12 +595,12 @@ class Zend_Pdf_StringParser
          */
         if ($nextLexeme != 'stream') {
             // require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'endobj\' or \'stream\' keywords expected.', $this->offset - strlen($nextLexeme)));
+            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'endobj\' or \'stream\' keywords expected.', $this->offset - strlen((string) $nextLexeme)));
         }
 
         if (!$objValue instanceof Zend_Pdf_Element_Dictionary) {
             // require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Stream extent must be preceded by stream dictionary.', $this->offset - strlen($nextLexeme)));
+            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Stream extent must be preceded by stream dictionary.', $this->offset - strlen((string) $nextLexeme)));
         }
 
         /**
@@ -619,7 +619,7 @@ class Zend_Pdf_StringParser
             $this->offset++;
         } else {
             // require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'stream\' must be followed by either cr-lf sequence or lf character only.', $this->offset - strlen($nextLexeme)));
+            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'stream\' must be followed by either cr-lf sequence or lf character only.', $this->offset - strlen((string) $nextLexeme)));
         }
 
         $dataOffset = $this->offset;
@@ -629,16 +629,16 @@ class Zend_Pdf_StringParser
         $nextLexeme = $this->readLexeme();
         if ($nextLexeme != 'endstream') {
             // require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'endstream\' keyword expected.', $this->offset - strlen($nextLexeme)));
+            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'endstream\' keyword expected.', $this->offset - strlen((string) $nextLexeme)));
         }
 
         $nextLexeme = $this->readLexeme();
         if ($nextLexeme != 'endobj') {
             // require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'endobj\' keyword expected.', $this->offset - strlen($nextLexeme)));
+            throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. \'endobj\' keyword expected.', $this->offset - strlen((string) $nextLexeme)));
         }
 
-        $obj = new Zend_Pdf_Element_Object_Stream(substr($this->data,
+        $obj = new Zend_Pdf_Element_Object_Stream(substr((string) $this->data,
                                                          $dataOffset,
                                                          $streamLength),
                                                   (int)$objNum,
@@ -664,7 +664,7 @@ class Zend_Pdf_StringParser
      */
     public function getLength()
     {
-        return strlen($this->data);
+        return strlen((string) $this->data);
     }
 
     /**
@@ -691,7 +691,7 @@ class Zend_Pdf_StringParser
         $value = 0;
         for ($count = 0; $count < $size; $count++) {
             $value *= 256;
-            $value += ord($stream[$offset + $count]);
+            $value += ord((string) $stream[$offset + $count]);
         }
 
         return $value;

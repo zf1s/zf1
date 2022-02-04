@@ -39,8 +39,8 @@ class Zend_Gdata_AuthSubTest extends PHPUnit_Framework_TestCase
      * @var type string
      */
     protected $token = 'DQAAFPHOW7DCTN';
-    
-    
+
+
     public function setUp()
     {
     }
@@ -94,7 +94,7 @@ class Zend_Gdata_AuthSubTest extends PHPUnit_Framework_TestCase
             $authHeaderCheckPassed = false;
             $headers = $requestData['headers'];
             foreach ($headers as $headerName => $headerValue) {
-                if (strtolower($headerName) == 'authorization') {
+                if (strtolower((string) $headerName) == 'authorization') {
                     preg_match('/data="([^"]*)"/', $headerValue, $matches);
                     $dataToSign = $matches[1];
                     preg_match('/sig="([^"]*)"/', $headerValue, $matches);
@@ -133,59 +133,59 @@ class Zend_Gdata_AuthSubTest extends PHPUnit_Framework_TestCase
             $c->setAuthSubPrivateKeyFile("zendauthsubfilenotfound",  null, true);
         }
     }
-        
+
     public function testAuthSubSessionTokenReceivesSuccessfulResult()
     {
         $adapter = new Zend_Http_Client_Adapter_Test();
         $adapter->setResponse("HTTP/1.1 200 OK\r\n\r\nToken={$this->token}\r\nExpiration=20201004T123456Z");
-        
+
         $client = new Zend_Gdata_HttpClient();
         $client->setUri('http://example.com/AuthSub');
         $client->setAdapter($adapter);
-        
+
         $respToken = Zend_Gdata_AuthSub::getAuthSubSessionToken($this->token, $client);
-        $this->assertEquals($this->token, $respToken);        
+        $this->assertEquals($this->token, $respToken);
     }
 
     /**
      * @expectedException Zend_Gdata_App_AuthException
      */
     public function testAuthSubSessionTokenCatchesFailedResult()
-    {        
+    {
         $adapter = new Zend_Http_Client_Adapter_Test();
         $adapter->setResponse("HTTP/1.1 500 Internal Server Error\r\n\r\nInternal Server Error");
-        
+
         $client = new Zend_Gdata_HttpClient();
         $client->setUri('http://example.com/AuthSub');
         $client->setAdapter($adapter);
-        
+
         $newtok = Zend_Gdata_AuthSub::getAuthSubSessionToken($this->token, $client);
     }
-    
+
     /**
      * @expectedException Zend_Gdata_App_HttpException
      */
     public function testAuthSubSessionTokenCatchesHttpClientException()
-    {        
+    {
         $adapter = new Zend_Http_Client_Adapter_Test();
         $adapter->setNextRequestWillFail(true);
-        
+
         $client = new Zend_Gdata_HttpClient();
         $client->setUri('http://example.com/AuthSub');
         $client->setAdapter($adapter);
-        
+
         $newtok = Zend_Gdata_AuthSub::getAuthSubSessionToken($this->token, $client);
     }
-    
+
     public function testAuthSubRevokeTokenReceivesSuccessfulResult()
     {
         $adapter = new Zend_Http_Client_Adapter_Test();
         $adapter->setResponse("HTTP/1.1 200 OK");
-        
+
         $client = new Zend_Gdata_HttpClient();
         $client->setUri('http://example.com/AuthSub');
         $client->setAdapter($adapter);
-        
+
         $revoked = Zend_Gdata_AuthSub::AuthSubRevokeToken($this->token, $client);
         $this->assertTrue($revoked);
     }
@@ -194,11 +194,11 @@ class Zend_Gdata_AuthSubTest extends PHPUnit_Framework_TestCase
     {
         $adapter = new Zend_Http_Client_Adapter_Test();
         $adapter->setResponse("HTTP/1.1 500 Not Successful");
-        
+
         $client = new Zend_Gdata_HttpClient();
         $client->setUri('http://example.com/AuthSub');
         $client->setAdapter($adapter);
-        
+
         $revoked = Zend_Gdata_AuthSub::AuthSubRevokeToken($this->token, $client);
         $this->assertFalse($revoked);
     }
@@ -210,31 +210,31 @@ class Zend_Gdata_AuthSubTest extends PHPUnit_Framework_TestCase
     {
         $adapter = new Zend_Http_Client_Adapter_Test();
         $adapter->setNextRequestWillFail(true);
-        
+
         $client = new Zend_Gdata_HttpClient();
         $client->setUri('http://example.com/AuthSub');
         $client->setAdapter($adapter);
-        
+
         $revoked = Zend_Gdata_AuthSub::AuthSubRevokeToken($this->token, $client);
     }
-        
+
     public function testGetAuthSubTokenInfoReceivesSuccessfulResult()
     {
         $adapter = new Zend_Http_Client_Adapter_Test();
         $response = "HTTP/1.1 200 OK\r\n\r\nTarget=http://example.com\nScope=http://example.com\nSecure=false";
         $adapter->setResponse($response);
-        
+
         $client = new Zend_Gdata_HttpClient();
         $client->setUri('http://example.com/AuthSub');
         $client->setAdapter($adapter);
-        
+
         $respBody = Zend_Gdata_AuthSub::getAuthSubTokenInfo($this->token, $client);
-        
+
         $this->assertContains("Target=http://example.com", $respBody);
         $this->assertContains("Scope=http://example.com", $respBody);
         $this->assertContains("Secure=false", $respBody);
     }
-    
+
     /**
      * @expectedException Zend_Gdata_App_HttpException
      */
@@ -242,21 +242,21 @@ class Zend_Gdata_AuthSubTest extends PHPUnit_Framework_TestCase
     {
         $adapter = new Zend_Http_Client_Adapter_Test();
         $adapter->setNextRequestWillFail(true);
-        
+
         $client = new Zend_Gdata_HttpClient();
         $client->setUri('http://example.com/AuthSub');
         $client->setAdapter($adapter);
-        
+
         $revoked = Zend_Gdata_AuthSub::getAuthSubTokenInfo($this->token, $client);
     }
-    
+
     public function testGetHttpClientProvidesNewClientWhenNullPassed()
     {
         $client = Zend_Gdata_AuthSub::getHttpClient($this->token);
         $this->assertTrue($client instanceof Zend_Gdata_HttpClient );
         $this->assertEquals($this->token, $client->getAuthSubToken());
     }
-    
+
     /**
      * @group ZF-11351
      * @expectedException Zend_Gdata_App_HttpException
@@ -268,5 +268,5 @@ class Zend_Gdata_AuthSubTest extends PHPUnit_Framework_TestCase
         $gdclient = Zend_Gdata_AuthSub::getHttpClient('FakeToken', $client);
         $this->fail('Expected exception Zend_Gdata_App_HttpException not raised!');
     }
-    
+
 }

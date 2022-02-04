@@ -73,7 +73,7 @@ class Zend_Validate_File_MimeTypeTest extends PHPUnit_Framework_TestCase
             array('image/jpeg2000', false),
         );
 
-        $filetest = dirname(__FILE__) . '/_files/picture.jpg';
+        $filetest = __DIR__ . '/_files/picture.jpg';
         $files = array(
             'name'     => 'picture.jpg',
             'type'     => 'image/jpg',
@@ -205,7 +205,7 @@ class Zend_Validate_File_MimeTypeTest extends PHPUnit_Framework_TestCase
             array('image', true),
         );
 
-        $filetest = dirname(__FILE__) . '/_files/picture.jpg';
+        $filetest = __DIR__ . '/_files/picture.jpg';
         $files = array(
             'name'     => 'picture.jpg',
             'type'     => 'image/jpg',
@@ -257,7 +257,7 @@ class Zend_Validate_File_MimeTypeTest extends PHPUnit_Framework_TestCase
      */
     public function testDisablingTryCommonMagicFilesIgnoresCommonLocations()
     {
-        $filetest = dirname(__FILE__) . '/_files/picture.jpg';
+        $filetest = __DIR__ . '/_files/picture.jpg';
         $files = array(
             'name'     => 'picture.jpg',
             'size'     => 200,

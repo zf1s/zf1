@@ -55,30 +55,30 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
 
     public function testCreate()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_en.csv');
         $this->assertTrue($adapter instanceof Zend_Translate_Adapter_Csv);
 
         try {
-            $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/nofile.csv', 'en');
+            $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/nofile.csv', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('Error opening translation file', $e->getMessage());
         }
 
         set_error_handler(array($this, 'errorHandlerIgnore'));
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/failed.csv', 'en');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/failed.csv', 'en');
         restore_error_handler();
     }
 
     public function testToString()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_en.csv');
         $this->assertEquals('Csv', $adapter->toString());
     }
 
     public function testTranslate()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_en.csv', 'en');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 1 (en)', $adapter->_('Message 1'));
         $this->assertEquals('Message 60', $adapter->translate('Message 60'));
@@ -88,7 +88,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
 
     public function testIsTranslated()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_en.csv', 'en');
         $this->assertTrue($adapter->isTranslated('Message 1'));
         $this->assertFalse($adapter->isTranslated('Message 60'));
         $this->assertTrue($adapter->isTranslated('Message 1', true));
@@ -98,7 +98,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
 
     public function testLoadTranslationData()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_en.csv', 'en');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 4 (en)', $adapter->translate('Message 4'));
         $this->assertEquals('Message 2', $adapter->translate('Message 2', 'ru'));
@@ -106,26 +106,26 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1', 'en_US'));
 
         try {
-            $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.csv', 'xx');
+            $adapter->addTranslation(__DIR__ . '/_files/translation_en.csv', 'xx');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('does not exist', $e->getMessage());
         }
 
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.csv', 'de', array('clear' => true));
+        $adapter->addTranslation(__DIR__ . '/_files/translation_en2.csv', 'de', array('clear' => true));
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
     }
 
     public function testOptions()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_en.csv', 'en');
         $adapter->setOptions(array('testoption' => 'testkey'));
         $expected = array(
             'delimiter'       => ';',
             'testoption'      => 'testkey',
             'clear'           => false,
-            'content'         => dirname(__FILE__) . '/_files/translation_en.csv',
+            'content'         => __DIR__ . '/_files/translation_en.csv',
             'scan'            => null,
             'locale'          => 'en',
             'length'          => 0,
@@ -150,17 +150,17 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
 
     public function testClearing()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_en.csv', 'en');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 60', $adapter->translate('Message 60'));
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.csv', 'de', array('clear' => true));
+        $adapter->addTranslation(__DIR__ . '/_files/translation_en2.csv', 'de', array('clear' => true));
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));
         $this->assertEquals('Message 4', $adapter->translate('Message 4'));
     }
 
     public function testLocale()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_en.csv', 'en');
         $this->assertEquals('en', $adapter->getLocale());
         $locale = new Zend_Locale('en');
         $adapter->setLocale($locale);
@@ -181,9 +181,9 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
 
     public function testList()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_en.csv', 'en');
         $this->assertEquals(array('en' => 'en'), $adapter->getList());
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.csv', 'de');
+        $adapter->addTranslation(__DIR__ . '/_files/translation_en.csv', 'de');
         $this->assertEquals(array('en' => 'en', 'de' => 'de'), $adapter->getList());
         $this->assertTrue($adapter->isAvailable('de'));
         $locale = new Zend_Locale('en');
@@ -194,7 +194,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
     public function testOptionLocaleDirectory()
     {
         // require_once 'Zend/Translate.php';
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/testcsv', 'de_AT', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/testcsv', 'de_AT', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
         $this->assertEquals(array('de_AT' => 'de_AT', 'en_GB' => 'en_GB'), $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
     }
@@ -202,14 +202,14 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
     public function testOptionLocaleFilename()
     {
         // require_once 'Zend/Translate.php';
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/testcsv', 'de_DE', array('scan' => Zend_Translate::LOCALE_FILENAME));
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/testcsv', 'de_DE', array('scan' => Zend_Translate::LOCALE_FILENAME));
         $this->assertEquals(array('de_DE' => 'de_DE', 'en_US' => 'en_US'), $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
     }
 
     public function testOtherDelimiter()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_otherdelimiter.csv', 'en', array('delimiter' => ','));
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_otherdelimiter.csv', 'en', array('delimiter' => ','));
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 4 (en)', $adapter->translate('Message 4,'));
         $this->assertEquals('Message 5, (en)', $adapter->translate('Message 5'));
@@ -218,7 +218,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
 
     public function testSpecialChars()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_specialchars.csv', 'en');
+        $adapter = new Zend_Translate_Adapter_Csv(__DIR__ . '/_files/translation_specialchars.csv', 'en');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 1 (en)', $adapter->_('Message 1'));
         $this->assertEquals('Message 6;" (en)', $adapter->translate('Message 6'));

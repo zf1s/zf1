@@ -39,7 +39,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->_feedSamplePath = dirname(__FILE__) . '/Reader/_files';
+        $this->_feedSamplePath = __DIR__ . '/Reader/_files';
     }
 
     public function tearDown()
@@ -132,7 +132,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
     public function testGetEncoding()
     {
         $feed = Zend_Feed_Reader::importString(
-            file_get_contents(dirname(__FILE__) . '/Reader/Entry/_files/Atom/title/plain/atom10.xml')
+            file_get_contents(__DIR__ . '/Reader/Entry/_files/Atom/title/plain/atom10.xml')
         );
 
         $this->assertEquals('utf-8', $feed->getEncoding());
@@ -143,7 +143,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
     {
         try {
             $feed = Zend_Feed_Reader::importFile(
-                dirname(__FILE__) . '/Reader/Entry/_files/Atom/title/plain/atom10.xml'
+                __DIR__ . '/Reader/Entry/_files/Atom/title/plain/atom10.xml'
             );
         } catch(Exception $e) {
             $this->fail($e->getMessage());
@@ -165,7 +165,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
             $this->fail($e->getMessage());
         }
     }
-    
+
     /**
      * @group ZF-8328
      * @expectedException Zend_Feed_Exception
@@ -238,7 +238,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
         $links = Zend_Feed_Reader::findFeedLinks('http://www.example.com');
         $this->assertEquals(0, count($links));
     }
-    
+
     /**
      * @group ZF-8327
      */
@@ -258,7 +258,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
         }
         $this->assertEquals('http://feeds.feedburner.com/jonnyken/infoblog', $links->rss);
     }
-    
+
     /**
      * @group ZF-8330
      */
@@ -278,7 +278,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
         }
         $this->assertEquals('http://meiobit.com/rss.xml', $links->rss);
     }
-    
+
     /**
      * @group ZF-8330
      */
@@ -312,14 +312,14 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
     public function testRegistersUserExtension()
     {
         try {
-            Zend_Feed_Reader::addPrefixPath('My_FeedReader_Extension',dirname(__FILE__) . '/Reader/_files/My/Extension');
+            Zend_Feed_Reader::addPrefixPath('My_FeedReader_Extension',__DIR__ . '/Reader/_files/My/Extension');
             Zend_Feed_Reader::registerExtension('JungleBooks');
         } catch(Exception $e) {
             $this->fail($e->getMessage());
         }
         $this->assertTrue(Zend_Feed_Reader::isRegistered('JungleBooks'));
     }
-    
+
     /**
      * @group ZF-11184
      */
@@ -331,7 +331,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
         Zend_Feed_Reader::setHttpClient(new Zend_Http_Client(null, array(
             'adapter'=>$testAdapter
         )));
-        
+
         $this->setExpectedException('Zend_Feed_Exception', 'Feed failed to load');
         $result = Zend_Feed_Reader::import('http://www.example.com');
     }
@@ -339,7 +339,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
      public function testXxePreventionOnFeedParsing()
      {
          $string = file_get_contents($this->_feedSamplePath.'/Reader/xxe-atom10.xml');
-         $string = str_replace('XXE_URI', $this->_feedSamplePath.'/Reader/xxe-info.txt', $string);
+         $string = str_replace((string) 'XXE_URI', $this->_feedSamplePath.'/Reader/xxe-info.txt', $string);
          $this->setExpectedException('Zend_Feed_Exception');
          $feed = Zend_Feed_Reader::importString($string);
      }
@@ -356,7 +356,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
 
          self::fail('Illegal string should create an exception');
      }
- 
+
     protected function _getTempDirectory()
     {
         $tmpdir = array();
@@ -380,7 +380,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
                 return $dir;
             }
         }
-        $tempFile = tempnam(md5(uniqid(rand(), TRUE)), '');
+        $tempFile = tempnam(md5((string) uniqid(rand(), TRUE)), '');
         if ($tempFile) {
             $dir = realpath(dirname($tempFile));
             unlink($tempFile);

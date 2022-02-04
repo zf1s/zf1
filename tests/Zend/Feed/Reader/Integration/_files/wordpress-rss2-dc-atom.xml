@@ -444,7 +444,7 @@ $production = false;
  *
  * @var string
  */
-define('ABSPATH', dirname(__FILE__) . '/');
+define('ABSPATH', __DIR__ . '/');
 
 /**
  * One directory below docroot. Your config file and library dir should be here.
@@ -468,7 +468,7 @@ set_include_path(
  */
 $configFile = SUBPATH . '/wp-config.php';
 
-if (!file_exists($configFile)) {
+if (!file_exists((string) $configFile)) {
     throw new Exception('WordPress config file was not found!');
 }
 

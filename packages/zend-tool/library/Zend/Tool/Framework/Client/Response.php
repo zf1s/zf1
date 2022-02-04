@@ -170,7 +170,7 @@ class Zend_Tool_Framework_Client_Response
      */
     public function addContentDecorator(Zend_Tool_Framework_Client_Response_ContentDecorator_Interface $contentDecorator)
     {
-        $decoratorName = strtolower($contentDecorator->getName());
+        $decoratorName = strtolower((string) $contentDecorator->getName());
         $this->_decorators[$decoratorName] = $contentDecorator;
         return $this;
     }

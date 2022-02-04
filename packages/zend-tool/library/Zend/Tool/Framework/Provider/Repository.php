@@ -177,7 +177,7 @@ class Zend_Tool_Framework_Provider_Repository
             $providerSignature->process();
 
             // ensure the name is lowercased for easier searching
-            $providerName = strtolower($providerName);
+            $providerName = strtolower((string) $providerName);
 
             // add to the appropraite place
             $this->_providerSignatures[$providerName] = $providerSignature;
@@ -219,7 +219,7 @@ class Zend_Tool_Framework_Provider_Repository
      */
     public function getProvider($providerName)
     {
-        return $this->_providers[strtolower($providerName)];
+        return $this->_providers[strtolower((string) $providerName)];
     }
 
     /**
@@ -230,7 +230,7 @@ class Zend_Tool_Framework_Provider_Repository
      */
     public function getProviderSignature($providerName)
     {
-        return $this->_providerSignatures[strtolower($providerName)];
+        return $this->_providerSignatures[strtolower((string) $providerName)];
     }
 
     /**
@@ -238,6 +238,7 @@ class Zend_Tool_Framework_Provider_Repository
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_providers);
@@ -248,6 +249,7 @@ class Zend_Tool_Framework_Provider_Repository
      *
      * @return ArrayIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->getProviders());
@@ -263,11 +265,11 @@ class Zend_Tool_Framework_Provider_Repository
     {
         $className = get_class($provider);
         $providerName = $className;
-        if (strpos($providerName, '_') !== false) {
-            $providerName = substr($providerName, strrpos($providerName, '_')+1);
+        if (strpos((string) $providerName, '_') !== false) {
+            $providerName = substr((string) $providerName, strrpos($providerName, '_')+1);
         }
-        if (substr($providerName, -8) == 'Provider') {
-            $providerName = substr($providerName, 0, strlen($providerName)-8);
+        if (substr((string) $providerName, -8) == 'Provider') {
+            $providerName = substr((string) $providerName, 0, strlen((string) $providerName)-8);
         }
         return $providerName;
     }

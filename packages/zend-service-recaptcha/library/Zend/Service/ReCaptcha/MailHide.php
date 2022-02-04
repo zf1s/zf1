@@ -233,12 +233,12 @@ class Zend_Service_ReCaptcha_MailHide extends Zend_Service_ReCaptcha
         $emailParts = explode('@', $email, 2);
 
         /* Decide on how much of the local part we want to reveal */
-        if (strlen($emailParts[0]) <= 4) {
-            $emailParts[0] = substr($emailParts[0], 0, 1);
-        } else if (strlen($emailParts[0]) <= 6) {
-            $emailParts[0] = substr($emailParts[0], 0, 3);
+        if (strlen((string) $emailParts[0]) <= 4) {
+            $emailParts[0] = substr((string) $emailParts[0], 0, 1);
+        } else if (strlen((string) $emailParts[0]) <= 6) {
+            $emailParts[0] = substr((string) $emailParts[0], 0, 3);
         } else {
-            $emailParts[0] = substr($emailParts[0], 0, 4);
+            $emailParts[0] = substr((string) $emailParts[0], 0, 4);
         }
 
         $this->_emailLocalPart = $emailParts[0];
@@ -337,15 +337,15 @@ class Zend_Service_ReCaptcha_MailHide extends Zend_Service_ReCaptcha
     protected function _getUrl()
     {
         /* Figure out how much we need to pad the email */
-        $numPad = self::ENCRYPTION_BLOCK_SIZE - (strlen($this->_email) % self::ENCRYPTION_BLOCK_SIZE);
+        $numPad = self::ENCRYPTION_BLOCK_SIZE - (strlen((string) $this->_email) % self::ENCRYPTION_BLOCK_SIZE);
 
         /* Pad the email */
-        $emailPadded = str_pad($this->_email, strlen($this->_email) + $numPad, chr($numPad));
+        $emailPadded = str_pad($this->_email, strlen((string) $this->_email) + $numPad, chr($numPad));
 
         /* Encrypt the email */
         $emailEncrypted = mcrypt_encrypt(self::ENCRYPTION_CIPHER, $this->_privateKeyPacked, $emailPadded, self::ENCRYPTION_MODE, self::ENCRYPTION_IV);
 
         /* Return the url */
-        return self::MAILHIDE_SERVER . '?k=' . $this->_publicKey . '&c=' . strtr(base64_encode($emailEncrypted), '+/', '-_');
+        return self::MAILHIDE_SERVER . '?k=' . $this->_publicKey . '&c=' . strtr((string) base64_encode($emailEncrypted), '+/', '-_');
     }
 }

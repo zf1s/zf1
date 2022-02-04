@@ -50,7 +50,7 @@ class Zend_Translate_Adapter_Array extends Zend_Translate_Adapter
     {
         $this->_data = array();
         if (!is_array($data)) {
-            if (file_exists($data)) {
+            if (file_exists((string) $data)) {
                 ob_start();
                 $data = include($data);
                 ob_end_clean();

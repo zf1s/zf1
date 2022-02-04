@@ -76,7 +76,7 @@ class Zend_Amf_Util_BinaryStream
         $this->_stream       = $stream;
         $this->_needle       = 0;
         $this->_mbStringFunctionsOverloaded = function_exists('mb_strlen') && (ini_get('mbstring.func_overload') !== '') && ((int)ini_get('mbstring.func_overload') & 2);
-        $this->_streamLength = $this->_mbStringFunctionsOverloaded ? mb_strlen($stream, '8bit') : strlen($stream);
+        $this->_streamLength = $this->_mbStringFunctionsOverloaded ? mb_strlen($stream, '8bit') : strlen((string) $stream);
         $this->_bigEndian    = (pack('l', 1) === "\x00\x00\x00\x01");
     }
 
@@ -104,7 +104,7 @@ class Zend_Amf_Util_BinaryStream
             // require_once 'Zend/Amf/Exception.php';
             throw new Zend_Amf_Exception('Buffer underrun at needle position: ' . $this->_needle . ' while requesting length: ' . $length);
         }
-        $bytes = $this->_mbStringFunctionsOverloaded ? mb_substr($this->_stream, $this->_needle, $length, '8bit') : substr($this->_stream, $this->_needle, $length);
+        $bytes = $this->_mbStringFunctionsOverloaded ? mb_substr((string) $this->_stream, $this->_needle, $length, '8bit') : substr((string) $this->_stream, $this->_needle, $length);
         $this->_needle+= $length;
         return $bytes;
     }
@@ -141,7 +141,7 @@ class Zend_Amf_Util_BinaryStream
             );
         }
 
-        return ord($this->_stream[$this->_needle++]);
+        return ord((string) $this->_stream[$this->_needle++]);
     }
 
     /**
@@ -199,7 +199,7 @@ class Zend_Amf_Util_BinaryStream
      */
     public function writeUtf($stream)
     {
-        $this->writeInt($this->_mbStringFunctionsOverloaded ? mb_strlen($stream, '8bit') : strlen($stream));
+        $this->writeInt($this->_mbStringFunctionsOverloaded ? mb_strlen($stream, '8bit') : strlen((string) $stream));
         $this->_stream.= $stream;
         return $this;
     }
@@ -225,7 +225,7 @@ class Zend_Amf_Util_BinaryStream
      */
     public function writeLongUtf($stream)
     {
-        $this->writeLong($this->_mbStringFunctionsOverloaded ? mb_strlen($stream, '8bit') : strlen($stream));
+        $this->writeLong($this->_mbStringFunctionsOverloaded ? mb_strlen($stream, '8bit') : strlen((string) $stream));
         $this->_stream.= $stream;
     }
 
@@ -273,7 +273,7 @@ class Zend_Amf_Util_BinaryStream
      */
     public function readDouble()
     {
-        $bytes = $this->_mbStringFunctionsOverloaded ? mb_substr($this->_stream, $this->_needle, 8, '8bit') : substr($this->_stream, $this->_needle, 8);
+        $bytes = $this->_mbStringFunctionsOverloaded ? mb_substr((string) $this->_stream, $this->_needle, 8, '8bit') : substr((string) $this->_stream, $this->_needle, 8);
         $this->_needle+= 8;
 
         if (!$this->_bigEndian) {

@@ -151,15 +151,15 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
             return $value;
         }
 
-        if (!file_exists($file['source'])) {
+        if (!file_exists((string) $file['source'])) {
             return $value;
         }
 
-        if (($file['overwrite'] == true) && (file_exists($file['target']))) {
+        if (($file['overwrite'] == true) && (file_exists((string) $file['target']))) {
             unlink($file['target']);
         }
 
-        if (file_exists($file['target'])) {
+        if (file_exists((string) $file['target'])) {
             // require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception(sprintf("File '%s' could not be renamed. It already exists.", $value));
         }
@@ -296,7 +296,7 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
 
         if (is_dir($rename['target'])) {
             $name = basename($rename['source']);
-            $last = $rename['target'][strlen($rename['target']) - 1];
+            $last = $rename['target'][strlen((string) $rename['target']) - 1];
             if (($last != '/') and ($last != '\\')) {
                 $rename['target'] .= DIRECTORY_SEPARATOR;
             }

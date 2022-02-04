@@ -153,7 +153,7 @@ class Zend_Mail_Protocol_Imap
     protected function _assumedNextLine($start)
     {
         $line = $this->_nextLine();
-        return strpos($line, $start) === 0;
+        return strpos((string) $line, $start) === 0;
     }
 
     /**
@@ -200,50 +200,50 @@ class Zend_Mail_Protocol_Imap
             // TODO: add handling of '[' and ']' to parser for easier handling of response text
         */
         //  replace any trailling <NL> including spaces with a single space
-        $line = rtrim($line) . ' ';
-        while (($pos = strpos($line, ' ')) !== false) {
-            $token = substr($line, 0, $pos);
+        $line = rtrim((string) $line) . ' ';
+        while (($pos = strpos((string) $line, ' ')) !== false) {
+            $token = substr((string) $line, 0, $pos);
             while ($token[0] == '(') {
                 array_push($stack, $tokens);
                 $tokens = array();
-                $token = substr($token, 1);
+                $token = substr((string) $token, 1);
             }
             if ($token[0] == '"') {
                 if (preg_match('%^\(*"((.|\\\\|\\")*?)" *%', $line, $matches)) {
                     $tokens[] = $matches[1];
-                    $line = substr($line, strlen($matches[0]));
+                    $line = substr((string) $line, strlen((string) $matches[0]));
                     continue;
                 }
             }
             if ($token[0] == '{') {
-                $endPos = strpos($token, '}');
-                $chars = substr($token, 1, $endPos - 1);
+                $endPos = strpos((string) $token, '}');
+                $chars = substr((string) $token, 1, $endPos - 1);
                 if (is_numeric($chars)) {
                     $token = '';
-                    while (strlen($token) < $chars) {
+                    while (strlen((string) $token) < $chars) {
                         $token .= $this->_nextLine();
                     }
                     $line = '';
-                    if (strlen($token) > $chars) {
-                        $line = substr($token, $chars);
-                        $token = substr($token, 0, $chars);
+                    if (strlen((string) $token) > $chars) {
+                        $line = substr((string) $token, $chars);
+                        $token = substr((string) $token, 0, $chars);
                     } else {
                         $line .= $this->_nextLine();
                     }
                     $tokens[] = $token;
-                    $line = trim($line) . ' ';
+                    $line = \trim((string) $line) . ' ';
                     continue;
                 }
             }
-            if ($stack && $token[strlen($token) - 1] == ')') {
+            if ($stack && $token[strlen((string) $token) - 1] == ')') {
                 // closing braces are not seperated by spaces, so we need to count them
-                $braces = strlen($token);
-                $token = rtrim($token, ')');
+                $braces = strlen((string) $token);
+                $token = rtrim((string) $token, ')');
                 // only count braces if more than one
-                $braces -= strlen($token) + 1;
+                $braces -= strlen((string) $token) + 1;
                 // only add if token had more than just closing braces
-                if (rtrim($token) != '') {
-                    $tokens[] = rtrim($token);
+                if (rtrim((string) $token) != '') {
+                    $tokens[] = rtrim((string) $token);
                 }
                 $token = $tokens;
                 $tokens = array_pop($stack);
@@ -255,7 +255,7 @@ class Zend_Mail_Protocol_Imap
                 }
             }
             $tokens[] = $token;
-            $line = substr($line, $pos + 1);
+            $line = substr((string) $line, $pos + 1);
         }
 
         // maybe the server forgot to send some closing braces
@@ -313,7 +313,7 @@ class Zend_Mail_Protocol_Imap
 
         if ($dontParse) {
             // last to chars are still needed for response code
-            $tokens = array(substr($tokens, 0, 2));
+            $tokens = array(substr((string) $tokens, 0, 2));
         }
         // last line has response code
         if ($tokens[0] == 'OK') {
@@ -400,8 +400,8 @@ class Zend_Mail_Protocol_Imap
     public function escapeString($string)
     {
         if (func_num_args() < 2) {
-            if (strpos($string, "\n") !== false) {
-                return array('{' . strlen($string) . '}', $string);
+            if (strpos((string) $string, "\n") !== false) {
+                return array('{' . strlen((string) $string) . '}', $string);
             } else {
                 return '"' . str_replace(array('\\', '"'), array('\\\\', '\\"'), $string) . '"';
             }
@@ -512,7 +512,7 @@ class Zend_Mail_Protocol_Imap
             switch ($tokens[1]) {
                 case 'EXISTS':
                 case 'RECENT':
-                    $result[strtolower($tokens[1])] = $tokens[0];
+                    $result[strtolower((string) $tokens[1])] = $tokens[0];
                     break;
                 case '[UIDVALIDITY':
                     $result['uidvalidity'] = (int)$tokens[2];

@@ -48,30 +48,30 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
 
     public function testCreate()
     {
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/translation_en.ini');
         $this->assertTrue($adapter instanceof Zend_Translate_Adapter_Ini);
 
         try {
-            $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/nofile.ini', 'en');
+            $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/nofile.ini', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('not found', $e->getMessage());
         }
 
         set_error_handler(array($this, 'errorHandlerIgnore'));
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/failed.ini', 'en');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/failed.ini', 'en');
         restore_error_handler();
     }
 
     public function testToString()
     {
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/translation_en.ini');
         $this->assertEquals('Ini', $adapter->toString());
     }
 
     public function testTranslate()
     {
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini', 'en');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/translation_en.ini', 'en');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message_1'));
         $this->assertEquals('Message 1 (en)', $adapter->_('Message_1'));
         $this->assertEquals('Message_6', $adapter->translate('Message_6'));
@@ -80,7 +80,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
 
     public function testIsTranslated()
     {
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini', 'en');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/translation_en.ini', 'en');
         $this->assertTrue($adapter->isTranslated('Message_1'));
         $this->assertFalse($adapter->isTranslated('Message_6'));
         $this->assertTrue($adapter->isTranslated('Message_1', true));
@@ -90,7 +90,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
 
     public function testLoadTranslationData()
     {
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini', 'en');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/translation_en.ini', 'en');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message_1'));
         $this->assertEquals('Message 4 (en)', $adapter->translate('Message_4'));
         $this->assertEquals('Message_2', $adapter->translate('Message_2', 'ru'));
@@ -98,25 +98,25 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message_1', 'en_US'));
 
         try {
-            $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.ini', 'xx');
+            $adapter->addTranslation(__DIR__ . '/_files/translation_en.ini', 'xx');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('The given Language', $e->getMessage());
         }
 
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ini', 'de', array('clear' => true));
+        $adapter->addTranslation(__DIR__ . '/_files/translation_en2.ini', 'de', array('clear' => true));
         $this->assertEquals('Nachricht 1', $adapter->translate('Message_1'));
         $this->assertEquals('Nachricht 8', $adapter->translate('Message_8'));
     }
 
     public function testOptions()
     {
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini', 'en');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/translation_en.ini', 'en');
         $adapter->setOptions(array('testoption' => 'testkey'));
         $expected = array(
             'testoption'      => 'testkey',
             'clear'           => false,
-            'content'         => dirname(__FILE__) . '/_files/translation_en.ini',
+            'content'         => __DIR__ . '/_files/translation_en.ini',
             'scan'            => null,
             'locale'          => 'en',
             'ignore'          => '.',
@@ -139,17 +139,17 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
 
     public function testClearing()
     {
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini', 'en');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/translation_en.ini', 'en');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message_1'));
         $this->assertEquals('Message_6', $adapter->translate('Message_6'));
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ini', 'de', array('clear' => true));
+        $adapter->addTranslation(__DIR__ . '/_files/translation_en2.ini', 'de', array('clear' => true));
         $this->assertEquals('Nachricht 1', $adapter->translate('Message_1'));
         $this->assertEquals('Message_4', $adapter->translate('Message_4'));
     }
 
     public function testLocale()
     {
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini', 'en');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/translation_en.ini', 'en');
         $this->assertEquals('en', $adapter->getLocale());
         $locale = new Zend_Locale('en');
         $adapter->setLocale($locale);
@@ -170,9 +170,9 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
 
     public function testList()
     {
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini', 'en');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/translation_en.ini', 'en');
         $this->assertEquals(array('en' => 'en'), $adapter->getList());
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.ini', 'de');
+        $adapter->addTranslation(__DIR__ . '/_files/translation_en.ini', 'de');
         $this->assertEquals(array('en' => 'en', 'de' => 'de'), $adapter->getList());
         $this->assertTrue($adapter->isAvailable('de'));
         $locale = new Zend_Locale('en');
@@ -183,7 +183,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
     public function testOptionLocaleDirectory()
     {
         // require_once 'Zend/Translate.php';
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/testini', 'de_AT', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/testini', 'de_AT', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
         $this->assertEquals(array('de_AT' => 'de_AT', 'en_GB' => 'en_GB'), $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message_8'));
     }
@@ -191,7 +191,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
     public function testOptionLocaleFilename()
     {
         // require_once 'Zend/Translate.php';
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/testini', 'de_DE', array('scan' => Zend_Translate::LOCALE_FILENAME));
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/_files/testini', 'de_DE', array('scan' => Zend_Translate::LOCALE_FILENAME));
         $this->assertEquals(array('de_DE' => 'de_DE', 'en_US' => 'en_US'), $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message_8'));
     }

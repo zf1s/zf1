@@ -69,7 +69,7 @@ class Zend_Validate_File_WordCountTest extends PHPUnit_Framework_TestCase
             $validator = new Zend_Validate_File_WordCount($element[0]);
             $this->assertEquals(
                 $element[1],
-                $validator->isValid(dirname(__FILE__) . '/_files/wordcount.txt'),
+                $validator->isValid(__DIR__ . '/_files/wordcount.txt'),
                 "Tested with " . var_export($element, 1)
             );
         }

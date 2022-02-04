@@ -238,13 +238,13 @@ abstract class Zend_Pdf_FileParser
          * variable integer sizes.
          */
         if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN) {
-            $number = ord($bytes[0]);
+            $number = ord((string) $bytes[0]);
             if (($number & 0x80) == 0x80) {
                 /* This number is negative. Extract the positive equivalent.
                  */
                 $number = (~ $number) & 0xff;
                 for ($i = 1; $i < $size; $i++) {
-                    $number = ($number << 8) | ((~ ord($bytes[$i])) & 0xff);
+                    $number = ($number << 8) | ((~ ord((string) $bytes[$i])) & 0xff);
                 }
                 /* Now turn this back into a negative number by taking the
                  * two's complement (we didn't add one above so won't
@@ -254,23 +254,23 @@ abstract class Zend_Pdf_FileParser
                 $number = ~$number;
             } else {
                 for ($i = 1; $i < $size; $i++) {
-                    $number = ($number << 8) | ord($bytes[$i]);
+                    $number = ($number << 8) | ord((string) $bytes[$i]);
                 }
             }
         } else if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
-            $number = ord($bytes[$size - 1]);
+            $number = ord((string) $bytes[$size - 1]);
             if (($number & 0x80) == 0x80) {
                 /* Negative number. See discussion above.
                  */
                 $number = 0;
                 for ($i = --$size; $i >= 0; $i--) {
-                    $number |= ((~ ord($bytes[$i])) & 0xff) << ($i * 8);
+                    $number |= ((~ ord((string) $bytes[$i])) & 0xff) << ($i * 8);
                 }
                 $number = ~$number;
             } else {
                 $number = 0;
                 for ($i = --$size; $i >= 0; $i--) {
-                    $number |= ord($bytes[$i]) << ($i * 8);
+                    $number |= ord((string) $bytes[$i]) << ($i * 8);
                 }
             }
         } else {
@@ -312,14 +312,14 @@ abstract class Zend_Pdf_FileParser
          * work the bytes directly.
          */
         if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN) {
-            $number = ord($bytes[0]);
+            $number = ord((string) $bytes[0]);
             for ($i = 1; $i < $size; $i++) {
-                $number = ($number << 8) | ord($bytes[$i]);
+                $number = ($number << 8) | ord((string) $bytes[$i]);
             }
         } else if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
             $number = 0;
             for ($i = --$size; $i >= 0; $i--) {
-                $number |= ord($bytes[$i]) << ($i * 8);
+                $number |= ord((string) $bytes[$i]) << ($i * 8);
             }
         } else {
             // require_once 'Zend/Pdf/Exception.php';

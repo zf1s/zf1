@@ -72,7 +72,7 @@ abstract class Zend_Service_ShortUrl_AbstractShortener
      */
     protected function _verifyBaseUri($shortenedUrl)
     {
-        if (strpos($shortenedUrl, $this->_baseUri) !== 0) {
+        if (strpos((string) $shortenedUrl, $this->_baseUri) !== 0) {
             // require_once 'Zend/Service/ShortUrl/Exception.php';
             throw new Zend_Service_ShortUrl_Exception(sprintf(
                 'The url "%s" is not valid for this service and the target cannot be resolved',

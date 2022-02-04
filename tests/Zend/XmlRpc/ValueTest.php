@@ -194,7 +194,7 @@ class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
         $value = Zend_XmlRpc_Value::getXmlRpcValue($native, Zend_XmlRpc_Value::XMLRPC_TYPE_DOUBLE);
         $this->assertXmlRpcType('double', $value);
         $this->assertSame($native, $value->getValue());
-        $this->assertSame('<value><double>0.1234567</double></value>', trim($value->saveXml()));
+        $this->assertSame('<value><double>0.1234567</double></value>', \trim((string) $value->saveXml()));
     }
 
     /**
@@ -211,7 +211,7 @@ class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
         $value = Zend_XmlRpc_Value::getXmlRpcValue($native, Zend_XmlRpc_Value::XMLRPC_TYPE_DOUBLE);
         $this->assertXmlRpcType('double', $value);
         $this->assertSame($native, $value->getValue());
-        $this->assertSame('<value><double>0.1</double></value>', trim($value->saveXml()));
+        $this->assertSame('<value><double>0.1</double></value>', \trim((string) $value->saveXml()));
     }
 
     // String
@@ -476,7 +476,7 @@ class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
         $this->assertSame($this->wrapXml($xml), $val->saveXml());
 
         $val = Zend_XmlRpc_Value::getXmlRpcValue($native);
-        $this->assertSame(trim($xml), trim($val->saveXml()));
+        $this->assertSame(\trim((string) $xml), \trim((string) $val->saveXml()));
     }
 
     /**
@@ -579,7 +579,7 @@ class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
 
         $val = Zend_XmlRpc_Value::getXmlRpcValue($native, Zend_XmlRpc_Value::XMLRPC_TYPE_STRUCT);
         $this->assertSame($native, $val->getValue());
-        $this->assertSame(trim($xml), trim($val->saveXml()));
+        $this->assertSame(\trim((string) $xml), \trim((string) $val->saveXml()));
     }
 
     // DateTime
@@ -678,7 +678,7 @@ class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
         $this->assertXmlRpcType('dateTime', $val);
         $this->assertEquals('dateTime.iso8601', $val->getType());
         $this->assertSame($dateString, $val->getValue());
-        $this->assertEquals(trim($xml), trim($val->saveXml()));
+        $this->assertEquals(\trim((string) $xml), \trim((string) $val->saveXml()));
 
     }
 
@@ -698,7 +698,7 @@ class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
         $this->assertXmlRpcType('dateTime', $val);
         $this->assertEquals('dateTime.iso8601', $val->getType());
         $this->assertSame($dateString, $val->getValue());
-        $this->assertEquals(trim($xml), trim($val->saveXml()));
+        $this->assertEquals(\trim((string) $xml), \trim((string) $val->saveXml()));
     }
 
     /**
@@ -717,7 +717,7 @@ class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
         $this->assertXmlRpcType('dateTime', $val);
         $this->assertEquals('dateTime.iso8601', $val->getType());
         $this->assertSame($dateString, $val->getValue());
-        $this->assertEquals(trim($xml), trim($val->saveXml()));
+        $this->assertEquals(\trim((string) $xml), \trim((string) $val->saveXml()));
 
     }
 
@@ -736,7 +736,7 @@ class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
         $this->assertXmlRpcType('dateTime', $val);
         $this->assertEquals('dateTime.iso8601', $val->getType());
         $this->assertSame($dateString, $val->getValue());
-        $this->assertEquals(trim($xml), trim($val->saveXml()));
+        $this->assertEquals(\trim((string) $xml), \trim((string) $val->saveXml()));
     }
 
     /**

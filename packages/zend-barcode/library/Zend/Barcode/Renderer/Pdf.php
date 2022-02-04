@@ -234,8 +234,8 @@ class Zend_Barcode_Renderer_Pdf extends Zend_Barcode_Renderer_RendererAbstract
     {
         $drawingString = iconv('UTF-8', 'UTF-16BE//IGNORE', $text);
         $characters    = array();
-        for ($i = 0; $i < strlen($drawingString); $i ++) {
-            $characters[] = (ord($drawingString[$i ++]) << 8) | ord($drawingString[$i]);
+        for ($i = 0; $i < strlen((string) $drawingString); $i ++) {
+            $characters[] = (ord((string) $drawingString[$i ++]) << 8) | ord((string) $drawingString[$i]);
         }
         $glyphs = $font->glyphNumbersForCharacters($characters);
         $widths = $font->widthsForGlyphs($glyphs);

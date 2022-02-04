@@ -89,11 +89,11 @@ abstract class Zend_Application_Resource_ResourceAbstract implements Zend_Applic
         }
 
         foreach ($options as $key => $value) {
-            if (in_array(strtolower($key), $this->_skipOptions)) {
+            if (in_array(strtolower((string) $key), $this->_skipOptions)) {
                 continue;
             }
 
-            $method = 'set' . strtolower($key);
+            $method = 'set' . strtolower((string) $key);
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }

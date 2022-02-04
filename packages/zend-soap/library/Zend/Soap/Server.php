@@ -737,7 +737,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
 
             $dom = new DOMDocument();
             try {
-                if(strlen($xml) == 0 || (!$dom = Zend_Xml_Security::scan($xml, $dom))) {
+                if(strlen((string) $xml) == 0 || (!$dom = Zend_Xml_Security::scan($xml, $dom))) {
                     // require_once 'Zend/Soap/Server/Exception.php';
                     throw new Zend_Soap_Server_Exception('Invalid XML');
                 }

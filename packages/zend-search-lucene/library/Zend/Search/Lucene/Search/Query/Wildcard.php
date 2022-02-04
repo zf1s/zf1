@@ -102,17 +102,17 @@ class Zend_Search_Lucene_Search_Query_Wildcard extends Zend_Search_Lucene_Search
      */
     private static function _getPrefix($word)
     {
-        $questionMarkPosition = strpos($word, '?');
-        $astrericPosition     = strpos($word, '*');
+        $questionMarkPosition = strpos((string) $word, '?');
+        $astrericPosition     = strpos((string) $word, '*');
 
         if ($questionMarkPosition !== false) {
             if ($astrericPosition !== false) {
-                return substr($word, 0, min($questionMarkPosition, $astrericPosition));
+                return substr((string) $word, 0, min($questionMarkPosition, $astrericPosition));
             }
 
-            return substr($word, 0, $questionMarkPosition);
+            return substr((string) $word, 0, $questionMarkPosition);
         } else if ($astrericPosition !== false) {
-            return substr($word, 0, $astrericPosition);
+            return substr((string) $word, 0, $astrericPosition);
         }
 
         return $word;
@@ -137,7 +137,7 @@ class Zend_Search_Lucene_Search_Query_Wildcard extends Zend_Search_Lucene_Search
         }
 
         $prefix          = self::_getPrefix($this->_pattern->text);
-        $prefixLength    = strlen($prefix);
+        $prefixLength    = strlen((string) $prefix);
         $matchExpression = '/^' . str_replace(array('\\?', '\\*'), array('.', '.*') , preg_quote($this->_pattern->text, '/')) . '$/';
 
         if ($prefixLength < self::$_minPrefixLength) {
@@ -162,7 +162,7 @@ class Zend_Search_Lucene_Search_Query_Wildcard extends Zend_Search_Lucene_Search
 
                 while ($index->currentTerm() !== null          &&
                        $index->currentTerm()->field == $field  &&
-                       substr($index->currentTerm()->text, 0, $prefixLength) == $prefix) {
+                       substr((string) $index->currentTerm()->text, 0, $prefixLength) == $prefix) {
                     if (preg_match($matchExpression, $index->currentTerm()->text) === 1) {
                         $this->_matches[] = $index->currentTerm();
 

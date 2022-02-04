@@ -152,7 +152,7 @@ class Zend_Ldap_OriginalBindTest extends PHPUnit_Framework_TestCase
         try {
             $ldap->bind($this->_altUsername, 'invalid');
         } catch (Zend_Ldap_Exception $zle) {
-            $message = str_replace("\n", " ", $zle->getMessage());
+            $message = str_replace((string) "\n", " ", $zle->getMessage());
             $this->assertContains('Invalid credentials', $message);
         }
     }

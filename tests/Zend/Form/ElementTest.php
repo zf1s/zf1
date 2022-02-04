@@ -79,7 +79,7 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
     public function getView()
     {
         $view = new Zend_View();
-        $libPath = dirname(__FILE__) . '/../../../library';
+        $libPath = __DIR__ . '/../../../library';
         $view->addHelperPath($libPath . '/Zend/View/Helper');
         return $view;
     }
@@ -829,7 +829,7 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
 
     public function testMessagesAreTranslatedForCurrentLocale()
     {
-        $localeFile   = dirname(__FILE__) . '/_files/locale/array.php';
+        $localeFile   = __DIR__ . '/_files/locale/array.php';
         $translations = include($localeFile);
         $translator   = new Zend_Translate('array', $translations, 'en');
         $translator->setLocale('en');
@@ -997,7 +997,7 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
     /** ZF-2568 */
     public function testTranslatedMessagesCanContainVariableSubstitution()
     {
-        $localeFile   = dirname(__FILE__) . '/_files/locale/array.php';
+        $localeFile   = __DIR__ . '/_files/locale/array.php';
         $translations = include($localeFile);
         $translations['notDigits'] .= ' "%value%"';
         $translator   = new Zend_Translate('array', $translations, 'en');
@@ -1405,7 +1405,7 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
      */
     public function testAddingConcreteDecoratorShouldHonorOrder()
     {
-        require_once dirname(__FILE__) . '/_files/decorators/TableRow.php';
+        require_once __DIR__ . '/_files/decorators/TableRow.php';
         $decorator = new My_Decorator_TableRow();
         $this->element->setLabel('Foo')
                       ->setDescription('sample description')
@@ -2269,7 +2269,7 @@ class Zend_Form_ElementTest_ArrayFilter implements Zend_Filter_Interface
         if (is_array($value)) {
             return array_filter($value, array($this, '_filter'));
         }
-        return (strstr($value, 'ba'));
+        return (strstr((string) $value, 'ba'));
     }
 }
 

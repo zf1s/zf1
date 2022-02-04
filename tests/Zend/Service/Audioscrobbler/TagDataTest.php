@@ -84,7 +84,7 @@ class Zend_Service_Audioscrobbler_TagDataTest extends Zend_Service_Audioscrobble
         $as->set('tag', 'Rock');
         $response = $as->tagGetTopArtists();
         $this->assertNotNull($response->artist);
-        $this->assertEquals((string)$response['tag'], strtolower($as->get('tag')));
+        $this->assertEquals((string)$response['tag'], strtolower((string) $as->get('tag')));
     }
 
     public function testGetTopAlbums()
@@ -123,7 +123,7 @@ class Zend_Service_Audioscrobbler_TagDataTest extends Zend_Service_Audioscrobble
         $as->set('tag', 'Rock');
         $response = $as->tagGetTopAlbums();
         $this->assertNotNull(count($response->album));
-        $this->assertEquals((string)$response['tag'], strtolower($as->get('tag')));
+        $this->assertEquals((string)$response['tag'], strtolower((string) $as->get('tag')));
     }
 
     public function testGetTopTracks()
@@ -161,7 +161,7 @@ class Zend_Service_Audioscrobbler_TagDataTest extends Zend_Service_Audioscrobble
         $artist = $response->track[0];
         $this->assertNotNull(count($response->track));
         $this->assertNotNull((string)$artist->name);
-        $this->assertEquals((string)$response['tag'], strtolower($as->get('tag')));
+        $this->assertEquals((string)$response['tag'], strtolower((string) $as->get('tag')));
     }
 
 }

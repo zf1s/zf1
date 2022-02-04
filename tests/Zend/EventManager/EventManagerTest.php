@@ -582,7 +582,7 @@ class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
     public function trimString($e)
     {
         $string = $e->getParam('string', $this->default);
-        return trim($string);
+        return \trim((string) $string);
     }
 
     public function stringRot13($e)
@@ -595,14 +595,14 @@ class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
     {
         $string = $e->getParam('string', '');
         $search = $e->getParam('search', '?');
-        return strpos($string, $search);
+        return strpos((string) $string, $search);
     }
 
     public function stringInString($e)
     {
         $string = $e->getParam('string', '');
         $search = $e->getParam('search', '?');
-        return strstr($string, $search);
+        return strstr((string) $string, $search);
     }
 
     public function returnBogus()

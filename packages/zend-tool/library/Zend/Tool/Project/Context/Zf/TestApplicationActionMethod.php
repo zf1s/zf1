@@ -140,7 +140,7 @@ class Zend_Tool_Project_Context_Zf_TestApplicationActionMethod implements Zend_T
     {
         $file = $this->_testApplicationControllerPath;
         
-        if (!file_exists($file)) {
+        if (!file_exists((string) $file)) {
             // require_once 'Zend/Tool/Project/Context/Exception.php';
             throw new Zend_Tool_Project_Context_Exception(
                 'Could not create action within test controller ' . $file
@@ -217,7 +217,7 @@ EOS
     /*
     public static function hasActionMethod($controllerPath, $actionName)
     {
-        if (!file_exists($controllerPath)) {
+        if (!file_exists((string) $controllerPath)) {
             return false;
         }
 

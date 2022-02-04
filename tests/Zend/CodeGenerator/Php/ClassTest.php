@@ -85,7 +85,7 @@ class Zend_CodeGenerator_Php_ClassTest extends PHPUnit_Framework_TestCase
 
         $properties = $codeGenClass->getProperties();
         $this->assertEquals(count($properties), 2);
-        $this->isInstanceOf(current($properties), 'Zend_CodeGenerator_Php_Property');
+        $this->isInstanceOf(current($properties->getArrayCopy()), 'Zend_CodeGenerator_Php_Property');
 
         $property = $codeGenClass->getProperty('propTwo');
         $this->isInstanceOf($property, 'Zend_CodeGenerator_Php_Property');
@@ -124,7 +124,7 @@ class Zend_CodeGenerator_Php_ClassTest extends PHPUnit_Framework_TestCase
 
         $methods = $codeGenClass->getMethods();
         $this->assertEquals(count($methods), 2);
-        $this->isInstanceOf(current($methods), 'Zend_CodeGenerator_Php_Method');
+        $this->isInstanceOf(current($methods->getArrayCopy()), 'Zend_CodeGenerator_Php_Method');
 
         $method = $codeGenClass->getMethod('methodOne');
         $this->isInstanceOf($method, 'Zend_CodeGenerator_Php_Method');
@@ -230,7 +230,7 @@ EOS;
     public function testClassFromReflectionThatImplementsInterfaces()
     {
         if(!class_exists('Zend_CodeGenerator_Php_ClassWithInterface')) {
-            require_once dirname(__FILE__)."/_files/ClassAndInterfaces.php";
+            require_once __DIR__."/_files/ClassAndInterfaces.php";
         }
 
         // require_once "Zend/Reflection/Class.php";
@@ -250,7 +250,7 @@ EOS;
     public function testClassFromReflectionDiscardParentImplementedInterfaces()
     {
         if(!class_exists('Zend_CodeGenerator_Php_ClassWithInterface')) {
-            require_once dirname(__FILE__)."/_files/ClassAndInterfaces.php";
+            require_once __DIR__."/_files/ClassAndInterfaces.php";
         }
 
         // require_once "Zend/Reflection/Class.php";

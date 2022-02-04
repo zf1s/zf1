@@ -117,7 +117,7 @@ class Zend_Gdata_Docs extends Zend_Gdata
      */
     public static function lookupMimeType($fileExtension)
     {
-        return self::$SUPPORTED_FILETYPES[strtoupper($fileExtension)];
+        return self::$SUPPORTED_FILETYPES[strtoupper((string) $fileExtension)];
     }
 
     /**

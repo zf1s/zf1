@@ -73,7 +73,7 @@ class Zend_Test_PHPUnit_Db_Operation_Truncate implements PHPUnit_Extensions_Data
         if($db instanceof Zend_Db_Adapter_Pdo_Sqlite) {
             $db->query('DELETE FROM '.$tableName);
         } else if($db instanceof Zend_Db_Adapter_Db2) {
-            /*if(strstr(PHP_OS, "WIN")) {
+            /*if(strstr((string) PHP_OS, "WIN")) {
                 $file = tempnam(sys_get_temp_dir(), "zendtestdbibm_");
                 file_put_contents($file, "");
                 $db->query('IMPORT FROM '.$file.' OF DEL REPLACE INTO '.$tableName);

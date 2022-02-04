@@ -136,7 +136,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends PHPUnit_Framework_Constrai
      * @param  null|string  Assertion type
      * @param  string       (optional) String to match (needle), may be required depending on assertion type
      * @return bool
-     * 
+     *
      * NOTE:
      * Drastic changes up to PHPUnit 3.5.15 this was:
      *     public function evaluate($other, $assertType = null)
@@ -146,14 +146,14 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends PHPUnit_Framework_Constrai
      */
     public function evaluate($content, $assertType = '', $match = FALSE)
     {
-        if (strstr($assertType, 'Not')) {
+        if (strstr((string) $assertType, 'Not')) {
             $this->setNegate(true);
-            $assertType = str_replace('Not', '', $assertType);
+            $assertType = str_replace((string) 'Not', '', $assertType);
         }
 
-        if (strstr($assertType, 'Xpath')) {
+        if (strstr((string) $assertType, 'Xpath')) {
             $this->setUseXpath(true);
-            $assertType = str_replace('Xpath', 'Query', $assertType);
+            $assertType = str_replace((string) 'Xpath', 'Query', $assertType);
         }
 
         if (!in_array($assertType, $this->_assertTypes)) {
@@ -310,7 +310,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends PHPUnit_Framework_Constrai
 
         foreach ($result as $node) {
             $content = $this->_getNodeContent($node);
-            if (strstr($content, $match)) {
+            if (strstr((string) $content, $match)) {
                 return true;
             }
         }
@@ -333,7 +333,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends PHPUnit_Framework_Constrai
 
         foreach ($result as $node) {
             $content = $this->_getNodeContent($node);
-            if (strstr($content, (string)$match)) {
+            if (strstr((string) $content, (string)$match)) {
                 return false;
             }
         }

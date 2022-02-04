@@ -96,8 +96,8 @@ class Zend_Controller_Action_HelperBroker
      */
     static public function addPrefix($prefix)
     {
-        $prefix = rtrim($prefix, '_');
-        $path   = str_replace('_', DIRECTORY_SEPARATOR, $prefix);
+        $prefix = rtrim((string) $prefix, '_');
+        $path   = str_replace((string) '_', DIRECTORY_SEPARATOR, $prefix);
         self::getPluginLoader()->addPrefixPath($prefix, $path);
     }
 
@@ -347,8 +347,8 @@ class Zend_Controller_Action_HelperBroker
      */
     protected static function _normalizeHelperName($name)
     {
-        if (strpos($name, '_') !== false) {
-            $name = str_replace(' ', '', ucwords(str_replace('_', ' ', $name)));
+        if (strpos((string) $name, '_') !== false) {
+            $name = str_replace((string) ' ', '', ucwords(str_replace((string) '_', ' ', $name)));
         }
 
         return ucfirst($name);

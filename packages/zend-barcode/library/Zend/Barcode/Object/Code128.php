@@ -245,7 +245,7 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
      */
     protected static function _isDigit($string, $pos, $length = 2)
     {
-        if ($pos + $length > strlen($string)) {
+        if ($pos + $length > strlen((string) $string)) {
            return false;
         }
 
@@ -266,12 +266,12 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
     protected function _convertToBarcodeChars($string)
     {
         $string = (string) $string;
-        if (!strlen($string)) {
+        if (!strlen((string) $string)) {
             return array();
         }
 
-        if (isset($this->_convertedText[md5($string)])) {
-            return $this->_convertedText[md5($string)];
+        if (isset($this->_convertedText[md5((string) $string)])) {
+            return $this->_convertedText[md5((string) $string)];
         }
 
         $currentCharset = null;
@@ -279,7 +279,7 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
         $fak = 0;
         $result = array();
 
-        for ($pos = 0; $pos < strlen($string); $pos++) {
+        for ($pos = 0; $pos < strlen((string) $string); $pos++) {
             $char = $string[$pos];
             $code = null;
 
@@ -325,7 +325,7 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
             }
 
             if ($currentCharset == 'C') {
-                $code = array_search(substr($string, $pos, 2), $this->_charSets['C']);
+                $code = array_search(substr((string) $string, $pos, 2), $this->_charSets['C']);
                 $pos++; //Two chars from input
             } else {
                 $code = array_search($string[$pos], $this->_charSets[$currentCharset]);
@@ -333,7 +333,7 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
             $result[] = $code;
         }
 
-        $this->_convertedText[md5($string)] = $result;
+        $this->_convertedText[md5((string) $string)] = $result;
         return $result;
     }
 

@@ -129,18 +129,18 @@ class Zend_Dom_Query
         if ($document instanceof DOMDocument) {
             return $this->setDocumentDom($document);
         }
-        if (0 === strlen($document)) {
+        if (0 === strlen((string) $document)) {
             return $this;
         }
         // breaking XML declaration to make syntax highlighting work
-        if ('<' . '?xml' == substr(trim($document), 0, 5)) {
+        if ('<' . '?xml' == substr((string) \trim((string) $document), 0, 5)) {
             if (preg_match('/<html[^>]*xmlns="([^"]+)"[^>]*>/i', $document, $matches)) {
                 $this->_xpathNamespaces[] = $matches[1];
                 return $this->setDocumentXhtml($document, $encoding);
             }
             return $this->setDocumentXml($document, $encoding);
         }
-        if (strstr($document, 'DTD XHTML')) {
+        if (strstr((string) $document, 'DTD XHTML')) {
             return $this->setDocumentXhtml($document, $encoding);
         }
         return $this->setDocumentHtml($document, $encoding);
@@ -343,7 +343,7 @@ class Zend_Dom_Query
         if (preg_match_all('|\[contains\((@[a-z0-9_-]+),\s?\' |i', $xpathQuery, $matches)) {
             foreach ($matches[1] as $attribute) {
                 $queryString = '//*[' . $attribute . ']';
-                $attributeName = substr($attribute, 1);
+                $attributeName = substr((string) $attribute, 1);
                 $nodes = $xpath->query($queryString);
                 foreach ($nodes as $node) {
                     $attr = $node->attributes->getNamedItem($attributeName);

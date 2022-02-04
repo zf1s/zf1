@@ -80,7 +80,7 @@ class Zend_Form_DisplayGroupTest extends PHPUnit_Framework_TestCase
     public function getView()
     {
         $view = new Zend_View();
-        $libPath = dirname(__FILE__) . '/../../../library';
+        $libPath = __DIR__ . '/../../../library';
         $view->addHelperPath($libPath . '/Zend/View/Helper');
         return $view;
     }

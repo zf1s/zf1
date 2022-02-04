@@ -232,7 +232,7 @@ class Zend_Form_Element_CheckboxTest extends PHPUnit_Framework_TestCase
         }
         $this->assertEquals(2, count($matches[1]));
         foreach ($matches[1] as $element) {
-            if (strstr($element, 'hidden')) {
+            if (strstr((string) $element, 'hidden')) {
                 $this->assertContains($this->element->getUncheckedValue(), $element);
             } else {
                 $this->assertContains($this->element->getCheckedValue(), $element);

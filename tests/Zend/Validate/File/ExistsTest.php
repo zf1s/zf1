@@ -60,7 +60,7 @@ class Zend_Validate_File_ExistsTest extends PHPUnit_Framework_TestCase
      */
     public function testBasic()
     {
-        $baseDir = dirname(__FILE__);
+        $baseDir = __DIR__;
         $valuesExpected = array(
             array($baseDir, 'testsize.mo', false),
             array($baseDir . '/_files', 'testsize.mo', true)
@@ -70,7 +70,7 @@ class Zend_Validate_File_ExistsTest extends PHPUnit_Framework_TestCase
             'name'        => 'testsize.mo',
             'type'        => 'text',
             'size'        => 200,
-            'tmp_name'    => dirname(__FILE__) . '/_files/testsize.mo',
+            'tmp_name'    => __DIR__ . '/_files/testsize.mo',
             'error'       => 0
         );
 
@@ -97,9 +97,9 @@ class Zend_Validate_File_ExistsTest extends PHPUnit_Framework_TestCase
             'name'        => 'testsize.mo',
             'type'        => 'text',
             'size'        => 200,
-            'tmp_name'    => dirname(__FILE__) . '/_files/testsize.mo',
+            'tmp_name'    => __DIR__ . '/_files/testsize.mo',
             'error'       => 0,
-            'destination' => dirname(__FILE__) . '/_files'
+            'destination' => __DIR__ . '/_files'
         );
 
         foreach ($valuesExpected as $element) {

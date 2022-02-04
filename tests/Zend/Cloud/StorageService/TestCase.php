@@ -134,7 +134,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
         $dummyNameText   = null;
         $dummyNameStream = null;
         try {
-            $originalFilename = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files/data/dummy_data.txt');
+            $originalFilename = realpath(__DIR__ . DIRECTORY_SEPARATOR . '_files/data/dummy_data.txt');
             $dummyNameStream  = $this->_dummyNamePrefix . 'ForFetchStream';
             $stream = fopen($originalFilename, 'r');
             $this->_clobberItem($stream, $dummyNameStream);
@@ -189,7 +189,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
         $dummyNameStream = $this->_dummyNamePrefix . 'ForStoreStream';
         try {
             // Test stream data
-            $originalFilename = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files/data/dummy_data.txt');
+            $originalFilename = realpath(__DIR__ . DIRECTORY_SEPARATOR . '_files/data/dummy_data.txt');
             $stream = fopen($originalFilename, 'r');
             $this->_commonStorage->storeItem($dummyNameStream, $stream);
             $this->_wait();

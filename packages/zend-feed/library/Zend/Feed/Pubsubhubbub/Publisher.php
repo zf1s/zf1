@@ -412,11 +412,11 @@ class Zend_Feed_Pubsubhubbub_Publisher
                 . ' have been set');
         }
         foreach ($topics as $topicUrl) {
-            $params[] = 'hub.url=' . urlencode($topicUrl);
+            $params[] = 'hub.url=' . urlencode((string) $topicUrl);
         }
         $optParams = $this->getParameters();
         foreach ($optParams as $name => $value) {
-            $params[] = urlencode($name) . '=' . urlencode($value);
+            $params[] = urlencode((string) $name) . '=' . urlencode((string) $value);
         }
         $paramString = implode('&', $params);
         $client->setRawData($paramString, 'application/x-www-form-urlencoded');

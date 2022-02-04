@@ -59,7 +59,7 @@ abstract class Zend_Application_Module_Bootstrap
             $this->setPluginLoader($application->getPluginLoader());
         }
 
-        $key = strtolower($this->getModuleName());
+        $key = strtolower((string) $this->getModuleName());
         if ($application->hasOption($key)) {
             // Don't run via setOptions() to prevent duplicate initialization
             $this->setOptions($application->getOption($key));

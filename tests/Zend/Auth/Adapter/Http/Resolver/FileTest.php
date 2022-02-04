@@ -78,7 +78,7 @@ class Zend_Auth_Adapter_Http_Resolver_FileTest extends PHPUnit_Framework_TestCas
      */
     public function __construct()
     {
-        $this->_filesPath = dirname(dirname(__FILE__)) . '/_files';
+        $this->_filesPath = dirname(__DIR__) . '/_files';
         $this->_validPath = "$this->_filesPath/htdigest.3";
         $this->_badPath   = 'doesnotexist';
         $this->_resolver  = new Zend_Auth_Adapter_Http_Resolver_File($this->_validPath);

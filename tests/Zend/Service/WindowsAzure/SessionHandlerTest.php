@@ -228,7 +228,7 @@ class Zend_Service_WindowsAzure_SessionHandlerTest extends PHPUnit_Framework_Tes
 
     protected function session_id()
     {
-        return md5(self::$uniqId);
+        return md5((string) self::$uniqId);
     }
 }
 

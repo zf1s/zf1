@@ -199,9 +199,9 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
 
         $type  = $element->isRequired() ? 'required' : 'optional';
 
-        if (!strstr($class, $type)) {
+        if (!strstr((string) $class, $type)) {
             $class .= ' ' . $type;
-            $class = trim($class);
+            $class = \trim((string) $class);
         }
 
         return $class;
@@ -245,13 +245,13 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
      */
     public function __call($method, $args)
     {
-        $tail = substr($method, -6);
-        $head = substr($method, 0, 3);
+        $tail = substr((string) $method, -6);
+        $head = substr((string) $method, 0, 3);
         if (in_array($head, array('get', 'set'))
             && (('Prefix' == $tail) || ('Suffix' == $tail))
         ) {
-            $position = substr($method, -6);
-            $type     = strtolower(substr($method, 3, 3));
+            $position = substr((string) $method, -6);
+            $type     = strtolower((string) substr((string) $method, 3, 3));
             switch ($type) {
                 case 'req':
                     $key = 'required' . $position;
@@ -302,7 +302,7 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
         }
 
         $label = $element->getLabel();
-        $label = trim($label);
+        $label = \trim((string) $label);
 
         if (empty($label)) {
             return '';
@@ -334,7 +334,7 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
     {
         $placement = $this->_placement;
         if (null !== ($placementOpt = $this->getOption('placement'))) {
-            $placementOpt = strtoupper($placementOpt);
+            $placementOpt = strtoupper((string) $placementOpt);
             switch ($placementOpt) {
                 case self::APPEND:
                 case self::PREPEND:
@@ -385,7 +385,7 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
 
         if (!empty($label)) {
             $options['class'] = $class;
-            $label            = trim($label);
+            $label            = \trim((string) $label);
 
             switch ($placement) {
                 case self::IMPLICIT:

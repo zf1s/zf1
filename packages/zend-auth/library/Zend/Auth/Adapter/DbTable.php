@@ -436,7 +436,7 @@ class Zend_Auth_Adapter_DbTable implements Zend_Auth_Adapter_Interface
     protected function _authenticateCreateSelect()
     {
         // build credential expression
-        if (empty($this->_credentialTreatment) || (strpos($this->_credentialTreatment, '?') === false)) {
+        if (empty($this->_credentialTreatment) || (strpos((string) $this->_credentialTreatment, '?') === false)) {
             $this->_credentialTreatment = '?';
         }
 

@@ -45,12 +45,12 @@ final class Zend_Mail_Header_HeaderValue
     public static function filter($value)
     {
         $result = '';
-        $tot    = strlen($value);
+        $tot    = strlen((string) $value);
 
         // Filter for CR and LF characters, leaving CRLF + WSP sequences for
         // Long Header Fields (section 2.2.3 of RFC 2822)
         for ($i = 0; $i < $tot; $i += 1) {
-            $ord = ord($value[$i]);
+            $ord = ord((string) $value[$i]);
             if (($ord < 32 || $ord > 126)
                 && $ord !== 13
             ) {
@@ -62,8 +62,8 @@ final class Zend_Mail_Header_HeaderValue
                     continue;
                 }
 
-                $lf = ord($value[$i + 1]);
-                $sp = ord($value[$i + 2]);
+                $lf = ord((string) $value[$i + 1]);
+                $sp = ord((string) $value[$i + 2]);
 
                 if ($lf !== 10 || $sp !== 32) {
                     continue;
@@ -89,9 +89,9 @@ final class Zend_Mail_Header_HeaderValue
      */
     public static function isValid($value)
     {
-        $tot = strlen($value);
+        $tot = strlen((string) $value);
         for ($i = 0; $i < $tot; $i += 1) {
-            $ord = ord($value[$i]);
+            $ord = ord((string) $value[$i]);
             if (($ord < 32 || $ord > 126)
                 && $ord !== 13
             ) {
@@ -103,8 +103,8 @@ final class Zend_Mail_Header_HeaderValue
                     return false;
                 }
 
-                $lf = ord($value[$i + 1]);
-                $sp = ord($value[$i + 2]);
+                $lf = ord((string) $value[$i + 1]);
+                $sp = ord((string) $value[$i + 2]);
 
                 if ($lf !== 10 || $sp !== 32) {
                     return false;

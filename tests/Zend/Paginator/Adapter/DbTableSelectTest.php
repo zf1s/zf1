@@ -30,7 +30,7 @@
  */
 // require_once 'Zend/Paginator.php';
 
-require_once dirname(__FILE__) . '/DbSelectTest.php';
+require_once __DIR__ . '/DbSelectTest.php';
 
 /**
  * @category   Zend
@@ -58,6 +58,6 @@ class Zend_Paginator_Adapter_DbTableSelectTest extends Zend_Paginator_Adapter_Db
     {
         $query   = $this->_table->select();
         $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_DbTableSelect($query));
-        $this->assertGreaterThan(2, strlen($paginator->toJson()));
+        $this->assertGreaterThan(2, strlen((string) $paginator->toJson()));
     }
 }

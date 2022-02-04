@@ -38,7 +38,7 @@ class Zend_Gdata_Docs_DocumentListFeedTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->docFeed = new Zend_Gdata_Docs_DocumentListFeed(
-                file_get_contents(dirname(__FILE__) . '/_files/TestDataDocumentListFeedSample.xml'),
+                file_get_contents(__DIR__ . '/_files/TestDataDocumentListFeedSample.xml'),
                 true);
     }
 

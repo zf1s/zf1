@@ -152,7 +152,7 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
         if (!$this->_stmt) {
             return false;
         }
-        return substr($this->_stmt->sqlstate, 0, 5);
+        return substr((string) $this->_stmt->sqlstate, 0, 5);
     }
 
     /**
@@ -167,7 +167,7 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
             return false;
         }
         return array(
-            substr($this->_stmt->sqlstate, 0, 5),
+            substr((string) $this->_stmt->sqlstate, 0, 5),
             $this->_stmt->errno,
             $this->_stmt->error,
         );

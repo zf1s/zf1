@@ -80,7 +80,7 @@ class Zend_View_Helper_FormErrors extends Zend_View_Helper_FormElement
         }
 
         $start = $this->getElementStart();
-        if (strstr($start, '%s')) {
+        if (strstr((string) $start, '%s')) {
             $attribs = $this->_htmlAttribs($options);
             $start   = sprintf($start, $attribs);
         }

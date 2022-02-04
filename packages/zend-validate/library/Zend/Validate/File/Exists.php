@@ -132,7 +132,7 @@ class Zend_Validate_File_Exists extends Zend_Validate_Abstract
                 continue;
             }
 
-            $directories[] = trim($content);
+            $directories[] = \trim((string) $content);
         }
         $directories = array_unique($directories);
 
@@ -173,7 +173,7 @@ class Zend_Validate_File_Exists extends Zend_Validate_Abstract
             }
 
             $check = true;
-            if (!file_exists($directory . DIRECTORY_SEPARATOR . $file['name'])) {
+            if (!file_exists((string) $directory . DIRECTORY_SEPARATOR . $file['name'])) {
                 return $this->_throw($file, self::DOES_NOT_EXIST);
             }
         }

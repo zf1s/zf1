@@ -142,7 +142,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
     /**
      * Set authentication adapter
      *
-     * If the authentication adapter implements a "getAcl()" method, populate 
+     * If the authentication adapter implements a "getAcl()" method, populate
      * the ACL of this instance with it (if none exists already).
      *
      * @param  Zend_Amf_Auth_Abstract $auth
@@ -312,7 +312,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
         if (!isset($this->_table[$qualifiedName])) {
             // if source is null a method that was not defined was called.
             if ($source) {
-                $className = str_replace('.', '_', $source);
+                $className = str_replace((string) '.', '_', $source);
                 if(class_exists($className, false) && !isset($this->_classAllowed[$className])) {
                     // require_once 'Zend/Amf/Server/Exception.php';
                     throw new Zend_Amf_Server_Exception('Can not call "' . $className . '" - use setClass()');
@@ -507,7 +507,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
         // Authenticate, if we have credential headers
         $error   = false;
         $headers = $request->getAmfHeaders();
-        if (isset($headers[Zend_Amf_Constants::CREDENTIALS_HEADER]) 
+        if (isset($headers[Zend_Amf_Constants::CREDENTIALS_HEADER])
             && isset($headers[Zend_Amf_Constants::CREDENTIALS_HEADER]->userid)
             && isset($headers[Zend_Amf_Constants::CREDENTIALS_HEADER]->password)
         ) {
@@ -531,8 +531,8 @@ class Zend_Amf_Server implements Zend_Server_Interface
             } catch (Exception $e) {
                 // Error during authentication; report it
                 $error = $this->_errorMessage(
-                    $objectEncoding, 
-                    '', 
+                    $objectEncoding,
+                    '',
                     $e->getMessage(),
                     $e->getTraceAsString(),
                     $e->getCode(),
@@ -560,11 +560,11 @@ class Zend_Amf_Server implements Zend_Server_Interface
                         $message = '';
 
                         // Split the target string into its values.
-                        $source = substr($targetURI, 0, strrpos($targetURI, '.'));
+                        $source = substr((string) $targetURI, 0, strrpos($targetURI, '.'));
 
                         if ($source) {
                             // Break off method name from namespace into source
-                            $method = substr(strrchr($targetURI, '.'), 1);
+                            $method = substr((string) strrchr($targetURI, '.'), 1);
                             $return = $this->_dispatch($method, $body->getData(), $source);
                         } else {
                             // Just have a method name.
@@ -587,11 +587,11 @@ class Zend_Amf_Server implements Zend_Server_Interface
                             $targetURI = $body->getTargetURI();
 
                             // Split the target string into its values.
-                            $source = substr($targetURI, 0, strrpos($targetURI, '.'));
+                            $source = substr((string) $targetURI, 0, strrpos($targetURI, '.'));
 
                             if ($source) {
                                 // Break off method name from namespace into source
-                                $method = substr(strrchr($targetURI, '.'), 1);
+                                $method = substr((string) strrchr($targetURI, '.'), 1);
                                 $return = $this->_dispatch($method, $body->getData(), $source);
                             } else {
                                 // Just have a method name.
@@ -616,7 +616,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
            $currentID = session_id();
            $joint = "?";
            if(isset($_SERVER['QUERY_STRING'])) {
-               if(!strpos($_SERVER['QUERY_STRING'], $currentID) !== FALSE) {
+               if(!strpos((string) $_SERVER['QUERY_STRING'], $currentID) !== FALSE) {
                    if(strrpos($_SERVER['QUERY_STRING'], "?") !== FALSE) {
                        $joint = "&";
                    }
@@ -971,9 +971,9 @@ class Zend_Amf_Server implements Zend_Server_Interface
      *
      * Takes the provided parameters from the request, and attempts to cast them
      * to objects, if the prototype defines any as explicit object types
-     * 
-     * @param  Reflection $reflectionMethod 
-     * @param  array $params 
+     *
+     * @param  Reflection $reflectionMethod
+     * @param  array $params
      * @return array
      */
     protected function _castParameters($reflectionMethod, array $params)
@@ -1000,7 +1000,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
         foreach ($prototypes as $prototype) {
             foreach ($prototype->getParameters() as $parameter) {
                 $type = $parameter->getType();
-                if (in_array(strtolower($type), $nonObjectTypes)) {
+                if (in_array(strtolower((string) $type), $nonObjectTypes)) {
                     continue;
                 }
                 $position = $parameter->getPosition();

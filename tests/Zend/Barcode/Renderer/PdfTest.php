@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once dirname(__FILE__) . '/TestCommon.php';
+require_once __DIR__ . '/TestCommon.php';
 
 // require_once 'Zend/Barcode/Renderer/Pdf.php';
 // require_once 'Zend/Pdf.php';
@@ -64,7 +64,7 @@ class Zend_Barcode_Renderer_PdfTest extends Zend_Barcode_Renderer_TestCommon
 
     public function testDrawReturnResource()
     {
-        Zend_Barcode::setBarcodeFont(dirname(__FILE__) . '/../Object/_fonts/Vera.ttf');
+        Zend_Barcode::setBarcodeFont(__DIR__ . '/../Object/_fonts/Vera.ttf');
         $barcode = new Zend_Barcode_Object_Code39(array('text' => '0123456789'));
         $this->_renderer->setBarcode($barcode);
         $resource = $this->_renderer->draw();
@@ -74,7 +74,7 @@ class Zend_Barcode_Renderer_PdfTest extends Zend_Barcode_Renderer_TestCommon
 
     public function testDrawWithExistantResourceReturnResource()
     {
-        Zend_Barcode::setBarcodeFont(dirname(__FILE__) . '/../Object/_fonts/Vera.ttf');
+        Zend_Barcode::setBarcodeFont(__DIR__ . '/../Object/_fonts/Vera.ttf');
         $barcode = new Zend_Barcode_Object_Code39(array('text' => '0123456789'));
         $this->_renderer->setBarcode($barcode);
         $pdfResource = new Zend_Pdf();

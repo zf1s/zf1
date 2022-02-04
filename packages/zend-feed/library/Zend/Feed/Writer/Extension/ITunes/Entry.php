@@ -71,7 +71,7 @@ class Zend_Feed_Writer_Extension_ITunes_Entry
      */
     public function setItunesBlock($value)
     {
-        if (!ctype_alpha($value) && strlen($value) > 0) {
+        if (!ctype_alpha($value) && strlen((string) $value) > 0) {
             // require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception('invalid parameter: "block" may only'
             . ' contain alphabetic characters');
@@ -223,7 +223,7 @@ class Zend_Feed_Writer_Extension_ITunes_Entry
      */
     public function __call($method, array $params)
     {
-        $point = Zend_Feed_Writer::lcfirst(substr($method, 9));
+        $point = Zend_Feed_Writer::lcfirst(substr((string) $method, 9));
         if (!method_exists($this, 'setItunes' . ucfirst($point))
             && !method_exists($this, 'addItunes' . ucfirst($point))
         ) {

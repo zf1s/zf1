@@ -142,8 +142,8 @@ class Zend_View_Helper_Navigation_Links
     {
         if (@preg_match('/find(Rel|Rev)(.+)/', $method, $match)) {
             return $this->findRelation($arguments[0],
-                                       strtolower($match[1]),
-                                       strtolower($match[2]));
+                                       strtolower((string) $match[1]),
+                                       strtolower((string) $match[2]));
         }
 
         return parent::__call($method, $arguments);
@@ -778,6 +778,6 @@ class Zend_View_Helper_Navigation_Links
         $this->_root = null;
 
         // return output (trim last newline by spec)
-        return strlen($output) ? rtrim($output, self::EOL) : '';
+        return strlen((string) $output) ? rtrim((string) $output, self::EOL) : '';
     }
 }

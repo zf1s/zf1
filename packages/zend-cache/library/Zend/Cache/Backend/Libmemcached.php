@@ -125,7 +125,7 @@ class Zend_Cache_Backend_Libmemcached extends Zend_Cache_Backend implements Zend
             if (is_int($name)) {
                 $optId = $name;
             } else {
-                $optConst = 'Memcached::OPT_' . strtoupper($name);
+                $optConst = 'Memcached::OPT_' . strtoupper((string) $name);
                 if (defined($optConst)) {
                     $optId = constant($optConst);
                 } else {

@@ -46,7 +46,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->_pdf = Zend_Pdf::load(dirname(__FILE__) . '/Pdf/_files/PdfWithFields.pdf');
+        $this->_pdf = Zend_Pdf::load(__DIR__ . '/Pdf/_files/PdfWithFields.pdf');
     }
 
     /**
@@ -80,7 +80,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
 
     /**
      * Asserts: Setting a non-existent field shouls throw an exception
-     * 
+     *
      * @expectedException Zend_Pdf_Exception
      * @expectedExceptionMessage Field 'FieldNotExists' does not exist or is not
      *                           a textfield
@@ -115,7 +115,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
 
     /**
      * Asserts setting property of non-existent field shouls throw an exception
-     * 
+     *
      * @expectedException Zend_Pdf_Exception
      * @expectedExceptionMessage Field 'FieldNotExists' does not exist or is not
      *                           a textfield
@@ -140,7 +140,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
 
     /**
      * Asserts setting property of non-existent field shouls throw an exception
-     * 
+     *
      * @expectedException Zend_Pdf_Exception
      * @expectedExceptionMessage Field 'FieldNotExists' does not exist or is not
      *                           a textfield
@@ -205,7 +205,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
 
     /**
      * Asserts setting empty JavaScript string throws exception
-     * 
+     *
      * @expectedException Zend_Pdf_Exception
      * @expectedExceptionMessage JavaScript must be a non empty string or array
      *                           of strings
@@ -218,7 +218,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
 
     /**
      * Asserts setting empty JavaScript array throws exception
-     * 
+     *
      * @expectedException Zend_Pdf_Exception
      * @expectedExceptionMessage JavaScript must be a non empty string or array
      *                           of strings

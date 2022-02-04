@@ -323,12 +323,12 @@ class Zend_Log
         }
 
         // PHP >= 5.3.0 namespace given?
-        if (substr($namespace, -1) == '\\') {
+        if (substr((string) $namespace, -1) == '\\') {
             return $namespace . $className;
         }
 
         // empty namespace given?
-        if (strlen($namespace) === 0) {
+        if (strlen((string) $namespace) === 0) {
             return $className;
         }
 
@@ -380,7 +380,7 @@ class Zend_Log
      */
     public function __call($method, $params)
     {
-        $priority = strtoupper($method);
+        $priority = strtoupper((string) $method);
         if (($priority = array_search($priority, $this->_priorities)) !== false) {
             switch (count($params)) {
                 case 0:
@@ -476,7 +476,7 @@ class Zend_Log
     public function addPriority($name, $priority)
     {
         // Priority names must be uppercase for predictability.
-        $name = strtoupper($name);
+        $name = strtoupper((string) $name);
 
         if (isset($this->_priorities[$priority])
             || false !== array_search($name, $this->_priorities)) {

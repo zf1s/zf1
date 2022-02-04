@@ -164,7 +164,7 @@ class Zend_XmlRpc_BigIntegerValueTest extends PHPUnit_Framework_TestCase
             Zend_XmlRpc_Value::getXmlRpcValue(new Zend_Crypt_Math_BigInteger);
             $this->fail('expected Zend_XmlRpc_Value_Exception has not been thrown');
         } catch (Zend_XmlRpc_Value_Exception $exception) {
-            if (strpos($exception->getMessage(), 'Zend_Crypt_Math_BigInteger') === false) {
+            if (strpos((string) $exception->getMessage(), 'Zend_Crypt_Math_BigInteger') === false) {
                 $this->fail('caught Zend_XmlRpc_Value_Exception does not contain expected text');
             }
         }

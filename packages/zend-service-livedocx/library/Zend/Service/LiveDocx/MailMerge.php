@@ -362,7 +362,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
     {
         $this->logIn();
 
-        $format = strtolower($format);
+        $format = strtolower((string) $format);
 
         try {
             $result = $this->getSoapClient()->RetrieveDocument(array(

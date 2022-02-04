@@ -122,8 +122,8 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
     public function headScript($mode = Zend_View_Helper_HeadScript::FILE, $spec = null, $placement = 'APPEND', array $attrs = array(), $type = 'text/javascript')
     {
         if ((null !== $spec) && is_string($spec)) {
-            $action    = ucfirst(strtolower($mode));
-            $placement = strtolower($placement);
+            $action    = ucfirst(strtolower((string) $mode));
+            $placement = strtolower((string) $placement);
             switch ($placement) {
                 case 'set':
                 case 'prepend':
@@ -181,7 +181,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
             case Zend_View_Helper_Placeholder_Container_Abstract::SET:
             case Zend_View_Helper_Placeholder_Container_Abstract::PREPEND:
             case Zend_View_Helper_Placeholder_Container_Abstract::APPEND:
-                $action = strtolower($this->_captureType) . 'Script';
+                $action = strtolower((string) $this->_captureType) . 'Script';
                 break;
             default:
                 $action = 'appendScript';
@@ -219,7 +219,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
             }
 
             $action  = $matches['action'];
-            $mode    = strtolower($matches['mode']);
+            $mode    = strtolower((string) $matches['mode']);
             $type    = 'text/javascript';
             $attrs   = array();
 
@@ -370,6 +370,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
      * @param  mixed $value
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($index, $value)
     {
         if (!$this->_isValid($value)) {
@@ -456,7 +457,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
             && is_string($item->attributes['conditional']))
         {
             // inner wrap with comment end and start if !IE
-            if (str_replace(' ', '', $item->attributes['conditional']) === '!IE') {
+            if (str_replace((string) ' ', '', $item->attributes['conditional']) === '!IE') {
                 $html = '<!-->' . $html . '<!--';
             }
             $html = $indent . '<!--[if ' . $item->attributes['conditional'] . ']>' . $html . '<![endif]-->';

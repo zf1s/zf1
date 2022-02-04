@@ -116,7 +116,7 @@ class Zend_Loader_AutoloaderMultiVersionTest extends PHPUnit_Framework_TestCase
      */
     public function testSettingZfVersionFailsWhenNoValidInstallsDiscovered()
     {
-        $this->autoloader->setZfPath(dirname(__FILE__), 'latest');
+        $this->autoloader->setZfPath(__DIR__, 'latest');
     }
 
     public function testAutoloadLatestUsesLatestVersion()

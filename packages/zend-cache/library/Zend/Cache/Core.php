@@ -213,7 +213,7 @@ class Zend_Cache_Core
         if (!is_string($name)) {
             Zend_Cache::throwException("Incorrect option name!");
         }
-        $name = strtolower($name);
+        $name = strtolower((string) $name);
         if (array_key_exists($name, $this->_options)) {
             // This is a Core option
             $this->_setOption($name, $value);
@@ -235,7 +235,7 @@ class Zend_Cache_Core
      */
     public function getOption($name)
     {
-        $name = strtolower($name);
+        $name = strtolower((string) $name);
 
         if (array_key_exists($name, $this->_options)) {
             // This is a Core option
@@ -487,10 +487,10 @@ class Zend_Cache_Core
         // we need to remove cache_id_prefix from ids (see #ZF-6178, #ZF-7600)
         if (isset($this->_options['cache_id_prefix']) && $this->_options['cache_id_prefix'] !== '') {
             $prefix    = & $this->_options['cache_id_prefix'];
-            $prefixLen = strlen($prefix);
+            $prefixLen = strlen((string) $prefix);
             foreach ($ids as &$id) {
-                if (strpos($id, $prefix) === 0) {
-                    $id = substr($id, $prefixLen);
+                if (strpos((string) $id, $prefix) === 0) {
+                    $id = substr((string) $id, $prefixLen);
                 }
             }
         }
@@ -520,10 +520,10 @@ class Zend_Cache_Core
         // we need to remove cache_id_prefix from ids (see #ZF-6178, #ZF-7600)
         if (isset($this->_options['cache_id_prefix']) && $this->_options['cache_id_prefix'] !== '') {
             $prefix    = & $this->_options['cache_id_prefix'];
-            $prefixLen = strlen($prefix);
+            $prefixLen = strlen((string) $prefix);
             foreach ($ids as &$id) {
-                if (strpos($id, $prefix) === 0) {
-                    $id = substr($id, $prefixLen);
+                if (strpos((string) $id, $prefix) === 0) {
+                    $id = substr((string) $id, $prefixLen);
                 }
             }
         }
@@ -553,10 +553,10 @@ class Zend_Cache_Core
         // we need to remove cache_id_prefix from ids (see #ZF-6178, #ZF-7600)
         if (isset($this->_options['cache_id_prefix']) && $this->_options['cache_id_prefix'] !== '') {
             $prefix    = & $this->_options['cache_id_prefix'];
-            $prefixLen = strlen($prefix);
+            $prefixLen = strlen((string) $prefix);
             foreach ($ids as &$id) {
-                if (strpos($id, $prefix) === 0) {
-                    $id = substr($id, $prefixLen);
+                if (strpos((string) $id, $prefix) === 0) {
+                    $id = substr((string) $id, $prefixLen);
                 }
             }
         }
@@ -580,10 +580,10 @@ class Zend_Cache_Core
         // we need to remove cache_id_prefix from ids (see #ZF-6178, #ZF-7600)
         if (isset($this->_options['cache_id_prefix']) && $this->_options['cache_id_prefix'] !== '') {
             $prefix    = & $this->_options['cache_id_prefix'];
-            $prefixLen = strlen($prefix);
+            $prefixLen = strlen((string) $prefix);
             foreach ($ids as &$id) {
-                if (strpos($id, $prefix) === 0) {
-                    $id = substr($id, $prefixLen);
+                if (strpos((string) $id, $prefix) === 0) {
+                    $id = substr((string) $id, $prefixLen);
                 }
             }
         }
@@ -672,7 +672,7 @@ class Zend_Cache_Core
         if (!is_string($string)) {
             Zend_Cache::throwException('Invalid id or tag : must be a string');
         }
-        if (substr($string, 0, 9) == 'internal-') {
+        if (substr((string) $string, 0, 9) == 'internal-') {
             Zend_Cache::throwException('"internal-*" ids or tags are reserved');
         }
         if (!preg_match('~^[a-zA-Z0-9_]+$~D', $string)) {

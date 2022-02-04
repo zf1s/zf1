@@ -80,7 +80,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedKeyLite
 		
 		// Determine path
 		if ($this->_usePathStyleUri) {
-			$path = substr($path, strpos($path, '/'));
+			$path = substr((string) $path, strpos((string) $path, '/'));
 		}
 
 		// Determine query
@@ -128,19 +128,19 @@ class Zend_Service_WindowsAzure_Credentials_SharedKeyLite
 	protected function _prepareQueryStringForSigning($value)
 	{
 	    // Check for 'comp='
-	    if (strpos($value, 'comp=') === false) {
+	    if (strpos((string) $value, 'comp=') === false) {
 	        // If not found, no query string needed
 	        return '';
 	    } else {
 	        // If found, make sure it is the only parameter being used      
-    		if (strlen($value) > 0 && strpos($value, '?') === 0) {
-    			$value = substr($value, 1);
+    		if (strlen((string) $value) > 0 && strpos((string) $value, '?') === 0) {
+    			$value = substr((string) $value, 1);
     		}
     		
     		// Split parts
     		$queryParts = explode('&', $value);
     		foreach ($queryParts as $queryPart) {
-    		    if (strpos($queryPart, 'comp=') !== false) {
+    		    if (strpos((string) $queryPart, 'comp=') !== false) {
     		        return '?' . $queryPart;
     		    }
     		}

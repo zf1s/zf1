@@ -124,7 +124,7 @@ class Zend_Search_Lucene_Search_Query_Preprocessing_Phrase extends Zend_Search_L
 // Allow to use wildcards within phrases
 // They are either removed by text analyzer or used as a part of keyword for keyword fields
 //
-//        if (strpos($this->_phrase, '?') !== false || strpos($this->_phrase, '*') !== false) {
+//        if (strpos((string) $this->_phrase, '?') !== false || strpos((string) $this->_phrase, '*') !== false) {
 //            // require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
 //            throw new Zend_Search_Lucene_Search_QueryParserException('Wildcards are only allowed in a single terms.');
 //        }

@@ -192,7 +192,7 @@ class Zend_Feed
      */
     public static function importString($string)
     {
-        if (trim($string) == '') {
+        if (\trim((string) $string) == '') {
             // require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception('Document/string being imported'
             . ' is an Empty string or comes from an empty HTTP response');
@@ -319,7 +319,7 @@ class Zend_Feed
                 if (!mb_check_encoding($link, 'UTF-8')) {
                     $link = mb_convert_encoding($link, 'UTF-8');
                 }
-                $xml = @Zend_Xml_Security::scan(rtrim($link, ' /') . ' />');
+                $xml = @Zend_Xml_Security::scan(rtrim((string) $link, ' /') . ' />');
                 if ($xml === false) {
                     continue;
                 }
@@ -342,14 +342,14 @@ class Zend_Feed
                         // canonize the uri
                         $path = (string) $attributes['href'];
                         $query = $fragment = '';
-                        if (substr($path, 0, 1) != '/') {
+                        if (substr((string) $path, 0, 1) != '/') {
                             // add the current root path to this one
-                            $path = rtrim($client->getUri()->getPath(), '/') . '/' . $path;
+                            $path = rtrim((string) $client->getUri()->getPath(), '/') . '/' . $path;
                         }
-                        if (strpos($path, '?') !== false) {
+                        if (strpos((string) $path, '?') !== false) {
                             list($path, $query) = explode('?', $path, 2);
                         }
-                        if (strpos($query, '#') !== false) {
+                        if (strpos((string) $query, '#') !== false) {
                             list($query, $fragment) = explode('#', $query, 2);
                         }
                         $uri = Zend_Uri::factory($client->getUri(true));
@@ -379,7 +379,7 @@ class Zend_Feed
      */
     public static function importArray(array $data, $format = 'atom')
     {
-        $obj = 'Zend_Feed_' . ucfirst(strtolower($format));
+        $obj = 'Zend_Feed_' . ucfirst(strtolower((string) $format));
         if (!class_exists($obj)) {
             // require_once 'Zend/Loader.php';
             Zend_Loader::loadClass($obj);
@@ -401,7 +401,7 @@ class Zend_Feed
      */
     public static function importBuilder(Zend_Feed_Builder_Interface $builder, $format = 'atom')
     {
-        $obj = 'Zend_Feed_' . ucfirst(strtolower($format));
+        $obj = 'Zend_Feed_' . ucfirst(strtolower((string) $format));
         if (!class_exists($obj)) {
             // require_once 'Zend/Loader.php';
             Zend_Loader::loadClass($obj);

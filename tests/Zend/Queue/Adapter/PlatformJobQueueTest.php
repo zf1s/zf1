@@ -30,7 +30,7 @@
 require_once 'MessageTestClass.php';
 
 /** Base Adapter test class */
-require_once dirname(__FILE__) . '/AdapterTest.php';
+require_once __DIR__ . '/AdapterTest.php';
 
 /**
  * @category   Zend

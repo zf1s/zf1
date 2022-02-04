@@ -128,7 +128,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
         }
 
         foreach ($keys as $type => $key) {
-            if (ctype_print($key) && is_file(realpath($key)) && is_readable($key)) {
+            if (ctype_print((string) $key) && is_file(realpath($key)) && is_readable($key)) {
                 $file = fopen($key, 'r');
                 $cert = fread($file, 8192);
                 fclose($file);
@@ -375,7 +375,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
                 }
 
                 ++$count;
-                $fingerprints[$count] = md5($details['key']);
+                $fingerprints[$count] = md5((string) $details['key']);
             }
         }
 
@@ -404,7 +404,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
         if ($this->_package) {
             $header = pack('n', count($this->_keys['envelope']));
             foreach($this->_keys['envelope'] as $key => $envKey) {
-                $header .= pack('H32n', $fingerprints[$key], strlen($envKey)) . $envKey;
+                $header .= pack('H32n', $fingerprints[$key], strlen((string) $envKey)) . $envKey;
             }
 
             $encrypted = $header . $encrypted;
@@ -444,26 +444,26 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
         if ($this->_package) {
             $details = openssl_pkey_get_details($keys);
             if ($details !== false) {
-                $fingerprint = md5($details['key']);
+                $fingerprint = md5((string) $details['key']);
             } else {
-                $fingerprint = md5("ZendFramework");
+                $fingerprint = md5((string) "ZendFramework");
             }
 
             $count = unpack('ncount', $value);
             $count = $count['count'];
             $length  = 2;
             for($i = $count; $i > 0; --$i) {
-                $header = unpack('H32print/nsize', substr($value, $length, 18));
+                $header = unpack('H32print/nsize', substr((string) $value, $length, 18));
                 $length  += 18;
                 if ($header['print'] == $fingerprint) {
-                    $envelope = substr($value, $length, $header['size']);
+                    $envelope = substr((string) $value, $length, $header['size']);
                 }
 
                 $length += $header['size'];
             }
 
             // remainder of string is the value to decrypt
-            $value = substr($value, $length);
+            $value = substr((string) $value, $length);
         }
 
         $crypt  = openssl_open($value, $decrypted, $envelope, $keys, 'RC4');

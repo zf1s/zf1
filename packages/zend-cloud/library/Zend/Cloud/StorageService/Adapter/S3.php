@@ -318,7 +318,7 @@ class Zend_Cloud_StorageService_Adapter_S3
             throw new Zend_Cloud_StorageService_Exception('The S3 adapter does not currently support buckets in domain names.');
         }
 
-        return trim($bucket) . '/' . trim($path);
+        return \trim((string) $bucket) . '/' . \trim((string) $path);
     }
 
     /**

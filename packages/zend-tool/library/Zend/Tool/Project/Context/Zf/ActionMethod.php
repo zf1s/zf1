@@ -190,7 +190,7 @@ class Zend_Tool_Project_Context_Zf_ActionMethod implements Zend_Tool_Project_Con
      */
     public static function createActionMethod($controllerPath, $actionName, $body = '        // action body')
     {
-        if (!file_exists($controllerPath)) {
+        if (!file_exists((string) $controllerPath)) {
             return false;
         }
 
@@ -213,7 +213,7 @@ class Zend_Tool_Project_Context_Zf_ActionMethod implements Zend_Tool_Project_Con
      */
     public static function hasActionMethod($controllerPath, $actionName)
     {
-        if (!file_exists($controllerPath)) {
+        if (!file_exists((string) $controllerPath)) {
             return false;
         }
 

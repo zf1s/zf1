@@ -347,7 +347,7 @@ class Zend_Service_SlideShare
 
         $filename = $ss->getFilename();
 
-        if (!file_exists($filename) || !is_readable($filename)) {
+        if (!file_exists((string) $filename) || !is_readable($filename)) {
             // require_once 'Zend/Service/SlideShare/Exception.php';
             throw new Zend_Service_SlideShare_Exception(
                 'Specified Slideshow for upload not found or unreadable'
@@ -392,7 +392,7 @@ class Zend_Service_SlideShare
             list($code, $errorStr) = explode(':', $message);
             // require_once 'Zend/Service/SlideShare/Exception.php';
             throw new Zend_Service_SlideShare_Exception(
-                trim($errorStr),
+                \trim((string) $errorStr),
                 $code
             );
         }
@@ -428,7 +428,7 @@ class Zend_Service_SlideShare
         );
 
         $cache    = $this->getCacheObject();
-        $cacheKey = md5("__zendslideshare_cache_$ssId");
+        $cacheKey = md5((string) "__zendslideshare_cache_$ssId");
 
         if (!$retval = $cache->load($cacheKey)) {
             $client = $this->getHttpClient();
@@ -453,7 +453,7 @@ class Zend_Service_SlideShare
                 list($code, $errorStr) = explode(':', $message);
                 // require_once 'Zend/Service/SlideShare/Exception.php';
                 throw new Zend_Service_SlideShare_Exception(
-                    trim($errorStr),
+                    \trim((string) $errorStr),
                     $code
                 );
             }
@@ -540,7 +540,7 @@ class Zend_Service_SlideShare
         $key, $value, $offset = null, $limit = null
     )
     {
-        $key = strtolower($key);
+        $key = strtolower((string) $key);
 
         switch ($key) {
             case 'username_for':
@@ -580,7 +580,7 @@ class Zend_Service_SlideShare
         }
 
         $cache    = $this->getCacheObject();
-        $cacheKey = md5($key . $value . $offset . $limit);
+        $cacheKey = md5((string) $key . $value . $offset . $limit);
 
         if (!$retval = $cache->load($cacheKey)) {
             $client = $this->getHttpClient();
@@ -605,7 +605,7 @@ class Zend_Service_SlideShare
                 list($code, $errorStr) = explode(':', $message);
                 // require_once 'Zend/Service/SlideShare/Exception.php';
                 throw new Zend_Service_SlideShare_Exception(
-                    trim($errorStr), $code
+                    \trim((string) $errorStr), $code
                 );
             }
 

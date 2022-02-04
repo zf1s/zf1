@@ -171,7 +171,7 @@ class Zend_Search_Lucene_Index_Writer
             foreach ($directory->fileList() as $file) {
                 if ($file == 'deletable' ||
                     $file == 'segments'  ||
-                    isset(self::$_indexExtensions[ substr($file, strlen($file)-4)]) ||
+                    isset(self::$_indexExtensions[ substr((string) $file, strlen((string) $file)-4)]) ||
                     preg_match('/\.f\d+$/i', $file) /* matches <segment_name>.f<decimal_nmber> file names */) {
                         $directory->deleteFile($file);
                     }
@@ -413,7 +413,7 @@ class Zend_Search_Lucene_Index_Writer
         try {
             $genFile = $this->_directory->getFileObject('segments.gen', false);
         } catch (Zend_Search_Lucene_Exception $e) {
-            if (strpos($e->getMessage(), 'is not readable') !== false) {
+            if (strpos((string) $e->getMessage(), 'is not readable') !== false) {
                 $genFile = $this->_directory->createFile('segments.gen');
             } else {
                 throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
@@ -643,7 +643,7 @@ class Zend_Search_Lucene_Index_Writer
                     if ($file != Zend_Search_Lucene::getSegmentFileName($generation)) {
                         $filesToDelete[] = $file;
                         $filesTypes[]    = 2; // first group of files for deletions
-                        $filesNumbers[]  = (int)base_convert(substr($file, 9), 36, 10); // ordered by segment generation numbers
+                        $filesNumbers[]  = (int)base_convert(substr((string) $file, 9), 36, 10); // ordered by segment generation numbers
                     }
                 } else if (preg_match('/(^_([a-zA-Z0-9]+))\.f\d+$/i', $file, $matches)) {
                     // one of per segment files ('<segment_name>.f<decimal_number>')
@@ -668,15 +668,15 @@ class Zend_Search_Lucene_Index_Writer
                         }
                         $delFiles[$segmentNumber][$delGeneration] = $file;
                     }
-                } else if (isset(self::$_indexExtensions[substr($file, strlen($file)-4)])) {
+                } else if (isset(self::$_indexExtensions[substr((string) $file, strlen((string) $file)-4)])) {
                     // one of per segment files ('<segment_name>.<ext>')
-                    $segmentName = substr($file, 0, strlen($file) - 4);
+                    $segmentName = substr((string) $file, 0, strlen((string) $file) - 4);
                     // Check if it's not one of the segments in the current segments set
                     if (!isset($segments[$segmentName])  &&
                         ($this->_currentSegment === null  ||  $this->_currentSegment->getName() != $segmentName)) {
                         $filesToDelete[] = $file;
                         $filesTypes[]    = 3; // second group of files for deletions
-                        $filesNumbers[]  = (int)base_convert(substr($file, 1 /* skip '_' */, strlen($file)-5), 36, 10); // order by segment number
+                        $filesNumbers[]  = (int)base_convert(substr((string) $file, 1 /* skip '_' */, strlen((string) $file)-5), 36, 10); // order by segment number
                     }
                 }
             }
@@ -710,11 +710,11 @@ class Zend_Search_Lucene_Index_Writer
                 try {
                     /** Skip shared docstore segments deleting */
                     /** @todo Process '.cfx' files to check if them are already unused */
-                    if (substr($file, strlen($file)-4) != '.cfx') {
+                    if (substr((string) $file, strlen((string) $file)-4) != '.cfx') {
                         $this->_directory->deleteFile($file);
                     }
                 } catch (Zend_Search_Lucene_Exception $e) {
-                    if (strpos($e->getMessage(), 'Can\'t delete file') === false) {
+                    if (strpos((string) $e->getMessage(), 'Can\'t delete file') === false) {
                         // That's not "file is under processing or already deleted" exception
                         // Pass it through
                         throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);

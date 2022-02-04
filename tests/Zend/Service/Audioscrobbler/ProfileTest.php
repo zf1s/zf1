@@ -279,8 +279,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
         $as->set('album', 'Ride The Lightning');
         $response = $as->userGetTopTagsForAlbum();
         $this->assertEquals((string)$response['user'], 'RJ');
-        $this->assertEquals((string)strtolower($response['artist']), strtolower('Metallica'));
-        $this->assertEquals((string)strtolower($response['album']), strtolower('Ride The Lightning'));
+        $this->assertEquals((string)strtolower((string) $response['artist']), strtolower((string) 'Metallica'));
+        $this->assertEquals((string)strtolower((string) $response['album']), strtolower((string) 'Ride The Lightning'));
     }
 
     public function testUserGetTopTagsForTrack()

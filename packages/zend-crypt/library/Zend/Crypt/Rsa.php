@@ -273,7 +273,7 @@ class Zend_Crypt_Rsa
 
     public function setHashAlgorithm($name)
     {
-        switch (strtolower($name)) {
+        switch (strtolower((string) $name)) {
             case 'md2':
                 $this->_hashAlgorithm = OPENSSL_ALGO_MD2;
                 break;

@@ -43,7 +43,7 @@ class Zend_Http_UserAgent_Features_Adapter_BrowscapTest extends PHPUnit_Framewor
     public function setUp()
     {
         $browscap = ini_get('browscap');
-        if (empty($browscap) || !file_exists($browscap)) {
+        if (empty($browscap) || !file_exists((string) $browscap)) {
             $this->markTestSkipped('Requires php.ini to provide a valid "browscap" entry');
         }
     }

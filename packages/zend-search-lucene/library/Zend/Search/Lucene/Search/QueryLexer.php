@@ -308,11 +308,11 @@ class Zend_Search_Lucene_Search_QueryLexer extends Zend_Search_Lucene_FSM
      */
     private function _translateInput($char)
     {
-        if        (strpos(self::QUERY_WHITE_SPACE_CHARS,    $char) !== false) { return self::IN_WHITE_SPACE;
-        } else if (strpos(self::QUERY_SYNT_CHARS,           $char) !== false) { return self::IN_SYNT_CHAR;
-        } else if (strpos(self::QUERY_MUTABLE_CHARS,        $char) !== false) { return self::IN_MUTABLE_CHAR;
-        } else if (strpos(self::QUERY_LEXEMEMODIFIER_CHARS, $char) !== false) { return self::IN_LEXEME_MODIFIER;
-        } else if (strpos(self::QUERY_ASCIIDIGITS_CHARS,    $char) !== false) { return self::IN_ASCII_DIGIT;
+        if        (strpos((string) self::QUERY_WHITE_SPACE_CHARS,    $char) !== false) { return self::IN_WHITE_SPACE;
+        } else if (strpos((string) self::QUERY_SYNT_CHARS,           $char) !== false) { return self::IN_SYNT_CHAR;
+        } else if (strpos((string) self::QUERY_MUTABLE_CHARS,        $char) !== false) { return self::IN_MUTABLE_CHAR;
+        } else if (strpos((string) self::QUERY_LEXEMEMODIFIER_CHARS, $char) !== false) { return self::IN_LEXEME_MODIFIER;
+        } else if (strpos((string) self::QUERY_ASCIIDIGITS_CHARS,    $char) !== false) { return self::IN_ASCII_DIGIT;
         } else if ($char === '"' )                                            { return self::IN_QUOTE;
         } else if ($char === '.' )                                            { return self::IN_DECIMAL_POINT;
         } else if ($char === '\\')                                            { return self::IN_ESCAPE_CHAR;
@@ -345,7 +345,7 @@ class Zend_Search_Lucene_Search_QueryLexer extends Zend_Search_Lucene_FSM
         $inputString .= ' ';
 
         for ($count = 0; $count < $strLength; $count++) {
-            $this->_queryString[$count] = iconv_substr($inputString, $count, 1, $encoding);
+            $this->_queryString[$count] = iconv_substr((string) $inputString, $count, 1, $encoding);
         }
 
         for ($this->_queryStringPosition = 0;
@@ -384,7 +384,7 @@ class Zend_Search_Lucene_Search_QueryLexer extends Zend_Search_Lucene_FSM
         $lexeme = $this->_queryString[$this->_queryStringPosition];
 
         // Process two char lexemes
-        if (strpos(self::QUERY_DOUBLECHARLEXEME_CHARS, $lexeme) !== false) {
+        if (strpos((string) self::QUERY_DOUBLECHARLEXEME_CHARS, $lexeme) !== false) {
             // increase current position in a query string
             $this->_queryStringPosition++;
 

@@ -80,7 +80,7 @@ class Zend_Service_Amazon_Authentication_V2 extends Zend_Service_Amazon_Authenti
      * @param string $method
      */
     public function setHttpMethod($method = "POST") {
-        $this->_httpMethod = strtoupper($method);
+        $this->_httpMethod = strtoupper((string) $method);
     }
 
     /**
@@ -124,7 +124,7 @@ class Zend_Service_Amazon_Authentication_V2 extends Zend_Service_Amazon_Authenti
 
         $arrData = array();
         foreach($paramaters as $key => $value) {
-            $arrData[] = $key . '=' . str_replace('%7E', '~', rawurlencode($value));
+            $arrData[] = $key . '=' . str_replace((string) '%7E', '~', rawurlencode((string) $value));
         }
 
         $data .= implode('&', $arrData);

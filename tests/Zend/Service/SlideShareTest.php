@@ -65,7 +65,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
                  'lifetime'                => 0,
                  'automatic_serialization' => true
             ),
-            array('cache_dir' => dirname(__FILE__) . "/SlideShare/_files")
+            array('cache_dir' => __DIR__ . "/SlideShare/_files")
         );
         $ss->setCacheObject($cache);
 
@@ -177,7 +177,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
         $ss = $this->_getSSObject();
 
         $title    = "Unit Test for ZF SlideShare Component";
-        $ppt_file = dirname(__FILE__) . "/SlideShare/_files/demo.ppt";
+        $ppt_file = __DIR__ . "/SlideShare/_files/demo.ppt";
 
         $show = new Zend_Service_SlideShare_SlideShow();
         $show->setFilename($ppt_file);

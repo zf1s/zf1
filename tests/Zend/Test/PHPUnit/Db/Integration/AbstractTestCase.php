@@ -87,7 +87,7 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
         $dataSet->addTable($fooTable);
 
         $xmlDataSet = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(
-            dirname(__FILE__)."/_files/sqliteIntegrationFixture.xml"
+            __DIR__."/_files/sqliteIntegrationFixture.xml"
         );
 
         if (method_exists($xmlDataSet, 'assertEquals')) {
@@ -108,7 +108,7 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
     public function testSimpleTesterSetupAndRowsetEquals()
     {
         $dataSet = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(
-            dirname(__FILE__)."/_files/sqliteIntegrationFixture.xml"
+            __DIR__."/_files/sqliteIntegrationFixture.xml"
         );
         $fooDataTable = $dataSet->getTable("foo");
 

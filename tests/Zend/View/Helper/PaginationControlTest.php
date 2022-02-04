@@ -69,7 +69,7 @@ class Zend_View_Helper_PaginationControlTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $view = new Zend_View();
-        $view->addBasePath(dirname(__FILE__) . '/_files');
+        $view->addBasePath(__DIR__ . '/_files');
 
         Zend_View_Helper_PaginationControl::setDefaultViewPartial(null);
         $this->_viewHelper = new Zend_View_Helper_PaginationControl();

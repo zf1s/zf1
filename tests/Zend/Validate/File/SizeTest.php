@@ -76,7 +76,7 @@ class Zend_Validate_File_SizeTest extends PHPUnit_Framework_TestCase
             $validator = new Zend_Validate_File_Size($options);
             $this->assertEquals(
                 $value,
-                $validator->isValid(dirname(__FILE__) . '/_files/testsize.mo'),
+                $validator->isValid(__DIR__ . '/_files/testsize.mo'),
                 "Tested " . var_export($value, 1) . " against options " . var_export($options, 1)
             );
         }
@@ -202,12 +202,12 @@ class Zend_Validate_File_SizeTest extends PHPUnit_Framework_TestCase
     public function testFailureMessage()
     {
         $validator = new Zend_Validate_File_Size(array('min' => 9999, 'max' => 10000));
-        $this->assertFalse($validator->isValid(dirname(__FILE__) . '/_files/testsize.mo'));
+        $this->assertFalse($validator->isValid(__DIR__ . '/_files/testsize.mo'));
         $this->assertContains('9.76kB', current($validator->getMessages()));
         $this->assertContains('794B', current($validator->getMessages()));
 
         $validator = new Zend_Validate_File_Size(array('min' => 9999, 'max' => 10000, 'bytestring' => false));
-        $this->assertFalse($validator->isValid(dirname(__FILE__) . '/_files/testsize.mo'));
+        $this->assertFalse($validator->isValid(__DIR__ . '/_files/testsize.mo'));
         $this->assertContains('9999', current($validator->getMessages()));
         $this->assertContains('794', current($validator->getMessages()));
     }

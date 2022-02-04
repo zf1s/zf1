@@ -75,7 +75,7 @@ class Zend_Pdf_Element_Stream extends Zend_Pdf_Element
      */
     public function length()
     {
-        return strlen($this->value->getRef());
+        return strlen((string) $this->value->getRef());
     }
 
 

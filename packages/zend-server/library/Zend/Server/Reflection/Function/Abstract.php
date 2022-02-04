@@ -274,7 +274,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
                 $helpText = $matches[1];
                 $helpText = preg_replace('/(^\s*\*\s)/m', '', $helpText);
                 $helpText = preg_replace('/\r?\n\s*\*\s*(\r?\n)*/s', "\n", $helpText);
-                $helpText = trim($helpText);
+                $helpText = \trim((string) $helpText);
             }
 
             // Get return type(s) and description
@@ -286,7 +286,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
                     $value = $matches[1];
                     $value = preg_replace('/\s?\*\s/m', '', $value);
                     $value = preg_replace('/\s{2,}/', ' ', $value);
-                    $returnDesc = trim($value);
+                    $returnDesc = \trim((string) $value);
                 }
             }
 
@@ -299,7 +299,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
                     foreach ($paramDesc as $key => $value) {
                         $value = preg_replace('/\s?\*\s/m', '', $value);
                         $value = preg_replace('/\s{2,}/', ' ', $value);
-                        $paramDesc[$key] = trim($value);
+                        $paramDesc[$key] = \trim((string) $value);
                     }
                 }
             }

@@ -43,51 +43,51 @@ class Zend_Text_MultiByte
     {
         $stringWidth = iconv_strlen($string, $charset);
         $breakWidth  = iconv_strlen($break, $charset);
-        
-        if (strlen($string) === 0) {
+
+        if (strlen((string) $string) === 0) {
             return '';
         } elseif ($breakWidth === null) {
             throw new Zend_Text_Exception('Break string cannot be empty');
         } elseif ($width === 0 && $cut) {
             throw new Zend_Text_Exception('Can\'t force cut when width is zero');
         }
-        
+
         $result    = '';
         $lastStart = $lastSpace = 0;
-        
+
         for ($current = 0; $current < $stringWidth; $current++) {
-            $char = iconv_substr($string, $current, 1, $charset);
-            
+            $char = iconv_substr((string) $string, $current, 1, $charset);
+
             if ($breakWidth === 1) {
                 $possibleBreak = $char;
             } else {
-                $possibleBreak = iconv_substr($string, $current, $breakWidth, $charset);
+                $possibleBreak = iconv_substr((string) $string, $current, $breakWidth, $charset);
             }
-            
+
             if ($possibleBreak === $break) {
-                $result    .= iconv_substr($string, $lastStart, $current - $lastStart + $breakWidth, $charset);
+                $result    .= iconv_substr((string) $string, $lastStart, $current - $lastStart + $breakWidth, $charset);
                 $current   += $breakWidth - 1;
                 $lastStart  = $lastSpace = $current + 1;
             } elseif ($char === ' ') {
                 if ($current - $lastStart >= $width) {
-                    $result    .= iconv_substr($string, $lastStart, $current - $lastStart, $charset) . $break;
+                    $result    .= iconv_substr((string) $string, $lastStart, $current - $lastStart, $charset) . $break;
                     $lastStart  = $current + 1;
                 }
-                
+
                 $lastSpace = $current;
             } elseif ($current - $lastStart >= $width && $cut && $lastStart >= $lastSpace) {
-                $result    .= iconv_substr($string, $lastStart, $current - $lastStart, $charset) . $break;
+                $result    .= iconv_substr((string) $string, $lastStart, $current - $lastStart, $charset) . $break;
                 $lastStart  = $lastSpace = $current;
             } elseif ($current - $lastStart >= $width && $lastStart < $lastSpace) {
-                $result    .= iconv_substr($string, $lastStart, $lastSpace - $lastStart, $charset) . $break;
+                $result    .= iconv_substr((string) $string, $lastStart, $lastSpace - $lastStart, $charset) . $break;
                 $lastStart  = $lastSpace = $lastSpace + 1;
             }
         }
-        
+
         if ($lastStart !== $current) {
-            $result .= iconv_substr($string, $lastStart, $current - $lastStart, $charset);
+            $result .= iconv_substr((string) $string, $lastStart, $current - $lastStart, $charset);
         }
-        
+
         return $result;
     }
 
@@ -121,14 +121,14 @@ class Zend_Text_MultiByte
                 $lastStringLeftLength   = $lastStringRightLength = floor($lastStringLength / 2);
                 $lastStringRightLength += $lastStringLength % 2;
 
-                $lastStringLeft  = iconv_substr($padString, 0, $lastStringLeftLength, $charset);
-                $lastStringRight = iconv_substr($padString, 0, $lastStringRightLength, $charset);
+                $lastStringLeft  = iconv_substr((string) $padString, 0, $lastStringLeftLength, $charset);
+                $lastStringRight = iconv_substr((string) $padString, 0, $lastStringRightLength, $charset);
 
                 $return = str_repeat($padString, $repeatCountLeft) . $lastStringLeft
                         . $input
                         . str_repeat($padString, $repeatCountRight) . $lastStringRight;
             } else {
-                $lastString = iconv_substr($padString, 0, $lengthOfPadding % $padStringLength, $charset);
+                $lastString = iconv_substr((string) $padString, 0, $lengthOfPadding % $padStringLength, $charset);
 
                 if ($padType === STR_PAD_LEFT) {
                     $return = str_repeat($padString, $repeatCount) . $lastString . $input;

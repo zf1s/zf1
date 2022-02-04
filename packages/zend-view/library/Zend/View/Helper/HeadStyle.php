@@ -103,7 +103,7 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
     public function headStyle($content = null, $placement = 'APPEND', $attributes = array())
     {
         if ((null !== $content) && is_string($content)) {
-            switch (strtoupper($placement)) {
+            switch (strtoupper((string) $placement)) {
                 case 'SET':
                     $action = 'setStyle';
                     break;
@@ -220,6 +220,7 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
      * @param  mixed $value
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($index, $value)
     {
         if (!$this->_isValid($value)) {
@@ -338,7 +339,7 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
                     continue;
                 }
                 if ('media' == $key) {
-                    if(false === strpos($value, ',')) {
+                    if(false === strpos((string) $value, ',')) {
                         if (!in_array($value, $this->_mediaTypes)) {
                             continue;
                         }
@@ -346,16 +347,16 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
                         $media_types = explode(',', $value);
                         $value = '';
                         foreach($media_types as $type) {
-                            $type = trim($type);
+                            $type = \trim((string) $type);
                             if (!in_array($type, $this->_mediaTypes)) {
                                 continue;
                             }
                             $value .= $type .',';
                         }
-                        $value = substr($value, 0, -1);
+                        $value = substr((string) $value, 0, -1);
                     }
                 }
-                $attrString .= sprintf(' %s="%s"', $key, htmlspecialchars($value, ENT_COMPAT, $enc));
+                $attrString .= sprintf(' %s="%s"', $key, htmlspecialchars((string) $value, ENT_COMPAT, $enc));
             }
         }
 
@@ -374,7 +375,7 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
               . '</style>';
 
         if (null == $escapeStart && null == $escapeEnd) {
-            if (str_replace(' ', '', $item->attributes['conditional']) === '!IE') {
+            if (str_replace((string) ' ', '', $item->attributes['conditional']) === '!IE') {
                 $html = '<!-->' . $html . '<!--';
             }
             $html = '<!--[if ' . $item->attributes['conditional'] . ']>' . $html . '<![endif]-->';

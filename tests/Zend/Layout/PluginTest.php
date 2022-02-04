@@ -131,7 +131,7 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
               ->setResponse($response);
 
         $layout = Zend_Layout::startMvc();
-        $layout->setLayoutPath(dirname(__FILE__) . '/_files/layouts')
+        $layout->setLayoutPath(__DIR__ . '/_files/layouts')
                ->setLayout('plugin.phtml')
                ->disableInflector();
 
@@ -159,7 +159,7 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
               ->setResponse($response);
 
         $layout = Zend_Layout::startMvc();
-        $layout->setLayoutPath(dirname(__FILE__) . '/_files/layouts')
+        $layout->setLayoutPath(__DIR__ . '/_files/layouts')
                ->setLayout('plugin.phtml')
                ->disableInflector();
 
@@ -184,7 +184,7 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
               ->setResponse($response);
 
         $layout = Zend_Layout::startMvc();
-        $layout->setLayoutPath(dirname(__FILE__) . '/_files/layouts')
+        $layout->setLayoutPath(__DIR__ . '/_files/layouts')
                ->setLayout('plugin.phtml')
                ->disableInflector()
                ->disableLayout();
@@ -214,7 +214,7 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
               ->setResponse($response);
 
         $layout = Zend_Layout::startMvc();
-        $layout->setLayoutPath(dirname(__FILE__) . '/_files/layouts')
+        $layout->setLayoutPath(__DIR__ . '/_files/layouts')
                ->setLayout('plugin.phtml')
                ->setMvcSuccessfulActionOnly(false)
                ->disableInflector();

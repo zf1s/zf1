@@ -138,7 +138,7 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
         }
 
         // functions, methods and classnames are case-insensitive
-        $name = strtolower($name);
+        $name = strtolower((string) $name);
 
         // generate a unique id for object callbacks
         if (is_object($callback)) { // Closures & __invoke
@@ -173,7 +173,7 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
             }
         }
 
-        return md5($name . $argsStr);
+        return md5((string) $name . $argsStr);
     }
 
 }

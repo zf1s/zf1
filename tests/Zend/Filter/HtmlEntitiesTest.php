@@ -218,7 +218,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
             $this->markTestIncomplete('Tested feature ZF-11344 is not available because of PHP bug #63450');
         }
 
-        $string = file_get_contents(dirname(__FILE__) . '/_files/latin-1-text.txt');
+        $string = file_get_contents(__DIR__ . '/_files/latin-1-text.txt');
 
         // restore_error_handler can emit an E_WARNING; let's ignore that, as
         // we want to test the returned value
@@ -226,7 +226,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
         $result = $this->_filter->filter($string);
         restore_error_handler();
 
-        $this->assertTrue(strlen($result) > 0);
+        $this->assertTrue(strlen((string) $result) > 0);
     }
 
     /**
@@ -238,7 +238,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
             $this->markTestIncomplete('Tested feature ZF-11344 is not available because of PHP bug #63450');
         }
 
-        $string = file_get_contents(dirname(__FILE__) . '/_files/latin-1-text.txt');
+        $string = file_get_contents(__DIR__ . '/_files/latin-1-text.txt');
 
         // restore_error_handler can emit an E_WARNING; let's ignore that, as
         // we want to test the returned value
@@ -254,13 +254,13 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
      */
     public function testRaisesExceptionIfEncodingMismatchDetectedAndFinalStringIsEmpty()
     {
-        if (strtolower(substr(PHP_OS, 0, 3)) == 'win') {
+        if (strtolower((string) substr((string) PHP_OS, 0, 3)) == 'win') {
             // see ZF-12201
             $this->markTestIncomplete('Exception is not thrown on Windows');
             return;
         }
 
-        $string = file_get_contents(dirname(__FILE__) . '/_files/latin-1-dash-only.txt');
+        $string = file_get_contents(__DIR__ . '/_files/latin-1-dash-only.txt');
 
         // restore_error_handler can emit an E_WARNING; let's ignore that, as
         // we want to test the returned value

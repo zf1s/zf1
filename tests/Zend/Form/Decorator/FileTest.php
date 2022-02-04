@@ -87,7 +87,7 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
     public function getView()
     {
         $view = new Zend_View();
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
         return $view;
     }
 
@@ -126,7 +126,7 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
 
     public function setupElementWithMaxFileSize()
     {
-        $max = $this->_convertIniToInteger(trim(ini_get('upload_max_filesize')));
+        $max = $this->_convertIniToInteger(\trim((string) ini_get('upload_max_filesize')));
 
         $element = new Zend_Form_Element_File('foo');
         $element->addValidator('Count', 1)
@@ -138,7 +138,7 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
 
     public function testRenderMaxFileSize()
     {
-        $max = $this->_convertIniToInteger(trim(ini_get('upload_max_filesize')));
+        $max = $this->_convertIniToInteger(\trim((string) ini_get('upload_max_filesize')));
 
         $this->setupElementWithMaxFileSize();
         $test = $this->decorator->render(null);
@@ -170,7 +170,7 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
         $file = $this->decorator->render('content');
         $this->assertRegexp('#<input[^>]*>.*?(content)#s', $file, $file);
     }
-    
+
     /**
      * @group ZF-10519
      */
@@ -178,14 +178,14 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
     {
         $element = new Zend_Form_Element_File('foo');
         $element->setView($this->getView());
-        
+
         // Get output using default view helper
         $defaultOutput = $element->render();
-        
+
         // Get output using mock view helper
         $element->helper = "formFileMock";
         $mockOutput = $element->render();
-        
+
         // Ensure the view helper was changed
         $this->assertRegexp('/FormFileMock/s', $mockOutput);
         $this->assertNotEquals($defaultOutput, $mockOutput);
@@ -194,8 +194,8 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
     private function _convertIniToInteger($setting)
     {
         if (!is_numeric($setting)) {
-            $type = strtoupper(substr($setting, -1));
-            $setting = (integer) substr($setting, 0, -1);
+            $type = strtoupper((string) substr((string) $setting, -1));
+            $setting = (integer) substr((string) $setting, 0, -1);
 
             switch ($type) {
                 case 'M' :

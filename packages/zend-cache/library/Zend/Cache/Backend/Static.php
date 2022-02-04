@@ -117,7 +117,7 @@ class Zend_Cache_Backend_Static
      */
     public function getOption($name)
     {
-        $name = strtolower($name);
+        $name = strtolower((string) $name);
 
         if ($name == 'tag_cache') {
             return $this->getInnerCache();
@@ -154,8 +154,8 @@ class Zend_Cache_Backend_Static
             $fileName = $this->_options['index_filename'];
         }
         $pathName = $this->_options['public_dir'] . dirname($id);
-        $file     = rtrim($pathName, '/') . '/' . $fileName . $this->_options['file_extension'];
-        if (file_exists($file)) {
+        $file     = rtrim((string) $pathName, '/') . '/' . $fileName . $this->_options['file_extension'];
+        if (file_exists((string) $file)) {
             $content = file_get_contents($file);
             return $content;
         }
@@ -194,7 +194,7 @@ class Zend_Cache_Backend_Static
             $extension = $this->_options['file_extension'];
         }
         $file     = $pathName . '/' . $fileName . $extension;
-        if (file_exists($file)) {
+        if (file_exists((string) $file)) {
             return true;
         }
         return false;
@@ -220,7 +220,7 @@ class Zend_Cache_Backend_Static
         $extension = null;
         if ($this->_isSerialized($data)) {
             $data = unserialize($data);
-            $extension = '.' . ltrim($data[1], '.');
+            $extension = '.' . ltrim((string) $data[1], '.');
             $data = $data[0];
         }
 
@@ -239,13 +239,13 @@ class Zend_Cache_Backend_Static
         $pathName = realpath($this->_options['public_dir']) . dirname($id);
         $this->_createDirectoriesFor($pathName);
 
-        if ($id === null || strlen($id) == 0) {
+        if ($id === null || strlen((string) $id) == 0) {
             $dataUnserialized = unserialize($data);
             $data = $dataUnserialized['data'];
         }
         $ext = $this->_options['file_extension'];
         if ($extension) $ext = $extension;
-        $file = rtrim($pathName, '/') . '/' . $fileName . $ext;
+        $file = rtrim((string) $pathName, '/') . '/' . $fileName . $ext;
         if ($this->_options['file_locking']) {
             $result = file_put_contents($file, $data, LOCK_EX);
         } else {
@@ -327,7 +327,7 @@ class Zend_Cache_Backend_Static
         }
         $pathName = $this->_options['public_dir'] . dirname($id);
         $file     = realpath($pathName) . '/' . $fileName . $extension;
-        if (!file_exists($file)) {
+        if (!file_exists((string) $file)) {
             return false;
         }
         return unlink($file);
@@ -353,7 +353,7 @@ class Zend_Cache_Backend_Static
         $pathName  = $this->_options['public_dir'] . dirname($id);
         $file      = $pathName . '/' . $fileName . $this->_options['file_extension'];
         $directory = $pathName . '/' . $fileName;
-        if (file_exists($directory)) {
+        if (file_exists((string) $directory)) {
             if (!is_writable($directory)) {
                 return false;
             }
@@ -368,7 +368,7 @@ class Zend_Cache_Backend_Static
             }
             rmdir($directory);
         }
-        if (file_exists($file)) {
+        if (file_exists((string) $file)) {
             if (!is_writable($file)) {
                 return false;
             }
@@ -507,7 +507,7 @@ class Zend_Cache_Backend_Static
     {
         $path = realpath($path);
         $base = realpath($this->_options['public_dir']);
-        return strncmp($path, $base, strlen($base)) !== 0;
+        return strncmp($path, $base, strlen((string) $base)) !== 0;
     }
 
     /**
@@ -537,7 +537,7 @@ class Zend_Cache_Backend_Static
         }
 
         // Internal only checked in Frontend - not here!
-        if (substr($string, 0, 9) == 'internal-') {
+        if (substr((string) $string, 0, 9) == 'internal-') {
             return;
         }
 

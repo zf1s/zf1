@@ -716,8 +716,8 @@ class Zend_Controller_Action_Helper_ContextSwitch extends Zend_Controller_Action
      */
     protected function _validateTrigger($trigger)
     {
-        $trigger = strtoupper($trigger);
-        if ('TRIGGER_' !== substr($trigger, 0, 8)) {
+        $trigger = strtoupper((string) $trigger);
+        if ('TRIGGER_' !== substr((string) $trigger, 0, 8)) {
             $trigger = 'TRIGGER_' . $trigger;
         }
 

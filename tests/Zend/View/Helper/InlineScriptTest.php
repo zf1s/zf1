@@ -82,7 +82,7 @@ class Zend_View_Helper_InlineScriptTest extends PHPUnit_Framework_TestCase
             $registry = Zend_Registry::getInstance();
             unset($registry[$regKey]);
         }
-        $this->basePath = dirname(__FILE__) . '/_files/modules';
+        $this->basePath = __DIR__ . '/_files/modules';
         $this->helper = new Zend_View_Helper_InlineScript();
     }
 

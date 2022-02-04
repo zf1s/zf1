@@ -128,7 +128,7 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
     {
         $this->testCanSetImageSourceViaAccessors();
         $html = $this->element->render(new Zend_View());
-        if (!strstr($html, 'value="')) {
+        if (!strstr((string) $html, 'value="')) {
             return;
         }
         $this->assertContains('value=""', $html);

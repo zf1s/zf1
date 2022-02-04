@@ -163,7 +163,7 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
 
         // mail() uses its $to parameter to set the To: header, and the $subject
         // parameter to set the Subject: header. We need to strip them out.
-        if (0 === strpos(PHP_OS, 'WIN')) {
+        if (0 === strpos((string) PHP_OS, 'WIN')) {
             // If the current recipients list is empty, throw an error
             if (empty($this->recipients)) {
                 /**
@@ -198,7 +198,7 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
         parent::_prepareHeaders($headers);
 
         // Fix issue with empty blank line ontop when using Sendmail Trnasport
-        $this->header = rtrim($this->header);
+        $this->header = rtrim((string) $this->header);
     }
 
     /**

@@ -252,7 +252,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
             $this->_attached   = false;
             $this->_safeGS     = true; /** New page created. That's users App responsibility to track GS changes */
 
-            switch (strtolower($param1)) {
+            switch (strtolower((string) $param1)) {
                 case 'a4':
                     $param1 = Zend_Pdf_Page::SIZE_A4;
                     break;

@@ -41,7 +41,7 @@ class Zend_Reflection_DocblockTest extends PHPUnit_Framework_TestCase
     public function setup()
     {
         if (self::$_sampleClassFileRequired === false) {
-            $fileToRequire = dirname(__FILE__) . '/_files/TestSampleClass.php';
+            $fileToRequire = __DIR__ . '/_files/TestSampleClass.php';
             require_once $fileToRequire;
             self::$_sampleClassFileRequired = true;
         }
@@ -90,8 +90,8 @@ EOS;
 
         $classDocblock = $classReflection->getDocblock();
 
-        $this->assertEquals($classDocblock->getStartLine(), 76);
-        $this->assertEquals($classDocblock->getEndLine(), 86);
+        $this->assertEquals($classDocblock->getStartLine(), 77);
+        $this->assertEquals($classDocblock->getEndLine(), 87);
 
     }
 

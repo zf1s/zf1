@@ -212,7 +212,7 @@ class Zend_Session extends Zend_Session_Abstract
         // set the options the user has requested to set
         foreach ($userOptions as $userOptionName => $userOptionValue) {
 
-            $userOptionName = strtolower($userOptionName);
+            $userOptionName = strtolower((string) $userOptionName);
 
             // set the ini based values
             if (array_key_exists($userOptionName, self::$_defaultOptions)) {
@@ -239,7 +239,7 @@ class Zend_Session extends Zend_Session_Abstract
     {
         $options = array();
         foreach (ini_get_all('session') as $sysOptionName => $sysOptionValues) {
-            $options[substr($sysOptionName, 8)] = $sysOptionValues['local_value'];
+            $options[substr((string) $sysOptionName, 8)] = $sysOptionValues['local_value'];
         }
         foreach (self::$_localOptions as $localOptionName => $localOptionMemberName) {
             $options[$localOptionName] = self::${$localOptionMemberName};
@@ -423,7 +423,7 @@ class Zend_Session extends Zend_Session_Abstract
         // Check to see if we've been passed an invalid session ID
         if ( self::getId() && !self::_checkId(self::getId()) ) {
             // Generate a valid, temporary replacement
-            self::setId(md5(self::getId()));
+            self::setId(md5((string) self::getId()));
             // Force a regenerate after session is started
             self::$_regenerateIdState = -1;
         }
@@ -524,7 +524,7 @@ class Zend_Session extends Zend_Session_Abstract
         if ($saveHandler == 'cluster') { // Zend Server SC, validate only after last dash
             $dashPos = strrpos($id, '-');
             if ($dashPos) {
-                $id = substr($id, $dashPos + 1);
+                $id = substr((string) $id, $dashPos + 1);
             }
         }
 
@@ -605,7 +605,7 @@ class Zend_Session extends Zend_Session_Abstract
                         unset($_SESSION['__ZF'][$namespace]['ENVGH']);
                     }
                 }
-                
+
                 if (isset($namespace) && empty($_SESSION['__ZF'][$namespace])) {
                     unset($_SESSION['__ZF'][$namespace]);
                 }

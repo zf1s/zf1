@@ -53,7 +53,7 @@ class Zend_Application_Resource_Frontcontroller extends Zend_Application_Resourc
         $front = $this->getFrontController();
 
         foreach ($this->getOptions() as $key => $value) {
-            switch (strtolower($key)) {
+            switch (strtolower((string) $key)) {
                 case 'controllerdirectory':
                     if (is_string($value)) {
                         $front->setControllerDirectory($value);

@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once dirname(__FILE__) . '/AbstractFeedTest.php';
+require_once __DIR__ . '/AbstractFeedTest.php';
 
 /**
  * @see Zend_Feed_Rss

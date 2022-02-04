@@ -198,7 +198,7 @@ class Zend_Filter_HtmlEntities implements Zend_Filter_Interface
     public function filter($value)
     {
         $filtered = htmlentities((string) $value, $this->getQuoteStyle(), $this->getEncoding(), $this->getDoubleQuote());
-        if (strlen((string) $value) && !strlen($filtered)) {
+        if (strlen((string) $value) && !strlen((string) $filtered)) {
             if (!function_exists('iconv')) {
                 // require_once 'Zend/Filter/Exception.php';
                 throw new Zend_Filter_Exception('Encoding mismatch has resulted in htmlentities errors');
@@ -206,7 +206,7 @@ class Zend_Filter_HtmlEntities implements Zend_Filter_Interface
             $enc      = $this->getEncoding();
             $value    = iconv('', $enc . '//IGNORE', (string) $value);
             $filtered = htmlentities($value, $this->getQuoteStyle(), $enc, $this->getDoubleQuote());
-            if (!strlen($filtered)) {
+            if (!strlen((string) $filtered)) {
                 // require_once 'Zend/Filter/Exception.php';
                 throw new Zend_Filter_Exception('Encoding mismatch has resulted in htmlentities errors');
             }

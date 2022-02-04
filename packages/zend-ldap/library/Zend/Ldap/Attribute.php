@@ -54,7 +54,7 @@ class Zend_Ldap_Attribute
      */
     public static function setAttribute(array &$data, $attribName, $value, $append = false)
     {
-        $attribName = strtolower($attribName);
+        $attribName = strtolower((string) $attribName);
         $valArray = array();
         if (is_array($value) || ($value instanceof Traversable))
         {
@@ -91,7 +91,7 @@ class Zend_Ldap_Attribute
      */
     public static function getAttribute(array $data, $attribName, $index = null)
     {
-        $attribName = strtolower($attribName);
+        $attribName = strtolower((string) $attribName);
         if ($index === null) {
             if (!isset($data[$attribName])) return array();
             $retArray = array();
@@ -122,7 +122,7 @@ class Zend_Ldap_Attribute
      */
     public static function attributeHasValue(array &$data, $attribName, $value)
     {
-        $attribName = strtolower($attribName);
+        $attribName = strtolower((string) $attribName);
         if (!isset($data[$attribName])) return false;
 
         if (is_scalar($value)) {
@@ -147,7 +147,7 @@ class Zend_Ldap_Attribute
      */
     public static function removeDuplicatesFromAttribute(array &$data, $attribName)
     {
-        $attribName = strtolower($attribName);
+        $attribName = strtolower((string) $attribName);
         if (!isset($data[$attribName])) return;
         $data[$attribName] = array_values(array_unique($data[$attribName]));
     }
@@ -162,7 +162,7 @@ class Zend_Ldap_Attribute
      */
     public static function removeFromAttribute(array &$data, $attribName, $value)
     {
-        $attribName = strtolower($attribName);
+        $attribName = strtolower((string) $attribName);
         if (!isset($data[$attribName])) return;
 
         if (is_scalar($value)) {
@@ -305,7 +305,7 @@ class Zend_Ldap_Attribute
                 } else if (function_exists('iconv')) {
                     $password = iconv('UTF-8', 'UTF-16LE', $password);
                 } else {
-                    $len = strlen($password);
+                    $len = strlen((string) $password);
                     $new = '';
                     for($i=0; $i < $len; $i++) {
                         $new .= $password[$i] . "\x00";
@@ -324,12 +324,12 @@ class Zend_Ldap_Attribute
                 break;
             case self::PASSWORD_HASH_SMD5:
                 $salt    = Zend_Crypt_Math::randBytes(4);
-                $rawHash = md5($password . $salt, true) . $salt;
+                $rawHash = md5((string) $password . $salt, true) . $salt;
                 $method  = '{SMD5}';
                 break;
             case self::PASSWORD_HASH_MD5:
             default:
-                $rawHash = md5($password, true);
+                $rawHash = md5((string) $password, true);
                 $method  = '{MD5}';
                 break;
         }

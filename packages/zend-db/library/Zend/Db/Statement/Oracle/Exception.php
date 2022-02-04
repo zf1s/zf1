@@ -45,9 +45,9 @@ class Zend_Db_Statement_Oracle_Exception extends Zend_Db_Statement_Exception
                 $this->message = $error['code']." ".$error['message'];
             } else {
                 $this->message = $error['code']." ".$error['message']." ";
-                $this->message .= substr($error['sqltext'], 0, $error['offset']);
+                $this->message .= substr((string) $error['sqltext'], 0, $error['offset']);
                 $this->message .= "*";
-                $this->message .= substr($error['sqltext'], $error['offset']);
+                $this->message .= substr((string) $error['sqltext'], $error['offset']);
             }
             $this->code = $error['code'];
        }

@@ -31,7 +31,7 @@
  * @package    Zend_Mobile
  * @subpackage Push
  */
-class Zend_Mobile_Push_Test_ApnsProxy extends Zend_Mobile_Push_Apns 
+class Zend_Mobile_Push_Test_ApnsProxy extends Zend_Mobile_Push_Apns
 {
     /**
      * Read Response
@@ -83,7 +83,7 @@ class Zend_Mobile_Push_Test_ApnsProxy extends Zend_Mobile_Push_Apns
      * @return string
      */
     protected function _read($length) {
-        $ret = substr($this->_readResponse, 0, $length);
+        $ret = substr((string) $this->_readResponse, 0, $length);
         $this->_readResponse = null;
         return $ret;
     }
@@ -97,6 +97,6 @@ class Zend_Mobile_Push_Test_ApnsProxy extends Zend_Mobile_Push_Apns
     protected function _write($payload) {
         $ret = $this->_writeResponse;
         $this->_writeResponse = null;
-        return (null === $ret) ? strlen($payload) : $ret;
+        return (null === $ret) ? strlen((string) $payload) : $ret;
     }
 }

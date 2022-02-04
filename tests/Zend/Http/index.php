@@ -7,11 +7,11 @@ $autoloader = Zend_Loader_Autoloader::getInstance();
 error_reporting(E_ALL);
 set_time_limit(0);
 
-$config['wurflapi']['wurfl_lib_dir'] = dirname(__FILE__) . '/_files/Wurfl/1.1/';
-$config['wurflapi']['wurfl_config_file'] = dirname(__FILE__) . '/_files/Wurfl/resources/wurfl-config.php';
-$config['terawurfl']['terawurfl_lib_dir'] = dirname(__FILE__) . '/_files/TeraWurfl_2.1.3/tera-WURFL/';
-$config['deviceatlas']['deviceatlas_lib_dir'] = dirname(__FILE__) . '/_files/DA_php_1.4.1/';
-$config['deviceatlas']['deviceatlas_data'] = dirname(__FILE__) . '/_files/DA_php_1.4.1/sample/json/20101014.json';
+$config['wurflapi']['wurfl_lib_dir'] = __DIR__ . '/_files/Wurfl/1.1/';
+$config['wurflapi']['wurfl_config_file'] = __DIR__ . '/_files/Wurfl/resources/wurfl-config.php';
+$config['terawurfl']['terawurfl_lib_dir'] = __DIR__ . '/_files/TeraWurfl_2.1.3/tera-WURFL/';
+$config['deviceatlas']['deviceatlas_lib_dir'] = __DIR__ . '/_files/DA_php_1.4.1/';
+$config['deviceatlas']['deviceatlas_data'] = __DIR__ . '/_files/DA_php_1.4.1/sample/json/20101014.json';
 /*
 $config['mobile']['features']['path']      = 'Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php';
 $config['mobile']['features']['classname'] = 'Zend_Http_UserAgent_Features_Adapter_TeraWurfl';
@@ -53,7 +53,7 @@ function printBrowserDetails($browser)
         print "<li>Server Platform Version: " . $device->getFeature('server_platfom_version') . "</li>";
         print "</ul>";
         print '</fieldset>';
-        
+
         $wurfl = $device->getFeature("brand_name");
         if (!$wurfl) {
             print "<fieldset><legend><b>no WURFL identification</b></legend>";
@@ -73,7 +73,7 @@ function printBrowserDetails($browser)
             print "</ul>";
             print '</fieldset>';
         }
-        
+
         print "<fieldset><legend><b>Full</b></legend>";
         Zend_Debug::dump($device->getAllFeatures());
         print '</fieldset>';
@@ -82,9 +82,9 @@ function printBrowserDetails($browser)
 }
 
 $options = array(
-    '', 
-    'mobile, text, desktop', 
-    'bot, mobile, validator, checker, console, offline, email, text', 
+    '',
+    'mobile, text, desktop',
+    'bot, mobile, validator, checker, console, offline, email, text',
     'text, bot, validator, checker, console, offline, email'
 );
 ?>

@@ -116,9 +116,9 @@ class Zend_Pdf_Element_Array extends Zend_Pdf_Element
         $lastNL = 0;
 
         foreach ($this->items as $element) {
-            if (strlen($outStr) - $lastNL > 128)  {
+            if (strlen((string) $outStr) - $lastNL > 128)  {
                 $outStr .= "\n";
-                $lastNL = strlen($outStr);
+                $lastNL = strlen((string) $outStr);
             }
 
             $outStr .= $element->toString($factory) . ' ';

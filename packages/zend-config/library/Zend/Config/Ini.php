@@ -204,14 +204,14 @@ class Zend_Config_Ini extends Zend_Config
         foreach ($loaded as $key => $data)
         {
             $pieces = explode($this->_sectionSeparator, $key);
-            $thisSection = trim($pieces[0]);
+            $thisSection = \trim((string) $pieces[0]);
             switch (count($pieces)) {
                 case 1:
                     $iniArray[$thisSection] = $data;
                     break;
 
                 case 2:
-                    $extendedSection = trim($pieces[1]);
+                    $extendedSection = \trim((string) $pieces[1]);
                     $iniArray[$thisSection] = array_merge(array(';extends'=>$extendedSection), $data);
                     break;
 
@@ -243,7 +243,7 @@ class Zend_Config_Ini extends Zend_Config
         $thisSection = $iniArray[$section];
 
         foreach ($thisSection as $key => $value) {
-            if (strtolower($key) == ';extends') {
+            if (strtolower((string) $key) == ';extends') {
                 if (isset($iniArray[$value])) {
                     $this->_assertValidExtend($section, $value);
 
@@ -276,9 +276,9 @@ class Zend_Config_Ini extends Zend_Config
      */
     protected function _processKey($config, $key, $value)
     {
-        if (strpos($key, $this->_nestSeparator) !== false) {
+        if (strpos((string) $key, $this->_nestSeparator) !== false) {
             $pieces = explode($this->_nestSeparator, $key, 2);
-            if (strlen($pieces[0]) && strlen($pieces[1])) {
+            if (strlen((string) $pieces[0]) && strlen((string) $pieces[1])) {
                 if (!isset($config[$pieces[0]])) {
                     if ($pieces[0] === '0' && !empty($config)) {
                         // convert the current values in $config into an array

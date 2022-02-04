@@ -123,10 +123,10 @@ class Zend_Search_Lucene_Analysis_Token
     {
         return $this->_termText;
     }
-    
+
     /**
      * Sets the Token's term text.
-     * 
+     *
      * @param string $text
      * @return this
      */
@@ -142,7 +142,7 @@ class Zend_Search_Lucene_Analysis_Token
      *
      * Note:
      * The difference between getEndOffset() and getStartOffset() may not be equal
-     * to strlen(Zend_Search_Lucene_Analysis_Token::getTermText()), as the term text may have been altered
+     * to strlen((string) Zend_Search_Lucene_Analysis_Token::getTermText()), as the term text may have been altered
      * by a stemmer or some other filter.
      *
      * @return integer

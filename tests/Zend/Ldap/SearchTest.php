@@ -23,7 +23,7 @@
 /**
  * Zend_Ldap_OnlineTestCase
  */
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'OnlineTestCase.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'OnlineTestCase.php';
 
 /**
  * @see Zend_Ldap_Dn
@@ -593,14 +593,14 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
 
 function Zend_Ldap_SearchTest_customNaming($attrib)
 {
-    return strtoupper(strrev($attrib));
+    return strtoupper((string) strrev($attrib));
 }
 
 class Zend_Ldap_SearchTest_CustomNaming
 {
     public static function name1($attrib)
     {
-        return strtolower(strrev($attrib));
+        return strtolower((string) strrev($attrib));
     }
 
     public function name2($attrib)

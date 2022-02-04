@@ -58,7 +58,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue($this->_finding->getClient() instanceof Zend_Rest_Client);
 
-        require_once dirname(__FILE__) . '/_files/ClientCustom.php';
+        require_once __DIR__ . '/_files/ClientCustom.php';
         $this->assertTrue($this->_finding->setClient(new ClientCustom()) instanceof Zend_Service_Ebay_Finding);
         $this->assertTrue($this->_finding->getClient() instanceof ClientCustom);
 
@@ -87,7 +87,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testResponseAbstract()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/get-search-keywords-recomendation.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/get-search-keywords-recomendation.xml');
 
         // no error xml
         $response = $this->_createResponseKeywords($xml);
@@ -98,7 +98,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testErrorMessage()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/error.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/error.xml');
 
         // xml with error inside
         $response = $this->_createResponseKeywords($xml);
@@ -128,7 +128,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testResponseKeywords()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/get-search-keywords-recomendation.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/get-search-keywords-recomendation.xml');
 
         $response = $this->_createResponseKeywords($xml);
         $this->assertNotNull($response->keywords);
@@ -136,7 +136,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testResponseItems()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         $this->assertTrue($response->paginationOutput instanceof Zend_Service_Ebay_Finding_PaginationOutput);
@@ -146,7 +146,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testPaginationOutput()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         $object = $response->paginationOutput;
@@ -158,7 +158,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testSearchResult()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         $object = $response->searchResult;
@@ -167,7 +167,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testSearchItem()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         // general attributes
@@ -213,7 +213,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testListingInfo()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         $response->searchResult->item->seek(4);
@@ -232,7 +232,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testCategory()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         $response->searchResult->item->seek(0);
@@ -243,7 +243,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testSellerInfo()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         $response->searchResult->item->seek(0);
@@ -257,7 +257,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testSellingStatus()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         $response->searchResult->item->seek(1);
@@ -273,7 +273,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testShippingInfo()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         $response->searchResult->item->seek(0);
@@ -287,7 +287,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
 
     public function testStorefront()
     {
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/find-items-advanced.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/find-items-advanced.xml');
         $response = $this->_createResponseItems($xml);
 
         $response->searchResult->item->seek(0);
@@ -299,7 +299,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
     public function testResponseHistogramAspect()
     {
         // test histogram aspect
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/histogram-aspect.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/histogram-aspect.xml');
         $response = $this->_createResponseHistograms($xml);
 
         $this->assertNotNull($response->aspectHistogramContainer);
@@ -323,7 +323,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
     public function testResponseHistogramCategory()
     {
         // test histogram aspect
-        $xml = file_get_contents(dirname(__FILE__) . '/_files/histogram-category.xml');
+        $xml = file_get_contents(__DIR__ . '/_files/histogram-category.xml');
         $response = $this->_createResponseHistograms($xml);
 
         $this->assertNotNull($response->categoryHistogramContainer);

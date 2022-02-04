@@ -51,7 +51,7 @@ class Zend_Pdf_Element_Name extends Zend_Pdf_Element
     public function __construct($val)
     {
         settype($val, 'string');
-        if (strpos($val,"\x00") !== false) {
+        if (strpos((string) $val,"\x00") !== false) {
             // require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Null character is not allowed in PDF Names');
         }
@@ -80,8 +80,8 @@ class Zend_Pdf_Element_Name extends Zend_Pdf_Element
     {
         $outStr = '';
 
-        for ($count = 0; $count < strlen($inStr); $count++) {
-            $nextCode = ord($inStr[$count]);
+        for ($count = 0; $count < strlen((string) $inStr); $count++) {
+            $nextCode = ord((string) $inStr[$count]);
 
             switch ($inStr[$count]) {
                 case '(':
@@ -135,12 +135,12 @@ class Zend_Pdf_Element_Name extends Zend_Pdf_Element
     {
         $outStr = '';
 
-        for ($count = 0; $count < strlen($inStr); $count++) {
+        for ($count = 0; $count < strlen((string) $inStr); $count++) {
             if ($inStr[$count] != '#' )  {
                 $outStr .= $inStr[$count];
             } else {
                 // Escape sequence
-                $outStr .= chr(base_convert(substr($inStr, $count+1, 2), 16, 10 ));
+                $outStr .= chr(base_convert(substr((string) $inStr, $count+1, 2), 16, 10 ));
                 $count +=2;
             }
         }

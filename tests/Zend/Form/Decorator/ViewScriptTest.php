@@ -78,8 +78,8 @@ class Zend_Form_Decorator_ViewScriptTest extends PHPUnit_Framework_TestCase
     public function getView()
     {
         $view = new Zend_View();
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
-        $view->addScriptPath(dirname(__FILE__) . '/../_files/views/');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
+        $view->addScriptPath(__DIR__ . '/../_files/views/');
         return $view;
     }
 

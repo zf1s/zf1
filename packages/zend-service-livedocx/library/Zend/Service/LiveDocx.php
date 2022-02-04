@@ -386,7 +386,7 @@ class Zend_Service_LiveDocx
      */
     public function getFormat($filename)
     {
-        return strtolower(substr(strrchr($filename, '.'), 1));
+        return strtolower((string) substr((string) strrchr($filename, '.'), 1));
     }
 
     /**

@@ -118,7 +118,7 @@ class Zend_Crypt_Hmac extends Zend_Crypt
             throw new Zend_Crypt_Hmac_Exception('provided hash string is null or empty');
         }
 
-        $hash = strtolower($hash);
+        $hash = strtolower((string) $hash);
         $hashSupported = false;
 
         if (function_exists('hash_algos') && in_array($hash, hash_algos())) {
@@ -176,7 +176,7 @@ class Zend_Crypt_Hmac extends Zend_Crypt
         {
             $types[mhash_get_hash_name($i)] = $i;
         }
-        return $types[strtoupper($hashAlgorithm)];
+        return $types[strtoupper((string) $hashAlgorithm)];
     }
 
 }

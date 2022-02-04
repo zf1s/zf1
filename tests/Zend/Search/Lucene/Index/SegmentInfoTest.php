@@ -37,7 +37,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 {
     public function testCreate()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
 
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
@@ -46,7 +46,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testOpenCompoundFile()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $file1 = $segmentInfo->openCompoundFile('.fnm');
@@ -65,7 +65,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testCompoundFileLength()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $this->assertEquals($segmentInfo->compoundFileLength('.tii'), 58);
@@ -73,7 +73,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testGetFieldNum()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $this->assertEquals($segmentInfo->getFieldNum('contents'), 2);
@@ -82,7 +82,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testGetField()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $fieldInfo = $segmentInfo->getField(2);
@@ -95,7 +95,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testGetFields()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $this->assertTrue($segmentInfo->getFields() == array('path' => 'path', 'modified' => 'modified', 'contents' => 'contents'));
@@ -104,7 +104,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testGetFieldInfos()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $fieldInfos = $segmentInfo->getFieldInfos();
@@ -127,7 +127,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testCount()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $this->assertEquals($segmentInfo->count(), 2);
@@ -135,7 +135,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testNumDocs()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_3', 2);
 
         $this->assertEquals($segmentInfo->count(), 2);
@@ -144,7 +144,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testGetName()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $this->assertEquals($segmentInfo->getName(), '_1');
@@ -152,7 +152,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testGetTermInfo()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $termInfo = $segmentInfo->getTermInfo(new Zend_Search_Lucene_Index_Term('apart', 'contents'));
@@ -173,7 +173,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testTermFreqs()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $termPositions = $segmentInfo->termFreqs(new Zend_Search_Lucene_Index_Term('bgcolor', 'contents'));
@@ -185,7 +185,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testTermPositions()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $termPositions = $segmentInfo->termPositions(new Zend_Search_Lucene_Index_Term('bgcolor', 'contents'));
@@ -201,7 +201,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testNorm()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $this->assertTrue(abs($segmentInfo->norm(1, 'contents') - 0.0546875) < 0.000001);
@@ -209,7 +209,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testNormVector()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
 
         $this->assertEquals($segmentInfo->normVector('contents'), "\x69\x6B");
@@ -217,7 +217,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testHasDeletions()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
 
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2);
         $this->assertFalse($segmentInfo->hasDeletions());
@@ -228,7 +228,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testDelete()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
 
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_1', 2, 0 /* search for _1.del file */);
         $this->assertFalse($segmentInfo->hasDeletions());
@@ -260,7 +260,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testIsDeleted()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
 
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_2', 2);
         $this->assertFalse($segmentInfo->isDeleted(0));
@@ -272,7 +272,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testTermStreamStyleReading()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
 
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_3', 2);
 
@@ -469,7 +469,7 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
 
     public function testTermStreamStyleReadingSkipTo()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
 
         $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_3', 2);
 

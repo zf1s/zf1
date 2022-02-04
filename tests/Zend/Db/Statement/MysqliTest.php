@@ -137,14 +137,14 @@ INPUT;
         $count = 0;
     
         foreach ($inputOutputLines as $ioLine) {
-            if (!trim($ioLine)) {
+            if (!\trim((string) $ioLine)) {
                 continue;
             }
     
             $count++;
             $io = explode('out:', $ioLine);
-            $in = str_replace(array('[', ']'),'', trim($io[0]));
-            $out = str_replace(array('[', ']'),'', trim($io[1]));
+            $in = str_replace(array('[', ']'),'', \trim((string) $io[0]));
+            $out = str_replace(array('[', ']'),'', \trim((string) $io[1]));
             $actual = $this->_Zend_Db_Statement_Mysqli_Test_Class->stripQuoted($in);
             $this->assertSame($out, $actual, $count . ' - unexpected output');
         }

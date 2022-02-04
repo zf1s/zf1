@@ -376,7 +376,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         $logger->debug('ZF-9870');
         rewind($this->log);
         $message = stream_get_contents($this->log);
-        $this->assertEquals(date('Y-m-d'), substr($message, 0, 10));
+        $this->assertEquals(date('Y-m-d'), substr((string) $message, 0, 10));
     }
 
     /**
@@ -527,7 +527,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     public function testFactorySupportsPHP53Namespaces()
     {
         // preload namespaced class from custom path
-        Zend_Loader::loadClass('\Zfns\Writer', array(dirname(__FILE__) . '/_files'));
+        Zend_Loader::loadClass('\Zfns\Writer', array(__DIR__ . '/_files'));
 
         try {
             $config = array(

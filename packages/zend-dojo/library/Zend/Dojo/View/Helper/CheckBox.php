@@ -87,7 +87,7 @@ class Zend_Dojo_View_Helper_CheckBox extends Zend_Dojo_View_Helper_Dijit
 
         // and now we create it:
         $html = '';
-        if (!strstr($id, '[]')) {
+        if (!strstr((string) $id, '[]')) {
             // hidden element for unchecked value
             $html .= $this->_renderHiddenElement($id, $checkboxInfo['uncheckedValue']);
         }

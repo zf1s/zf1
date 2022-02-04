@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once dirname(__FILE__) . '/TestAbstract.php';
+require_once __DIR__ . '/TestAbstract.php';
 // require_once 'Zend/View/Helper/Navigation.php';
 
 /**
@@ -452,12 +452,12 @@ class Zend_View_Helper_Navigation_NavigationTest
 
         $render = $this->_helper->menu()->render($container);
 
-        $this->assertFalse(strpos($render, 'p2'));
+        $this->assertFalse(strpos((string) $render, 'p2'));
 
         $this->_helper->menu()->setRenderInvisible();
 
         $render = $this->_helper->menu()->render($container);
 
-        $this->assertTrue(strpos($render, 'p2') !== false);
+        $this->assertTrue(strpos((string) $render, 'p2') !== false);
     }
 }

@@ -66,7 +66,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         // require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory('Core', 'File',
                  array('lifetime' => 120, 'automatic_serialization' => true),
-                 array('cache_dir' => dirname(__FILE__) . '/_files/'));
+                 array('cache_dir' => __DIR__ . '/_files/'));
         $this->_orig = Zend_Date::setOptions();
 
         Zend_Date::setOptions(array('cache' => $this->_cache));
@@ -5048,8 +5048,8 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(gmdate('o',$date->getTimestamp()), $date->toString(                   'YYYY'));
         $this->assertSame(gmdate('Y',$date->getTimestamp()), $date->toString(                   'yyyy'));
         $this->assertSame(gmdate('y',$date->getTimestamp()), $date->toString(                     'yy'));
-        $this->assertSame(gmdate('a',$date->getTimestamp()), strtolower($date->toString(    'a', 'en')));
-        $this->assertSame(gmdate('A',$date->getTimestamp()), strtoupper($date->toString(    'a', 'en')));
+        $this->assertSame(gmdate('a',$date->getTimestamp()), strtolower((string) $date->toString(    'a', 'en')));
+        $this->assertSame(gmdate('A',$date->getTimestamp()), strtoupper((string) $date->toString(    'a', 'en')));
         $this->assertSame(gmdate('B',$date->getTimestamp()), $date->toString(                      'B'));
         $this->assertSame(gmdate('g',$date->getTimestamp()), $date->toString(                      'h'));
         $this->assertSame(gmdate('G',$date->getTimestamp()), $date->toString(                      'H'));
@@ -5093,8 +5093,8 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(gmdate('o',$date->getTimestamp()), $date->toString(      'o'));
         $this->assertSame(gmdate('Y',$date->getTimestamp()), $date->toString(      'Y'));
         $this->assertSame(gmdate('y',$date->getTimestamp()), $date->toString(      'y'));
-        $this->assertSame(gmdate('a',$date->getTimestamp()), strtolower($date->toString('a', 'en')));
-        $this->assertSame(gmdate('A',$date->getTimestamp()), strtoupper($date->toString('A', 'en')));
+        $this->assertSame(gmdate('a',$date->getTimestamp()), strtolower((string) $date->toString('a', 'en')));
+        $this->assertSame(gmdate('A',$date->getTimestamp()), strtoupper((string) $date->toString('A', 'en')));
         $this->assertSame(gmdate('B',$date->getTimestamp()), $date->toString(      'B'));
         $this->assertSame(gmdate('g',$date->getTimestamp()), $date->toString(      'g'));
         $this->assertSame(gmdate('G',$date->getTimestamp()), $date->toString(      'G'));
@@ -5132,8 +5132,8 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(gmdate('o',$date->getTimestamp()), $date->toString(      'o'));
         $this->assertSame(gmdate('Y',$date->getTimestamp()), $date->toString(      'Y'));
         $this->assertSame(gmdate('y',$date->getTimestamp()), $date->toString(      'y'));
-        $this->assertSame(gmdate('a',$date->getTimestamp()), strtolower($date->toString('a', 'en')));
-        $this->assertSame(gmdate('A',$date->getTimestamp()), strtoupper($date->toString('A', 'en')));
+        $this->assertSame(gmdate('a',$date->getTimestamp()), strtolower((string) $date->toString('a', 'en')));
+        $this->assertSame(gmdate('A',$date->getTimestamp()), strtoupper((string) $date->toString('A', 'en')));
         $this->assertSame(gmdate('B',$date->getTimestamp()), $date->toString(      'B'));
         $this->assertSame(gmdate('g',$date->getTimestamp()), $date->toString(      'g'));
         $this->assertSame(gmdate('G',$date->getTimestamp()), $date->toString(      'G'));
@@ -5171,8 +5171,8 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(date('o',$date->getTimestamp()), $date->toString(      'o'));
         $this->assertSame(date('Y',$date->getTimestamp()), $date->toString(      'Y'));
         $this->assertSame(date('y',$date->getTimestamp()), $date->toString(      'y'));
-        $this->assertSame(date('a',$date->getTimestamp()), strtolower($date->toString('a', 'en')));
-        $this->assertSame(date('A',$date->getTimestamp()), strtoupper($date->toString('A', 'en')));
+        $this->assertSame(date('a',$date->getTimestamp()), strtolower((string) $date->toString('a', 'en')));
+        $this->assertSame(date('A',$date->getTimestamp()), strtoupper((string) $date->toString('A', 'en')));
         $this->assertSame(date('B',$date->getTimestamp()), $date->toString(      'B'));
         $this->assertSame(date('g',$date->getTimestamp()), $date->toString(      'g'));
         $this->assertSame(date('G',$date->getTimestamp()), $date->toString(      'G'));
@@ -5210,8 +5210,8 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(date('o',$date->getTimestamp()), $date->toString(      'o'));
         $this->assertSame(date('Y',$date->getTimestamp()), $date->toString(      'Y'));
         $this->assertSame(date('y',$date->getTimestamp()), $date->toString(      'y'));
-        $this->assertSame(date('a',$date->getTimestamp()), strtolower($date->toString('a', 'en')));
-        $this->assertSame(date('A',$date->getTimestamp()), strtoupper($date->toString('A', 'en')));
+        $this->assertSame(date('a',$date->getTimestamp()), strtolower((string) $date->toString('a', 'en')));
+        $this->assertSame(date('A',$date->getTimestamp()), strtoupper((string) $date->toString('A', 'en')));
         $this->assertSame(date('B',$date->getTimestamp()), $date->toString(      'B'));
         $this->assertSame(date('g',$date->getTimestamp()), $date->toString(      'g'));
         $this->assertSame(date('G',$date->getTimestamp()), $date->toString(      'G'));
@@ -5280,7 +5280,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         // require_once 'Zend/Cache.php';
         $cache = Zend_Cache::factory('Core', 'File',
                  array('lifetime' => 120, 'automatic_serialization' => true),
-                 array('cache_dir' => dirname(__FILE__) . '/_files/'));
+                 array('cache_dir' => __DIR__ . '/_files/'));
         Zend_Date::setOptions(array('cache' => $cache));
     }
 
@@ -5578,8 +5578,8 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(gmdate('o',$date->getTimestamp()), $date->toString(      'o'));
         $this->assertSame(gmdate('Y',$date->getTimestamp()), $date->toString(      'Y'));
         $this->assertSame(gmdate('y',$date->getTimestamp()), $date->toString(      'y'));
-        $this->assertSame(gmdate('a',$date->getTimestamp()), strtolower($date->toString('a', 'en')));
-        $this->assertSame(gmdate('A',$date->getTimestamp()), strtoupper($date->toString('A', 'en')));
+        $this->assertSame(gmdate('a',$date->getTimestamp()), strtolower((string) $date->toString('a', 'en')));
+        $this->assertSame(gmdate('A',$date->getTimestamp()), strtoupper((string) $date->toString('A', 'en')));
         $this->assertSame(gmdate('B',$date->getTimestamp()), $date->toString(      'B'));
         $this->assertSame(gmdate('g',$date->getTimestamp()), $date->toString(      'g'));
         $this->assertSame(gmdate('G',$date->getTimestamp()), $date->toString(      'G'));
@@ -5617,8 +5617,8 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
         $this->assertSame(date('o',$date->getTimestamp()), $date->toString(      'o'));
         $this->assertSame(date('Y',$date->getTimestamp()), $date->toString(      'Y'));
         $this->assertSame(date('y',$date->getTimestamp()), $date->toString(      'y'));
-        $this->assertSame(date('a',$date->getTimestamp()), strtolower($date->toString('a', 'en')));
-        $this->assertSame(date('A',$date->getTimestamp()), strtoupper($date->toString('A', 'en')));
+        $this->assertSame(date('a',$date->getTimestamp()), strtolower((string) $date->toString('a', 'en')));
+        $this->assertSame(date('A',$date->getTimestamp()), strtoupper((string) $date->toString('A', 'en')));
         $this->assertSame(date('B',$date->getTimestamp()), $date->toString(      'B'));
         $this->assertSame(date('g',$date->getTimestamp()), $date->toString(      'g'));
         $this->assertSame(date('G',$date->getTimestamp()), $date->toString(      'G'));

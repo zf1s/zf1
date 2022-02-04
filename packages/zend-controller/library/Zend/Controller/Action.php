@@ -178,7 +178,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
             $module = $this->getFrontController()->getDispatcher()->getDefaultModule();
         }
         $baseDir = dirname($dirs[$module]) . DIRECTORY_SEPARATOR . 'views';
-        if (!file_exists($baseDir) || !is_dir($baseDir)) {
+        if (!file_exists((string) $baseDir) || !is_dir($baseDir)) {
             // require_once 'Zend/Controller/Exception.php';
             throw new Zend_Controller_Exception('Missing base view directory ("' . $baseDir . '")');
         }
@@ -480,8 +480,8 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     public function __call($methodName, $args)
     {
         // require_once 'Zend/Controller/Action/Exception.php';
-        if ('Action' == substr($methodName, -6)) {
-            $action = substr($methodName, 0, strlen($methodName) - 6);
+        if ('Action' == substr((string) $methodName, -6)) {
+            $action = substr((string) $methodName, 0, strlen((string) $methodName) - 6);
             throw new Zend_Controller_Action_Exception(sprintf('Action "%s" does not exist and was not trapped in __call()', $action), 404);
         }
 

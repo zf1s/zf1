@@ -79,7 +79,7 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
 
         $this->loader = new Zend_Loader_Autoloader_Resource(array(
             'namespace' => 'FooBar',
-            'basePath'  => realpath(dirname(__FILE__) . '/_files'),
+            'basePath'  => realpath(__DIR__ . '/_files'),
         ));
     }
 
@@ -107,7 +107,7 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
      */
     public function testAutoloaderInstantiationShouldRaiseExceptionWithoutNamespace()
     {
-        $loader = new Zend_Loader_Autoloader_Resource(array('basePath' => dirname(__FILE__)));
+        $loader = new Zend_Loader_Autoloader_Resource(array('basePath' => __DIR__));
     }
 
     /**
@@ -128,7 +128,7 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
 
     public function testAutoloaderConstructorShouldAcceptZendConfigObject()
     {
-        $config = new Zend_Config(array('namespace' => 'Foo', 'basePath' => dirname(__FILE__)));
+        $config = new Zend_Config(array('namespace' => 'Foo', 'basePath' => __DIR__));
         $loader = new Zend_Loader_Autoloader_Resource($config);
     }
 
@@ -139,7 +139,7 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
 
     public function testAutoloaderShouldAllowRetrievingBasePath()
     {
-        $this->assertEquals(realpath(dirname(__FILE__) . '/_files'), $this->loader->getBasePath());
+        $this->assertEquals(realpath(__DIR__ . '/_files'), $this->loader->getBasePath());
     }
 
     public function testNoResourceTypesShouldBeRegisteredByDefault()
@@ -310,7 +310,7 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
     {
         $loader = new Zend_Loader_Autoloader_Resource(array(
             'namespace' => '',
-            'basePath'  => realpath(dirname(__FILE__) . '/_files'),
+            'basePath'  => realpath(__DIR__ . '/_files'),
         ));
         $loader->addResourceTypes(array(
             'service' => array('path' => 'services', 'namespace' => 'Service'),
@@ -404,7 +404,7 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
         ));
         $path = $this->loader->getClassPath('FooBar_Model_Class_Model');
         // if true we have // in path
-        $this->assertFalse(strpos($path, '//'));
+        $this->assertFalse(strpos((string) $path, '//'));
     }
 
     /**
@@ -461,10 +461,10 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
     public function testMatchesMultiLevelNamespaces()
     {
         $this->loader->setNamespace('Foo_Bar')
-            ->setBasePath(dirname(__FILE__) . '/_files')
+            ->setBasePath(__DIR__ . '/_files')
             ->addResourceType('model', 'models', 'Model');
         $path = $this->loader->getClassPath('Foo_Bar_Model_Baz');
-        $this->assertEquals(dirname(__FILE__) . '/_files/models/Baz.php', $path, var_export($path, 1));
+        $this->assertEquals(__DIR__ . '/_files/models/Baz.php', $path, var_export($path, 1));
     }
 }
 

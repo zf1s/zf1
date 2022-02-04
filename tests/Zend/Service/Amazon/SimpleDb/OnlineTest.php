@@ -128,7 +128,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
                 break;
             } catch (Zend_Service_Amazon_SimpleDb_Exception $e) {
                 // Only retry after throtte-related error
-                if (false === strpos($e->getMessage(), 'currently unavailable')) {
+                if (false === strpos((string) $e->getMessage(), 'currently unavailable')) {
                     throw $e;
                 }
             }
@@ -389,7 +389,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
               $token = $page->getToken();
               if ($token) {
                 $tokenDomainName = base64_decode($token);
-                if (false !== strpos($tokenDomainName, $this->_testDomainNamePrefix)) {
+                if (false !== strpos((string) $tokenDomainName, $this->_testDomainNamePrefix)) {
                   try {
                     $this->request('domainMetadata', array($tokenDomainName));
                     $this->fail('listDomains call with 3 domain maximum did not return last page');

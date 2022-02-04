@@ -256,7 +256,7 @@ EOJ;
             define('ZEND_CONFIG_JSON_ENV', 'testing');
         }
         if (!defined('ZEND_CONFIG_JSON_ENV_PATH')) {
-            define('ZEND_CONFIG_JSON_ENV_PATH', dirname(__FILE__));
+            define('ZEND_CONFIG_JSON_ENV_PATH', __DIR__);
         }
         if (!defined('ZEND_CONFIG_JSON_ENV_INT')) {
             define('ZEND_CONFIG_JSON_ENV_INT', 42);

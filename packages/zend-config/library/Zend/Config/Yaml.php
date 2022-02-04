@@ -141,7 +141,7 @@ class Zend_Config_Yaml extends Zend_Config
             $allowModifications = $options;
         } elseif (is_array($options)) {
             foreach ($options as $key => $value) {
-                switch (strtolower($key)) {
+                switch (strtolower((string) $key)) {
                     case 'allow_modifications':
                     case 'allowmodifications':
                         $allowModifications = (bool) $value;
@@ -294,16 +294,16 @@ class Zend_Config_Yaml extends Zend_Config
             next($lines);
             $lineno = $n + 1;
 
-            $line = rtrim(preg_replace("/#.*$/", "", $line));
-            if (strlen($line) == 0) {
+            $line = rtrim((string) preg_replace("/#.*$/", "", $line));
+            if (strlen((string) $line) == 0) {
                 continue;
             }
 
             $indent = strspn($line, " ");
 
             // line without the spaces
-            $line = trim($line);
-            if (strlen($line) == 0) {
+            $line = \trim((string) $line);
+            if (strlen((string) $line) == 0) {
                 continue;
             }
 
@@ -320,7 +320,7 @@ class Zend_Config_Yaml extends Zend_Config
 
             if (preg_match("/(?!-)([\w\-]+):\s*(.*)/", $line, $m)) {
                 // key: value
-                if (strlen($m[2])) {
+                if (strlen((string) $m[2])) {
                     // simple key: value
                     $value = preg_replace("/#.*$/", "", $m[2]);
                     $value = self::_parseValue($value);
@@ -335,8 +335,8 @@ class Zend_Config_Yaml extends Zend_Config
             } elseif ($line[0] == "-") {
                 // item in the list:
                 // - FOO
-                if (strlen($line) > 2) {
-                    $value = substr($line, 2);
+                if (strlen((string) $line) > 2) {
+                    $value = substr((string) $line, 2);
 
                     $config[] = self::_parseValue($value);
                 } else {
@@ -361,15 +361,15 @@ class Zend_Config_Yaml extends Zend_Config
      */
     protected static function _parseValue($value)
     {
-        $value = trim($value);
+        $value = \trim((string) $value);
 
         // remove quotes from string.
-        if ('"' == substr($value, 0, 1)) {
-            if ('"' == substr($value, -1)) {
-                $value = substr($value, 1, -1);
+        if ('"' == substr((string) $value, 0, 1)) {
+            if ('"' == substr((string) $value, -1)) {
+                $value = substr((string) $value, 1, -1);
             }
-        } elseif ('\'' == substr($value, 0, 1) && '\'' == substr($value, -1)) {
-            $value = strtr($value, array("''" => "'", "'" => ''));
+        } elseif ('\'' == substr((string) $value, 0, 1) && '\'' == substr((string) $value, -1)) {
+            $value = strtr((string) $value, array("''" => "'", "'" => ''));
         }
 
         // Check for booleans and constants
@@ -396,8 +396,8 @@ class Zend_Config_Yaml extends Zend_Config
     protected static function _replaceConstants($value)
     {
         foreach (self::_getConstants() as $constant) {
-            if (strstr($value, $constant)) {
-                $value = str_replace($constant, constant($constant), $value);
+            if (strstr((string) $value, $constant)) {
+                $value = str_replace((string) $constant, constant($constant), $value);
             }
         }
         return $value;

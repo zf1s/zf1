@@ -177,7 +177,7 @@ class Zend_Feed_Builder_Header_Itunes extends ArrayObject
      */
     public function setBlock($block)
     {
-        $block = strtolower($block);
+        $block = strtolower((string) $block);
         if (!in_array($block, array('yes', 'no'))) {
             /**
              * @see Zend_Feed_Builder_Exception
@@ -198,7 +198,7 @@ class Zend_Feed_Builder_Header_Itunes extends ArrayObject
      */
     public function setExplicit($explicit)
     {
-        $explicit = strtolower($explicit);
+        $explicit = strtolower((string) $explicit);
         if (!in_array($explicit, array('yes', 'no', 'clean'))) {
             /**
              * @see Zend_Feed_Builder_Exception

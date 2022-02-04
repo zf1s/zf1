@@ -42,16 +42,16 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
         $this->expectedMajorProtocolVersion = 1;
         $this->expectedMinorProtocolVersion = 2;
         $this->httpEntrySample = $this->loadResponse(
-            dirname(__FILE__) . '/_files/AppSample1.txt'
+            __DIR__ . '/_files/AppSample1.txt'
         );
         $this->httpEntrySampleWithoutVersion = $this->loadResponse(
-            dirname(__FILE__) . '/_files/AppSample2.txt'
+            __DIR__ . '/_files/AppSample2.txt'
         );
         $this->httpFeedSample = $this->loadResponse(
-            dirname(__FILE__) . '/_files/AppSample3.txt'
+            __DIR__ . '/_files/AppSample3.txt'
         );
         $this->httpFeedSampleWithoutVersion = $this->loadResponse(
-            dirname(__FILE__) . '/_files/AppSample4.txt'
+            __DIR__ . '/_files/AppSample4.txt'
         );
 
         $this->adapter = new Test_Zend_Gdata_MockHttpClient();
@@ -145,7 +145,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if (strstr($header, 'GData-Version:'))
+            if (strstr((string) $header, 'GData-Version:'))
                 $found = true;
         }
         $this->assertFalse($found, 'Version header found in V1 feed');
@@ -162,7 +162,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if (strstr($header, 'GData-Version:'))
+            if (strstr((string) $header, 'GData-Version:'))
                 $found = true;
         }
         $this->assertTrue(!$found, 'Version header found in V1 feed');
@@ -598,8 +598,8 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
 
     /**
      * When error handler is overridden to throw an ErrorException, the extension loader
-     * in Zend_Gdata will throw an ErrorException when the class doesn't exist in the 
-     * first extension directory even if it exists in subsequent ones.  This test 
+     * in Zend_Gdata will throw an ErrorException when the class doesn't exist in the
+     * first extension directory even if it exists in subsequent ones.  This test
      * enforces a fix that keeps this from happening
      *
      * @group ZF-12268
@@ -609,7 +609,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
     {
         // Override the error handler to throw an ErrorException
         set_error_handler(function($a, $b, $c, $d) { throw new ErrorException($b, 0, $a, $c, $d); }, E_ALL);
-        try { 
+        try {
             $eq = $this->service->newEventQuery();
             restore_error_handler();
             $this->assertTrue($eq instanceof Zend_Gdata_Calendar_EventQuery);

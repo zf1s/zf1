@@ -72,7 +72,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
     {
         $this->_object = new Zend_View_Helper_Gravatar();
         $this->_view   = new Zend_View();
-        $this->_view->doctype()->setDoctype(strtoupper("XHTML1_STRICT"));
+        $this->_view->doctype()->setDoctype(strtoupper((string) "XHTML1_STRICT"));
         $this->_object->setView($this->_view);
 
         if( isset($_SERVER['HTTPS'])) {
@@ -104,7 +104,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
     {
         $object = new Zend_View_Helper_Gravatar();
         $view   = new Zend_View();
-        $view->doctype()->setDoctype(strtoupper("HTML5"));
+        $view->doctype()->setDoctype(strtoupper((string) "HTML5"));
         $object->setView($view);
 
         $this->assertRegExp('/[^\/]>$/',
@@ -143,7 +143,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
 
         foreach ($img as $value) {
             $this->_object->setDefaultImg($value);
-            $this->assertEquals(urlencode($value), $this->_object->getDefaultImg());
+            $this->assertEquals(urlencode((string) $value), $this->_object->getDefaultImg());
         }
     }
 

@@ -168,7 +168,7 @@ class Zend_Controller_Request_HttpTestCase extends Zend_Controller_Request_Http
      */
     public function setMethod($type)
     {
-        $type = strtoupper(trim((string) $type));
+        $type = strtoupper((string) trim((string) $type));
         if (!in_array($type, $this->_validMethodTypes)) {
             // require_once 'Zend/Controller/Exception.php';
             throw new Zend_Controller_Exception('Invalid request method specified');
@@ -270,8 +270,8 @@ class Zend_Controller_Request_HttpTestCase extends Zend_Controller_Request_Http
      */
     protected function _normalizeHeaderName($name)
     {
-        $name = strtoupper((string) $name);
-        $name = str_replace('-', '_', $name);
+        $name = strtoupper((string) (string) $name);
+        $name = str_replace((string) '-', '_', $name);
         return $name;
     }
 }

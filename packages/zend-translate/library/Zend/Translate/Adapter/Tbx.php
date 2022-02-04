@@ -104,7 +104,7 @@ class Zend_Translate_Adapter_Tbx extends Zend_Translate_Adapter {
             }
             $this->_content .= ">";
         } else {
-            switch(strtolower($name)) {
+            switch(strtolower((string) $name)) {
                 case 'termentry':
                     $this->_termentry = null;
                     break;
@@ -131,7 +131,7 @@ class Zend_Translate_Adapter_Tbx extends Zend_Translate_Adapter {
         if (($this->_term !== null) and ($name != "term")) {
             $this->_content .= "</".$name.">";
         } else {
-            switch (strtolower($name)) {
+            switch (strtolower((string) $name)) {
                 case 'langset':
                     $this->_langset = null;
                     break;
@@ -159,10 +159,10 @@ class Zend_Translate_Adapter_Tbx extends Zend_Translate_Adapter {
 
     private function _findEncoding($filename)
     {
-        $file = file_get_contents($filename, null, null, 0, 100);
-        if (strpos($file, "encoding") !== false) {
-            $encoding = substr($file, strpos($file, "encoding") + 9);
-            $encoding = substr($encoding, 1, strpos($encoding, $encoding[0], 1) - 1);
+        $file = file_get_contents($filename, false, null, 0, 100);
+        if (strpos((string) $file, "encoding") !== false) {
+            $encoding = substr((string) $file, strpos((string) $file, "encoding") + 9);
+            $encoding = substr((string) $encoding, 1, strpos((string) $encoding, $encoding[0], 1) - 1);
             return $encoding;
         }
         return 'UTF-8';

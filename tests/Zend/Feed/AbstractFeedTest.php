@@ -51,7 +51,7 @@ abstract class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
         ) {
             $this->markTestSkipped('ONLINE feed tests are not enabled');
         }
-        $this->baseUri = rtrim(constant('TESTS_ZEND_FEED_IMPORT_ONLINE_BASEURI'), '/');
+        $this->baseUri = rtrim((string) constant('TESTS_ZEND_FEED_IMPORT_ONLINE_BASEURI'), '/');
         Zend_Feed::setHttpClient(new Zend_Http_Client());
     }
 
@@ -64,7 +64,7 @@ abstract class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
         $basePath = __DIR__ . '/_files/';
         foreach ($this->remoteFeedNames as $file) {
             $filename = $basePath . $file;
-            if (!file_exists($filename)) {
+            if (!file_exists((string) $filename)) {
                 continue;
             }
             unlink($filename);
@@ -75,9 +75,9 @@ abstract class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
     {
         $basePath = __DIR__ . '/_files/';
         $path     = $basePath . $filename;
-        $remote   = str_replace('.xml', '.remote.xml', $filename);
+        $remote   = str_replace((string) '.xml', '.remote.xml', $filename);
         $string   = file_get_contents($path);
-        $string   = str_replace('XXE_URI', $this->baseUri . '/xxe-info.txt', $string);
+        $string   = str_replace((string) 'XXE_URI', $this->baseUri . '/xxe-info.txt', $string);
         file_put_contents($basePath . '/' . $remote, $string);
         return $remote;
     }

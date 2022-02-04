@@ -38,7 +38,7 @@
 require_once 'MessageTestClass.php';
 
 /** Base Adapter test class */
-require_once dirname(__FILE__) . '/AdapterTest.php';
+require_once __DIR__ . '/AdapterTest.php';
 
 /**
  * @category   Zend
@@ -110,7 +110,7 @@ class Zend_Queue_Adapter_ArrayTest extends Zend_Queue_Adapter_AdapterTest
         $got = $adapter->getData();
         $this->assertEquals($data['test'], $got['test']);
     }
-    
+
     /**
      * @group ZF-7650
      */

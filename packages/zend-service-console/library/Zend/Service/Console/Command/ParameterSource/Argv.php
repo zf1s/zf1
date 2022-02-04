@@ -59,9 +59,9 @@ class Zend_Service_Console_Command_ParameterSource_Argv
 				break;
 			}
 		}
-		if (strtolower($parameterValue) == 'true') {
+		if (strtolower((string) $parameterValue) == 'true') {
 			$parameterValue = true;
-		} else if (strtolower($parameterValue) == 'false') {
+		} else if (strtolower((string) $parameterValue) == 'false') {
 			$parameterValue = false;
 		}
 

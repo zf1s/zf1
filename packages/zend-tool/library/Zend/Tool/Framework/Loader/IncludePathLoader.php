@@ -60,14 +60,14 @@ class Zend_Tool_Framework_Loader_IncludePathLoader extends Zend_Tool_Framework_L
             $filterDenyDirectoryPattern = '.*(/|\\\\).svn';
             $filterAcceptFilePattern    = '.*(?:Manifest|Provider)\.php$';
 
-            if (!file_exists($path) || $path[0] == '.') {
+            if (!file_exists((string) $path) || $path[0] == '.') {
                 continue;
             }
 
             $realIncludePath = realpath($path);
 
             // ensure that we only traverse a single version of Zend Framework on all include paths
-            if (file_exists($realIncludePath . '/Zend/Tool/Framework/Loader/IncludePathLoader.php')) {
+            if (file_exists((string) $realIncludePath . '/Zend/Tool/Framework/Loader/IncludePathLoader.php')) {
                 if ($isZendTraversed === false) {
                     $isZendTraversed = true;
                 } else {
@@ -130,7 +130,7 @@ class Zend_Tool_Framework_Loader_IncludePathLoader extends Zend_Tool_Framework_L
         );
 
         foreach($blacklist AS $blacklitedPattern) {
-            if(strpos($file, $blacklitedPattern) !== false) {
+            if(strpos((string) $file, $blacklitedPattern) !== false) {
                 return true;
             }
         }

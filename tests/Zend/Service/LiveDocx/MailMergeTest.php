@@ -74,7 +74,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
             $this->phpLiveDocx->deleteTemplate($template['filename']);
         }
 
-        $this->path = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'MailMerge');
+        $this->path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'MailMerge');
     }
 
     public function tearDown()
@@ -290,7 +290,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
         $this->phpLiveDocx->createDocument();
         foreach($expectedResults as $format => $hash) {
             $document = $this->phpLiveDocx->retrieveDocument($format);
-            $this->assertEquals($hash, md5($document));
+            $this->assertEquals($hash, md5((string) $document));
         }
         $this->phpLiveDocx->deleteTemplate(self::TEST_TEMPLATE_1);
 
@@ -300,7 +300,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
         $this->phpLiveDocx->createDocument();
         foreach($expectedResults as $format => $hash) {
             $document = $this->phpLiveDocx->retrieveDocument($format);
-            $this->assertEquals($hash, md5($document));
+            $this->assertEquals($hash, md5((string) $document));
         }
     }
 
@@ -345,7 +345,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
         $this->phpLiveDocx->createDocument();
         foreach($expectedResults as $format => $hash) {
             $document = $this->phpLiveDocx->retrieveDocument($format);
-            $this->assertEquals($hash, md5($document));
+            $this->assertEquals($hash, md5((string) $document));
         }
         $this->phpLiveDocx->deleteTemplate(self::TEST_TEMPLATE_1);
 
@@ -355,7 +355,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
         $this->phpLiveDocx->createDocument();
         foreach($expectedResults as $format => $hash) {
             $document = $this->phpLiveDocx->retrieveDocument($format);
-            $this->assertEquals($hash, md5($document));
+            $this->assertEquals($hash, md5((string) $document));
         }
     }
 
@@ -412,7 +412,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
         $this->phpLiveDocx->createDocument();
         foreach($this->phpLiveDocx->getImageExportFormats() as $format) {
             $bitmaps = $this->phpLiveDocx->getBitmaps(1, 1, 20, $format);
-            $this->assertEquals($expectedResults[$format], md5(serialize($bitmaps)));
+            $this->assertEquals($expectedResults[$format], md5((string) serialize($bitmaps)));
         }
     }
 
@@ -441,7 +441,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
         $this->phpLiveDocx->createDocument();
         foreach($this->phpLiveDocx->getImageExportFormats() as $format) {
             $bitmaps = $this->phpLiveDocx->getAllBitmaps(20, $format);
-            $this->assertEquals($expectedResults[$format], md5(serialize($bitmaps)));
+            $this->assertEquals($expectedResults[$format], md5((string) serialize($bitmaps)));
         }
     }
 
@@ -520,7 +520,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
         $expectedResults = '2f076af778ca5f8afc9661cfb9deb7c6';
         $this->phpLiveDocx->uploadTemplate($this->path . DIRECTORY_SEPARATOR . self::TEST_TEMPLATE_2);
         $template = $this->phpLiveDocx->downloadTemplate(self::TEST_TEMPLATE_2);
-        $this->assertEquals($expectedResults, md5($template));
+        $this->assertEquals($expectedResults, md5((string) $template));
     }
 
     public function testDeleteTemplate()
@@ -563,7 +563,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
 
         // Is all info about templates correct?
         foreach($templates as $template) {
-            $this->assertTrue(strlen($template['filename']) > 0);
+            $this->assertTrue(strlen((string) $template['filename']) > 0);
             $this->assertTrue($template['fileSize'] > 1);
             $this->assertTrue($template['createTime'] > mktime(0, 0, 0, 1, 1, 1980));
             $this->assertTrue($template['modifyTime'] > mktime(0, 0, 0, 1, 1, 1980));
@@ -594,7 +594,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
         $expectedResults = 'f8b663e465acd570414395d5c33541ab';
         $this->phpLiveDocx->uploadImage($this->path . DIRECTORY_SEPARATOR . self::TEST_IMAGE_2);
         $image = $this->phpLiveDocx->downloadImage(self::TEST_IMAGE_2);
-        $this->assertEquals($expectedResults, md5($image));
+        $this->assertEquals($expectedResults, md5((string) $image));
     }
 
     public function testDeleteImage()
@@ -637,7 +637,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends PHPUnit_Framework_TestCase
 
         // Is all info about images correct?
         foreach($images as $image) {
-            $this->assertTrue(strlen($image['filename']) > 0);
+            $this->assertTrue(strlen((string) $image['filename']) > 0);
             $this->assertTrue($image['fileSize'] > 1);
             $this->assertTrue($image['createTime'] > mktime(0, 0, 0, 1, 1, 1980));
             $this->assertTrue($image['modifyTime'] > mktime(0, 0, 0, 1, 1, 1980));

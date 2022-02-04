@@ -137,7 +137,7 @@ class Zend_Dojo_View_Helper_EditorTest extends PHPUnit_Framework_TestCase
         $plugins = array('copy', 'cut', 'paste');
         $html = $this->helper->editor('foo', '', array('plugins' => $plugins));
         $pluginsString = Zend_Json::encode($plugins);
-        $pluginsString = str_replace('"', "'", $pluginsString);
+        $pluginsString = str_replace((string) '"', "'", $pluginsString);
         $this->assertContains('plugins="' . $pluginsString . '"', $html);
     }
 
@@ -147,7 +147,7 @@ class Zend_Dojo_View_Helper_EditorTest extends PHPUnit_Framework_TestCase
         $onLoadActions = $this->view->dojo()->getOnLoadActions();
         $found = false;
         foreach ($onLoadActions as $action) {
-            if (strstr($action, "value = dijit.byId('foo-Editor').getValue(false);")) {
+            if (strstr((string) $action, "value = dijit.byId('foo-Editor').getValue(false);")) {
                 $found = true;
                 break;
             }
@@ -161,7 +161,7 @@ class Zend_Dojo_View_Helper_EditorTest extends PHPUnit_Framework_TestCase
         $javascript = $this->view->dojo()->getJavascript();
         $found = false;
         foreach ($javascript as $action) {
-            if (strstr($action, "zend.findParentForm = function")) {
+            if (strstr((string) $action, "zend.findParentForm = function")) {
                 $found = true;
                 break;
             }
@@ -227,7 +227,7 @@ class Zend_Dojo_View_Helper_EditorTest extends PHPUnit_Framework_TestCase
         $extraPlugins = array('copy', 'cut', 'paste');
         $html = $this->helper->editor('foo', '', array('extraPlugins' => $extraPlugins));
         $pluginsString = Zend_Json::encode($extraPlugins);
-        $pluginsString = str_replace('"', "'", $pluginsString);
+        $pluginsString = str_replace((string) '"', "'", $pluginsString);
         $this->assertContains('extraPlugins="' . $pluginsString . '"', $html);
     }
 }

@@ -163,7 +163,7 @@ class Zend_Feed_Rss extends Zend_Feed_Abstract
             $editor .= ' (' . $array->author . ')';
         }
         if (!empty($editor)) {
-            $author = $this->_element->createElement('managingEditor', ltrim($editor));
+            $author = $this->_element->createElement('managingEditor', ltrim((string) $editor));
             $channel->appendChild($author);
         }
         if (isset($array->webmaster)) {

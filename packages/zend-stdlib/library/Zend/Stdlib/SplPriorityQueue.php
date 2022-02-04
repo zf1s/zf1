@@ -39,11 +39,11 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
     /**
      * Insert a value with a given priority
      *
-     * Utilizes {@var $serial} to ensure that values of equal priority are 
+     * Utilizes {@var $serial} to ensure that values of equal priority are
      * emitted in the same order in which they are inserted.
-     * 
-     * @param  mixed $datum 
-     * @param  mixed $priority 
+     *
+     * @param  mixed $datum
+     * @param  mixed $priority
      * @return void
      */
     public function insert($datum, $priority)
@@ -62,7 +62,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
      * Serialize to an array
      *
      * Array will be priority => data pairs
-     * 
+     *
      * @return array
      */
     public function toArray()
@@ -91,7 +91,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
 
     /**
      * Serialize
-     * 
+     *
      * @return string
      */
     public function serialize()
@@ -112,15 +112,42 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
         return serialize($data);
     }
 
+    #[\ReturnTypeWillChange]
+    public function __serialize()
+    {
+        $data = array();
+        $this->setExtractFlags(self::EXTR_BOTH);
+        while ($this->valid()) {
+            $data[] = $this->current();
+            $this->next();
+        }
+        $this->setExtractFlags(self::EXTR_DATA);
+
+        // Iterating through a priority queue removes items
+        foreach ($data as $item) {
+            $this->insert($item['data'], $item['priority']);
+        }
+
+        return $data;
+    }
+
     /**
      * Deserialize
-     * 
+     *
      * @param  string $data
      * @return void
      */
     public function unserialize($data)
     {
         foreach (unserialize($data) as $item) {
+            $this->insert($item['data'], $item['priority']);
+        }
+    }
+
+    #[\ReturnTypeWillChange]
+    public function __unserialize($data)
+    {
+        foreach ($data as $item) {
             $this->insert($item['data'], $item['priority']);
         }
     }

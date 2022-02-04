@@ -116,7 +116,7 @@ class Zend_Http_Client_Adapter_Test implements Zend_Http_Client_Adapter_Interfac
         }
 
         foreach ($config as $k => $v) {
-            $this->config[strtolower($k)] = $v;
+            $this->config[strtolower((string) $k)] = $v;
         }
     }
 
@@ -152,7 +152,7 @@ class Zend_Http_Client_Adapter_Test implements Zend_Http_Client_Adapter_Interfac
     public function write($method, $uri, $http_ver = '1.1', $headers = array(), $body = '')
     {
         $host = $uri->getHost();
-            $host = (strtolower($uri->getScheme()) == 'https' ? 'sslv2://' . $host : $host);
+            $host = (strtolower((string) $uri->getScheme()) == 'https' ? 'sslv2://' . $host : $host);
 
         // Build request headers
         $path = $uri->getPath();

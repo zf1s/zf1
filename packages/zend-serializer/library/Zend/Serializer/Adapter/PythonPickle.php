@@ -434,7 +434,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
         }
 
         if ($this->_binary) {
-            $n = strlen($value);
+            $n = strlen((string) $value);
             if ($n <= 0xff) {
                 // self.write(SHORT_BINSTRING + chr(n) + obj)
                 $this->_pickle .= self::OP_SHORT_BINSTRING . chr($n) . $value;
@@ -577,7 +577,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
             $enclosure     = "'";
         }
 
-        return $enclosure . strtr($str, $quoteArr) . $enclosure;
+        return $enclosure . strtr((string) $str, $quoteArr) . $enclosure;
     }
 
     /* unserialize */
@@ -595,7 +595,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
         // init process vars
         $this->_pos       = 0;
         $this->_pickle    = $pickle;
-        $this->_pickleLen = strlen($this->_pickle);
+        $this->_pickleLen = strlen((string) $this->_pickle);
         $this->_memo      = array();
         $this->_stack     = array();
 
@@ -780,7 +780,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      */
     protected function _loadBinPut()
     {
-        $id = ord($this->_read(1));
+        $id = ord((string) $this->_read(1));
 
         $lastStack = count($this->_stack)-1;
         if (!isset($this->_stack[$lastStack])) {
@@ -837,7 +837,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      */
     protected function _loadBinGet()
     {
-        $id = ord($this->_read(1));
+        $id = ord((string) $this->_read(1));
 
         if (!array_key_exists($id, $this->_memo)) {
             // require_once 'Zend/Serializer/Exception.php';
@@ -936,7 +936,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      */
     protected function _loadBinInt1()
     {
-        $this->_stack[] = ord($this->_read(1));
+        $this->_stack[] = ord((string) $this->_read(1));
     }
 
     /**
@@ -958,7 +958,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      */
     protected function _loadLong()
     {
-        $data = rtrim($this->_readline(), 'L');
+        $data = rtrim((string) $this->_readline(), 'L');
         if ($data === '') {
             $this->_stack[] = 0;
         } else {
@@ -973,7 +973,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      */
     protected function _loadLong1()
     {
-        $n    = ord($this->_read(1));
+        $n    = ord((string) $this->_read(1));
         $data = $this->_read($n);
         $this->_stack[] = $this->_decodeBinLong($data);
     }
@@ -1053,7 +1053,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      */
     protected function _loadShortBinString()
     {
-        $len            = ord($this->_read(1));
+        $len            = ord((string) $this->_read(1));
         $this->_stack[] = (string)$this->_read($len);
     }
 
@@ -1080,7 +1080,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      */
     protected function _loadShortBinBytes()
     {
-        $n              = ord($this->_read(1));
+        $n              = ord((string) $this->_read(1));
         $this->_stack[] = $this->_read($n);
     }
 
@@ -1348,7 +1348,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      */
     protected function _loadProto()
     {
-        $proto = ord($this->_read(1));
+        $proto = ord((string) $this->_read(1));
         if ($proto < 2 || $proto > 3) {
             // require_once 'Zend/Serializer/Exception.php';
             throw new Zend_Serializer_Exception('Invalid protocol version detected');
@@ -1373,7 +1373,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
         }
 
         $this->_pos+= $len;
-        return substr($this->_pickle, ($this->_pos - $len), $len);
+        return substr((string) $this->_pickle, ($this->_pos - $len), $len);
     }
 
     /**
@@ -1385,9 +1385,9 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
     protected function _readline()
     {
         $eolLen = 2;
-        $eolPos = strpos($this->_pickle, "\r\n", $this->_pos);
+        $eolPos = strpos((string) $this->_pickle, "\r\n", $this->_pos);
         if ($eolPos === false) {
-            $eolPos = strpos($this->_pickle, "\n", $this->_pos);
+            $eolPos = strpos((string) $this->_pickle, "\n", $this->_pos);
             $eolLen = 1;
         }
 
@@ -1395,7 +1395,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
             // require_once 'Zend/Serializer/Exception.php';
             throw new Zend_Serializer_Exception('No new line found');
         }
-        $ret        = substr($this->_pickle, $this->_pos, $eolPos-$this->_pos);
+        $ret        = substr((string) $this->_pickle, $this->_pos, $eolPos-$this->_pos);
         $this->_pos = $eolPos + $eolLen;
 
         return $ret;
@@ -1417,7 +1417,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
             $quoteArr["\\'"] = "'";
         }
 
-        return strtr(substr(trim($str), 1, -1), $quoteArr);
+        return strtr((string) substr((string) \trim((string) $str), 1, -1), $quoteArr);
     }
 
     /**
@@ -1443,7 +1443,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      */
     protected function _decodeBinLong($data)
     {
-        $nbytes = strlen($data);
+        $nbytes = strlen((string) $data);
 
         if ($nbytes == 0) {
             return 0;
@@ -1457,17 +1457,17 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
             }
 
             for ($i=0; $i<$nbytes; $i++) {
-                $long = bcadd($long, bcmul(ord($data[$i]), bcpow(256, $i, 0)));
+                $long = bcadd($long, bcmul(ord((string) $data[$i]), bcpow(256, $i, 0)));
             }
-            if (0x80 <= ord($data[$nbytes-1])) {
+            if (0x80 <= ord((string) $data[$nbytes-1])) {
                 $long = bcsub($long, bcpow(2, $nbytes * 8));
             }
 
         } else {
             for ($i=0; $i<$nbytes; $i++) {
-                $long+= ord($data[$i]) * pow(256, $i);
+                $long+= ord((string) $data[$i]) * pow(256, $i);
             }
-            if (0x80 <= ord($data[$nbytes-1])) {
+            if (0x80 <= ord((string) $data[$nbytes-1])) {
                 $long-= pow(2, $nbytes * 8);
                 // $long-= 1 << ($nbytes * 8);
             }

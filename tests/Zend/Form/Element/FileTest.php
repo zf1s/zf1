@@ -115,9 +115,9 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
         $this->element->addPrefixPath('Foo', 'Foo');
         foreach (array('validate', 'filter', 'decorator', 'transfer_adapter') as $type) {
             $loader = $this->element->getPluginLoader($type);
-            $string = str_replace('_', ' ', $type);
+            $string = str_replace((string) '_', ' ', $type);
             $string = ucwords($string);
-            $string = str_replace(' ', '_', $string);
+            $string = str_replace((string) ' ', '_', $string);
             $prefix = 'Foo_' . $string;
             $paths  = $loader->getPaths($prefix);
             $this->assertInternalType('array', $paths, "Failed asserting paths found for prefix $prefix");
@@ -296,7 +296,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
 
     public function testSettingMaxFileSize()
     {
-        $max = $this->_convertIniToInteger(trim(ini_get('upload_max_filesize')));
+        $max = $this->_convertIniToInteger(\trim((string) ini_get('upload_max_filesize')));
 
         $this->assertEquals(0, $this->element->getMaxFileSize());
         $this->element->setMaxFileSize($max);
@@ -454,8 +454,8 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     private function _convertIniToInteger($setting)
     {
         if (!is_numeric($setting)) {
-            $type = strtoupper(substr($setting, -1));
-            $setting = (integer) substr($setting, 0, -1);
+            $type = strtoupper((string) substr((string) $setting, -1));
+            $setting = (integer) substr((string) $setting, 0, -1);
 
             switch ($type) {
                 case 'M' :

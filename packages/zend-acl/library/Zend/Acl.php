@@ -603,7 +603,7 @@ class Zend_Acl
                             Zend_Acl_Assert_Interface $assert = null)
     {
         // ensure that the rule type is valid; normalize input to uppercase
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         if (self::TYPE_ALLOW !== $type && self::TYPE_DENY !== $type) {
             // require_once 'Zend/Acl/Exception.php';
             throw new Zend_Acl_Exception("Unsupported rule type; must be either '" . self::TYPE_ALLOW . "' or '"

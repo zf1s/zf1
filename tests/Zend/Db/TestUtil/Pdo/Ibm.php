@@ -168,7 +168,7 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
 
     public function getServer()
     {
-        return substr($this->_db->getConnection()->getAttribute(PDO::ATTR_SERVER_INFO), 0, 3);
+        return substr((string) $this->_db->getConnection()->getAttribute(PDO::ATTR_SERVER_INFO), 0, 3);
     }
 
     protected function _rawQuery($sql)

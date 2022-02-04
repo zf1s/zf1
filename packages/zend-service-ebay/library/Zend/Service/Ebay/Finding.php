@@ -407,7 +407,7 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
         }
 
         // throw exception when an error was detected
-        if (strlen($message) > 0) {
+        if (strlen((string) $message) > 0) {
             /**
              * @see Zend_Service_Ebay_Finding_Exception
              */

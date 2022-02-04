@@ -94,7 +94,7 @@ class Zend_Mail_Storage_Folder_Maildir extends Zend_Mail_Storage_Maildir impleme
             throw new Zend_Mail_Storage_Exception('no valid dirname given in params');
         }
 
-        $this->_rootdir = rtrim($params->dirname, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        $this->_rootdir = rtrim((string) $params->dirname, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
         $this->_delim = isset($params->delim) ? $params->delim : '.';
 
@@ -146,9 +146,9 @@ class Zend_Mail_Storage_Folder_Maildir extends Zend_Mail_Storage_Maildir impleme
 
         foreach ($dirs as $dir) {
             do {
-                if (strpos($dir, $parent) === 0) {
-                    $local = substr($dir, strlen($parent));
-                    if (strpos($local, $this->_delim) !== false) {
+                if (strpos((string) $dir, $parent) === 0) {
+                    $local = substr((string) $dir, strlen((string) $parent));
+                    if (strpos((string) $local, $this->_delim) !== false) {
                         /**
                          * @see Zend_Mail_Storage_Exception
                          */
@@ -157,7 +157,7 @@ class Zend_Mail_Storage_Folder_Maildir extends Zend_Mail_Storage_Maildir impleme
                     }
                     array_push($stack, $parent);
                     $parent = $dir . $this->_delim;
-                    $folder = new Zend_Mail_Storage_Folder($local, substr($dir, 1), true);
+                    $folder = new Zend_Mail_Storage_Folder($local, substr((string) $dir, 1), true);
                     $parentFolder->$local = $folder;
                     array_push($folderStack, $parentFolder);
                     $parentFolder = $folder;
@@ -191,11 +191,11 @@ class Zend_Mail_Storage_Folder_Maildir extends Zend_Mail_Storage_Maildir impleme
         }
 
         // rootdir is same as INBOX in maildir
-        if (strpos($rootFolder, 'INBOX' . $this->_delim) === 0) {
-            $rootFolder = substr($rootFolder, 6);
+        if (strpos((string) $rootFolder, 'INBOX' . $this->_delim) === 0) {
+            $rootFolder = substr((string) $rootFolder, 6);
         }
         $currentFolder = $this->_rootFolder;
-        $subname = trim($rootFolder, $this->_delim);
+        $subname = \trim((string) $rootFolder, $this->_delim);
         while ($currentFolder) {
             @list($entry, $subname) = @explode($this->_delim, $subname, 2);
             $currentFolder = $currentFolder->$entry;
@@ -204,7 +204,7 @@ class Zend_Mail_Storage_Folder_Maildir extends Zend_Mail_Storage_Maildir impleme
             }
         }
 
-        if ($currentFolder->getGlobalName() != rtrim($rootFolder, $this->_delim)) {
+        if ($currentFolder->getGlobalName() != rtrim((string) $rootFolder, $this->_delim)) {
             /**
              * @see Zend_Mail_Storage_Exception
              */

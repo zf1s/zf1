@@ -1681,7 +1681,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
             . "\n" . ' INNER JOIN ' . $this->_db->quoteTableAs('doo', 'd')
             . "\n" . ' LEFT JOIN ' . $this->_db->quoteTableAs('bar', 'b') . ' ON f.columnfoo2 = b.barcolumn2';
         if ($quote != '`') {
-            $target = str_replace('`', $quote, $target);
+            $target = str_replace((string) '`', $quote, $target);
         }
         $this->assertEquals($target, $select->assemble());
     }

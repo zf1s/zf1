@@ -33,9 +33,9 @@
 class Zend_Filter_StringTrim implements Zend_Filter_Interface
 {
     /**
-     * List of characters provided to the trim() function
+     * List of characters provided to the \trim((string) ) function
      *
-     * If this is null, then trim() is called with no specific character list,
+     * If this is null, then \trim((string) ) is called with no specific character list,
      * and its default behavior will be invoked, trimming whitespace.
      *
      * @var string|null

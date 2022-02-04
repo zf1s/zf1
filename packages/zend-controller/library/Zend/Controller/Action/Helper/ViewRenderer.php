@@ -353,7 +353,7 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
 
         $class = get_class($this->_actionController);
 
-        if (!strstr($class, '_')) {
+        if (!strstr((string) $class, '_')) {
             return $default;
         }
 
@@ -362,7 +362,7 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
             return $default;
         }
 
-        $prefix = substr($class, 0, strpos($class, '_')) . '_View';
+        $prefix = substr((string) $class, 0, strpos((string) $class, '_')) . '_View';
 
         return $prefix;
     }
@@ -486,7 +486,7 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
         $pathExists   = false;
         foreach ($currentPaths as $tmpPath) {
             $tmpPath = str_replace(array('/', '\\'), '/', $tmpPath);
-            if (strstr($tmpPath, $path)) {
+            if (strstr((string) $tmpPath, $path)) {
                 $pathExists = true;
                 break;
             }
@@ -626,7 +626,7 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
         } elseif (null !== $action) {
             $vars['action'] = $action;
         }
-        
+
         $replacePattern = array('/[^a-z0-9]+$/i', '/^[^a-z0-9]+/i');
         $vars['action'] = preg_replace($replacePattern, '', $vars['action']);
 
@@ -850,8 +850,8 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
         $filter     = new Zend_Filter_Word_CamelCaseToDash();
         $controller = $filter->filter($request->getControllerName());
         $controller = $dispatcher->formatControllerName($controller);
-        if ('Controller' == substr($controller, -10)) {
-            $controller = substr($controller, 0, -10);
+        if ('Controller' == substr((string) $controller, -10)) {
+            $controller = substr((string) $controller, 0, -10);
         }
 
         // Format action name

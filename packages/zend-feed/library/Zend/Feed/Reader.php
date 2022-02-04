@@ -237,7 +237,7 @@ class Zend_Feed_Reader
         $client->setHeaders('If-None-Match', null);
         $client->setHeaders('If-Modified-Since', null);
         $client->setUri($uri);
-        $cacheId = 'Zend_Feed_Reader_' . md5($uri);
+        $cacheId = 'Zend_Feed_Reader_' . md5((string) $uri);
 
         if (self::$_httpConditionalGet && $cache) {
             $data = $cache->load($cacheId);
@@ -322,7 +322,7 @@ class Zend_Feed_Reader
         $dom  = $feed->getDOM()->ownerDocument;
         $type = self::detectType($dom);
         self::_registerCoreExtensions();
-        if (substr($type, 0, 3) == 'rss') {
+        if (substr((string) $type, 0, 3) == 'rss') {
             $reader = new Zend_Feed_Reader_Feed_Rss($dom, $type);
         } else {
             $reader = new Zend_Feed_Reader_Feed_Atom($dom, $type);
@@ -341,8 +341,8 @@ class Zend_Feed_Reader
     {
         $dom = new DOMDocument;
         try {
-            $dom = Zend_Xml_Security::scan($string, $dom);        
-        } catch (Zend_Xml_Exception $e) {    
+            $dom = Zend_Xml_Security::scan($string, $dom);
+        } catch (Zend_Xml_Exception $e) {
             // require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception(
                 $e->getMessage()
@@ -365,11 +365,11 @@ class Zend_Feed_Reader
 
         self::_registerCoreExtensions();
 
-        if (substr($type, 0, 3) == 'rss') {
+        if (substr((string) $type, 0, 3) == 'rss') {
             $reader = new Zend_Feed_Reader_Feed_Rss($dom, $type);
-        } elseif (substr($type, 8, 5) == 'entry') {
+        } elseif (substr((string) $type, 8, 5) == 'entry') {
             $reader = new Zend_Feed_Reader_Entry_Atom($dom->documentElement, 0, Zend_Feed_Reader::TYPE_ATOM_10);
-        } elseif (substr($type, 0, 4) == 'atom') {
+        } elseif (substr((string) $type, 0, 4) == 'atom') {
             $reader = new Zend_Feed_Reader_Feed_Atom($dom, $type);
         } else {
             // require_once 'Zend/Feed/Exception.php';
@@ -495,7 +495,7 @@ class Zend_Feed_Reader
             $type = self::TYPE_RSS_ANY;
             $version = $xpath->evaluate('string(/rss/@version)');
 
-            if (strlen($version) > 0) {
+            if (strlen((string) $version) > 0) {
                 switch($version) {
                     case '2.0':
                         $type = self::TYPE_RSS_20;
@@ -605,8 +605,8 @@ class Zend_Feed_Reader
      */
     public static function addPrefixPath($prefix, $path)
     {
-        $prefix = rtrim($prefix, '_');
-        $path   = rtrim($path, DIRECTORY_SEPARATOR);
+        $prefix = rtrim((string) $prefix, '_');
+        $path   = rtrim((string) $path, DIRECTORY_SEPARATOR);
         self::getPluginLoader()->addPrefixPath($prefix, $path);
     }
 

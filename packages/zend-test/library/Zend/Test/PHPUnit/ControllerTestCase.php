@@ -225,7 +225,7 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
         $registry = Zend_Registry::getInstance();
         $remove   = array();
         foreach ($registry as $key => $value) {
-            if (strstr($key, '_View_')) {
+            if (strstr((string) $key, '_View_')) {
                 $remove[] = $key;
             }
         }

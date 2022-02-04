@@ -39,7 +39,7 @@ class Zend_Tool_Framework_Client_Storage_Directory
 
     public function __construct($directoryPath)
     {
-        if (!file_exists($directoryPath)) {
+        if (!file_exists((string) $directoryPath)) {
             throw new Zend_Tool_Framework_Client_Exception(__CLASS__ . ': the supplied directory does not exist');
         }
         $this->_directoryPath = $directoryPath;
@@ -57,7 +57,7 @@ class Zend_Tool_Framework_Client_Storage_Directory
 
     public function has($name)
     {
-        return file_exists($this->_directoryPath . DIRECTORY_SEPARATOR . $name);
+        return file_exists((string) $this->_directoryPath . DIRECTORY_SEPARATOR . $name);
     }
 
     public function remove($name)

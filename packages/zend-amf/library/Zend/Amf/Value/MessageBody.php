@@ -174,7 +174,7 @@ class Zend_Amf_Value_MessageBody
     public function setReplyMethod($methodName)
     {
         if (!preg_match('#^[/?]#', $methodName)) {
-            $this->_targetUri = rtrim($this->_targetUri, '/') . '/';
+            $this->_targetUri = rtrim((string) $this->_targetUri, '/') . '/';
         }
         $this->_targetUri = $this->_targetUri . $methodName;
         return $this;

@@ -72,11 +72,11 @@ class Zend_Rest_RouteTest extends PHPUnit_Framework_TestCase
         $this->_dispatcher = $this->_front->getDispatcher();
 
         $this->_dispatcher->setControllerDirectory(array(
-            'default' => dirname(__FILE__) . DIRECTORY_SEPARATOR .
+            'default' => __DIR__ . DIRECTORY_SEPARATOR .
                 '..' . DIRECTORY_SEPARATOR .
                 'Controller' . DIRECTORY_SEPARATOR .
                 '_files',
-            'mod'     => dirname(__FILE__) . DIRECTORY_SEPARATOR .
+            'mod'     => __DIR__ . DIRECTORY_SEPARATOR .
                 '..' . DIRECTORY_SEPARATOR .
                 'Controller' . DIRECTORY_SEPARATOR .
                 '_files' . DIRECTORY_SEPARATOR .
@@ -93,7 +93,7 @@ class Zend_Rest_RouteTest extends PHPUnit_Framework_TestCase
     public function test_getInstance_fromINIConfig()
     {
     	// require_once('Zend/Config/Ini.php');
-    	$config = new Zend_Config_Ini(dirname(__FILE__) . '/../Controller/_files/routes.ini', 'testing');
+    	$config = new Zend_Config_Ini(__DIR__ . '/../Controller/_files/routes.ini', 'testing');
     	// require_once('Zend/Controller/Router/Rewrite.php');
     	$router = new Zend_Controller_Router_Rewrite();
     	$router->addConfig($config, 'routes');

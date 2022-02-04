@@ -78,13 +78,13 @@ class Zend_AllTests_StreamWrapper_PhpInput
 
     public static function methodWillReturn($methodName, $returnValue)
     {
-        $methodName = strtolower($methodName);
+        $methodName = strtolower((string) $methodName);
         self::$_returnValues[$methodName] = $returnValue;
     }
 
     public static function argumentsPassedTo($methodName)
     {
-        $methodName = strtolower($methodName);
+        $methodName = strtolower((string) $methodName);
         if (isset(self::$_arguments[$methodName])) {
             return self::$_arguments[$methodName];
         }
@@ -111,7 +111,7 @@ class Zend_AllTests_StreamWrapper_PhpInput
             return self::$_returnValues[__FUNCTION__];
         }
 
-        return (0 == strlen(self::$_data));
+        return (0 == strlen((string) self::$_data));
     }
 
     public function stream_read($count)
@@ -124,12 +124,12 @@ class Zend_AllTests_StreamWrapper_PhpInput
 
         // To match the behavior of php://input, we need to clear out the data
         // as it is read
-        if ($count > strlen(self::$_data)) {
+        if ($count > strlen((string) self::$_data)) {
             $data = self::$_data;
             self::$_data = '';
         } else {
-            $data = substr(self::$_data, 0, $count);
-            self::$_data = substr(self::$_data, $count);
+            $data = substr((string) self::$_data, 0, $count);
+            self::$_data = substr((string) self::$_data, $count);
         }
         return $data;
     }

@@ -57,7 +57,7 @@ class Zend_Application_Resource_Mail extends Zend_Application_Resource_ResourceA
         if (null === $this->_transport) {
             $options = $this->getOptions();
             foreach ($options as $key => $option) {
-                $options[strtolower($key)] = $option;
+                $options[strtolower((string) $key)] = $option;
             }
             $this->setOptions($options);
 
@@ -84,7 +84,7 @@ class Zend_Application_Resource_Mail extends Zend_Application_Resource_ResourceA
 
     protected function _setDefaults($type)
     {
-        $key = strtolower('default' . $type);
+        $key = strtolower((string) 'default' . $type);
         $options = $this->getOptions();
 
         if (isset($options[$key]['email'])
@@ -113,7 +113,7 @@ class Zend_Application_Resource_Mail extends Zend_Application_Resource_ResourceA
 
         $transportName = $options['type'];
         if (!class_exists($transportName)) {
-            $transportName = ucfirst(strtolower($transportName));
+            $transportName = ucfirst(strtolower((string) $transportName));
 
             if (!class_exists($transportName)) {
                 $transportName = 'Zend_Mail_Transport_' . $transportName;

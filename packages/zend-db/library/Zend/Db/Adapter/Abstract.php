@@ -240,7 +240,7 @@ abstract class Zend_Db_Adapter_Abstract
 
         if (array_key_exists(Zend_Db::FETCH_MODE, $options)) {
             if (is_string($options[Zend_Db::FETCH_MODE])) {
-                $constant = 'Zend_Db::FETCH_' . strtoupper($options[Zend_Db::FETCH_MODE]);
+                $constant = 'Zend_Db::FETCH_' . strtoupper((string) $options[Zend_Db::FETCH_MODE]);
                 if(defined($constant)) {
                     $options[Zend_Db::FETCH_MODE] = constant($constant);
                 }
@@ -875,7 +875,7 @@ abstract class Zend_Db_Adapter_Abstract
             return implode(', ', $value);
         }
 
-        if ($type !== null && array_key_exists($type = strtoupper($type), $this->_numericDataTypes)) {
+        if ($type !== null && array_key_exists($type = strtoupper((string) $type), $this->_numericDataTypes)) {
             $quotedValue = '0';
             switch ($this->_numericDataTypes[$type]) {
                 case Zend_Db::INT_TYPE: // 32-bit integer
@@ -928,7 +928,7 @@ abstract class Zend_Db_Adapter_Abstract
     public function quoteInto($text, $value, $type = null, $count = null)
     {
         if ($count === null) {
-            return str_replace('?', $this->quote($value, $type), $text);
+            return str_replace((string) '?', $this->quote($value, $type), $text);
         } else {
             return implode($this->quote($value, $type), explode('?', $text, $count + 1));
         }
@@ -1040,7 +1040,7 @@ abstract class Zend_Db_Adapter_Abstract
     {
         if ($auto === false || $this->_autoQuoteIdentifiers === true) {
             $q = $this->getQuoteIdentifierSymbol();
-            return ($q . str_replace("$q", "$q$q", $value) . $q);
+            return ($q . str_replace((string) "$q", "$q$q", $value) . $q);
         }
         return $value;
     }
@@ -1100,7 +1100,7 @@ abstract class Zend_Db_Adapter_Abstract
                 $value = strtolower((string) $key);
                 break;
             case Zend_Db::CASE_UPPER:
-                $value = strtoupper((string) $key);
+                $value = strtoupper((string) (string) $key);
                 break;
             case Zend_Db::CASE_NATURAL:
             default:

@@ -141,7 +141,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
      */
     public static function lowerCase(&$value, $key)
     {
-        return $value = strtolower($value);
+        return $value = strtolower((string) $value);
     }
 
     /**
@@ -198,8 +198,8 @@ class Zend_Rest_Server implements Zend_Server_Interface
                     $callingArgs = array();
                     $missingArgs = array();
                     foreach ($funcArgs as $i => $arg) {
-                        if (isset($request[strtolower($arg->getName())])) {
-                            $callingArgs[$i] = $request[strtolower($arg->getName())];
+                        if (isset($request[strtolower((string) $arg->getName())])) {
+                            $callingArgs[$i] = $request[strtolower((string) $arg->getName())];
                         } elseif ($arg->isOptional()) {
                             $callingArgs[$i] = $arg->getDefaultValue();
                         } else {
@@ -209,8 +209,8 @@ class Zend_Rest_Server implements Zend_Server_Interface
 
                     $anonymousArgs = array();
                     foreach ($request as $key => $value) {
-                        if (substr($key, 0, 3) == 'arg') {
-                            $key = str_replace('arg', '', $key);
+                        if (substr((string) $key, 0, 3) == 'arg') {
+                            $key = str_replace((string) 'arg', '', $key);
                             $anonymousArgs[$key] = $value;
                             if (($index = array_search($key, $missingArgs)) !== false) {
                                 unset($missingArgs[$index]);

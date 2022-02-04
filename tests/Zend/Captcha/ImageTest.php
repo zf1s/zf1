@@ -82,7 +82,7 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
                     array('captcha' => array('Image',
                                              'sessionClass' => 'Zend_Captcha_ImageTest_SessionContainer',
                                              'imgDir' => $this->testDir,
-                                             'font' => dirname(__FILE__). '/../Pdf/_fonts/Vera.ttf')
+                                             'font' => __DIR__. '/../Pdf/_fonts/Vera.ttf')
                          ));
         $this->captcha =  $this->element->getCaptcha();
     }
@@ -123,7 +123,7 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
                 $tmpdir = realpath($_ENV['TEMP']);
             } else {
                 // Attemp to detect by creating a temporary file
-                $tempFile = tempnam(md5(uniqid(rand(), TRUE)), '');
+                $tempFile = tempnam(md5((string) uniqid(rand(), TRUE)), '');
                 if ($tempFile) {
                     $tmpdir = realpath(dirname($tempFile));
                     unlink($tempFile);
@@ -132,7 +132,7 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
                     throw new Zend_File_Transfer_Exception('Could not determine temp directory');
                 }
             }
-            $this->_tmpDir = rtrim($tmpdir, "/\\");
+            $this->_tmpDir = rtrim((string) $tmpdir, "/\\");
         }
         return $this->_tmpDir;
     }
@@ -141,7 +141,7 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
     {
         // require_once 'Zend/View.php';
         $view = new Zend_View();
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
         return $view;
     }
 
@@ -193,7 +193,7 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
     public function testCaptchaCreatesImage()
     {
         $this->element->render($this->getView());
-        $this->assertTrue(file_exists($this->testDir."/".$this->captcha->getId().".png"));
+        $this->assertTrue(file_exists((string) $this->testDir."/".$this->captcha->getId().".png"));
     }
 
     public function testCaptchaSetExpiration()
@@ -207,13 +207,13 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
     {
         $this->element->render($this->getView());
         $filename = $this->testDir."/".$this->captcha->getId().".png";
-        $this->assertTrue(file_exists($filename));
+        $this->assertTrue(file_exists((string) $filename));
         $this->captcha->setExpiration(1);
         $this->captcha->setGcFreq(1);
         sleep(2);
         $this->captcha->generate();
         clearstatcache();
-        $this->assertFalse(file_exists($filename), "File $filename was found even after GC");
+        $this->assertFalse(file_exists((string) $filename), "File $filename was found even after GC");
     }
 
     /**
@@ -223,18 +223,18 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
     {
         $this->element->render($this->getView());
         $filename = $this->testDir."/".$this->captcha->getId().".png";
-        $this->assertTrue(file_exists($filename));
+        $this->assertTrue(file_exists((string) $filename));
         //Create other cache file
         $otherFile = $this->testDir . "/zf10006.cache";
         file_put_contents($otherFile, '');
-        $this->assertTrue(file_exists($otherFile));
+        $this->assertTrue(file_exists((string) $otherFile));
         $this->captcha->setExpiration(1);
         $this->captcha->setGcFreq(1);
         sleep(2);
         $this->captcha->generate();
         clearstatcache();
-        $this->assertFalse(file_exists($filename), "File $filename was found even after GC");
-        $this->assertTrue(file_exists($otherFile), "File $otherFile was not found after GC");
+        $this->assertFalse(file_exists((string) $filename), "File $filename was found even after GC");
+        $this->assertTrue(file_exists((string) $otherFile), "File $otherFile was not found after GC");
     }
 
     public function testGenerateReturnsId()
@@ -251,7 +251,7 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
         $word = $this->captcha->getWord();
         $this->assertFalse(empty($word));
         $this->assertTrue(is_string($word));
-        $this->assertTrue(strlen($word) == 8);
+        $this->assertTrue(strlen((string) $word) == 8);
         $this->word = $word;
     }
 
@@ -261,7 +261,7 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
         $this->captcha->generate();
         $word = $this->captcha->getWord();
         $this->assertTrue(is_string($word));
-        $this->assertTrue(strlen($word) == 4);
+        $this->assertTrue(strlen((string) $word) == 4);
         $this->word = $word;
     }
 
@@ -346,19 +346,19 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
         $input = array("id" => $this->captcha->getId(), "input" => $this->captcha->getWord());
         $this->assertTrue($this->element->isValid($input));
     }
-    
+
     /**
      * @group ZF-11483
      */
     public function testImageTagRenderedProperlyBasedUponDoctype()
     {
-        $this->testCaptchaIsRendered();        
+        $this->testCaptchaIsRendered();
         $view = new Zend_View();
-        
-        $view->doctype('XHTML1_STRICT');        
+
+        $view->doctype('XHTML1_STRICT');
         $this->assertRegExp('#/>$#', $this->captcha->render($view));
-        
-        $view->doctype('HTML4_STRICT');        
+
+        $view->doctype('HTML4_STRICT');
         $this->assertRegExp('#[^/]>$#', $this->captcha->render($view));
     }
 }

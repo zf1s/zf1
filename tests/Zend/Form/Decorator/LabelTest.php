@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
- 
+
 // Call Zend_Form_Decorator_LabelTest::main() if this source file is executed directly.
 if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Form_Decorator_LabelTest::main");
@@ -80,7 +80,7 @@ class Zend_Form_Decorator_LabelTest extends PHPUnit_Framework_TestCase
     public function getView()
     {
         $view = new Zend_View();
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
         return $view;
     }
 
@@ -309,7 +309,7 @@ class Zend_Form_Decorator_LabelTest extends PHPUnit_Framework_TestCase
         $tag = $this->decorator->getTag();
         $this->assertTrue( NULL === $tag, $tag );
     }
-    
+
 
     /**
      * @group ZF-4841

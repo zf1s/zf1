@@ -376,7 +376,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
         }
 
         foreach ($definition as $key => $method) {
-            if ('system.' == substr($key, 0, 7)) {
+            if ('system.' == substr((string) $key, 0, 7)) {
                 continue;
             }
             $this->_table->addMethod($method, $key);

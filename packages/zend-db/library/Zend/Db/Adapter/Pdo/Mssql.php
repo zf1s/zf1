@@ -91,7 +91,7 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
 
         if (isset($dsn['port'])) {
             $seperator = ':';
-            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            if (strtoupper((string) substr((string) PHP_OS, 0, 3)) === 'WIN') {
                 $seperator = ',';
             }
             $dsn['host'] .= $seperator . $dsn['port'];
@@ -101,7 +101,7 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
         // this driver supports multiple DSN prefixes
         // @see http://www.php.net/manual/en/ref.pdo-dblib.connection.php
         if (isset($dsn['pdoType'])) {
-            switch (strtolower($dsn['pdoType'])) {
+            switch (strtolower((string) $dsn['pdoType'])) {
                 case 'freetds':
                 case 'sybase':
                     $this->_pdoType = 'sybase';
@@ -221,7 +221,7 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
     public function describeTable($tableName, $schemaName = null)
     {
         if ($schemaName != null) {
-            if (strpos($schemaName, '.') !== false) {
+            if (strpos((string) $schemaName, '.') !== false) {
                 $result = explode('.', $schemaName);
                 $schemaName = $result[1];
             }
@@ -340,11 +340,11 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
             $orderby = stristr($sql, 'ORDER BY');
 
             if ($orderby !== false) {
-                $orderParts = explode(',', substr($orderby, 8));
+                $orderParts = explode(',', substr((string) $orderby, 8));
                 $pregReplaceCount = null;
                 $orderbyInverseParts = array();
                 foreach ($orderParts as $orderPart) {
-                    $orderPart = rtrim($orderPart);
+                    $orderPart = rtrim((string) $orderPart);
                     $inv = preg_replace('/\s+desc$/i', ' ASC', $orderPart, 1, $pregReplaceCount);
                     if ($pregReplaceCount) {
                         $orderbyInverseParts[] = $inv;

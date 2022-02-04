@@ -664,7 +664,7 @@ function() {
 
         $found = false;
         foreach ($this->helper->_getZendLoadActions() as $action) {
-            if (strstr($action, 'dojo.mixin')) {
+            if (strstr((string) $action, 'dojo.mixin')) {
                 $found = true;
                 break;
             }
@@ -681,7 +681,7 @@ function() {
         $found = false;
         if (preg_match_all('|<script[^>]*>(.*?)(</script>)|s', $html, $m)) {
             foreach ($m[1] as $script)  {
-                if (strstr($script, 'var foo = "bar";')) {
+                if (strstr((string) $script, 'var foo = "bar";')) {
                     $found = true;
                     break;
                 }
@@ -784,7 +784,7 @@ function() {
             $script = $doc->saveXML($results->item($i));
             foreach (array('foo', 'bar') as $layerType) {
                 $layer = sprintf('/js/%s/%s.xd.js', $layerType, $layerType);
-                if (strstr($script, $layer)) {
+                if (strstr((string) $script, $layer)) {
                     $found[] = $layerType;
                     break;
                 }
@@ -955,7 +955,7 @@ function() {
 
         $actual = (string) $helper;
         $end    = '</style>';
-        $actual = substr($actual, 0, strpos($actual, $end) + strlen($end));
+        $actual = substr((string) $actual, 0, strpos((string) $actual, $end) + strlen((string) $end));
 
         $this->assertEquals($expected, $actual);
     }

@@ -104,7 +104,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      */
     public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
 
         if ($type != self::TRANSFER_ADAPTER) {
             return parent::setPluginLoader($loader, $type);
@@ -122,7 +122,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      */
     public function getPluginLoader($type)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
 
         if ($type != self::TRANSFER_ADAPTER) {
             return parent::getPluginLoader($type);
@@ -149,15 +149,15 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      */
     public function addPrefixPath($prefix, $path, $type = null)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         if (!empty($type) && ($type != self::TRANSFER_ADAPTER)) {
             return parent::addPrefixPath($prefix, $path, $type);
         }
 
         if (empty($type)) {
-            $nsSeparator = (false !== strpos($prefix, '\\'))?'\\':'_';
-            $pluginPrefix = rtrim($prefix, $nsSeparator) . $nsSeparator . 'Transfer' . $nsSeparator . 'Adapter';
-            $pluginPath   = rtrim($path, DIRECTORY_SEPARATOR) . '/Transfer/Adapter/';
+            $nsSeparator = (false !== strpos((string) $prefix, '\\'))?'\\':'_';
+            $pluginPrefix = rtrim((string) $prefix, $nsSeparator) . $nsSeparator . 'Transfer' . $nsSeparator . 'Adapter';
+            $pluginPath   = rtrim((string) $path, DIRECTORY_SEPARATOR) . '/Transfer/Adapter/';
             $loader       = $this->getPluginLoader(self::TRANSFER_ADAPTER);
             $loader->addPrefixPath($pluginPrefix, $pluginPath);
             return parent::addPrefixPath($prefix, $path, null);
@@ -591,8 +591,8 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
     public function getMaxFileSize()
     {
         if (self::$_maxFileSize < 0) {
-            $ini = $this->_convertIniToInteger(trim(ini_get('post_max_size')));
-            $max = $this->_convertIniToInteger(trim(ini_get('upload_max_filesize')));
+            $ini = $this->_convertIniToInteger(\trim((string) ini_get('post_max_size')));
+            $max = $this->_convertIniToInteger(\trim((string) ini_get('upload_max_filesize')));
             $min = max($ini, $max);
             if ($ini > 0) {
                 $min = min($min, $ini);
@@ -616,8 +616,8 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      */
     public function setMaxFileSize($size)
     {
-        $ini = $this->_convertIniToInteger(trim(ini_get('post_max_size')));
-        $max = $this->_convertIniToInteger(trim(ini_get('upload_max_filesize')));
+        $ini = $this->_convertIniToInteger(\trim((string) ini_get('post_max_size')));
+        $max = $this->_convertIniToInteger(\trim((string) ini_get('upload_max_filesize')));
 
         if (($max > -1) && ($size > $max)) {
             trigger_error("Your 'upload_max_filesize' config setting limits the maximum filesize to '$max'. You tried to set '$size'.", E_USER_NOTICE);
@@ -642,8 +642,8 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
     private function _convertIniToInteger($setting)
     {
         if (!is_numeric($setting)) {
-            $type = strtoupper(substr($setting, -1));
-            $setting = (integer) substr($setting, 0, -1);
+            $type = strtoupper((string) substr((string) $setting, -1));
+            $setting = (integer) substr((string) $setting, 0, -1);
 
             switch ($type) {
                 case 'K' :
@@ -899,14 +899,14 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
             if ($this->isArray() || is_array($value)) {
                 $aggregateMessages = array();
                 foreach ($value as $val) {
-                    $aggregateMessages[] = str_replace('%value%', $val, $message);
+                    $aggregateMessages[] = str_replace((string) '%value%', $val, $message);
                 }
 
                 if (!empty($aggregateMessages)) {
                     $messages[$key] = $aggregateMessages;
                 }
             } else {
-                $messages[$key] = str_replace('%value%', $value, $message);
+                $messages[$key] = str_replace((string) '%value%', $value, $message);
             }
         }
 

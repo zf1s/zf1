@@ -50,7 +50,7 @@ class Zend_Server_Cache
     public static function save($filename, Zend_Server_Interface $server)
     {
         if (!is_string($filename)
-            || (!file_exists($filename) && !is_writable(dirname($filename))))
+            || (!file_exists((string) $filename) && !is_writable(dirname($filename))))
         {
             return false;
         }
@@ -109,7 +109,7 @@ class Zend_Server_Cache
     public static function get($filename, Zend_Server_Interface $server)
     {
         if (!is_string($filename)
-            || !file_exists($filename)
+            || !file_exists((string) $filename)
             || !is_readable($filename))
         {
             return false;
@@ -137,7 +137,7 @@ class Zend_Server_Cache
      */
     public static function delete($filename)
     {
-        if (is_string($filename) && file_exists($filename)) {
+        if (is_string($filename) && file_exists((string) $filename)) {
             unlink($filename);
             return true;
         }

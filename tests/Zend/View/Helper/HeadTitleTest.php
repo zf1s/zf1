@@ -81,7 +81,7 @@ class Zend_View_Helper_HeadTitleTest extends PHPUnit_Framework_TestCase
             $registry = Zend_Registry::getInstance();
             unset($registry[$regKey]);
         }
-        $this->basePath = dirname(__FILE__) . '/_files/modules';
+        $this->basePath = __DIR__ . '/_files/modules';
         $this->helper = new Zend_View_Helper_HeadTitle();
     }
 
@@ -213,7 +213,7 @@ class Zend_View_Helper_HeadTitleTest extends PHPUnit_Framework_TestCase
     {
         // require_once 'Zend/Translate/Adapter/Ini.php';
         // require_once 'Zend/Registry.php';
-        $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/../../Translate/Adapter/_files/translation_en.ini', 'en');
+        $adapter = new Zend_Translate_Adapter_Ini(__DIR__ . '/../../Translate/Adapter/_files/translation_en.ini', 'en');
         Zend_Registry::set('Zend_Translate', $adapter);
         $this->helper->enableTranslation();
         $this->helper->headTitle('Message_1');

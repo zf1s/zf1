@@ -300,7 +300,7 @@ class Zend_Date_Cities
     public static function City($city, $horizon = false)
     {
         foreach (self::$cities as $key => $value) {
-            if (strtolower($key) === strtolower($city)) {
+            if (strtolower((string) $key) === strtolower((string) $city)) {
                 $return            = $value;
                 $return['horizon'] = $horizon;
                 return $return;

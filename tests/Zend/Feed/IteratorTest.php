@@ -40,8 +40,8 @@ class Zend_Feed_IteratorTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_feed = Zend_Feed::importFile(dirname(__FILE__) . '/_files/TestAtomFeed.xml');
-        $this->_nsfeed = Zend_Feed::importFile(dirname(__FILE__) . '/_files/TestAtomFeedNamespaced.xml');
+        $this->_feed = Zend_Feed::importFile(__DIR__ . '/_files/TestAtomFeed.xml');
+        $this->_nsfeed = Zend_Feed::importFile(__DIR__ . '/_files/TestAtomFeedNamespaced.xml');
     }
 
     public function testRewind()

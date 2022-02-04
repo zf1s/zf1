@@ -74,7 +74,7 @@ abstract class Zend_Tool_Project_Context_Zf_AbstractClassFile extends Zend_Tool_
         }
 
         if ($classContextName) {
-            $fullClassName .= rtrim($classContextName, '_') . '_';
+            $fullClassName .= rtrim((string) $classContextName, '_') . '_';
         }
         $fullClassName .= $localClassName;
 

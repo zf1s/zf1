@@ -120,7 +120,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
         }
 
         foreach ($config as $k => $v) {
-            $this->config[strtolower($k)] = $v;
+            $this->config[strtolower((string) $k)] = $v;
         }
     }
 
@@ -266,7 +266,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
         }
 
         $host = $uri->getHost();
-        $host = (strtolower($uri->getScheme()) == 'https' ? $this->config['ssltransport'] : 'tcp') . '://' . $host;
+        $host = (strtolower((string) $uri->getScheme()) == 'https' ? $this->config['ssltransport'] : 'tcp') . '://' . $host;
         if ($this->connected_to[0] != $host || $this->connected_to[1] != $uri->getPort()) {
             // require_once 'Zend/Http/Client/Adapter/Exception.php';
             throw new Zend_Http_Client_Adapter_Exception('Trying to write but we are connected to the wrong host');
@@ -319,10 +319,10 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
         $gotStatus = false;
 
         while (($line = @fgets($this->socket)) !== false) {
-            $gotStatus = $gotStatus || (strpos($line, 'HTTP') !== false);
+            $gotStatus = $gotStatus || (strpos((string) $line, 'HTTP') !== false);
             if ($gotStatus) {
                 $response .= $line;
-                if (rtrim($line) === '') break;
+                if (rtrim((string) $line) === '') break;
             }
         }
 
@@ -353,7 +353,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
         // If we got a 'transfer-encoding: chunked' header
         if (isset($headers['transfer-encoding'])) {
 
-            if (strtolower($headers['transfer-encoding']) == 'chunked') {
+            if (strtolower((string) $headers['transfer-encoding']) == 'chunked') {
 
                 do {
                     $line  = @fgets($this->socket);
@@ -362,7 +362,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
                     $chunk = $line;
 
                     // Figure out the next chunk size
-                    $chunksize = trim($line);
+                    $chunksize = \trim((string) $line);
                     if (! ctype_xdigit($chunksize)) {
                         $this->close();
                         // require_once 'Zend/Http/Client/Adapter/Exception.php';
@@ -387,7 +387,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
                              }
                         } else {
                             $line = @fread($this->socket, $read_to - $current_pos);
-                            if ($line === false || strlen($line) === 0) {
+                            if ($line === false || strlen((string) $line) === 0) {
                                 $this->_checkSocketReadTimeout();
                                 break;
                             }
@@ -439,7 +439,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
                      }
                  } else {
                     $chunk = @fread($this->socket, $read_to - $current_pos);
-                    if ($chunk === false || strlen($chunk) === 0) {
+                    if ($chunk === false || strlen((string) $chunk) === 0) {
                         $this->_checkSocketReadTimeout();
                         break;
                     }
@@ -462,7 +462,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
                      }
                 }  else {
                     $buff = @fread($this->socket, 8192);
-                    if ($buff === false || strlen($buff) === 0) {
+                    if ($buff === false || strlen((string) $buff) === 0) {
                         $this->_checkSocketReadTimeout();
                         break;
                     } else {

@@ -19,7 +19,7 @@
  * @version    $Id$
  */
 
- 
+
 /**
  * @category   Zend
  * @package    Zend_Xml_SecurityScan
@@ -39,7 +39,7 @@ class Zend_Xml_Security
     protected static function heuristicScan($xml)
     {
         foreach (self::getEntityComparison($xml) as $compare) {
-            if (strpos($xml, $compare) !== false) {
+            if (strpos((string) $xml, $compare) !== false) {
                 throw new Zend_Xml_Exception(self::ENTITY_DETECT);
             }
         }
@@ -154,7 +154,7 @@ class Zend_Xml_Security
      */
     public static function scanFile($file, DOMDocument $dom = null)
     {
-        if (!file_exists($file)) {
+        if (!file_exists((string) $file)) {
             // require_once 'Exception.php';
             throw new Zend_Xml_Exception(
                 "The file $file specified doesn't exist"
@@ -181,7 +181,7 @@ class Zend_Xml_Security
     {
         $isVulnerableVersion = PHP_VERSION_ID < 50522 || (PHP_VERSION_ID >= 50600 && PHP_VERSION_ID < 50606);
 
-        return $isVulnerableVersion && strpos(php_sapi_name(), 'fpm') === 0;
+        return $isVulnerableVersion && strpos((string) php_sapi_name(), 'fpm') === 0;
     }
 
     /**
@@ -244,7 +244,7 @@ class Zend_Xml_Security
     {
         foreach (self::getAsciiEncodingMap() as $encoding => $generator) {
             $prefix = call_user_func($generator, '<' . '?xml');
-            if (0 === strncmp($xml, $prefix, strlen($prefix))) {
+            if (0 === strncmp($xml, $prefix, strlen((string) $prefix))) {
                 return $encoding;
             }
         }
@@ -275,28 +275,28 @@ class Zend_Xml_Security
         $quote       = call_user_func($generator, '"');
         $close       = call_user_func($generator, '>');
 
-        $closePos    = strpos($xml, $close);
+        $closePos    = strpos((string) $xml, $close);
         if (false === $closePos) {
             return array($fileEncoding);
         }
 
-        $encPos = strpos($xml, $encAttr);
+        $encPos = strpos((string) $xml, $encAttr);
         if (false === $encPos
             || $encPos > $closePos
         ) {
             return array($fileEncoding);
         }
 
-        $encPos   += strlen($encAttr);
-        $quotePos = strpos($xml, $quote, $encPos);
+        $encPos   += strlen((string) $encAttr);
+        $quotePos = strpos((string) $xml, $quote, $encPos);
         if (false === $quotePos) {
             return array($fileEncoding);
         }
 
-        $encoding = self::substr($xml, $encPos, $quotePos);
+        $encoding = self::substr((string) $xml, $encPos, $quotePos);
         return array(
             // Following line works because we're only supporting 8-bit safe encodings at this time.
-            str_replace('\0', '', $encoding), // detected encoding
+            str_replace((string) '\0', '', $encoding), // detected encoding
             $fileEncoding,                    // file encoding
         );
     }
@@ -372,7 +372,7 @@ class Zend_Xml_Security
     /**
      * Binary-safe substr.
      *
-     * substr() is not binary-safe; this method loops by character to ensure
+     * substr((string) ) is not binary-safe; this method loops by character to ensure
      * multi-byte characters are aggregated correctly.
      *
      * @param string $string

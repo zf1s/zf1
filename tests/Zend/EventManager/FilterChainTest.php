@@ -94,7 +94,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
         $this->filterchain->attach(array($this, 'filterTrim'));
         $this->filterchain->attach(array($this, 'filterStrRot13'));
         $value = $this->filterchain->run($this, array('string' => ' foo '));
-        $this->assertEquals(str_rot13(trim(' foo ')), $value);
+        $this->assertEquals(str_rot13(\trim((string) ' foo ')), $value);
     }
 
     public function testFilterIsPassedContextAndArguments()
@@ -119,7 +119,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
         $this->filterchain->attach(array($this, 'filterStrRot13'), 1000);
         $this->filterchain->attach(array($this, 'filterHashMd5'), 100);
         $value = $this->filterchain->run($this, array('string' => ' foo '));
-        $this->assertEquals(str_rot13(trim(' foo ')), $value);
+        $this->assertEquals(str_rot13(\trim((string) ' foo ')), $value);
     }
 
     public function handleTestTopic($message)
@@ -144,7 +144,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
     public function filterTrim($context, $params, $chain)
     {
         if (isset($params['string'])) {
-            $params['string'] = trim($params['string']);
+            $params['string'] = \trim((string) $params['string']);
         }
         $return =  $chain->next($context, $params, $chain);
         return $return;

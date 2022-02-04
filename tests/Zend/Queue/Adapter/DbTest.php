@@ -38,7 +38,7 @@
 require_once 'MessageTestClass.php';
 
 /** Base Adapter test class */
-require_once dirname(__FILE__) . '/AdapterTest.php';
+require_once __DIR__ . '/AdapterTest.php';
 
 /**
  * @see Zend_Db_Select
@@ -142,7 +142,7 @@ class Zend_Queue_Adapter_DbTest extends Zend_Queue_Adapter_AdapterTest
             }
         }
     }
-    
+
     /**
      * @group ZF-7650
      */

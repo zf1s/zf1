@@ -443,7 +443,7 @@ class Zend_Service_Flickr
                 /**
                  * @todo The following does not do anything [yet], so it is commented out.
                  */
-                //in_array(trim($extra), $validExtras);
+                //in_array(\trim((string) $extra), $validExtras);
             }
         }
     }
@@ -501,7 +501,7 @@ class Zend_Service_Flickr
                 /**
                  * @todo The following does not do anything [yet], so it is commented out.
                  */
-                //in_array(trim($extra), $validExtras);
+                //in_array(\trim((string) $extra), $validExtras);
             }
         }
 
@@ -556,7 +556,7 @@ class Zend_Service_Flickr
                 /**
                 * @todo The following does not do anything [yet], so it is commented out.
                 */
-                //in_array(trim($extra), $validExtras);
+                //in_array(\trim((string) $extra), $validExtras);
             }
         }
     }

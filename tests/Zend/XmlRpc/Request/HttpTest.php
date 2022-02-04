@@ -92,14 +92,14 @@ EOX;
 
         $this->server = $_SERVER;
         foreach ($_SERVER as $key => $value) {
-            if ('HTTP_' == substr($key, 0, 5)) {
+            if ('HTTP_' == substr((string) $key, 0, 5)) {
                 unset($_SERVER[$key]);
             }
         }
         $_SERVER['HTTP_USER_AGENT']     = 'Zend_XmlRpc_Client';
         $_SERVER['HTTP_HOST']           = 'localhost';
         $_SERVER['HTTP_CONTENT_TYPE']   = 'text/xml';
-        $_SERVER['HTTP_CONTENT_LENGTH'] = strlen($this->xml) + 1;
+        $_SERVER['HTTP_CONTENT_LENGTH'] = strlen((string) $this->xml) + 1;
         Zend_AllTests_StreamWrapper_PhpInput::mockInput($this->xml);
     }
 

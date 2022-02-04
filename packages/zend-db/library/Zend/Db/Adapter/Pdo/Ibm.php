@@ -104,7 +104,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
 
         try {
             if ($this->_serverType === null) {
-                $server = substr($this->getConnection()->getAttribute(PDO::ATTR_SERVER_INFO), 0, 3);
+                $server = substr((string) $this->getConnection()->getAttribute(PDO::ATTR_SERVER_INFO), 0, 3);
 
                 switch ($server) {
                     case 'DB2':
@@ -132,7 +132,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
         } catch (PDOException $e) {
             /** @see Zend_Db_Adapter_Exception */
             // require_once 'Zend/Db/Adapter/Exception.php';
-            $error = strpos($e->getMessage(), 'driver does not support that attribute');
+            $error = strpos((string) $e->getMessage(), 'driver does not support that attribute');
             if ($error) {
                 throw new Zend_Db_Adapter_Exception("PDO_IBM driver extension is downlevel.  Please use driver release version 1.2.1 or later", 0, $e);
             } else {

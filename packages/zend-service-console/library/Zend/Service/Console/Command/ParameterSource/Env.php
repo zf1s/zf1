@@ -52,8 +52,8 @@ class Zend_Service_Console_Command_ParameterSource_Env
 
 		// Fetch value for parameter
 		foreach ($parameter->aliases as $alias) {
-			while (strpos($alias, '-') !== false) {
-				$alias = substr($alias, 1);
+			while (strpos((string) $alias, '-') !== false) {
+				$alias = substr((string) $alias, 1);
 			}
 			$value = getenv($alias);
 
@@ -63,9 +63,9 @@ class Zend_Service_Console_Command_ParameterSource_Env
 			}
 		}
 
-		if (strtolower($parameterValue) == 'true') {
+		if (strtolower((string) $parameterValue) == 'true') {
 			$parameterValue = true;
-		} else if (strtolower($parameterValue) == 'false') {
+		} else if (strtolower((string) $parameterValue) == 'false') {
 			$parameterValue = false;
 		}
 

@@ -121,7 +121,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
      */
     public function _validBucketName($bucket)
     {
-        $len = strlen($bucket);
+        $len = strlen((string) $bucket);
         if ($len < 3 || $len > 255) {
             /**
              * @see Zend_Service_Amazon_S3_Exception
@@ -161,7 +161,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
         if($location) {
             $data = '<CreateBucketConfiguration><LocationConstraint>'.$location.'</LocationConstraint></CreateBucketConfiguration>';
             $headers[self::S3_CONTENT_TYPE_HEADER]= 'text/plain';
-            $headers['Content-size']= strlen($data);
+            $headers['Content-size']= strlen((string) $data);
         } else {
             $data = null;
         }
@@ -283,7 +283,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
             );
             $objects = $this->getObjectsByBucket($bucket,$params);
         }
-        
+
         return true;
     }
 
@@ -454,7 +454,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
         $headers = (is_array($meta)) ? $meta : array();
 
         if(!is_resource($data)) {
-            $headers['Content-MD5'] = base64_encode(md5($data, true));
+            $headers['Content-MD5'] = base64_encode(md5((string) $data, true));
         }
         $headers['Expect'] = '100-continue';
 
@@ -467,9 +467,9 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
         // Check the MD5 Etag returned by S3 against and MD5 of the buffer
         if ($response->getStatus() == 200) {
             // It is escaped by double quotes for some reason
-            $etag = str_replace('"', '', $response->getHeader('Etag'));
+            $etag = str_replace((string) '"', '', $response->getHeader('Etag'));
 
-            if (is_resource($data) || $etag == md5($data)) {
+            if (is_resource($data) || $etag == md5((string) $data)) {
                 return true;
             }
         }
@@ -647,7 +647,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
             $pathparts = explode('?',$parts[1]);
             $endpath = $pathparts[0];
             $endpoint->setPath('/'.$endpath);
-            
+
         }
         else {
             $endpoint->setPath('/');
@@ -686,7 +686,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
                  $headers['Content-type'] = self::getMimeType($path);
              }
              $client->setRawData($data, $headers['Content-type']);
-         } 
+         }
          do {
             $retry = false;
 
@@ -750,8 +750,8 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
         // alphabetically and remove excess spaces around values
         $amz_headers = array();
         foreach ($headers as $key=>$val) {
-            $key = strtolower($key);
-            if (substr($key, 0, 6) == 'x-amz-') {
+            $key = strtolower((string) $key);
+            if (substr((string) $key, 0, 6) == 'x-amz-') {
                 if (is_array($val)) {
                     $amz_headers[$key] = $val;
                 }
@@ -768,16 +768,16 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
         }
 
         $sig_str .= '/'.parse_url($path, PHP_URL_PATH);
-        if (strpos($path, '?location') !== false) {
+        if (strpos((string) $path, '?location') !== false) {
             $sig_str .= '?location';
         }
-        else if (strpos($path, '?acl') !== false) {
+        else if (strpos((string) $path, '?acl') !== false) {
             $sig_str .= '?acl';
         }
-        else if (strpos($path, '?torrent') !== false) {
+        else if (strpos((string) $path, '?torrent') !== false) {
             $sig_str .= '?torrent';
         }
-        else if (strpos($path, '?versions') !== false) {
+        else if (strpos((string) $path, '?versions') !== false) {
             $sig_str .= '?versions';
         }
 
@@ -795,14 +795,14 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
      */
     public static function getMimeType($path)
     {
-        $ext = substr(strrchr($path, '.'), 1);
+        $ext = substr((string) strrchr($path, '.'), 1);
 
         if(!$ext) {
             // shortcut
             return 'binary/octet-stream';
         }
 
-        switch (strtolower($ext)) {
+        switch (strtolower((string) $ext)) {
             case 'xls':
                 $content_type = 'application/excel';
                 break;

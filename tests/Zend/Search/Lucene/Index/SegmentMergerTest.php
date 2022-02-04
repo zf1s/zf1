@@ -48,8 +48,8 @@ class Zend_Search_Lucene_Index_SegmentMergerTest extends PHPUnit_Framework_TestC
 {
     public function testMerge()
     {
-        $segmentsDirectory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
-        $outputDirectory   = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_files');
+        $segmentsDirectory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
+        $outputDirectory   = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_files');
         $segmentsList = array('_0', '_1', '_2', '_3', '_4');
 
         $segmentMerger = new Zend_Search_Lucene_Index_SegmentMerger($outputDirectory, 'mergedSegment');

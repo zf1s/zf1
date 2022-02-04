@@ -202,7 +202,7 @@ class Zend_View_Helper_FormCheckboxTest extends PHPUnit_Framework_TestCase
             }
             $this->assertEquals(2, count($matches[1]));
             foreach ($matches[1] as $element) {
-                if (strstr($element, 'hidden')) {
+                if (strstr((string) $element, 'hidden')) {
                     $this->assertContains('baz', $element, 'Failed using ' . $html);
                 } else {
                     $this->assertContains('bar', $element, 'Failed using ' . $html);

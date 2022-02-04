@@ -238,7 +238,7 @@ class Zend_View_Helper_Navigation_Sitemap
         }
 
         // do not encode existing HTML entities
-        return htmlspecialchars($string, ENT_QUOTES, $enc, false);
+        return htmlspecialchars((string) $string, ENT_QUOTES, $enc, false);
     }
 
     // Public methods:
@@ -265,7 +265,7 @@ class Zend_View_Helper_Navigation_Sitemap
         } else {
             // href is relative to current document; use url helpers
             $url = $this->getServerUrl()
-                 . rtrim($this->view->url(), '/') . '/'
+                 . rtrim((string) $this->view->url(), '/') . '/'
                  . $href;
         }
 
@@ -438,6 +438,6 @@ class Zend_View_Helper_Navigation_Sitemap
                $dom->saveXML() :
                $dom->saveXML($dom->documentElement);
 
-        return rtrim($xml, self::EOL);
+        return rtrim((string) $xml, self::EOL);
     }
 }

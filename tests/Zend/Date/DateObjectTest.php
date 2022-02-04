@@ -43,7 +43,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         // require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory('Core', 'File',
                  array('lifetime' => 120, 'automatic_serialization' => true),
-                 array('cache_dir' => dirname(__FILE__) . '/../_files/'));
+                 array('cache_dir' => __DIR__ . '/../_files/'));
         Zend_Date_DateObjectTestHelper::setOptions(array('cache' => $this->_cache));
     }
 
@@ -585,10 +585,10 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(($diff < 2), "Zend_Date_DateObject->_getTime() returned a significantly "
             . "different timestamp than expected: $diff seconds");
     }
-    
+
     /**
      * Test for RFC 2822's Obsolete Date and Time (paragraph 4.3)
-     * 
+     *
      * @see ZF-11296
      */
     public function test_obsRfc2822()
@@ -608,7 +608,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         $date = new Zend_Date('22.05.2014');
         $date->setTime('12:00');
         $date->setTimezone('America/Los_Angeles');
-    
+
         $this->assertEquals(
             $date->toString(Zend_Date::ATOM),
             $date->toString(DateTime::ATOM, 'php')

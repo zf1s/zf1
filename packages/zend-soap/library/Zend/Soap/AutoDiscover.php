@@ -279,8 +279,8 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
         } else {
             $requestUri = $_SERVER['SCRIPT_NAME'];
         }
-        if( ($pos = strpos($requestUri, "?")) !== false) {
-            $requestUri = substr($requestUri, 0, $pos);
+        if( ($pos = strpos((string) $requestUri, "?")) !== false) {
+            $requestUri = substr((string) $requestUri, 0, $pos);
         }
 
         return $requestUri;
@@ -471,7 +471,7 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
             $portOperation = $wsdl->addPortOperation($port, $function->getName(), 'tns:' . $function->getName() . 'In', false);
         }
         $desc = $function->getDescription();
-        if (strlen($desc) > 0) {
+        if (strlen((string) $desc) > 0) {
             $wsdl->addDocumentation($portOperation, $desc);
         }
 

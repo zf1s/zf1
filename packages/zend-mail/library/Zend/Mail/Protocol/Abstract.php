@@ -421,7 +421,7 @@ abstract class Zend_Mail_Protocol_Abstract
                 $errMsg =  $msg;
             }
 
-        } while (strpos($more, '-') === 0); // The '-' message prefix indicates an information string instead of a response string.
+        } while (strpos((string) $more, '-') === 0); // The '-' message prefix indicates an information string instead of a response string.
 
         if ($errMsg !== '') {
             /**

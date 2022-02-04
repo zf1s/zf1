@@ -222,7 +222,7 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
 
         if ($this->_body && $this->isSourceDirty()) {
             $output .= '        '
-                    .  str_replace(self::LINE_FEED, self::LINE_FEED . $indent . $indent, trim($this->_body))
+                    .  str_replace((string) self::LINE_FEED, self::LINE_FEED . $indent . $indent, \trim((string) $this->_body))
                     .  self::LINE_FEED;
         } elseif ($this->_body) {
             $output .= $this->_body . self::LINE_FEED;

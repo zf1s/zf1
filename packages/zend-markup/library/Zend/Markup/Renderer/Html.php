@@ -418,9 +418,9 @@ class Zend_Markup_Renderer_Html extends Zend_Markup_Renderer_RendererAbstract
 
         // correct style attribute
         if (isset($tokenAttributes['style'])) {
-            $tokenAttributes['style'] = trim($tokenAttributes['style']);
+            $tokenAttributes['style'] = \trim((string) $tokenAttributes['style']);
 
-            if ($tokenAttributes['style'][strlen($tokenAttributes['style']) - 1] != ';') {
+            if ($tokenAttributes['style'][strlen((string) $tokenAttributes['style']) - 1] != ';') {
                 $tokenAttributes['style'] .= ';';
             }
         } else {
@@ -499,7 +499,7 @@ class Zend_Markup_Renderer_Html extends Zend_Markup_Renderer_RendererAbstract
             return false;
         }
 
-        $scheme = strtolower($matches[1]);
+        $scheme = strtolower((string) $matches[1]);
 
         switch ($scheme) {
             case 'javascript':

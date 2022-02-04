@@ -292,7 +292,7 @@ class Zend_Oauth_Config implements Zend_Oauth_Config_ConfigInterface
      */
     public function setSignatureMethod($method)
     {
-        $method = strtoupper($method);
+        $method = strtoupper((string) $method);
         if (!in_array($method, array(
                 'HMAC-SHA1', 'HMAC-SHA256', 'RSA-SHA1', 'PLAINTEXT'
             ))
@@ -325,7 +325,7 @@ class Zend_Oauth_Config implements Zend_Oauth_Config_ConfigInterface
      */
     public function setRequestScheme($scheme)
     {
-        $scheme = strtolower($scheme);
+        $scheme = strtolower((string) $scheme);
         if (!in_array($scheme, array(
                 Zend_Oauth::REQUEST_SCHEME_HEADER,
                 Zend_Oauth::REQUEST_SCHEME_POSTBODY,
@@ -454,7 +454,7 @@ class Zend_Oauth_Config implements Zend_Oauth_Config_ConfigInterface
                 '\'' . $url . '\' is not a valid URI'
             );
         }
-        $this->_requestTokenUrl = rtrim($url, '/');
+        $this->_requestTokenUrl = rtrim((string) $url, '/');
         return $this;
     }
 
@@ -489,7 +489,7 @@ class Zend_Oauth_Config implements Zend_Oauth_Config_ConfigInterface
                 '\'' . $url . '\' is not a valid URI'
             );
         }
-        $this->_accessTokenUrl = rtrim($url, '/');
+        $this->_accessTokenUrl = rtrim((string) $url, '/');
         return $this;
     }
 
@@ -536,7 +536,7 @@ class Zend_Oauth_Config implements Zend_Oauth_Config_ConfigInterface
                 '\'' . $url . '\' is not a valid URI'
             );
         }
-        $this->_authorizeUrl = rtrim($url, '/');
+        $this->_authorizeUrl = rtrim((string) $url, '/');
         return $this;
     }
 
@@ -575,7 +575,7 @@ class Zend_Oauth_Config implements Zend_Oauth_Config_ConfigInterface
      */
     public function setRequestMethod($method)
     {
-        $method = strtoupper($method);
+        $method = strtoupper((string) $method);
         if (!in_array($method, array(
                 Zend_Oauth::GET,
                 Zend_Oauth::POST,

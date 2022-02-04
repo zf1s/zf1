@@ -59,8 +59,8 @@ class Zend_Filter_Compress_Bz2Test extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        if (file_exists(dirname(__FILE__) . '/../_files/compressed.bz2')) {
-            unlink(dirname(__FILE__) . '/../_files/compressed.bz2');
+        if (file_exists((string) __DIR__ . '/../_files/compressed.bz2')) {
+            unlink(__DIR__ . '/../_files/compressed.bz2');
         }
     }
 
@@ -157,7 +157,7 @@ class Zend_Filter_Compress_Bz2Test extends PHPUnit_Framework_TestCase
     public function testBz2CompressToFile()
     {
         $filter   = new Zend_Filter_Compress_Bz2();
-        $archive = dirname(__FILE__) . '/../_files/compressed.bz2';
+        $archive = __DIR__ . '/../_files/compressed.bz2';
         $filter->setArchive($archive);
 
         $content = $filter->compress('compress me');
@@ -192,7 +192,7 @@ class Zend_Filter_Compress_Bz2Test extends PHPUnit_Framework_TestCase
     public function testBz2DecompressArchive()
     {
         $filter   = new Zend_Filter_Compress_Bz2();
-        $archive = dirname(__FILE__) . '/../_files/compressed.bz2';
+        $archive = __DIR__ . '/../_files/compressed.bz2';
         $filter->setArchive($archive);
 
         $content = $filter->compress('compress me');

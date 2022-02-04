@@ -135,7 +135,7 @@ class Zend_Validate_Isbn extends Zend_Validate_Abstract
 
         // check pattern list
         foreach ($patterns as $pattern => $type) {
-            if ((strlen($this->_value) == $lengths[$pattern]) && preg_match($pattern, $this->_value)) {
+            if ((strlen((string) $this->_value) == $lengths[$pattern]) && preg_match($pattern, $this->_value)) {
                 return $type;
             }
         }
@@ -164,7 +164,7 @@ class Zend_Validate_Isbn extends Zend_Validate_Abstract
         switch ($this->_detectFormat()) {
             case self::ISBN10:
                 // sum
-                $isbn10 = str_replace($this->_separator, '', $value);
+                $isbn10 = str_replace((string) $this->_separator, '', $value);
                 $sum    = 0;
                 for ($i = 0; $i < 9; $i++) {
                     $sum += (10 - $i) * $isbn10[$i];
@@ -181,7 +181,7 @@ class Zend_Validate_Isbn extends Zend_Validate_Abstract
 
             case self::ISBN13:
                 // sum
-                $isbn13 = str_replace($this->_separator, '', $value);
+                $isbn13 = str_replace((string) $this->_separator, '', $value);
                 $sum    = 0;
                 for ($i = 0; $i < 12; $i++) {
                     if ($i % 2 === 0) {
@@ -203,7 +203,7 @@ class Zend_Validate_Isbn extends Zend_Validate_Abstract
         }
 
         // validate
-        if (substr($this->_value, -1) != $checksum) {
+        if (substr((string) $this->_value, -1) != $checksum) {
             $this->_error(self::NO_ISBN);
             return false;
         }

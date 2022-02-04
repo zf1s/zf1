@@ -46,7 +46,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_originalMaildir = dirname(__FILE__) . '/_files/test.maildir/';
+        $this->_originalMaildir = __DIR__ . '/_files/test.maildir/';
         if (!is_dir($this->_originalMaildir . '/cur/')) {
             $this->markTestSkipped('You have to unpack maildir.tar in Zend/Mail/_files/test.maildir/ '
                                  . 'directory before enabling the maildir tests');
@@ -57,9 +57,9 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
             if (TESTS_ZEND_MAIL_TEMPDIR != null) {
                 $this->_tmpdir = TESTS_ZEND_MAIL_TEMPDIR;
             } else {
-                $this->_tmpdir = dirname(__FILE__) . '/_files/test.tmp/';
+                $this->_tmpdir = __DIR__ . '/_files/test.tmp/';
             }
-            if (!file_exists($this->_tmpdir)) {
+            if (!file_exists((string) $this->_tmpdir)) {
                 mkdir($this->_tmpdir);
             }
             $count = 0;
@@ -138,7 +138,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
     public function testLoadInvalid()
     {
         try {
-            $mail = new Zend_Mail_Storage_Maildir(array('dirname' => dirname(__FILE__)));
+            $mail = new Zend_Mail_Storage_Maildir(array('dirname' => __DIR__));
         } catch (Exception $e) {
             return; // test ok
         }
@@ -222,7 +222,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Maildir(array('dirname' => $this->_maildir));
 
         $content = $mail->getHeader(3, 1)->getContent();
-        $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
+        $this->assertEquals('Fair river! in thy bright, clear flow', \trim((string) $content));
     }
 */
     public function testFetchMessageHeader()
@@ -239,7 +239,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
 
         $content = $mail->getMessage(3)->getContent();
         list($content, ) = explode("\n", $content, 2);
-        $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
+        $this->assertEquals('Fair river! in thy bright, clear flow', \trim((string) $content));
     }
 
     public function testFetchWrongSize()
@@ -333,7 +333,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
 
     public function isFileTest($dir)
     {
-        if (file_exists($this->_maildir . '/' . $dir)) {
+        if (file_exists((string) $this->_maildir . '/' . $dir)) {
             rename($this->_maildir . '/' . $dir, $this->_maildir . '/' . $dir . 'bak');
         }
         touch($this->_maildir . '/' . $dir);
@@ -347,7 +347,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
         }
 
         unlink($this->_maildir . '/' . $dir);
-        if (file_exists($this->_maildir . '/' . $dir . 'bak')) {
+        if (file_exists((string) $this->_maildir . '/' . $dir . 'bak')) {
             rename($this->_maildir . '/' . $dir . 'bak', $this->_maildir . '/' . $dir);
         }
 

@@ -183,7 +183,7 @@ class Zend_Validate_Iban extends Zend_Validate_Abstract
         if ($locale !== false) {
             // require_once 'Zend/Locale.php';
             $locale = Zend_Locale::findLocale($locale);
-            if (strlen($locale) < 4) {
+            if (strlen((string) $locale) < 4) {
                 // require_once 'Zend/Validate/Exception.php';
                 throw new Zend_Validate_Exception('Region must be given for IBAN validation');
             }
@@ -203,11 +203,11 @@ class Zend_Validate_Iban extends Zend_Validate_Abstract
      */
     public function isValid($value)
     {
-        $value = strtoupper($value);
+        $value = strtoupper((string) $value);
         $this->_setValue($value);
 
         if (empty($this->_locale)) {
-            $region = substr($value, 0, 2);
+            $region = substr((string) $value, 0, 2);
         } else {
             $region = new Zend_Locale($this->_locale);
             $region = $region->getRegion();
@@ -224,7 +224,7 @@ class Zend_Validate_Iban extends Zend_Validate_Abstract
             return false;
         }
 
-        $format = substr($value, 4) . substr($value, 0, 4);
+        $format = substr((string) $value, 4) . substr((string) $value, 0, 4);
         $format = str_replace(
             array('A',  'B',  'C',  'D',  'E',  'F',  'G',  'H',  'I',  'J',  'K',  'L',  'M',
                   'N',  'O',  'P',  'Q',  'R',  'S',  'T',  'U',  'V',  'W',  'X',  'Y',  'Z'),
@@ -232,11 +232,11 @@ class Zend_Validate_Iban extends Zend_Validate_Abstract
                   '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'),
             $format);
 
-        $temp = intval(substr($format, 0, 1));
-        $len  = strlen($format);
+        $temp = intval(substr((string) $format, 0, 1));
+        $len  = strlen((string) $format);
         for ($x = 1; $x < $len; ++$x) {
             $temp *= 10;
-            $temp += intval(substr($format, $x, 1));
+            $temp += intval(substr((string) $format, $x, 1));
             $temp %= 97;
         }
 

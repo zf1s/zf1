@@ -61,13 +61,13 @@ class Zend_Service_Amazon_Query extends Zend_Service_Amazon
      */
     public function __call($method, $args)
     {
-        if (strtolower($method) === 'asin') {
+        if (strtolower((string) $method) === 'asin') {
             $this->_searchIndex = 'asin';
             $this->_search['ItemId'] = $args[0];
             return $this;
         }
 
-        if (strtolower($method) === 'category') {
+        if (strtolower((string) $method) === 'category') {
             $this->_searchIndex = $args[0];
             $this->_search['SearchIndex'] = $args[0];
         } else if (isset($this->_search['SearchIndex']) || $this->_searchIndex !== null || $this->_searchIndex === 'asin') {

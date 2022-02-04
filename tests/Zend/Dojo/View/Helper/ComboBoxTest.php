@@ -168,7 +168,7 @@ class Zend_Dojo_View_Helper_ComboBoxTest extends PHPUnit_Framework_TestCase
 
         $scripts = $this->view->dojo()->_getZendLoadActions();
         foreach ($scripts as $js) {
-            if (strstr($js, 'stateStore = new ')) {
+            if (strstr((string) $js, 'stateStore = new ')) {
                 $found = true;
                 break;
             }
@@ -213,7 +213,7 @@ class Zend_Dojo_View_Helper_ComboBoxTest extends PHPUnit_Framework_TestCase
         $onLoad = $this->view->dojo()->_getZendLoadActions();
         $storeDeclarationFound = false;
         foreach ($onLoad as $statement) {
-            if (strstr($statement, 'stateStore = new ')) {
+            if (strstr((string) $statement, 'stateStore = new ')) {
                 $storeDeclarationFound = true;
                 break;
             }

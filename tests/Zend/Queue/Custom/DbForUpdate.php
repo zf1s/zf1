@@ -81,7 +81,7 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
 
             foreach ($db->fetchAll($query) as $data) {
                 // setup our changes to the message
-                $data['handle'] = md5(uniqid(rand(), true));
+                $data['handle'] = md5((string) uniqid(rand(), true));
 
                 $update = array(
                     'handle'  => $data['handle'],

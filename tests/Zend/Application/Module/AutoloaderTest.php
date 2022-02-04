@@ -79,7 +79,7 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
 
         $this->loader = new Zend_Application_Module_Autoloader(array(
             'namespace' => 'FooBar',
-            'basePath'  => realpath(dirname(__FILE__) . '/_files'),
+            'basePath'  => realpath(__DIR__ . '/_files'),
         ));
     }
 

@@ -61,7 +61,7 @@ class Zend_Application_Resource_UseragentTest extends PHPUnit_Framework_TestCase
 
         $this->application = new Zend_Application('testing');
 
-        require_once dirname(__FILE__) . '/../_files/ZfAppBootstrap.php';
+        require_once __DIR__ . '/../_files/ZfAppBootstrap.php';
         $this->bootstrap = new ZfAppBootstrap($this->application);
 
         Zend_Controller_Action_HelperBroker::resetHelpers();

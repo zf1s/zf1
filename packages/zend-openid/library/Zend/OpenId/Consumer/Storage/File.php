@@ -123,8 +123,8 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      */
     public function addAssociation($url, $handle, $macFunc, $secret, $expires)
     {
-        $name1 = $this->_dir . '/assoc_url_' . md5($url);
-        $name2 = $this->_dir . '/assoc_handle_' . md5($handle);
+        $name1 = $this->_dir . '/assoc_url_' . md5((string) $url);
+        $name2 = $this->_dir . '/assoc_handle_' . md5((string) $handle);
         $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
         if ($lock === false) {
             return false;
@@ -181,7 +181,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      */
     public function getAssociation($url, &$handle, &$macFunc, &$secret, &$expires)
     {
-        $name1 = $this->_dir . '/assoc_url_' . md5($url);
+        $name1 = $this->_dir . '/assoc_url_' . md5((string) $url);
         $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
         if ($lock === false) {
             return false;
@@ -203,7 +203,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
                 if ($url === $storedUrl && $expires > time()) {
                     $ret = true;
                 } else {
-                    $name2 = $this->_dir . '/assoc_handle_' . md5($handle);
+                    $name2 = $this->_dir . '/assoc_handle_' . md5((string) $handle);
                     fclose($f);
                     @unlink($name2);
                     @unlink($name1);
@@ -234,7 +234,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      */
     public function getAssociationByHandle($handle, &$url, &$macFunc, &$secret, &$expires)
     {
-        $name2 = $this->_dir . '/assoc_handle_' . md5($handle);
+        $name2 = $this->_dir . '/assoc_handle_' . md5((string) $handle);
         $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
         if ($lock === false) {
             return false;
@@ -258,7 +258,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
                 } else {
                     fclose($f);
                     @unlink($name2);
-                    $name1 = $this->_dir . '/assoc_url_' . md5($url);
+                    $name1 = $this->_dir . '/assoc_url_' . md5((string) $url);
                     @unlink($name1);
                     fclose($lock);
                     return false;
@@ -281,7 +281,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      */
     public function delAssociation($url)
     {
-        $name1 = $this->_dir . '/assoc_url_' . md5($url);
+        $name1 = $this->_dir . '/assoc_url_' . md5((string) $url);
         $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
         if ($lock === false) {
             return false;
@@ -300,7 +300,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
             if (!empty($data)) {
                 list($storedUrl, $handle, $macFunc, $secret, $expires) = unserialize($data);
                 if ($url === $storedUrl) {
-                    $name2 = $this->_dir . '/assoc_handle_' . md5($handle);
+                    $name2 = $this->_dir . '/assoc_handle_' . md5((string) $handle);
                     fclose($f);
                     @unlink($name2);
                     @unlink($name1);
@@ -329,7 +329,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      */
     public function addDiscoveryInfo($id, $realId, $server, $version, $expires)
     {
-        $name = $this->_dir . '/discovery_' . md5($id);
+        $name = $this->_dir . '/discovery_' . md5((string) $id);
         $lock = @fopen($this->_dir . '/discovery.lock', 'w+');
         if ($lock === false) {
             return false;
@@ -368,7 +368,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      */
     public function getDiscoveryInfo($id, &$realId, &$server, &$version, &$expires)
     {
-        $name = $this->_dir . '/discovery_' . md5($id);
+        $name = $this->_dir . '/discovery_' . md5((string) $id);
         $lock = @fopen($this->_dir . '/discovery.lock', 'w+');
         if ($lock === false) {
             return false;
@@ -413,7 +413,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      */
     public function delDiscoveryInfo($id)
     {
-        $name = $this->_dir . '/discovery_' . md5($id);
+        $name = $this->_dir . '/discovery_' . md5((string) $id);
         $lock = @fopen($this->_dir . '/discovery.lock', 'w+');
         if ($lock === false) {
             return false;
@@ -441,7 +441,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      */
     public function isUniqueNonce($provider, $nonce)
     {
-        $name = $this->_dir . '/nonce_' . md5($provider.';'.$nonce);
+        $name = $this->_dir . '/nonce_' . md5((string) $provider.';'.$nonce);
         $lock = @fopen($this->_dir . '/nonce.lock', 'w+');
         if ($lock === false) {
             return false;

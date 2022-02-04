@@ -277,10 +277,10 @@ class Zend_Tag_Cloud_Decorator_HtmlTag extends Zend_Tag_Cloud_Decorator_Tag
             if (null === ($classList = $this->getClassList())) {
                 $attribute = sprintf('style="font-size: %d%s;"', $tag->getParam('weightValue'), $this->getFontSizeUnit());
             } else {
-                $attribute = sprintf('class="%s"', htmlspecialchars($tag->getParam('weightValue'), ENT_COMPAT, $enc));
+                $attribute = sprintf('class="%s"', htmlspecialchars((string) $tag->getParam('weightValue'), ENT_COMPAT, $enc));
             }
 
-            $tagHtml = sprintf('<a href="%s" %s>%s</a>', htmlSpecialChars($tag->getParam('url'), ENT_COMPAT, $enc), $attribute, $tag->getTitle());
+            $tagHtml = sprintf('<a href="%s" %s>%s</a>', htmlspecialchars((string) (string) $tag->getParam('url'), ENT_COMPAT, $enc), $attribute, $tag->getTitle());
 
             foreach ($this->getHtmlTags() as $key => $data) {
                 if (is_array($data)) {
@@ -288,7 +288,7 @@ class Zend_Tag_Cloud_Decorator_HtmlTag extends Zend_Tag_Cloud_Decorator_Tag
                     $attributes = '';
 
                     foreach ($data as $param => $value) {
-                        $attributes .= ' ' . $param . '="' . htmlspecialchars($value, ENT_COMPAT, $enc) . '"';
+                        $attributes .= ' ' . $param . '="' . htmlspecialchars((string) $value, ENT_COMPAT, $enc) . '"';
                     }
                 } else {
                     $htmlTag    = $data;

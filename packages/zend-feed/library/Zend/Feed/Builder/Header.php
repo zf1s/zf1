@@ -397,7 +397,7 @@ class Zend_Feed_Builder_Header extends ArrayObject
         }
         $valid = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
         foreach ($days as $day) {
-            if (!in_array(strtolower($day), $valid)) {
+            if (!in_array(strtolower((string) $day), $valid)) {
                 /**
                  * @see Zend_Feed_Builder_Exception
                  */

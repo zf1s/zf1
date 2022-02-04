@@ -232,7 +232,7 @@ class Zend_ProgressBar_Adapter_Console extends Zend_ProgressBar_Adapter
     public function setWidth($width = null)
     {
         if ($width === null || !is_integer($width)) {
-            if (substr(PHP_OS, 0, 3) === 'WIN') {
+            if (substr((string) PHP_OS, 0, 3) === 'WIN') {
                 // We have to default to 79 on windows, because the windows
                 // terminal always has a fixed width of 80 characters and the
                 // cursor is counted to the line, else windows would line break
@@ -413,18 +413,18 @@ class Zend_ProgressBar_Adapter_Console extends Zend_ProgressBar_Adapter
                     $visualWidth = $this->_barWidth - 2;
                     $bar         = '[';
 
-                    $indicatorWidth = strlen($this->_barIndicatorChar);
+                    $indicatorWidth = strlen((string) $this->_barIndicatorChar);
 
                     $doneWidth = min($visualWidth - $indicatorWidth, round($visualWidth * $percent));
                     if ($doneWidth > 0) {
-                        $bar .= substr(str_repeat($this->_barLeftChar, ceil($doneWidth / strlen($this->_barLeftChar))), 0, $doneWidth);
+                        $bar .= substr((string) str_repeat($this->_barLeftChar, ceil($doneWidth / strlen((string) $this->_barLeftChar))), 0, $doneWidth);
                     }
 
                     $bar .= $this->_barIndicatorChar;
 
                     $leftWidth = $visualWidth - $doneWidth - $indicatorWidth;
                     if ($leftWidth > 0) {
-                        $bar .= substr(str_repeat($this->_barRightChar, ceil($leftWidth / strlen($this->_barRightChar))), 0, $leftWidth);
+                        $bar .= substr((string) str_repeat($this->_barRightChar, ceil($leftWidth / strlen((string) $this->_barRightChar))), 0, $leftWidth);
                     }
 
                     $bar .= ']';
@@ -459,7 +459,7 @@ class Zend_ProgressBar_Adapter_Console extends Zend_ProgressBar_Adapter
                     break;
 
                 case self::ELEMENT_TEXT:
-                    $renderedElements[] = Zend_Text_MultiByte::strPad(substr($text, 0, $this->_textWidth), $this->_textWidth, ' ', STR_PAD_RIGHT, $this->_charset);
+                    $renderedElements[] = Zend_Text_MultiByte::strPad(substr((string) $text, 0, $this->_textWidth), $this->_textWidth, ' ', STR_PAD_RIGHT, $this->_charset);
                     break;
             }
         }

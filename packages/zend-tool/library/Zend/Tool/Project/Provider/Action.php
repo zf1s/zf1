@@ -156,7 +156,7 @@ class Zend_Tool_Project_Provider_Action
         $originalControllerName = $controllerName;
 
         // ensure it is camelCase (lower first letter)
-        $name = strtolower(substr($name, 0, 1)) . substr($name, 1);
+        $name = strtolower((string) substr((string) $name, 0, 1)) . substr((string) $name, 1);
 
         // ensure controller is MixedCase
         $controllerName = ucfirst($controllerName);

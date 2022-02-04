@@ -72,7 +72,7 @@ class My_ZendDbTable_Row_TestMockRow extends Zend_Db_Table_Row_Abstract
     protected function _transformColumn($columnName)
     {
         // convert 'columnFoo' to 'column_foo'
-        $columnName = strtolower(preg_replace('/([A-Z])/', '_$1', $columnName));
+        $columnName = strtolower((string) preg_replace('/([A-Z])/', '_$1', $columnName));
         return $columnName;
     }
 

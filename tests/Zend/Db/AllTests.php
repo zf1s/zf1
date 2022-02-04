@@ -85,7 +85,7 @@ class Zend_Db_AllTests
 
     protected static function _addDbTestSuites($suite, $driver)
     {
-        $DRIVER = strtoupper($driver);
+        $DRIVER = strtoupper((string) $driver);
         $enabledConst = "TESTS_ZEND_DB_ADAPTER_{$DRIVER}_ENABLED";
         if (!defined($enabledConst) || constant($enabledConst) != true) {
             self::_skipTestSuite($driver, "this Adapter is not enabled in TestConfiguration.php");
@@ -115,7 +115,7 @@ class Zend_Db_AllTests
             }
 
             // check the PDO driver is available
-            $pdo_driver = strtolower($matches[1]);
+            $pdo_driver = strtolower((string) $matches[1]);
             if (!in_array($pdo_driver, PDO::getAvailableDrivers())) {
                 self::_skipTestSuite($driver, "PDO driver '{$pdo_driver}' is not available");
                 return;

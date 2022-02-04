@@ -143,7 +143,7 @@ abstract class Zend_Oauth_Token
      */
     public function setParam($key, $value)
     {
-        $this->_params[$key] = trim($value, "\n");
+        $this->_params[$key] = \trim((string) $value, "\n");
         return $this;
     }
 

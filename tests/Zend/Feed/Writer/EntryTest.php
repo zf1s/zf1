@@ -38,7 +38,7 @@ class Zend_Feed_Writer_EntryTest extends PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->_feedSamplePath = dirname(__FILE__) . '/_files';
+        $this->_feedSamplePath = __DIR__ . '/_files';
     }
 
     public function testAddsAuthorName()
@@ -563,7 +563,7 @@ class Zend_Feed_Writer_EntryTest extends PHPUnit_Framework_TestCase
         $entry->setCommentCount('10');
         $this->assertEquals(10, $entry->getCommentCount());
     }
-    
+
     /**
      * @group ZF-11150
      */

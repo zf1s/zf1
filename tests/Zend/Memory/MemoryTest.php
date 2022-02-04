@@ -53,7 +53,7 @@ class Zend_Memory_MemoryTest extends PHPUnit_Framework_TestCase
 
     protected function _removeCacheDir($dir)
     {
-        if (!file_exists($dir)) {
+        if (!file_exists((string) $dir)) {
             return true;
         }
 

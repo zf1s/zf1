@@ -261,11 +261,11 @@ class Zend_Filter_Boolean implements Zend_Filter_Interface
         // STRING FALSE ('false')
         if ($type >= self::FALSE_STRING) {
             $type -= self::FALSE_STRING;
-            if (is_string($value) && (strtolower($value) == 'false')) {
+            if (is_string($value) && (strtolower((string) $value) == 'false')) {
                 return false;
             }
 
-            if ((!$casting) && is_string($value) && (strtolower($value) == 'true')) {
+            if ((!$casting) && is_string($value) && (strtolower((string) $value) == 'true')) {
                 return true;
             }
         }
@@ -366,7 +366,7 @@ class Zend_Filter_Boolean implements Zend_Filter_Interface
         $str = explode(':', $str);
         if (!empty($str)) {
             foreach($str as $no) {
-                if (($no == $value) || (strtolower($no) == strtolower($value))) {
+                if (($no == $value) || (strtolower((string) $no) == strtolower((string) $value))) {
                     return $return;
                 }
             }

@@ -157,7 +157,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         $form = new Zend_Form($options);
         $this->assertEquals($options['name'], $form->getName());
         $this->assertEquals($options['action'], $form->getAction());
-        $this->assertEquals(strtolower($options['method']), strtolower($form->getMethod()));
+        $this->assertEquals(strtolower((string) $options['method']), strtolower((string) $form->getMethod()));
     }
 
     public function getElementOptions()
@@ -386,7 +386,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
     public function testDisplayGroupOrderInConfigShouldNotMatter()
     {
         // require_once 'Zend/Config/Xml.php';
-        $config = new Zend_Config_Xml(dirname(__FILE__) . '/_files/config/zf3250.xml', 'sitearea', true);
+        $config = new Zend_Config_Xml(__DIR__ . '/_files/config/zf3250.xml', 'sitearea', true);
         $form = new Zend_Form($config->test);
         // no assertions needed; throws error if order matters
     }
@@ -1003,7 +1003,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         $unfiltered = $this->form->getUnfilteredValues();
         foreach (array('foo', 'bar') as $key) {
             $value = $key . 'value';
-            $this->assertEquals(strtoupper($value), $values[$key]);
+            $this->assertEquals(strtoupper((string) $value), $values[$key]);
             $this->assertEquals($value, $unfiltered[$key]);
         }
     }
@@ -2642,7 +2642,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
     {
         $this->_checkZf2794();
 
-        $translations = include dirname(__FILE__) . '/_files/locale/array.php';
+        $translations = include __DIR__ . '/_files/locale/array.php';
         $translate = new Zend_Translate('array', $translations, 'en');
         $translate->setLocale('en');
 
@@ -2696,7 +2696,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
     {
         $this->_checkZf2794();
 
-        $translations = include dirname(__FILE__) . '/_files/locale/array.php';
+        $translations = include __DIR__ . '/_files/locale/array.php';
         $translate = new Zend_Translate('array', $translations, 'en');
         $translate->setLocale('en');
 
@@ -2742,7 +2742,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
     {
         $this->_checkZf2794();
 
-        $translations = include dirname(__FILE__) . '/_files/locale/array.php';
+        $translations = include __DIR__ . '/_files/locale/array.php';
         $translate = new Zend_Translate('array', $translations, 'en');
         $translate->setLocale('en');
 
@@ -3627,13 +3627,13 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
             array('HtmlTag', array('tag' => 'table')),
             'Form',
         ));
-        $this->form->addElementPrefixPath('My_Decorator', dirname(__FILE__) . '/_files/decorators/', 'decorator');
+        $this->form->addElementPrefixPath('My_Decorator', __DIR__ . '/_files/decorators/', 'decorator');
         $this->form->addElement('text', 'test', array(
             'label'       => 'Foo',
             'description' => 'sample description',
         ));
 
-        require_once dirname(__FILE__) . '/_files/decorators/TableRow.php';
+        require_once __DIR__ . '/_files/decorators/TableRow.php';
         $decorator = new My_Decorator_TableRow();
         $this->form->setElementDecorators(array(
             'ViewHelper',
@@ -3764,7 +3764,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
     {
         $this->_checkZf2794();
 
-        $this->form->addElementPrefixPath('My_Decorator', dirname(__FILE__) . '/_files/decorators', 'decorator');
+        $this->form->addElementPrefixPath('My_Decorator', __DIR__ . '/_files/decorators', 'decorator');
         $this->form->addElement('text', 'prefixTest');
         $element = $this->form->prefixTest;
         $label   = $element->getDecorator('Label');
@@ -3882,7 +3882,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
     public function testShouldAllowSettingDisplayGroupPrefixPathViaConfigOptions()
     {
         // require_once 'Zend/Config/Ini.php';
-        $config = new Zend_Config_Ini(dirname(__FILE__) . '/_files/config/zf3213.ini', 'form');
+        $config = new Zend_Config_Ini(__DIR__ . '/_files/config/zf3213.ini', 'form');
         $form   = new Zend_Form($config);
         $dg     = $form->foofoo;
         $paths  = $dg->getPluginLoader()->getPaths('My_Decorator');

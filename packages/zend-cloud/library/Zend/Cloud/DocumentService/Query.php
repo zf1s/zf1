@@ -65,7 +65,7 @@ class Zend_Cloud_DocumentService_Query
      */
     public function __call($name, $args)
     {
-        $this->_clauses[] = array(strtolower($name), $args);
+        $this->_clauses[] = array(strtolower((string) $name), $args);
         return $this;
     }
 

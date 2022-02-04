@@ -67,6 +67,7 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
     protected function _prepare()
     {
         list($frac, $sec) = explode(' ', microtime());
+        $frac = (int) $frac;
         $fracba = ($frac & 0xff000000) >> 24;
         $fracbb = ($frac & 0x00ff0000) >> 16;
         $fracbc = ($frac & 0x0000ff00) >> 8;
@@ -146,10 +147,10 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _getInteger($input)
     {
-        $f1  = str_pad(ord($input[0]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[1]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[2]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[3]), 2, '0', STR_PAD_LEFT);
+        $f1  = str_pad(ord((string) $input[0]), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad(ord((string) $input[1]), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad(ord((string) $input[2]), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad(ord((string) $input[3]), 2, '0', STR_PAD_LEFT);
         return (int) $f1;
     }
 
@@ -161,10 +162,10 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _getFloat($input)
     {
-        $f1  = str_pad(ord($input[0]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[1]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[2]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[3]), 2, '0', STR_PAD_LEFT);
+        $f1  = str_pad(ord((string) isset($input[0]) ? $input[0] : null), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad(ord((string) isset($input[1]) ? $input[1] : null), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad(ord((string) isset($input[2]) ? $input[2] : null), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad(ord((string) isset($input[3]) ? $input[3] : null), 2, '0', STR_PAD_LEFT);
         $f2  = $f1 >> 17;
         $f3  = ($f1 & 0x0001FFFF);
         $f1  = $f2 . '.' . $f3;
@@ -179,16 +180,16 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _getTimestamp($input)
     {
-        $f1  = (ord($input[0]) * pow(256, 3));
-        $f1 += (ord($input[1]) * pow(256, 2));
-        $f1 += (ord($input[2]) * pow(256, 1));
-        $f1 += (ord($input[3]));
+        $f1  = (ord((string) $input[0]) * pow(256, 3));
+        $f1 += (ord((string) $input[1]) * pow(256, 2));
+        $f1 += (ord((string) $input[2]) * pow(256, 1));
+        $f1 += (ord((string) $input[3]));
         $f1 -= 2208988800;
 
-        $f2  = (ord($input[4]) * pow(256, 3));
-        $f2 += (ord($input[5]) * pow(256, 2));
-        $f2 += (ord($input[6]) * pow(256, 1));
-        $f2 += (ord($input[7]));
+        $f2  = (ord((string) $input[4]) * pow(256, 3));
+        $f2 += (ord((string) $input[5]) * pow(256, 2));
+        $f2 += (ord((string) $input[6]) * pow(256, 1));
+        $f2 += (ord((string) $input[7]));
 
         return (float) ($f1 . "." . $f2);
     }
@@ -203,7 +204,7 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _read()
     {
-        $flags = ord(fread($this->_socket, 1));
+        $flags = ord((string) fread($this->_socket, 1));
         $info  = stream_get_meta_data($this->_socket);
 
         if ($info['timed_out'] === true) {
@@ -214,9 +215,9 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
 
         $result = array(
             'flags'          => $flags,
-            'stratum'        => ord(fread($this->_socket, 1)),
-            'poll'           => ord(fread($this->_socket, 1)),
-            'precision'      => ord(fread($this->_socket, 1)),
+            'stratum'        => ord((string) fread($this->_socket, 1)),
+            'poll'           => ord((string) fread($this->_socket, 1)),
+            'precision'      => ord((string) fread($this->_socket, 1)),
             'rootdelay'      => $this->_getFloat(fread($this->_socket, 4)),
             'rootdispersion' => $this->_getFloat(fread($this->_socket, 4)),
             'referenceid'    => fread($this->_socket, 4),
@@ -326,44 +327,44 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
          *
          * Identifies the particular reference clock.
          */
-        $refid = strtoupper($binary['referenceid']);
+        $refid = strtoupper((string) $binary['referenceid']);
         switch($binary['stratum']) {
             case 0:
-                if (substr($refid, 0, 3) === 'DCN') {
+                if (substr((string) $refid, 0, 3) === 'DCN') {
                     $ntpserviceid = 'DCN routing protocol';
-                } else if (substr($refid, 0, 4) === 'NIST') {
+                } else if (substr((string) $refid, 0, 4) === 'NIST') {
                     $ntpserviceid = 'NIST public modem';
-                } else if (substr($refid, 0, 3) === 'TSP') {
+                } else if (substr((string) $refid, 0, 3) === 'TSP') {
                     $ntpserviceid = 'TSP time protocol';
-                } else if (substr($refid, 0, 3) === 'DTS') {
+                } else if (substr((string) $refid, 0, 3) === 'DTS') {
                     $ntpserviceid = 'Digital Time Service';
                 }
                 break;
 
             case 1:
-                if (substr($refid, 0, 4) === 'ATOM') {
+                if (substr((string) $refid, 0, 4) === 'ATOM') {
                     $ntpserviceid = 'Atomic Clock (calibrated)';
-                } else if (substr($refid, 0, 3) === 'VLF') {
+                } else if (substr((string) $refid, 0, 3) === 'VLF') {
                     $ntpserviceid = 'VLF radio';
                 } else if ($refid === 'CALLSIGN') {
                     $ntpserviceid = 'Generic radio';
-                } else if (substr($refid, 0, 4) === 'LORC') {
+                } else if (substr((string) $refid, 0, 4) === 'LORC') {
                     $ntpserviceid = 'LORAN-C radionavigation';
-                } else if (substr($refid, 0, 4) === 'GOES') {
+                } else if (substr((string) $refid, 0, 4) === 'GOES') {
                     $ntpserviceid = 'GOES UHF environment satellite';
-                } else if (substr($refid, 0, 3) === 'GPS') {
+                } else if (substr((string) $refid, 0, 3) === 'GPS') {
                     $ntpserviceid = 'GPS UHF satellite positioning';
                 }
                 break;
 
             default:
-                $ntpserviceid  = ord(substr($binary['referenceid'], 0, 1));
+                $ntpserviceid  = ord((string) substr((string) $binary['referenceid'], 0, 1));
                 $ntpserviceid .= '.';
-                $ntpserviceid .= ord(substr($binary['referenceid'], 1, 1));
+                $ntpserviceid .= ord((string) substr((string) $binary['referenceid'], 1, 1));
                 $ntpserviceid .= '.';
-                $ntpserviceid .= ord(substr($binary['referenceid'], 2, 1));
+                $ntpserviceid .= ord((string) substr((string) $binary['referenceid'], 2, 1));
                 $ntpserviceid .= '.';
-                $ntpserviceid .= ord(substr($binary['referenceid'], 3, 1));
+                $ntpserviceid .= ord((string) substr((string) $binary['referenceid'], 3, 1));
                 break;
         }
 

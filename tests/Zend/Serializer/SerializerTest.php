@@ -67,11 +67,11 @@ class Zend_Serializer_SerializerTest extends PHPUnit_Framework_TestCase
         $this->setExpectedException('Zend_Serializer_Exception','Can\'t load serializer adapter');
         Zend_Serializer::factory('unknown');
     }
-    
+
     public function testFactoryOnADummyClassAdapter()
     {
         $this->setExpectedException('Zend_Serializer_Exception','must implement Zend_Serializer_Adapter_AdapterInterface');
-        Zend_Serializer::setAdapterLoader(new Zend_Loader_PluginLoader(array('Zend_Serializer_Adapter' => dirname(__FILE__) . '/_files')));
+        Zend_Serializer::setAdapterLoader(new Zend_Loader_PluginLoader(array('Zend_Serializer_Adapter' => __DIR__ . '/_files')));
         Zend_Serializer::factory('dummy');
     }
 

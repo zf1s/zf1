@@ -379,7 +379,7 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
         
         // profile id (ga:tableId)
         if ($this->getProfileId() != null) {
-            $this->setParam('ids', 'ga:'.ltrim($this->getProfileId(), "ga:"));
+            $this->setParam('ids', 'ga:'.ltrim((string) $this->getProfileId(), "ga:"));
         }
                 
         // sorting
@@ -394,7 +394,7 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
         }
         
         if ($filters!="") {
-            $this->setParam('filters', ltrim($filters, ",;"));
+            $this->setParam('filters', ltrim((string) $filters, ",;"));
         }
         
         $uri .= $this->getQueryString();

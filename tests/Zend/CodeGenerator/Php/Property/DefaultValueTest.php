@@ -113,7 +113,7 @@ array(
         );
 EOS;
         // On Windows, we need PHP_EOL, but heredoc provides \n
-        $expectedSource = str_replace("\n", PHP_EOL, $expectedSource);
+        $expectedSource = str_replace((string) "\n", PHP_EOL, $expectedSource);
 
         $propDefaultValue = new Zend_CodeGenerator_Php_Property_DefaultValue();
         $propDefaultValue->setValue($targetValue);

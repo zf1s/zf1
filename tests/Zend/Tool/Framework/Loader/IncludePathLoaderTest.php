@@ -64,7 +64,7 @@ class Zend_Tool_Framework_Loader_IncludePathLoaderTest extends PHPUnit_Framework
         $loader->load();
         $files = $loader->getLoadRetrievedFiles();
         foreach ($files as $index => $file) {
-            $files[$index] = substr($file, strpos($file, 'Zend'));
+            $files[$index] = substr((string) $file, strpos((string) $file, 'Zend'));
         }
         $this->assertContains('Zend/Tool/Framework/System/Manifest.php', $files);
     }

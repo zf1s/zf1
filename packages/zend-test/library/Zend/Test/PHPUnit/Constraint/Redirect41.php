@@ -61,7 +61,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
      * @var string
      */
     protected $_match             = null;
-    
+
     /**
      * What is actual redirect
      */
@@ -113,9 +113,9 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
             throw new Zend_Test_PHPUnit_Constraint_Exception('Redirect constraint assertions require a response object');
         }
 
-        if (strstr($assertType, 'Not')) {
+        if (strstr((string) $assertType, 'Not')) {
             $this->setNegate(true);
-            $assertType = str_replace('Not', '', $assertType);
+            $assertType = str_replace((string) 'Not', '', $assertType);
         }
 
         if (!in_array($assertType, $this->_assertTypes)) {
@@ -153,7 +153,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
                 $headers  = $response->sendHeaders();
                 if (isset($headers['location'])) {
                     $redirect = $headers['location'];
-                    $redirect = str_replace('Location: ', '', $redirect);
+                    $redirect = str_replace((string) 'Location: ', '', $redirect);
                     $this->_actual = $redirect;
                 }
                 return ($this->_negate) ? !$response->isRedirect() : $response->isRedirect();
@@ -246,7 +246,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
 
         $headers  = $response->sendHeaders();
         $redirect = $headers['location'];
-        $redirect = str_replace('Location: ', '', $redirect);
+        $redirect = str_replace((string) 'Location: ', '', $redirect);
         $this->_actual = $redirect;
 
         return ($redirect == $match);
@@ -267,7 +267,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
 
         $headers  = $response->sendHeaders();
         $redirect = $headers['location'];
-        $redirect = str_replace('Location: ', '', $redirect);
+        $redirect = str_replace((string) 'Location: ', '', $redirect);
         $this->_actual = $redirect;
 
         return ($redirect != $match);
@@ -288,7 +288,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
 
         $headers  = $response->sendHeaders();
         $redirect = $headers['location'];
-        $redirect = str_replace('Location: ', '', $redirect);
+        $redirect = str_replace((string) 'Location: ', '', $redirect);
         $this->_actual = $redirect;
 
         return preg_match($pattern, $redirect);
@@ -309,7 +309,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
 
         $headers  = $response->sendHeaders();
         $redirect = $headers['location'];
-        $redirect = str_replace('Location: ', '', $redirect);
+        $redirect = str_replace((string) 'Location: ', '', $redirect);
         $this->_actual = $redirect;
 
         return !preg_match($pattern, $redirect);

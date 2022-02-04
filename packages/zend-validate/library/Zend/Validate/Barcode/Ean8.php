@@ -58,7 +58,7 @@ class Zend_Validate_Barcode_Ean8 extends Zend_Validate_Barcode_AdapterAbstract
      */
     public function checkLength($value)
     {
-        if (strlen($value) == 7) {
+        if (strlen((string) $value) == 7) {
             $this->setCheck(false);
         } else {
             $this->setCheck(true);

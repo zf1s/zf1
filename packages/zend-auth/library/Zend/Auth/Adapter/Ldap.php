@@ -371,7 +371,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
                     $line = $zle->getLine();
                     $messages[] = $zle->getFile() . "($line): " . $zle->getMessage();
                     $messages[] = preg_replace(
-						'/\b'.preg_quote(substr($password, 0, 15), '/').'\b/',
+						'/\b'.preg_quote(substr((string) $password, 0, 15), '/').'\b/',
 						'*****',
 						$zle->getTraceAsString()
 					);
@@ -422,7 +422,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
                                 $value === '1' || strcasecmp($value, 'true') == 0);
                         break;
                     default:
-                        $adapterOptions[$key] = trim($value);
+                        $adapterOptions[$key] = \trim((string) $value);
                         break;
                 }
             }

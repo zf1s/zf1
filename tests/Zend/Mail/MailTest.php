@@ -301,7 +301,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         $transportMock = new Zend_Mail_Transport_Sendmail_Mock();
         $mail->send($transportMock);
 
-        $this->assertEquals($transportMock->header, rtrim($transportMock->header));
+        $this->assertEquals($transportMock->header, rtrim((string) $transportMock->header));
     }
 
     /**
@@ -390,25 +390,25 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
 
         // check body
         // search for first boundary
-        $p1 = strpos($mock->body, "--$boundary\n");
+        $p1 = strpos((string) $mock->body, "--$boundary\n");
         $this->assertNotNull($p1, $boundary . ': ' . $mock->body);
 
         // cut out first (Text) part
-        $start1 = $p1 + 3 + strlen($boundary);
-        $p2 = strpos($mock->body, "--$boundary\n", $start1);
+        $start1 = $p1 + 3 + strlen((string) $boundary);
+        $p2 = strpos((string) $mock->body, "--$boundary\n", $start1);
         $this->assertNotNull($p2);
 
-        $partBody1 = substr($mock->body, $start1, ($p2 - $start1));
+        $partBody1 = substr((string) $mock->body, $start1, ($p2 - $start1));
         $this->assertContains('Content-Type: text/plain', $partBody1);
         $this->assertContains('My Nice Test Text', $partBody1);
 
         // check second (HTML) part
         // search for end boundary
-        $start2 = $p2 + 3 + strlen($boundary);
-        $p3 = strpos($mock->body, "--$boundary--");
+        $start2 = $p2 + 3 + strlen((string) $boundary);
+        $p3 = strpos((string) $mock->body, "--$boundary--");
         $this->assertNotNull($p3);
 
-        $partBody2 = substr($mock->body, $start2, ($p3 - $start2));
+        $partBody2 = substr((string) $mock->body, $start2, ($p3 - $start2));
         $this->assertContains('Content-Type: text/html', $partBody2);
         $this->assertContains('My Nice <b>Test</b> Text', $partBody2);
     }
@@ -440,25 +440,25 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
 
         // check body
         // search for first boundary
-        $p1 = strpos($mock->body, "--$boundary\n");
+        $p1 = strpos((string) $mock->body, "--$boundary\n");
         $this->assertNotNull($p1);
 
         // cut out first (Text) part
-        $start1 = $p1 + 3 + strlen($boundary);
-        $p2 = strpos($mock->body, "--$boundary\n", $start1);
+        $start1 = $p1 + 3 + strlen((string) $boundary);
+        $p2 = strpos((string) $mock->body, "--$boundary\n", $start1);
         $this->assertNotNull($p2);
 
-        $partBody1 = substr($mock->body, $start1, ($p2 - $start1));
+        $partBody1 = substr((string) $mock->body, $start1, ($p2 - $start1));
         $this->assertContains('Content-Type: text/plain', $partBody1);
         $this->assertContains('My Nice Test Text', $partBody1);
 
         // check second (HTML) part
         // search for end boundary
-        $start2 = $p2 + 3 + strlen($boundary);
-        $p3 = strpos($mock->body, "--$boundary--");
+        $start2 = $p2 + 3 + strlen((string) $boundary);
+        $p3 = strpos((string) $mock->body, "--$boundary--");
         $this->assertNotNull($p3);
 
-        $partBody2 = substr($mock->body, $start2, ($p3 - $start2));
+        $partBody2 = substr((string) $mock->body, $start2, ($p3 - $start2));
         $this->assertContains('Content-Type: image/gif', $partBody2);
         $this->assertContains('Content-Transfer-Encoding: base64', $partBody2);
         $this->assertContains('Content-ID: <12>', $partBody2);
@@ -494,15 +494,15 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
 
         // check body
         // search for first boundary
-        $p1 = strpos($mock->body, "--$boundary\n");
+        $p1 = strpos((string) $mock->body, "--$boundary\n");
         $this->assertNotNull($p1);
 
         // cut out first (multipart/alternative) part
-        $start1 = $p1 + 3 + strlen($boundary);
-        $p2 = strpos($mock->body, "--$boundary\n", $start1);
+        $start1 = $p1 + 3 + strlen((string) $boundary);
+        $p2 = strpos((string) $mock->body, "--$boundary\n", $start1);
         $this->assertNotNull($p2);
 
-        $partBody1 = substr($mock->body, $start1, ($p2 - $start1));
+        $partBody1 = substr((string) $mock->body, $start1, ($p2 - $start1));
         $this->assertContains('Content-Type: multipart/alternative', $partBody1);
         $this->assertContains('Content-Type: text/plain', $partBody1);
         $this->assertContains('Content-Type: text/html', $partBody1);
@@ -511,11 +511,11 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
 
         // check second (image) part
         // search for end boundary
-        $start2 = $p2 + 3 + strlen($boundary);
-        $p3 = strpos($mock->body, "--$boundary--");
+        $start2 = $p2 + 3 + strlen((string) $boundary);
+        $p3 = strpos((string) $mock->body, "--$boundary--");
         $this->assertNotNull($p3);
 
-        $partBody2 = substr($mock->body, $start2, ($p3 - $start2));
+        $partBody2 = substr((string) $mock->body, $start2, ($p3 - $start2));
         $this->assertContains('Content-Type: image/gif', $partBody2);
         $this->assertContains('Content-Transfer-Encoding: base64', $partBody2);
         $this->assertContains('Content-ID: <12>', $partBody2);
@@ -577,7 +577,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
      */
     protected function _getHeader(Zend_Mail_Transport_Abstract $mock, $type = 'To')
     {
-        $headers = str_replace("\r\n", "\n", $mock->header);
+        $headers = str_replace((string) "\r\n", "\n", $mock->header);
         $headers = explode("\n", $mock->header);
         $return  = '';
         foreach ($headers as $header) {
@@ -713,7 +713,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($mock->called);
         $this->assertTrue(isset($mock->headers['Date']));
         $this->assertTrue(isset($mock->headers['Date'][0]));
-        $this->assertTrue(strlen($mock->headers['Date'][0]) > 0);
+        $this->assertTrue(strlen((string) $mock->headers['Date'][0]) > 0);
     }
 
     public function testSetDateInt()
@@ -729,7 +729,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         $mail->send($mock);
 
         $this->assertTrue($mock->called);
-        $this->assertTrue(strpos(implode('', $mock->headers['Date']), 'Mon, 29 Jun 1981') === 0);
+        $this->assertTrue(strpos((string) implode('', $mock->headers['Date']), 'Mon, 29 Jun 1981') === 0);
     }
 
     public function testSetDateString()
@@ -745,7 +745,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         $mail->send($mock);
 
         $this->assertTrue($mock->called);
-        $this->assertTrue(strpos(implode('', $mock->headers['Date']), 'Mon, 29 Jun 1981') === 0);
+        $this->assertTrue(strpos((string) implode('', $mock->headers['Date']), 'Mon, 29 Jun 1981') === 0);
     }
 
     public function testSetDateObject()
@@ -761,7 +761,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         $mail->send($mock);
 
         $this->assertTrue($mock->called);
-        $this->assertTrue(strpos(implode('', $mock->headers['Date']), 'Mon, 29 Jun 1981') === 0);
+        $this->assertTrue(strpos((string) implode('', $mock->headers['Date']), 'Mon, 29 Jun 1981') === 0);
     }
 
     public function testSetDateInvalidString()
@@ -833,7 +833,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($mock->called);
         $this->assertTrue(isset($mock->headers['Message-Id']));
         $this->assertTrue(isset($mock->headers['Message-Id'][0]));
-        $this->assertTrue(strlen($mock->headers['Message-Id'][0]) > 0);
+        $this->assertTrue(strlen((string) $mock->headers['Message-Id'][0]) > 0);
     }
 
     public function testSetMessageIdTwice()
@@ -1058,7 +1058,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
                 if(preg_match('/(=?[a-z0-9-_]+\?[q|b]{1}\?)/i', $parts[$i], $matches)) {
                     $dce = sprintf("=?%s", $matches[0]);
                     // Check that Delimiter, Charset, Encoding are at the front of the string
-                    if(substr(trim($parts[$i]), 0, strlen($dce)) != $dce) {
+                    if(substr((string) \trim((string) $parts[$i]), 0, strlen((string) $dce)) != $dce) {
                         $this->fail(sprintf(
                             "Header-Part '%s' in line '%d' has missing or malformated delimiter, charset, encoding information.",
                             $parts[$i],
@@ -1067,20 +1067,20 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
                     }
                     // check that the encoded word is not too long.);
                     // this is only some kind of suggestion by the standard, in PHP its hard to hold it, so we do not enforce it here.
-                    /*if(strlen($parts[$i]) > 75) {
+                    /*if(strlen((string) $parts[$i]) > 75) {
                         $this->fail(sprintf(
                             "Each encoded-word is only allowed to be 75 chars long, but line %d is %s chars long: %s",
                             $i+1,
-                            strlen($parts[$i]),
+                            strlen((string) $parts[$i]),
                             $parts[$i]
                         ));
                     }*/
                     // Check that the end-delmiter ?= is correctly placed
-                    if(substr(trim($parts[$i]), -2, 2) != "?=") {
+                    if(substr((string) \trim((string) $parts[$i]), -2, 2) != "?=") {
                         $this->fail(sprintf(
                             "Lines with an encoded-word have to end in ?=, but line %d does not: %s",
                             $i+1,
-                            substr(trim($parts[$i]), -2, 2)
+                            substr((string) \trim((string) $parts[$i]), -2, 2)
                         ));
                     }
 
@@ -1094,7 +1094,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
                     }
 
                     // Check that the encoded-text only contains US-ASCII chars, and no space
-                    $encodedText = substr(trim($parts[$i]), strlen($dce), -2);
+                    $encodedText = substr((string) \trim((string) $parts[$i]), strlen((string) $dce), -2);
                     if(preg_match('/([\s]+)/', $encodedText)) {
                         $this->fail(sprintf(
                             "No whitespace characters allowed in encoded-text of line %d: %s",
@@ -1102,8 +1102,8 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
                             $parts[$i]
                         ));
                     }
-                    for($i = 0; $i < strlen($encodedText); $i++) {
-                        if(ord($encodedText[$i]) > 127) {
+                    for($i = 0; $i < strlen((string) $encodedText); $i++) {
+                        if(ord((string) $encodedText[$i]) > 127) {
                             $this->fail(sprintf(
                                 "No non US-ASCII characters allowed, but line %d has them: %s",
                                  $i+1,

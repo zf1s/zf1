@@ -140,7 +140,7 @@ class Zend_Tag_Cloud_Decorator_HtmlCloud extends Zend_Tag_Cloud_Decorator_Cloud
                 $attributes = '';
 
                 foreach ($data as $param => $value) {
-                    $attributes .= ' ' . $param . '="' . htmlspecialchars($value, ENT_COMPAT, $enc) . '"';
+                    $attributes .= ' ' . $param . '="' . htmlspecialchars((string) $value, ENT_COMPAT, $enc) . '"';
                 }
             } else {
                 $htmlTag    = $data;

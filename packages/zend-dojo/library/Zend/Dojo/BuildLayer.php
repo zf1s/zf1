@@ -493,7 +493,7 @@ class Zend_Dojo_BuildLayer
         $profilePrefixes = $this->getProfilePrefixes();
 
         if (!array_key_exists('releaseName', $profileOptions)) {
-            $profileOptions['releaseName'] = substr($layerName, 0, strpos($layerName, '.'));
+            $profileOptions['releaseName'] = substr((string) $layerName, 0, strpos((string) $layerName, '.'));
         }
 
         $profile = $profileOptions;
@@ -529,7 +529,7 @@ class Zend_Dojo_BuildLayer
     {
         // require_once 'Zend/Json.php';
         $profile = Zend_Json::encode($profile);
-        $profile = trim($profile, '"');
+        $profile = \trim((string) $profile, '"');
         $profile = preg_replace('/' . preg_quote('\\') . '/', '', $profile);
         return $profile;
     }

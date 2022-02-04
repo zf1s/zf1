@@ -72,7 +72,7 @@ class Zend_Loader
                 if ($dir == '.') {
                     $dirs[$key] = $dirPath;
                 } else {
-                    $dir = rtrim($dir, '\\/');
+                    $dir = rtrim((string) $dir, '\\/');
                     $dirs[$key] = $dir . DIRECTORY_SEPARATOR . $dirPath;
                 }
             }
@@ -167,7 +167,7 @@ class Zend_Loader
             return true;
         }
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN'
+        if (strtoupper((string) substr((string) PHP_OS, 0, 3)) == 'WIN'
             && preg_match('/^[a-z]:/i', $filename)
         ) {
             // If on windows, and path provided is clearly an absolute path,
@@ -329,15 +329,15 @@ class Zend_Loader
      */
     public static function standardiseFile($file)
     {
-        $fileName = ltrim($file, '\\');
+        $fileName = ltrim((string) $file, '\\');
         $file      = '';
         $namespace = '';
         if ($lastNsPos = strripos($fileName, '\\')) {
-            $namespace = substr($fileName, 0, $lastNsPos);
-            $fileName = substr($fileName, $lastNsPos + 1);
-            $file      = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+            $namespace = substr((string) $fileName, 0, $lastNsPos);
+            $fileName = substr((string) $fileName, $lastNsPos + 1);
+            $file      = str_replace((string) '\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
         }
-        $file .= str_replace('_', DIRECTORY_SEPARATOR, $fileName) . '.php';
+        $file .= str_replace((string) '_', DIRECTORY_SEPARATOR, $fileName) . '.php';
         return $file;    
     }
 }

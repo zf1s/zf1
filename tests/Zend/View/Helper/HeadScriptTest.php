@@ -81,7 +81,7 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
             $registry = Zend_Registry::getInstance();
             unset($registry[$regKey]);
         }
-        $this->basePath = dirname(__FILE__) . '/_files/modules';
+        $this->basePath = __DIR__ . '/_files/modules';
         $this->helper = new Zend_View_Helper_HeadScript();
     }
 
@@ -135,7 +135,7 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
 
     protected function _inflectAction($type)
     {
-        return ucfirst(strtolower($type));
+        return ucfirst(strtolower((string) $type));
     }
 
     protected function _testOverloadAppend($type)
@@ -340,10 +340,10 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
         $this->helper->setIndent(4);
         $this->helper->appendScript('
 var foo = "bar";
-    document.write(foo.strlen());');
+    document.write(foo.strlen((string) ));');
         $this->helper->appendScript('
 var bar = "baz";
-document.write(bar.strlen());');
+document.write(bar.strlen((string) ));');
         $string = $this->helper->toString();
 
         $scripts = substr_count($string, '    <script');
@@ -450,7 +450,7 @@ document.write(bar.strlen());');
 
         $this->assertEquals($expected, $test);
     }
-    
+
     /**
      * @group ZF-12048
      */
@@ -459,7 +459,7 @@ document.write(bar.strlen());');
         $this->helper->appendFile('foo.js');
         $this->helper->appendFile('bar.js');
         $this->helper->setFile('foo.js');
-        
+
         $expected = '<script type="text/javascript" src="foo.js"></script>';
         $test = $this->helper->toString();
         $this->assertEquals($expected, $test);

@@ -74,7 +74,7 @@ class Zend_View_Helper_Placeholder_StandaloneContainerTest extends PHPUnit_Frame
             $registry = Zend_Registry::getInstance();
             unset($registry[$regKey]);
         }
-        $this->basePath = dirname(__FILE__) . '/_files/modules';
+        $this->basePath = __DIR__ . '/_files/modules';
         $this->helper = new Zend_View_Helper_Placeholder_StandaloneContainerTest_Foo();
     }
 

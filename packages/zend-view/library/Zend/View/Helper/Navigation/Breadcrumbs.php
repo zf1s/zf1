@@ -221,7 +221,7 @@ class Zend_View_Helper_Navigation_Breadcrumbs
             $active = $parent;
         }
 
-        return strlen($html) ? $this->getIndent() . $html : '';
+        return strlen((string) $html) ? $this->getIndent() . $html : '';
     }
 
     /**

@@ -72,7 +72,7 @@ class Zend_XmlRpc_Client_ServerProxy
      */
     public function __get($namespace)
     {
-        $namespace = ltrim("$this->_namespace.$namespace", '.');
+        $namespace = ltrim((string) "$this->_namespace.$namespace", '.');
         if (!isset($this->_cache[$namespace])) {
             $this->_cache[$namespace] = new $this($this->_client, $namespace);
         }
@@ -89,7 +89,7 @@ class Zend_XmlRpc_Client_ServerProxy
      */
     public function __call($method, $args)
     {
-        $method = ltrim("$this->_namespace.$method", '.');
+        $method = ltrim((string) "$this->_namespace.$method", '.');
         return $this->_client->call($method, $args);
     }
 }

@@ -861,7 +861,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     public function testAdapterOptionCaseFoldingUpper()
     {
         $upper = $this->_testAdapterOptionCaseFoldingCommon(Zend_Db::CASE_UPPER);
-        $expected = strtoupper($this->_testAdapterOptionCaseFoldingNaturalIdentifier());
+        $expected = strtoupper((string) $this->_testAdapterOptionCaseFoldingNaturalIdentifier());
         $this->assertEquals($upper, $expected, 'Upper case does not match');
     }
 
@@ -872,7 +872,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     public function testAdapterOptionCaseFoldingLower()
     {
         $lower = $this->_testAdapterOptionCaseFoldingCommon(Zend_Db::CASE_LOWER);
-        $expected = strtolower($this->_testAdapterOptionCaseFoldingNaturalIdentifier());
+        $expected = strtolower((string) $this->_testAdapterOptionCaseFoldingNaturalIdentifier());
         $this->assertEquals($lower, $expected, 'Lower case does not match');
     }
 
@@ -1571,7 +1571,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         // create a second connection to the same database
         $dbConnection2 = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
         $dbConnection2->getConnection();
-              
+
         // notice the number of rows in connection 2
         $count = $dbConnection2->fetchOne("SELECT COUNT(*) FROM $bugs");
         $this->assertEquals(4, $count, 'Expecting to see 4 rows in bugs table (step 1)');
@@ -1835,7 +1835,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     protected function _testAdapterAlternateStatement($stmtClass)
     {
         $ip = get_include_path();
-        $dir = dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files';
+        $dir = __DIR__ . DIRECTORY_SEPARATOR . '_files';
         $newIp = $dir . PATH_SEPARATOR . $ip;
         set_include_path($newIp);
 

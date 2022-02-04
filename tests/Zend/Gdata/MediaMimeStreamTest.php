@@ -129,7 +129,7 @@ class Zend_Gdata_MediaMimeStreamTest extends PHPUnit_Framework_TestCase
                 $this->smallXMLString, $this->locationOfFakeBinary,
                 $this->testMediaType);
             $this->assertEquals($sizeToTest,
-                strlen($mediaMimeStream->read($sizeToTest)));
+                strlen((string) $mediaMimeStream->read($sizeToTest)));
         }
     }
 
@@ -143,7 +143,7 @@ class Zend_Gdata_MediaMimeStreamTest extends PHPUnit_Framework_TestCase
             $outputString .= $this->mediaMimeStream->read(1);
         }
         $this->assertEquals($this->exceptedLenOfMimeMessage,
-            strlen($outputString));
+            strlen((string) $outputString));
     }
 
     /**
@@ -162,7 +162,7 @@ class Zend_Gdata_MediaMimeStreamTest extends PHPUnit_Framework_TestCase
             $outputString .= $this->mediaMimeStream->read(250);
         }
         $this->assertEquals($this->exceptedLenOfMimeMessage,
-            strlen($outputString));
+            strlen((string) $outputString));
     }
 
     /**
@@ -180,7 +180,7 @@ class Zend_Gdata_MediaMimeStreamTest extends PHPUnit_Framework_TestCase
             $outputString .= $this->mediaMimeStream->read(230);
         }
         $this->assertEquals($this->exceptedLenOfMimeMessage,
-            strlen($outputString));
+            strlen((string) $outputString));
     }
 
 }

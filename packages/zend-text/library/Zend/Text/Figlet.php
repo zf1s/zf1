@@ -284,7 +284,7 @@ class Zend_Text_Figlet
 
         // If no font was defined, load default font
         if (!$this->_fontLoaded) {
-            $this->_loadFont(dirname(__FILE__) . '/Figlet/zend-framework.flf');
+            $this->_loadFont(__DIR__ . '/Figlet/zend-framework.flf');
         }
     }
 
@@ -297,7 +297,7 @@ class Zend_Text_Figlet
     public function setOptions(array $options)
     {
         foreach ($options as $key => $value) {
-            if (in_array(strtolower($key), $this->_skipOptions)) {
+            if (in_array(strtolower((string) $key), $this->_skipOptions)) {
                 continue;
             }
 
@@ -453,15 +453,15 @@ class Zend_Text_Figlet
 
         for ($charNum = 0; $charNum < $textLength; $charNum++) {
             // Handle paragraphs
-            $char = iconv_substr($text, $charNum, 1, 'UTF-8');
+            $char = iconv_substr((string) $text, $charNum, 1, 'UTF-8');
 
             if ($char === "\n" && $this->_handleParagraphs && !$lastCharWasEol) {
-                $nextChar = iconv_substr($text, ($charNum + 1), 1, 'UTF-8');
+                $nextChar = iconv_substr((string) $text, ($charNum + 1), 1, 'UTF-8');
                 if (!$nextChar) {
                     $nextChar = null;
                 }
 
-                $char = (ctype_space($nextChar)) ? "\n" : ' ';
+                $char = (ctype_space((string) $nextChar)) ? "\n" : ' ';
             }
 
             $lastCharWasEol = (ctype_space($char) && $char !== "\t" && $char !== ' ');
@@ -505,8 +505,8 @@ class Zend_Text_Figlet
                 } else if ($this->_outlineLength === 0) {
                     for ($i = 0; $i < $this->_charHeight; $i++) {
                         if ($this->_rightToLeft === 1 && $this->_outputWidth > 1) {
-                            $offset = (strlen($this->_currentChar[$i]) - $this->_outlineLengthLimit);
-                            $this->_putString(substr($this->_currentChar[$i], $offset));
+                            $offset = (strlen((string) $this->_currentChar[$i]) - $this->_outlineLengthLimit);
+                            $this->_putString(substr((string) $this->_currentChar[$i], $offset));
                         } else {
                             $this->_putString($this->_currentChar[$i]);
                         }
@@ -553,7 +553,7 @@ class Zend_Text_Figlet
      */
     protected function _putString($string)
     {
-        $length = strlen($string);
+        $length = strlen((string) $string);
 
         if ($this->_outputWidth > 1) {
             if ($length > ($this->_outputWidth - 1)) {
@@ -569,7 +569,7 @@ class Zend_Text_Figlet
             }
         }
 
-        $this->_output .= str_replace($this->_hardBlank, ' ', $string) . "\n";
+        $this->_output .= str_replace((string) $this->_hardBlank, ' ', $string) . "\n";
     }
 
     /**
@@ -680,7 +680,7 @@ class Zend_Text_Figlet
                     $tempLine[$position] = $this->_smushem($tempLine[$position], $this->_outputLine[$row][$k]);
                 }
 
-                $this->_outputLine[$row] = $tempLine . substr($this->_outputLine[$row], $smushAmount);
+                $this->_outputLine[$row] = $tempLine . substr((string) $this->_outputLine[$row], $smushAmount);
             } else {
                 for ($k = 0; $k < $smushAmount; $k++) {
                     if (($this->_outlineLength - $smushAmount + $k) < 0) {
@@ -697,11 +697,11 @@ class Zend_Text_Figlet
                     $this->_outputLine[$row][$position] = $this->_smushem($leftChar, $this->_currentChar[$row][$k]);
                 }
 
-                $this->_outputLine[$row] .= substr($this->_currentChar[$row], $smushAmount);
+                $this->_outputLine[$row] .= substr((string) $this->_currentChar[$row], $smushAmount);
             }
         }
 
-        $this->_outlineLength                          = strlen($this->_outputLine[0]);
+        $this->_outlineLength                          = strlen((string) $this->_outputLine[0]);
         $this->_inCharLine[$this->_inCharLineLength++] = $char;
 
         return true;
@@ -718,7 +718,7 @@ class Zend_Text_Figlet
         if (array_key_exists($this->_uniOrd($char), $this->_charList)) {
             $this->_currentChar       = $this->_charList[$this->_uniOrd($char)];
             $this->_previousCharWidth = $this->_currentCharWidth;
-            $this->_currentCharWidth  = strlen($this->_currentChar[0]);
+            $this->_currentCharWidth  = strlen((string) $this->_currentChar[0]);
         } else {
             $this->_currentChar = null;
         }
@@ -741,7 +741,7 @@ class Zend_Text_Figlet
 
         for ($row = 0; $row < $this->_charHeight; $row++) {
             if ($this->_rightToLeft === 1) {
-                $charbd = strlen($this->_currentChar[$row]);
+                $charbd = strlen((string) $this->_currentChar[$row]);
                 while (true) {
                     if (!isset($this->_currentChar[$row][$charbd])) {
                         $leftChar = null;
@@ -773,7 +773,7 @@ class Zend_Text_Figlet
 
                 $amount = ($linebd + $this->_currentCharWidth - 1 - $charbd);
             } else {
-                $linebd = strlen($this->_outputLine[$row]);
+                $linebd = strlen((string) $this->_outputLine[$row]);
                 while (true) {
                     if (!isset($this->_outputLine[$row][$linebd])) {
                         $leftChar = null;
@@ -967,13 +967,13 @@ class Zend_Text_Figlet
     protected function _loadFont($fontFile)
     {
         // Check if the font file exists
-        if (!file_exists($fontFile)) {
+        if (!file_exists((string) $fontFile)) {
             // require_once 'Zend/Text/Figlet/Exception.php';
             throw new Zend_Text_Figlet_Exception($fontFile . ': Font file not found');
         }
 
         // Check if gzip support is required
-        if (substr($fontFile, -3) === '.gz') {
+        if (substr((string) $fontFile, -3) === '.gz') {
             if (!function_exists('gzcompress')) {
                 // require_once 'Zend/Text/Figlet/Exception.php';
                 throw new Zend_Text_Figlet_Exception('GZIP library is required for '
@@ -1072,7 +1072,7 @@ class Zend_Text_Figlet
                 return;
             }
 
-            if (trim(implode('', $char)) !== '') {
+            if (\trim((string) implode('', $char)) !== '') {
                 $this->_charList[$uniCode] = $char;
             }
         }
@@ -1087,11 +1087,11 @@ class Zend_Text_Figlet
             }
 
             // Convert it if required
-            if (substr($uniCode, 0, 2) === '0x') {
-                $uniCode = hexdec(substr($uniCode, 2));
-            } else if (substr($uniCode, 0, 1) === '0' and
+            if (substr((string) $uniCode, 0, 2) === '0x') {
+                $uniCode = hexdec(substr((string) $uniCode, 2));
+            } else if (substr((string) $uniCode, 0, 1) === '0' and
                        $uniCode !== '0' or
-                       substr($uniCode, 0, 2) === '-0') {
+                       substr((string) $uniCode, 0, 2) === '-0') {
                 $uniCode = octdec($uniCode);
             } else {
                 $uniCode = (int) $uniCode;
@@ -1190,10 +1190,10 @@ class Zend_Text_Figlet
                 return false;
             }
 
-            $line = rtrim(fgets($fp, 2048), "\r\n");
+            $line = rtrim((string) fgets($fp, 2048), "\r\n");
 
             if (preg_match('#(.)\\1?$#', $line, $result) === 1) {
-                $line = str_replace($result[1], '', $line);
+                $line = str_replace((string) $result[1], '', $line);
             }
 
             $char[] = $line;
@@ -1203,26 +1203,26 @@ class Zend_Text_Figlet
     }
 
     /**
-     * Unicode compatible ord() method
+     * Unicode compatible ord((string) ) method
      *
      * @param  string $c The char to get the value from
      * @return integer
      */
     protected function _uniOrd($c)
     {
-        $h = ord($c[0]);
+        $h = ord((string) $c[0]);
 
         if ($h <= 0x7F) {
             $ord = $h;
         } else if ($h < 0xC2) {
             $ord = 0;
         } else if ($h <= 0xDF) {
-            $ord = (($h & 0x1F) << 6 | (ord($c[1]) & 0x3F));
+            $ord = (($h & 0x1F) << 6 | (ord((string) $c[1]) & 0x3F));
         } else if ($h <= 0xEF) {
-            $ord = (($h & 0x0F) << 12 | (ord($c[1]) & 0x3F) << 6 | (ord($c[2]) & 0x3F));
+            $ord = (($h & 0x0F) << 12 | (ord((string) $c[1]) & 0x3F) << 6 | (ord((string) $c[2]) & 0x3F));
         } else if ($h <= 0xF4) {
-            $ord = (($h & 0x0F) << 18 | (ord($c[1]) & 0x3F) << 12 |
-                   (ord($c[2]) & 0x3F) << 6 | (ord($c[3]) & 0x3F));
+            $ord = (($h & 0x0F) << 18 | (ord((string) $c[1]) & 0x3F) << 12 |
+                   (ord((string) $c[2]) & 0x3F) << 6 | (ord((string) $c[3]) & 0x3F));
         } else {
             $ord = 0;
         }

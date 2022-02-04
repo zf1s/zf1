@@ -64,7 +64,7 @@ class Zend_Amf_Util_BinaryStreamTest extends PHPUnit_Framework_TestCase
     {
         $string = 'this is a short stream';
         $stream = new Zend_Amf_Util_BinaryStream($string);
-        $length = strlen($string);
+        $length = strlen((string) $string);
         $test   = $stream->readBytes(10 * $length);
     }
 

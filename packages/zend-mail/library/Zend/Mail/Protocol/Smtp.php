@@ -123,7 +123,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
     public function __construct($host = '127.0.0.1', $port = null, array $config = array())
     {
         if (isset($config['ssl'])) {
-            switch (strtolower($config['ssl'])) {
+            switch (strtolower((string) $config['ssl'])) {
                 case 'tls':
                     $this->_secure = 'tls';
                     break;
@@ -313,7 +313,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
         $this->_expect(354, 120); // Timeout set for 2 minutes as per RFC 2821 4.5.3.2
 
         foreach (explode(Zend_Mime::LINEEND, $data) as $line) {
-            if (strpos($line, '.') === 0) {
+            if (strpos((string) $line, '.') === 0) {
                 // Escape lines prefixed with a '.'
                 $line = '.' . $line;
             }

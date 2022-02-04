@@ -70,6 +70,17 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
         ));
     }
 
+    #[\ReturnTypeWillChange]
+    public function __serialize()
+    {
+        return array(
+            'it'     => $this->getInnerIterator(),
+            'offset' => $this->_offset,
+            'count'  => $this->_count,
+            'pos'    => $this->getPosition(),
+        );
+    }
+
     /**
      * @param string $data representation of the instance
      */
@@ -80,18 +91,26 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
         $this->seek($dataArr['pos']+$dataArr['offset']);
     }
 
+    #[\ReturnTypeWillChange]
+    public function __unserialize($dataArr)
+    {
+        $this->__construct($dataArr['it'], $dataArr['offset'], $dataArr['count']);
+        $this->seek($dataArr['pos']+$dataArr['offset']);
+    }
+
     /**
      * Returns value of the Iterator
      *
      * @param int $offset
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         $currentOffset = $this->key();
         $this->seek($offset);
         $current = $this->current();
-        $this->seek($currentOffset);
+        $this->seek((int) $currentOffset);
         return $current;
     }
 
@@ -102,6 +121,7 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
      * @param int $offset
      * @param mixed $value
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
     }
@@ -111,6 +131,7 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
      *
      * @param int $offset
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         if ($offset > 0 && $offset < $this->_count) {
@@ -136,6 +157,7 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
      *
      * @param int $offset
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
     }

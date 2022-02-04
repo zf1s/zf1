@@ -53,9 +53,9 @@ final class Zend_Version
      */
     public static function compareVersion($version)
     {
-        $version = strtolower($version);
+        $version = strtolower((string) $version);
         $version = preg_replace('/(\d)pr(\d?)/', '$1a$2', $version);
-        return version_compare($version, strtolower(self::VERSION));
+        return version_compare($version, strtolower((string) self::VERSION));
     }
 
     /**

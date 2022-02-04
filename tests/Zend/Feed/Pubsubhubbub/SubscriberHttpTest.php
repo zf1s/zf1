@@ -61,10 +61,10 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends PHPUnit_Framework_TestCa
         if (defined('TESTS_Zend_Feed_Pubsubhubbub_BASEURI') &&
             Zend_Uri_Http::check(TESTS_Zend_Feed_Pubsubhubbub_BASEURI)) {
             $this->_baseuri = TESTS_Zend_Feed_Pubsubhubbub_BASEURI;
-            if (substr($this->_baseuri, -1) != '/') $this->_baseuri .= '/';
+            if (substr((string) $this->_baseuri, -1) != '/') $this->_baseuri .= '/';
             $name = $this->getName();
-            if (($pos = strpos($name, ' ')) !== false) {
-                $name = substr($name, 0, $pos);
+            if (($pos = strpos((string) $name, ' ')) !== false) {
+                $name = substr((string) $name, 0, $pos);
             }
             $uri = $this->_baseuri . $name . '.php';
             $this->_adapter = new $this->_config['adapter'];

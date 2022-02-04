@@ -20,7 +20,7 @@
  * @version    $Id: Code25Test.php 21667 2010-03-28 17:45:14Z mikaelkael $
  */
 
-require_once dirname(__FILE__) . '/TestCommon.php';
+require_once __DIR__ . '/TestCommon.php';
 
 // require_once 'Zend/Barcode/Object/Code128.php';
 
@@ -54,7 +54,7 @@ class Zend_Barcode_Object_Code128Test extends Zend_Barcode_Object_TestCommon
 
     public function testKnownBarcodeConversion()
     {
-        require_once dirname(__FILE__) . '/_files/Code128Test.php';
+        require_once __DIR__ . '/_files/Code128Test.php';
     	$barcode = new Code128Test();
     	$this->assertSame(array(104, 13, 17, 18, 19), $barcode->_convertToBarcodeChars(-123));
     	$this->assertSame(array(104, 40, 41, 99, 34, 56, 78), $barcode->_convertToBarcodeChars('HI345678'));

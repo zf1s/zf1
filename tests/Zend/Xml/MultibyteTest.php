@@ -93,7 +93,7 @@ XML;
     public function testDetectsMultibyteXXEVectorsUnderFPMWithEncodedStringMissingBOM($encoding, $bom, $bomLength)
     {
         $xml = $this->getXmlWithXXE();
-        $xml = str_replace('{ENCODING}', $encoding, $xml);
+        $xml = str_replace((string) '{ENCODING}', $encoding, $xml);
         $xml = iconv('UTF-8', $encoding, $xml);
         $this->assertNotSame(0, strncmp($xml, $bom, $bomLength));
         $this->setExpectedException('Zend_Xml_Exception', 'ENTITY');
@@ -106,7 +106,7 @@ XML;
     public function testDetectsMultibyteXXEVectorsUnderFPMWithEncodedStringUsingBOM($encoding, $bom)
     {
         $xml  = $this->getXmlWithXXE();
-        $xml  = str_replace('{ENCODING}', $encoding, $xml);
+        $xml  = str_replace((string) '{ENCODING}', $encoding, $xml);
         $orig = iconv('UTF-8', $encoding, $xml);
         $xml  = $bom . $orig;
         $this->setExpectedException('Zend_Xml_Exception', 'ENTITY');
@@ -129,7 +129,7 @@ XML;
     public function testDoesNotFlagValidMultibyteXmlAsInvalidUnderFPM($encoding)
     {
         $xml = $this->getXmlWithoutXXE();
-        $xml = str_replace('{ENCODING}', $encoding, $xml);
+        $xml = str_replace((string) '{ENCODING}', $encoding, $xml);
         $xml = iconv('UTF-8', $encoding, $xml);
         try {
             $result = $this->invokeHeuristicScan($xml);
@@ -146,7 +146,7 @@ XML;
     public function testDetectsXXEWhenXMLDocumentEncodingDiffersFromFileEncoding($encoding, $bom)
     {
         $xml = $this->getXmlWithXXE();
-        $xml = str_replace('{ENCODING}', 'UTF-8', $xml);
+        $xml = str_replace((string) '{ENCODING}', 'UTF-8', $xml);
         $xml = iconv('UTF-8', $encoding, $xml);
         $xml = $bom . $xml;
         $this->setExpectedException('Zend_Xml_Exception', 'ENTITY');

@@ -218,7 +218,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
         $response = $this->_sendCommand('stats queue', array('END'));
 
         foreach ($response as $i => $line) {
-            $this->_queues[] = str_replace('STAT ', '', $line);
+            $this->_queues[] = str_replace((string) 'STAT ', '', $line);
         }
 
         return $this->_queues;
@@ -231,6 +231,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
      * @return integer
      * @throws Zend_Queue_Exception (not supported)
      */
+    #[\ReturnTypeWillChange]
     public function count(Zend_Queue $queue=null)
     {
         // require_once 'Zend/Queue/Exception.php';
@@ -262,10 +263,10 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
 
         $message = (string) $message;
         $data    = array(
-            'message_id' => md5(uniqid(rand(), true)),
+            'message_id' => md5((string) uniqid(rand(), true)),
             'handle'     => null,
             'body'       => $message,
-            'md5'        => md5($message),
+            'md5'        => md5((string) $message),
         );
 
         $result = $this->_cache->set($queue->getName(), $message, 0, 0);
@@ -313,7 +314,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
         if ($maxMessages > 0 ) {
             for ($i = 0; $i < $maxMessages; $i++) {
                 $data = array(
-                    'handle' => md5(uniqid(rand(), true)),
+                    'handle' => md5((string) uniqid(rand(), true)),
                     'body'   => $this->_cache->get($queue->getName()),
                 );
 
@@ -412,7 +413,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
 
         $continue_reading = true;
         while (!feof($this->_socket) && $continue_reading) {
-            $resp = trim(fgets($this->_socket, 1024));
+            $resp = \trim((string) fgets($this->_socket, 1024));
             if (in_array($resp, $terminator)) {
                 if ($include_term) {
                     $response[] = $resp;

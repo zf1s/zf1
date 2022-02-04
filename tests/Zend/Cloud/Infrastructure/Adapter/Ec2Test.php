@@ -44,10 +44,10 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
      * @var Zend_Http_Client_Adapter_Test
      */
     protected $httpClientAdapterTest;
-    
+
     /**
      * Image ID of the instance
-     * 
+     *
      * @var string
      */
     protected static $instanceId;
@@ -57,31 +57,31 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
      */
     public function setUp()
     {
-        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter(array( 
-            Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Ec2', 
-            Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_ACCESS_KEY         => 'foo', 
-            Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_SECRET_KEY         => 'bar', 
-            Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_REGION             => 'us-east-1'     
-        )); 
+        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter(array(
+            Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Ec2',
+            Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_ACCESS_KEY         => 'foo',
+            Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_SECRET_KEY         => 'bar',
+            Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_REGION             => 'us-east-1'
+        ));
 
-        $this->httpClientAdapterTest = new Zend_Http_Client_Adapter_Test();     
+        $this->httpClientAdapterTest = new Zend_Http_Client_Adapter_Test();
 
         // load the HTTP response (from a file)
-        $shortClassName = substr(__CLASS__,strlen('Zend_Cloud_Infrastructure_Adapter_'));
-        $filename= dirname(__FILE__) . '/_files/' . $shortClassName . '_'. $this->getName().'.response';
+        $shortClassName = substr((string) __CLASS__,strlen((string) 'Zend_Cloud_Infrastructure_Adapter_'));
+        $filename= __DIR__ . '/_files/' . $shortClassName . '_'. $this->getName().'.response';
 
-        if (file_exists($filename)) {
-            $this->httpClientAdapterTest->setResponse($this->loadResponse($filename)); 
+        if (file_exists((string) $filename)) {
+            $this->httpClientAdapterTest->setResponse($this->loadResponse($filename));
         }
-        
+
         $adapter= $this->infrastructure->getAdapter();
-        
+
         $client = new Zend_Http_Client(null, array(
             'adapter' => $this->httpClientAdapterTest
         ));
-        
+
         call_user_func(array($adapter,'setHttpClient'),$client);
-    
+
     }
     /**
      * Utility method for returning a string HTTP response, which is loaded from a file
@@ -101,9 +101,9 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
     }
     /**
      * Get Config Array
-     * 
+     *
      * @return array
-     */ 
+     */
     static function getConfigArray()
     {
          return array(
@@ -114,7 +114,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
             Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_SECURITY_GROUP     => 'default'
         );
     }
-    
+
     /**
      * Test all the constants of the class
      */
@@ -128,7 +128,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
     /**
      * Test construct with missing params
      */
-    public function testConstructExceptionMissingParams() 
+    public function testConstructExceptionMissingParams()
     {
         $this->setExpectedException(
             'Zend_Cloud_Infrastructure_Exception',
@@ -155,7 +155,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
         $options = array (
             Zend_Cloud_Infrastructure_Instance::INSTANCE_IMAGEID      => 'ami-7f418316',
             Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_SECURITY_GROUP => array('default')
-        );       
+        );
         $instance = $this->infrastructure->createInstance('test', $options);
         self::$instanceId= $instance->getId();
         $this->assertEquals('ami-7f418316', $instance->getImageId());
@@ -226,7 +226,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
      */
     public function testStartInstance()
     {
-        $this->markTestSkipped('Test start instance skipped');   
+        $this->markTestSkipped('Test start instance skipped');
     }
 
     /**
@@ -234,7 +234,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
      */
     public function testRebootInstance()
     {
-        $this->assertTrue($this->infrastructure->rebootInstance(self::$instanceId));    
+        $this->assertTrue($this->infrastructure->rebootInstance(self::$instanceId));
     }
 
     /**

@@ -77,7 +77,7 @@ class Zend_View_Helper_PartialLoopTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->basePath = dirname(__FILE__) . '/_files/modules';
+        $this->basePath = __DIR__ . '/_files/modules';
         $this->helper = new Zend_View_Helper_PartialLoop();
         Zend_Controller_Front::getInstance()->resetInstance();
     }
@@ -411,26 +411,31 @@ class Zend_View_Helper_PartialLoop_IteratorTest implements Iterator
         $this->items = $array;
     }
 
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return current($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return key($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function next()
     {
         return next($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         return reset($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return (current($this->items) !== false);
@@ -457,26 +462,31 @@ class Zend_View_Helper_PartialLoop_RecursiveIteratorTest implements Iterator
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return current($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return key($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function next()
     {
         return next($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         return reset($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return (current($this->items) !== false);
@@ -514,26 +524,31 @@ class Zend_View_Helper_PartialLoop_IteratorWithToArrayTest implements Iterator
         return $this->items;
     }
 
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return current($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return key($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function next()
     {
         return next($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         return reset($this->items);
     }
 
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return (current($this->items) !== false);

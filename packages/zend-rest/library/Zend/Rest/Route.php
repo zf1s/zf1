@@ -132,7 +132,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
         $path   = $request->getPathInfo();
         $params = $request->getParams();
         $values = array();
-        $path   = trim($path, self::URI_DELIMITER);
+        $path   = \trim((string) $path, self::URI_DELIMITER);
 
         if ($path != '') {
 
@@ -193,12 +193,12 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
             }
 
             // Determine Action
-            $requestMethod = strtolower($request->getMethod());
+            $requestMethod = strtolower((string) $request->getMethod());
             if ($requestMethod != 'get') {
                 if ($request->getParam('_method')) {
-                    $values[$this->_actionKey] = strtolower($request->getParam('_method'));
+                    $values[$this->_actionKey] = strtolower((string) $request->getParam('_method'));
                 } elseif ( $request->getHeader('X-HTTP-Method-Override') ) {
-                    $values[$this->_actionKey] = strtolower($request->getHeader('X-HTTP-Method-Override'));
+                    $values[$this->_actionKey] = strtolower((string) $request->getHeader('X-HTTP-Method-Override'));
                 } else {
                     $values[$this->_actionKey] = $requestMethod;
                 }
@@ -289,7 +289,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
                 unset($params['id']);
             }
             foreach ($params as $key => $value) {
-                if ($encode) $value = urlencode($value);
+                if ($encode) $value = urlencode((string) $value);
                 $url .= '/' . $key . '/' . $value;
             }
         } elseif (! empty($action) && isset($params['id'])) {
@@ -308,7 +308,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
             $url = '/' . $module . $url;
         }
 
-        return ltrim($url, self::URI_DELIMITER);
+        return ltrim((string) $url, self::URI_DELIMITER);
     }
 
     /**

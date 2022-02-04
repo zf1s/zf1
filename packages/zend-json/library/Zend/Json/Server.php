@@ -485,7 +485,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
                 if (!preg_match('/^(set|get)/', $method)) {
                     continue;
                 }
-                if (strstr($method, 'Service')) {
+                if (strstr((string) $method, 'Service')) {
                     continue;
                 }
                 $this->_smdMethods[] = $method;

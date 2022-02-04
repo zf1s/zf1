@@ -27,8 +27,8 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * Test helpers
  */
-// require_once dirname(__FILE__) . '/../../../TestHelper.php';
-require_once dirname(__FILE__) . '/../../../TestConfiguration.dist.php';
+// require_once __DIR__ . '/../../../TestHelper.php';
+require_once __DIR__ . '/../../../TestConfiguration.dist.php';
 
 /** Zend_Service_WindowsAzure_Storage_Table */
 // require_once 'Zend/Service/WindowsAzure/Storage/Table.php';
@@ -51,7 +51,7 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
         $suite  = new PHPUnit_Framework_TestSuite("Zend_Service_WindowsAzure_DynamicTableEntityTest");
         $result = PHPUnit_TextUI_TestRunner::run($suite);
     }
-    
+
     /**
      * Test teardown
      */
@@ -63,7 +63,7 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
             try { $storageClient->deleteTable(TESTS_ZEND_SERVICE_WINDOWSAZURE_TABLE_TABLENAME_PREFIX . $i); } catch (Exception $e) { }
         }
     }
-    
+
     protected function createStorageInstance()
     {
         $storageClient = null;
@@ -72,22 +72,22 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
         } else {
             $storageClient = new Zend_Service_WindowsAzure_Storage_Table(TESTS_ZEND_SERVICE_WINDOWSAZURE_TABLE_HOST_DEV, TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_ACCOUNT_DEV, TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_KEY_DEV, true, Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract::retryN(10, 250));
         }
-        
+
         if (TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_USEPROXY) {
             $storageClient->setProxy(TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_USEPROXY, TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_PROXY, TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_PROXY_PORT, TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_PROXY_CREDENTIALS);
         }
 
         return $storageClient;
     }
-    
+
     protected static $uniqId = 0;
-    
+
     protected function generateName()
     {
         self::$uniqId++;
         return TESTS_ZEND_SERVICE_WINDOWSAZURE_TABLE_TABLENAME_PREFIX . self::$uniqId;
     }
-    
+
     /**
      * Test constructor
      */
@@ -97,14 +97,14 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
         $this->assertEquals('partition1', $target->getPartitionKey());
         $this->assertEquals('000001',     $target->getRowKey());
     }
-    
+
     /**
      * Test get Azure values
      */
     public function testGetAzureValues()
     {
     	$dateTimeValue = new DateTime();
-    	
+
         $target = new Zend_Service_WindowsAzure_Storage_DynamicTableEntity('partition1', '000001');
         $target->Name = 'Name';
         $target->Age  = 25;
@@ -114,26 +114,26 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
         $this->assertEquals('Name',       $result[0]->Name);
         $this->assertEquals('Name',       $result[0]->Value);
         $this->assertEquals('Edm.String', $result[0]->Type);
-        
+
         $this->assertEquals('Age',        $result[1]->Name);
         $this->assertEquals(25,           $result[1]->Value);
         $this->assertEquals('Edm.Int32',  $result[1]->Type);
-        
+
         $this->assertEquals('DateInService',	$result[2]->Name);
         $this->assertEquals($dateTimeValue,  	$result[2]->Value);
         $this->assertEquals('Edm.DateTime',  	$result[2]->Type);
-        
+
         $this->assertEquals('partition1', $result[3]->Value);
         $this->assertEquals('000001',     $result[4]->Value);
     }
-    
+
     /**
      * Test set Azure values
      */
     public function testSetAzureValues()
     {
     	$dateTimeValue = new DateTime();
-    	
+
         $values = array(
             'PartitionKey' => 'partition1',
             'RowKey' => '000001',
@@ -142,7 +142,7 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
             'Visible' => true,
         	'DateInService' => $dateTimeValue
         );
-        
+
         $target = new Zend_Service_WindowsAzure_Storage_DynamicTableEntity();
         $target->setAzureValues($values);
         $target->setAzurePropertyType('Age', 'Edm.Int32');
@@ -156,7 +156,7 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
         $this->assertEquals($dateTimeValue,		$target->DateInService);
         $this->assertEquals('Edm.DateTime',  	$target->getAzurePropertyType('DateInService'));
     }
-    
+
     /**
      * Test insert entity
      */
@@ -166,14 +166,14 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
             $tableName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createTable($tableName);
-            
+
             $entity = new Zend_Service_WindowsAzure_Storage_DynamicTableEntity();
             $entity->Name = 'Maarten';
             $entity->Age = 25;
             $entity->Inserted = new DateTime();
             $entity->TestValue = 200000;
             $entity->NullStringValue = null;
-            
+
             $result = $storageClient->insertEntity($tableName, $entity);
             $this->assertNotEquals('0001-01-01T00:00:00', $result->getTimestamp());
             $this->assertNotEquals('', $result->getEtag());

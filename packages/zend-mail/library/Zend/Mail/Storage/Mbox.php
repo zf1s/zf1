@@ -142,7 +142,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
     public function getMessage($id)
     {
         // TODO that's ugly, would be better to let the message class decide
-        if (strtolower($this->_messageClass) == 'zend_mail_message_file' || is_subclass_of($this->_messageClass, 'zend_mail_message_file')) {
+        if (strtolower((string) $this->_messageClass) == 'zend_mail_message_file' || is_subclass_of($this->_messageClass, 'zend_mail_message_file')) {
             // TODO top/body lines
             $messagePos = $this->_getPos($id);
             return new $this->_messageClass(array('file' => $this->_fh, 'startPos' => $messagePos['start'],
@@ -261,7 +261,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
         $result = false;
 
         $line = fgets($file);
-        if (strpos($line, 'From ') === 0) {
+        if (strpos((string) $line, 'From ') === 0) {
             $result = true;
         }
 
@@ -307,15 +307,15 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
 
         $messagePos = array('start' => ftell($this->_fh), 'separator' => 0, 'end' => 0);
         while (($line = fgets($this->_fh)) !== false) {
-            if (strpos($line, 'From ') === 0) {
-                $messagePos['end'] = ftell($this->_fh) - strlen($line) - 2; // + newline
+            if (strpos((string) $line, 'From ') === 0) {
+                $messagePos['end'] = ftell($this->_fh) - strlen((string) $line) - 2; // + newline
                 if (!$messagePos['separator']) {
                     $messagePos['separator'] = $messagePos['end'];
                 }
                 $this->_positions[] = $messagePos;
                 $messagePos = array('start' => ftell($this->_fh), 'separator' => 0, 'end' => 0);
             }
-            if (!$messagePos['separator'] && !trim($line)) {
+            if (!$messagePos['separator'] && !\trim((string) $line)) {
                 $messagePos['separator'] = ftell($this->_fh);
             }
         }

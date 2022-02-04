@@ -48,7 +48,7 @@ class Zend_Http_UserAgent_Features_Adapter_Browscap
     public function __construct()
     {
         $browscap = ini_get('browscap');
-        if (empty($browscap) || !file_exists($browscap)) {
+        if (empty($browscap) || !file_exists((string) $browscap)) {
             // require_once 'Zend/Http/UserAgent/Features/Exception.php';
             throw new Zend_Http_UserAgent_Features_Exception(sprintf(
                 '%s requires a browscap entry in php.ini pointing to a valid browscap.ini; none present',

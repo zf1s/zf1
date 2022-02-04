@@ -255,7 +255,7 @@ class Zend_OpenId_Consumer
         }
         if ($params['openid_return_to'] != Zend_OpenId::selfUrl()) {
             /* Ignore query part in openid.return_to */
-            $pos = strpos($params['openid_return_to'], '?');
+            $pos = strpos((string) $params['openid_return_to'], '?');
             if ($pos === false ||
                 SUBSTR($params['openid_return_to'], 0 , $pos) != Zend_OpenId::selfUrl()) {
 
@@ -300,7 +300,7 @@ class Zend_OpenId_Consumer
             if (isset($params['openid_op_endpoint']) && $url !== $params['openid_op_endpoint']) {
                 $this->_setError("The op_endpoint URI is not the same of URI associated with the assoc_handle");
                 return false;
-            }       
+            }
             $signed = explode(',', $params['openid_signed']);
             // Check the parameters for the signature
             // @see https://openid.net/specs/openid-authentication-2_0.html#positive_assertions
@@ -314,10 +314,10 @@ class Zend_OpenId_Consumer
                     return false;
                 }
             }
-            
+
             $data = '';
             foreach ($signed as $key) {
-                $data .= $key . ':' . $params['openid_' . strtr($key,'.','_')] . "\n";
+                $data .= $key . ':' . $params['openid_' . strtr((string) $key,'.','_')] . "\n";
             }
             if (base64_decode($params['openid_sig']) ==
                 Zend_OpenId::hashHmac($macFunc, $data, $secret)) {
@@ -381,12 +381,12 @@ class Zend_OpenId_Consumer
 
             $params2 = array();
             foreach ($params as $key => $val) {
-                if (strpos($key, 'openid_ns_') === 0) {
-                    $key = 'openid.ns.' . substr($key, strlen('openid_ns_'));
-                } else if (strpos($key, 'openid_sreg_') === 0) {
-                    $key = 'openid.sreg.' . substr($key, strlen('openid_sreg_'));
-                } else if (strpos($key, 'openid_') === 0) {
-                    $key = 'openid.' . substr($key, strlen('openid_'));
+                if (strpos((string) $key, 'openid_ns_') === 0) {
+                    $key = 'openid.ns.' . substr((string) $key, strlen((string) 'openid_ns_'));
+                } else if (strpos((string) $key, 'openid_sreg_') === 0) {
+                    $key = 'openid.sreg.' . substr((string) $key, strlen((string) 'openid_sreg_'));
+                } else if (strpos((string) $key, 'openid_') === 0) {
+                    $key = 'openid.' . substr((string) $key, strlen((string) 'openid_'));
                 }
                 $params2[$key] = $val;
             }
@@ -399,12 +399,12 @@ class Zend_OpenId_Consumer
             $r = array();
             if (is_string($ret)) {
                 foreach(explode("\n", $ret) as $line) {
-                    $line = trim($line);
+                    $line = \trim((string) $line);
                     if (!empty($line)) {
                         $x = explode(':', $line, 2);
                         if (is_array($x) && count($x) == 2) {
                             list($key, $value) = $x;
-                            $r[trim($key)] = trim($value);
+                            $r[\trim((string) $key)] = \trim((string) $value);
                         }
                     }
                 }
@@ -605,18 +605,18 @@ class Zend_OpenId_Consumer
             $r = array();
             $bad_response = false;
             foreach(explode("\n", $ret) as $line) {
-                $line = trim($line);
+                $line = \trim((string) $line);
                 if (!empty($line)) {
                     $x = explode(':', $line, 2);
                     if (is_array($x) && count($x) == 2) {
                         list($key, $value) = $x;
-                        $r[trim($key)] = trim($value);
+                        $r[\trim((string) $key)] = \trim((string) $value);
                     } else {
                         $bad_response = true;
                     }
                 }
             }
-            if ($bad_response && strpos($ret, 'Unknown session type') !== false) {
+            if ($bad_response && strpos((string) $ret, 'Unknown session type') !== false) {
                 $r['error_code'] = 'unsupported-type';
             }
             $ret = $r;
@@ -708,12 +708,12 @@ class Zend_OpenId_Consumer
             $secret = $sec ^ base64_decode($ret['enc_mac_key']);
         }
         if ($macFunc == 'sha1') {
-            if (Zend_OpenId::strlen($secret) != 20) {
+            if (Zend_OpenId::strlen((string) $secret) != 20) {
                 $this->_setError("The length of the sha1 secret must be 20");
                 return false;
             }
         } else if ($macFunc == 'sha256') {
-            if (Zend_OpenId::strlen($secret) != 32) {
+            if (Zend_OpenId::strlen((string) $secret) != 32) {
                 $this->_setError("The length of the sha256 secret must be 32");
                 return false;
             }
@@ -763,13 +763,13 @@ class Zend_OpenId_Consumer
                 $r)) {
             $XRDS = $r[3];
             $version = 2.0;
-            $response = $this->_httpRequest($XRDS); 
+            $response = $this->_httpRequest($XRDS);
             if (preg_match(
                     '/<URI>([^\t]*)<\/URI>/i',
                     $response,
                     $x)) {
                 $server = $x[1];
-                // $realId 
+                // $realId
                 $realId = 'http://specs.openid.net/auth/2.0/identifier_select';
             }
             else {
@@ -921,7 +921,7 @@ class Zend_OpenId_Consumer
 
         if (empty($root)) {
             $root = Zend_OpenId::selfUrl();
-            if ($root[strlen($root)-1] != '/') {
+            if ($root[strlen((string) $root)-1] != '/') {
                 $root = dirname($root);
             }
         }

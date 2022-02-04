@@ -296,7 +296,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
         // check for normalized names as well (all lower, no separators)
         if (!$actionMetadata) {
             $actionSearchCriteria['name']  = 'normalizedActionName';
-            $actionSearchCriteria['value'] = strtolower(str_replace(array('-', '_'), '', $consoleActionName));
+            $actionSearchCriteria['value'] = strtolower((string) str_replace(array('-', '_'), '', $consoleActionName));
             $actionSearchCriteria['clientName'] = 'all';
             $actionMetadata = $this->_manifestRepository->getMetadata($actionSearchCriteria);
         }
@@ -325,7 +325,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
         $consoleSpecialtyName = '_global';
 
         // if there is notation for specialties? If so, break them up
-        if (strstr($consoleProviderFull, '.')) {
+        if (strstr((string) $consoleProviderFull, '.')) {
             list($consoleProviderName, $consoleSpecialtyName) = explode('.', $consoleProviderFull);
         } else {
             $consoleProviderName = $consoleProviderFull;
@@ -349,7 +349,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
         // check for normalized names as well (all lower, no separators)
         if (!$providerMetadata) {
             $providerSearchCriteria['name']  = 'normalizedProviderName';
-            $providerSearchCriteria['value'] = strtolower(str_replace(array('-', '_'), '', $consoleProviderName));
+            $providerSearchCriteria['value'] = strtolower((string) str_replace(array('-', '_'), '', $consoleProviderName));
             $providerSearchCriteria['clientName'] = 'all';
             $providerMetadata = $this->_manifestRepository->getMetadata($providerSearchCriteria);
         }
@@ -381,7 +381,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
 
         if (!$providerSpecialtyMetadata) {
             $providerSpecialtySearchCriteria['name'] = 'normalizedSpecialtyName';
-            $providerSpecialtySearchCriteria['value'] = strtolower(str_replace(array('-', '_'), '', $consoleSpecialtyName));
+            $providerSpecialtySearchCriteria['value'] = strtolower((string) str_replace(array('-', '_'), '', $consoleSpecialtyName));
             $providerSpecialtySearchCriteria['clientName'] = 'all';
             $providerSpecialtyMetadata = $this->_manifestRepository->getMetadata($providerSpecialtySearchCriteria);
         }
@@ -470,7 +470,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
         // if non-option arguments exist, attempt to process them before processing options
         $wordStack = array();
         while (($wordOnTop = array_shift($this->_argumentsWorking))) {
-            if (substr($wordOnTop, 0, 1) != '-') {
+            if (substr((string) $wordOnTop, 0, 1) != '-') {
                 array_push($wordStack, $wordOnTop);
             } else {
                 // put word back on stack and move on

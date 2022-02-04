@@ -49,7 +49,7 @@ class Zend_Soap_Wsdl_Strategy_ArrayOfTypeSequence extends Zend_Soap_Wsdl_Strateg
             $singularType = $this->_getSingularType($type);
 
             for($i = 1; $i <= $nestedCounter; $i++) {
-                $complexTypeName = substr($this->_getTypeNameBasedOnNestingLevel($singularType, $i), 4);
+                $complexTypeName = substr((string) $this->_getTypeNameBasedOnNestingLevel($singularType, $i), 4);
                 $childTypeName = $this->_getTypeNameBasedOnNestingLevel($singularType, $i-1);
 
                 $this->_addElementFromWsdlAndChildTypes($complexTypeName, $childTypeName);
@@ -95,7 +95,7 @@ class Zend_Soap_Wsdl_Strategy_ArrayOfTypeSequence extends Zend_Soap_Wsdl_Strateg
      */
     protected function _getStrippedXsdType($singularType)
     {
-        return ucfirst(substr(strtolower($singularType), 4));
+        return ucfirst(substr((string) strtolower((string) $singularType), 4));
     }
 
     /**
@@ -107,7 +107,7 @@ class Zend_Soap_Wsdl_Strategy_ArrayOfTypeSequence extends Zend_Soap_Wsdl_Strateg
      */
     protected function _getSingularType($type)
     {
-        $singulartype = $this->getContext()->getType(str_replace("[]", "", $type));
+        $singulartype = $this->getContext()->getType(str_replace((string) "[]", "", $type));
         return $singulartype;
     }
 

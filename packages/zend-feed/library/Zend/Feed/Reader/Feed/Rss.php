@@ -128,13 +128,13 @@ class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
         }
         if ($list->length) {
             foreach ($list as $author) {
-                $string = trim($author->nodeValue);
+                $string = \trim((string) $author->nodeValue);
                 $email = null;
                 $name = null;
                 $data = array();
                 // Pretty rough parsing - but it's a catchall
                 if (preg_match("/^.*@[^ ]*/", $string, $matches)) {
-                    $data['email'] = trim($matches[0]);
+                    $data['email'] = \trim((string) $matches[0]);
                     if (preg_match("/\((.*)\)$/", $string, $matches)) {
                         $data['name'] = $matches[1];
                     }

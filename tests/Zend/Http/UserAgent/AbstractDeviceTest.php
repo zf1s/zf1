@@ -333,7 +333,7 @@ class Zend_Http_UserAgent_AbstractDeviceTest extends PHPUnit_Framework_TestCase
         $userAgent = 'Opera/9.80 (J2ME/MIDP; Opera Mini/5.0 (Windows; U; Windows NT 5.1; en) AppleWebKit/886; U; en) Presto/2.4.15';
         $extract = Zend_Http_UserAgent_Desktop::extractFromUserAgent($userAgent);
         $this->assertEquals('Presto', $extract['browser_engine']);
-        $this->assertEquals('opera mini', strtolower($extract['browser_name']));
+        $this->assertEquals('opera mini', strtolower((string) $extract['browser_name']));
 
         $userAgent = 'Opera/9.70 (Linux ppc64 ; U; en) Presto/2.2.1';
         $extract = Zend_Http_UserAgent_Desktop::extractFromUserAgent($userAgent);
@@ -10088,7 +10088,7 @@ audio/vnd.qcelp, application/xhtml+xml'
         $capabilities = Zend_Http_UserAgent_AbstractDevice::extractFromUserAgent($userAgent);
         $this->assertEquals('AppleWebKit', $capabilities['browser_name']);
     }
-    
+
     /**
      * @group ZF-11815
      */
@@ -10096,9 +10096,9 @@ audio/vnd.qcelp, application/xhtml+xml'
     {
         $userAgent = 'AppleCoreMedia/1.0.0.8L1 (iPhone; U; CPU OS 4_3_5 like Mac OS X; de_de)';
         $capabilities = Zend_Http_UserAgent_AbstractDevice::extractFromUserAgent($userAgent);
-        $this->assertEquals('AppleCoreMedia', $capabilities['browser_name']);        
+        $this->assertEquals('AppleCoreMedia', $capabilities['browser_name']);
     }
-    
+
     /**
      * @group ZF-11749
      */
@@ -10108,7 +10108,7 @@ audio/vnd.qcelp, application/xhtml+xml'
         $capabilities = Zend_Http_UserAgent_AbstractDevice::extractFromUserAgent($userAgent);
         $this->assertEquals('Safari Mobile', $capabilities['browser_name']);
     }
-    
+
     /**
      * @group ZF-11693
      */
@@ -10118,7 +10118,7 @@ audio/vnd.qcelp, application/xhtml+xml'
         $capabilities = Zend_Http_UserAgent_AbstractDevice::extractFromUserAgent($userAgent);
         $this->assertEquals('Mozilla', $capabilities['browser_name']);
     }
-    
+
     /**
      * @group ZF-11857
      */

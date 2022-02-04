@@ -162,7 +162,7 @@ class Zend_OpenId_Provider
         if (!Zend_OpenId::normalize($id) || empty($id)) {
             return false;
         }
-        return $this->_storage->addUser($id, md5($id.$password));
+        return $this->_storage->addUser($id, md5((string) $id.$password));
     }
 
     /**
@@ -191,7 +191,7 @@ class Zend_OpenId_Provider
         if (!Zend_OpenId::normalize($id)) {
             return false;
         }
-        if (!$this->_storage->checkUser($id, md5($id.$password))) {
+        if (!$this->_storage->checkUser($id, md5((string) $id.$password))) {
             return false;
         }
         $this->_user->setLoggedInUser($id);
@@ -535,12 +535,12 @@ class Zend_OpenId_Provider
             $this->_user->getLoggedInUser() !== $params['openid_identity']) {
             $params2 = array();
             foreach ($params as $key => $val) {
-                if (strpos($key, 'openid_ns_') === 0) {
-                    $key = 'openid.ns.' . substr($key, strlen('openid_ns_'));
-                } else if (strpos($key, 'openid_sreg_') === 0) {
-                    $key = 'openid.sreg.' . substr($key, strlen('openid_sreg_'));
-                } else if (strpos($key, 'openid_') === 0) {
-                    $key = 'openid.' . substr($key, strlen('openid_'));
+                if (strpos((string) $key, 'openid_ns_') === 0) {
+                    $key = 'openid.ns.' . substr((string) $key, strlen((string) 'openid_ns_'));
+                } else if (strpos((string) $key, 'openid_sreg_') === 0) {
+                    $key = 'openid.sreg.' . substr((string) $key, strlen((string) 'openid_sreg_'));
+                } else if (strpos((string) $key, 'openid_') === 0) {
+                    $key = 'openid.' . substr((string) $key, strlen((string) 'openid_'));
                 }
                 $params2[$key] = $val;
             }
@@ -548,7 +548,7 @@ class Zend_OpenId_Provider
                 $params2['openid.mode'] = 'checkid_setup';
                 $ret['openid.mode'] = ($version >= 2.0) ? 'setup_needed': 'id_res';
                 $ret['openid.user_setup_url'] = $this->_loginUrl
-                    . (strpos($this->_loginUrl, '?') === false ? '?' : '&')
+                    . (strpos((string) $this->_loginUrl, '?') === false ? '?' : '&')
                     . Zend_OpenId::paramsToQuery($params2);
                 return $ret;
             } else {
@@ -573,17 +573,17 @@ class Zend_OpenId_Provider
             $trusted = $sites[$root];
         } else {
             foreach ($sites as $site => $t) {
-                if (strpos($root, $site) === 0) {
+                if (strpos((string) $root, $site) === 0) {
                     $trusted = $t;
                     break;
                 } else {
                     /* OpenID 2.0 (9.2) check for realm wild-card matching */
-                    $n = strpos($site, '://*.');
+                    $n = strpos((string) $site, '://*.');
                     if ($n != false) {
                         $regex = '/^'
-                               . preg_quote(substr($site, 0, $n+3), '/')
+                               . preg_quote(substr((string) $site, 0, $n+3), '/')
                                . '[A-Za-z1-9_\.]+?'
-                               . preg_quote(substr($site, $n+4), '/')
+                               . preg_quote(substr((string) $site, $n+4), '/')
                                . '/';
                         if (preg_match($regex, $root)) {
                             $trusted = $t;
@@ -607,12 +607,12 @@ class Zend_OpenId_Provider
             /* Redirect to Server Trust Screen */
             $params2 = array();
             foreach ($params as $key => $val) {
-                if (strpos($key, 'openid_ns_') === 0) {
-                    $key = 'openid.ns.' . substr($key, strlen('openid_ns_'));
-                } else if (strpos($key, 'openid_sreg_') === 0) {
-                    $key = 'openid.sreg.' . substr($key, strlen('openid_sreg_'));
-                } else if (strpos($key, 'openid_') === 0) {
-                    $key = 'openid.' . substr($key, strlen('openid_'));
+                if (strpos((string) $key, 'openid_ns_') === 0) {
+                    $key = 'openid.ns.' . substr((string) $key, strlen((string) 'openid_ns_'));
+                } else if (strpos((string) $key, 'openid_sreg_') === 0) {
+                    $key = 'openid.sreg.' . substr((string) $key, strlen((string) 'openid_sreg_'));
+                } else if (strpos((string) $key, 'openid_') === 0) {
+                    $key = 'openid.' . substr((string) $key, strlen((string) 'openid_'));
                 }
                 $params2[$key] = $val;
             }
@@ -620,7 +620,7 @@ class Zend_OpenId_Provider
                 $params2['openid.mode'] = 'checkid_setup';
                 $ret['openid.mode'] = ($version >= 2.0) ? 'setup_needed': 'id_res';
                 $ret['openid.user_setup_url'] = $this->_trustUrl
-                    . (strpos($this->_trustUrl, '?') === false ? '?' : '&')
+                    . (strpos((string) $this->_trustUrl, '?') === false ? '?' : '&')
                     . Zend_OpenId::paramsToQuery($params2);
                 return $ret;
             } else {
@@ -715,8 +715,8 @@ class Zend_OpenId_Provider
         $signed = '';
         $data = '';
         foreach ($ret as $key => $val) {
-            if (strpos($key, 'openid.') === 0) {
-                $key = substr($key, strlen('openid.'));
+            if (strpos((string) $key, 'openid.') === 0) {
+                $key = substr((string) $key, strlen((string) 'openid.'));
                 if (!empty($signed)) {
                     $signed .= ',';
                 }
@@ -767,7 +767,7 @@ class Zend_OpenId_Provider
             if ($key == 'mode') {
                 $data .= "id_res\n";
             } else {
-                $data .= $params['openid_' . strtr($key,'.','_')]."\n";
+                $data .= $params['openid_' . strtr((string) $key,'.','_')]."\n";
             }
         }
         if ($this->_secureStringCompare(base64_decode($params['openid_sig']),
@@ -791,12 +791,12 @@ class Zend_OpenId_Provider
      */
     protected function _secureStringCompare($a, $b)
     {
-        if (strlen($a) !== strlen($b)) {
+        if (strlen((string) $a) !== strlen((string) $b)) {
             return false;
         }
         $result = 0;
-        for ($i = 0; $i < strlen($a); $i++) {
-            $result |= ord($a[$i]) ^ ord($b[$i]);
+        for ($i = 0; $i < strlen((string) $a); $i++) {
+            $result |= ord((string) $a[$i]) ^ ord((string) $b[$i]);
         }
         return $result == 0;
     }

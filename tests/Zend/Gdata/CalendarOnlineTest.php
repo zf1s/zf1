@@ -52,7 +52,7 @@ class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
     public function testCalendarListFeed()
     {
         $calFeed = $this->gdata->getCalendarListFeed();
-        $this->assertTrue(strpos($calFeed->title->text, 'Calendar List')
+        $this->assertTrue(strpos((string) $calFeed->title->text, 'Calendar List')
                 !== false);
         $calCount = 0;
         foreach ($calFeed as $calendar) {
@@ -67,7 +67,7 @@ class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
     public function testCalendarOnlineFeed()
     {
         $eventFeed = $this->gdata->getCalendarEventFeed();
-        $this->assertTrue(strpos($eventFeed->title->text, TESTS_ZEND_GDATA_CLIENTLOGIN_EMAIL)
+        $this->assertTrue(strpos((string) $eventFeed->title->text, TESTS_ZEND_GDATA_CLIENTLOGIN_EMAIL)
                 !== false);
         $eventCount = 0;
         foreach ( $eventFeed as $event ) {
@@ -99,7 +99,7 @@ class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
             $endDate = '2008-01-20', $endTime = '11:00', $tzOffset = '-08')
     {
         $newEntry = $this->gdata->newEventEntry();
-        $newEntry->title = $this->gdata->newTitle(trim($title));
+        $newEntry->title = $this->gdata->newTitle(\trim((string) $title));
         $newEntry->where  = array($this->gdata->newWhere($where));
 
         $newEntry->content = $this->gdata->newContent($desc);

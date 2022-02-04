@@ -155,7 +155,7 @@ class Zend_Queue_Stomp_Client_Connection
         $this->ping();
         $output = $frame->toFrame();
 
-        $bytes = fwrite($this->_socket, $output, strlen($output));
+        $bytes = fwrite($this->_socket, $output, strlen((string) $output));
         if ($bytes === false || $bytes == 0) {
             // require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception('No bytes written');
@@ -213,7 +213,7 @@ class Zend_Queue_Stomp_Client_Connection
             $response .= $data;
 
             // is this \0 (prev) \n (data)? END_OF_FRAME
-            if (ord($data) == 10 && ord($prev) == 0) {
+            if (ord((string) $data) == 10 && ord((string) $prev) == 0) {
                 break;
             }
             $prev = $data;

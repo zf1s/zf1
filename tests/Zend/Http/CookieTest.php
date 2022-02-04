@@ -87,7 +87,7 @@ class Zend_Http_CookieTest extends PHPUnit_Framework_TestCase
      */
     public function testGetValueFromString($val)
     {
-        $cookie = Zend_Http_Cookie::fromString('cookie=' . urlencode($val) . '; domain=example.com');
+        $cookie = Zend_Http_Cookie::fromString('cookie=' . urlencode((string) $val) . '; domain=example.com');
         $this->assertEquals($val, $cookie->getValue());
     }
 
@@ -100,7 +100,7 @@ class Zend_Http_CookieTest extends PHPUnit_Framework_TestCase
     public function testGetRawValueFromString($val)
     {
         // Because ';' has special meaning in the cookie, strip it out for this test.
-        $val = str_replace(';', '', $val);
+        $val = str_replace((string) ';', '', $val);
         $cookie = Zend_Http_Cookie::fromString('cookie=' . $val . '; domain=example.com', null, false);
         $this->assertEquals($val, $cookie->getValue());
     }
@@ -114,7 +114,7 @@ class Zend_Http_CookieTest extends PHPUnit_Framework_TestCase
     public function testGetRawValueFromStringToString($val)
     {
         // Because ';' has special meaning in the cookie, strip it out for this test.
-        $val = str_replace(';', '', $val);
+        $val = str_replace((string) ';', '', $val);
         $cookie = Zend_Http_Cookie::fromString('cookie=' . $val . '; domain=example.com', null, false);
         $this->assertEquals('cookie=' . $val . ';', (string)$cookie);
     }
@@ -128,9 +128,9 @@ class Zend_Http_CookieTest extends PHPUnit_Framework_TestCase
     public function testGetValueFromStringEncodedToString($val)
     {
         // Because ';' has special meaning in the cookie, strip it out for this test.
-        $val = str_replace(';', '', $val);
+        $val = str_replace((string) ';', '', $val);
         $cookie = Zend_Http_Cookie::fromString('cookie=' . $val . '; domain=example.com', null, true);
-        $this->assertEquals('cookie=' . urlencode($val) . ';', (string)$cookie);
+        $this->assertEquals('cookie=' . urlencode((string) $val) . ';', (string)$cookie);
     }
 
     /**
@@ -191,7 +191,7 @@ class Zend_Http_CookieTest extends PHPUnit_Framework_TestCase
     public function testGetPathInRefUrl(Zend_Uri $uri)
     {
         $path = $uri->getPath();
-        if (substr($path, -1, 1) == '/') $path .= 'x';
+        if (substr((string) $path, -1, 1) == '/') $path .= 'x';
         $path = dirname($path);
         if ($path == DIRECTORY_SEPARATOR) {
             $path = '/';
@@ -317,7 +317,7 @@ class Zend_Http_CookieTest extends PHPUnit_Framework_TestCase
             $this->fail("Failed creating a cookie object from '$cStr'");
         }
 
-        $expected = substr($cStr, 0, strpos($cStr, ';') + 1);
+        $expected = substr((string) $cStr, 0, strpos((string) $cStr, ';') + 1);
         $this->assertEquals($expected, (string) $cookie);
     }
 
@@ -495,7 +495,7 @@ class Zend_Http_CookieTest extends PHPUnit_Framework_TestCase
             array("0000j8CydACPu_-J9bE8uTX91YU:12a83ks4k"), // value from: Alexander Cheshchevik's comment on issue: ZF-1850
 
             // Long cookie value - 2kb
-            array(str_repeat(md5(time()), 64))
+            array(str_repeat(md5((string) time()), 64))
         );
     }
 

@@ -24,7 +24,7 @@
 if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_Plugin_BrokerTest::main");
 
-    $basePath = realpath(dirname(__FILE__) . str_repeat(DIRECTORY_SEPARATOR . '..', 3));
+    $basePath = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 3));
 
     set_include_path(
         $basePath . DIRECTORY_SEPARATOR . 'tests'
@@ -90,7 +90,7 @@ class Zend_Controller_Plugin_BrokerTest extends PHPUnit_Framework_TestCase
 
     public function testUsingFrontController()
     {
-        $this->controller->setControllerDirectory(dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . '_files');
+        $this->controller->setControllerDirectory(dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files');
         $request = new Zend_Controller_Request_Http('http://framework.zend.com/empty');
         $this->controller->setResponse(new Zend_Controller_Response_Cli());
         $plugin = new Zend_Controller_Plugin_BrokerTest_TestPlugin();

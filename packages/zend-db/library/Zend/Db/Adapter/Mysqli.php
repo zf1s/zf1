@@ -240,7 +240,7 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
                  * or length; it is only a hint for display width.
                  */
             }
-            if (strtoupper($row['Key']) == 'PRI') {
+            if (strtoupper((string) $row['Key']) == 'PRI') {
                 $row['Primary'] = true;
                 $row['PrimaryPosition'] = $p;
                 if ($row['Extra'] == 'auto_increment') {
@@ -310,7 +310,7 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
                 if(is_string($option)) {
                     // Suppress warnings here
                     // Ignore it if it's not a valid constant
-                    $option = @constant(strtoupper($option));
+                    $option = @constant(strtoupper((string) $option));
                     if($option === null)
                         continue;
                 }

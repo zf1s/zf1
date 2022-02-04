@@ -103,7 +103,7 @@ class Zend_Search_Lucene_Document_Pptx extends Zend_Search_Lucene_Document_OpenX
                 foreach ($slideRelations->Relationship as $slideRel) {
                     if ($slideRel["Type"] == Zend_Search_Lucene_Document_Pptx::SCHEMA_SLIDERELATION) {
                         // Found slide!
-                        $slides[ str_replace( 'rId', '', (string)$slideRel["Id"] ) ] = Zend_Xml_Security::scan(
+                        $slides[ str_replace((string)  'rId', '', (string)$slideRel["Id"] ) ] = Zend_Xml_Security::scan(
                             $package->getFromName( $this->absoluteZipPath(dirname($rel["Target"]) . "/" . dirname($slideRel["Target"]) . "/" . basename($slideRel["Target"])) )
                         );
 
@@ -112,7 +112,7 @@ class Zend_Search_Lucene_Document_Pptx extends Zend_Search_Lucene_Document_OpenX
                         foreach ($slideNotesRelations->Relationship as $slideNoteRel) {
                             if ($slideNoteRel["Type"] == Zend_Search_Lucene_Document_Pptx::SCHEMA_SLIDENOTESRELATION) {
                                 // Found slide notes!
-                                $slideNotes[ str_replace( 'rId', '', (string)$slideRel["Id"] ) ] = Zend_Xml_Security::scan(
+                                $slideNotes[ str_replace((string)  'rId', '', (string)$slideRel["Id"] ) ] = Zend_Xml_Security::scan(
                                     $package->getFromName( $this->absoluteZipPath(dirname($rel["Target"]) . "/" . dirname($slideRel["Target"]) . "/" . dirname($slideNoteRel["Target"]) . "/" . basename($slideNoteRel["Target"])) )
                                 );
 

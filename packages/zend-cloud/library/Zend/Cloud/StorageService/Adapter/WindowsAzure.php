@@ -161,7 +161,7 @@ class Zend_Cloud_StorageService_Adapter_WindowsAzure
                 $returnPath
             );
         } catch (Zend_Service_WindowsAzure_Exception $e) {
-            if (strpos($e->getMessage(), "does not exist") !== false) {
+            if (strpos((string) $e->getMessage(), "does not exist") !== false) {
                 return false;
             }
             throw new Zend_Cloud_StorageService_Exception('Error on fetch: '.$e->getMessage(), $e->getCode(), $e);
@@ -207,7 +207,7 @@ class Zend_Cloud_StorageService_Adapter_WindowsAzure
             fclose($fpDestination);
 
             $removeTemporaryFilePath = true;
-        } elseif (file_exists($data)) {
+        } elseif (file_exists((string) $data)) {
             $temporaryFilePath       = $data;
             $removeTemporaryFilePath = false;
         } else {
@@ -373,7 +373,7 @@ class Zend_Cloud_StorageService_Adapter_WindowsAzure
                 $path
             );
         } catch (Zend_Service_WindowsAzure_Exception $e) {
-            if (strpos($e->getMessage(), "could not be accessed") !== false) {
+            if (strpos((string) $e->getMessage(), "could not be accessed") !== false) {
                 return false;
             }
             throw new Zend_Cloud_StorageService_Exception('Error on fetch: '.$e->getMessage(), $e->getCode(), $e);
@@ -394,7 +394,7 @@ class Zend_Cloud_StorageService_Adapter_WindowsAzure
         try    {
             $this->_storageClient->setBlobMetadata($this->_container, $destinationPath, $metadata);
         } catch (Zend_Service_WindowsAzure_Exception $e) {
-            if (strpos($e->getMessage(), "could not be accessed") === false) {
+            if (strpos((string) $e->getMessage(), "could not be accessed") === false) {
                 throw new Zend_Cloud_StorageService_Exception('Error on store metadata: '.$e->getMessage(), $e->getCode(), $e);
             }
         }
@@ -412,7 +412,7 @@ class Zend_Cloud_StorageService_Adapter_WindowsAzure
         try {
             $this->_storageClient->setBlobMetadata($this->_container, $destinationPath, array());
         } catch (Zend_Service_WindowsAzure_Exception $e) {
-            if (strpos($e->getMessage(), "could not be accessed") === false) {
+            if (strpos((string) $e->getMessage(), "could not be accessed") === false) {
                 throw new Zend_Cloud_StorageService_Exception('Error on delete metadata: '.$e->getMessage(), $e->getCode(), $e);
             }
         }

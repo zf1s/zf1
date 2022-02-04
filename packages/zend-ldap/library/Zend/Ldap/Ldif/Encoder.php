@@ -82,15 +82,15 @@ class Zend_Ldap_Ldif_Encoder
         $item = array();
         $last = null;
         foreach (explode("\n", $string) as $line) {
-            $line = rtrim($line, "\x09\x0A\x0D\x00\x0B");
+            $line = rtrim((string) $line, "\x09\x0A\x0D\x00\x0B");
             $matches = array();
-            if (substr($line, 0, 1) === ' ' && $last !== null) {
-                $last[2] .= substr($line, 1);
-            } else if (substr($line, 0, 1) === '#') {
+            if (substr((string) $line, 0, 1) === ' ' && $last !== null) {
+                $last[2] .= substr((string) $line, 1);
+            } else if (substr((string) $line, 0, 1) === '#') {
                 continue;
             } else if (preg_match('/^([a-z0-9;-]+)(:[:<]?\s*)([^:<]*)$/i', $line, $matches)) {
-                $name = strtolower($matches[1]);
-                $type = trim($matches[2]);
+                $name = strtolower((string) $matches[1]);
+                $type = \trim((string) $matches[2]);
                 $value = $matches[3];
                 if ($last !== null) {
                     $this->_pushAttribute($last, $item);
@@ -103,7 +103,7 @@ class Zend_Ldap_Ldif_Encoder
                     $last = null;
                 }
                 $last = array($name, $type, $value);
-            } else if (trim($line) === '') {
+            } else if (\trim((string) $line) === '') {
                 continue;
             }
         }
@@ -202,8 +202,8 @@ class Zend_Ldap_Ldif_Encoder
         $unsafe_char      = array(0, 10, 13);
 
         $base64 = false;
-        for ($i = 0; $i < strlen($string); $i++) {
-            $char = ord(substr($string, $i, 1));
+        for ($i = 0; $i < strlen((string) $string); $i++) {
+            $char = ord((string) substr((string) $string, $i, 1));
             if ($char >= 127) {
                 $base64 = true;
                 break;
@@ -216,7 +216,7 @@ class Zend_Ldap_Ldif_Encoder
             }
         }
         // Test for ending space
-        if (substr($string, -1) == ' ') {
+        if (substr((string) $string, -1) == ' ') {
             $base64 = true;
         }
 
@@ -257,12 +257,12 @@ class Zend_Ldap_Ldif_Encoder
             } else {
                 $attribute .= ' ' . $v;
             }
-            if (isset($this->_options['wrap']) && strlen($attribute) > $this->_options['wrap']) {
-                $attribute = trim(chunk_split($attribute, $this->_options['wrap'], PHP_EOL . ' '));
+            if (isset($this->_options['wrap']) && strlen((string) $attribute) > $this->_options['wrap']) {
+                $attribute = \trim((string) chunk_split($attribute, $this->_options['wrap'], PHP_EOL . ' '));
             }
             $output .= $attribute . PHP_EOL;
         }
-        return trim($output, PHP_EOL);
+        return \trim((string) $output, PHP_EOL);
     }
 
     /**
@@ -299,6 +299,6 @@ class Zend_Ldap_Ldif_Encoder
         foreach ($attributes as $key => $value) {
             $string .= $this->_encodeAttribute($key, $value) . PHP_EOL;
         }
-        return trim($string, PHP_EOL);
+        return \trim((string) $string, PHP_EOL);
     }
 }

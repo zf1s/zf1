@@ -25,10 +25,10 @@
 // require_once 'Zend/Http/UserAgent/Mobile.php';
 // require_once 'Zend/Http/UserAgent/Storage/NonPersistent.php';
 
-require_once dirname(__FILE__) . '/TestAsset/TestPluginLoader.php';
-require_once dirname(__FILE__) . '/TestAsset/DesktopDevice.php';
-require_once dirname(__FILE__) . '/TestAsset/InvalidDevice.php';
-require_once dirname(__FILE__) . '/TestAsset/PopulatedStorage.php';
+require_once __DIR__ . '/TestAsset/TestPluginLoader.php';
+require_once __DIR__ . '/TestAsset/DesktopDevice.php';
+require_once __DIR__ . '/TestAsset/InvalidDevice.php';
+require_once __DIR__ . '/TestAsset/PopulatedStorage.php';
 
 /**
  * @category   Zend
@@ -142,7 +142,7 @@ class Zend_Http_UserAgentTest extends PHPUnit_Framework_TestCase
     public function testUserAgentFeatureAdapter()
     {
         $config = $this->config;
-        $config['mobile']['features']['path']      = dirname(__FILE__) . '/TestAsset/Device/Browser/Features/Adapter.php';
+        $config['mobile']['features']['path']      = __DIR__ . '/TestAsset/Device/Browser/Features/Adapter.php';
         $config['mobile']['features']['classname'] = 'Device_Browser_Features_Adapter';
         $config['user_agent'] = 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleW1ebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4A102 Safari/419.3';
 
@@ -405,7 +405,7 @@ class Zend_Http_UserAgentTest extends PHPUnit_Framework_TestCase
     {
         $this->config['desktop'] = array(
             'device' => array(
-                'path'   => dirname(__FILE__) . '/TestAsset/Device',
+                'path'   => __DIR__ . '/TestAsset/Device',
                 'prefix' => 'Zend_Http_TestAsset_Device',
             ),
         );

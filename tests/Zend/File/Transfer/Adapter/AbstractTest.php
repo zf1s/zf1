@@ -507,7 +507,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testTransferDestinationShouldBeMutable()
     {
-        $directory = dirname(__FILE__);
+        $directory = __DIR__;
         $this->adapter->setDestination($directory);
         $destinations = $this->adapter->getDestination();
         $this->assertTrue(is_array($destinations));
@@ -515,7 +515,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
             $this->assertEquals($directory, $destination);
         }
 
-        $newdirectory = dirname(__FILE__)
+        $newdirectory = __DIR__
                       . DIRECTORY_SEPARATOR . '..'
                       . DIRECTORY_SEPARATOR . '..'
                       . DIRECTORY_SEPARATOR . '..'
@@ -527,10 +527,10 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testAdapterShouldAllowRetrievingDestinationsForAnArrayOfSpecifiedFiles()
     {
-        $this->adapter->setDestination(dirname(__FILE__));
+        $this->adapter->setDestination(__DIR__);
         $destinations = $this->adapter->getDestination(array('bar', 'baz'));
         $this->assertTrue(is_array($destinations));
-        $directory = dirname(__FILE__);
+        $directory = __DIR__;
         foreach ($destinations as $file => $destination) {
             $this->assertTrue(in_array($file, array('bar', 'baz')));
             $this->assertEquals($directory, $destination);
@@ -783,7 +783,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testTransferDestinationAtNonExistingElement()
     {
-        $directory = dirname(__FILE__);
+        $directory = __DIR__;
         $this->adapter->setDestination($directory, 'nonexisting');
         $this->assertEquals($directory, $this->adapter->getDestination('nonexisting'));
         try {
@@ -867,7 +867,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testSetDestinationWithNonExistingPathShouldThrowException()
     {
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
+        if (strtoupper((string) substr((string) PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
             return;
         }
 
@@ -902,7 +902,7 @@ class Zend_File_Transfer_Adapter_AbstractTest_MockAdapter extends Zend_File_Tran
 
     public function __construct()
     {
-        $testfile = dirname(__FILE__) . '/_files/test.txt';
+        $testfile = __DIR__ . '/_files/test.txt';
         $this->_files = array(
             'foo' => array(
                 'name'      => 'foo.jpg',

@@ -95,11 +95,11 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
             Zend_Uri_Http::check(TESTS_ZEND_HTTP_CLIENT_BASEURI)) {
 
             $this->baseuri = TESTS_ZEND_HTTP_CLIENT_BASEURI;
-            if (substr($this->baseuri, -1) != '/') $this->baseuri .= '/';
+            if (substr((string) $this->baseuri, -1) != '/') $this->baseuri .= '/';
 
             $name = $this->getName();
-            if (($pos = strpos($name, ' ')) !== false) {
-                $name = substr($name, 0, $pos);
+            if (($pos = strpos((string) $name, ' ')) !== false) {
+                $name = substr((string) $name, 0, $pos);
             }
 
             $uri = $this->baseuri . $name . '.php';
@@ -413,13 +413,13 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
                 if (!is_int($key)) {
                     $this->assertGreaterThan(
                         0,
-                        strpos($responseText, $key),
+                        strpos((string) $responseText, $key),
                         "key '$key' is missing from the reponse for raw multipart PUT or DELETE request"
                     );
                 }
                 $this->assertGreaterThan(
                     0,
-                    strpos($responseText, $value),
+                    strpos((string) $responseText, $value),
                     "value '$value' is missing from the reponse for raw multipart PUT or DELETE request"
                 );
             }
@@ -580,12 +580,12 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
             $this->markTestSkipped("Server does not allow the TRACE method");
         }
 
-        $body = strtolower($res->getBody());
+        $body = strtolower((string) $res->getBody());
 
         foreach ($headers as $key => $val)
-            $this->assertContains(strtolower("$key: $val"), $body);
+            $this->assertContains(strtolower((string) "$key: $val"), $body);
 
-        $this->assertContains(strtolower($acceptHeader), $body);
+        $this->assertContains(strtolower((string) $acceptHeader), $body);
     }
 
     /**
@@ -610,13 +610,13 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
             $this->markTestSkipped("Server does not allow the TRACE method");
         }
 
-        $body = strtolower($res->getBody());
+        $body = strtolower((string) $res->getBody());
 
         foreach ($headers as $key => $val) {
             if (is_string($key)) {
-                $this->assertContains(strtolower("$key: $val"), $body);
+                $this->assertContains(strtolower((string) "$key: $val"), $body);
             } else {
-                $this->assertContains(strtolower($val), $body);
+                $this->assertContains(strtolower((string) $val), $body);
             }
         }
      }
@@ -647,13 +647,13 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
         if ($res->getStatus() == 405 || $res->getStatus() == 501) {
             $this->markTestSkipped("Server does not allow the TRACE method");
         }
-        $body = strtolower($res->getBody());
+        $body = strtolower((string) $res->getBody());
 
         foreach ($headers as $key => $val) {
             if (is_array($val))
                 $val = implode(', ', $val);
 
-            $this->assertContains(strtolower("$key: $val"), $body);
+            $this->assertContains(strtolower((string) "$key: $val"), $body);
         }
      }
 
@@ -768,7 +768,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
 
         // Set the new expected URI
         $uri = clone $this->client->getUri();
-        $uri->setPath(rtrim(dirname($uri->getPath()), '/') . '/path/to/fake/file.ext');
+        $uri->setPath(rtrim((string) dirname($uri->getPath()), '/') . '/path/to/fake/file.ext');
         $uri = $uri->__toString();
 
         $res = $this->client->request('GET');
@@ -813,7 +813,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
      */
     public function testHttpAuthBasicWithCredentialsInUri()
     {
-        $uri = str_replace('http://', 'http://%s:%s@', $this->baseuri) . 'testHttpAuth.php';
+        $uri = str_replace((string) 'http://', 'http://%s:%s@', $this->baseuri) . 'testHttpAuth.php';
 
         $this->client->setParameterGet(array(
             'user'   => 'alice',
@@ -856,7 +856,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
      */
     public function testCancelAuthWithCredentialsInUri()
     {
-        $uri = str_replace('http://', 'http://%s:%s@', $this->baseuri) . 'testHttpAuth.php';
+        $uri = str_replace((string) 'http://', 'http://%s:%s@', $this->baseuri) . 'testHttpAuth.php';
 
         // Set auth and cancel it
         $this->client->setUri(sprintf($uri, 'alice', 'secret'));
@@ -1011,7 +1011,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
         $this->client->setFileUpload('myfile.txt', 'uploadfile', $rawdata, 'text/plain');
         $res = $this->client->request('POST');
 
-        $body = 'uploadfile myfile.txt text/plain ' . strlen($rawdata) . "\n";
+        $body = 'uploadfile myfile.txt text/plain ' . strlen((string) $rawdata) . "\n";
         $this->assertEquals($body, $res->getBody(), 'Response body does not include expected upload parameters');
     }
 
@@ -1079,7 +1079,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
         $this->client->setFileUpload('/some strage/path%/with[!@#$&]/myfile.txt', 'uploadfile', $rawdata, 'text/plain');
         $res = $this->client->request('POST');
 
-        $body = 'uploadfile myfile.txt text/plain ' . strlen($rawdata) . "\n";
+        $body = 'uploadfile myfile.txt text/plain ' . strlen((string) $rawdata) . "\n";
         $this->assertEquals($body, $res->getBody(), 'Response body does not include expected upload parameters');
     }
 
@@ -1114,7 +1114,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
         $expectedBody = '';
         foreach($files as $filename) {
             $this->client->setFileUpload($filename, 'uploadfile[]', $rawData, 'text/plain');
-            $expectedBody .= "uploadfile $filename text/plain " . strlen($rawData) . "\n";
+            $expectedBody .= "uploadfile $filename text/plain " . strlen((string) $rawData) . "\n";
         }
 
         $res = $this->client->request('POST');
@@ -1239,7 +1239,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
             $this->markTestSkipped("Didn't get multiple Content-length headers");
         }
 
-        $this->assertEquals($expect, strlen($response->getBody()));
+        $this->assertEquals($expect, strlen((string) $response->getBody()));
     }
 
     /**

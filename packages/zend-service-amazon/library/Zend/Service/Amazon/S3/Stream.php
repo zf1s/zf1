@@ -198,7 +198,7 @@ class Zend_Service_Amazon_S3_Stream
         // Only fetch more data from S3 if we haven't fetched any data yet (postion=0)
         // OR, the range end position plus 1 is greater than the size of the current
         // object buffer
-        if ($this->_objectBuffer === null  ||  $range_end >= strlen($this->_objectBuffer)) {
+        if ($this->_objectBuffer === null  ||  $range_end >= strlen((string) $this->_objectBuffer)) {
             $headers = array(
                 'Range' => "bytes=$range_start-$range_end"
             );
@@ -210,8 +210,8 @@ class Zend_Service_Amazon_S3_Stream
             }
         }
 
-        $data = substr($this->_objectBuffer, $this->_position, $count);
-        $this->_position += strlen($data);
+        $data = substr((string) $this->_objectBuffer, $this->_position, $count);
+        $this->_position += strlen((string) $data);
         return $data;
     }
 
@@ -226,7 +226,7 @@ class Zend_Service_Amazon_S3_Stream
         if (!$this->_objectName) {
             return 0;
         }
-        $len = strlen($data);
+        $len = strlen((string) $data);
         $this->_objectBuffer .= $data;
         $this->_objectSize += $len;
         // TODO: handle current position for writing!
@@ -337,7 +337,7 @@ class Zend_Service_Amazon_S3_Stream
         $stat['blksize'] = 0;
         $stat['blocks'] = 0;
 
-    if(($slash = strchr($this->_objectName, '/')) === false || $slash == strlen($this->_objectName)-1) {
+    if(($slash = strchr($this->_objectName, '/')) === false || $slash == strlen((string) $this->_objectName)-1) {
         /* bucket */
         $stat['mode'] |= 040000;
     } else {
@@ -448,7 +448,7 @@ class Zend_Service_Amazon_S3_Stream
         $stat['blocks'] = 0;
 
     $name = $this->_getNamePart($path);
-    if(($slash = strchr($name, '/')) === false || $slash == strlen($name)-1) {
+    if(($slash = strchr($name, '/')) === false || $slash == strlen((string) $name)-1) {
         /* bucket */
         $stat['mode'] |= 040000;
     } else {

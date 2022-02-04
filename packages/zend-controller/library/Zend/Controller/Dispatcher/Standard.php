@@ -184,7 +184,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
      */
     public function classToFilename($class)
     {
-        return str_replace('_', DIRECTORY_SEPARATOR, $class) . '.php';
+        return str_replace((string) '_', DIRECTORY_SEPARATOR, $class) . '.php';
     }
 
     /**
@@ -419,10 +419,10 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
             return false;
         }
 
-        $module        = strtolower($module);
+        $module        = strtolower((string) $module);
         $controllerDir = $this->getControllerDirectory();
         foreach (array_keys($controllerDir) as $moduleName) {
-            if ($module == strtolower($moduleName)) {
+            if ($module == strtolower((string) $moduleName)) {
                 return true;
             }
         }

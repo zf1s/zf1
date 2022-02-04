@@ -49,12 +49,12 @@
 /**
  * Mock No Result Adapter
  */
-require_once dirname(__FILE__) . '/_files/Db/MockNoResult.php';
+require_once __DIR__ . '/_files/Db/MockNoResult.php';
 
 /**
  * Mock Result Adapter
  */
-require_once dirname(__FILE__) . '/_files/Db/MockHasResult.php';
+require_once __DIR__ . '/_files/Db/MockHasResult.php';
 
 /**
  * @category   Zend

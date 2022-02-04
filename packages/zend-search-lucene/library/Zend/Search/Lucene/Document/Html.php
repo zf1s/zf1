@@ -105,11 +105,11 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
             if (preg_match('/<html[^>]*>/i', $htmlData, $matches, PREG_OFFSET_CAPTURE)) {
                 // It's an HTML document
                 // Add additional HEAD section and recognize document
-                $htmlTagOffset = $matches[0][1] + strlen($matches[0][0]);
+                $htmlTagOffset = $matches[0][1] + strlen((string) $matches[0][0]);
 
-                @$this->_doc->loadHTML(iconv($defaultEncoding, 'UTF-8//IGNORE', substr($htmlData, 0, $htmlTagOffset))
+                @$this->_doc->loadHTML(iconv($defaultEncoding, 'UTF-8//IGNORE', substr((string) $htmlData, 0, $htmlTagOffset))
                                      . '<head><META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/></head>'
-                                     . iconv($defaultEncoding, 'UTF-8//IGNORE', substr($htmlData, $htmlTagOffset)));
+                                     . iconv($defaultEncoding, 'UTF-8//IGNORE', substr((string) $htmlData, $htmlTagOffset)));
 
                 // Remove additional HEAD section
                 $xpath = new DOMXPath($this->_doc);
@@ -161,7 +161,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
         $linkNodes = $this->_doc->getElementsByTagName('a');
         foreach ($linkNodes as $linkNode) {
             if (($href = $linkNode->getAttribute('href')) != '' &&
-                (!self::$_excludeNoFollowLinks  ||  strtolower($linkNode->getAttribute('rel')) != 'nofollow' )
+                (!self::$_excludeNoFollowLinks  ||  strtolower((string) $linkNode->getAttribute('rel')) != 'nofollow' )
                ) {
                 $this->_links[] = $href;
             }
@@ -169,7 +169,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
         $linkNodes = $this->_doc->getElementsByTagName('area');
         foreach ($linkNodes as $linkNode) {
             if (($href = $linkNode->getAttribute('href')) != '' &&
-                (!self::$_excludeNoFollowLinks  ||  strtolower($linkNode->getAttribute('rel')) != 'nofollow' )
+                (!self::$_excludeNoFollowLinks  ||  strtolower((string) $linkNode->getAttribute('rel')) != 'nofollow' )
                ) {
                 $this->_links[] = $href;
             }

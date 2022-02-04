@@ -35,11 +35,11 @@ class Zend_Feed_Reader_Feed_AtomSourceTest extends PHPUnit_Framework_TestCase
 {
 
     protected $_feedSamplePath = null;
-    
+
     protected $_options = array();
-    
+
     protected $_expectedCats = array();
-    
+
     protected $_expectedCatsDc = array();
 
     public function setup()
@@ -49,7 +49,7 @@ class Zend_Feed_Reader_Feed_AtomSourceTest extends PHPUnit_Framework_TestCase
             $registry = Zend_Registry::getInstance();
             unset($registry['Zend_Locale']);
         }
-        $this->_feedSamplePath = dirname(__FILE__) . '/_files/AtomSource';
+        $this->_feedSamplePath = __DIR__ . '/_files/AtomSource';
         $this->_options = Zend_Date::setOptions();
         foreach($this->_options as $k=>$v) {
             if (is_null($v)) {
@@ -87,19 +87,19 @@ class Zend_Feed_Reader_Feed_AtomSourceTest extends PHPUnit_Framework_TestCase
             )
         );
     }
-    
+
     public function teardown()
     {
         Zend_Date::setOptions($this->_options);
     }
-    
+
     public function testGetsSourceFromEntry()
     {
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath.'/title/atom10.xml')
         );
         $source = $feed->current()->getSource();
-        $this->assertTrue($source instanceof Zend_Feed_Reader_Feed_Atom_Source);  
+        $this->assertTrue($source instanceof Zend_Feed_Reader_Feed_Atom_Source);
     }
 
     /**
@@ -274,7 +274,7 @@ class Zend_Feed_Reader_Feed_AtomSourceTest extends PHPUnit_Framework_TestCase
         $source = $feed->current()->getSource();
         $this->assertEquals('http://www.example.com/feed/atom', $source->getFeedLink());
     }
-    
+
     /**
      * Get Pubsubhubbub Hubs
      */
@@ -289,7 +289,7 @@ class Zend_Feed_Reader_Feed_AtomSourceTest extends PHPUnit_Framework_TestCase
             'http://www.example.com/hub2'
         ), $source->getHubs());
     }
-    
+
     /**
      * Get category data
      */

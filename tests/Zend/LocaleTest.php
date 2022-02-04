@@ -64,7 +64,7 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
         // require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory('Core', 'File',
                  array('lifetime' => 120, 'automatic_serialization' => true),
-                 array('cache_dir' => dirname(__FILE__) . '/_files/'));
+                 array('cache_dir' => __DIR__ . '/_files/'));
         Zend_LocaleTestHelper::resetObject();
         Zend_LocaleTestHelper::setCache($this->_cache);
 
@@ -77,7 +77,7 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
     public function tearDown()
     {
         $this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
-        if (is_string($this->_locale) && strpos($this->_locale, ';')) {
+        if (is_string($this->_locale) && strpos((string) $this->_locale, ';')) {
             $locales = array();
             foreach (explode(';', $this->_locale) as $l) {
                 $tmp = explode('=', $l);
@@ -919,7 +919,7 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
     public function testEachDataFileShouldPresentAsLocaleData()
     {
         $dir = new DirectoryIterator(
-            dirname(__FILE__) . '/../../packages/zend-locale/library/Zend/Locale/Data'
+            __DIR__ . '/../../packages/zend-locale/library/Zend/Locale/Data'
         );
         $skip = array(
             'characters.xml',

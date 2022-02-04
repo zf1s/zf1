@@ -199,7 +199,7 @@ class Zend_Service_WindowsAzure_SessionHandler
     {
     	// Encode data
     	$serializedData = base64_encode(serialize($serializedData));
-    	if (strlen($serializedData) >= self::MAX_TS_PROPERTY_SIZE && $this->_storageType == self::STORAGE_TYPE_TABLE) {
+    	if (strlen((string) $serializedData) >= self::MAX_TS_PROPERTY_SIZE && $this->_storageType == self::STORAGE_TYPE_TABLE) {
     		throw new Zend_Service_WindowsAzure_Exception('Session data exceeds the maximum allowed size of ' . self::MAX_TS_PROPERTY_SIZE . ' bytes that can be stored using table storage. Consider switching to a blob storage back-end or try reducing session data size.');
     	}
     	

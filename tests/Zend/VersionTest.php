@@ -58,11 +58,11 @@ class Zend_VersionTest extends PHPUnit_Framework_TestCase
                 for ($k=0; $k <= 20; $k++) {
                     foreach (array('dev', 'pr', 'PR', 'alpha', 'a1', 'a2', 'beta', 'b1', 'b2', 'RC', 'RC1', 'RC2', 'RC3', '', 'pl1', 'PL1') as $rel) {
                         $ver = "$i.$j.$k$rel";
-                        $normalizedVersion = strtolower(Zend_Version::VERSION);
-                        if (strtolower($ver) === $normalizedVersion
-                            || strtolower("$i.$j.$k-$rel") === $normalizedVersion
-                            || strtolower("$i.$j.$k.$rel") === $normalizedVersion
-                            || strtolower("$i.$j.$k $rel") === $normalizedVersion
+                        $normalizedVersion = strtolower((string) Zend_Version::VERSION);
+                        if (strtolower((string) $ver) === $normalizedVersion
+                            || strtolower((string) "$i.$j.$k-$rel") === $normalizedVersion
+                            || strtolower((string) "$i.$j.$k.$rel") === $normalizedVersion
+                            || strtolower((string) "$i.$j.$k $rel") === $normalizedVersion
                         ) {
                             if ($expect == -1) {
                                 $expect = 1;

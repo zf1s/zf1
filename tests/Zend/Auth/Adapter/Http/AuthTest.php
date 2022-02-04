@@ -109,7 +109,7 @@ class Zend_Auth_Adapter_Http_AuthTest extends PHPUnit_Framework_TestCase
      */
     public function __construct()
     {
-        $this->_filesPath      = dirname(__FILE__) . '/_files';
+        $this->_filesPath      = __DIR__ . '/_files';
         $this->_basicResolver  = new Zend_Auth_Adapter_Http_Resolver_File("{$this->_filesPath}/htbasic.1");
         $this->_digestResolver = new Zend_Auth_Adapter_Http_Resolver_File("{$this->_filesPath}/htdigest.3");
         $this->_basicConfig    = array(
@@ -391,8 +391,8 @@ class Zend_Auth_Adapter_Http_AuthTest extends PHPUnit_Framework_TestCase
     protected function _digestChallenge()
     {
         $timeout = ceil(time() / 300) * 300;
-        $nonce   = md5($timeout . ':PHPUnit:Zend_Auth_Adapter_Http');
-        $opaque  = md5('Opaque Data:Zend_Auth_Adapter_Http');
+        $nonce   = md5((string) $timeout . ':PHPUnit:Zend_Auth_Adapter_Http');
+        $opaque  = md5((string) 'Opaque Data:Zend_Auth_Adapter_Http');
         $wwwauth = 'Digest '
                  . 'realm="' . $this->_digestConfig['realm'] . '", '
                  . 'domain="' . $this->_digestConfig['digest_domains'] . '", '
@@ -413,11 +413,11 @@ class Zend_Auth_Adapter_Http_AuthTest extends PHPUnit_Framework_TestCase
     {
         $nc       = '00000001';
         $timeout  = ceil(time() / 300) * 300;
-        $nonce    = md5($timeout . ':PHPUnit:Zend_Auth_Adapter_Http');
-        $opaque   = md5('Opaque Data:Zend_Auth_Adapter_Http');
-        $cnonce   = md5('cnonce');
-        $response = md5(md5($user . ':' . $this->_digestConfig['realm'] . ':' . $pass) . ":$nonce:$nc:$cnonce:auth:"
-                  . md5('GET:/'));
+        $nonce    = md5((string) $timeout . ':PHPUnit:Zend_Auth_Adapter_Http');
+        $opaque   = md5((string) 'Opaque Data:Zend_Auth_Adapter_Http');
+        $cnonce   = md5((string) 'cnonce');
+        $response = md5((string) md5((string) $user . ':' . $this->_digestConfig['realm'] . ':' . $pass) . ":$nonce:$nc:$cnonce:auth:"
+                  . md5((string) 'GET:/'));
         $cauth = 'Digest '
                . 'username="Bryce", '
                . 'realm="' . $this->_digestConfig['realm'] . '", '

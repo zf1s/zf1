@@ -19,13 +19,13 @@
  */
 
 // Grab SplAutoloader interface
-// require_once dirname(__FILE__) . '/SplAutoloader.php';
+// require_once __DIR__ . '/SplAutoloader.php';
 
 /**
  * Class-map autoloader
  *
  * Utilizes class-map files to lookup classfile locations.
- * 
+ *
  * @package    Zend_Loader
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    New BSD {@link http://framework.zend.com/license/new-bsd}
@@ -48,8 +48,8 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
      * Constructor
      *
      * Create a new instance, and optionally configure the autoloader.
-     * 
-     * @param  null|array|Traversable $options 
+     *
+     * @param  null|array|Traversable $options
      * @return void
      */
     public function __construct($options = null)
@@ -63,8 +63,8 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
      * Configure the autoloader
      *
      * Proxies to {@link registerAutoloadMaps()}.
-     * 
-     * @param  array|Traversable $options 
+     *
+     * @param  array|Traversable $options
      * @return Zend_Loader_ClassMapAutoloader
      */
     public function setOptions($options)
@@ -79,10 +79,10 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
      * An autoload map may be either an associative array, or a file returning
      * an associative array.
      *
-     * An autoload map should be an associative array containing 
+     * An autoload map should be an associative array containing
      * classname/file pairs.
-     * 
-     * @param  string|array $location 
+     *
+     * @param  string|array $location
      * @return Zend_Loader_ClassMapAutoloader
      */
     public function registerAutoloadMap($map)
@@ -95,7 +95,7 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
         }
 
         if (!is_array($map)) {
-            // require_once dirname(__FILE__) . '/Exception/InvalidArgumentException.php';
+            // require_once __DIR__ . '/Exception/InvalidArgumentException.php';
             throw new Zend_Loader_Exception_InvalidArgumentException('Map file provided does not return a map');
         }
 
@@ -110,14 +110,14 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
 
     /**
      * Register many autoload maps at once
-     * 
-     * @param  array $locations 
+     *
+     * @param  array $locations
      * @return Zend_Loader_ClassMapAutoloader
      */
     public function registerAutoloadMaps($locations)
     {
         if (!is_array($locations) && !($locations instanceof Traversable)) {
-            // require_once dirname(__FILE__) . '/Exception/InvalidArgumentException.php';
+            // require_once __DIR__ . '/Exception/InvalidArgumentException.php';
             throw new Zend_Loader_Exception_InvalidArgumentException('Map list must be an array or implement Traversable');
         }
         foreach ($locations as $location) {
@@ -128,7 +128,7 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
 
     /**
      * Retrieve current autoload map
-     * 
+     *
      * @return array
      */
     public function getAutoloadMap()
@@ -138,8 +138,8 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
 
     /**
      * Defined by Autoloadable
-     * 
-     * @param  string $class 
+     *
+     * @param  string $class
      * @return void
      */
     public function autoload($class)
@@ -165,15 +165,15 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
      * If the map has been previously loaded, returns the current instance;
      * otherwise, returns whatever was returned by calling include() on the
      * location.
-     * 
-     * @param  string $location 
+     *
+     * @param  string $location
      * @return Zend_Loader_ClassMapAutoloader|mixed
      * @throws Zend_Loader_Exception_InvalidArgumentException for nonexistent locations
      */
     protected function loadMapFromFile($location)
     {
-        if (!file_exists($location)) {
-            // require_once dirname(__FILE__) . '/Exception/InvalidArgumentException.php';
+        if (!file_exists((string) $location)) {
+            // require_once __DIR__ . '/Exception/InvalidArgumentException.php';
             throw new Zend_Loader_Exception_InvalidArgumentException('Map file provided does not exist');
         }
 
@@ -194,17 +194,17 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
     /**
      * Resolve the real_path() to a file within a phar.
      *
-     * @see    https://bugs.php.net/bug.php?id=52769 
-     * @param  string $path 
+     * @see    https://bugs.php.net/bug.php?id=52769
+     * @param  string $path
      * @return string
      */
     public static function realPharPath($path)
     {
-        if (strpos($path, 'phar://') !== 0) {
+        if (strpos((string) $path, 'phar://') !== 0) {
             return;
         }
-        
-        $parts = explode('/', str_replace(array('/','\\'), '/', substr($path, 7)));
+
+        $parts = explode('/', str_replace(array('/','\\'), '/', substr((string) $path, 7)));
         $prependSlash = $parts && $parts[0] === '' ? '/' : '';
         $parts = array_values(array_filter($parts, array(__CLASS__, 'concatPharParts')));
 
@@ -219,15 +219,15 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
         }
         $parts = $out;
 
-        if (file_exists($realPath = 'phar://' . $prependSlash . implode('/', $parts))) {
+        if (file_exists((string) $realPath = 'phar://' . $prependSlash . implode('/', $parts))) {
             return $realPath;
         }
     }
 
     /**
      * Helper callback for filtering phar paths
-     * 
-     * @param  string $part 
+     *
+     * @param  string $part
      * @return bool
      */
     public static function concatPharParts($part)

@@ -345,7 +345,7 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
      */
     public function setImgDir($imgDir)
     {
-        $this->_imgDir = rtrim($imgDir, "/\\") . '/';
+        $this->_imgDir = rtrim((string) $imgDir, "/\\") . '/';
         return $this;
     }
 
@@ -357,7 +357,7 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
      */
     public function setImgUrl($imgUrl)
     {
-        $this->_imgUrl = rtrim($imgUrl, "/\\") . '/';
+        $this->_imgUrl = rtrim((string) $imgUrl, "/\\") . '/';
         return $this;
     }
 
@@ -438,7 +438,7 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
         $id = parent::generate();
         $tries = 5;
         // If there's already such file, try creating a new ID
-        while($tries-- && file_exists($this->getImgDir() . $id . $this->getSuffix())) {
+        while($tries-- && file_exists((string) $this->getImgDir() . $id . $this->getSuffix())) {
             $id = $this->_generateRandomId();
             $this->_setId($id);
         }
@@ -504,8 +504,8 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
         $bg_color   = imagecolorallocate($img, 255, 255, 255);
         imagefilledrectangle($img, 0, 0, $w-1, $h-1, $bg_color);
         $textbox = imageftbbox($fsize, 0, $font, $word);
-        $x = ($w - ($textbox[2] - $textbox[0])) / 2;
-        $y = ($h - ($textbox[7] - $textbox[1])) / 2;
+        $x = (int) (($w - ($textbox[2] - $textbox[0])) / 2);
+        $y = (int) (($h - ($textbox[7] - $textbox[1])) / 2);
         imagefttext($img, $fsize, 0, $x, $y, $text_color, $font, $word);
 
        // generate noise
@@ -542,10 +542,10 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
                 if ($sx < 0 || $sy < 0 || $sx >= $w - 1 || $sy >= $h - 1) {
                     continue;
                 } else {
-                    $color    = (imagecolorat($img, $sx, $sy) >> 16)         & 0xFF;
-                    $color_x  = (imagecolorat($img, $sx + 1, $sy) >> 16)     & 0xFF;
-                    $color_y  = (imagecolorat($img, $sx, $sy + 1) >> 16)     & 0xFF;
-                    $color_xy = (imagecolorat($img, $sx + 1, $sy + 1) >> 16) & 0xFF;
+                    $color    = (imagecolorat($img, (int) $sx, (int) $sy) >> 16)         & 0xFF;
+                    $color_x  = (imagecolorat($img, (int) $sx + 1, (int) $sy) >> 16)     & 0xFF;
+                    $color_y  = (imagecolorat($img, (int) $sx, (int) $sy + 1) >> 16)     & 0xFF;
+                    $color_xy = (imagecolorat($img, (int) $sx + 1, (int) $sy + 1) >> 16) & 0xFF;
                 }
                 if ($color == 255 && $color_x == 255 && $color_y == 255 && $color_xy == 255) {
                     // ignore background
@@ -560,10 +560,10 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
                     $frac_x1 = 1-$frac_x;
                     $frac_y1 = 1-$frac_y;
 
-                    $newcolor = $color    * $frac_x1 * $frac_y1
-                              + $color_x  * $frac_x  * $frac_y1
-                              + $color_y  * $frac_x1 * $frac_y
-                              + $color_xy * $frac_x  * $frac_y;
+                    $newcolor = (int) ($color * $frac_x1 * $frac_y1
+                        + $color_x  * $frac_x  * $frac_y1
+                        + $color_y  * $frac_x1 * $frac_y
+                        + $color_xy * $frac_x  * $frac_y);
                 }
                 imagesetpixel($img2, $x, $y, imagecolorallocate($img2, $newcolor, $newcolor, $newcolor));
             }
@@ -589,16 +589,16 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
     {
         $expire = time() - $this->getExpiration();
         $imgdir = $this->getImgDir();
-        if(!$imgdir || strlen($imgdir) < 2) {
+        if(!$imgdir || strlen((string) $imgdir) < 2) {
             // safety guard
             return;
         }
-        $suffixLength = strlen($this->_suffix);
+        $suffixLength = strlen((string) $this->_suffix);
         foreach (new DirectoryIterator($imgdir) as $file) {
             if (!$file->isDot() && !$file->isDir()) {
-                if (file_exists($file->getPathname()) && $file->getMTime() < $expire) {
+                if (file_exists((string) $file->getPathname()) && $file->getMTime() < $expire) {
                     // only deletes files ending with $this->_suffix
-                    if (substr($file->getFilename(), -($suffixLength)) == $this->_suffix) {
+                    if (substr((string) $file->getFilename(), -($suffixLength)) == $this->_suffix) {
                         unlink($file->getPathname());
                     }
                 }

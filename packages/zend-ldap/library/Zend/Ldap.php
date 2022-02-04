@@ -304,7 +304,7 @@ class Zend_Ldap
                                 $val === '1' || strcasecmp($val, 'true') == 0);
                         break;
                     default:
-                        $permittedOptions[$key] = trim($val);
+                        $permittedOptions[$key] = \trim((string) $val);
                         break;
                 }
             }
@@ -509,15 +509,15 @@ class Zend_Ldap
             return;
         }
 
-        $pos = strpos($name, '@');
+        $pos = strpos((string) $name, '@');
         if ($pos) {
-            $dname = substr($name, $pos + 1);
-            $aname = substr($name, 0, $pos);
+            $dname = substr((string) $name, $pos + 1);
+            $aname = substr((string) $name, 0, $pos);
         } else {
-            $pos = strpos($name, '\\');
+            $pos = strpos((string) $name, '\\');
             if ($pos) {
-                $dname = substr($name, 0, $pos);
-                $aname = substr($name, $pos + 1);
+                $dname = substr((string) $name, 0, $pos);
+                $aname = substr((string) $name, $pos + 1);
             }
         }
     }
@@ -593,7 +593,7 @@ class Zend_Ldap
         if (function_exists('mb_strtolower')) {
             $uname = mb_strtolower($uname, 'UTF-8');
         } else {
-            $uname = strtolower($uname);
+            $uname = strtolower((string) $uname);
         }
 
         if ($form === 0) {
@@ -816,7 +816,7 @@ class Zend_Ldap
 
         // Security check: remove null bytes in password
         // @see https://net.educause.edu/ir/library/pdf/csd4875.pdf
-        $password = str_replace("\0", '', $password);
+        $password = str_replace((string) "\0", '', $password);
 
         if ($username === null) {
             $username = $this->_getUsername();
@@ -1056,6 +1056,7 @@ class Zend_Ldap
      * @return integer
      * @throws Zend_Ldap_Exception
      */
+    #[\ReturnTypeWillChange]
     public function count($filter, $basedn = null, $scope = self::SEARCH_SCOPE_SUB)
     {
         try {
@@ -1176,7 +1177,7 @@ class Zend_Ldap
                         throw new InvalidArgumentException('Only scalar values allowed in LDAP data');
                     } else {
                         $v = (string)$v;
-                        if (strlen($v) == 0) {
+                        if (strlen((string) $v) == 0) {
                             unset($value[$i]);
                         } else {
                             $value[$i] = $v;
@@ -1190,7 +1191,7 @@ class Zend_Ldap
                     throw new InvalidArgumentException('Only scalar values allowed in LDAP data');
                 } else {
                     $value = (string)$value;
-                    if (strlen($value) == 0) {
+                    if (strlen((string) $value) == 0) {
                         $entry[$key] = array();
                     } else {
                         $entry[$key] = array($value);

@@ -130,7 +130,7 @@ class Zend_Pdf_FileParserDataSource_File extends Zend_Pdf_FileParserDataSource
             throw new Zend_Pdf_Exception('Unexpected error while reading file',
                                          Zend_Pdf_Exception::ERROR_DURING_READ);
         }
-        if (strlen($bytes) != $byteCount) {
+        if (strlen((string) $bytes) != $byteCount) {
             // require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception("Insufficient data to read $byteCount bytes",
                                          Zend_Pdf_Exception::INSUFFICIENT_DATA);

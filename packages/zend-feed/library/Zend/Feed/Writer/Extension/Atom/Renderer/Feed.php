@@ -54,7 +54,7 @@ class Zend_Feed_Writer_Extension_Atom_Renderer_Feed
          * RSS 2.0 only. Used mainly to include Atom links and
          * Pubsubhubbub Hub endpoint URIs under the Atom namespace
          */
-        if (strtolower($this->getType()) == 'atom') {
+        if (strtolower((string) $this->getType()) == 'atom') {
             return;
         }
         $this->_setFeedLinks($this->_dom, $this->_base);
@@ -89,7 +89,7 @@ class Zend_Feed_Writer_Extension_Atom_Renderer_Feed
             return;
         }
         foreach ($flinks as $type => $href) {
-            $mime  = 'application/' . strtolower($type) . '+xml';
+            $mime  = 'application/' . strtolower((string) $type) . '+xml';
             $flink = $dom->createElement('atom:link');
             $root->appendChild($flink);
             $flink->setAttribute('rel', 'self');

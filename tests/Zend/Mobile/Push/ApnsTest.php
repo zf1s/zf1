@@ -47,7 +47,7 @@ class Zend_Mobile_Push_ApnsTest extends PHPUnit_Framework_TestCase
         $this->message->setToken('AF0123DE');
         $this->message->setId(time());
         $this->message->setAlert('bar');
-        $this->apns->setCertificate(dirname(__FILE__) . '/certificate.pem');
+        $this->apns->setCertificate(__DIR__ . '/certificate.pem');
     }
 
     /**
@@ -84,7 +84,7 @@ class Zend_Mobile_Push_ApnsTest extends PHPUnit_Framework_TestCase
 
     public function testSetCertificateReturnsInstance()
     {
-        $ret = $this->apns->setCertificate(dirname(__FILE__) . '/certificate.pem');
+        $ret = $this->apns->setCertificate(__DIR__ . '/certificate.pem');
         $this->assertEquals($this->apns, $ret);
     }
 
@@ -110,7 +110,7 @@ class Zend_Mobile_Push_ApnsTest extends PHPUnit_Framework_TestCase
 
     public function testConnectReturnsThis()
     {
-        $this->apns->setCertificate(dirname(__FILE__) . '/certificate.pem');
+        $this->apns->setCertificate(__DIR__ . '/certificate.pem');
         $ret = $this->apns->connect();
         $this->assertEquals($this->apns, $ret);
     }
@@ -120,7 +120,7 @@ class Zend_Mobile_Push_ApnsTest extends PHPUnit_Framework_TestCase
      */
     public function testSendThrowsExceptionOnInvalidMessage()
     {
-        $this->apns->setCertificate(dirname(__FILE__) . '/certificate.pem');
+        $this->apns->setCertificate(__DIR__ . '/certificate.pem');
         $this->apns->send($this->message);
     }
 

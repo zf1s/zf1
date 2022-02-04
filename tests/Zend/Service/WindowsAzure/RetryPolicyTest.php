@@ -27,8 +27,8 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * Test helpers
  */
-// require_once dirname(__FILE__) . '/../../../TestHelper.php';
-require_once dirname(__FILE__) . '/../../../TestConfiguration.dist.php';
+// require_once __DIR__ . '/../../../TestHelper.php';
+require_once __DIR__ . '/../../../TestConfiguration.dist.php';
 
 /** Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract */
 // require_once 'Zend/Service/WindowsAzure/RetryPolicy/RetryPolicyAbstract.php';

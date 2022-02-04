@@ -88,7 +88,7 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
                                 'proxy_login'    => 'proxy_login',
                                 'proxy_password' => 'proxy_password',
 
-                                'local_cert'     => dirname(__FILE__).'/_files/cert_file',
+                                'local_cert'     => __DIR__.'/_files/cert_file',
                                 'passphrase'     => 'some pass phrase',
 
                                 'stream_context' => $ctx,
@@ -109,7 +109,7 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($client1->getOptions() == array('encoding' => 'UTF-8', 'soap_version' => SOAP_1_2));
 
         $wsdlOptions = array('soap_version'   => SOAP_1_1,
-                             'wsdl'           => dirname(__FILE__).'/_files/wsdl_example.wsdl',
+                             'wsdl'           => __DIR__.'/_files/wsdl_example.wsdl',
                              'classmap'       => array('TestData1' => 'Zend_Soap_Client_TestData1',
                                                  'TestData2' => 'Zend_Soap_Client_TestData2',),
                              'encoding'       => 'ISO-8859-1',
@@ -122,7 +122,7 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
                              'proxy_login'    => 'proxy_login',
                              'proxy_password' => 'proxy_password',
 
-                             'local_cert'     => dirname(__FILE__).'/_files/cert_file',
+                             'local_cert'     => __DIR__.'/_files/cert_file',
                              'passphrase'     => 'some pass phrase',
 
                              'stream_context' => $ctx,
@@ -140,7 +140,7 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($client->getOptions() == array('encoding' => 'UTF-8', 'soap_version' => SOAP_1_2));
 
         $options = array('soap_version'   => SOAP_1_1,
-                         'wsdl'           => dirname(__FILE__).'/_files/wsdl_example.wsdl',
+                         'wsdl'           => __DIR__.'/_files/wsdl_example.wsdl',
 
                          'classmap'       => array('TestData1' => 'Zend_Soap_Client_TestData1',
                                              'TestData2' => 'Zend_Soap_Client_TestData2',),
@@ -158,7 +158,7 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
                          'proxy_login'    => 'proxy_login',
                          'proxy_password' => 'proxy_password',
 
-                         'local_cert'     => dirname(__FILE__).'/_files/cert_file',
+                         'local_cert'     => __DIR__.'/_files/cert_file',
                          'passphrase'     => 'some pass phrase',
 
                          'compression'    => SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_GZIP | 5);
@@ -298,10 +298,10 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetFunctions()
     {
-        $server = new Zend_Soap_Server(dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $server = new Zend_Soap_Server(__DIR__ . '/_files/wsdl_example.wsdl');
         $server->setClass('Zend_Soap_Client_TestClass');
 
-        $client = new Zend_Soap_Client_Local($server, dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $client = new Zend_Soap_Client_Local($server, __DIR__ . '/_files/wsdl_example.wsdl');
 
         $this->assertTrue($client->getFunctions() == array('string testFunc1()',
                                                            'string testFunc2(string $who)',
@@ -327,10 +327,10 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
             return;
         }
 
-        $server = new Zend_Soap_Server(dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $server = new Zend_Soap_Server(__DIR__ . '/_files/wsdl_example.wsdl');
         $server->setClass('Zend_Soap_Client_TestClass');
 
-        $client = new Zend_Soap_Client_Local($server, dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $client = new Zend_Soap_Client_Local($server, __DIR__ . '/_files/wsdl_example.wsdl');
 
         // Perform request
         $client->testFunc2('World');
@@ -357,10 +357,10 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
             return;
         }
 
-        $server = new Zend_Soap_Server(dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $server = new Zend_Soap_Server(__DIR__ . '/_files/wsdl_example.wsdl');
         $server->setClass('Zend_Soap_Client_TestClass');
 
-        $client = new Zend_Soap_Client_Local($server, dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $client = new Zend_Soap_Client_Local($server, __DIR__ . '/_files/wsdl_example.wsdl');
 
         // Perform request
         $client->testFunc2('World');
@@ -388,10 +388,10 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
             return;
         }
 
-        $server = new Zend_Soap_Server(dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $server = new Zend_Soap_Server(__DIR__ . '/_files/wsdl_example.wsdl');
         $server->setClass('Zend_Soap_Client_TestClass');
 
-        $client = new Zend_Soap_Client_Local($server, dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $client = new Zend_Soap_Client_Local($server, __DIR__ . '/_files/wsdl_example.wsdl');
 
         $this->assertEquals($client->testFunc2('World'), 'Hello World!');
     }
@@ -417,7 +417,7 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
                                 'proxy_login'    => 'proxy_login',
                                 'proxy_password' => 'proxy_password',
 
-                                'local_cert'     => dirname(__FILE__).'/_files/cert_file',
+                                'local_cert'     => __DIR__.'/_files/cert_file',
                                 'passphrase'     => 'some pass phrase',
 
                                 'stream_context' => $ctx,
@@ -439,10 +439,10 @@ class Zend_Soap_ClientTest extends PHPUnit_Framework_TestCase
             return;
         }
 
-        $server = new Zend_Soap_Server(dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $server = new Zend_Soap_Server(__DIR__ . '/_files/wsdl_example.wsdl');
         $server->setClass('Zend_Soap_Client_TestClass');
 
-        $client = new Zend_Soap_Client_Local($server, dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $client = new Zend_Soap_Client_Local($server, __DIR__ . '/_files/wsdl_example.wsdl');
 
         // Add request header
         $client->addSoapInputHeader(new SoapHeader('http://www.example.com/namespace', 'MyHeader1', 'SOAP header content 1'));

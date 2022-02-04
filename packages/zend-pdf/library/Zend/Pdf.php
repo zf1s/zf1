@@ -380,9 +380,9 @@ class Zend_Pdf
             /**
              * Document id
              */
-            $docId = md5(uniqid(rand(), true));   // 32 byte (128 bit) identifier
-            $docIdLow  = substr($docId,  0, 16);  // first 16 bytes
-            $docIdHigh = substr($docId, 16, 16);  // second 16 bytes
+            $docId = md5((string) uniqid(rand(), true));   // 32 byte (128 bit) identifier
+            $docIdLow  = substr((string) $docId,  0, 16);  // first 16 bytes
+            $docIdHigh = substr((string) $docId, 16, 16);  // second 16 bytes
 
             $trailerDictionary->ID = new Zend_Pdf_Element_Array();
             $trailerDictionary->ID->items[] = new Zend_Pdf_Element_String_Binary($docIdLow);
@@ -612,7 +612,7 @@ class Zend_Pdf
             }
         }
     }
-  
+
     /**
      * Load form fields
      *
@@ -1419,8 +1419,8 @@ class Zend_Pdf
                 return $this->_trailer->getPDFString();
             } else {
                 $pdfData = $this->_trailer->getPDFString();
-                while ( strlen($pdfData) > 0 && ($byteCount = fwrite($outputStream, $pdfData)) != false ) {
-                    $pdfData = substr($pdfData, $byteCount);
+                while ( strlen((string) $pdfData) > 0 && ($byteCount = fwrite($outputStream, $pdfData)) != false ) {
+                    $pdfData = substr((string) $pdfData, $byteCount);
                 }
 
                 return '';
@@ -1450,8 +1450,8 @@ class Zend_Pdf
         if ($outputStream !== null) {
             if (!$newSegmentOnly) {
                 $pdfData = $this->_trailer->getPDFString();
-                while ( strlen($pdfData) > 0 && ($byteCount = fwrite($outputStream, $pdfData)) != false ) {
-                    $pdfData = substr($pdfData, $byteCount);
+                while ( strlen((string) $pdfData) > 0 && ($byteCount = fwrite($outputStream, $pdfData)) != false ) {
+                    $pdfData = substr((string) $pdfData, $byteCount);
                 }
             }
         } else {
@@ -1478,13 +1478,13 @@ class Zend_Pdf
                 $xrefSection[]  = sprintf("%010d %05d n \n", $offset, $updateInfo->getGenNum());
 
                 $pdfBlock = $updateInfo->getObjectDump();
-                $offset += strlen($pdfBlock);
+                $offset += strlen((string) $pdfBlock);
 
                 if ($outputStream === null) {
                     $pdfSegmentBlocks[] = $pdfBlock;
                 } else {
-                    while ( strlen($pdfBlock) > 0 && ($byteCount = fwrite($outputStream, $pdfBlock)) != false ) {
-                        $pdfBlock = substr($pdfBlock, $byteCount);
+                    while ( strlen((string) $pdfBlock) > 0 && ($byteCount = fwrite($outputStream, $pdfBlock)) != false ) {
+                        $pdfBlock = substr((string) $pdfBlock, $byteCount);
                     }
                 }
             }
@@ -1518,8 +1518,8 @@ class Zend_Pdf
 
             return implode('', $pdfSegmentBlocks);
         } else {
-            while ( strlen($pdfBlock) > 0 && ($byteCount = fwrite($outputStream, $pdfBlock)) != false ) {
-                $pdfBlock = substr($pdfBlock, $byteCount);
+            while ( strlen((string) $pdfBlock) > 0 && ($byteCount = fwrite($outputStream, $pdfBlock)) != false ) {
+                $pdfBlock = substr((string) $pdfBlock, $byteCount);
             }
 
             return '';

@@ -55,7 +55,7 @@ class Zend_OpenId_Consumer_Storage_FileTest extends PHPUnit_Framework_TestCase
      */
     private static function _rmDir($dirName)
     {
-        if (!file_exists($dirName)) {
+        if (!file_exists((string) $dirName)) {
             return;
         }
 
@@ -79,7 +79,7 @@ class Zend_OpenId_Consumer_Storage_FileTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_tmpDir = dirname(__FILE__) . "/_files";
+        $this->_tmpDir = __DIR__ . "/_files";
 
         // Clear directory
         self::_rmDir($this->_tmpDir);
@@ -103,7 +103,7 @@ class Zend_OpenId_Consumer_Storage_FileTest extends PHPUnit_Framework_TestCase
         $storage = new Zend_OpenId_Consumer_Storage_File($dir);
         $this->assertTrue( is_dir($dir) );
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
+        if (strtoupper((string) substr((string) PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
             return;
         }
 
@@ -147,7 +147,7 @@ class Zend_OpenId_Consumer_Storage_FileTest extends PHPUnit_Framework_TestCase
         $storage = new Zend_OpenId_Consumer_Storage_File($dir);
         $this->assertTrue( is_dir($dir) );
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
+        if (strtoupper((string) substr((string) PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
             return;
         }
 
@@ -237,7 +237,7 @@ class Zend_OpenId_Consumer_Storage_FileTest extends PHPUnit_Framework_TestCase
         $storage = new Zend_OpenId_Consumer_Storage_File($dir);
         $this->assertTrue( is_dir($dir) );
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
+        if (strtoupper((string) substr((string) PHP_OS, 0, 3)) === 'WIN' || (defined('PHP_OS_WSL') && PHP_OS_WSL)) {
             return;
         }
 

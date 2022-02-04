@@ -64,7 +64,7 @@ class Zend_Tool_Project_Context_Filesystem_Directory extends Zend_Tool_Project_C
             }
         }
 
-        if (!file_exists($this->getPath())) {
+        if (!file_exists((string) $this->getPath())) {
             mkdir($this->getPath());
         }
 

@@ -27,52 +27,52 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /**
  * @see Zend_Serializer_Adapter_PhpSerializeTest
  */
-require_once dirname(__FILE__) . '/PhpSerializeTest.php';
+require_once __DIR__ . '/PhpSerializeTest.php';
 
 /**
  * @see Zend_Serializer_Adapter_PhpCodeTest
  */
-require_once dirname(__FILE__) . '/PhpCodeTest.php';
+require_once __DIR__ . '/PhpCodeTest.php';
 
 /**
  * @see Zend_Serializer_Adapter_JsonTest
  */
-require_once dirname(__FILE__) . '/JsonTest.php';
+require_once __DIR__ . '/JsonTest.php';
 
 /**
  * @see Zend_Serializer_Adapter_Amf0Test
  */
-require_once dirname(__FILE__) . '/Amf0Test.php';
+require_once __DIR__ . '/Amf0Test.php';
 
 /**
  * @see Zend_Serializer_Adapter_Amf3Test
  */
-require_once dirname(__FILE__) . '/Amf3Test.php';
+require_once __DIR__ . '/Amf3Test.php';
 
 /**
  * @see Zend_Serializer_Adapter_WddxTest
  */
-require_once dirname(__FILE__) . '/WddxTest.php';
+require_once __DIR__ . '/WddxTest.php';
 
 /**
  * @see Zend_Serializer_Adapter_IgbinaryTest
  */
-require_once dirname(__FILE__) . '/IgbinaryTest.php';
+require_once __DIR__ . '/IgbinaryTest.php';
 
 /**
  * @see Zend_Serializer_Adapter_PythonPickleSerializeProtocol0Test
  */
-require_once dirname(__FILE__) . '/PythonPickleSerializeProtocol0Test.php';
+require_once __DIR__ . '/PythonPickleSerializeProtocol0Test.php';
 
 /**
  * @see Zend_Serializer_Adapter_PythonPickleSerializeProtocol1Test
  */
-require_once dirname(__FILE__) . '/PythonPickleSerializeProtocol1Test.php';
+require_once __DIR__ . '/PythonPickleSerializeProtocol1Test.php';
 
 /**
  * @see Zend_Serializer_Adapter_PythonPickleUnserializeTest
  */
-require_once dirname(__FILE__) . '/PythonPickleUnserializeTest.php';
+require_once __DIR__ . '/PythonPickleUnserializeTest.php';
 
 /**
  * @category   Zend

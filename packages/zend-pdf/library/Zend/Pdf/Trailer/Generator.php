@@ -50,7 +50,7 @@ class Zend_Pdf_Trailer_Generator extends Zend_Pdf_Trailer
     public function getPDFLength()
     {
         // require_once 'Zend/Pdf.php';
-        return strlen(Zend_Pdf::PDF_HEADER);
+        return strlen((string) Zend_Pdf::PDF_HEADER);
     }
 
     /**

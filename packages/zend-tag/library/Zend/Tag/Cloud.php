@@ -114,7 +114,7 @@ class Zend_Tag_Cloud
         }
 
         foreach ($options as $key => $value) {
-            if (in_array(strtolower($key), $this->_skipOptions)) {
+            if (in_array(strtolower((string) $key), $this->_skipOptions)) {
                 continue;
             }
 

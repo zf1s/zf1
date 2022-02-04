@@ -87,7 +87,7 @@ class Zend_Controller_Router_Route_Chain extends Zend_Controller_Router_Route_Ab
     public function match($request, $partial = null)
     {
         $rawPath     = $request->getPathInfo();
-        $path        = trim($request->getPathInfo(), self::URI_DELIMITER);
+        $path        = \trim((string) $request->getPathInfo(), self::URI_DELIMITER);
         $subPath     = $path;
         $values      = array();
         $matchedPath = null;
@@ -98,14 +98,14 @@ class Zend_Controller_Router_Route_Chain extends Zend_Controller_Router_Route_Ab
                 && $subPath !== ''
                 && $subPath !== false
             ) {
-                $separator = substr($subPath, 0, strlen($this->_separators[$key]));
+                $separator = substr((string) $subPath, 0, strlen((string) $this->_separators[$key]));
 
                 if ($separator !== $this->_separators[$key]) {
                     $request->setPathInfo($rawPath);
                     return false;
                 }
 
-                $subPath = substr($subPath, strlen($separator));
+                $subPath = substr((string) $subPath, strlen((string) $separator));
             }
             // TODO: Should be an interface method. Hack for 1.0 BC
             if (!method_exists($route, 'getVersion') || $route->getVersion() == 1) {
@@ -125,7 +125,7 @@ class Zend_Controller_Router_Route_Chain extends Zend_Controller_Router_Route_Ab
             $matchedPath = $route->getMatchedPath();
 
             if ($matchedPath !== null) {
-                $subPath   = substr($subPath, strlen($matchedPath));
+                $subPath   = substr((string) $subPath, strlen((string) $matchedPath));
             }
 
             $values = $res + $values;

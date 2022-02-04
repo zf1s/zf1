@@ -79,7 +79,7 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends PHPUnit_Framework_
 
         $this->front = Zend_Controller_Front::getInstance();
         $this->front->resetInstance();
-        $this->front->addModuleDirectory(dirname(__FILE__) . '/../../_files/modules');
+        $this->front->addModuleDirectory(__DIR__ . '/../../_files/modules');
 
         $this->layout = Zend_Layout::startMvc();
 
@@ -91,7 +91,7 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends PHPUnit_Framework_
 
         $this->front->setRequest($this->request)
                     ->setResponse($this->response)
-                    ->addControllerDirectory(dirname(__FILE__));
+                    ->addControllerDirectory(__DIR__);
 
         $this->view = new Zend_View();
         $this->viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');

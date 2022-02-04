@@ -268,7 +268,7 @@ class Zend_Stdlib_CallbackHandler
      */
     protected function validateStringCallbackFor54($callback)
     {
-        if (!strstr($callback, '::')) {
+        if (!strstr((string) $callback, '::')) {
             return true;
         }
 

@@ -63,7 +63,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
      */
     public function prepareSlider($id, $value = null, array $params = array(), array $attribs = array())
     {
-        $this->_sliderType = strtolower($this->_sliderType);
+        $this->_sliderType = strtolower((string) $this->_sliderType);
 
         // Prepare two items: a hidden element to store the value, and the slider
         $hidden = $this->_renderHiddenElement($id, $value);
@@ -83,9 +83,9 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
             $attribs['onChange'] = "dojo.byId('" . $id . "').value = arguments[0];";
         }
 
-        $id  = str_replace('][', '-', $id);
+        $id  = str_replace((string) '][', '-', $id);
         $id  = str_replace(array('[', ']'), '-', $id);
-        $id  = rtrim($id, '-');
+        $id  = rtrim((string) $id, '-');
         $id .= '-slider';
 
         switch ($this->_sliderType) {
@@ -162,7 +162,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
             $dijit = 'dijit.form.' . ucfirst($this->_sliderType) . 'Rule';
         } else {
             $dijit = $decInfo['dijit'];
-            if ('dijit.form.' != substr($dijit, 0, 10)) {
+            if ('dijit.form.' != substr((string) $dijit, 0, 10)) {
                 $dijit = 'dijit.form.' . $dijit;
             }
         }

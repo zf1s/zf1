@@ -55,7 +55,7 @@ class Zend_Feed_Reader_Feed_Atom_Source extends Zend_Feed_Reader_Feed_Atom
         $atomClass = Zend_Feed_Reader::getPluginLoader()->getClassName('DublinCore_Feed');
         $this->_extensions['DublinCore_Feed'] = new $atomClass($this->_domDocument, $this->_data['type'], $this->_xpath);
         foreach ($this->_extensions as $extension) {
-            $extension->setXpathPrefix(rtrim($xpathPrefix, '/') . '/atom:source');
+            $extension->setXpathPrefix(rtrim((string) $xpathPrefix, '/') . '/atom:source');
         }
     }
 
@@ -67,31 +67,37 @@ class Zend_Feed_Reader_Feed_Atom_Source extends Zend_Feed_Reader_Feed_Atom
     /**
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function count() {}
 
     /**
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function current() {}
 
     /**
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function key() {}
 
     /**
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next() {}
 
     /**
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind() {}
 
     /**
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function valid() {}
 
     /**

@@ -251,7 +251,7 @@ abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
                 }
                 $values = Zend_Json::encode($values);
                 if ($this->_useDeclarative()) {
-                    $values = str_replace('"', "'", $values);
+                    $values = str_replace((string) '"', "'", $values);
                 }
                 $params[$param] = $values;
             }

@@ -773,7 +773,7 @@ abstract class Zend_Db_Table_Abstract
     {
         if (! $this->_name) {
             $this->_name = get_class($this);
-        } else if (strpos($this->_name, '.')) {
+        } else if (strpos((string) $this->_name, '.')) {
             list($this->_schema, $this->_name) = explode('.', $this->_name);
         }
     }
@@ -822,7 +822,7 @@ abstract class Zend_Db_Table_Abstract
                   : null);
 
             // Define the cache identifier where the metadata are saved
-            $cacheId = md5( // port:host/dbname:schema.table (based on availabilty)
+            $cacheId = md5((string)  // port:host/dbname:schema.table (based on availabilty)
                     $port . $host . '/'. $dbConfig['dbname'] . ':'
                   . $this->_schema. '.' . $this->_name
             );

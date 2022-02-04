@@ -201,11 +201,11 @@ class Zend_Wildfire_Protocol_JsonStream
                             $msg = '';
 
                             if (count($parts)>2) {
-                                $msg = (($i==0)?strlen($message):'')
+                                $msg = (($i==0)?strlen((string) $message):'')
                                        . '|' . $part . '|'
                                        . (($i<count($parts)-2)?'\\':'');
                             } else {
-                                $msg = strlen($part) . '|' . $part . '|';
+                                $msg = strlen((string) $part) . '|' . $part . '|';
                             }
 
                             $payload[] = array($protocol_index . '-'

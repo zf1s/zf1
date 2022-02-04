@@ -110,7 +110,7 @@ class Zend_Cache_Frontend_File extends Zend_Cache_Core
         clearstatcache();
         $i = 0;
         foreach ($masterFiles as $masterFile) {
-            if (file_exists($masterFile)) {
+            if (file_exists((string) $masterFile)) {
                 $mtime = filemtime($masterFile);
             } else {
                 $mtime = false;

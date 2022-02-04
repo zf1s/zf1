@@ -69,13 +69,13 @@ class Zend_Tool_Project_Context_System_ProjectProvidersDirectory
 
     public function loadProviders(Zend_Tool_Framework_Registry_Interface $registry)
     {
-        if (file_exists($this->getPath())) {
+        if (file_exists((string) $this->getPath())) {
 
             $providerRepository = $registry->getProviderRepository();
 
             foreach (new DirectoryIterator($this->getPath()) as $item) {
-                if ($item->isFile() && (($suffixStart = strpos($item->getFilename(), 'Provider.php')) !== false)) {
-                    $className = substr($item->getFilename(), 0, $suffixStart+8);
+                if ($item->isFile() && (($suffixStart = strpos((string) $item->getFilename(), 'Provider.php')) !== false)) {
+                    $className = substr((string) $item->getFilename(), 0, $suffixStart+8);
                     // $loadableFiles[$className] = $item->getPathname();
                     include_once $item->getPathname();
                     $providerRepository->addProvider(new $className());

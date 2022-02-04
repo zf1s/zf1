@@ -49,7 +49,7 @@ class Zend_Gdata_DocsTest extends PHPUnit_Framework_TestCase
         $this->adapter->setResponse(array('HTTP/1.1 200 OK\r\n\r\n'));
         $this->gdata->createFolder("Test Folder");
         $request = $this->adapter->popRequest();
-        
+
         // Check to make sure the correct URI is in use
         $this->assertEquals(
                 "docs.google.com",
@@ -57,13 +57,13 @@ class Zend_Gdata_DocsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
                 "/feeds/documents/private/full",
                 $request->uri->getPath());
-        
+
         // Check to make sure that this is a folder
-        $this->assertNotEquals( false, strpos($request->body, 
+        $this->assertNotEquals( false, strpos((string) $request->body,
                 "<atom:category term=\"http://schemas.google.com/docs/2007#folder\" scheme=\"http://schemas.google.com/g/2005#kind\""));
-        
+
         // Check to make sure the title is set
-        $this->assertNotEquals(false, strpos($request->body,
+        $this->assertNotEquals(false, strpos((string) $request->body,
                 "<atom:title type=\"text\">Test Folder</atom:title>"));
     }
 
@@ -73,7 +73,7 @@ class Zend_Gdata_DocsTest extends PHPUnit_Framework_TestCase
         $this->adapter->setResponse(array('HTTP/1.1 200 OK\r\n\r\n'));
         $this->gdata->createFolder("Test Folder", $subfolderName);
         $request = $this->adapter->popRequest();
-        
+
         // Check to make sure the correct URI is in use
         $this->assertEquals(
                 "docs.google.com",
@@ -81,13 +81,13 @@ class Zend_Gdata_DocsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
                 "/feeds/folders/private/full/" . $subfolderName,
                 $request->uri->getPath());
-        
+
         // Check to make sure that this is a folder
-        $this->assertNotEquals( false, strpos($request->body, 
+        $this->assertNotEquals( false, strpos((string) $request->body,
                 "<atom:category term=\"http://schemas.google.com/docs/2007#folder\" scheme=\"http://schemas.google.com/g/2005#kind\""));
-        
+
         // Check to make sure the title is set
-        $this->assertNotEquals(false, strpos($request->body,
+        $this->assertNotEquals(false, strpos((string) $request->body,
                 "<atom:title type=\"text\">Test Folder</atom:title>"));
     }
 

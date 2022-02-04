@@ -137,10 +137,10 @@ class Zend_Dojo_View_Helper_NumberSpinnerTest extends PHPUnit_Framework_TestCase
         if (!preg_match('/constraints="(.*?)(" )/', $html, $m)) {
             $this->fail('Did not serialize constraints');
         }
-        $constraints = str_replace("'", '"', $m[1]);
+        $constraints = str_replace((string) "'", '"', $m[1]);
         if (Zend_Dojo_View_Helper_Dojo::useDeclarative()) {
             // Convert &#39; to "'" for json_decode. See Zend_Dojo_View_Helper_Dijit::_prepareDijit() (line 254)
-            $constraints = str_replace('&#39;', '"', $constraints);
+            $constraints = str_replace((string) '&#39;', '"', $constraints);
         }
         $constraints = Zend_Json::decode($constraints);
         $this->assertTrue(is_array($constraints), var_export($m[1], 1));

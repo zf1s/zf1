@@ -1142,7 +1142,7 @@ class Zend_Mail extends Zend_Mime_Message
                           'reply-to', 'return-path',
                           'date', 'message-id',
                          );
-        if (in_array(strtolower($name), $prohibit)) {
+        if (in_array(strtolower((string) $name), $prohibit)) {
             /**
              * @see Zend_Mail_Exception
              */
@@ -1220,7 +1220,7 @@ class Zend_Mail extends Zend_Mime_Message
                       '>'  => '',
         );
 
-        return strtr($email, $rule);
+        return strtr((string) $email, $rule);
     }
 
     /**
@@ -1239,7 +1239,7 @@ class Zend_Mail extends Zend_Mime_Message
                       '>'  => ']',
         );
 
-        return trim(strtr($name, $rule));
+        return \trim((string) strtr((string) $name, $rule));
     }
 
     /**
@@ -1255,7 +1255,7 @@ class Zend_Mail extends Zend_Mime_Message
                       "\t" => '',
         );
 
-        return strtr($data, $rule);
+        return strtr((string) $data, $rule);
     }
 
     /**
@@ -1271,7 +1271,7 @@ class Zend_Mail extends Zend_Mime_Message
             return $email;
         } else {
             $encodedName = $this->_encodeHeader($name);
-            if ($encodedName === $name  &&  strcspn($name, '()<>[]:;@\\,.') != strlen($name)) {
+            if ($encodedName === $name  &&  strcspn($name, '()<>[]:;@\\,.') != strlen((string) $name)) {
                 $format = '"%s" <%s>';
             } else {
                 $format = '%s <%s>';

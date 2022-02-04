@@ -314,11 +314,11 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $nvalid = false;
             $date = $matches['date'];
             $d6 = strtotime($date);
-            if ((strlen($date) == 4) && $date <= date('Y')) {
+            if ((strlen((string) $date) == 4) && $date <= date('Y')) {
                 $dvalid = true;
-            } elseif ((strlen($date) == 7) && ($d6 < strtotime("now"))) {
+            } elseif ((strlen((string) $date) == 7) && ($d6 < strtotime("now"))) {
                 $dvalid = true;
-            } elseif ((strlen($date) == 10) && ($d6 < strtotime("now"))) {
+            } elseif ((strlen((string) $date) == 10) && ($d6 < strtotime("now"))) {
                 $dvalid = true;
             }
             $validator = new Zend_Validate_EmailAddress;
@@ -381,7 +381,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
                 'show-body-only' => true,
                 'quote-nbsp' => false
             );
-            $encoding = str_replace('-', '', $this->getEncoding());
+            $encoding = str_replace((string) '-', '', $this->getEncoding());
             $tidy->parseString($content, $config, $encoding);
             $tidy->cleanRepair();
             $xhtml = (string) $tidy;

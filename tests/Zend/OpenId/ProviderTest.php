@@ -64,7 +64,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testRegister()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $storage->delUser(self::USER);
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
         $this->assertFalse( $storage->checkUser(self::USER, self::PASSWORD) );
@@ -76,7 +76,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
         // registration of existent user
         $this->assertFalse( $provider->register(self::USER, self::PASSWORD) );
 
-        $this->assertTrue( $storage->checkUser(self::USER, md5(self::USER . self::PASSWORD)) );
+        $this->assertTrue( $storage->checkUser(self::USER, md5((string) self::USER . self::PASSWORD)) );
         $storage->delUser(self::USER);
     }
 
@@ -86,7 +86,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testHasUser()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $storage->delUser(self::USER);
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
 
@@ -110,7 +110,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testLogin()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $storage->delUser(self::USER);
         $this->_user->delLoggedInUser();
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
@@ -142,7 +142,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testLogout()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $storage->delUser(self::USER);
         $this->_user->delLoggedInUser();
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
@@ -165,7 +165,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testLoggedInUser()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $storage->delUser(self::USER);
         $this->_user->delLoggedInUser();
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
@@ -188,7 +188,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testGetSiteRoot()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
 
         $params = array(
@@ -247,7 +247,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testAllowSite()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $storage->delUser(self::USER);
         $this->_user->delLoggedInUser();
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
@@ -297,7 +297,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testDenySite()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $storage->delUser(self::USER);
         $this->_user->delLoggedInUser();
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
@@ -362,7 +362,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testDelSite()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $storage->delUser(self::USER);
         $this->_user->delLoggedInUser();
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
@@ -421,7 +421,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testGetTrustedSites()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $storage->delUser(self::USER);
         $this->_user->delLoggedInUser();
         $provider = new Zend_OpenId_Provider(null, null, $this->_user, $storage);
@@ -453,17 +453,17 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testGenSecret()
     {
-        $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider"));
+        $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider"));
 
         // SHA1
         $x = $provider->genSecret("sha1");
         $this->assertTrue( is_string($x) );
-        $this->assertSame( 20, strlen($x) );
+        $this->assertSame( 20, strlen((string) $x) );
 
         // SHA256
         $x = $provider->genSecret("sha256");
         $this->assertTrue( is_string($x) );
-        $this->assertSame( 32, strlen($x) );
+        $this->assertSame( 32, strlen((string) $x) );
 
         // invalid function
         $this->assertFalse( $provider->genSecret("md5") );
@@ -476,7 +476,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
     public function testAssociate()
     {
         try {
-            $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+            $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
             $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, $storage);
 
             // Wrong assoc_type
@@ -528,7 +528,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
             }
             $this->assertSame( 'HMAC-SHA1', $res['assoc_type'] );
             $this->assertTrue( isset($res['mac_key']) );
-            $this->assertSame( 20, strlen(base64_decode($res['mac_key'])) );
+            $this->assertSame( 20, strlen((string) base64_decode($res['mac_key'])) );
             $this->assertTrue( isset($res['assoc_handle']) );
             $this->assertSame( '3600', $res['expires_in'] );
             $this->assertFalse( isset($res['session_type']) );
@@ -550,7 +550,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
             $this->assertSame( Zend_OpenId::NS_2_0, $res['ns'] );
             $this->assertSame( 'HMAC-SHA256', $res['assoc_type'] );
             $this->assertTrue( isset($res['mac_key']) );
-            $this->assertSame( 32, strlen(base64_decode($res['mac_key'])) );
+            $this->assertSame( 32, strlen((string) base64_decode($res['mac_key'])) );
             $this->assertTrue( isset($res['assoc_handle']) );
             $this->assertSame( '3600', $res['expires_in'] );
             $this->assertFalse( isset($res['session_type']) );
@@ -573,7 +573,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
             $this->assertSame( Zend_OpenId::NS_2_0, $res['ns'] );
             $this->assertSame( 'HMAC-SHA256', $res['assoc_type'] );
             $this->assertTrue( isset($res['mac_key']) );
-            $this->assertSame( 32, strlen(base64_decode($res['mac_key'])) );
+            $this->assertSame( 32, strlen((string) base64_decode($res['mac_key'])) );
             $this->assertTrue( isset($res['assoc_handle']) );
             $this->assertSame( '3600', $res['expires_in'] );
             $this->assertSame( 'no-encryption', $res['session_type'] );
@@ -600,7 +600,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
             $this->assertSame( 'DH-SHA1', $res['session_type'] );
             $this->assertTrue( isset($res['dh_server_public']) );
             $this->assertTrue( isset($res['enc_mac_key']) );
-            $this->assertSame( 20, strlen(base64_decode($res['enc_mac_key'])) );
+            $this->assertSame( 20, strlen((string) base64_decode($res['enc_mac_key'])) );
             $this->assertTrue( isset($res['assoc_handle']) );
             $this->assertSame( '3600', $res['expires_in'] );
             $this->assertTrue( $storage->getAssociation($res['assoc_handle'], $macFunc, $secret, $expires) );
@@ -626,7 +626,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
             $this->assertSame( 'DH-SHA256', $res['session_type'] );
             $this->assertTrue( isset($res['dh_server_public']) );
             $this->assertTrue( isset($res['enc_mac_key']) );
-            $this->assertSame( 32, strlen(base64_decode($res['enc_mac_key'])) );
+            $this->assertSame( 32, strlen((string) base64_decode($res['enc_mac_key'])) );
             $this->assertTrue( isset($res['assoc_handle']) );
             $this->assertSame( '3600', $res['expires_in'] );
             $this->assertTrue( $storage->getAssociation($res['assoc_handle'], $macFunc, $secret, $expires) );
@@ -642,7 +642,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckAuthentication()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, $storage);
 
         // Wrong arguments
@@ -745,7 +745,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testRespondToConsumer()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, $storage);
 
         // dumb mode
@@ -866,7 +866,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
     public function testCheckIdImmediate()
     {
         $_SERVER['SCRIPT_URI'] = "http://www.test.com/server.php";
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, $storage);
         $provider->logout();
 
@@ -1137,7 +1137,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( isset($query['openid.response_nonce']) );
         $this->assertTrue( isset($query['openid.signed']) );
         $this->assertTrue( isset($query['openid.sig']) );
-        $this->assertSame( 20, strlen(base64_decode($query['openid.sig'])) );
+        $this->assertSame( 20, strlen((string) base64_decode($query['openid.sig'])) );
 
         // Logged in user (trusted site without openid.return_to)
         $this->assertTrue( $provider->allowSite('http://www.test.com/') );
@@ -1181,7 +1181,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( isset($query['openid.response_nonce']) );
         $this->assertTrue( isset($query['openid.signed']) );
         $this->assertTrue( isset($query['openid.sig']) );
-        $this->assertSame( 20, strlen(base64_decode($query['openid.sig'])) );
+        $this->assertSame( 20, strlen((string) base64_decode($query['openid.sig'])) );
 
         // Logged in user (trusted site) & invalid association handle
         $storage->delAssociation(self::HANDLE);
@@ -1214,7 +1214,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( isset($query['openid.response_nonce']) );
         $this->assertTrue( isset($query['openid.signed']) );
         $this->assertTrue( isset($query['openid.sig']) );
-        $this->assertSame( 32, strlen(base64_decode($query['openid.sig'])) );
+        $this->assertSame( 32, strlen((string) base64_decode($query['openid.sig'])) );
 
         // SREG success
         $sreg = new Zend_OpenId_Extension_Sreg(array('nickname'=>'test','email'=>'test@test.com'));
@@ -1250,7 +1250,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( isset($query['openid.response_nonce']) );
         $this->assertTrue( isset($query['openid.signed']) );
         $this->assertTrue( isset($query['openid.sig']) );
-        $this->assertSame( 32, strlen(base64_decode($query['openid.sig'])) );
+        $this->assertSame( 32, strlen((string) base64_decode($query['openid.sig'])) );
         $this->assertSame( Zend_OpenId_Extension_Sreg::NAMESPACE_1_1, $query['openid.ns.sreg'] );
         $this->assertSame( 'test', $query['openid.sreg.nickname'] );
         $this->assertSame( 'test@test.com', $query['openid.sreg.email'] );
@@ -1303,7 +1303,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
     public function testCheckIdSetup()
     {
         $_SERVER['SCRIPT_URI'] = "http://www.test.com/server.php";
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, $storage);
         $provider->logout();
 
@@ -1428,7 +1428,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( isset($query['openid.response_nonce']) );
         $this->assertTrue( isset($query['openid.signed']) );
         $this->assertTrue( isset($query['openid.sig']) );
-        $this->assertSame( 20, strlen(base64_decode($query['openid.sig'])) );
+        $this->assertSame( 20, strlen((string) base64_decode($query['openid.sig'])) );
 
         // Logged in user (trusted site without openid.return_to)
         $this->assertTrue( $provider->allowSite('http://www.test.com/') );
@@ -1472,7 +1472,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( isset($query['openid.response_nonce']) );
         $this->assertTrue( isset($query['openid.signed']) );
         $this->assertTrue( isset($query['openid.sig']) );
-        $this->assertSame( 20, strlen(base64_decode($query['openid.sig'])) );
+        $this->assertSame( 20, strlen((string) base64_decode($query['openid.sig'])) );
 
         // Logged in user (trusted site) & invalid association handle
         $storage->delAssociation(self::HANDLE);
@@ -1505,7 +1505,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( isset($query['openid.response_nonce']) );
         $this->assertTrue( isset($query['openid.signed']) );
         $this->assertTrue( isset($query['openid.sig']) );
-        $this->assertSame( 32, strlen(base64_decode($query['openid.sig'])) );
+        $this->assertSame( 32, strlen((string) base64_decode($query['openid.sig'])) );
 
         // SREG success
         $sreg = new Zend_OpenId_Extension_Sreg(array('nickname'=>'test','email'=>'test@test.com'));
@@ -1541,7 +1541,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( isset($query['openid.response_nonce']) );
         $this->assertTrue( isset($query['openid.signed']) );
         $this->assertTrue( isset($query['openid.sig']) );
-        $this->assertSame( 32, strlen(base64_decode($query['openid.sig'])) );
+        $this->assertSame( 32, strlen((string) base64_decode($query['openid.sig'])) );
         $this->assertSame( Zend_OpenId_Extension_Sreg::NAMESPACE_1_1, $query['openid.ns.sreg'] );
         $this->assertSame( 'test', $query['openid.sreg.nickname'] );
         $this->assertSame( 'test@test.com', $query['openid.sreg.email'] );
@@ -1584,7 +1584,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testHandle()
     {
-        $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider"));
+        $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider"));
 
         // no openid_mode
         $this->assertFalse( $provider->handle(array()) );
@@ -1599,7 +1599,7 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testSetOpEndpoint()
     {
-        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $storage = new Zend_OpenId_Provider_Storage_File(__DIR__."/_files/provider");
         $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, $storage);
         $provider->setOpEndpoint("http://www.test.com/real_endpoint.php");
 

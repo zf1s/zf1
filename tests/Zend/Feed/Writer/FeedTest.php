@@ -38,7 +38,7 @@ class Zend_Feed_Writer_FeedTest extends PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->_feedSamplePath = dirname(__FILE__) . '/Writer/_files';
+        $this->_feedSamplePath = __DIR__ . '/Writer/_files';
     }
 
     public function testAddsAuthorName()
@@ -195,7 +195,7 @@ class Zend_Feed_Writer_FeedTest extends PHPUnit_Framework_TestCase
         $myDate = new Zend_Date('1234567890', Zend_Date::TIMESTAMP);
         $this->assertTrue($myDate->equals($writer->getDateCreated()));
     }
-    
+
     /**
      * @group ZF-12023
      */
@@ -206,7 +206,7 @@ class Zend_Feed_Writer_FeedTest extends PHPUnit_Framework_TestCase
         $myDate = new Zend_Date('123456789', Zend_Date::TIMESTAMP);
         $this->assertTrue($myDate->equals($writer->getDateCreated()));
     }
-    
+
     /**
      * @group ZF-11610
      */

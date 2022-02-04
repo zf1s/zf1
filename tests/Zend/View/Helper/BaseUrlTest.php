@@ -100,7 +100,7 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
             Zend_Controller_Front::getInstance()->setBaseUrl($baseUrl);
             $helper = new Zend_View_Helper_BaseUrl();
 
-            $this->assertEquals(rtrim($baseUrl, '/\\'), $helper->baseUrl());
+            $this->assertEquals(rtrim((string) $baseUrl, '/\\'), $helper->baseUrl());
         }
     }
 

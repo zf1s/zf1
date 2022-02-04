@@ -77,7 +77,7 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->basePath = dirname(__FILE__) . '/_files/modules';
+        $this->basePath = __DIR__ . '/_files/modules';
         $this->helper = new Zend_View_Helper_Partial();
         Zend_Controller_Front::getInstance()->resetInstance();
     }

@@ -110,7 +110,7 @@ abstract class Zend_Captcha_Base extends Zend_Validate_Abstract implements Zend_
      */
     public function setOption($key, $value)
     {
-        if (in_array(strtolower($key), $this->_skipOptions)) {
+        if (in_array(strtolower((string) $key), $this->_skipOptions)) {
             return $this;
         }
 

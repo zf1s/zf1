@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once dirname(__FILE__)."/../_files/commontypes.php";
+require_once __DIR__."/../_files/commontypes.php";
 
 /** Zend_Soap_Server */
 // require_once 'Zend/Soap/Client.php';

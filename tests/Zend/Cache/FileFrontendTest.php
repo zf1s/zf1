@@ -48,7 +48,7 @@ class Zend_Cache_FileFrontendTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        if (strtoupper((string) substr((string) PHP_OS, 0, 3)) === 'WIN') {
             $this->_masterFile = $this->_getTmpDirWindows() . DIRECTORY_SEPARATOR . 'zend_cache_master';
             $this->_masterFile1 = $this->_getTmpDirWindows() . DIRECTORY_SEPARATOR . 'zend_cache_master1';
             $this->_masterFile2 = $this->_getTmpDirWindows() . DIRECTORY_SEPARATOR . 'zend_cache_master2';

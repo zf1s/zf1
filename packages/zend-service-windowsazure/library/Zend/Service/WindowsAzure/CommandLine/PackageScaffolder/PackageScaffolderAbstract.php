@@ -92,7 +92,7 @@ abstract class Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageSc
         } else {
         	$contents = file_get_contents($rootPath);
         	foreach ($values as $key => $value) {
-        		$contents = str_replace('$' . $key . '$', $value, $contents);
+        		$contents = str_replace((string) '$' . $key . '$', $value, $contents);
         	}
             file_put_contents($rootPath, $contents);
         }

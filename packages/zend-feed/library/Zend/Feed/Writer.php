@@ -117,8 +117,8 @@ class Zend_Feed_Writer
      */
     public static function addPrefixPath($prefix, $path)
     {
-        $prefix = rtrim($prefix, '_');
-        $path   = rtrim($path, DIRECTORY_SEPARATOR);
+        $prefix = rtrim((string) $prefix, '_');
+        $path   = rtrim((string) $path, DIRECTORY_SEPARATOR);
         self::getPluginLoader()->addPrefixPath($prefix, $path);
     }
 
@@ -260,7 +260,7 @@ class Zend_Feed_Writer
 
     public static function lcfirst($str)
     {
-        $str[0] = strtolower($str[0]);
+        $str[0] = strtolower((string) $str[0]);
         return $str;
     }
 

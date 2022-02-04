@@ -195,14 +195,14 @@ class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Qu
 
         // require_once 'Zend/Search/Lucene/Index/Term.php';
         $prefix           = Zend_Search_Lucene_Index_Term::getPrefix($this->_term->text, $this->_prefixLength);
-        $prefixByteLength = strlen($prefix);
+        $prefixByteLength = strlen((string) $prefix);
         $prefixUtf8Length = Zend_Search_Lucene_Index_Term::getLength($prefix);
 
         $termLength       = Zend_Search_Lucene_Index_Term::getLength($this->_term->text);
 
-        $termRest         = substr($this->_term->text, $prefixByteLength);
+        $termRest         = substr((string) $this->_term->text, $prefixByteLength);
         // we calculate length of the rest in bytes since levenshtein() is not UTF-8 compatible
-        $termRestLength   = strlen($termRest);
+        $termRestLength   = strlen((string) $termRest);
 
         $scaleFactor = 1/(1 - $this->_minimumSimilarity);
 
@@ -217,21 +217,21 @@ class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Qu
 
                 while ($index->currentTerm() !== null          &&
                        $index->currentTerm()->field == $field  &&
-                       substr($index->currentTerm()->text, 0, $prefixByteLength) == $prefix) {
+                       substr((string) $index->currentTerm()->text, 0, $prefixByteLength) == $prefix) {
                     // Calculate similarity
-                    $target = substr($index->currentTerm()->text, $prefixByteLength);
+                    $target = substr((string) $index->currentTerm()->text, $prefixByteLength);
 
-                    $maxDistance = isset($this->_maxDistances[strlen($target)])?
-                                       $this->_maxDistances[strlen($target)] :
-                                       $this->_calculateMaxDistance($prefixUtf8Length, $termRestLength, strlen($target));
+                    $maxDistance = isset($this->_maxDistances[strlen((string) $target)])?
+                                       $this->_maxDistances[strlen((string) $target)] :
+                                       $this->_calculateMaxDistance($prefixUtf8Length, $termRestLength, strlen((string) $target));
 
                     if ($termRestLength == 0) {
                         // we don't have anything to compare.  That means if we just add
                         // the letters for current term we get the new word
-                        $similarity = (($prefixUtf8Length == 0)? 0 : 1 - strlen($target)/$prefixUtf8Length);
-                    } else if (strlen($target) == 0) {
+                        $similarity = (($prefixUtf8Length == 0)? 0 : 1 - strlen((string) $target)/$prefixUtf8Length);
+                    } else if (strlen((string) $target) == 0) {
                         $similarity = (($prefixUtf8Length == 0)? 0 : 1 - $termRestLength/$prefixUtf8Length);
-                    } else if ($maxDistance < abs($termRestLength - strlen($target))){
+                    } else if ($maxDistance < abs($termRestLength - strlen((string) $target))){
                         //just adding the characters of term to target or vice-versa results in too many edits
                         //for example "pre" length is 3 and "prefixes" length is 8.  We can see that
                         //given this optimal circumstance, the edit distance cannot be less than 5.
@@ -240,7 +240,7 @@ class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Qu
                         //without looking at it.
                         $similarity = 0;
                     } else {
-                        $similarity = 1 - levenshtein($termRest, $target)/($prefixUtf8Length + min($termRestLength, strlen($target)));
+                        $similarity = 1 - levenshtein($termRest, $target)/($prefixUtf8Length + min($termRestLength, strlen((string) $target)));
                     }
 
                     if ($similarity > $this->_minimumSimilarity) {
@@ -263,11 +263,11 @@ class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Qu
                     // Calculate similarity
                     $target = $index->currentTerm()->text;
 
-                    $maxDistance = isset($this->_maxDistances[strlen($target)])?
-                                       $this->_maxDistances[strlen($target)] :
-                                       $this->_calculateMaxDistance(0, $termRestLength, strlen($target));
+                    $maxDistance = isset($this->_maxDistances[strlen((string) $target)])?
+                                       $this->_maxDistances[strlen((string) $target)] :
+                                       $this->_calculateMaxDistance(0, $termRestLength, strlen((string) $target));
 
-                    if ($maxDistance < abs($termRestLength - strlen($target))){
+                    if ($maxDistance < abs($termRestLength - strlen((string) $target))){
                         //just adding the characters of term to target or vice-versa results in too many edits
                         //for example "pre" length is 3 and "prefixes" length is 8.  We can see that
                         //given this optimal circumstance, the edit distance cannot be less than 5.
@@ -276,7 +276,7 @@ class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Qu
                         //without looking at it.
                         $similarity = 0;
                     } else {
-                        $similarity = 1 - levenshtein($termRest, $target)/min($termRestLength, strlen($target));
+                        $similarity = 1 - levenshtein($termRest, $target)/min($termRestLength, strlen((string) $target));
                     }
 
                     if ($similarity > $this->_minimumSimilarity) {
@@ -424,14 +424,14 @@ class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Qu
 
         // require_once 'Zend/Search/Lucene/Index/Term.php';
         $prefix           = Zend_Search_Lucene_Index_Term::getPrefix($this->_term->text, $this->_prefixLength);
-        $prefixByteLength = strlen($prefix);
+        $prefixByteLength = strlen((string) $prefix);
         $prefixUtf8Length = Zend_Search_Lucene_Index_Term::getLength($prefix);
 
         $termLength       = Zend_Search_Lucene_Index_Term::getLength($this->_term->text);
 
-        $termRest         = substr($this->_term->text, $prefixByteLength);
+        $termRest         = substr((string) $this->_term->text, $prefixByteLength);
         // we calculate length of the rest in bytes since levenshtein() is not UTF-8 compatible
-        $termRestLength   = strlen($termRest);
+        $termRestLength   = strlen((string) $termRest);
 
         $scaleFactor = 1/(1 - $this->_minimumSimilarity);
 
@@ -441,21 +441,21 @@ class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Qu
         foreach ($tokens as $token) {
             $termText = $token->getTermText();
 
-            if (substr($termText, 0, $prefixByteLength) == $prefix) {
+            if (substr((string) $termText, 0, $prefixByteLength) == $prefix) {
                 // Calculate similarity
-                $target = substr($termText, $prefixByteLength);
+                $target = substr((string) $termText, $prefixByteLength);
 
-                $maxDistance = isset($this->_maxDistances[strlen($target)])?
-                                   $this->_maxDistances[strlen($target)] :
-                                   $this->_calculateMaxDistance($prefixUtf8Length, $termRestLength, strlen($target));
+                $maxDistance = isset($this->_maxDistances[strlen((string) $target)])?
+                                   $this->_maxDistances[strlen((string) $target)] :
+                                   $this->_calculateMaxDistance($prefixUtf8Length, $termRestLength, strlen((string) $target));
 
                 if ($termRestLength == 0) {
                     // we don't have anything to compare.  That means if we just add
                     // the letters for current term we get the new word
-                    $similarity = (($prefixUtf8Length == 0)? 0 : 1 - strlen($target)/$prefixUtf8Length);
-                } else if (strlen($target) == 0) {
+                    $similarity = (($prefixUtf8Length == 0)? 0 : 1 - strlen((string) $target)/$prefixUtf8Length);
+                } else if (strlen((string) $target) == 0) {
                     $similarity = (($prefixUtf8Length == 0)? 0 : 1 - $termRestLength/$prefixUtf8Length);
-                } else if ($maxDistance < abs($termRestLength - strlen($target))){
+                } else if ($maxDistance < abs($termRestLength - strlen((string) $target))){
                     //just adding the characters of term to target or vice-versa results in too many edits
                     //for example "pre" length is 3 and "prefixes" length is 8.  We can see that
                     //given this optimal circumstance, the edit distance cannot be less than 5.
@@ -464,7 +464,7 @@ class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Qu
                     //without looking at it.
                     $similarity = 0;
                 } else {
-                    $similarity = 1 - levenshtein($termRest, $target)/($prefixUtf8Length + min($termRestLength, strlen($target)));
+                    $similarity = 1 - levenshtein($termRest, $target)/($prefixUtf8Length + min($termRestLength, strlen((string) $target)));
                 }
 
                 if ($similarity > $this->_minimumSimilarity) {

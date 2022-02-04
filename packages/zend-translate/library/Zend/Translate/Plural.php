@@ -50,8 +50,8 @@ class Zend_Translate_Plural
             $locale = "xbr";
         }
 
-        if (strlen($locale) > 3) {
-            $locale = substr($locale, 0, -strlen(strrchr($locale, '_')));
+        if (strlen((string) $locale) > 3) {
+            $locale = substr((string) $locale, 0, -strlen((string) strrchr($locale, '_')));
         }
 
         if (isset(self::$_plural[$locale])) {
@@ -210,8 +210,8 @@ class Zend_Translate_Plural
             $locale = "xbr";
         }
 
-        if (strlen($locale) > 3) {
-            $locale = substr($locale, 0, -strlen(strrchr($locale, '_')));
+        if (strlen((string) $locale) > 3) {
+            $locale = substr((string) $locale, 0, -strlen((string) strrchr($locale, '_')));
         }
 
         if (!is_callable($rule)) {

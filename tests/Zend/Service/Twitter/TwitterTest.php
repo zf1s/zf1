@@ -89,14 +89,14 @@ class Zend_Service_Twitter_TwitterTest extends PHPUnit_Framework_TestCase
             ->with('https://api.twitter.com/1.1/' . $path);
         $response = $this->getMock('Zend_Http_Response', array(), array(), '', false);
         if (!is_null($params)) {
-            $setter = 'setParameter' . ucfirst(strtolower($method));
+            $setter = 'setParameter' . ucfirst(strtolower((string) $method));
             $client->expects($this->once())->method($setter)->with($params);
         }
         $client->expects($this->once())->method('request')->with()
             ->will($this->returnValue($response));
         $response->expects($this->any())->method('getBody')
             ->will($this->returnValue(
-                isset($responseFile) ? file_get_contents(dirname(__FILE__) . '/_files/' . $responseFile) : ''
+                isset($responseFile) ? file_get_contents(__DIR__ . '/_files/' . $responseFile) : ''
             ));
         return $client;
     }

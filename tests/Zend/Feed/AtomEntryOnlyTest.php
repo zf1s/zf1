@@ -43,7 +43,7 @@ class Zend_Feed_AtomEntryOnlyTest extends PHPUnit_Framework_TestCase
 
     public function testEntryOnly()
     {
-        $feed = new Zend_Feed_Atom(null, file_get_contents(dirname(__FILE__) . '/_files/TestAtomFeedEntryOnly.xml'));
+        $feed = new Zend_Feed_Atom(null, file_get_contents(__DIR__ . '/_files/TestAtomFeedEntryOnly.xml'));
 
         $this->assertEquals(1, $feed->count(), 'The entry-only feed should report one entry.');
 

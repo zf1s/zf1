@@ -86,7 +86,7 @@ class Zend_Form_Decorator_DescriptionTest extends PHPUnit_Framework_TestCase
     public function getView()
     {
         $view = new Zend_View();
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
         return $view;
     }
 
@@ -211,7 +211,7 @@ class Zend_Form_Decorator_DescriptionTest extends PHPUnit_Framework_TestCase
         // Test
         $this->assertEquals(
             '<p class="hint">secondDescription</p>',
-            trim($this->decorator->render(''))
+            \trim((string) $this->decorator->render(''))
         );
     }
 }

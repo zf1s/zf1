@@ -78,7 +78,7 @@ abstract class Zend_ProgressBar_Adapter
     public function setOptions(array $options)
     {
         foreach ($options as $key => $value) {
-            if (in_array(strtolower($key), $this->_skipOptions)) {
+            if (in_array(strtolower((string) $key), $this->_skipOptions)) {
                 continue;
             }
 

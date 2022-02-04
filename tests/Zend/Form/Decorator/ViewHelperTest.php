@@ -79,7 +79,7 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
     public function getView()
     {
         $view = new Zend_View();
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
         $view->doctype('HTML4_STRICT');
         return $view;
     }
@@ -181,14 +181,14 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
             $this->assertContains($translations[$value], $test);
         }
     }
-    
+
     /**
      * @group ZF-9689
      */
     public function testRenderWithListSeparatorForMulticheckbox()
     {
         // require_once 'Zend/Form/Element/MultiCheckbox.php';
-        
+
         $element = new Zend_Form_Element_MultiCheckbox('foo');
         $options = array(
             'foo' => 'Foo',
@@ -202,21 +202,21 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
                 array('HtmlTag', array('tag' => 'p')),
             )
         );
-        
+
         $expected = '<p><label><input type="checkbox" name="foo[]" id="foo-foo" value="foo">Foo</label></p>'
                   . '<p><label><input type="checkbox" name="foo[]" id="foo-bar" value="bar">Bar</label></p>';
         $actual   = $element->render($this->getView());
-        
+
         $this->assertEquals($expected, $actual);
     }
-    
+
     /**
      * @group ZF-9689
      */
     public function testRenderWithListSeparatorForRadio()
     {
         // require_once 'Zend/Form/Element/Radio.php';
-        
+
         $element = new Zend_Form_Element_Radio('foo');
         $options = array(
             'foo' => 'Foo',
@@ -230,11 +230,11 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
                 array('HtmlTag', array('tag' => 'p')),
             )
         );
-        
+
         $expected = '<p><label><input type="radio" name="foo" id="foo-foo" value="foo">Foo</label></p>'
                   . '<p><label><input type="radio" name="foo" id="foo-bar" value="bar">Bar</label></p>';
         $actual   = $element->render($this->getView());
-        
+
         $this->assertEquals($expected, $actual);
     }
 

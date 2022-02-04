@@ -79,10 +79,10 @@ class Zend_Gdata_AuthSub
      public static function getAuthSubTokenUri($next, $scope, $secure=0, $session=0,
                                                $request_uri = self::AUTHSUB_REQUEST_URI)
      {
-         $querystring = '?next=' . urlencode($next)
+         $querystring = '?next=' . urlencode((string) $next)
              . '&scope=' . urldecode($scope)
-             . '&secure=' . urlencode($secure)
-             . '&session=' . urlencode($session);
+             . '&secure=' . urlencode((string) $secure)
+             . '&session=' . urlencode((string) $session);
          return $request_uri . $querystring;
      }
 

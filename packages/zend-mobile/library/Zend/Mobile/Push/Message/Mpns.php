@@ -109,7 +109,7 @@ abstract class Zend_Mobile_Push_Message_Mpns extends Zend_Mobile_Push_Message_Ab
      */
     public function validate()
     {
-        if (!isset($this->_token) || strlen($this->_token) === 0) {
+        if (!isset($this->_token) || strlen((string) $this->_token) === 0) {
             return false;
         }
         return parent::validate();

@@ -163,7 +163,7 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
      */
     public function setFormatLength($formatLength)
     {
-        $formatLength = strtolower($formatLength);
+        $formatLength = strtolower((string) $formatLength);
         if (!in_array($formatLength, $this->_allowedFormatTypes)) {
             // require_once 'Zend/Form/Element/Exception.php';
             throw new Zend_Form_Element_Exception(sprintf('Invalid formatLength "%s" specified', $formatLength));
@@ -192,7 +192,7 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
      */
     public function setSelector($selector)
     {
-        $selector = strtolower($selector);
+        $selector = strtolower((string) $selector);
         if (!in_array($selector, $this->_allowedSelectorTypes)) {
             // require_once 'Zend/Form/Element/Exception.php';
             throw new Zend_Form_Element_Exception(sprintf('Invalid Selector "%s" specified', $selector));

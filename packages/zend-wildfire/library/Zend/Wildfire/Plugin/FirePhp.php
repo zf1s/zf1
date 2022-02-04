@@ -529,7 +529,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
 
         if (isset($options['fixZendLogOffsetIfApplicable']) && $options['fixZendLogOffsetIfApplicable']) {
             if (count($trace) >=3 &&
-                isset($trace[0]['file']) && substr($trace[0]['file'], -7, 7)=='Log.php' &&
+                isset($trace[0]['file']) && substr((string) $trace[0]['file'], -7, 7)=='Log.php' &&
                 isset($trace[1]['function']) && $trace[1]['function']=='__call') {
 
                 $spliceOffset = 2;

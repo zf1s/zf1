@@ -28,8 +28,8 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 // require_once 'Zend/Loader/PluginLoader.php';
 // require_once 'Zend/Tag/Cloud.php';
 // require_once 'Zend/Tag/ItemList.php';
-require_once dirname(__FILE__) . '/_classes/CloudDummy.php';
-require_once dirname(__FILE__) . '/_classes/TagDummy.php';
+require_once __DIR__ . '/_classes/CloudDummy.php';
+require_once __DIR__ . '/_classes/TagDummy.php';
 
 /**
  * @category   Zend
@@ -122,7 +122,7 @@ class Zend_Tag_Cloud_CloudTest extends PHPUnit_Framework_TestCase
         $cloud = $this->_getCloud(array(
             'prefixPath' => array(
                 'prefix' => 'Zend_Tag_Cloud_Decorator_Dummy_',
-                'path' => dirname(__FILE__) . '/_classes'
+                'path' => __DIR__ . '/_classes'
             ),
             'cloudDecorator' => array(
                 'decorator' => 'CloudDummy1',
@@ -142,7 +142,7 @@ class Zend_Tag_Cloud_CloudTest extends PHPUnit_Framework_TestCase
             'prefixPath' => array(
                 array(
                     'prefix' => 'Zend_Tag_Cloud_Decorator_Dummy_',
-                    'path' => dirname(__FILE__) . '/_classes'
+                    'path' => __DIR__ . '/_classes'
                 )
             ),
             'cloudDecorator' => array(
@@ -331,7 +331,7 @@ class Zend_Tag_Cloud_CloudTest extends PHPUnit_Framework_TestCase
         $cloud = new Zend_Tag_Cloud($options);
 
         if ($setPluginLoader) {
-            $cloud->getPluginLoader()->addPrefixPath('Zend_Tag_Cloud_Decorator_Dummy_', dirname(__FILE__) . '/_classes');
+            $cloud->getPluginLoader()->addPrefixPath('Zend_Tag_Cloud_Decorator_Dummy_', __DIR__ . '/_classes');
         }
 
         return $cloud;

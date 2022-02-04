@@ -621,7 +621,7 @@ class Zend_Db_Select
                 }
                 $direction = self::SQL_ASC;
                 if (preg_match('/(.*\W)(' . self::SQL_ASC . '|' . self::SQL_DESC . ')\b/si', $val, $matches)) {
-                    $val = trim($matches[1]);
+                    $val = \trim((string) $matches[1]);
                     $direction = $matches[2];
                 }
                 // Remove comments from SQL statement
@@ -687,7 +687,7 @@ class Zend_Db_Select
      */
     public function getPart($part)
     {
-        $part = strtolower($part);
+        $part = strtolower((string) $part);
         if (!array_key_exists($part, $this->_parts)) {
             // require_once 'Zend/Db/Select/Exception.php';
             throw new Zend_Db_Select_Exception("Invalid Select part '$part'");
@@ -819,7 +819,7 @@ class Zend_Db_Select
         }
 
         // Schema from table name overrides schema argument
-        if (!is_object($tableName) && false !== strpos($tableName, '.')) {
+        if (!is_object($tableName) && false !== strpos((string) $tableName, '.')) {
             list($schema, $tableName) = explode('.', $tableName);
         }
 
@@ -930,7 +930,7 @@ class Zend_Db_Select
         } else {
             // Extract just the last name of a qualified table name
             $dot = strrpos($name,'.');
-            $c = ($dot === false) ? $name : substr($name, $dot+1);
+            $c = ($dot === false) ? $name : substr((string) $name, $dot+1);
         }
         for ($i = 2; array_key_exists($c, $this->_parts[self::FROM]); ++$i) {
             $c = $name . '_' . (string) $i;
@@ -963,7 +963,7 @@ class Zend_Db_Select
             $currentCorrelationName = $correlationName;
             if (is_string($col)) {
                 // Check for a column matching "<column> AS <alias>" and extract the alias name
-                $col = trim(str_replace("\n", ' ', $col));
+                $col = \trim((string) str_replace((string) "\n", ' ', $col));
                 if (preg_match('/^(.+)\s+' . self::SQL_AS . '\s+(.+)$/i', $col, $m)) {
                     $col = $m[1];
                     $alias = $m[2];
@@ -1150,7 +1150,7 @@ class Zend_Db_Select
 
             // Add join clause (if applicable)
             if (! empty($from)) {
-                $tmp .= ' ' . strtoupper($joinType) . ' ';
+                $tmp .= ' ' . strtoupper((string) $joinType) . ' ';
             }
 
             $tmp .= $this->_getQuotedSchema($table['schema']);
@@ -1260,12 +1260,12 @@ class Zend_Db_Select
             foreach ($this->_parts[self::ORDER] as $term) {
                 if (is_array($term)) {
                     if(is_numeric($term[0]) && strval(intval($term[0])) == $term[0]) {
-                        $order[] = (int)trim($term[0]) . ' ' . $term[1];
+                        $order[] = (int)\trim((string) $term[0]) . ' ' . $term[1];
                     } else {
                         $order[] = $this->_adapter->quoteIdentifier($term[0], true) . ' ' . $term[1];
                     }
                 } elseif (is_numeric($term) && strval(intval($term)) == $term) {
-                    $order[] = (int)trim($term);
+                    $order[] = (int)\trim((string) $term);
                 } else {
                     $order[] = $this->_adapter->quoteIdentifier($term, true);
                 }
@@ -1300,7 +1300,7 @@ class Zend_Db_Select
          * Add limits clause
          */
         if ($count > 0) {
-            $sql = trim($this->_adapter->limit($sql, $count, $offset));
+            $sql = \trim((string) $this->_adapter->limit($sql, $count, $offset));
         }
 
         return $sql;
@@ -1341,7 +1341,7 @@ class Zend_Db_Select
          * Use the non-greedy pattern repeat modifier e.g. \w+?
          */
         if (preg_match('/^join([a-zA-Z]*?)Using$/', $method, $matches)) {
-            $type = strtolower($matches[1]);
+            $type = strtolower((string) $matches[1]);
             if ($type) {
                 $type .= ' join';
                 if (!in_array($type, self::$_joinTypes)) {

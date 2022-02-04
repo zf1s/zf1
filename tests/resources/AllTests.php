@@ -24,7 +24,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'resources_AllTests::main');
 }
 
-require_once dirname(__FILE__) . '/languages/AllTests.php';
+require_once __DIR__ . '/languages/AllTests.php';
 
 /**
  * @category   Zend

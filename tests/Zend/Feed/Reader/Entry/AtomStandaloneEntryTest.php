@@ -47,7 +47,7 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
             $registry = Zend_Registry::getInstance();
             unset($registry['Zend_Locale']);
         }
-        $this->_feedSamplePath = dirname(__FILE__) . '/_files/AtomStandaloneEntry';
+        $this->_feedSamplePath = __DIR__ . '/_files/AtomStandaloneEntry';
         $this->_options = Zend_Date::setOptions();
         foreach($this->_options as $k=>$v) {
             if (is_null($v)) {

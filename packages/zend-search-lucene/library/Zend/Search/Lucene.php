@@ -279,7 +279,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             // All passes are failed
             throw new Zend_Search_Lucene_Exception('Index is under processing now');
         } catch (Zend_Search_Lucene_Exception $e) {
-            if (strpos($e->getMessage(), 'is not readable') !== false) {
+            if (strpos((string) $e->getMessage(), 'is not readable') !== false) {
                 try {
                     // Try to open old style segments file
                     $segmentsFile = $directory->getFileObject('segments', false);
@@ -287,7 +287,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
                     // It's pre-2.1 index
                     return 0;
                 } catch (Zend_Search_Lucene_Exception $e) {
-                    if (strpos($e->getMessage(), 'is not readable') !== false) {
+                    if (strpos((string) $e->getMessage(), 'is not readable') !== false) {
                         return -1;
                     } else {
                         throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
@@ -535,7 +535,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             } catch (Zend_Search_Lucene_Exception $e) {
                 Zend_Search_Lucene_LockManager::releaseReadLock($this->_directory);
 
-                if (strpos($e->getMessage(), 'Can\'t obtain exclusive index lock') === false) {
+                if (strpos((string) $e->getMessage(), 'Can\'t obtain exclusive index lock') === false) {
                     throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
                 } else {
                     throw new Zend_Search_Lucene_Exception('Can\'t create index. It\'s under processing now', 0, $e);
@@ -665,6 +665,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return $this->_docCount;
@@ -1006,7 +1007,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
                     throw new Zend_Search_Lucene_Exception('Field name must be a string.');
                 }
 
-                if (strtolower($fieldName) == 'score') {
+                if (strtolower((string) $fieldName) == 'score') {
                     $sortArgs[] = &$scores;
                 } else {
                     if (!in_array($fieldName, $fieldNames)) {
@@ -1019,7 +1020,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
                             try {
                                 $value = $hit->getDocument()->getFieldValue($fieldName);
                             } catch (Zend_Search_Lucene_Exception $e) {
-                                if (strpos($e->getMessage(), 'not found') === false) {
+                                if (strpos((string) $e->getMessage(), 'not found') === false) {
                                     throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
                                 } else {
                                     $value = null;

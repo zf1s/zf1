@@ -209,12 +209,12 @@ class Zend_Filter implements Zend_Filter_Interface
         // require_once 'Zend/Loader.php';
         $namespaces = array_merge((array) $namespaces, self::$_defaultNamespaces, array('Zend_Filter'));
         foreach ($namespaces as $namespace) {
-            $nsSeparator = (false !== strpos($namespace, '\\'))?'\\':'_';
-            $className = rtrim($namespace, $nsSeparator) . $nsSeparator . ucfirst($classBaseName);
+            $nsSeparator = (false !== strpos((string) $namespace, '\\'))?'\\':'_';
+            $className = rtrim((string) $namespace, $nsSeparator) . $nsSeparator . ucfirst($classBaseName);
             if (!class_exists($className)) {
                 continue;
                 /*try {
-                    $file = str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+                    $file = str_replace((string) '_', DIRECTORY_SEPARATOR, $className) . '.php';
                     if (Zend_Loader::isReadable($file)) {
                         Zend_Loader::loadClass($className);
                     } else {

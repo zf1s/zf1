@@ -609,7 +609,7 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
 
     public function errorHandler($errno, $errstr)
     {
-        if (strstr($errstr, 'deprecated')) {
+        if (strstr((string) $errstr, 'deprecated')) {
             $this->multipleOptionsDetected = true;
         }
     }

@@ -151,6 +151,7 @@ class Zend_Queue_Adapter_PlatformJobQueue extends Zend_Queue_Adapter_AdapterAbst
      * @param  Zend_Queue|null $queue
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function count(Zend_Queue $queue = null)
     {
         if ($queue !== null) {

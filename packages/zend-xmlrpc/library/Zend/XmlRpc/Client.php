@@ -300,7 +300,7 @@ class Zend_XmlRpc_Client
             $response = new Zend_XmlRpc_Response();
         }
         $this->_lastResponse = $response;
-        $this->_lastResponse->loadXml(trim($httpResponse->getBody()));
+        $this->_lastResponse->loadXml(\trim((string) $httpResponse->getBody()));
     }
 
     /**
@@ -313,7 +313,7 @@ class Zend_XmlRpc_Client
      */
     public function call($method, $params=array())
     {
-        if (!$this->skipSystemLookup() && ('system.' != substr($method, 0, 7))) {
+        if (!$this->skipSystemLookup() && ('system.' != substr((string) $method, 0, 7))) {
             // Ensure empty array/struct params are cast correctly
             // If system.* methods are not available, bypass. (ZF-2978)
             $success = true;

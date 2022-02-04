@@ -153,7 +153,7 @@ class Zend_Text_Table
     public function setOptions(array $options)
     {
         foreach ($options as $key => $value) {
-            if (in_array(strtolower($key), $this->_skipOptions)) {
+            if (in_array(strtolower((string) $key), $this->_skipOptions)) {
                 continue;
             }
 
@@ -286,7 +286,7 @@ class Zend_Text_Table
      */
     public static function setInputCharset($charset)
     {
-        self::$_inputCharset = strtolower($charset);
+        self::$_inputCharset = strtolower((string) $charset);
     }
 
     /**
@@ -306,7 +306,7 @@ class Zend_Text_Table
      */
     public static function setOutputCharset($charset)
     {
-        self::$_outputCharset = strtolower($charset);
+        self::$_outputCharset = strtolower((string) $charset);
     }
 
     /**

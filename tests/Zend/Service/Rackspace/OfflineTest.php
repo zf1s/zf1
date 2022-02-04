@@ -65,7 +65,7 @@
     public function setUp()
     {
         $this->_files = new Zend_Service_Rackspace_Files('foo','bar');
-        $this->_filesPath   = dirname(__FILE__) . '/_files';
+        $this->_filesPath   = __DIR__ . '/_files';
         $this->_httpClientAdapterTest = new Zend_Http_Client_Adapter_Test();
     }
     /**

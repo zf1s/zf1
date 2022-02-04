@@ -1239,16 +1239,16 @@ class Zend_Locale
         $languagearray = array();
 
         foreach ($languages as $locale) {
-            if (strpos($locale, '=') !== false) {
-                $language = substr($locale, strpos($locale, '='));
-                $language = substr($language, 1);
+            if (strpos((string) $locale, '=') !== false) {
+                $language = substr((string) $locale, strpos((string) $locale, '='));
+                $language = substr((string) $language, 1);
             }
 
             if ($language !== 'C') {
-                if (strpos($language, '.') !== false) {
-                    $language = substr($language, 0, strpos($language, '.'));
-                } else if (strpos($language, '@') !== false) {
-                    $language = substr($language, 0, strpos($language, '@'));
+                if (strpos((string) $language, '.') !== false) {
+                    $language = substr((string) $language, 0, strpos((string) $language, '.'));
+                } else if (strpos((string) $language, '@') !== false) {
+                    $language = substr((string) $language, 0, strpos((string) $language, '@'));
                 }
 
                 $language = str_ireplace(
@@ -1265,8 +1265,8 @@ class Zend_Locale
 
                 if (isset(self::$_localeData[$language]) === true) {
                     $languagearray[$language] = 1;
-                    if (strpos($language, '_') !== false) {
-                        $languagearray[substr($language, 0, strpos($language, '_'))] = 1;
+                    if (strpos((string) $language, '_') !== false) {
+                        $languagearray[substr((string) $language, 0, strpos((string) $language, '_'))] = 1;
                     }
                 }
             }
@@ -1325,11 +1325,11 @@ class Zend_Locale
             $region   = array_shift($country2);
 
             foreach ($countrys as $country) {
-                $languages[$region . '_' . strtoupper($country)] = $quality;
+                $languages[$region . '_' . strtoupper((string) $country)] = $quality;
             }
 
             foreach ($country2 as $country) {
-                $languages[$region . '_' . strtoupper($country)] = $quality;
+                $languages[$region . '_' . strtoupper((string) $country)] = $quality;
             }
 
             if ((isset($languages[$region]) === false) || ($languages[$region] < $quality)) {
@@ -1358,10 +1358,10 @@ class Zend_Locale
                 return;
             }
 
-            $region = substr((string) $locale, 0, 3);
+            $region = substr((string) (string) $locale, 0, 3);
             if (isset($region[2]) === true) {
                 if (($region[2] === '_') or ($region[2] === '-')) {
-                    $region = substr($region, 0, 2);
+                    $region = substr((string) $region, 0, 2);
                 }
             }
 
@@ -1421,9 +1421,9 @@ class Zend_Locale
                 continue;
             }
 
-            if (strpos($accept, ';') !== false) {
-                $quality        = (float) substr($accept, (strpos($accept, '=') + 1));
-                $pos            = substr($accept, 0, strpos($accept, ';'));
+            if (strpos((string) $accept, ';') !== false) {
+                $quality        = (float) substr((string) $accept, (strpos((string) $accept, '=') + 1));
+                $pos            = substr((string) $accept, 0, strpos((string) $accept, ';'));
                 $charsets[$pos] = $quality;
             } else {
                 $quality           = 1.0;
@@ -1645,13 +1645,13 @@ class Zend_Locale
                 $start  = false;
                 $regex .= '(';
                 $one    = null;
-                if (strlen($row) > 2) {
+                if (strlen((string) $row) > 2) {
                     $one = true;
                 }
 
                 foreach (str_split($row, 1) as $char) {
                     $regex .= '[' . $char;
-                    $regex .= strtoupper($char) . ']';
+                    $regex .= strtoupper((string) $char) . ']';
                     if ($one === true) {
                         $one    = false;
                         $regex .= '(';
@@ -1775,7 +1775,7 @@ class Zend_Locale
      */
     public static function getLocaleToTerritory($territory)
     {
-        $territory = strtoupper($territory);
+        $territory = strtoupper((string) $territory);
         if (array_key_exists($territory, self::$_territoryData)) {
             return self::$_territoryData[$territory];
         }
@@ -1922,8 +1922,8 @@ class Zend_Locale
             throw new Zend_Locale_Exception('Autodetection of Locale has been failed!');
         }
 
-        if (strpos($locale, '-') !== false) {
-            $locale = strtr($locale, '-', '_');
+        if (strpos((string) $locale, '-') !== false) {
+            $locale = strtr((string) $locale, '-', '_');
         }
 
         $parts = explode('_', $locale);
@@ -1936,7 +1936,7 @@ class Zend_Locale
         }
 
         foreach($parts as $key => $value) {
-            if ((strlen($value) < 2) || (strlen($value) > 3)) {
+            if ((strlen((string) $value) < 2) || (strlen((string) $value) > 3)) {
                 unset($parts[$key]);
             }
         }

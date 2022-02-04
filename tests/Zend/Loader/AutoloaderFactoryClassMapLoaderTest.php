@@ -96,7 +96,7 @@ class Zend_Loader_AutoloaderFactoryClassMapLoaderTest extends PHPUnit_Framework_
         Zend_Loader_AutoloaderFactory::factory(
             array(
                 'Zend_Loader_ClassMapAutoloader' => array(
-                    dirname(__FILE__) . '/_files/goodmap.php',
+                    __DIR__ . '/_files/goodmap.php',
                 ),
             )
         );

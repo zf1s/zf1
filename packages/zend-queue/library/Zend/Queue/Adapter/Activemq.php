@@ -261,7 +261,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
                                 'message_id' => $response->getHeader('message-id'),
                                 'handle'     => $response->getHeader('message-id'),
                                 'body'       => $response->getBody(),
-                                'md5'        => md5($response->getBody())
+                                'md5'        => md5((string) $response->getBody())
                             );
                             $data[] = $datum;
                             break;
@@ -307,7 +307,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         $frame = $this->_client->createFrame();
         $frame->setCommand('SEND');
         $frame->setHeader('destination', $queue->getName());
-        $frame->setHeader('content-length', strlen($message));
+        $frame->setHeader('content-length', strlen((string) $message));
 
         // If persistent driver option is present, set the persistent header
         if(isset($this->_options['driverOptions']['persistent'])) {
@@ -320,7 +320,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         $data = array(
             'message_id' => null,
             'body'       => $message,
-            'md5'        => md5($message),
+            'md5'        => md5((string) $message),
             'handle'     => null
         );
 
@@ -344,6 +344,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @return integer
      * @throws Zend_Queue_Exception (not supported)
      */
+    #[\ReturnTypeWillChange]
     public function count(Zend_Queue $queue=null)
     {
         // require_once 'Zend/Queue/Exception.php';

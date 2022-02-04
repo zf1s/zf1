@@ -146,7 +146,7 @@ class Zend_Filter_Encrypt_McryptTest extends PHPUnit_Framework_TestCase
         $this->assertNotEquals('teststring', $output);
 
         $input = $filter->decrypt($output);
-        $this->assertEquals('teststring', trim($input));
+        $this->assertEquals('teststring', \trim((string) $input));
     }
 
     /**
@@ -241,6 +241,6 @@ class Zend_Filter_Encrypt_McryptTest extends PHPUnit_Framework_TestCase
         $this->assertNotEquals('teststring', $output);
 
         $input = $filter->decrypt($output);
-        $this->assertEquals('teststring', trim($input));
+        $this->assertEquals('teststring', \trim((string) $input));
     }
 }

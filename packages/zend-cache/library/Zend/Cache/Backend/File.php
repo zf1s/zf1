@@ -181,7 +181,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
         }
         if ($trailingSeparator) {
             // add a trailing DIRECTORY_SEPARATOR if necessary
-            $value = rtrim(realpath($value), '\\/') . DIRECTORY_SEPARATOR;
+            $value = rtrim((string) realpath($value), '\\/') . DIRECTORY_SEPARATOR;
         }
         $this->_options['cache_dir'] = $value;
     }
@@ -614,7 +614,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
     protected function _isMetadatasFile($fileName)
     {
         $id = $this->_fileNameToId($fileName);
-        if (substr($id, 0, 21) == 'internal-metadatas---') {
+        if (substr((string) $id, 0, 21) == 'internal-metadatas---') {
             return true;
         } else {
             return false;
@@ -753,7 +753,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
 
         // cycle through metadataFiles and delete orphaned ones
         foreach ($metadataFiles as $file) {
-            if (file_exists($file)) {
+            if (file_exists((string) $file)) {
                 $result = $this->_remove($file) && $result;
             }
         }
@@ -871,11 +871,11 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
     {
         switch ($controlType) {
         case 'md5':
-            return md5($data);
+            return md5((string) $data);
         case 'crc32':
             return crc32($data);
         case 'strlen':
-            return strlen($data);
+            return strlen((string) $data);
         case 'adler32':
             return hash('adler32', $data);
         default:
@@ -924,7 +924,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
         if ($this->_options['hashed_directory_level']>0) {
             $hash = hash('adler32', $id);
             for ($i=0 ; $i < $this->_options['hashed_directory_level'] ; $i++) {
-                $root = $root . $prefix . '--' . substr($hash, 0, $i + 1) . DIRECTORY_SEPARATOR;
+                $root = $root . $prefix . '--' . substr((string) $hash, 0, $i + 1) . DIRECTORY_SEPARATOR;
                 $partsArray[] = $root;
             }
         }

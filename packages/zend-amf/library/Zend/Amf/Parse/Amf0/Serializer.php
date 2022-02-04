@@ -127,7 +127,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
                 case (is_bool($data)):
                     $markerType = Zend_Amf_Constants::AMF0_BOOLEAN;
                     break;
-                case (is_string($data) && (($this->_mbStringFunctionsOverloaded ? mb_strlen($data, '8bit') : strlen($data)) > 65536)):
+                case (is_string($data) && (($this->_mbStringFunctionsOverloaded ? mb_strlen($data, '8bit') : strlen((string) $data)) > 65536)):
                     $markerType = Zend_Amf_Constants::AMF0_LONGSTRING;
                     break;
                 case (is_string($data)):
@@ -231,7 +231,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
         // Loop each element and write the name of the property.
         foreach ($object as $key => &$value) {
             // skip variables starting with an _ private transient
-            if(is_string($key) && strpos($key, '_') === 0) continue;
+            if(is_string($key) && strpos((string) $key, '_') === 0) continue;
             $this->_stream->writeUTF($key);
             $this->writeTypeMarker($value);
         }

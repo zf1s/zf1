@@ -242,7 +242,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
                          0x00; /* 0x04 - third bit, compressed (ZLIB) */
             $this->_fdtFile->writeByte($fieldBits);
             if ($field->isBinary) {
-                $this->_fdtFile->writeVInt(strlen($field->value));
+                $this->_fdtFile->writeVInt(strlen((string) $field->value));
                 $this->_fdtFile->writeBytes($field->value);
             } else {
                 $this->_fdtFile->writeString($field->getUtf8Value());
@@ -257,6 +257,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
      *
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return $this->_docCount;
@@ -517,7 +518,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
     {
         if (isset($prevTerm) && $prevTerm->field == $term->field) {
             $matchedBytes = 0;
-            $maxBytes = min(strlen($prevTerm->text), strlen($term->text));
+            $maxBytes = min(strlen((string) $prevTerm->text), strlen((string) $term->text));
             while ($matchedBytes < $maxBytes  &&
                    $prevTerm->text[$matchedBytes] == $term->text[$matchedBytes]) {
                 $matchedBytes++;
@@ -528,11 +529,11 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
             $prefixChars = 0;
             while ($prefixBytes < $matchedBytes) {
                 $charBytes = 1;
-                if ((ord($term->text[$prefixBytes]) & 0xC0) == 0xC0) {
+                if ((ord((string) $term->text[$prefixBytes]) & 0xC0) == 0xC0) {
                     $charBytes++;
-                    if (ord($term->text[$prefixBytes]) & 0x20 ) {
+                    if (ord((string) $term->text[$prefixBytes]) & 0x20 ) {
                         $charBytes++;
-                        if (ord($term->text[$prefixBytes]) & 0x10 ) {
+                        if (ord((string) $term->text[$prefixBytes]) & 0x10 ) {
                             $charBytes++;
                         }
                     }
@@ -551,7 +552,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
             // Write preffix length
             $dicFile->writeVInt($prefixChars);
             // Write suffix
-            $dicFile->writeString(substr($term->text, $prefixBytes));
+            $dicFile->writeString(substr((string) $term->text, $prefixBytes));
         } else {
             // Write preffix length
             $dicFile->writeVInt(0);
@@ -615,7 +616,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
             $byteCount = $this->_directory->fileLength($fileName);
             while ($byteCount > 0) {
                 $data = $dataFile->readBytes(min($byteCount, 131072 /*128Kb*/));
-                $byteCount -= strlen($data);
+                $byteCount -= strlen((string) $data);
                 $cfsFile->writeBytes($data);
             }
 

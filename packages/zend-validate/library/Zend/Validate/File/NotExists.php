@@ -70,7 +70,7 @@ class Zend_Validate_File_NotExists extends Zend_Validate_File_Exists
             }
 
             $check = true;
-            if (file_exists($directory . DIRECTORY_SEPARATOR . $file['name'])) {
+            if (file_exists((string) $directory . DIRECTORY_SEPARATOR . $file['name'])) {
                 return $this->_throw($file, self::DOES_EXIST);
             }
         }

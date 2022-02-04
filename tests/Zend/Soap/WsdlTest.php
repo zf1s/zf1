@@ -492,8 +492,8 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
                                . 'xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" '
                                . 'name="MyService" targetNamespace="http://localhost/MyService.php"/>' );
 
-        $wsdl->dump(dirname(__FILE__) . '/_files/dumped.wsdl');
-        $dumpedContent = file_get_contents(dirname(__FILE__) . '/_files/dumped.wsdl');
+        $wsdl->dump(__DIR__ . '/_files/dumped.wsdl');
+        $dumpedContent = file_get_contents(__DIR__ . '/_files/dumped.wsdl');
 
         $this->assertEquals($this->sanitizeWsdlXmlOutputForOsCompability($dumpedContent),
                             '<?xml version="1.0"?>'  .
@@ -505,7 +505,7 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
                                . 'xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" '
                                . 'name="MyService" targetNamespace="http://localhost/MyService.php"/>' );
 
-        unlink(dirname(__FILE__) . '/_files/dumped.wsdl');
+        unlink(__DIR__ . '/_files/dumped.wsdl');
     }
 
     function testGetType()

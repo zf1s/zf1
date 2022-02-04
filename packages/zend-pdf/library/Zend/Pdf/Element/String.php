@@ -87,10 +87,10 @@ class Zend_Pdf_Element_String extends Zend_Pdf_Element
         foreach (str_split($str, 128) as $chunk) {
             // Collect sequence of unescaped characters
             $offset = strcspn($chunk, "\n\r\t\x08\x0C()\\");
-            $chunkOut = substr($chunk, 0, $offset);
+            $chunkOut = substr((string) $chunk, 0, $offset);
 
-            while ($offset < strlen($chunk)) {
-                $nextCode = ord($chunk[$offset++]);
+            while ($offset < strlen((string) $chunk)) {
+                $nextCode = ord((string) $chunk[$offset++]);
                 switch ($nextCode) {
                     // "\n" - line feed (LF)
                     case 10:
@@ -149,7 +149,7 @@ class Zend_Pdf_Element_String extends Zend_Pdf_Element
                 // Collect sequence of unescaped characters
                 $start = $offset;
                 $offset += strcspn($chunk, "\n\r\t\x08\x0C()\\", $offset);
-                $chunkOut .= substr($chunk, $start, $offset - $start);
+                $chunkOut .= substr((string) $chunk, $start, $offset - $start);
             }
 
             $outEntries[] = $chunkOut;
@@ -170,16 +170,16 @@ class Zend_Pdf_Element_String extends Zend_Pdf_Element
         $outEntries = array();
 
         $offset = 0;
-        while ($offset < strlen($str)) {
+        while ($offset < strlen((string) $str)) {
             // Searche for the next escaped character/sequence
-            $escapeCharOffset = strpos($str, '\\', $offset);
-            if ($escapeCharOffset === false  ||  $escapeCharOffset == strlen($str) - 1) {
+            $escapeCharOffset = strpos((string) $str, '\\', $offset);
+            if ($escapeCharOffset === false  ||  $escapeCharOffset == strlen((string) $str) - 1) {
                 // There are no escaped characters or '\' char has came at the end of string
-                $outEntries[] = substr($str, $offset);
+                $outEntries[] = substr((string) $str, $offset);
                 break;
             } else {
                 // Collect unescaped characters sequence
-                $outEntries[] = substr($str, $offset, $escapeCharOffset - $offset);
+                $outEntries[] = substr((string) $str, $offset, $escapeCharOffset - $offset);
                 // Go to the escaped character
                 $offset = $escapeCharOffset + 1;
 
@@ -233,15 +233,15 @@ class Zend_Pdf_Element_String extends Zend_Pdf_Element
                         break;
 
                     default:
-                        if (strpos('0123456789', $str[$offset]) !== false) {
+                        if (strpos((string) '0123456789', $str[$offset]) !== false) {
                             // Character in octal representation
                             // '\\xxx'
                             $nextCode = '0' . $str[$offset];
 
-                            if (strpos('0123456789', $str[$offset + 1]) !== false) {
+                            if (strpos((string) '0123456789', $str[$offset + 1]) !== false) {
                                 $nextCode .= $str[++$offset];
 
-                                if (strpos('0123456789', $str[$offset + 1]) !== false) {
+                                if (strpos((string) '0123456789', $str[$offset + 1]) !== false) {
                                     $nextCode .= $str[++$offset];
                                 }
                             }

@@ -77,7 +77,7 @@ class Zend_Search_Lucene_Analysis_TokenFilter_StopWords extends Zend_Search_Luce
      * @throws Zend_Search_Exception When the file doesn`t exists or is not readable.
      */
     public function loadFromFile($filepath = null) {
-        if (! $filepath || ! file_exists($filepath)) {
+        if (! $filepath || ! file_exists((string) $filepath)) {
             // require_once 'Zend/Search/Lucene/Exception.php';
             throw new Zend_Search_Lucene_Exception('You have to provide valid file path');
         }
@@ -87,8 +87,8 @@ class Zend_Search_Lucene_Analysis_TokenFilter_StopWords extends Zend_Search_Luce
             throw new Zend_Search_Lucene_Exception('Cannot open file ' . $filepath);
         }
         while (!feof ($fd)) {
-            $buffer = trim(fgets($fd));
-            if (strlen($buffer) > 0 && $buffer[0] != '#') {
+            $buffer = \trim((string) fgets($fd));
+            if (strlen((string) $buffer) > 0 && $buffer[0] != '#') {
                 $this->_stopSet[$buffer] = 1;
             }
         }

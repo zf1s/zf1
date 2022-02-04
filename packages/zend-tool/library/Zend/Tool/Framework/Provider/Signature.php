@@ -240,8 +240,8 @@ class Zend_Tool_Framework_Provider_Signature implements Zend_Tool_Framework_Regi
         if ($this->_name == null) {
             $className = get_class($this->_provider);
             $name = $className;
-            if (strpos($name, '_')) {
-                $name = substr($name, strrpos($name, '_')+1);
+            if (strpos((string) $name, '_')) {
+                $name = substr((string) $name, strrpos($name, '_')+1);
             }
             $name = preg_replace('#(Provider|Manifest)$#', '', $name);
             $this->_name = $name;
@@ -314,7 +314,7 @@ class Zend_Tool_Framework_Provider_Signature implements Zend_Tool_Framework_Regi
              * check to see if the method was a required method by a Zend_Tool_* interface
              */
             foreach ($method->getDeclaringClass()->getInterfaces() as $methodDeclaringClassInterface) {
-                if (strpos($methodDeclaringClassInterface->getName(), 'Zend_Tool_') === 0
+                if (strpos((string) $methodDeclaringClassInterface->getName(), 'Zend_Tool_') === 0
                     && $methodDeclaringClassInterface->hasMethod($methodName)) {
                     continue 2;
                 }
@@ -322,8 +322,8 @@ class Zend_Tool_Framework_Provider_Signature implements Zend_Tool_Framework_Regi
 
             $actionableName = ucfirst($methodName);
 
-            if (substr($actionableName, -6) == 'Action') {
-                $actionableName = substr($actionableName, 0, -6);
+            if (substr((string) $actionableName, -6) == 'Action') {
+                $actionableName = substr((string) $actionableName, 0, -6);
             }
 
             $actionableMethods[$methodName]['methodName'] = $methodName;
@@ -366,7 +366,7 @@ class Zend_Tool_Framework_Provider_Signature implements Zend_Tool_Framework_Regi
                 (preg_match_all('/@param\s+(\w+)+\s+(\$\S+)\s+(.*?)(?=(?:\*\s*@)|(?:\*\/))/s', $docComment, $matches)))
             {
                 for ($i=0; $i <= count($matches[0])-1; $i++) {
-                    $currentParam = ltrim($matches[2][$i], '$');
+                    $currentParam = ltrim((string) $matches[2][$i], '$');
 
                     if ($currentParam != '' && isset($parameterInfo[$currentParam])) {
 
@@ -375,7 +375,7 @@ class Zend_Tool_Framework_Provider_Signature implements Zend_Tool_Framework_Regi
                         $descriptionSource = $matches[3][$i];
 
                         if ($descriptionSource != '') {
-                            $parameterInfo[$currentParam]['description'] = trim($descriptionSource);
+                            $parameterInfo[$currentParam]['description'] = \trim((string) $descriptionSource);
                         }
 
                     }

@@ -107,7 +107,7 @@ class Zend_Amf_ResourceTest extends PHPUnit_Framework_TestCase
      */
     public function testCtxLoader()
     {
-        Zend_Amf_Parse_TypeLoader::addResourceDirectory("Test_Resource", dirname(__FILE__)."/Resources");
+        Zend_Amf_Parse_TypeLoader::addResourceDirectory("Test_Resource", __DIR__."/Resources");
         $resp = $this->_callService("returnCtx");
         $this->assertContains("Accept-language:", $resp->getResponse());
         $this->assertContains("foo=bar", $resp->getResponse());
@@ -146,7 +146,7 @@ class Zend_Amf_ResourceTest extends PHPUnit_Framework_TestCase
 class Zend_Amf_Resource_testclass {
     function returnFile()
     {
-        return fopen(dirname(__FILE__)."/_files/testdata", "r");
+        return fopen(__DIR__."/_files/testdata", "r");
     }
     function returnCtx()
     {

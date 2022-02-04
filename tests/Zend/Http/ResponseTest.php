@@ -50,31 +50,31 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        if ($this->tempFile !== null && file_exists($this->tempFile)) {
+        if ($this->tempFile !== null && file_exists((string) $this->tempFile)) {
             unlink($this->tempFile);
         }
     }
 
     public function testGzipResponse ()
     {
-        $response_text = file_get_contents(dirname(__FILE__) . '/_files/response_gzip');
+        $response_text = file_get_contents(__DIR__ . '/_files/response_gzip');
 
         $res = Zend_Http_Response::fromString($response_text);
 
         $this->assertEquals('gzip', $res->getHeader('Content-encoding'));
-        $this->assertEquals('0b13cb193de9450aa70a6403e2c9902f', md5($res->getBody()));
-        $this->assertEquals('f24dd075ba2ebfb3bf21270e3fdc5303', md5($res->getRawBody()));
+        $this->assertEquals('0b13cb193de9450aa70a6403e2c9902f', md5((string) $res->getBody()));
+        $this->assertEquals('f24dd075ba2ebfb3bf21270e3fdc5303', md5((string) $res->getRawBody()));
     }
 
     public function testDeflateResponse ()
     {
-        $response_text = file_get_contents(dirname(__FILE__) . '/_files/response_deflate');
+        $response_text = file_get_contents(__DIR__ . '/_files/response_deflate');
 
         $res = Zend_Http_Response::fromString($response_text);
 
         $this->assertEquals('deflate', $res->getHeader('Content-encoding'));
-        $this->assertEquals('0b13cb193de9450aa70a6403e2c9902f', md5($res->getBody()));
-        $this->assertEquals('ad62c21c3aa77b6a6f39600f6dd553b8', md5($res->getRawBody()));
+        $this->assertEquals('0b13cb193de9450aa70a6403e2c9902f', md5((string) $res->getBody()));
+        $this->assertEquals('ad62c21c3aa77b6a6f39600f6dd553b8', md5((string) $res->getRawBody()));
     }
 
     /**
@@ -88,7 +88,7 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testNonStandardDeflateResponseZF6040()
     {
-        $response_text = file_get_contents(dirname(__FILE__) . '/_files/response_deflate_iis');
+        $response_text = file_get_contents(__DIR__ . '/_files/response_deflate_iis');
 
         // Ensure headers are correctly formatted (i.e., separated with "\r\n" sequence)
         //
@@ -103,41 +103,41 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
         $res = Zend_Http_Response::fromString($response_text);
 
         $this->assertEquals('deflate', $res->getHeader('Content-encoding'));
-        $this->assertEquals('d82c87e3d5888db0193a3fb12396e616', md5($res->getBody()));
-        $this->assertEquals('c830dd74bb502443cf12514c185ff174', md5($res->getRawBody()));
+        $this->assertEquals('d82c87e3d5888db0193a3fb12396e616', md5((string) $res->getBody()));
+        $this->assertEquals('c830dd74bb502443cf12514c185ff174', md5((string) $res->getRawBody()));
     }
 
     public function testChunkedResponse ()
     {
-        $response_text = file_get_contents(dirname(__FILE__) . '/_files/response_chunked');
+        $response_text = file_get_contents(__DIR__ . '/_files/response_chunked');
 
         $res = Zend_Http_Response::fromString($response_text);
 
         $this->assertEquals('chunked', $res->getHeader('Transfer-encoding'));
-        $this->assertEquals('0b13cb193de9450aa70a6403e2c9902f', md5($res->getBody()));
-        $this->assertEquals('c0cc9d44790fa2a58078059bab1902a9', md5($res->getRawBody()));
+        $this->assertEquals('0b13cb193de9450aa70a6403e2c9902f', md5((string) $res->getBody()));
+        $this->assertEquals('c0cc9d44790fa2a58078059bab1902a9', md5((string) $res->getRawBody()));
     }
 
     public function testChunkedResponseCaseInsensitiveZF5438()
     {
-        $response_text = file_get_contents(dirname(__FILE__) . '/_files/response_chunked_case');
+        $response_text = file_get_contents(__DIR__ . '/_files/response_chunked_case');
 
         $res = Zend_Http_Response::fromString($response_text);
 
-        $this->assertEquals('chunked', strtolower($res->getHeader('Transfer-encoding')));
-        $this->assertEquals('0b13cb193de9450aa70a6403e2c9902f', md5($res->getBody()));
-        $this->assertEquals('c0cc9d44790fa2a58078059bab1902a9', md5($res->getRawBody()));
+        $this->assertEquals('chunked', strtolower((string) $res->getHeader('Transfer-encoding')));
+        $this->assertEquals('0b13cb193de9450aa70a6403e2c9902f', md5((string) $res->getBody()));
+        $this->assertEquals('c0cc9d44790fa2a58078059bab1902a9', md5((string) $res->getRawBody()));
     }
 
     public function testExtractMessageCrlf()
     {
-        $response_text = file_get_contents(dirname(__FILE__) . '/_files/response_crlf');
+        $response_text = file_get_contents(__DIR__ . '/_files/response_crlf');
         $this->assertEquals("OK", Zend_Http_Response::extractMessage($response_text), "Response message is not 'OK' as expected");
     }
 
     public function testExtractMessageLfonly()
     {
-        $response_text = file_get_contents(dirname(__FILE__) . '/_files/response_lfonly');
+        $response_text = file_get_contents(__DIR__ . '/_files/response_lfonly');
         $this->assertEquals("OK", Zend_Http_Response::extractMessage($response_text), "Response message is not 'OK' as expected");
     }
 
@@ -237,8 +237,8 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
         $response_str = $this->readResponse('response_404');
         $response = Zend_Http_Response::fromString($response_str);
 
-        $this->assertEquals(strtolower($response_str), strtolower($response->asString()), 'Response conversion to string does not match original string');
-        $this->assertEquals(strtolower($response_str), strtolower((string) $response), 'Response conversion to string does not match original string');
+        $this->assertEquals(strtolower((string) $response_str), strtolower((string) $response->asString()), 'Response conversion to string does not match original string');
+        $this->assertEquals(strtolower((string) $response_str), strtolower((string) $response), 'Response conversion to string does not match original string');
     }
 
     public function testGetHeaders()
@@ -335,7 +335,7 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testLeadingWhitespaceBody()
     {
-        $message = file_get_contents(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'response_leadingws');
+        $message = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'response_leadingws');
         $body    = Zend_Http_Response::extractBody($message);
         $this->assertEquals($body, "\r\n\t  \n\r\tx", 'Extracted body is not identical to expected body');
     }
@@ -344,7 +344,7 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
      * Test that parsing a multibyte-encoded chunked response works.
      *
      * This can potentially fail on different PHP environments - for example
-     * when mbstring.func_overload is set to overload strlen().
+     * when mbstring.func_overload is set to overload strlen((string) ).
      *
      */
     public function testMultibyteChunkedResponse()
@@ -352,7 +352,7 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
         $md5 = 'f734924685f92b243c8580848cadc560';
 
         $response = Zend_Http_Response::fromString($this->readResponse('response_multibyte_body'));
-        $this->assertEquals($md5, md5($response->getBody()));
+        $this->assertEquals($md5, md5((string) $response->getBody()));
     }
 
     /**
@@ -415,7 +415,7 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
     protected function readResponse($response)
     {
         $message = file_get_contents(
-            dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . $response
+            __DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . $response
         );
         // Line endings are sometimes an issue inside the canned responses; the
         // following is a negative lookbehind assertion, and replaces any \n

@@ -50,7 +50,7 @@ class Zend_Pdf_Element_String_Binary extends Zend_Pdf_Element_String
      */
     public static function escape($inStr)
     {
-        return strtoupper(bin2hex($inStr));
+        return strtoupper((string) bin2hex($inStr));
     }
 
 
@@ -65,12 +65,12 @@ class Zend_Pdf_Element_String_Binary extends Zend_Pdf_Element_String
         $chunks = array();
         $offset = 0;
         $length = 0;
-        while ($offset < strlen($inStr)) {
+        while ($offset < strlen((string) $inStr)) {
             // Collect hexadecimal characters
             $start = $offset;
             $offset += strspn($inStr, "0123456789abcdefABCDEF", $offset);
-            $chunks[] = substr($inStr, $start, $offset - $start);
-            $length += strlen(end($chunks));
+            $chunks[] = substr((string) $inStr, $start, $offset - $start);
+            $length += strlen((string) end($chunks));
 
             // Skip non-hexadecimal characters
             $offset += strcspn($inStr, "0123456789abcdefABCDEF", $offset);

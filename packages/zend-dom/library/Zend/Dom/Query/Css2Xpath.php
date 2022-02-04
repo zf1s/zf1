@@ -38,11 +38,11 @@ class Zend_Dom_Query_Css2Xpath
     public static function transform($path)
     {
         $path = (string) $path;
-        if (strstr($path, ',')) {
+        if (strstr((string) $path, ',')) {
             $paths       = explode(',', $path);
             $expressions = array();
             foreach ($paths as $path) {
-                $xpath = self::transform(trim($path));
+                $xpath = self::transform(\trim((string) $path));
                 if (is_string($xpath)) {
                     $expressions[] = $xpath;
                 } elseif (is_array($xpath)) {
@@ -58,16 +58,16 @@ class Zend_Dom_Query_Css2Xpath
         foreach ($segments as $key => $segment) {
             $pathSegment = self::_tokenize($segment);
             if (0 == $key) {
-                if (0 === strpos($pathSegment, '[contains(')) {
-                    $paths[0] .= '*' . ltrim($pathSegment, '*');
+                if (0 === strpos((string) $pathSegment, '[contains(')) {
+                    $paths[0] .= '*' . ltrim((string) $pathSegment, '*');
                 } else {
                     $paths[0] .= $pathSegment;
                 }
                 continue;
             }
-            if (0 === strpos($pathSegment, '[contains(')) {
+            if (0 === strpos((string) $pathSegment, '[contains(')) {
                 foreach ($paths as $key => $xpath) {
-                    $paths[$key] .= '//*' . ltrim($pathSegment, '*');
+                    $paths[$key] .= '//*' . ltrim((string) $pathSegment, '*');
                     $paths[]      = $xpath . $pathSegment;
                 }
             } else {
@@ -92,7 +92,7 @@ class Zend_Dom_Query_Css2Xpath
     protected static function _tokenize($expression)
     {
         // Child selectors
-        $expression = str_replace('>', '/', $expression);
+        $expression = str_replace((string) '>', '/', $expression);
 
         // IDs
         $expression = preg_replace('|#([a-z][a-z0-9_-]*)|i', '[@id=\'$1\']', $expression);
@@ -127,7 +127,7 @@ class Zend_Dom_Query_Css2Xpath
         );
 
         /** ZF-9764 -- remove double asterix */
-        $expression = str_replace('**', '*', $expression);
+        $expression = str_replace((string) '**', '*', $expression);
 
         return $expression;
     }
@@ -140,7 +140,7 @@ class Zend_Dom_Query_Css2Xpath
      */
     protected static function _createEqualityExpression($matches)
     {
-        return '[@' . strtolower($matches[1]) . "='" . $matches[2] . "']";
+        return '[@' . strtolower((string) $matches[1]) . "='" . $matches[2] . "']";
     }
 
     /**
@@ -151,7 +151,7 @@ class Zend_Dom_Query_Css2Xpath
      */
     protected static function _normalizeSpaceAttribute($matches)
     {
-        return "[contains(concat(' ', normalize-space(@" . strtolower($matches[1]) . "), ' '), ' "
+        return "[contains(concat(' ', normalize-space(@" . strtolower((string) $matches[1]) . "), ' '), ' "
              . $matches[2] . " ')]";
     }
 
@@ -163,7 +163,7 @@ class Zend_Dom_Query_Css2Xpath
      */
     protected static function _createContainsExpression($matches)
     {
-        return "[contains(@" . strtolower($matches[1]) . ", '"
+        return "[contains(@" . strtolower((string) $matches[1]) . ", '"
              . $matches[2] . "')]";
     }
 }

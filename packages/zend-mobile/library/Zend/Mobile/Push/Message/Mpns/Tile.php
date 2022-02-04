@@ -233,7 +233,7 @@ class Zend_Mobile_Push_Message_Mpns_Tile extends Zend_Mobile_Push_Message_Mpns
 
     /**
      * Set Back Content
-     * 
+     *
      * @param string $content
      * @return Zend_Mobile_Push_Message_Mpns_Tile
      * @throws Zend_Mobile_Push_Message_Exception
@@ -324,19 +324,19 @@ class Zend_Mobile_Push_Message_Mpns_Tile extends Zend_Mobile_Push_Message_Mpns
     {
         $ret = '<?xml version="1.0" encoding="utf-8"?>'
             . '<wp:Notification xmlns:wp="WPNotification">'
-            . '<wp:Tile' . (($this->_tileId) ? ' Id="' . htmlspecialchars($this->_tileId) . '"' : '') . '>'
-            . '<wp:BackgroundImage>' . htmlspecialchars($this->_backgroundImage) . '</wp:BackgroundImage>'
+            . '<wp:Tile' . (($this->_tileId) ? ' Id="' . htmlspecialchars((string) $this->_tileId) . '"' : '') . '>'
+            . '<wp:BackgroundImage>' . htmlspecialchars((string) $this->_backgroundImage) . '</wp:BackgroundImage>'
             . '<wp:Count>' . (int) $this->_count . '</wp:Count>'
-            . '<wp:Title>' . htmlspecialchars($this->_title) . '</wp:Title>';
+            . '<wp:Title>' . htmlspecialchars((string) $this->_title) . '</wp:Title>';
 
         if ($this->_backBackgroundImage) {
-            $ret .= '<wp:BackBackgroundImage>' . htmlspecialchars($this->_backBackgroundImage) . '</wp:BackBackgroundImage>';
+            $ret .= '<wp:BackBackgroundImage>' . htmlspecialchars((string) $this->_backBackgroundImage) . '</wp:BackBackgroundImage>';
         }
         if ($this->_backTitle) {
-            $ret .= '<wp:BackTitle>' . htmlspecialchars($this->_backTitle) . '</wp:BackTitle>';
+            $ret .= '<wp:BackTitle>' . htmlspecialchars((string) $this->_backTitle) . '</wp:BackTitle>';
         }
         if ($this->_backContent) {
-            $ret .= '<wp:BackContent>' . htmlspecialchars($this->_backContent) . '</wp:BackContent>';
+            $ret .= '<wp:BackContent>' . htmlspecialchars((string) $this->_backContent) . '</wp:BackContent>';
         }
 
         $ret .= '</wp:Tile>'
@@ -351,7 +351,7 @@ class Zend_Mobile_Push_Message_Mpns_Tile extends Zend_Mobile_Push_Message_Mpns
      */
     public function validate()
     {
-        if (!isset($this->_token) || strlen($this->_token) === 0) {
+        if (!isset($this->_token) || strlen((string) $this->_token) === 0) {
             return false;
         }
         if (empty($this->_backgroundImage)) {

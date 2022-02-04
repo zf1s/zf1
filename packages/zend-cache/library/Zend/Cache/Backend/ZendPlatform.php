@@ -306,7 +306,7 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
             if ($this->_directives['lifetime'] === null) {
                 return false;
             }
-            if (!file_exists($file)) {
+            if (!file_exists((string) $file)) {
                 return false;
             }
             return @touch($file, time() - 2*abs($this->_directives['lifetime']));

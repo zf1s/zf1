@@ -404,7 +404,7 @@ class Zend_Service_ReCaptcha extends Zend_Service_Abstract
         $errorPart = '';
 
         if (!empty($this->_params['error'])) {
-            $errorPart = '&error=' . urlencode($this->_params['error']);
+            $errorPart = '&error=' . urlencode((string) $this->_params['error']);
         }
 
         $reCaptchaOptions = '';

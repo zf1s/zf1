@@ -57,7 +57,7 @@ class Zend_Service_Console_Command_ParameterSource_Prompt
 		}*/
 
 		while (is_null($parameterValue) || $parameterValue == '') {
-			$parameterValue = trim(fgets(STDIN));
+			$parameterValue = \trim((string) fgets(STDIN));
 		}
 
 		// Done!

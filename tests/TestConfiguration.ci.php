@@ -67,4 +67,4 @@ defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_USERNAME') || define('TESTS_ZEND_DB_ADA
 defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD', getenv('POSTGRES_PASSWORD'));
 defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE', getenv('POSTGRES_DB'));
 
-require_once dirname(__FILE__) . '/TestConfiguration.dist.php';
+require_once __DIR__ . '/TestConfiguration.dist.php';

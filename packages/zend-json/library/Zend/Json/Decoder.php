@@ -99,7 +99,7 @@ class Zend_Json_Decoder
     {
         // Set defaults
         $this->_source       = self::decodeUnicodeString($source);
-        $this->_sourceLength = strlen($this->_source);
+        $this->_sourceLength = strlen((string) $this->_source);
         $this->_token        = self::EOF;
         $this->_offset       = 0;
 
@@ -303,7 +303,7 @@ class Zend_Json_Decoder
                 $this->_offset)
             && $matches[0][1] == $this->_offset)
         {
-            $this->_offset += strlen($matches[0][0]);
+            $this->_offset += strlen((string) $matches[0][0]);
         }
     }
 
@@ -405,25 +405,25 @@ class Zend_Json_Decoder
                 } while ($i < $str_length);
 
                 $this->_token = self::DATUM;
-                //$this->_tokenValue = substr($str, $start + 1, $i - $start - 1);
+                //$this->_tokenValue = substr((string) $str, $start + 1, $i - $start - 1);
                 $this->_tokenValue = $result;
                 break;
             case 't':
-                if (($i+ 3) < $str_length && substr($str, $start, 4) === "true") {
+                if (($i+ 3) < $str_length && substr((string) $str, $start, 4) === "true") {
                     $this->_token = self::DATUM;
                 }
                 $this->_tokenValue = true;
                 $i += 3;
                 break;
             case 'f':
-                if (($i+ 4) < $str_length && substr($str, $start, 5) === "false") {
+                if (($i+ 4) < $str_length && substr((string) $str, $start, 5) === "false") {
                     $this->_token = self::DATUM;
                 }
                 $this->_tokenValue = false;
                 $i += 4;
                 break;
             case 'n':
-                if (($i+ 3) < $str_length && substr($str, $start, 4) === "null") {
+                if (($i+ 3) < $str_length && substr((string) $str, $start, 4) === "null") {
                     $this->_token = self::DATUM;
                 }
                 $this->_tokenValue = NULL;
@@ -458,7 +458,7 @@ class Zend_Json_Decoder
                 }
 
                 $this->_token = self::DATUM;
-                $this->_offset = $start + strlen($datum);
+                $this->_offset = $start + strlen((string) $datum);
             }
         } else {
             // require_once 'Zend/Json/Exception.php';
@@ -482,17 +482,17 @@ class Zend_Json_Decoder
     public static function decodeUnicodeString($chrs)
     {
         $utf8        = '';
-        $strlen_chrs = strlen($chrs);
+        $strlen_chrs = strlen((string) $chrs);
 
         for($i = 0; $i < $strlen_chrs; $i++) {
 
-            $ord_chrs_c = ord($chrs[$i]);
+            $ord_chrs_c = ord((string) $chrs[$i]);
 
             switch (true) {
-                case preg_match('/\\\u[0-9A-F]{4}/i', substr($chrs, $i, 6)):
+                case preg_match('/\\\u[0-9A-F]{4}/i', substr((string) $chrs, $i, 6)):
                     // single, escaped unicode character
-                    $utf16 = chr(hexdec(substr($chrs, ($i + 2), 2)))
-                           . chr(hexdec(substr($chrs, ($i + 4), 2)));
+                    $utf16 = chr(hexdec(substr((string) $chrs, ($i + 2), 2)))
+                           . chr(hexdec(substr((string) $chrs, ($i + 4), 2)));
                     $utf8 .= self::_utf162utf8($utf16);
                     $i += 5;
                     break;
@@ -502,31 +502,31 @@ class Zend_Json_Decoder
                 case ($ord_chrs_c & 0xE0) == 0xC0:
                     // characters U-00000080 - U-000007FF, mask 110XXXXX
                     //see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 2);
+                    $utf8 .= substr((string) $chrs, $i, 2);
                     ++$i;
                     break;
                 case ($ord_chrs_c & 0xF0) == 0xE0:
                     // characters U-00000800 - U-0000FFFF, mask 1110XXXX
                     // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 3);
+                    $utf8 .= substr((string) $chrs, $i, 3);
                     $i += 2;
                     break;
                 case ($ord_chrs_c & 0xF8) == 0xF0:
                     // characters U-00010000 - U-001FFFFF, mask 11110XXX
                     // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 4);
+                    $utf8 .= substr((string) $chrs, $i, 4);
                     $i += 3;
                     break;
                 case ($ord_chrs_c & 0xFC) == 0xF8:
                     // characters U-00200000 - U-03FFFFFF, mask 111110XX
                     // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 5);
+                    $utf8 .= substr((string) $chrs, $i, 5);
                     $i += 4;
                     break;
                 case ($ord_chrs_c & 0xFE) == 0xFC:
                     // characters U-04000000 - U-7FFFFFFF, mask 1111110X
                     // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
-                    $utf8 .= substr($chrs, $i, 6);
+                    $utf8 .= substr((string) $chrs, $i, 6);
                     $i += 5;
                     break;
             }
@@ -555,7 +555,7 @@ class Zend_Json_Decoder
             return mb_convert_encoding($utf16, 'UTF-8', 'UTF-16');
         }
 
-        $bytes = (ord($utf16[0]) << 8) | ord($utf16[1]);
+        $bytes = (ord((string) $utf16[0]) << 8) | ord((string) $utf16[1]);
 
         switch (true) {
             case ((0x7F & $bytes) == $bytes):

@@ -273,7 +273,7 @@ class Zend_Queue_Stomp_Frame
         // add a content-length to the SEND command.
         // @see http://stomp.codehaus.org/Protocol
         if ($this->getAutoContentLength()) {
-            $headers[self::CONTENT_LENGTH] = strlen($this->getBody());
+            $headers[self::CONTENT_LENGTH] = strlen((string) $this->getBody());
         }
 
         // Command
@@ -345,7 +345,7 @@ class Zend_Queue_Stomp_Frame
 
         // set each of the headers.
         foreach ($headers as $header) {
-            if (strpos($header, ':') > 0) {
+            if (strpos((string) $header, ':') > 0) {
                 list($name, $value) = explode(':', $header, 2);
                 $this->setHeader($name, $value);
             }
@@ -354,7 +354,7 @@ class Zend_Queue_Stomp_Frame
         // crop the body if content-length is present
         if ($this->getHeader(self::CONTENT_LENGTH) !== false ) {
             $length = (int) $this->getHeader(self::CONTENT_LENGTH);
-            $body   = substr($body, 0, $length);
+            $body   = substr((string) $body, 0, $length);
         }
 
         $this->setBody($body);

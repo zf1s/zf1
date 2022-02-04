@@ -130,7 +130,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
     public function __construct(array $options = array())
     {
         foreach ($options as $name => $value) {
-            $name = strtolower($name);
+            $name = strtolower((string) $name);
             switch ($name) {
                 case 'regexps':
                     $this->_setRegexps($value);
@@ -169,7 +169,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
             if (!is_string($key)) {
                 Zend_Cache::throwException("invalid option [$key] !");
             }
-            $key = strtolower($key);
+            $key = strtolower((string) $key);
             if (isset($this->_specificOptions['default_options'][$key])) {
                 $this->_specificOptions['default_options'][$key] = $value;
             }
@@ -187,7 +187,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
     {
         $found = null;
         foreach ($this->_specificOptions['memorize_headers'] as $key => $value) {
-            if (strtolower($value) == 'content-type') {
+            if (strtolower((string) $value) == 'content-type') {
                 $found = $key;
             }
         }
@@ -223,7 +223,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
                 if (!is_string($key)) {
                     Zend_Cache::throwException("unknown option [$key] !");
                 }
-                $key = strtolower($key);
+                $key = strtolower((string) $key);
                 if (!in_array($key, $validKeys)) {
                     unset($regexps[$regexp][$key]);
                 }
@@ -317,9 +317,9 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
         foreach($this->_specificOptions['memorize_headers'] as $key=>$headerName) {
             foreach ($headersList as $headerSent) {
                 $tmp = explode(':', $headerSent);
-                $headerSentName = trim(array_shift($tmp));
-                if (strtolower($headerName) == strtolower($headerSentName)) {
-                    $headerSentValue = trim(implode(':', $tmp));
+                $headerSentName = \trim((string) array_shift($tmp));
+                if (strtolower((string) $headerName) == strtolower((string) $headerSentName)) {
+                    $headerSentValue = \trim((string) implode(':', $tmp));
                     $storedHeaders[] = array($headerSentName, $headerSentValue);
                 }
             }
@@ -343,13 +343,13 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
         $array = explode('?', $tmp, 2);
           $tmp = $array[0];
         foreach (array('Get', 'Post', 'Session', 'Files', 'Cookie') as $arrayName) {
-            $tmp2 = $this->_makePartialId($arrayName, $this->_activeOptions['cache_with_' . strtolower($arrayName) . '_variables'], $this->_activeOptions['make_id_with_' . strtolower($arrayName) . '_variables']);
+            $tmp2 = $this->_makePartialId($arrayName, $this->_activeOptions['cache_with_' . strtolower((string) $arrayName) . '_variables'], $this->_activeOptions['make_id_with_' . strtolower((string) $arrayName) . '_variables']);
             if ($tmp2===false) {
                 return false;
             }
             $tmp = $tmp . $tmp2;
         }
-        return md5($tmp);
+        return md5((string) $tmp);
     }
 
     /**

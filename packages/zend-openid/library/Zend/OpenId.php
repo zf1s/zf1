@@ -99,14 +99,14 @@ class Zend_OpenId
         $url = '';
         $port = '';
         if (isset($_SERVER['HTTP_HOST'])) {
-            if (($pos = strpos($_SERVER['HTTP_HOST'], ':')) === false) {
+            if (($pos = strpos((string) $_SERVER['HTTP_HOST'], ':')) === false) {
                 if (isset($_SERVER['SERVER_PORT'])) {
                     $port = ':' . $_SERVER['SERVER_PORT'];
                 }
                 $url = $_SERVER['HTTP_HOST'];
             } else {
-                $url = substr($_SERVER['HTTP_HOST'], 0, $pos);
-                $port = substr($_SERVER['HTTP_HOST'], $pos);
+                $url = substr((string) $_SERVER['HTTP_HOST'], 0, $pos);
+                $port = substr((string) $_SERVER['HTTP_HOST'], $pos);
             }
         } else if (isset($_SERVER['SERVER_NAME'])) {
             $url = $_SERVER['SERVER_NAME'];
@@ -127,18 +127,18 @@ class Zend_OpenId
         }
 
         $url .= $port;
-        if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) { 
+        if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) {
             // IIS with Microsoft Rewrite Module
             $url .= $_SERVER['HTTP_X_ORIGINAL_URL'];
         } elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
-            // IIS with ISAPI_Rewrite 
+            // IIS with ISAPI_Rewrite
             $url .= $_SERVER['HTTP_X_REWRITE_URL'];
         } elseif (isset($_SERVER['REQUEST_URI'])) {
-            $query = strpos($_SERVER['REQUEST_URI'], '?');
+            $query = strpos((string) $_SERVER['REQUEST_URI'], '?');
             if ($query === false) {
                 $url .= $_SERVER['REQUEST_URI'];
             } else {
-                $url .= substr($_SERVER['REQUEST_URI'], 0, $query);
+                $url .= substr((string) $_SERVER['REQUEST_URI'], 0, $query);
             }
         } else if (isset($_SERVER['SCRIPT_URL'])) {
             $url .= $_SERVER['SCRIPT_URL'];
@@ -187,7 +187,7 @@ class Zend_OpenId
                         . $auth
                         . $host
                         . (empty($port) ? '' : (':' . $port))
-                        . (strlen($dir) > 1 ? $dir : '')
+                        . (strlen((string) $dir) > 1 ? $dir : '')
                         . '/'
                         . $url;
                 }
@@ -206,9 +206,9 @@ class Zend_OpenId
     {
         foreach($params as $key => $value) {
             if (isset($query)) {
-                $query .= '&' . $key . '=' . urlencode($value);
+                $query .= '&' . $key . '=' . urlencode((string) $value);
             } else {
-                $query = $key . '=' . urlencode($value);
+                $query = $key . '=' . urlencode((string) $value);
             }
         }
         return isset($query) ? $query : '';
@@ -228,7 +228,7 @@ class Zend_OpenId
 
         // RFC 3986, 6.2.2.2 Percent-Encoding Normalization
         $i = 0;
-        $n = strlen($id);
+        $n = strlen((string) $id);
         $res = '';
         while ($i < $n) {
             if ($id[$i] == '%') {
@@ -237,21 +237,21 @@ class Zend_OpenId
                 }
                 ++$i;
                 if ($id[$i] >= '0' && $id[$i] <= '9') {
-                    $c = ord($id[$i]) - ord('0');
+                    $c = ord((string) $id[$i]) - ord((string) '0');
                 } else if ($id[$i] >= 'A' && $id[$i] <= 'F') {
-                    $c = ord($id[$i]) - ord('A') + 10;
+                    $c = ord((string) $id[$i]) - ord((string) 'A') + 10;
                 } else if ($id[$i] >= 'a' && $id[$i] <= 'f') {
-                    $c = ord($id[$i]) - ord('a') + 10;
+                    $c = ord((string) $id[$i]) - ord((string) 'a') + 10;
                 } else {
                     return false;
                 }
                 ++$i;
                 if ($id[$i] >= '0' && $id[$i] <= '9') {
-                    $c = ($c << 4) | (ord($id[$i]) - ord('0'));
+                    $c = ($c << 4) | (ord((string) $id[$i]) - ord((string) '0'));
                 } else if ($id[$i] >= 'A' && $id[$i] <= 'F') {
-                    $c = ($c << 4) | (ord($id[$i]) - ord('A') + 10);
+                    $c = ($c << 4) | (ord((string) $id[$i]) - ord((string) 'A') + 10);
                 } else if ($id[$i] >= 'a' && $id[$i] <= 'f') {
-                    $c = ($c << 4) | (ord($id[$i]) - ord('a') + 10);
+                    $c = ($c << 4) | (ord((string) $id[$i]) - ord((string) 'a') + 10);
                 } else {
                     return false;
                 }
@@ -267,15 +267,15 @@ class Zend_OpenId
                 } else {
                     $res .= '%';
                     if (($c >> 4) < 10) {
-                        $res .= chr(($c >> 4) + ord('0'));
+                        $res .= chr(($c >> 4) + ord((string) '0'));
                     } else {
-                        $res .= chr(($c >> 4) - 10 + ord('A'));
+                        $res .= chr(($c >> 4) - 10 + ord((string) 'A'));
                     }
                     $c = $c & 0xf;
                     if ($c < 10) {
-                        $res .= chr($c + ord('0'));
+                        $res .= chr($c + ord((string) '0'));
                     } else {
-                        $res .= chr($c - 10 + ord('A'));
+                        $res .= chr($c - 10 + ord((string) 'A'));
                     }
                 }
             } else {
@@ -299,13 +299,13 @@ class Zend_OpenId
         }
 
         // RFC 3986, 6.2.2.1.  Case Normalization
-        $scheme = strtolower($scheme);
-        $host = strtolower($host);
+        $scheme = strtolower((string) $scheme);
+        $host = strtolower((string) $host);
 
         // RFC 3986, 6.2.2.3.  Path Segment Normalization
         if (!empty($path)) {
             $i = 0;
-            $n = strlen($path);
+            $n = strlen((string) $path);
             $res = "";
             while ($i < $n) {
                 if ($path[$i] == '/') {
@@ -319,7 +319,7 @@ class Zend_OpenId
                             ++$i;
                             if ($i == $n || $path[$i] == '/') {
                                 if (($pos = strrpos($res, '/')) !== false) {
-                                    $res = substr($res, 0, $pos);
+                                    $res = substr((string) $res, 0, $pos);
                                 }
                             } else {
                                     $res .= '/..';
@@ -385,18 +385,18 @@ class Zend_OpenId
      */
     static public function normalize(&$id)
     {
-        $id = trim($id);
-        if (strlen($id) === 0) {
+        $id = \trim((string) $id);
+        if (strlen((string) $id) === 0) {
             return true;
         }
 
         // 7.2.1
-        if (strpos($id, 'xri://$ip*') === 0) {
-            $id = substr($id, strlen('xri://$ip*'));
-        } else if (strpos($id, 'xri://$dns*') === 0) {
-            $id = substr($id, strlen('xri://$dns*'));
-        } else if (strpos($id, 'xri://') === 0) {
-            $id = substr($id, strlen('xri://'));
+        if (strpos((string) $id, 'xri://$ip*') === 0) {
+            $id = substr((string) $id, strlen((string) 'xri://$ip*'));
+        } else if (strpos((string) $id, 'xri://$dns*') === 0) {
+            $id = substr((string) $id, strlen((string) 'xri://$dns*'));
+        } else if (strpos((string) $id, 'xri://') === 0) {
+            $id = substr((string) $id, strlen((string) 'xri://'));
         }
 
         // 7.2.2
@@ -409,7 +409,7 @@ class Zend_OpenId
         }
 
         // 7.2.3
-        if (strpos($id, "://") === false) {
+        if (strpos((string) $id, "://") === false) {
             $id = 'http://' . $id;
         }
 
@@ -448,7 +448,7 @@ class Zend_OpenId
             $body .= "<input type=\"submit\" value=\"Continue OpenID transaction\">\n";
             $body .= "</form></body></html>\n";
         } else if (is_array($params) && count($params) > 0) {
-            if (strpos($url, '?') === false) {
+            if (strpos((string) $url, '?') === false) {
                 $url .= '?' . self::paramsToQuery($params);
             } else {
                 $url .= '&' . self::paramsToQuery($params);
@@ -530,7 +530,7 @@ class Zend_OpenId
         if (function_exists('hash_hmac')) {
             return hash_hmac($macFunc, $data, $secret, true);
         } else {
-            if (Zend_OpenId::strlen($secret) > 64) {
+            if (Zend_OpenId::strlen((string) $secret) > 64) {
                 $secret = self::digest($macFunc, $secret);
             }
             $secret = str_pad($secret, 64, chr(0x00));
@@ -555,10 +555,10 @@ class Zend_OpenId
             return gmp_init(bin2hex($bin), 16);
         } else if (extension_loaded('bcmath')) {
             $bn = 0;
-            $len = Zend_OpenId::strlen($bin);
+            $len = Zend_OpenId::strlen((string) $bin);
             for ($i = 0; $i < $len; $i++) {
                 $bn = bcmul($bn, 256);
-                $bn = bcadd($bn, ord($bin[$i]));
+                $bn = bcadd($bn, ord((string) $bin[$i]));
             }
             return $bn;
         }
@@ -580,7 +580,7 @@ class Zend_OpenId
     {
         if (extension_loaded('gmp')) {
             $s = gmp_strval($bn, 16);
-            if (strlen($s) % 2 != 0) {
+            if (strlen((string) $s) % 2 != 0) {
                 $s = '0' . $s;
             } else if ($s[0] > '7') {
                 $s = '00' . $s;
@@ -601,7 +601,7 @@ class Zend_OpenId
                 $bin = chr(bcmod($bn, 256)) . $bin;
                 $bn = bcdiv($bn, 256);
             }
-            if (ord($bin[0]) > 127) {
+            if (ord((string) $bin[0]) > 127) {
                 $bin = "\0" . $bin;
             }
             return $bin;
@@ -639,7 +639,7 @@ class Zend_OpenId
             $bn_p        = self::binToBigNum($p);
             $bn_g        = self::binToBigNum($g);
             if ($priv_key === null) {
-                $priv_key    = self::randomBytes(Zend_OpenId::strlen($p));
+                $priv_key    = self::randomBytes(Zend_OpenId::strlen((string) $p));
             }
             $bn_priv_key = self::binToBigNum($priv_key);
             if (extension_loaded('gmp')) {
@@ -696,7 +696,7 @@ class Zend_OpenId
     {
         if (function_exists('openssl_dh_compute_key')) {
             $ret = openssl_dh_compute_key($pub_key, $dh);
-            if (ord($ret[0]) > 127) {
+            if (ord((string) $ret[0]) > 127) {
                 $ret = "\0" . $ret;
             }
             return $ret;
@@ -732,7 +732,7 @@ class Zend_OpenId
      */
     static public function btwoc($str)
     {
-        if (ord($str[0]) > 127) {
+        if (ord((string) $str[0]) > 127) {
             return "\0" . $str;
         }
         return $str;
@@ -750,7 +750,7 @@ class Zend_OpenId
             (((int)ini_get('mbstring.func_overload')) & 2)) {
             return mb_strlen($str, 'latin1');
         } else {
-            return strlen($str);
+            return strlen((string) $str);
         }
     }
 

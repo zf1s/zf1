@@ -426,7 +426,7 @@ class Zend_Filter_InflectorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Added str_replace('\\', '\\\\', ..) to all processedParts values to disable backreferences
+     * Added str_replace((string) '\\', '\\\\', ..) to all processedParts values to disable backreferences
      *
      * @group ZF-2538 Zend_Filter_Inflector::filter() fails with all numeric folder on Windows
      */

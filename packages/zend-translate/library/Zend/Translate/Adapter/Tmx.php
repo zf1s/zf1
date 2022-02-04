@@ -86,7 +86,7 @@ class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
                 $e->getMessage()
             );
         }
- 
+
         if (!xml_parse($this->_file, file_get_contents($filename))) {
             $ex = sprintf('XML error: %s at line %d of file %s',
                           xml_error_string(xml_get_error_code($this->_file)),
@@ -116,7 +116,7 @@ class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
             }
             $this->_content .= ">";
         } else {
-            switch(strtolower($name)) {
+            switch(strtolower((string) $name)) {
                 case 'header':
                     if (empty($this->_useId) && isset($attrib['srclang'])) {
                         if (Zend_Locale::isLocale($attrib['srclang'])) {
@@ -182,7 +182,7 @@ class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
         if (($this->_seg !== null) and ($name !== 'seg')) {
             $this->_content .= "</".$name.">";
         } else {
-            switch (strtolower($name)) {
+            switch (strtolower((string) $name)) {
                 case 'tu':
                     $this->_tu = null;
                     break;
@@ -227,10 +227,10 @@ class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
      */
     protected function _findEncoding($filename)
     {
-        $file = file_get_contents($filename, null, null, 0, 100);
-        if (strpos($file, "encoding") !== false) {
-            $encoding = substr($file, strpos($file, "encoding") + 9);
-            $encoding = substr($encoding, 1, strpos($encoding, $encoding[0], 1) - 1);
+        $file = file_get_contents($filename, false, null, 0, 100);
+        if (strpos((string) $file, "encoding") !== false) {
+            $encoding = substr((string) $file, strpos((string) $file, "encoding") + 9);
+            $encoding = substr((string) $encoding, 1, strpos((string) $encoding, $encoding[0], 1) - 1);
             return $encoding;
         }
         return 'UTF-8';

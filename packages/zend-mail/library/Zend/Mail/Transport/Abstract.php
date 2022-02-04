@@ -204,7 +204,7 @@ abstract class Zend_Mail_Transport_Abstract
         // Sanity check on headers -- should not be > 998 characters
         $sane = true;
         foreach (explode($this->EOL, $this->header) as $line) {
-            if (strlen(trim($line)) > 998) {
+            if (strlen((string) \trim((string) $line)) > 998) {
                 $sane = false;
                 break;
             }

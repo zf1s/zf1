@@ -46,7 +46,7 @@ class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
 
     /**
      * Data key value pairs
-     * 
+     *
      * @var array
      */
     protected $_data = array();
@@ -60,7 +60,7 @@ class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
 
     /**
      * Time to live in seconds
-     * 
+     *
      * @var int
      */
     protected $_ttl = 2419200;
@@ -237,7 +237,7 @@ class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
         }
         if ($this->_ttl !== 2419200 &&
             (!is_scalar($this->_id) ||
-            strlen($this->_id) === 0)) {
+            strlen((string) $this->_id) === 0)) {
             return false;
         }
         return true;

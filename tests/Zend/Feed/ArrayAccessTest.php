@@ -40,8 +40,8 @@ class Zend_Feed_ArrayAccessTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_feed = Zend_Feed::importFile(dirname(__FILE__) . '/_files/TestAtomFeed.xml');
-        $this->_nsfeed = Zend_Feed::importFile(dirname(__FILE__) . '/_files/TestAtomFeedNamespaced.xml');
+        $this->_feed = Zend_Feed::importFile(__DIR__ . '/_files/TestAtomFeed.xml');
+        $this->_nsfeed = Zend_Feed::importFile(__DIR__ . '/_files/TestAtomFeedNamespaced.xml');
     }
 
     public function testExists()
@@ -77,12 +77,12 @@ class Zend_Feed_ArrayAccessTest extends PHPUnit_Framework_TestCase
 
     public function testUnset()
     {
-        $feed = Zend_Feed::importFile(dirname(__FILE__) . '/_files/TestAtomFeed.xml');
+        $feed = Zend_Feed::importFile(__DIR__ . '/_files/TestAtomFeed.xml');
         unset($feed['version']);
         $this->assertFalse(isset($feed['version']), 'Version should be unset');
         $this->assertEquals('', $feed['version'], 'Version should be equal to the empty string');
 
-        $nsfeed = Zend_Feed::importFile(dirname(__FILE__) . '/_files/TestAtomFeedNamespaced.xml');
+        $nsfeed = Zend_Feed::importFile(__DIR__ . '/_files/TestAtomFeedNamespaced.xml');
         unset($nsfeed['version']);
         $this->assertFalse(isset($nsfeed['version']), 'Version should be unset');
         $this->assertEquals('', $nsfeed['version'], 'Version should be equal to the empty string');
@@ -93,7 +93,7 @@ class Zend_Feed_ArrayAccessTest extends PHPUnit_Framework_TestCase
      */
     public function testGetsLinkWithEmptyOrMissingRelAsAlternateRel()
     {
-        $feed = Zend_Feed::importFile(dirname(__FILE__) . '/_files/AtomHOnline.xml');
+        $feed = Zend_Feed::importFile(__DIR__ . '/_files/AtomHOnline.xml');
         $entry = $feed->current();
         $this->assertEquals('http://www.h-online.com/security/Google-acquires-reCAPTCHA--/news/114266/from/rss', $entry->link('alternate'));
     }

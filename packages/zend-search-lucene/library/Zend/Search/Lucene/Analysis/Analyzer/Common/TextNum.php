@@ -82,7 +82,7 @@ class Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum extends Zend_Search_Lu
 
             $str = $match[0][0];
             $pos = $match[0][1];
-            $endpos = $pos + strlen($str);
+            $endpos = $pos + strlen((string) $str);
 
             $this->_position = $endpos;
 

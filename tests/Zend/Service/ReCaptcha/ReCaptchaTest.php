@@ -237,10 +237,10 @@ class Zend_Service_ReCaptcha_ReCaptchaTest extends PHPUnit_Framework_TestCase
         $html = $this->_reCaptcha->getHtml();
 
         // See if the options for the captcha exist in the string
-        $this->assertNotSame(false, strstr($html, 'var RecaptchaOptions = {"theme":"red","lang":"en"};'));
+        $this->assertNotSame(false, strstr((string) $html, 'var RecaptchaOptions = {"theme":"red","lang":"en"};'));
 
         // See if the js/iframe src is correct
-        $this->assertNotSame(false, strstr($html, 'src="' . Zend_Service_ReCaptcha::API_SECURE_SERVER . '/challenge?k=' . $this->_publicKey . '&error=' . $errorMsg . '"'));
+        $this->assertNotSame(false, strstr((string) $html, 'src="' . Zend_Service_ReCaptcha::API_SECURE_SERVER . '/challenge?k=' . $this->_publicKey . '&error=' . $errorMsg . '"'));
     }
 
     /** @group ZF-10991 */

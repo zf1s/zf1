@@ -102,8 +102,8 @@ abstract class Zend_Service_WindowsAzure_Storage_BatchStorageAbstract
 	public function performBatch($operations = array(), $forTableStorage = false, $isSingleSelect = false, $resourceType = Zend_Service_WindowsAzure_Storage::RESOURCE_UNKNOWN, $requiredPermission = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ)
 	{
 	    // Generate boundaries
-	    $batchBoundary = 'batch_' . md5(time() . microtime());
-	    $changesetBoundary = 'changeset_' . md5(time() . microtime());
+	    $batchBoundary = 'batch_' . md5((string) time() . microtime());
+	    $changesetBoundary = 'changeset_' . md5((string) time() . microtime());
 	    
 	    // Set headers
 	    $headers = array();

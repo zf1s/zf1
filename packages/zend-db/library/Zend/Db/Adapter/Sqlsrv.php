@@ -148,7 +148,7 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
             foreach ($this->_config['driver_options'] as $option => $value) {
                 // A value may be a constant.
                 if (is_string($value)) {
-                    $constantName = strtoupper($value);
+                    $constantName = strtoupper((string) $value);
                     if (defined($constantName)) {
                         $connectionInfo[$option] = constant($constantName);
                     } else {
@@ -315,7 +315,7 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
         }
 
         $value = addcslashes($value, "\000\032");
-        return "'" . str_replace("'", "''", $value) . "'";
+        return "'" . str_replace((string) "'", "''", $value) . "'";
     }
 
     /**

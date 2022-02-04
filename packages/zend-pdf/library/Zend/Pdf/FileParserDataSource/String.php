@@ -64,7 +64,7 @@ class Zend_Pdf_FileParserDataSource_String extends Zend_Pdf_FileParserDataSource
             throw new Zend_Pdf_Exception('String is empty',
                                          Zend_Pdf_Exception::PARAMETER_VALUE_OUT_OF_RANGE);
         }
-        $this->_size = strlen($string);
+        $this->_size = strlen((string) $string);
         $this->_string = $string;
     }
 
@@ -96,7 +96,7 @@ class Zend_Pdf_FileParserDataSource_String extends Zend_Pdf_FileParserDataSource
             throw new Zend_Pdf_Exception("Insufficient data to read $byteCount bytes",
                                          Zend_Pdf_Exception::INSUFFICIENT_DATA);
         }
-        $bytes = substr($this->_string, $this->_offset, $byteCount);
+        $bytes = substr((string) $this->_string, $this->_offset, $byteCount);
         $this->_offset += $byteCount;
         return $bytes;
     }

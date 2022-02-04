@@ -183,6 +183,20 @@ class Zend_Http_UserAgent implements Serializable
         return serialize($spec);
     }
 
+    #[\ReturnTypeWillChange]
+    public function __serialize()
+    {
+        $device = $this->getDevice();
+        return array(
+            'browser_type' => $this->_browserType,
+            'config'       => $this->_config,
+            'device_class' => get_class($device),
+            'device'       => $device->serialize(),
+            'user_agent'   => $this->getServerValue('http_user_agent'),
+            'http_accept'  => $this->getServerValue('http_accept'),
+        );
+    }
+
     /**
      * Unserialize a previous representation of the object
      *
@@ -193,6 +207,24 @@ class Zend_Http_UserAgent implements Serializable
     {
         $spec = unserialize($serialized);
 
+        $this->setOptions($spec);
+
+        // Determine device class and ensure the class is loaded
+        $deviceClass          = $spec['device_class'];
+        if (!class_exists($deviceClass)) {
+            $this->_getUserAgentDevice($this->getBrowserType());
+        }
+
+        // Get device specification and instantiate
+        $deviceSpec            = unserialize($spec['device']);
+        $deviceSpec['_config'] = $this->getConfig();
+        $deviceSpec['_server'] = $this->getServer();
+        $this->_device = new $deviceClass($deviceSpec);
+    }
+
+    #[\ReturnTypeWillChange]
+    public function __unserialize($spec)
+    {
         $this->setOptions($spec);
 
         // Determine device class and ensure the class is loaded
@@ -251,7 +283,7 @@ class Zend_Http_UserAgent implements Serializable
         // And then loop through the remaining options
         $config = array();
         foreach ($options as $key => $value) {
-            switch (strtolower($key)) {
+            switch (strtolower((string) $key)) {
                 case 'browser_type':
                     $this->setBrowserType($value);
                     break;
@@ -311,7 +343,7 @@ class Zend_Http_UserAgent implements Serializable
      */
     protected function _getUserAgentDevice($browserType)
     {
-        $browserType = strtolower($browserType);
+        $browserType = strtolower((string) $browserType);
         if (isset($this->_browserTypeClass[$browserType])) {
             return $this->_browserTypeClass[$browserType];
         }
@@ -673,7 +705,7 @@ class Zend_Http_UserAgent implements Serializable
      */
     public function getServerValue($key)
     {
-        $key    = strtolower($key);
+        $key    = strtolower((string) $key);
         $server = $this->getServer();
         $return = null;
         if (isset($server[$key])) {
@@ -700,7 +732,7 @@ class Zend_Http_UserAgent implements Serializable
         }
 
         $server = $this->getServer(); // ensure it's been initialized
-        $key    = strtolower($key);
+        $key    = strtolower((string) $key);
         $this->_server[$key] = $value;
         return $this;
     }
@@ -782,7 +814,7 @@ class Zend_Http_UserAgent implements Serializable
      */
     protected function _validateLoaderType($type)
     {
-        $type = strtolower($type);
+        $type = strtolower((string) $type);
         if (!in_array($type, $this->_loaderTypes)) {
             $types = implode(', ', $this->_loaderTypes);
 
@@ -826,7 +858,7 @@ class Zend_Http_UserAgent implements Serializable
 
         // Test each type until we find a match
         foreach ($sequence as $browserType) {
-            $browserType = trim($browserType);
+            $browserType = \trim((string) $browserType);
             $className   = $this->_getUserAgentDevice($browserType);
 
             // Attempt to match this device class

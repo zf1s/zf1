@@ -51,9 +51,9 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
             if (TESTS_ZEND_MAIL_TEMPDIR != null) {
                 $this->_tmpdir = TESTS_ZEND_MAIL_TEMPDIR;
             } else {
-                $this->_tmpdir = dirname(__FILE__) . '/_files/test.tmp/';
+                $this->_tmpdir = __DIR__ . '/_files/test.tmp/';
             }
-            if (!file_exists($this->_tmpdir)) {
+            if (!file_exists((string) $this->_tmpdir)) {
                 mkdir($this->_tmpdir);
             }
             $count = 0;
@@ -68,7 +68,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
             }
         }
 
-        $this->_mboxOriginalFile = dirname(__FILE__) . '/_files/test.mbox/INBOX';
+        $this->_mboxOriginalFile = __DIR__ . '/_files/test.mbox/INBOX';
         $this->_mboxFile = $this->_tmpdir . 'INBOX';
 
         copy($this->_mboxOriginalFile, $this->_mboxFile);
@@ -206,7 +206,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Mbox(array('filename' => $this->_mboxFile));
 
         $content = $mail->getHeader(3, 1)->getContent();
-        $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
+        $this->assertEquals('Fair river! in thy bright, clear flow', \trim((string) $content));
     }
 */
 
@@ -224,7 +224,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
 
         $content = $mail->getMessage(3)->getContent();
         list($content, ) = explode("\n", $content, 2);
-        $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
+        $this->assertEquals('Fair river! in thy bright, clear flow', \trim((string) $content));
     }
 
     public function testFailedRemove()

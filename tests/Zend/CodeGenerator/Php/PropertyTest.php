@@ -40,7 +40,7 @@ class Zend_CodeGenerator_Php_PropertyTest extends PHPUnit_Framework_TestCase
     public function setup()
     {
         if (!class_exists('Zend_CodeGenerator_Php_TestClassWithManyProperties')) {
-            require_once dirname(__FILE__) . '/_files/TestClassWithManyProperties.php';
+            require_once __DIR__ . '/_files/TestClassWithManyProperties.php';
         }
     }
 
@@ -84,7 +84,7 @@ EOS;
             ));
 
         $targetSource = $property->generate();
-        $targetSource = str_replace("\r", '', $targetSource);
+        $targetSource = str_replace((string) "\r", '', $targetSource);
 
         $this->assertEquals($expectedSource, $targetSource);
     }

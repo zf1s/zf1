@@ -103,9 +103,9 @@ abstract class Zend_Barcode_Renderer_RendererAbstract
         if (is_array($options)) {
             $this->setOptions($options);
         }
-        $this->_type = strtolower(substr(
+        $this->_type = strtolower((string) substr((string)
             get_class($this),
-            strlen($this->_rendererNamespace) + 1
+            strlen((string) $this->_rendererNamespace) + 1
         ));
     }
 

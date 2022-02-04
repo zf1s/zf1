@@ -24,7 +24,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'resources_languages_AllTests::main');
 }
 
-require_once dirname(__FILE__) . '/Zend_ValidateTest.php';
+require_once __DIR__ . '/Zend_ValidateTest.php';
 
 /**
  * @category   Zend

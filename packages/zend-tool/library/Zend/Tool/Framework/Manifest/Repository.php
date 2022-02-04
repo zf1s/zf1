@@ -282,7 +282,7 @@ class Zend_Tool_Framework_Manifest_Repository
             $string .= $type . PHP_EOL;
             foreach ($metadatas as $metadata) {
                 $metadataString = '    ' . $metadata->__toString() . PHP_EOL;
-                //$metadataString = str_replace(PHP_EOL, PHP_EOL . '    ', $metadataString);
+                //$metadataString = str_replace((string) PHP_EOL, PHP_EOL . '    ', $metadataString);
                 $string .= $metadataString;
             }
         }
@@ -295,6 +295,7 @@ class Zend_Tool_Framework_Manifest_Repository
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_metadatas);
@@ -305,6 +306,7 @@ class Zend_Tool_Framework_Manifest_Repository
      *
      * @return ArrayIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->_metadatas);

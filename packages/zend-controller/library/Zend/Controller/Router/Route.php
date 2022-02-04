@@ -174,7 +174,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
         $route, $defaults = array(), $reqs = array(), Zend_Translate $translator = null, $locale = null
     )
     {
-        $route               = trim($route, $this->_urlDelimiter);
+        $route               = \trim((string) $route, $this->_urlDelimiter);
         $this->_defaults     = (array)$defaults;
         $this->_requirements = (array)$reqs;
         $this->_translator   = $translator;
@@ -182,11 +182,11 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
 
         if ($route !== '') {
             foreach (explode($this->_urlDelimiter, $route) as $pos => $part) {
-                if (substr($part, 0, 1) == $this->_urlVariable && substr($part, 1, 1) != $this->_urlVariable) {
-                    $name = substr($part, 1);
+                if (substr((string) $part, 0, 1) == $this->_urlVariable && substr((string) $part, 1, 1) != $this->_urlVariable) {
+                    $name = substr((string) $part, 1);
 
-                    if (substr($name, 0, 1) === '@' && substr($name, 1, 1) !== '@') {
-                        $name                  = substr($name, 1);
+                    if (substr((string) $name, 0, 1) === '@' && substr((string) $name, 1, 1) !== '@') {
+                        $name                  = substr((string) $name, 1);
                         $this->_translatable[] = $name;
                         $this->_isTranslated   = true;
                     }
@@ -194,11 +194,11 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                     $this->_parts[$pos]     = (isset($reqs[$name]) ? $reqs[$name] : $this->_defaultRegex);
                     $this->_variables[$pos] = $name;
                 } else {
-                    if (substr($part, 0, 1) == $this->_urlVariable) {
-                        $part = substr($part, 1);
+                    if (substr((string) $part, 0, 1) == $this->_urlVariable) {
+                        $part = substr((string) $part, 1);
                     }
 
-                    if (substr($part, 0, 1) === '@' && substr($part, 1, 1) !== '@') {
+                    if (substr((string) $part, 0, 1) === '@' && substr((string) $part, 1, 1) !== '@') {
                         $this->_isTranslated = true;
                     }
 
@@ -232,7 +232,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
         $matchedPath     = '';
 
         if (!$partial) {
-            $path = trim($path, $this->_urlDelimiter);
+            $path = \trim((string) $path, $this->_urlDelimiter);
         }
 
         if ($path !== '') {
@@ -272,12 +272,12 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                 // Translate value if required
                 $part = $this->_parts[$pos];
                 if ($this->_isTranslated
-                    && (substr($part, 0, 1) === '@' && substr($part, 1, 1) !== '@'
+                    && (substr((string) $part, 0, 1) === '@' && substr((string) $part, 1, 1) !== '@'
                         && $name === null)
                     || $name !== null && in_array($name, $this->_translatable)
                 ) {
-                    if (substr($part, 0, 1) === '@') {
-                        $part = substr($part, 1);
+                    if (substr((string) $part, 0, 1) === '@') {
+                        $part = substr((string) $part, 1);
                     }
 
                     if (($originalPathPart = array_search($pathPart, $translateMessages)) !== false) {
@@ -285,8 +285,8 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                     }
                 }
 
-                if (substr($part, 0, 2) === '@@') {
-                    $part = substr($part, 1);
+                if (substr((string) $part, 0, 2) === '@@') {
+                    $part = substr((string) $part, 1);
                 }
 
                 // If it's a static part, match directly
@@ -329,7 +329,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
             }
         }
 
-        $this->setMatchedPath(rtrim($matchedPath, $this->_urlDelimiter));
+        $this->setMatchedPath(rtrim((string) $matchedPath, $this->_urlDelimiter));
 
         $this->_values = $values;
 
@@ -391,15 +391,15 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                     $url[$key] = $value;
                 }
             } elseif ($part != '*') {
-                if ($this->_isTranslated && substr($part, 0, 1) === '@') {
-                    if (substr($part, 1, 1) !== '@') {
-                        $url[$key] = $translator->translate(substr($part, 1), $locale);
+                if ($this->_isTranslated && substr((string) $part, 0, 1) === '@') {
+                    if (substr((string) $part, 1, 1) !== '@') {
+                        $url[$key] = $translator->translate(substr((string) $part, 1), $locale);
                     } else {
-                        $url[$key] = substr($part, 1);
+                        $url[$key] = substr((string) $part, 1);
                     }
                 } else {
-                    if (substr($part, 0, 2) === '@@') {
-                        $part = substr($part, 1);
+                    if (substr((string) $part, 0, 2) === '@@') {
+                        $part = substr((string) $part, 1);
                     }
 
                     $url[$key] = $part;
@@ -436,14 +436,14 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
 
             if ($flag || $value !== $defaultValue || $partial) {
                 if ($encode) {
-                    $value = urlencode($value);
+                    $value = urlencode((string) $value);
                 }
                 $return = $this->_urlDelimiter . $value . $return;
                 $flag   = true;
             }
         }
 
-        return trim($return, $this->_urlDelimiter);
+        return \trim((string) $return, $this->_urlDelimiter);
     }
 
     /**

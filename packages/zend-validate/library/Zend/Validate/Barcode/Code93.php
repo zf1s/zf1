@@ -82,8 +82,8 @@ class Zend_Validate_Barcode_Code93 extends Zend_Validate_Barcode_AdapterAbstract
      */
     protected function _code93($value)
     {
-        $checksum = substr($value, -2, 2);
-        $value    = str_split(substr($value, 0, -2));
+        $checksum = substr((string) $value, -2, 2);
+        $value    = str_split(substr((string) $value, 0, -2));
         $count    = 0;
         $length   = count($value) % 20;
         foreach($value as $char) {

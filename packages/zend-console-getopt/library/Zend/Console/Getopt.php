@@ -559,7 +559,7 @@ class Zend_Console_Getopt
     {
         $this->parse();
         if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
-            $flag = strtolower($flag);
+            $flag = strtolower((string) $flag);
         }
         if (isset($this->_ruleMap[$flag])) {
             $flag = $this->_ruleMap[$flag];
@@ -599,7 +599,7 @@ class Zend_Console_Getopt
             $flags = array();
             if (is_array($rule['alias'])) {
                 foreach ($rule['alias'] as $flag) {
-                    $flags[] = (strlen($flag) == 1 ? '-' : '--') . $flag;
+                    $flags[] = (strlen((string) $flag) == 1 ? '-' : '--') . $flag;
                 }
             }
             $linepart['name'] = implode('|', $flags);
@@ -614,8 +614,8 @@ class Zend_Console_Getopt
                         break;
                 }
             }
-            if (strlen($linepart['name']) > $maxLen) {
-                $maxLen = strlen($linepart['name']);
+            if (strlen((string) $linepart['name']) > $maxLen) {
+                $maxLen = strlen((string) $linepart['name']);
             }
             $linepart['help'] = '';
             if (isset($rule['help'])) {
@@ -646,15 +646,15 @@ class Zend_Console_Getopt
         foreach ($aliasMap as $flag => $alias)
         {
             if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
-                $flag = strtolower($flag);
-                $alias = strtolower($alias);
+                $flag = strtolower((string) $flag);
+                $alias = strtolower((string) $alias);
             }
             if (!isset($this->_ruleMap[$flag])) {
                 continue;
             }
             $flag = $this->_ruleMap[$flag];
             if (isset($this->_rules[$alias]) || isset($this->_ruleMap[$alias])) {
-                $o = (strlen($alias) == 1 ? '-' : '--') . $alias;
+                $o = (strlen((string) $alias) == 1 ? '-' : '--') . $alias;
                 // require_once 'Zend/Console/Getopt/Exception.php';
                 throw new Zend_Console_Getopt_Exception(
                     "Option \"$o\" is being defined more than once.");
@@ -712,9 +712,9 @@ class Zend_Console_Getopt
                     break;
                 }
             }
-            if (substr($argv[0], 0, 2) == '--') {
+            if (substr((string) $argv[0], 0, 2) == '--') {
                 $this->_parseLongOption($argv);
-            } else if (substr($argv[0], 0, 1) == '-' && ('-' != $argv[0] || count($argv) >1))  {
+            } else if (substr((string) $argv[0], 0, 1) == '-' && ('-' != $argv[0] || count($argv) >1))  {
                 $this->_parseShortOptionCluster($argv);
             } else if($this->_getoptConfig[self::CONFIG_PARSEALL]) {
                 $this->_remainingArgs[] = array_shift($argv);
@@ -763,7 +763,7 @@ class Zend_Console_Getopt
      */
     protected function _parseLongOption(&$argv)
     {
-        $optionWithParam = ltrim(array_shift($argv), '-');
+        $optionWithParam = ltrim((string) array_shift($argv), '-');
         $l = explode('=', $optionWithParam, 2);
         $flag = array_shift($l);
         $param = array_shift($l);
@@ -783,7 +783,7 @@ class Zend_Console_Getopt
      */
     protected function _parseShortOptionCluster(&$argv)
     {
-        $flagCluster = ltrim(array_shift($argv), '-');
+        $flagCluster = ltrim((string) array_shift($argv), '-');
         foreach (str_split($flagCluster) as $flag) {
             $this->_parseSingleOption($flag, $argv);
         }
@@ -800,7 +800,7 @@ class Zend_Console_Getopt
     protected function _parseSingleOption($flag, &$argv)
     {
         if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
-            $flag = strtolower($flag);
+            $flag = strtolower((string) $flag);
         }
         if (!isset($this->_ruleMap[$flag])) {
             // require_once 'Zend/Console/Getopt/Exception.php';
@@ -811,7 +811,7 @@ class Zend_Console_Getopt
         $realFlag = $this->_ruleMap[$flag];
         switch ($this->_rules[$realFlag]['param']) {
             case 'required':
-                if (count($argv) > 0 && substr($argv[0], 0, 1) != '-') {
+                if (count($argv) > 0 && substr((string) $argv[0], 0, 1) != '-') {
                     $param = array_shift($argv);
                     $this->_checkParameterType($realFlag, $param);
                 } else {
@@ -822,7 +822,7 @@ class Zend_Console_Getopt
                 }
                 break;
             case 'optional':
-                if (count($argv) > 0 && substr($argv[0], 0, 1) != '-') {
+                if (count($argv) > 0 && substr((string) $argv[0], 0, 1) != '-') {
                     $param = array_shift($argv);
                     $this->_checkParameterType($realFlag, $param);
                 } else {
@@ -893,12 +893,12 @@ class Zend_Console_Getopt
         preg_match_all('/([a-zA-Z0-9]:?)/', $rules, $ruleArray);
         foreach ($ruleArray[1] as $rule) {
             $r = array();
-            $flag = substr($rule, 0, 1);
+            $flag = substr((string) $rule, 0, 1);
             if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
-                $flag = strtolower($flag);
+                $flag = strtolower((string) $flag);
             }
             $r['alias'][] = $flag;
-            if (substr($rule, 1, 1) == ':') {
+            if (substr((string) $rule, 1, 1) == ':') {
                 $r['param'] = 'required';
                 $r['paramType'] = 'string';
             } else {
@@ -923,16 +923,16 @@ class Zend_Console_Getopt
             // this may have to translate the long parm type if there
             // are any complaints that =string will not work (even though that use
             // case is not documented)
-            if (in_array(substr($ruleCode, -2, 1), array('-', '='))) {
-                $flagList  = substr($ruleCode, 0, -2);
-                $delimiter = substr($ruleCode, -2, 1);
-                $paramType = substr($ruleCode, -1);
+            if (in_array(substr((string) $ruleCode, -2, 1), array('-', '='))) {
+                $flagList  = substr((string) $ruleCode, 0, -2);
+                $delimiter = substr((string) $ruleCode, -2, 1);
+                $paramType = substr((string) $ruleCode, -1);
             } else {
                 $flagList = $ruleCode;
                 $delimiter = $paramType = null;
             }
             if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
-                $flagList = strtolower($flagList);
+                $flagList = strtolower((string) $flagList);
             }
             $flags = explode('|', $flagList);
             $rule = array();
@@ -943,7 +943,7 @@ class Zend_Console_Getopt
                     throw new Zend_Console_Getopt_Exception(
                         "Blank flag not allowed in rule \"$ruleCode\".");
                 }
-                if (strlen($flag) == 1) {
+                if (strlen((string) $flag) == 1) {
                     if (isset($this->_ruleMap[$flag])) {
                         // require_once 'Zend/Console/Getopt/Exception.php';
                         throw new Zend_Console_Getopt_Exception(
@@ -970,7 +970,7 @@ class Zend_Console_Getopt
                     default:
                         $rule['param'] = 'optional';
                 }
-                switch (substr($paramType, 0, 1)) {
+                switch (substr((string) $paramType, 0, 1)) {
                     case self::TYPE_WORD:
                         $rule['paramType'] = 'word';
                         break;

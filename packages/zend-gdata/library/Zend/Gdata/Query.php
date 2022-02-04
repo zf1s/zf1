@@ -84,10 +84,10 @@ class Zend_Gdata_Query
     {
         $queryArray = array();
         foreach ($this->_params as $name => $value) {
-            if (substr($name, 0, 1) == '_') {
+            if (substr((string) $name, 0, 1) == '_') {
                 continue;
             }
-            $queryArray[] = urlencode($name) . '=' . urlencode($value);
+            $queryArray[] = urlencode((string) $name) . '=' . urlencode((string) $value);
         }
         if (count($queryArray) > 0) {
             return '?' . implode('&', $queryArray);

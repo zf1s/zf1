@@ -66,11 +66,11 @@ class Zend_Service_Console_Command_ParameterSource_StdIn
 			}
 
 			// Remove ending \r\n
-			$parameterValue = rtrim($parameterValue);
+			$parameterValue = rtrim((string) $parameterValue);
 
-			if (strtolower($parameterValue) == 'true') {
+			if (strtolower((string) $parameterValue) == 'true') {
 				$parameterValue = true;
-			} else if (strtolower($parameterValue) == 'false') {
+			} else if (strtolower((string) $parameterValue) == 'false') {
 				$parameterValue = false;
 			}
 		}

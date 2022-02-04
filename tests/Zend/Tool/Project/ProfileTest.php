@@ -46,15 +46,15 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->_projectDirectory   = dirname(__FILE__) . '/_files/project1/';
-        $this->_projectProfileFile = dirname(__FILE__) . '/_files/.zfproject.xml.orig';
+        $this->_projectDirectory   = __DIR__ . '/_files/project1/';
+        $this->_projectProfileFile = __DIR__ . '/_files/.zfproject.xml.orig';
 
         $this->_removeProjectFiles();
 
         Zend_Tool_Project_Context_Repository::resetInstance();
 
         $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
-        $contextRegistry->addContextsFromDirectory(dirname(__FILE__) . '/../../../../packages/zend-tool/library/Zend/Tool/Project/Context/Zf/', 'Zend_Tool_Project_Context_Zf_');
+        $contextRegistry->addContextsFromDirectory(__DIR__ . '/../../../../packages/zend-tool/library/Zend/Tool/Project/Context/Zf/', 'Zend_Tool_Project_Context_Zf_');
 
         $this->_standardProfileFromData = new Zend_Tool_Project_Profile();
         $this->_standardProfileFromData->setAttribute('profileData',      file_get_contents($this->_projectProfileFile));
@@ -166,7 +166,7 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
         $this->_standardProfileFromData->loadFromData();
         $this->_standardProfileFromData->setAttribute('projectProfileFile', $this->_projectDirectory . 'my-xml-file.xml');
         $this->_standardProfileFromData->storeToFile();
-        $this->assertTrue(file_exists($this->_projectDirectory . 'my-xml-file.xml'));
+        $this->assertTrue(file_exists((string) $this->_projectDirectory . 'my-xml-file.xml'));
     }
 
     public function testProfileCanFindResource()
@@ -197,7 +197,7 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
             $resource->getContext()->create();
         }
 
-        $this->assertTrue(file_exists($this->_projectDirectory . 'public/index.php'));
+        $this->assertTrue(file_exists((string) $this->_projectDirectory . 'public/index.php'));
     }
 
     public function testProfileCanDelete()
@@ -208,19 +208,19 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
             $resource->getContext()->create();
         }
 
-        $this->assertTrue(file_exists($this->_projectDirectory . 'public/index.php'));
+        $this->assertTrue(file_exists((string) $this->_projectDirectory . 'public/index.php'));
 
         $publicIndexFile = $this->_standardProfileFromData->search('publicIndexFile');
         $publicIndexFile->getContext()->delete();
 
-        $this->assertFalse(file_exists($this->_projectDirectory . 'public/index.php'));
+        $this->assertFalse(file_exists((string) $this->_projectDirectory . 'public/index.php'));
 
         $appConfigFile = $this->_standardProfileFromData->search('applicationConfigFile');
         $appConfigFile->getContext()->delete();
         $configsDirectory = $this->_standardProfileFromData->search('configsDirectory');
         $configsDirectory->getContext()->delete();
 
-        $this->assertFalse(file_exists($this->_projectDirectory . 'application/configs'));
+        $this->assertFalse(file_exists((string) $this->_projectDirectory . 'application/configs'));
     }
 
     /**

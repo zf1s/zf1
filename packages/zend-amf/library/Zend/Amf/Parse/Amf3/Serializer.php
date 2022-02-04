@@ -209,13 +209,13 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
 
     /**
      * Send string to output stream, without trying to reference it.
-     * The string is prepended with strlen($string) << 1 | 0x01
+     * The string is prepended with strlen((string) $string) << 1 | 0x01
      *
      * @param  string $string
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
     protected function writeBinaryString(&$string){
-        $ref = ($this->_mbStringFunctionsOverloaded ? mb_strlen($string, '8bit') : strlen($string)) << 1 | 0x01;
+        $ref = ($this->_mbStringFunctionsOverloaded ? mb_strlen($string, '8bit') : strlen((string) $string)) << 1 | 0x01;
         $this->writeInteger($ref);
         $this->_stream->writeBytes($string);
 
@@ -230,7 +230,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
      */
     public function writeString(&$string)
     {
-        $len = $this->_mbStringFunctionsOverloaded ? mb_strlen($string, '8bit') : strlen($string);
+        $len = $this->_mbStringFunctionsOverloaded ? mb_strlen($string, '8bit') : strlen((string) $string);
         if(!$len){
             $this->writeInteger(0x01);
             return $this;

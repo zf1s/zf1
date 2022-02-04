@@ -205,7 +205,7 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
         $valid = new Zend_Validate_Between(1, 10);
         $this->assertFalse($valid->isValid(24));
         $message = current($valid->getMessages());
-        $this->assertTrue(strlen($message) <= 5);
+        $this->assertTrue(strlen((string) $message) <= 5);
     }
 
     public function testSetGetDefaultTranslator()
@@ -227,7 +227,7 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function handleNotFoundError($errnum, $errstr)
     {
-        if (strstr($errstr, 'No such file')) {
+        if (strstr((string) $errstr, 'No such file')) {
             $this->error = true;
         }
     }

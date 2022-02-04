@@ -124,7 +124,7 @@ abstract class Zend_Gdata_App_Base
     public function getText($trim = true)
     {
         if ($trim) {
-            return trim($this->_text);
+            return \trim((string) $this->_text);
         } else {
             return $this->_text;
         }
@@ -215,7 +215,7 @@ abstract class Zend_Gdata_App_Base
         if ($this->_rootNamespaceURI != null) {
             $element = $doc->createElementNS($this->_rootNamespaceURI, $this->_rootElement);
         } elseif ($this->_rootNamespace !== null) {
-            if (strpos($this->_rootElement, ':') === false) {
+            if (strpos((string) $this->_rootElement, ':') === false) {
                 $elementName = $this->_rootNamespace . ':' . $this->_rootElement;
             } else {
                 $elementName = $this->_rootElement;

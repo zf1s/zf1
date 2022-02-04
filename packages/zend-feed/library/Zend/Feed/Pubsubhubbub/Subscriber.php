@@ -740,10 +740,10 @@ class Zend_Feed_Pubsubhubbub_Subscriber
         // Note: query string only usable with PuSH 0.2 Hubs
         if (!$this->_usePathParameter) {
             $params['hub.callback'] = $this->getCallbackUrl()
-                . '?xhub.subscription=' . Zend_Feed_Pubsubhubbub::urlencode($key);
+                . '?xhub.subscription=' . Zend_Feed_Pubsubhubbub::urlencode((string) $key);
         } else {
-            $params['hub.callback'] = rtrim($this->getCallbackUrl(), '/')
-                . '/' . Zend_Feed_Pubsubhubbub::urlencode($key);
+            $params['hub.callback'] = rtrim((string) $this->getCallbackUrl(), '/')
+                . '/' . Zend_Feed_Pubsubhubbub::urlencode((string) $key);
         }
         if ($mode == 'subscribe' && $this->getLeaseSeconds() !== null) {
             $params['hub.lease_seconds'] = $this->getLeaseSeconds();
@@ -806,7 +806,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
     protected function _generateSubscriptionKey(array $params, $hubUrl)
     {
         $keyBase = $params['hub.topic'] . $hubUrl;
-        $key     = md5($keyBase);
+        $key     = md5((string) $keyBase);
         return $key;
     }
 
@@ -821,15 +821,15 @@ class Zend_Feed_Pubsubhubbub_Subscriber
         $encoded = array();
         foreach ($params as $key => $value) {
             if (is_array($value)) {
-                $ekey = Zend_Feed_Pubsubhubbub::urlencode($key);
+                $ekey = Zend_Feed_Pubsubhubbub::urlencode((string) $key);
                 $encoded[$ekey] = array();
                 foreach ($value as $duplicateKey) {
                     $encoded[$ekey][]
-                        = Zend_Feed_Pubsubhubbub::urlencode($duplicateKey);
+                        = Zend_Feed_Pubsubhubbub::urlencode((string) $duplicateKey);
                 }
             } else {
-                $encoded[Zend_Feed_Pubsubhubbub::urlencode($key)]
-                    = Zend_Feed_Pubsubhubbub::urlencode($value);
+                $encoded[Zend_Feed_Pubsubhubbub::urlencode((string) $key)]
+                    = Zend_Feed_Pubsubhubbub::urlencode((string) $value);
             }
         }
         return $encoded;

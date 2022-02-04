@@ -334,7 +334,7 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
     public function testAddConfig()
     {
         // require_once 'Zend/Config/Ini.php';
-        $file = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'routes.ini';
+        $file = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'routes.ini';
         $config = new Zend_Config_Ini($file, 'testing');
 
         $this->_router->addConfig($config, 'routes');
@@ -353,7 +353,7 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
     public function testAddConfigWithoutSection()
     {
         // require_once 'Zend/Config/Ini.php';
-        $file = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'routes.ini';
+        $file = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'routes.ini';
         $config = new Zend_Config_Ini($file, 'testing');
 
         $this->_router->addConfig($config->routes);
@@ -365,7 +365,7 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
     public function testAddConfigWithRootNode()
     {
         // require_once 'Zend/Config/Ini.php';
-        $file = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'routes-root.ini';
+        $file = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'routes-root.ini';
         $config = new Zend_Config_Ini($file, 'routes');
 
         $this->_router->addConfig($config);
@@ -393,8 +393,8 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
     public function testDefaultRouteMatchedWithModules()
     {
         Zend_Controller_Front::getInstance()->setControllerDirectory(array(
-            'default' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files',
-            'mod'     => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Admin',
+            'default' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files',
+            'mod'     => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Admin',
         ));
         $request = new Zend_Controller_Router_RewriteTest_Request('http://localhost/mod/ctrl/act');
         $token = $this->_router->route($request);
@@ -418,8 +418,8 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
     public function testDefaultRouteWithEmptyControllerAndAction()
     {
         Zend_Controller_Front::getInstance()->setControllerDirectory(array(
-            'default' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files',
-            'mod'     => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Admin',
+            'default' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files',
+            'mod'     => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Admin',
         ));
         $request = new Zend_Controller_Router_RewriteTest_Request('http://localhost/mod');
 
@@ -756,7 +756,7 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
             $this->_router->assemble($params)
         );
     }
-    
+
     /**
      * @group ZF-11393
      * @expectedException Zend_Controller_Router_Exception

@@ -28,7 +28,7 @@
 /**
  * @see Zend_Db_Table_Row_TestMockRow
  */
-require_once dirname(__FILE__) . '/../_files/My/ZendDbTable/Row/TestMockRow.php';
+require_once __DIR__ . '/../_files/My/ZendDbTable/Row/TestMockRow.php';
 
 /**
  * @category   Zend

@@ -60,7 +60,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
 
         $this->application = new Zend_Application('testing');
 
-        require_once dirname(__FILE__) . '/../_files/ZfAppBootstrap.php';
+        require_once __DIR__ . '/../_files/ZfAppBootstrap.php';
         $this->bootstrap = new ZfAppBootstrap($this->application);
 
         $this->front = Zend_Controller_Front::getInstance();
@@ -105,7 +105,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
         // require_once 'Zend/Application/Resource/Modules.php';
 
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
-            'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
+            'moduleDirectory' => __DIR__ . '/../_files/modules',
         ));
         $resource = new Zend_Application_Resource_Modules(array());
         $resource->setBootstrap($this->bootstrap);
@@ -118,7 +118,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
         // require_once 'Zend/Application/Resource/Modules.php';
 
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
-            'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
+            'moduleDirectory' => __DIR__ . '/../_files/modules',
         ));
         $resource = new Zend_Application_Resource_Modules(array());
         $resource->setBootstrap($this->bootstrap);
@@ -136,7 +136,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
         // require_once 'Zend/Application/Resource/Modules.php';
 
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
-            'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
+            'moduleDirectory' => __DIR__ . '/../_files/modules',
         ));
         $resource = new Zend_Application_Resource_Modules(array());
         $resource->setBootstrap($this->bootstrap);
@@ -158,7 +158,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
         // require_once 'Zend/Application/Resource/Modules.php';
 
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
-            'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
+            'moduleDirectory' => __DIR__ . '/../_files/modules',
         ));
         $resource = new Zend_Application_Resource_Modules(array());
         $resource->setBootstrap($this->bootstrap);
@@ -169,13 +169,13 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('foo',     (array)$bootstraps);
         $this->assertArrayHasKey('default', (array)$bootstraps);
     }
-    
+
     public function testBootstrapBootstrapsIsOwnMethod()
     {
         // require_once 'Zend/Application/Resource/Modules.php';
 
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
-            'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
+            'moduleDirectory' => __DIR__ . '/../_files/modules',
         ));
         $resource = new ZendTest_Application_Resource_ModulesHalf(array());
         $resource->setBootstrap($this->bootstrap);
@@ -191,7 +191,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
         // require_once 'Zend/Application/Resource/Modules.php';
 
         $this->bootstrap->registerPluginResource('Frontcontroller', array(
-            'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
+            'moduleDirectory' => __DIR__ . '/../_files/modules',
         ));
         $resource = new Zend_Application_Resource_Modules(array());
         $resource->setBootstrap($this->bootstrap);
@@ -203,7 +203,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
 
 // require_once 'Zend/Application/Resource/Modules.php';
 class ZendTest_Application_Resource_ModulesHalf
-    extends Zend_Application_Resource_Modules 
+    extends Zend_Application_Resource_Modules
 {
     protected function bootstrapBootstraps($bootstraps)
     {

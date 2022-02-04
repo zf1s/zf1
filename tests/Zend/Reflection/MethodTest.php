@@ -28,7 +28,7 @@
 /**
  * @see ZF-9018
  */
-require_once dirname(__FILE__) . '/_files/ZF9018TestClass.php';
+require_once __DIR__ . '/_files/ZF9018TestClass.php';
 
 /**
  * @category   Zend
@@ -47,7 +47,7 @@ class Zend_Reflection_MethodTest extends PHPUnit_Framework_TestCase
     public function setup()
     {
         if (self::$_sampleClassFileRequired === false) {
-            $fileToRequire = dirname(__FILE__) . '/_files/TestSampleClass.php';
+            $fileToRequire = __DIR__ . '/_files/TestSampleClass.php';
             require_once $fileToRequire;
             self::$_sampleClassFileRequired = true;
         }
@@ -71,8 +71,8 @@ class Zend_Reflection_MethodTest extends PHPUnit_Framework_TestCase
     {
         $reflectionMethod = new Zend_Reflection_Method('Zend_Reflection_TestSampleClass5', 'doSomething');
 
-        $this->assertEquals($reflectionMethod->getStartLine(), 106);
-        $this->assertEquals($reflectionMethod->getStartLine(true), 90);
+        $this->assertEquals($reflectionMethod->getStartLine(), 107);
+        $this->assertEquals($reflectionMethod->getStartLine(true), 91);
     }
 
     public function testGetBodyReturnsCorrectBody()

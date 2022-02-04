@@ -46,7 +46,7 @@ class Zend_Gdata_Analytics_DataFeedTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->dataFeed = new Zend_Gdata_Analytics_DataFeed(
-            file_get_contents(dirname(__FILE__) . '/_files/TestDataFeed.xml')
+            file_get_contents(__DIR__ . '/_files/TestDataFeed.xml')
         );
     }
 

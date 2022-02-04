@@ -91,17 +91,17 @@ class Zend_Mail_Protocol_Smtp_Auth_Crammd5 extends Zend_Mail_Protocol_Smtp
      */
     protected function _hmacMd5($key, $data, $block = 64)
     {
-        if (strlen($key) > 64) {
-            $key = pack('H32', md5($key));
-        } elseif (strlen($key) < 64) {
+        if (strlen((string) $key) > 64) {
+            $key = pack('H32', md5((string) $key));
+        } elseif (strlen((string) $key) < 64) {
             $key = str_pad($key, $block, "\0");
         }
 
-        $k_ipad = substr($key, 0, 64) ^ str_repeat(chr(0x36), 64);
-        $k_opad = substr($key, 0, 64) ^ str_repeat(chr(0x5C), 64);
+        $k_ipad = substr((string) $key, 0, 64) ^ str_repeat(chr(0x36), 64);
+        $k_opad = substr((string) $key, 0, 64) ^ str_repeat(chr(0x5C), 64);
 
-        $inner = pack('H32', md5($k_ipad . $data));
-        $digest = md5($k_opad . $inner);
+        $inner = pack('H32', md5((string) $k_ipad . $data));
+        $digest = md5((string) $k_opad . $inner);
 
         return $digest;
     }

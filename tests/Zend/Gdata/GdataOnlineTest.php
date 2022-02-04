@@ -62,7 +62,7 @@ class Zend_Gdata_GdataOnlineTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Blog post content...',
                 $insertedEntry->content->text);
         $this->assertTrue(
-                strpos($insertedEntry->getEditLink()->href, 'http') === 0);
+                strpos((string) $insertedEntry->getEditLink()->href, 'http') === 0);
         $this->gdata->delete($insertedEntry);
     }
 
@@ -75,7 +75,7 @@ class Zend_Gdata_GdataOnlineTest extends PHPUnit_Framework_TestCase
         $entry->content = $this->gdata->newContent('Blog post content...');
         $insertedEntry = $this->gdata->insertEntry($entry, $postUrl);
         $this->assertTrue(
-                strpos($insertedEntry->getEditLink()->href, 'http') === 0);
+                strpos((string) $insertedEntry->getEditLink()->href, 'http') === 0);
         $this->gdata->delete($insertedEntry->getEditLink()->href);
     }
 
@@ -101,7 +101,7 @@ class Zend_Gdata_GdataOnlineTest extends PHPUnit_Framework_TestCase
                 $insertedEntry->getSelfLink()->href);
         $retrievedEntry = $this->gdata->getEntry($retrievedEntryQuery);
         $this->assertTrue(
-                strpos($retrievedEntry->getEditLink()->href, 'http') === 0);
+                strpos((string) $retrievedEntry->getEditLink()->href, 'http') === 0);
         $this->gdata->delete($retrievedEntry);
     }
 
@@ -114,7 +114,7 @@ class Zend_Gdata_GdataOnlineTest extends PHPUnit_Framework_TestCase
         $entry->content = $this->gdata->newContent('Blog post content...');
         $insertedEntry = $this->gdata->insertEntry($entry, $postUrl);
         $this->assertTrue(
-                strpos($insertedEntry->getEditLink()->href, 'http') === 0);
+                strpos((string) $insertedEntry->getEditLink()->href, 'http') === 0);
         $insertedEntry->title->text = 'PHP test blog post modified';
         $updatedEntry = $this->gdata->updateEntry($insertedEntry);
         $this->assertEquals('PHP test blog post modified',

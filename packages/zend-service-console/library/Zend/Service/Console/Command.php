@@ -104,8 +104,9 @@ class Zend_Service_Console_Command
 	 */
 	public static function bootstrap($argv)
 	{
+        return;
 		// Abort bootstrapping depending on the MICROSOFT_CONSOLE_COMMAND_HOST constant.
-		if (defined('MICROSOFT_CONSOLE_COMMAND_HOST') && strtolower(MICROSOFT_CONSOLE_COMMAND_HOST) != 'console') {
+		if (defined('MICROSOFT_CONSOLE_COMMAND_HOST') && strtolower((string) MICROSOFT_CONSOLE_COMMAND_HOST) != 'console') {
 			return;
 		}
 
@@ -117,10 +118,10 @@ class Zend_Service_Console_Command
 		$model = self::_buildModel();
 
 		// Find a class that corresponds to the $argv[0] script name
-		$requiredHandlerName = str_replace('.bat', '', str_replace('.sh', '', str_replace('.php', '', strtolower(basename($argv[0])))));
+		$requiredHandlerName = str_replace((string) '.bat', '', str_replace((string) '.sh', '', str_replace((string) '.php', '', strtolower((string) basename($argv[0])))));
 		$handler = null;
 		foreach ($model as $possibleHandler) {
-			if ($possibleHandler->handler == strtolower($requiredHandlerName)) {
+			if ($possibleHandler->handler == strtolower((string) $requiredHandlerName)) {
 				$handler = $possibleHandler;
 				break;
 			}
@@ -133,14 +134,14 @@ class Zend_Service_Console_Command
 		// Find a method that matches the command name
 		$command = null;
 		foreach ($handler->commands as $possibleCommand) {
-			if (in_array(strtolower(isset($argv[1]) ? $argv[1] : '<default>'), $possibleCommand->aliases)) {
+			if (in_array(strtolower((string) isset($argv[1]) ? $argv[1] : '<default>'), $possibleCommand->aliases)) {
 				$command = $possibleCommand;
 				break;
 			}
 		}
 		if (is_null($command)) {
 			$commandName = (isset($argv[1]) ? $argv[1] : '<default>');
-			self::stderr("No method found that implements command " . $commandName . ". Create a method in class '" . $handler->class . "' that is named '" . strtolower($commandName) . "Command' or is decorated with a docblock comment '@command-name " . $commandName . "'.");
+			self::stderr("No method found that implements command " . $commandName . ". Create a method in class '" . $handler->class . "' that is named '" . strtolower((string) $commandName) . "Command' or is decorated with a docblock comment '@command-name " . $commandName . "'.");
 			die();
 		}
 
@@ -221,11 +222,11 @@ class Zend_Service_Console_Command
 			for ($hi = 0; $hi < count($handlers); $hi++) {
 				$handler = $handlers[$hi];
 				$handlerDescription = isset($handlerDescriptions[$hi]) ? $handlerDescriptions[$hi] : (isset($handlerDescriptions[0]) ? $handlerDescriptions[0] : '');
-				$handlerDescription = str_replace('\r\n', "\r\n", $handlerDescription);
-				$handlerDescription = str_replace('\n', "\n", $handlerDescription);
+				$handlerDescription = str_replace((string) '\r\n', "\r\n", $handlerDescription);
+				$handlerDescription = str_replace((string) '\n', "\n", $handlerDescription);
 
 				$handlerModel = (object)array(
-					'handler'     => strtolower($handler),
+					'handler'     => strtolower((string) $handler),
 					'description' => $handlerDescription,
 					'headers'     => $handlerHeaders,
 					'footers'     => $handlerFooters,
@@ -236,13 +237,13 @@ class Zend_Service_Console_Command
 				$methods = $type->getMethods();
 			    foreach ($methods as $method) {
 			       	$commands = self::_findValueForDocComment('@command-name', $method->getDocComment());
-			    	if (substr($method->getName(), -7) == 'Command' && !in_array(substr($method->getName(), 0, -7), $commands)) {
+			    	if (substr((string) $method->getName(), -7) == 'Command' && !in_array(substr((string) $method->getName(), 0, -7), $commands)) {
 						// Fallback: if the method is named <commandname>Command,
 						// register it as a command.
-						$commands[] = substr($method->getName(), 0, -7);
+						$commands[] = substr((string) $method->getName(), 0, -7);
 					}
 			       	for ($x = 0; $x < count($commands); $x++) {
-			       		$commands[$x] = strtolower($commands[$x]);
+			       		$commands[$x] = strtolower((string) $commands[$x]);
 			       	}
 			       	$commands = array_unique($commands);
 			       	$commandDescriptions = self::_findValueForDocComment('@command-description', $method->getDocComment());
@@ -297,7 +298,7 @@ class Zend_Service_Console_Command
 								'valueproviders' => explode('|', $parameterFor[1]),
 								'aliases'        => explode('|', $parameterFor[2]),
 								'description'    => (isset($parameterFor[3]) ? $parameterFor[3] : ''),
-								'required'       => (isset($parameterFor[3]) ? strpos(strtolower($parameterFor[3]), 'required') !== false && strpos(strtolower($parameterFor[3]), 'required if') === false : false),
+								'required'       => (isset($parameterFor[3]) ? strpos((string) strtolower((string) $parameterFor[3]), 'required') !== false && strpos((string) strtolower((string) $parameterFor[3]), 'required if') === false : false),
 							);
 
 							// Add to model
@@ -330,8 +331,8 @@ class Zend_Service_Console_Command
 
 		$commentLines = explode("\n", $docComment);
 	    foreach ($commentLines as $commentLine) {
-	        if (strpos($commentLine, $docCommentName . ' ') !== false) {
-	            $returnValue[] = trim(substr($commentLine, strpos($commentLine, $docCommentName) + strlen($docCommentName) + 1));
+	        if (strpos((string) $commentLine, $docCommentName . ' ') !== false) {
+	            $returnValue[] = \trim((string) substr((string) $commentLine, strpos((string) $commentLine, $docCommentName) + strlen((string) $docCommentName) + 1));
 	        }
 	    }
 

@@ -48,7 +48,7 @@ class Zend_Config_Writer_YamlTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_tempName = @tempnam(dirname(__FILE__) . '/temp', 'tmp');
+        $this->_tempName = @tempnam(__DIR__ . '/temp', 'tmp');
     }
 
     public function tearDown()
@@ -119,7 +119,7 @@ class Zend_Config_Writer_YamlTest extends PHPUnit_Framework_TestCase
 
     public function testWriteAndReadOriginalFile()
     {
-        $config = new Zend_Config_Yaml(dirname(__FILE__) . '/files/allsections.yaml', null, array('skip_extends' => true));
+        $config = new Zend_Config_Yaml(__DIR__ . '/files/allsections.yaml', null, array('skip_extends' => true));
 
         $writer = new Zend_Config_Writer_Yaml(array('config' => $config, 'filename' => $this->_tempName));
         $writer->write();
@@ -134,7 +134,7 @@ class Zend_Config_Writer_YamlTest extends PHPUnit_Framework_TestCase
 
     public function testWriteAndReadSingleSection()
     {
-        $config = new Zend_Config_Yaml(dirname(__FILE__) . '/files/allsections.yaml', 'staging', array('skip_extends' => true));
+        $config = new Zend_Config_Yaml(__DIR__ . '/files/allsections.yaml', 'staging', array('skip_extends' => true));
 
         $writer = new Zend_Config_Writer_Yaml(array('config' => $config, 'filename' => $this->_tempName));
         $writer->write();

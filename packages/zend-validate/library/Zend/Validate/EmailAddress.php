@@ -359,7 +359,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
             foreach ((array)$this->_invalidIp[$octet[0]] as $subnetData) {
                 // we skip the first loop as we already know that octet matches
                 for ($i = 1; $i < 4; $i++) {
-                    if (strpos($subnetData, $octet[$i]) !== $i * 4) {
+                    if (strpos((string) $subnetData, $octet[$i]) !== $i * 4) {
                         break;
                     }
                 }
@@ -372,8 +372,8 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
                 }
 
                 $segmentData = array(
-                    'network'   => (int)$this->_toIp(str_pad(substr($binaryHost, 0, $host[1]), 32, 0)),
-                    'broadcast' => (int)$this->_toIp(str_pad(substr($binaryHost, 0, $host[1]), 32, 1))
+                    'network'   => (int)$this->_toIp(str_pad(substr((string) $binaryHost, 0, $host[1]), 32, 0)),
+                    'broadcast' => (int)$this->_toIp(str_pad(substr((string) $binaryHost, 0, $host[1]), 32, 1))
                 );
 
                 for ($j = $i; $j < 4; $j++) {
@@ -545,7 +545,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
         $this->_setValue($value);
 
         // Split email address up and disallow '..'
-        if ((strpos($value, '..') !== false) or
+        if ((strpos((string) $value, '..') !== false) or
             (!preg_match('/^(.+)@([^@]+)$/', $value, $matches))) {
             $this->_error(self::INVALID_FORMAT);
             return false;
@@ -554,7 +554,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
         $this->_localPart = $matches[1];
         $this->_hostname  = $matches[2];
 
-        if ((strlen($this->_localPart) > 64) || (strlen($this->_hostname) > 255)) {
+        if ((strlen((string) $this->_localPart) > 64) || (strlen((string) $this->_hostname) > 255)) {
             $length = false;
             $this->_error(self::LENGTH_EXCEEDED);
         }

@@ -420,7 +420,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
     public function quote($value)
     {
         // wrap in single quotes and convert each ' inside to ''
-        return "'" . str_replace("'", "''", $value) . "'";
+        return "'" . str_replace((string) "'", "''", $value) . "'";
     }
 
     /**
@@ -470,7 +470,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
             $request->setUri($this->getEndpoint());
             $request->setMethod(Zend_Http_Client::POST);
             foreach ($params as $key => $value) {
-                $params_out[] = rawurlencode($key)."=".rawurlencode($value);
+                $params_out[] = rawurlencode((string) $key)."=".rawurlencode((string) $value);
             }
             $request->setRawData(join('&', $params_out), Zend_Http_Client::ENC_URLENCODED);
             $httpResponse = $request->request();
@@ -543,10 +543,10 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
 
         $arrData = array();
         foreach ($parameters as $key => $value) {
-            $value = urlencode($value);
-            $value = str_replace("%7E", "~", $value);
-            $value = str_replace("+", "%20", $value);
-            $arrData[] = urlencode($key) . '=' . $value;
+            $value = urlencode((string) $value);
+            $value = str_replace((string) "%7E", "~", $value);
+            $value = str_replace((string) "+", "%20", $value);
+            $arrData[] = urlencode((string) $key) . '=' . $value;
         }
 
         $data .= implode('&', $arrData);

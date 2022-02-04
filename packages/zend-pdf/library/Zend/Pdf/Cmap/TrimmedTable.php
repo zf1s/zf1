@@ -168,7 +168,7 @@ class Zend_Pdf_Cmap_TrimmedTable extends Zend_Pdf_Cmap
     {
         /* Sanity check: The table should be at least 9 bytes in size.
          */
-        $actualLength = strlen($cmapData);
+        $actualLength = strlen((string) $cmapData);
         if ($actualLength < 9) {
             // require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Insufficient table data',

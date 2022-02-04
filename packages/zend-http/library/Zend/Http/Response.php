@@ -171,11 +171,11 @@ class Zend_Http_Response
                     throw new Zend_Http_Exception("'{$value}' is not a valid HTTP header");
                 }
 
-                $name  = trim($header[0]);
-                $value = trim($header[1]);
+                $name  = \trim((string) $header[0]);
+                $value = \trim((string) $header[1]);
             }
 
-            $this->headers[ucwords(strtolower($name))] = $value;
+            $this->headers[ucwords(strtolower((string) $name))] = $value;
         }
 
         // Set the body
@@ -260,7 +260,7 @@ class Zend_Http_Response
         $body = '';
 
         // Decode the body if it was transfer-encoded
-        switch (strtolower($this->getHeader('transfer-encoding'))) {
+        switch (strtolower((string) $this->getHeader('transfer-encoding'))) {
 
             // Handle chunked body
             case 'chunked':
@@ -275,7 +275,7 @@ class Zend_Http_Response
         }
 
         // Decode any content-encoding (gzip or deflate) if needed
-        switch (strtolower($this->getHeader('content-encoding'))) {
+        switch (strtolower((string) $this->getHeader('content-encoding'))) {
 
             // Handle gzip encoding
             case 'gzip':
@@ -356,7 +356,7 @@ class Zend_Http_Response
      */
     public function getHeader($header)
     {
-        $header = ucwords(strtolower($header));
+        $header = ucwords(strtolower((string) $header));
         if (! is_string($header) || ! isset($this->headers[$header])) return null;
 
         return $this->headers[$header];
@@ -527,7 +527,7 @@ class Zend_Http_Response
             // Locate headers like 'Location: ...' and 'Location:...' (note the missing space)
             if (preg_match("|^([a-zA-Z0-9\'`#$%&*+.^_\|\~!-]+):\s*(.*)|s", $line, $m)) {
                 unset($last_header);
-                $h_name  = strtolower($m[1]);
+                $h_name  = strtolower((string) $m[1]);
                 $h_value = $m[2];
                 Zend_Http_Header_HeaderValue::assertValid($h_value);
 
@@ -536,19 +536,19 @@ class Zend_Http_Response
                         $headers[$h_name] = array($headers[$h_name]);
                     }
 
-                    $headers[$h_name][] = ltrim($h_value);
+                    $headers[$h_name][] = ltrim((string) $h_value);
                     $last_header = $h_name;
                     continue;
                 }
 
-                $headers[$h_name] = ltrim($h_value);
+                $headers[$h_name] = ltrim((string) $h_value);
                 $last_header = $h_name;
                 continue;
             }
 
             // Identify header continuations
             if (preg_match("|^[ \t](.+)$|s", $line, $m) && $last_header !== null) {
-                $h_value = trim($m[1]);
+                $h_value = \trim((string) $m[1]);
                 if (is_array($headers[$last_header])) {
                     end($headers[$last_header]);
                     $last_header_key = key($headers[$last_header]);
@@ -609,16 +609,16 @@ class Zend_Http_Response
             mb_internal_encoding('ASCII');
         }
 
-        while (trim($body)) {
+        while (\trim((string) $body)) {
             if (! preg_match("/^([\da-fA-F]+)[^\r\n]*\r\n/sm", $body, $m)) {
                 // require_once 'Zend/Http/Exception.php';
                 throw new Zend_Http_Exception("Error parsing body - doesn't seem to be a chunked message");
             }
 
-            $length = hexdec(trim($m[1]));
-            $cut = strlen($m[0]);
-            $decBody .= substr($body, $cut, $length);
-            $body = substr($body, $cut + $length + 2);
+            $length = hexdec(\trim((string) $m[1]));
+            $cut = strlen((string) $m[0]);
+            $decBody .= substr((string) $body, $cut, $length);
+            $body = substr((string) $body, $cut + $length + 2);
         }
 
         if (isset($mbIntEnc)) {
@@ -645,7 +645,7 @@ class Zend_Http_Response
             );
         }
 
-        return gzinflate(substr($body, 10));
+        return gzinflate(substr((string) $body, 10));
     }
 
     /**
@@ -676,8 +676,8 @@ class Zend_Http_Response
          *
          * @link http://framework.zend.com/issues/browse/ZF-6040
          */
-        $zlibHeader = unpack('n', substr($body, 0, 2));
-        if ($zlibHeader[1] % 31 == 0 && ord($body[0]) == 0x78 && in_array(ord($body[1]), array(0x01, 0x5e, 0x9c, 0xda))) {
+        $zlibHeader = unpack('n', substr((string) $body, 0, 2));
+        if ($zlibHeader[1] % 31 == 0 && ord((string) $body[0]) == 0x78 && in_array(ord((string) $body[1]), array(0x01, 0x5e, 0x9c, 0xda))) {
             return gzuncompress($body);
         } else {
             return gzinflate($body);

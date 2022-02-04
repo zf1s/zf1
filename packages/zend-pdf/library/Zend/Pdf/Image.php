@@ -133,7 +133,7 @@ abstract class Zend_Pdf_Image
         /* Attempt to determine the type of image. We can't always trust file
          * extensions, but try that first since it's fastest.
          */
-        $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+        $fileExtension = strtolower((string) pathinfo($filePath, PATHINFO_EXTENSION));
 
         /* If it turns out that the file is named improperly and we guess the
          * wrong type, we'll get null instead of an image object.

@@ -66,7 +66,7 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
         $this->_script = 'php '
             . '-c ' . escapeshellarg(php_ini_loaded_file()) . ' '
             . '-d include_path=' . get_include_path() . ' '
-            . escapeshellarg(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'SessionTestHelper.php');
+            . escapeshellarg(__DIR__ . DIRECTORY_SEPARATOR . 'SessionTestHelper.php');
 
         $this->_savePath = ini_get('session.save_path');
     }
@@ -1052,7 +1052,7 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
     {
         try {
             Zend_Session::start();
-            require_once dirname(__FILE__) . '/Validator/NoticeValidator.php';
+            require_once __DIR__ . '/Validator/NoticeValidator.php';
             Zend_Session::registerValidator(new Zend_Session_Validator_NoticeValidator);
         } catch (PHPUnit_Framework_Error_Notice $exception) {
             $this->fail($exception->getMessage());
@@ -1069,7 +1069,7 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
 
         // Session store
         $sessionCharSet = array_merge(range(0,9), range('a','v'));
-        $sessionStore = dirname(__FILE__)
+        $sessionStore = __DIR__
                       . DIRECTORY_SEPARATOR . "_files"
                       . DIRECTORY_SEPARATOR . "ZF-3378";
         if ( !is_dir($sessionStore) ) @mkdir($sessionStore, 0755, true);

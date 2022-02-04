@@ -417,7 +417,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type = null)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         switch ($type) {
             case self::DECORATOR:
             case self::ELEMENT:
@@ -445,7 +445,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function getPluginLoader($type = null)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         if (!isset($this->_loaders[$type])) {
             switch ($type) {
                 case self::DECORATOR:
@@ -495,7 +495,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function addPrefixPath($prefix, $path, $type = null)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         switch ($type) {
             case self::DECORATOR:
             case self::ELEMENT:
@@ -503,11 +503,11 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                 $loader->addPrefixPath($prefix, $path);
                 return $this;
             case null:
-                $nsSeparator = (false !== strpos($prefix, '\\'))?'\\':'_';
-                $prefix = rtrim($prefix, $nsSeparator);
-                $path   = rtrim($path, DIRECTORY_SEPARATOR);
+                $nsSeparator = (false !== strpos((string) $prefix, '\\'))?'\\':'_';
+                $prefix = rtrim((string) $prefix, $nsSeparator);
+                $path   = rtrim((string) $path, DIRECTORY_SEPARATOR);
                 foreach (array(self::DECORATOR, self::ELEMENT) as $type) {
-                    $cType        = ucfirst(strtolower($type));
+                    $cType        = ucfirst(strtolower((string) $type));
                     $pluginPath   = $path . DIRECTORY_SEPARATOR . $cType . DIRECTORY_SEPARATOR;
                     $pluginPrefix = $prefix . $nsSeparator . $cType;
                     $loader       = $this->getPluginLoader($type);
@@ -792,7 +792,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function setMethod($method)
     {
-        $method = strtolower($method);
+        $method = strtolower((string) $method);
         if (!in_array($method, $this->_methods)) {
             // require_once 'Zend/Form/Exception.php';
             throw new Zend_Form_Exception(sprintf('"%s" is an invalid form method', $method));
@@ -812,7 +812,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
             $method = self::METHOD_POST;
             $this->setAttrib('method', $method);
         }
-        return strtolower($method);
+        return strtolower((string) $method);
     }
 
     /**
@@ -911,17 +911,17 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
         $id = $this->getFullyQualifiedName();
 
         // Bail early if no array notation detected
-        if (!strstr($id, '[')) {
+        if (!strstr((string) $id, '[')) {
             return $id;
         }
 
         // Strip array notation
-        if ('[]' == substr($id, -2)) {
-            $id = substr($id, 0, strlen($id) - 2);
+        if ('[]' == substr((string) $id, -2)) {
+            $id = substr((string) $id, 0, strlen((string) $id) - 2);
         }
-        $id = str_replace('][', '-', $id);
+        $id = str_replace((string) '][', '-', $id);
         $id = str_replace(array(']', '['), '-', $id);
-        $id = trim($id, '-');
+        $id = \trim((string) $id, '-');
 
         return $id;
     }
@@ -1675,7 +1675,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function addSubForms(array $subForms)
     {
-        foreach ($subForms as $key => $spec) {          
+        foreach ($subForms as $key => $spec) {
             $name = (string) $key;
             if ($spec instanceof Zend_Form) {
                 $this->addSubForm($spec, $name);
@@ -2096,17 +2096,17 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
             return $value;
         }
 
-        if (!strstr($value, '[')) {
+        if (!strstr((string) $value, '[')) {
             return $value;
         }
 
-        $endPos = strlen($value) - 1;
+        $endPos = strlen((string) $value) - 1;
         if (']' != $value[$endPos]) {
             return $value;
         }
 
         $start = strrpos($value, '[') + 1;
-        $name = substr($value, $start, $endPos - $start);
+        $name = substr((string) $value, $start, $endPos - $start);
         return $name;
     }
 
@@ -2123,9 +2123,9 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     protected function _dissolveArrayValue($value, $arrayPath)
     {
         // As long as we have more levels
-        while ($arrayPos = strpos($arrayPath, '[')) {
+        while ($arrayPos = strpos((string) $arrayPath, '[')) {
             // Get the next key in the path
-            $arrayKey = trim(substr($arrayPath, 0, $arrayPos), ']');
+            $arrayKey = \trim((string) substr((string) $arrayPath, 0, $arrayPos), ']');
 
             // Set the potentially final value or the next search point in the array
             if (isset($value[$arrayKey])) {
@@ -2133,7 +2133,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
             }
 
             // Set the next search point in the path
-            $arrayPath = trim(substr($arrayPath, $arrayPos + 1), ']');
+            $arrayPath = \trim((string) substr((string) $arrayPath, $arrayPos + 1), ']');
         }
 
         if (isset($value[$arrayPath])) {
@@ -2156,7 +2156,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     protected function _dissolveArrayUnsetKey($array, $arrayPath, $key)
     {
         $unset =& $array;
-        $path  = trim(strtr((string)$arrayPath, array('[' => '/', ']' => '')), '/');
+        $path  = \trim((string) strtr((string) (string)$arrayPath, array('[' => '/', ']' => '')), '/');
         $segs  = ('' !== $path) ? explode('/', $path) : array();
 
         foreach ($segs as $seg) {
@@ -2183,13 +2183,13 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
         // As long as we have more levels
         while ($arrayPos = strrpos($arrayPath, '[')) {
             // Get the next key in the path
-            $arrayKey = trim(substr($arrayPath, $arrayPos + 1), ']');
+            $arrayKey = \trim((string) substr((string) $arrayPath, $arrayPos + 1), ']');
 
             // Attach
             $value = array($arrayKey => $value);
 
             // Set the next search point in the path
-            $arrayPath = trim(substr($arrayPath, 0, $arrayPos), ']');
+            $arrayPath = \trim((string) substr((string) $arrayPath, 0, $arrayPos), ']');
         }
 
         $value = array($arrayPath => $value);
@@ -2829,9 +2829,9 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     public function getDecorator($name)
     {
         if (!isset($this->_decorators[$name])) {
-            $len = strlen($name);
+            $len = strlen((string) $name);
             foreach ($this->_decorators as $localName => $decorator) {
-                if ($len > strlen($localName)) {
+                if ($len > strlen((string) $localName)) {
                     continue;
                 }
 
@@ -3241,8 +3241,8 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function __call($method, $args)
     {
-        if ('render' == substr($method, 0, 6)) {
-            $decoratorName = substr($method, 6);
+        if ('render' == substr((string) $method, 0, 6)) {
+            $decoratorName = substr((string) $method, 6);
             if (false !== ($decorator = $this->getDecorator($decoratorName))) {
                 $decorator->setElement($this);
                 $seed = '';
@@ -3272,6 +3272,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      * @throws Zend_Form_Exception
      * @return Zend_Form_Element|Zend_Form_DisplayGroup|Zend_Form
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         $this->_sort();
@@ -3295,6 +3296,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         $this->_sort();
@@ -3306,6 +3308,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->_sort();
@@ -3317,6 +3320,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->_sort();
@@ -3328,6 +3332,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         $this->_sort();
@@ -3339,6 +3344,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->_order);

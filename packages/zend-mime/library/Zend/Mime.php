@@ -409,7 +409,7 @@ class Zend_Mime
      */
     public static function isPrintable($str)
     {
-        return (strcspn($str, self::$qpKeysString) == strlen($str));
+        return (strcspn($str, self::$qpKeysString) == strlen((string) $str));
     }
 
     /**
@@ -430,14 +430,14 @@ class Zend_Mime
         $str = self::_encodeQuotedPrintable($str);
 
         // Split encoded text into separate lines
-        while (strlen($str) > 0) {
-            $ptr = strlen($str);
+        while (strlen((string) $str) > 0) {
+            $ptr = strlen((string) $str);
             if ($ptr > $lineLength) {
                 $ptr = $lineLength;
             }
 
             // Ensure we are not splitting across an encoded character
-            $pos = strrpos(substr($str, 0, $ptr), '=');
+            $pos = strrpos(substr((string) $str, 0, $ptr), '=');
             if ($pos !== false && $pos >= $ptr - 2) {
                 $ptr = $pos;
             }
@@ -448,12 +448,12 @@ class Zend_Mime
             }
 
             // Add string and continue
-            $out .= substr($str, 0, $ptr) . '=' . $lineEnd;
-            $str = substr($str, $ptr);
+            $out .= substr((string) $str, 0, $ptr) . '=' . $lineEnd;
+            $str = substr((string) $str, $ptr);
         }
 
-        $out = rtrim($out, $lineEnd);
-        $out = rtrim($out, '=');
+        $out = rtrim((string) $out, $lineEnd);
+        $out = rtrim((string) $out, '=');
 
         return $out;
     }
@@ -468,9 +468,7 @@ class Zend_Mime
     {
         $str = str_replace('=', '=3D', $str);
         $str = str_replace(self::$qpKeys, self::$qpReplaceValues, $str);
-        $str = rtrim($str);
-
-        return $str;
+        return rtrim((string) $str);
     }
 
     /**
@@ -491,7 +489,7 @@ class Zend_Mime
     {
         // Reduce line-length by the length of the required delimiter, charsets and encoding
         $prefix     = sprintf('=?%s?Q?', $charset);
-        $lineLength = $lineLength - strlen($prefix) - 3;
+        $lineLength = $lineLength - strlen((string) $prefix) - 3;
 
         $str = self::_encodeQuotedPrintable($str);
 
@@ -505,16 +503,16 @@ class Zend_Mime
 
         // Split encoded text into separate lines
         $tmp = "";
-        while (strlen($str) > 0) {
+        while (strlen((string) $str) > 0) {
             $currentLine = max(count($lines) - 1, 0);
             $token       = self::getNextQuotedPrintableToken($str);
-            $str         = substr($str, strlen($token));
+            $str         = substr((string) $str, strlen((string) $token));
 
             $tmp .= $token;
             if ($token == '=20') {
                 // only if we have a single char token or space, we can append the
                 // tempstring it to the current line or start a new line if necessary.
-                if (strlen($lines[$currentLine] . $tmp) > $lineLength) {
+                if (strlen((string) $lines[$currentLine] . $tmp) > $lineLength) {
                     $lines[$currentLine + 1] = $tmp;
                 } else {
                     $lines[$currentLine] .= $tmp;
@@ -522,7 +520,7 @@ class Zend_Mime
                 $tmp = "";
             }
             // don't forget to append the rest to the last line
-            if (strlen($str) == 0) {
+            if (strlen((string) $str) == 0) {
                 $lines[$currentLine] .= $tmp;
             }
         }
@@ -531,7 +529,7 @@ class Zend_Mime
         for ($i = 0; $i < count($lines); $i++) {
             $lines[$i] = " " . $prefix . $lines[$i] . "?=";
         }
-        $str = trim(implode($lineEnd, $lines));
+        $str = \trim((string) implode($lineEnd, $lines));
 
         return $str;
     }
@@ -544,10 +542,10 @@ class Zend_Mime
      */
     private static function getNextQuotedPrintableToken($str)
     {
-        if (substr($str, 0, 1) == "=") {
-            $token = substr($str, 0, 3);
+        if (substr((string) $str, 0, 1) == "=") {
+            $token = substr((string) $str, 0, 3);
         } else {
-            $token = substr($str, 0, 1);
+            $token = substr((string) $str, 0, 1);
         }
 
         return $token;
@@ -568,10 +566,10 @@ class Zend_Mime
     {
         $prefix          = '=?' . $charset . '?B?';
         $suffix          = '?=';
-        $remainingLength = $lineLength - strlen($prefix) - strlen($suffix);
+        $remainingLength = $lineLength - strlen((string) $prefix) - strlen((string) $suffix);
 
         $encodedValue = self::encodeBase64($str, $remainingLength, $lineEnd);
-        $encodedValue = str_replace(
+        $encodedValue = str_replace((string)
             $lineEnd, $suffix . $lineEnd . ' ' . $prefix, $encodedValue
         );
         $encodedValue = $prefix . $encodedValue . $suffix;
@@ -592,7 +590,7 @@ class Zend_Mime
         $str, $lineLength = self::LINELENGTH, $lineEnd = self::LINEEND
     )
     {
-        return rtrim(chunk_split(base64_encode($str), $lineLength, $lineEnd));
+        return rtrim((string) chunk_split(base64_encode($str), $lineLength, $lineEnd));
     }
 
     /**
@@ -604,7 +602,7 @@ class Zend_Mime
     {
         // This string needs to be somewhat unique
         if ($boundary === null) {
-            $this->_boundary = '=_' . md5(microtime(1) . self::$makeUnique++);
+            $this->_boundary = '=_' . md5((string) microtime(1) . self::$makeUnique++);
         } else {
             $this->_boundary = $boundary;
         }

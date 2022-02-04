@@ -129,7 +129,7 @@ class Zend_Soap_Wsdl_Strategy_ArrayOfTypeComplex extends Zend_Soap_Wsdl_Strategy
      */
     protected function _getSingularPhpType($type)
     {
-        return str_replace("[]", "", $type);
+        return str_replace((string) "[]", "", $type);
     }
 
     /**

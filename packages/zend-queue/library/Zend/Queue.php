@@ -214,14 +214,14 @@ class Zend_Queue implements Countable
                 $adapterNamespace = 'Zend_Queue_Adapter';
             }
 
-            $adapterName = str_replace(
+            $adapterName = str_replace((string)
                 ' ',
                 '_',
                 ucwords(
-                    str_replace(
+                    str_replace((string)
                         '_',
                         ' ',
-                        strtolower($adapterNamespace . '_' . $adapter)
+                        strtolower((string) $adapterNamespace . '_' . $adapter)
                     )
                 )
             );
@@ -421,6 +421,7 @@ class Zend_Queue implements Countable
      *
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         if ($this->getAdapter()->isSupported('count')) {

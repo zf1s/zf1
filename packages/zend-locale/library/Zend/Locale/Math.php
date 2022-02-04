@@ -72,15 +72,15 @@ class Zend_Locale_Math
             }
         }
 
-        if (strpos($op1, 'E') !== false) {
+        if (strpos((string) $op1, 'E') !== false) {
             $op1 = self::floatalize($op1);
         }
 
         if ($normalize) {
-            $op1 = trim(self::normalize($op1));
+            $op1 = \trim((string) self::normalize($op1));
         }
-        $length = strlen($op1);
-        if (($decPos = strpos($op1, '.')) === false) {
+        $length = strlen((string) $op1);
+        if (($decPos = strpos((string) $op1, '.')) === false) {
             $op1 .= '.0';
             $decPos = $length;
             $length += 2;
@@ -108,7 +108,7 @@ class Zend_Locale_Math
         $triggerDigit = $op1[$triggerPos + $decPos];
         if ($precision < 0) {
             // zero fill digits to the left of the decimal place
-            $op1 = substr($op1, 0, $decPos + $precision) . str_pad('', abs($precision), '0');
+            $op1 = substr((string) $op1, 0, $decPos + $precision) . str_pad('', abs($precision), '0');
         }
 
         if ($triggerDigit >= '5') {
@@ -132,7 +132,7 @@ class Zend_Locale_Math
                 return self::Sub($op1, $roundUp, $precision);
             }
         } elseif ($precision >= 0) {
-            return substr($op1, 0, $decPos + ($precision ? $precision + 1: 0));
+            return substr((string) $op1, 0, $decPos + ($precision ? $precision + 1: 0));
         }
 
         return (string) $op1;
@@ -150,17 +150,17 @@ class Zend_Locale_Math
         // workaround for locale-dependent float->string conversion
         $locale = setlocale(LC_NUMERIC, 0);
         setlocale(LC_NUMERIC, 'C');
-        $value = strtoupper((string)$value);
+        $value = strtoupper((string) (string)$value);
         setlocale(LC_NUMERIC, $locale);
 
-        if (strpos($value, 'E') === false) {
+        if (strpos((string) $value, 'E') === false) {
             return $value;
         }
 
-        $number = substr($value, 0, strpos($value, 'E'));
-        if (strpos($number, '.') !== false) {
-            $post   = strlen(substr($number, strpos($number, '.') + 1));
-            $mantis = substr($value, strpos($value, 'E') + 1);
+        $number = substr((string) $value, 0, strpos((string) $value, 'E'));
+        if (strpos((string) $number, '.') !== false) {
+            $post   = strlen((string) substr((string) $number, strpos((string) $number, '.') + 1));
+            $mantis = substr((string) $value, strpos((string) $value, 'E') + 1);
             if ($mantis < 0) {
                 $post += abs((int) $mantis);
             }
@@ -183,11 +183,11 @@ class Zend_Locale_Math
     public static function normalize($value)
     {
         $convert = localeconv();
-        $value = str_replace($convert['thousands_sep'], "",(string) $value);
-        $value = str_replace($convert['positive_sign'], "", $value);
-        $value = str_replace($convert['decimal_point'], ".",$value);
-        if (!empty($convert['negative_sign']) and (strpos($value, $convert['negative_sign']))) {
-            $value = str_replace($convert['negative_sign'], "", $value);
+        $value = str_replace((string) $convert['thousands_sep'], "",(string) $value);
+        $value = str_replace((string) $convert['positive_sign'], "", $value);
+        $value = str_replace((string) $convert['decimal_point'], ".",$value);
+        if (!empty($convert['negative_sign']) and (strpos((string) $value, $convert['negative_sign']))) {
+            $value = str_replace((string) $convert['negative_sign'], "", $value);
             $value = "-" . $value;
         }
 
@@ -204,9 +204,9 @@ class Zend_Locale_Math
     public static function localize($value)
     {
         $convert = localeconv();
-        $value = str_replace(".", $convert['decimal_point'], (string) $value);
-        if (!empty($convert['negative_sign']) and (strpos($value, "-"))) {
-            $value = str_replace("-", $convert['negative_sign'], $value);
+        $value = str_replace((string) ".", $convert['decimal_point'], (string) $value);
+        if (!empty($convert['negative_sign']) and (strpos((string) $value, "-"))) {
+            $value = str_replace((string) "-", $convert['negative_sign'], $value);
         }
         return $value;
     }

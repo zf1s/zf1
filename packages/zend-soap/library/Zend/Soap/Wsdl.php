@@ -103,7 +103,7 @@ class Zend_Soap_Wsdl
         if (!$this->_dom = Zend_Xml_Security::scan($wsdl, $this->_dom)) {
             // require_once 'Zend/Server/Exception.php';
             throw new Zend_Server_Exception('Unable to create DomDocument');
-        } 
+        }
         $this->_wsdl = $this->_dom->documentElement;
 
         $this->setComplexTypeStrategy($strategy);
@@ -126,7 +126,7 @@ class Zend_Soap_Wsdl
         if($this->_dom !== null) {
             // @todo: This is the worst hack ever, but its needed due to design and non BC issues of WSDL generation
             $xml = $this->_dom->saveXML();
-            $xml = str_replace($oldUri, $uri, $xml);
+            $xml = str_replace((string) $oldUri, $uri, $xml);
             $this->_dom = new DOMDocument();
             $this->_dom = Zend_Xml_Security::scan($xml, $this->_dom);
         }
@@ -244,17 +244,17 @@ class Zend_Soap_Wsdl
         $operation = $this->_dom->createElement('operation');
         $operation->setAttribute('name', $name);
 
-        if (is_string($input) && (strlen(trim($input)) >= 1)) {
+        if (is_string($input) && (strlen((string) \trim((string) $input)) >= 1)) {
             $node = $this->_dom->createElement('input');
             $node->setAttribute('message', $input);
             $operation->appendChild($node);
         }
-        if (is_string($output) && (strlen(trim($output)) >= 1)) {
+        if (is_string($output) && (strlen((string) \trim((string) $output)) >= 1)) {
             $node= $this->_dom->createElement('output');
             $node->setAttribute('message', $output);
             $operation->appendChild($node);
         }
-        if (is_string($fault) && (strlen(trim($fault)) >= 1)) {
+        if (is_string($fault) && (strlen((string) \trim((string) $fault)) >= 1)) {
             $node = $this->_dom->createElement('fault');
             $node->setAttribute('message', $fault);
             $operation->appendChild($node);
@@ -541,7 +541,7 @@ class Zend_Soap_Wsdl
      */
     public function getType($type)
     {
-        switch (strtolower($type)) {
+        switch (strtolower((string) $type)) {
             case 'string':
             case 'str':
                 return 'xsd:string';

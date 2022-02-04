@@ -82,7 +82,7 @@ class Zend_View_Helper_HeadStyleTest extends PHPUnit_Framework_TestCase
             $registry = Zend_Registry::getInstance();
             unset($registry[$regKey]);
         }
-        $this->basePath = dirname(__FILE__) . '/_files/modules';
+        $this->basePath = __DIR__ . '/_files/modules';
         $this->helper = new Zend_View_Helper_HeadStyle();
     }
 
@@ -255,9 +255,9 @@ class Zend_View_Helper_HeadStyleTest extends PHPUnit_Framework_TestCase
                      ->headStyle($style3, 'APPEND');
         $this->assertEquals(3, count($this->helper));
         $values = $this->helper->getArrayCopy();
-        $this->assertTrue((strstr($values[0]->content, $style2)) ? true : false);
-        $this->assertTrue((strstr($values[1]->content, $style1)) ? true : false);
-        $this->assertTrue((strstr($values[2]->content, $style3)) ? true : false);
+        $this->assertTrue((strstr((string) $values[0]->content, $style2)) ? true : false);
+        $this->assertTrue((strstr((string) $values[1]->content, $style1)) ? true : false);
+        $this->assertTrue((strstr((string) $values[2]->content, $style3)) ? true : false);
     }
 
     public function testToStyleGeneratesValidHtml()

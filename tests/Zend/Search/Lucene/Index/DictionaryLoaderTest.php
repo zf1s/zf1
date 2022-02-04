@@ -48,7 +48,7 @@ class Zend_Search_Lucene_Index_DictionaryLoaderTest extends PHPUnit_Framework_Te
 {
     public function testCreate()
     {
-        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(__DIR__ . '/_source/_files');
 
         $stiFile = $directory->getFileObject('_1.sti');
         $stiFileData = $stiFile->readBytes($directory->fileLength('_1.sti'));

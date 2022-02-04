@@ -45,7 +45,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
         $this->markTestSkipped('skip this for now, maybe extract and fix original resources into a zend-resources package later...');
         return;
 
-        $this->_langDir = dirname(dirname(dirname(dirname(__FILE__))))
+        $this->_langDir = dirname(dirname(dirname(__DIR__)))
                         . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'languages';
         if (!is_readable($this->_langDir)) {
             throw new Exception('Language resource directory "'.$this->_langDir.'" not readable.');
@@ -79,7 +79,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
 
             // include Zend_Validate translation tables
             $translationFile = $entry->getPathname() . DIRECTORY_SEPARATOR . 'Zend_Validate.php';
-            if (file_exists($translationFile)) {
+            if (file_exists((string) $translationFile)) {
                 $translation = include $translationFile;
                 if (!is_array($translation)) {
                     $this->fail("Invalid or empty translation table found for language '{$fname}'");
@@ -188,7 +188,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
             foreach ($translation as $key => $value) {
                 if (preg_match_all('/(\%.+\%)/U', $key, $matches, PREG_SET_ORDER)) {
                     foreach ($matches as $match) {
-                        if (!strpos($value, $match[1])) {
+                        if (!strpos((string) $value, $match[1])) {
                             ++$cnt;
                             $errors[$lang . ' ' . $cnt] = "Missing placeholder \"" . $match[1] . "\" within \"" . $value . "\"";
                         }

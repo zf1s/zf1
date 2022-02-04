@@ -85,7 +85,7 @@ class Zend_Barcode_Object_Identcode extends Zend_Barcode_Object_Code25interleave
         $this->_checkText($text);
         $checksum = 0;
 
-        for ($i = strlen($text); $i > 0; $i --) {
+        for ($i = strlen((string) $text); $i > 0; $i --) {
             $checksum += (int)$text[$i - 1] * (($i % 2) ? 4 : 9);
         }
 

@@ -96,7 +96,7 @@ abstract class Zend_View_Helper_Navigation_TestAbstract
      */
     protected function setUp()
     {
-        $cwd = dirname(__FILE__);
+        $cwd = __DIR__;
 
         // read navigation config
         $this->_files = $cwd . '/_files';

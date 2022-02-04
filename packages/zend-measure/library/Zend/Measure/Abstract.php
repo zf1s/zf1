@@ -295,7 +295,7 @@ abstract class Zend_Measure_Abstract
             }
 
             $sValue = (string) $value;
-            $slength = strlen($value);
+            $slength = strlen((string) $value);
             $length  = 0;
             for($i = 1; $i <= $slength; ++$i) {
                 if ($sValue[$slength - $i] != '0') {

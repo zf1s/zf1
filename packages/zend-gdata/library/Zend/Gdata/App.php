@@ -630,7 +630,7 @@ class Zend_Gdata_App
         if (Zend_Gdata_App::getGzipEnabled()) {
             // some services require the word 'gzip' to be in the user-agent
             // header in addition to the accept-encoding header
-            if (strpos($this->_httpClient->getHeader('User-Agent'),
+            if (strpos((string) $this->_httpClient->getHeader('User-Agent'),
                 'gzip') === false) {
                 $headers['User-Agent'] =
                     $this->_httpClient->getHeader('User-Agent') . ' (gzip)';
@@ -780,10 +780,10 @@ class Zend_Gdata_App
         $minorProtocolVersion = null;
         if ($protocolVersionStr !== null) {
             // Extract protocol major and minor version from header
-            $delimiterPos = strpos($protocolVersionStr, '.');
-            $length = strlen($protocolVersionStr);
-            $major = substr($protocolVersionStr, 0, $delimiterPos);
-            $minor = substr($protocolVersionStr, $delimiterPos + 1, $length);
+            $delimiterPos = strpos((string) $protocolVersionStr, '.');
+            $length = strlen((string) $protocolVersionStr);
+            $major = substr((string) $protocolVersionStr, 0, $delimiterPos);
+            $minor = substr((string) $protocolVersionStr, $delimiterPos + 1, $length);
             $majorProtocolVersion = $major;
             $minorProtocolVersion = $minor;
         }
@@ -855,7 +855,7 @@ class Zend_Gdata_App
     public static function importFile($filename, $className='Zend_Gdata_App_Feed', $useIncludePath = false)
     {
         error_clear_last();
-        $feed = @file_get_contents($filename, $useIncludePath);
+        $feed = @file_get_contents($filename, (bool) $useIncludePath);
         if ($feed === false) {
             $err = error_get_last();
             $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
@@ -1212,7 +1212,7 @@ class Zend_Gdata_App
                 $data instanceof Zend_Gdata_App_Entry) {
             $etag = $data->getEtag();
             if (($etag !== null) &&
-                    ($allowWeek || substr($etag, 0, 2) != 'W/')) {
+                    ($allowWeek || substr((string) $etag, 0, 2) != 'W/')) {
                 $result = $data->getEtag();
             }
         }

@@ -274,7 +274,7 @@ class Zend_Mobile_Push_Message_Apns extends Zend_Mobile_Push_Message_Abstract
      */
     public function validate()
     {
-        if (!is_string($this->_token) || strlen($this->_token) === 0) {
+        if (!is_string($this->_token) || strlen((string) $this->_token) === 0) {
             return false;
         }
         if (null != $this->_id && !is_numeric($this->_id)) {

@@ -72,7 +72,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
         $expiresIn = time() + 600;
 
         $_SERVER['SCRIPT_URI'] = "http://www.zf-test.com/test.php";
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files/consumer");
+        $storage = new Zend_OpenId_Consumer_Storage_File(__DIR__."/_files/consumer");
         $storage->delDiscoveryInfo(self::ID);
         $this->assertTrue( $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn) );
         $storage->delAssociation(self::SERVER);
@@ -223,7 +223,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
         $expiresIn = time() + 600;
 
         $_SERVER['SCRIPT_URI'] = "http://www.zf-test.com/test.php";
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files/consumer");
+        $storage = new Zend_OpenId_Consumer_Storage_File(__DIR__."/_files/consumer");
         $storage->delDiscoveryInfo(self::ID);
         $this->assertTrue( $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn) );
         $storage->delAssociation(self::SERVER);
@@ -273,7 +273,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
     {
         $expiresIn = time() + 600;
 
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files/consumer");
+        $storage = new Zend_OpenId_Consumer_Storage_File(__DIR__."/_files/consumer");
         $storage->delAssociation(self::SERVER);
         $consumer = new Zend_OpenId_ConsumerHelper($storage);
         $this->assertFalse( $consumer->getAssociation(self::SERVER, $handle, $macFunc, $secret, $expires) );
@@ -297,7 +297,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
      */
     public function testHttpRequest()
     {
-        $consumer = new Zend_OpenId_ConsumerHelper(new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files/consumer"));
+        $consumer = new Zend_OpenId_ConsumerHelper(new Zend_OpenId_Consumer_Storage_File(__DIR__."/_files/consumer"));
         $http = new Zend_Http_Client(null,
             array(
                 'maxredirects' => 4,
@@ -382,7 +382,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
     public function testAssociate()
     {
         try {
-            $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files/consumer");
+            $storage = new Zend_OpenId_Consumer_Storage_File(__DIR__."/_files/consumer");
             $storage->delAssociation(self::SERVER);
             $consumer = new Zend_OpenId_ConsumerHelper($storage);
             $http = new Zend_Http_Client(null,
@@ -558,7 +558,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
      */
     public function testDiscovery()
     {
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files/consumer");
+        $storage = new Zend_OpenId_Consumer_Storage_File(__DIR__."/_files/consumer");
         $consumer = new Zend_OpenId_ConsumerHelper($storage);
         $http = new Zend_Http_Client(null,
             array(
@@ -758,7 +758,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
     {
         $expiresIn = time() + 600;
         $_SERVER['SCRIPT_URI'] = "http://www.zf-test.com/test.php";
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files/consumer");
+        $storage = new Zend_OpenId_Consumer_Storage_File(__DIR__."/_files/consumer");
         $consumer = new Zend_OpenId_ConsumerHelper($storage);
 
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);
@@ -879,7 +879,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
     {
         $expiresIn = time() + 600;
         $_SERVER['SCRIPT_URI'] = "http://www.zf-test.com/test.php";
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files/consumer");
+        $storage = new Zend_OpenId_Consumer_Storage_File(__DIR__."/_files/consumer");
         $consumer = new Zend_OpenId_ConsumerHelper($storage);
         $http = new Zend_Http_Client(null,
             array(
@@ -1029,7 +1029,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
     {
         $expiresIn = time() + 600;
         $_SERVER['SCRIPT_URI'] = "http://www.zf-test.com/test.php";
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files/consumer");
+        $storage = new Zend_OpenId_Consumer_Storage_File(__DIR__."/_files/consumer");
         $consumer = new Zend_OpenId_ConsumerHelper($storage);
 
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);

@@ -48,7 +48,7 @@ class Zend_Translate_Adapter_Ini extends Zend_Translate_Adapter
     protected function _loadTranslationData($data, $locale, array $options = array())
     {
         $this->_data = array();
-        if (!file_exists($data)) {
+        if (!file_exists((string) $data)) {
             // require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception("Ini file '".$data."' not found");
         }

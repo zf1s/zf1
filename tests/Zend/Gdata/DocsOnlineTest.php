@@ -77,7 +77,7 @@ class Zend_Gdata_DocsOnlineTest extends PHPUnit_Framework_TestCase
         $query = new Zend_Gdata_Docs_Query();
         $query->title = $this->docTitle;
         $feed = $this->gdata->getDocumentListFeed($query);
-        $this->assertTrue(strpos(strtolower($feed->entries[0]->title), strtolower($this->docTitle)) !== FALSE);
+        $this->assertTrue(strpos((string) strtolower((string) $feed->entries[0]->title), strtolower((string) $this->docTitle)) !== FALSE);
     }
 
     public function testGetDocumentListEntry()

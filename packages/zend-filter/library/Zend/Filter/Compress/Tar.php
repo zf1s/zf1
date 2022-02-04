@@ -111,7 +111,7 @@ class Zend_Filter_Compress_Tar extends Zend_Filter_Compress_CompressAbstract
      */
     public function setTarget($target)
     {
-        if (!file_exists(dirname($target))) {
+        if (!file_exists((string) dirname($target))) {
             // require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception("The directory '$target' does not exist");
         }
@@ -137,7 +137,7 @@ class Zend_Filter_Compress_Tar extends Zend_Filter_Compress_CompressAbstract
      */
     public function setMode($mode)
     {
-        $mode = ucfirst(strtolower($mode));
+        $mode = ucfirst(strtolower((string) $mode));
         if (($mode != 'Bz2') && ($mode != 'Gz')) {
             // require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception("The mode '$mode' is unknown");
@@ -163,7 +163,7 @@ class Zend_Filter_Compress_Tar extends Zend_Filter_Compress_CompressAbstract
     public function compress($content)
     {
         $archive = new Archive_Tar($this->getArchive(), $this->getMode());
-        if (!file_exists($content)) {
+        if (!file_exists((string) $content)) {
             $file = $this->getTarget();
             if (is_dir($file)) {
                 $file .= DIRECTORY_SEPARATOR . "tar.tmp";
@@ -211,9 +211,9 @@ class Zend_Filter_Compress_Tar extends Zend_Filter_Compress_CompressAbstract
     public function decompress($content)
     {
         $archive = $this->getArchive();
-        if (file_exists($content)) {
+        if (file_exists((string) $content)) {
             $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
-        } elseif (empty($archive) || !file_exists($archive)) {
+        } elseif (empty($archive) || !file_exists((string) $archive)) {
             // require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('Tar Archive not found');
         }

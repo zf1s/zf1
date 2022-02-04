@@ -158,7 +158,7 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
             $bodyReturn = array();
             for ($lineNum = 1; $lineNum <= count($bodyLines); $lineNum++) {
                 if ($lineNum == $classStartLine) {
-                    $bodyReturn[] = str_replace('?', $class->getName(), self::$_markerClass);  //'/* Zend_CodeGenerator_Php_File-ClassMarker: {' . $class->getName() . '} */';
+                    $bodyReturn[] = str_replace((string) '?', $class->getName(), self::$_markerClass);  //'/* Zend_CodeGenerator_Php_File-ClassMarker: {' . $class->getName() . '} */';
                     $lineNum = $classEndLine;
                 } else {
                     $bodyReturn[] = $bodyLines[$lineNum - 1]; // adjust for index -> line conversion
@@ -176,7 +176,7 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
             $bodyReturn = array();
             for ($lineNum = 1; $lineNum <= count($bodyLines); $lineNum++) {
                 if ($lineNum == $docblock->getStartLine()) {
-                    $bodyReturn[] = str_replace('?', $class->getName(), self::$_markerDocblock);  //'/* Zend_CodeGenerator_Php_File-ClassMarker: {' . $class->getName() . '} */';
+                    $bodyReturn[] = str_replace((string) '?', $class->getName(), self::$_markerDocblock);  //'/* Zend_CodeGenerator_Php_File-ClassMarker: {' . $class->getName() . '} */';
                     $lineNum = $docblock->getEndLine();
                 } else {
                     $bodyReturn[] = $bodyLines[$lineNum - 1]; // adjust for index -> line conversion
@@ -388,12 +388,12 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
         $output = '';
 
         // start with the body (if there), or open tag
-        if (preg_match('#(?:\s*)<\?php#', $this->getBody()) == false) {
+        if (preg_match('#(?:\s*)<\?php#', (string) $this->getBody()) == false) {
             $output = '<?php' . self::LINE_FEED;
         }
 
         // if there are markers, put the body into the output
-        $body = $this->getBody();
+        $body = (string) $this->getBody();
         if (preg_match('#/\* Zend_CodeGenerator_Php_File-(.*?)Marker#', $body)) {
             $output .= $body;
             $body    = '';
@@ -430,8 +430,8 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
             foreach ($classes as $class) {
                 if($this->getDocblock() == $class->getDocblock()) {
                     $class->setDocblock(null);
-                }                   
-                $regex = str_replace('?', $class->getName(), self::$_markerClass);
+                }
+                $regex = str_replace((string) '?', $class->getName(), self::$_markerClass);
                 $regex = preg_quote($regex, '#');
                 if (preg_match('#'.$regex.'#', $output)) {
                     $output = preg_replace('#'.$regex.'#', $class->generate(), $output, 1);

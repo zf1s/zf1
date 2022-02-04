@@ -101,7 +101,7 @@ class Zend_Application_Resource_LayoutTest extends PHPUnit_Framework_TestCase
     {
         $options = array(
             'layout'     => 'foo.phtml',
-            'layoutPath' => dirname(__FILE__),
+            'layoutPath' => __DIR__,
         );
 
         $resource = new Zend_Application_Resource_Layout($options);

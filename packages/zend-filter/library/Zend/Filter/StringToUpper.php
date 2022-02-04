@@ -92,7 +92,7 @@ class Zend_Filter_StringToUpper implements Zend_Filter_Interface
             }
 
             $encoding = (string) $encoding;
-            if (!in_array(strtolower($encoding), array_map('strtolower', mb_list_encodings()))) {
+            if (!in_array(strtolower((string) $encoding), array_map('strtolower', mb_list_encodings()))) {
                 // require_once 'Zend/Filter/Exception.php';
                 throw new Zend_Filter_Exception("The given encoding '$encoding' is not supported by mbstring");
             }
@@ -113,9 +113,9 @@ class Zend_Filter_StringToUpper implements Zend_Filter_Interface
     public function filter($value)
     {
         if ($this->_encoding) {
-            return mb_strtoupper((string) $value, $this->_encoding);
+            return mb_strtoupper((string) (string) $value, $this->_encoding);
         }
 
-        return strtoupper((string) $value);
+        return strtoupper((string) (string) $value);
     }
 }

@@ -347,15 +347,15 @@ class Zend_Validate_File_Size extends Zend_Validate_Abstract
             return (integer) $size;
         }
 
-        $type  = trim(substr($size, -2, 1));
+        $type  = \trim((string) substr((string) $size, -2, 1));
 
-        $value = substr($size, 0, -1);
+        $value = substr((string) $size, 0, -1);
         if (!is_numeric($value)) {
-            $value = substr($value, 0, -1);
+            $value = substr((string) $value, 0, -1);
         }
-        $value = trim($value) + 0;
+        $value = \trim((string) $value) + 0;
 
-        switch (strtoupper($type)) {
+        switch (strtoupper((string) $type)) {
             case 'Y':
                 $value *= (1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024);
                 break;

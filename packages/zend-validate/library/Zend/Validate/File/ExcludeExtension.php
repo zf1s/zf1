@@ -67,7 +67,7 @@ class Zend_Validate_File_ExcludeExtension extends Zend_Validate_File_Extension
         }
 
         if ($file !== null) {
-            $info['extension'] = substr($file['name'], strrpos($file['name'], '.') + 1);
+            $info['extension'] = substr((string) $file['name'], strrpos($file['name'], '.') + 1);
         } else {
             $info = pathinfo($value);
         }
@@ -79,7 +79,7 @@ class Zend_Validate_File_ExcludeExtension extends Zend_Validate_File_Extension
         } else if (!$this->_case) {
             $found = false;
             foreach ($extensions as $extension) {
-                if (strtolower($extension) == strtolower($info['extension'])) {
+                if (strtolower((string) $extension) == strtolower((string) $info['extension'])) {
                     $found = true;
                 }
             }

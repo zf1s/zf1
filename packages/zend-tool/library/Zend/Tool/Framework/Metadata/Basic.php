@@ -209,7 +209,7 @@ class Zend_Tool_Framework_Metadata_Basic
 
             }
 
-            $metadataPairValues[ltrim($varName, '_')] = $varValue;
+            $metadataPairValues[ltrim((string) $varName, '_')] = $varValue;
         }
 
         return $metadataPairValues;

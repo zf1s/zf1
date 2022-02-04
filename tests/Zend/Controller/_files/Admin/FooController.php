@@ -24,7 +24,7 @@
 
 
 // require_once 'Zend/Controller/Action.php';
-require_once dirname(__FILE__) . '/../FooController.php';
+require_once __DIR__ . '/../FooController.php';
 
 /**
  * Mock file for testbed

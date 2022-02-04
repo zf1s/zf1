@@ -200,13 +200,13 @@ class Zend_Validate implements Zend_Validate_Interface
             if (!class_exists($className)) {
                 // require_once 'Zend/Loader.php';
                 foreach($namespaces as $namespace) {
-                    $nsSeparator = (false !== strpos($namespace, '\\'))?'\\':'_';
-                    $class = rtrim($namespace, $nsSeparator) . $nsSeparator . $className;
+                    $nsSeparator = (false !== strpos((string) $namespace, '\\'))?'\\':'_';
+                    $class = rtrim((string) $namespace, $nsSeparator) . $nsSeparator . $className;
                     if (class_exists($class)) {
                         $className = $class;
                         break;
                     }
-                    /*$file  = str_replace('_', DIRECTORY_SEPARATOR, $class) . '.php';
+                    /*$file  = str_replace((string) '_', DIRECTORY_SEPARATOR, $class) . '.php';
                     if (Zend_Loader::isReadable($file)) {
                         Zend_Loader::loadClass($class);
                         $className = $class;

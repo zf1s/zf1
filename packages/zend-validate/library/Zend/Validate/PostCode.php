@@ -175,7 +175,7 @@ class Zend_Validate_PostCode extends Zend_Validate_Abstract
             $format = '/^' . $format;
         }
 
-        if ($format[strlen($format) - 1] !== '/') {
+        if ($format[strlen((string) $format) - 1] !== '/') {
             $format .= '$/';
         }
 

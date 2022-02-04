@@ -107,14 +107,14 @@ class Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8 extends Zend_Search_Lucen
 
             // character position of the matched word in the input stream
             $startPos = $this->_position +
-                        iconv_strlen(substr($this->_input,
+                        iconv_strlen(substr((string) $this->_input,
                                             $this->_bytePosition,
                                             $binStartPos - $this->_bytePosition),
                                      'UTF-8');
             // character postion of the end of matched word in the input stream
             $endPos = $startPos + iconv_strlen($matchedWord, 'UTF-8');
 
-            $this->_bytePosition = $binStartPos + strlen($matchedWord);
+            $this->_bytePosition = $binStartPos + strlen((string) $matchedWord);
             $this->_position     = $endPos;
 
             $token = $this->normalize(new Zend_Search_Lucene_Analysis_Token($matchedWord, $startPos, $endPos));

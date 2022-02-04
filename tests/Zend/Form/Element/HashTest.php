@@ -137,7 +137,7 @@ class Zend_Form_Element_HashTest extends PHPUnit_Framework_TestCase
     public function testHashIsMd5()
     {
         $this->testGetHashReturnsHashValue();
-        $this->assertEquals(32, strlen($this->hash));
+        $this->assertEquals(32, strlen((string) $this->hash));
         $this->assertRegexp('/^[a-f0-9]{32}$/', $this->hash);
     }
 
@@ -157,7 +157,7 @@ class Zend_Form_Element_HashTest extends PHPUnit_Framework_TestCase
     {
         // require_once 'Zend/View.php';
         $view = new Zend_View();
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
         return $view;
     }
 

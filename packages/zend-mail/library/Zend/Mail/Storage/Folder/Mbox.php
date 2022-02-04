@@ -98,7 +98,7 @@ class Zend_Mail_Storage_Folder_Mbox extends Zend_Mail_Storage_Mbox implements Ze
             throw new Zend_Mail_Storage_Exception('no valid dirname given in params');
         }
 
-        $this->_rootdir = rtrim($params->dirname, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        $this->_rootdir = rtrim((string) $params->dirname, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
         $this->_buildFolderTree($this->_rootdir);
         $this->selectFolder(!empty($params->folder) ? $params->folder : 'INBOX');
@@ -169,7 +169,7 @@ class Zend_Mail_Storage_Folder_Mbox extends Zend_Mail_Storage_Mbox implements Ze
         }
 
         $currentFolder = $this->_rootFolder;
-        $subname = trim($rootFolder, DIRECTORY_SEPARATOR);
+        $subname = \trim((string) $rootFolder, DIRECTORY_SEPARATOR);
         while ($currentFolder) {
             @list($entry, $subname) = @explode(DIRECTORY_SEPARATOR, $subname, 2);
             $currentFolder = $currentFolder->$entry;
@@ -178,7 +178,7 @@ class Zend_Mail_Storage_Folder_Mbox extends Zend_Mail_Storage_Mbox implements Ze
             }
         }
 
-        if ($currentFolder->getGlobalName() != DIRECTORY_SEPARATOR . trim($rootFolder, DIRECTORY_SEPARATOR)) {
+        if ($currentFolder->getGlobalName() != DIRECTORY_SEPARATOR . \trim((string) $rootFolder, DIRECTORY_SEPARATOR)) {
             /**
              * @see Zend_Mail_Storage_Exception
              */

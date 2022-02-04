@@ -258,8 +258,8 @@ EOD;
      */
     public function testDoesNotAllowExternalEntities()
     {
-        $payload = file_get_contents(dirname(__FILE__) . '/_files/ZF12293-response.xml');
-        $payload = sprintf($payload, 'file://' . realpath(dirname(__FILE__) . '/_files/ZF12293-payload.txt'));
+        $payload = file_get_contents(__DIR__ . '/_files/ZF12293-response.xml');
+        $payload = sprintf($payload, 'file://' . realpath(__DIR__ . '/_files/ZF12293-payload.txt'));
         $this->_response->loadXml($payload);
         $value = $this->_response->getReturnValue();
         $this->assertTrue(empty($value));
@@ -270,8 +270,8 @@ EOD;
 
      public function testShouldDisallowsDoctypeInRequestXmlAndReturnFalseOnLoading()
      {
-         $payload = file_get_contents(dirname(__FILE__) . '/_files/ZF12293-response.xml');
-         $payload = sprintf($payload, 'file://' . realpath(dirname(__FILE__) . '/_files/ZF12293-payload.txt'));
+         $payload = file_get_contents(__DIR__ . '/_files/ZF12293-response.xml');
+         $payload = sprintf($payload, 'file://' . realpath(__DIR__ . '/_files/ZF12293-payload.txt'));
          $this->assertFalse($this->_response->loadXml($payload));
      }
 }

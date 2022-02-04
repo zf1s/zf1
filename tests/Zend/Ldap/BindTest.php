@@ -208,8 +208,8 @@ class Zend_Ldap_BindTest extends PHPUnit_Framework_TestCase
                 $this->fail('Exception for empty password');
             } else {
                 $message = $zle->getMessage();
-                $this->assertTrue(strstr($message, 'Invalid credentials') ||
-                    strstr($message, 'Server is unwilling to perform'));
+                $this->assertTrue(strstr((string) $message, 'Invalid credentials') ||
+                    strstr((string) $message, 'Server is unwilling to perform'));
                 return;
             }
         }

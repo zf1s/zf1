@@ -55,7 +55,7 @@ class Zend_Filter_File_UpperCase extends Zend_Filter_StringToUpper
      */
     public function filter($value)
     {
-        if (!file_exists($value)) {
+        if (!file_exists((string) $value)) {
             // require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception("File '$value' not found");
         }

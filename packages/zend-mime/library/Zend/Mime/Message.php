@@ -162,7 +162,7 @@ class Zend_Mime_Message
             $body .= $mime->mimeEnd($EOL);
         }
 
-        return trim($body);
+        return \trim((string) $body);
     }
 
     /**
@@ -217,29 +217,29 @@ class Zend_Mime_Message
         // find every mime part limiter and cut out the
         // string before it.
         // the part before the first boundary string is discarded:
-        $p = strpos($body, '--' . $boundary . "\n", $start);
+        $p = strpos((string) $body, '--' . $boundary . "\n", $start);
         if ($p === false) {
             // no parts found!
             return array();
         }
 
         // position after first boundary line
-        $start = $p + 3 + strlen($boundary);
+        $start = $p + 3 + strlen((string) $boundary);
 
-        while (($p = strpos($body, '--' . $boundary . "\n", $start))
+        while (($p = strpos((string) $body, '--' . $boundary . "\n", $start))
                !== false) {
-            $res[] = substr($body, $start, $p - $start);
-            $start = $p + 3 + strlen($boundary);
+            $res[] = substr((string) $body, $start, $p - $start);
+            $start = $p + 3 + strlen((string) $boundary);
         }
 
         // no more parts, find end boundary
-        $p = strpos($body, '--' . $boundary . '--', $start);
+        $p = strpos((string) $body, '--' . $boundary . '--', $start);
         if ($p === false) {
             throw new Zend_Exception('Not a valid Mime Message: End Missing');
         }
 
         // the remaining part also needs to be parsed:
-        $res[] = substr($body, $start, $p - $start);
+        $res[] = substr((string) $body, $start, $p - $start);
 
         return $res;
     }
@@ -269,7 +269,7 @@ class Zend_Mime_Message
                 /**
                  * @todo check for characterset and filename
                  */
-                switch (strtolower($key)) {
+                switch (strtolower((string) $key)) {
                     case 'content-type':
                         $newPart->type = $value;
                         break;
@@ -277,7 +277,7 @@ class Zend_Mime_Message
                         $newPart->encoding = $value;
                         break;
                     case 'content-id':
-                        $newPart->id = trim($value, '<>');
+                        $newPart->id = \trim((string) $value, '<>');
                         break;
                     case 'content-disposition':
                         $newPart->disposition = $value;

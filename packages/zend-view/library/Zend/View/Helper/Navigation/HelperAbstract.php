@@ -351,7 +351,7 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
     public function setPrefixForId($prefix)
     {
         if (is_string($prefix)) {
-            $this->_prefixForId = trim($prefix);
+            $this->_prefixForId = \trim((string) $prefix);
         }
 
         return $this;
@@ -366,8 +366,8 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
     {
         if (null === $this->_prefixForId) {
             $prefix             = get_class($this);
-            $this->_prefixForId = strtolower(
-                    trim(substr($prefix, strrpos($prefix, '_')), '_')
+            $this->_prefixForId = strtolower((string)
+                    \trim((string) substr((string) $prefix, strrpos($prefix, '_')), '_')
                 ) . '-';
         }
 
@@ -905,7 +905,7 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
     {
         // filter out null values and empty string values
         foreach ($attribs as $key => $value) {
-            if ($value === null || (is_string($value) && !strlen($value))) {
+            if ($value === null || (is_string($value) && !strlen((string) $value))) {
                 unset($attribs[$key]);
             }
         }
@@ -922,11 +922,11 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      * @return string           Normalized ID
      */
     protected function _normalizeId($value)
-    {        
+    {
         if (false === $this->_skipPrefixForId) {
             $prefix = $this->getPrefixForId();
 
-            if (strlen($prefix)) {
+            if (strlen((string) $prefix)) {
                 return $prefix . $value;
             }
         }

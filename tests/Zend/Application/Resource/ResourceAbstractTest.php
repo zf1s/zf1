@@ -60,7 +60,7 @@ class Zend_Application_Resource_ResourceAbstractTest extends PHPUnit_Framework_T
 
         $this->application = new Zend_Application('testing');
 
-        require_once dirname(__FILE__) . '/../_files/ZfAppBootstrap.php';
+        require_once __DIR__ . '/../_files/ZfAppBootstrap.php';
         $this->bootstrap = new ZfAppBootstrap($this->application);
     }
 
@@ -82,14 +82,14 @@ class Zend_Application_Resource_ResourceAbstractTest extends PHPUnit_Framework_T
 
     public function testBootstrapIsNullByDefault()
     {
-        require_once dirname(__FILE__) . '/../_files/resources/Foo.php';
+        require_once __DIR__ . '/../_files/resources/Foo.php';
         $resource = new Zend_Application_BootstrapTest_Resource_Foo();
         $this->assertNull($resource->getBootstrap());
     }
 
     public function testResourceShouldAllowSettingParentBootstrap()
     {
-        require_once dirname(__FILE__) . '/../_files/resources/Foo.php';
+        require_once __DIR__ . '/../_files/resources/Foo.php';
         $resource = new Zend_Application_BootstrapTest_Resource_Foo();
         $resource->setBootstrap($this->bootstrap);
         $this->assertSame($this->bootstrap, $resource->getBootstrap());
@@ -97,7 +97,7 @@ class Zend_Application_Resource_ResourceAbstractTest extends PHPUnit_Framework_T
 
     public function testOptionsAreStoredVerbatim()
     {
-        require_once dirname(__FILE__) . '/../_files/resources/Foo.php';
+        require_once __DIR__ . '/../_files/resources/Foo.php';
         $resource = new Zend_Application_BootstrapTest_Resource_Foo();
         $options  = array(
             'foo' => 'bar',
@@ -108,7 +108,7 @@ class Zend_Application_Resource_ResourceAbstractTest extends PHPUnit_Framework_T
 
     public function testCallingSetOptionsMultipleTimesMergesOptions()
     {
-        require_once dirname(__FILE__) . '/../_files/resources/Foo.php';
+        require_once __DIR__ . '/../_files/resources/Foo.php';
         $resource = new Zend_Application_BootstrapTest_Resource_Foo();
         $options1  = array(
             'foo' => 'bar',
@@ -129,7 +129,7 @@ class Zend_Application_Resource_ResourceAbstractTest extends PHPUnit_Framework_T
 
     public function testSetOptionsProxiesToLocalSetters()
     {
-        require_once dirname(__FILE__) . '/../_files/resources/Foo.php';
+        require_once __DIR__ . '/../_files/resources/Foo.php';
         $resource = new Zend_Application_BootstrapTest_Resource_Foo();
         $options  = array(
             'someArbitraryKey' => 'test',
@@ -140,7 +140,7 @@ class Zend_Application_Resource_ResourceAbstractTest extends PHPUnit_Framework_T
 
     public function testConstructorAcceptsArrayConfiguration()
     {
-        require_once dirname(__FILE__) . '/../_files/resources/Foo.php';
+        require_once __DIR__ . '/../_files/resources/Foo.php';
         $options  = array(
             'foo' => 'bar',
         );
@@ -150,7 +150,7 @@ class Zend_Application_Resource_ResourceAbstractTest extends PHPUnit_Framework_T
 
     public function testConstructorAcceptsZendConfigObject()
     {
-        require_once dirname(__FILE__) . '/../_files/resources/Foo.php';
+        require_once __DIR__ . '/../_files/resources/Foo.php';
         $options  = array(
             'foo' => 'bar',
         );
@@ -164,7 +164,7 @@ class Zend_Application_Resource_ResourceAbstractTest extends PHPUnit_Framework_T
      */
     public function testSetOptionsShouldRemoveBootstrapOptionWhenPassed()
     {
-        require_once dirname(__FILE__) . '/../_files/resources/Foo.php';
+        require_once __DIR__ . '/../_files/resources/Foo.php';
         $resource = new Zend_Application_BootstrapTest_Resource_Foo();
         $resource->setOptions(array(
             'bootstrap' => $this->bootstrap,
@@ -179,7 +179,7 @@ class Zend_Application_Resource_ResourceAbstractTest extends PHPUnit_Framework_T
      */
     public function testFirstResourceOptionShouldNotBeDropped()
     {
-        require_once dirname(__FILE__) . '/../_files/resources/Foo.php';
+        require_once __DIR__ . '/../_files/resources/Foo.php';
         $options = array(
             array('someData'),
             array('someMoreData'),

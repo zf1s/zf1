@@ -169,7 +169,7 @@ class Zend_Barcode_Renderer_Svg extends Zend_Barcode_Renderer_RendererAbstract
 
             $this->_appendRootElement('title',
                                       array(),
-                                      "Barcode " . strtoupper($this->_barcode->getType()) . " " . $this->_barcode->getText());
+                                      "Barcode " . strtoupper((string) $this->_barcode->getType()) . " " . $this->_barcode->getText());
         } else {
             $this->_readRootElement();
             $width = $this->_rootElement->getAttribute('width');

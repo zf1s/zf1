@@ -155,7 +155,7 @@ class Zend_FilterTest extends PHPUnit_Framework_TestCase
      */
     public function handleNotFoundError($errnum, $errstr)
     {
-        if (strstr($errstr, 'No such file')) {
+        if (strstr((string) $errstr, 'No such file')) {
             $this->error = true;
         }
     }
@@ -224,7 +224,7 @@ class Zend_FilterTest_LowerCase implements Zend_Filter_Interface
 {
     public function filter($value)
     {
-        return strtolower($value);
+        return strtolower((string) $value);
     }
 }
 

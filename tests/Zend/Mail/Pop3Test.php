@@ -54,8 +54,8 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
                                'password' => TESTS_ZEND_MAIL_POP3_PASSWORD);
 
         if (defined('TESTS_ZEND_MAIL_SERVER_TESTDIR') && TESTS_ZEND_MAIL_SERVER_TESTDIR) {
-            if (!file_exists(TESTS_ZEND_MAIL_SERVER_TESTDIR . DIRECTORY_SEPARATOR . 'inbox')
-             && !file_exists(TESTS_ZEND_MAIL_SERVER_TESTDIR . DIRECTORY_SEPARATOR . 'INBOX')) {
+            if (!file_exists((string) TESTS_ZEND_MAIL_SERVER_TESTDIR . DIRECTORY_SEPARATOR . 'inbox')
+             && !file_exists((string) TESTS_ZEND_MAIL_SERVER_TESTDIR . DIRECTORY_SEPARATOR . 'INBOX')) {
                 $this->markTestSkipped('There is no file name "inbox" or "INBOX" in '
                                        . TESTS_ZEND_MAIL_SERVER_TESTDIR . '. I won\'t use it for testing. '
                                        . 'This is you safety net. If you think it is the right directory just '
@@ -63,7 +63,7 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
             }
 
             $this->_cleanDir(TESTS_ZEND_MAIL_SERVER_TESTDIR);
-            $this->_copyDir(dirname(__FILE__) . '/_files/test.' . TESTS_ZEND_MAIL_SERVER_FORMAT,
+            $this->_copyDir(__DIR__ . '/_files/test.' . TESTS_ZEND_MAIL_SERVER_FORMAT,
                             TESTS_ZEND_MAIL_SERVER_TESTDIR);
         }
     }
@@ -278,7 +278,7 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Pop3($this->_params);
 
         $content = $mail->getHeader(3, 1)->getContent();
-        $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
+        $this->assertEquals('Fair river! in thy bright, clear flow', \trim((string) $content));
     }
 */
 
@@ -296,7 +296,7 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
 
         $content = $mail->getMessage(3)->getContent();
         list($content, ) = explode("\n", $content, 2);
-        $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
+        $this->assertEquals('Fair river! in thy bright, clear flow', \trim((string) $content));
     }
 
 /*
@@ -362,7 +362,7 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
     {
         $mail = new Zend_Mail_Storage_Pop3($this->_params);
 
-        $this->assertTrue(strpos($mail->getRawHeader(1), "\r\nSubject: Simple Message\r\n") > 0);
+        $this->assertTrue(strpos((string) $mail->getRawHeader(1), "\r\nSubject: Simple Message\r\n") > 0);
     }
 
     public function testUniqueId()

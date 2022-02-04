@@ -237,17 +237,17 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
                 break;
 
             case 'DUODECIMAL':
-                preg_match('/[0123456789AB]+/', strtoupper($value), $ergebnis);
+                preg_match('/[0123456789AB]+/', strtoupper((string) $value), $ergebnis);
                 $value = $ergebnis[0];
                 break;
 
             case 'HEXADECIMAL':
-                preg_match('/[0123456789ABCDEF]+/', strtoupper($value), $ergebnis);
+                preg_match('/[0123456789ABCDEF]+/', strtoupper((string) $value), $ergebnis);
                 $value = $ergebnis[0];
                 break;
 
             case 'ROMAN':
-                preg_match('/[IVXLCDM_]+/', strtoupper($value), $ergebnis);
+                preg_match('/[IVXLCDM_]+/', strtoupper((string) $value), $ergebnis);
                 $value = $ergebnis[0];
                 break;
 
@@ -281,7 +281,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
         // Convert base xx values
         if ($this->_units[$type][0] <= 16) {
             $split  = str_split($input);
-            $length = strlen($input);
+            $length = strlen((string) $input);
             for ($x = 0; $x < $length; ++$x) {
                 $split[$x] = hexdec($split[$x]);
                 $value     = call_user_func(Zend_Locale_Math::$add, $value,
@@ -292,7 +292,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
 
         // Convert roman numbers
         if ($type === 'ROMAN') {
-            $input = strtoupper($input);
+            $input = strtoupper((string) $input);
             $input = preg_replace(array_keys(self::$_romanconvert), array_values(self::$_romanconvert), $input);
 
             $split = preg_split('//', strrev($input), -1, PREG_SPLIT_NO_EMPTY);
@@ -310,7 +310,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
                 $value += $num;
             }
 
-            str_replace('/', '', $value);
+            str_replace((string) '/', '', $value);
         }
 
         return $value;
@@ -335,7 +335,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
             while (call_user_func(Zend_Locale_Math::$comp, $value, 0, 25) <> 0) {
                 $target = call_user_func(Zend_Locale_Math::$mod, $value, $base);
 
-                $newvalue = strtoupper(dechex($target)) . $newvalue;
+                $newvalue = strtoupper((string) dechex($target)) . $newvalue;
 
                 $value = call_user_func(Zend_Locale_Math::$sub, $value, $target, 0);
                 $value = call_user_func(Zend_Locale_Math::$div, $value, $base, 0);
@@ -377,7 +377,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
                 $i++;
             }
 
-            $newvalue = str_replace('/', '', preg_replace(array_values(self::$_romanconvert), array_keys(self::$_romanconvert), $newvalue));
+            $newvalue = str_replace((string) '/', '', preg_replace(array_values(self::$_romanconvert), array_keys(self::$_romanconvert), $newvalue));
         }
 
         return $newvalue;

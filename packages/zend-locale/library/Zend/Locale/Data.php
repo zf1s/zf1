@@ -151,8 +151,8 @@ class Zend_Locale_Data
         // load locale file if not already in cache
         // needed for alias tag when referring to other locale
         if (empty(self::$_ldml[(string) $locale])) {
-            $filename = dirname(__FILE__) . '/Data/' . $locale . '.xml';
-            if (!file_exists($filename)) {
+            $filename = __DIR__ . '/Data/' . $locale . '.xml';
+            if (!file_exists((string) $filename)) {
                 // require_once 'Zend/Locale/Exception.php';
                 throw new Zend_Locale_Exception("Missing locale file '$filename' for '$locale' locale.");
             }
@@ -168,7 +168,7 @@ class Zend_Locale_Data
         if (!empty(self::$_ldml[(string) $locale])) {
             while ($tok !== false) {
                 $search .=  '/' . $tok;
-                if (strpos($search, '[@') !== false) {
+                if (strpos((string) $search, '[@') !== false) {
                     while (strrpos($search, '[@') > strrpos($search, ']')) {
                         $tok = strtok('/');
                         if (empty($tok)) {
@@ -189,9 +189,9 @@ class Zend_Locale_Data
                     if ($newpath != '//ldml') {
                         // other path - parse to make real path
 
-                        while (substr($newpath,0,3) == '../') {
-                            $newpath = substr($newpath, 3);
-                            $search = substr($search, 0, strrpos($search, '/'));
+                        while (substr((string) $newpath,0,3) == '../') {
+                            $newpath = substr((string) $newpath, 3);
+                            $search = substr((string) $search, 0, strrpos($search, '/'));
                         }
 
                         // truncate ../ to realpath otherwise problems with alias
@@ -242,14 +242,14 @@ class Zend_Locale_Data
         // 4. -> root
         if (($locale != 'root') && ($result)) {
             // Search for parent locale
-            if (false !== strpos($locale, '_')) {
+            if (false !== strpos((string) $locale, '_')) {
                 $parentLocale = self::getContent($locale, 'parentlocale');
                 if ($parentLocale) {
                     $temp = self::_getFile($parentLocale, $path, $attribute, $value, $temp);
                 }
             }
 
-            $locale = substr($locale, 0, -strlen(strrchr($locale, '_')));
+            $locale = substr((string) $locale, 0, -strlen((string) strrchr($locale, '_')));
             if (!empty($locale)) {
                 $temp = self::_getFile($locale, $path, $attribute, $value, $temp);
             } else {
@@ -270,10 +270,10 @@ class Zend_Locale_Data
     {
         $ret = "001";
         foreach ($list as $key => $value) {
-            if (strpos($locale, '_') !== false) {
-                $locale = substr($locale, strpos($locale, '_') + 1);
+            if (strpos((string) $locale, '_') !== false) {
+                $locale = substr((string) $locale, strpos((string) $locale, '_') + 1);
             }
-            if (strpos($key, $locale) !== false) {
+            if (strpos((string) $key, $locale) !== false) {
                 $ret = $key;
                 break;
             }
@@ -333,14 +333,14 @@ class Zend_Locale_Data
             $val = implode('_' , $value);
         }
 
-        $val = urlencode($val);
+        $val = urlencode((string) $val);
         $id  = self::_filterCacheId('Zend_LocaleL_' . $locale . '_' . $path . '_' . $val);
         if (!self::$_cacheDisabled && ($result = self::$_cache->load($id))) {
             return unserialize($result);
         }
 
         $temp = array();
-        switch(strtolower($path)) {
+        switch(strtolower((string) $path)) {
             case 'language':
                 $temp = self::_getFile($locale, '/ldml/localeDisplayNames/languages/language', 'type');
                 break;
@@ -982,13 +982,13 @@ class Zend_Locale_Data
         if (is_array($value)) {
             $val = implode('_' , $value);
         }
-        $val = urlencode($val);
+        $val = urlencode((string) $val);
         $id  = self::_filterCacheId('Zend_LocaleC_' . $locale . '_' . $path . '_' . $val);
         if (!self::$_cacheDisabled && ($result = self::$_cache->load($id))) {
             return unserialize($result);
         }
 
-        switch(strtolower($path)) {
+        switch(strtolower((string) $path)) {
             case 'language':
                 $temp = self::_getFile($locale, '/ldml/localeDisplayNames/languages/language[@type=\'' . $value . '\']', 'type');
                 break;
@@ -1454,7 +1454,7 @@ class Zend_Locale_Data
                 break;
 
             case 'numberingsystem':
-                $temp = self::_getFile('numberingSystems', '/supplementalData/numberingSystems/numberingSystem[@id=\'' . strtolower($value) . '\']', 'digits', $value);
+                $temp = self::_getFile('numberingSystems', '/supplementalData/numberingSystems/numberingSystem[@id=\'' . strtolower((string) $value) . '\']', 'digits', $value);
                 break;
 
             case 'chartofallback':
@@ -1604,7 +1604,7 @@ class Zend_Locale_Data
      */
     protected static function _filterCacheId($value)
     {
-        return strtr(
+        return strtr((string)
             $value,
             array(
                 '-' => '_',

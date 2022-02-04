@@ -71,7 +71,7 @@ class Zend_Validate_File_ExcludeMimeTypeTest extends PHPUnit_Framework_TestCase
             array(array('image/gif', 'gif'), true),
         );
 
-        $filetest = dirname(__FILE__) . '/_files/picture.jpg';
+        $filetest = __DIR__ . '/_files/picture.jpg';
         $files = array(
             'name'     => 'picture.jpg',
             'type'     => 'image/jpeg',

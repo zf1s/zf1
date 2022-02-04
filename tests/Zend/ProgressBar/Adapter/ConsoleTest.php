@@ -66,10 +66,10 @@ class Zend_ProgressBar_Adapter_ConsoleTest extends PHPUnit_Framework_TestCase
 
     public function testWindowsWidth()
     {
-        if (substr(PHP_OS, 0, 3) === 'WIN') {
+        if (substr((string) PHP_OS, 0, 3) === 'WIN') {
             $adapter = new Zend_ProgressBar_Adapter_Console_Stub();
             $adapter->notify(0, 100, 0, 0, null, null);
-            $this->assertEquals(79, strlen($adapter->getLastOutput()));
+            $this->assertEquals(79, strlen((string) $adapter->getLastOutput()));
         } else {
             $this->markTestSkipped('Not testable on non-windows systems');
         }

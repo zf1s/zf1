@@ -43,14 +43,14 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
 
     /**
      * Fragment identifier (anchor identifier)
-     * 
-     * The fragment identifier (anchor identifier) pointing to an anchor within 
+     *
+     * The fragment identifier (anchor identifier) pointing to an anchor within
      * a resource that is subordinate to another, primary resource.
      * The fragment identifier introduced by a hash mark "#".
      * Example: http://www.example.org/foo.html#bar ("bar" is the fragment identifier)
-     * 
+     *
      * @link http://www.w3.org/TR/html401/intro/intro.html#fragment-uri
-     * 
+     *
      * @var string|null
      */
     protected $_fragment;
@@ -227,7 +227,7 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
 
         if(isset($type)) {
             if (is_string($type) && !empty($type)) {
-                switch (strtolower($type)) {
+                switch (strtolower((string) $type)) {
                     case 'mvc':
                         $type = 'Zend_Navigation_Page_Mvc';
                         break;
@@ -266,12 +266,12 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
             return new Zend_Navigation_Page_Uri($options);
         } else {
             // require_once 'Zend/Navigation/Exception.php';
-            
+
             $message = 'Invalid argument: Unable to determine class to instantiate';
             if (isset($options['label'])) {
                 $message .= ' (Page label: ' . $options['label'] . ')';
         }
-            
+
             throw new Zend_Navigation_Exception($message);
     }
     }
@@ -382,11 +382,11 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
             throw new Zend_Navigation_Exception(
                     'Invalid argument: $fragment must be a string or null');
         }
- 
+
         $this->_fragment = $fragment;
         return $this;
     }
-    
+
      /**
      * Returns fragment identifier
      *
@@ -530,14 +530,14 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
     public function setAccesskey($character = null)
     {
         if (null !== $character
-            && (!is_string($character) || 1 != strlen($character)))
+            && (!is_string($character) || 1 != strlen((string) $character)))
         {
             // require_once 'Zend/Navigation/Exception.php';
             throw new Zend_Navigation_Exception(
                 'Invalid argument: $character must be a single character or null'
             );
         }
- 
+
         $this->_accesskey = $character;
         return $this;
     }
@@ -955,7 +955,7 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
      */
     public function setVisible($visible = true)
     {
-        if (is_string($visible) && 'false' == strtolower($visible)) {
+        if (is_string($visible) && 'false' == strtolower((string) $visible)) {
             $visible = false;
         }
         $this->_visible = (bool) $visible;
@@ -1339,7 +1339,7 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
      */
     protected static function _normalizePropertyName($property)
     {
-        return str_replace(' ', '', ucwords(str_replace('_', ' ', $property)));
+        return str_replace((string) ' ', '', ucwords(str_replace((string) '_', ' ', $property)));
     }
 
     public static function setDefaultPageType($type = null) {

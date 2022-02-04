@@ -342,7 +342,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
         $images = array();
 
         foreach ($this->adapterResult as $result) {
-            switch (strtolower($result['platform'])) {
+            switch (strtolower((string) $result['platform'])) {
                 case 'windows' :
                     $platform = Zend_Cloud_Infrastructure_Image::IMAGE_WINDOWS;
                     break;
@@ -377,7 +377,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
 
         $zones = array();
         foreach ($this->adapterResult as $zone) {
-            if (strtolower($zone['zoneState']) === 'available') {
+            if (strtolower((string) $zone['zoneState']) === 'available') {
                 $zones[] = array (
                     Zend_Cloud_Infrastructure_Instance::INSTANCE_ZONE => $zone['zoneName'],
                 );

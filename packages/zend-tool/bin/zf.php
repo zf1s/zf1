@@ -168,7 +168,7 @@ class ZF
         $homeDirectory = getenv('ZF_HOME'); // check env var ZF_HOME
         if ($homeDirectory) {
             $this->_logMessage('Home directory found in environment variable ZF_HOME with value ' . $homeDirectory, $returnMessages);
-            if (!$mustExist || ($mustExist && file_exists($homeDirectory))) {
+            if (!$mustExist || ($mustExist && file_exists((string) $homeDirectory))) {
                 return $homeDirectory;
             } else {
                 $this->_logMessage('Home directory does not exist at ' . $homeDirectory, $returnMessages);
@@ -179,7 +179,7 @@ class ZF
 
         if ($homeDirectory) {
             $this->_logMessage('Home directory found in environment variable HOME with value ' . $homeDirectory, $returnMessages);
-            if (!$mustExist || ($mustExist && file_exists($homeDirectory))) {
+            if (!$mustExist || ($mustExist && file_exists((string) $homeDirectory))) {
                 return $homeDirectory;
             } else {
                 $this->_logMessage('Home directory does not exist at ' . $homeDirectory, $returnMessages);
@@ -191,7 +191,7 @@ class ZF
 
         if ($homeDirectory) {
             $this->_logMessage('Home directory found in environment variable HOMEPATH with value ' . $homeDirectory, $returnMessages);
-            if (!$mustExist || ($mustExist && file_exists($homeDirectory))) {
+            if (!$mustExist || ($mustExist && file_exists((string) $homeDirectory))) {
                 return $homeDirectory;
             } else {
                 $this->_logMessage('Home directory does not exist at ' . $homeDirectory, $returnMessages);
@@ -202,7 +202,7 @@ class ZF
 
         if ($homeDirectory) {
             $this->_logMessage('Home directory found in environment variable USERPROFILE with value ' . $homeDirectory, $returnMessages);
-            if (!$mustExist || ($mustExist && file_exists($homeDirectory))) {
+            if (!$mustExist || ($mustExist && file_exists((string) $homeDirectory))) {
                 return $homeDirectory;
             } else {
                 $this->_logMessage('Home directory does not exist at ' . $homeDirectory, $returnMessages);
@@ -226,7 +226,7 @@ class ZF
         $storageDirectory = getenv('ZF_STORAGE_DIR');
         if ($storageDirectory) {
             $this->_logMessage('Storage directory path found in environment variable ZF_STORAGE_DIR with value ' . $storageDirectory, $returnMessages);
-            if (!$mustExist || ($mustExist && file_exists($storageDirectory))) {
+            if (!$mustExist || ($mustExist && file_exists((string) $storageDirectory))) {
                 return $storageDirectory;
             } else {
                 $this->_logMessage('Storage directory does not exist at ' . $storageDirectory, $returnMessages);
@@ -238,7 +238,7 @@ class ZF
         if ($homeDirectory) {
             $storageDirectory = $homeDirectory . '/.zf/';
             $this->_logMessage('Storage directory assumed in home directory at location ' . $storageDirectory, $returnMessages);
-            if (!$mustExist || ($mustExist && file_exists($storageDirectory))) {
+            if (!$mustExist || ($mustExist && file_exists((string) $storageDirectory))) {
                 return $storageDirectory;
             } else {
                 $this->_logMessage('Storage directory does not exist at ' . $storageDirectory, $returnMessages);
@@ -262,7 +262,7 @@ class ZF
         $configFile = getenv('ZF_CONFIG_FILE');
         if ($configFile) {
             $this->_logMessage('Config file found environment variable ZF_CONFIG_FILE at ' . $configFile, $returnMessages);
-            if (!$mustExist || ($mustExist && file_exists($configFile))) {
+            if (!$mustExist || ($mustExist && file_exists((string) $configFile))) {
                 return $configFile;
             } else {
                 $this->_logMessage('Config file does not exist at ' . $configFile, $returnMessages);
@@ -273,7 +273,7 @@ class ZF
         if ($homeDirectory) {
             $configFile = $homeDirectory . '/.zf.ini';
             $this->_logMessage('Config file assumed in home directory at location ' . $configFile, $returnMessages);
-            if (!$mustExist || ($mustExist && file_exists($configFile))) {
+            if (!$mustExist || ($mustExist && file_exists((string) $configFile))) {
                 return $configFile;
             } else {
                 $this->_logMessage('Config file does not exist at ' . $configFile, $returnMessages);
@@ -284,7 +284,7 @@ class ZF
         if ($storageDirectory) {
             $configFile = $storageDirectory . '/zf.ini';
             $this->_logMessage('Config file assumed in storage directory at location ' . $configFile, $returnMessages);
-            if (!$mustExist || ($mustExist && file_exists($configFile))) {
+            if (!$mustExist || ($mustExist && file_exists((string) $configFile))) {
                 return $configFile;
             } else {
                 $this->_logMessage('Config file does not exist at ' . $configFile, $returnMessages);
@@ -317,8 +317,8 @@ class ZF
         $zfINISettings = parse_ini_file($this->_configFile);
         $phpINISettings = ini_get_all();
         foreach ($zfINISettings as $zfINIKey => $zfINIValue) {
-            if (substr($zfINIKey, 0, 4) === 'php.') {
-                $phpINIKey = substr($zfINIKey, 4);
+            if (substr((string) $zfINIKey, 0, 4) === 'php.') {
+                $phpINIKey = substr((string) $zfINIKey, 4);
                 if (array_key_exists($phpINIKey, $phpINISettings)) {
                     ini_set($phpINIKey, $zfINIValue);
                 }
@@ -358,8 +358,8 @@ class ZF
             return;
         }
 
-        $zfIncludePath['relativePath'] = dirname(__FILE__) . '/../library/';
-        if (file_exists($zfIncludePath['relativePath'] . 'Zend/Tool/Framework/Client/Console.php')) {
+        $zfIncludePath['relativePath'] = __DIR__ . '/../library/';
+        if (file_exists((string) $zfIncludePath['relativePath'] . 'Zend/Tool/Framework/Client/Console.php')) {
             set_include_path(realpath($zfIncludePath['relativePath']) . PATH_SEPARATOR . get_include_path());
         }
 
@@ -481,7 +481,7 @@ EOS;
     {
         $storageDirectory = $this->_detectStorageDirectory(false, false);
 
-        if (file_exists($storageDirectory)) {
+        if (file_exists((string) $storageDirectory)) {
             echo 'Directory already exists at ' . $storageDirectory . PHP_EOL
                . 'Cannot create storage directory.';
             return;
@@ -501,7 +501,7 @@ EOS;
     {
         $configFile = $this->_detectConfigFile(false, false);
 
-        if (file_exists($configFile)) {
+        if (file_exists((string) $configFile)) {
             echo 'File already exists at ' . $configFile . PHP_EOL
                . 'Cannot write new config file.';
             return;

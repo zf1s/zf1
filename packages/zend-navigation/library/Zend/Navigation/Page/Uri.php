@@ -83,7 +83,7 @@ class Zend_Navigation_Page_Uri extends Zend_Navigation_Page
         
         $fragment = $this->getFragment();       
         if (null !== $fragment) {
-            if ('#' == substr($uri, -1)) {
+            if ('#' == substr((string) $uri, -1)) {
                 return $uri . $fragment;
             } else {                
                 return $uri . '#' . $fragment;

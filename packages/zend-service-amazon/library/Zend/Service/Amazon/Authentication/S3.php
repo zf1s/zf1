@@ -77,8 +77,8 @@ class Zend_Service_Amazon_Authentication_S3 extends Zend_Service_Amazon_Authenti
         // alphabetically and remove excess spaces around values
         $amz_headers = array();
         foreach ($headers as $key => $val) {
-            $key = strtolower($key);
-            if (substr($key, 0, 6) == 'x-amz-') {
+            $key = strtolower((string) $key);
+            if (substr((string) $key, 0, 6) == 'x-amz-') {
                 if (is_array($val)) {
                     $amz_headers[$key] = $val;
                 } else {
@@ -94,13 +94,13 @@ class Zend_Service_Amazon_Authentication_S3 extends Zend_Service_Amazon_Authenti
         }
 
         $sig_str .= '/'.parse_url($path, PHP_URL_PATH);
-        if (strpos($path, '?location') !== false) {
+        if (strpos((string) $path, '?location') !== false) {
             $sig_str .= '?location';
         } else
-            if (strpos($path, '?acl') !== false) {
+            if (strpos((string) $path, '?acl') !== false) {
                 $sig_str .= '?acl';
             } else
-                if (strpos($path, '?torrent') !== false) {
+                if (strpos((string) $path, '?torrent') !== false) {
                     $sig_str .= '?torrent';
                 }
 

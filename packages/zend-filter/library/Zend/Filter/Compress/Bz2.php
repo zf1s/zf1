@@ -152,11 +152,11 @@ class Zend_Filter_Compress_Bz2 extends Zend_Filter_Compress_CompressAbstract
     {
         $archive = $this->getArchive();
         // check $content for NULL bytes or else file_exists will error out
-        if ((0 === preg_match('/\0/', $content)) && @file_exists($content)) {
+        if ((0 === preg_match('/\0/', (string) $content)) && @file_exists((string) $content)) {
             $archive = $content;
         }
 
-        if (@file_exists($archive)) {
+        if (@file_exists((string) $archive)) {
             $file = bzopen($archive, 'r');
             if (!$file) {
                 // require_once 'Zend/Filter/Exception.php';

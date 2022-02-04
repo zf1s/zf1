@@ -80,7 +80,7 @@ class Zend_Cloud_StorageService_Adapter_FileSystem implements Zend_Cloud_Storage
         $filepath = $this->_getFullPath($path);
         $path     = realpath($filepath);
 
-        if (!$path || !file_exists($path)) {
+        if (!$path || !file_exists((string) $path)) {
             return false;
         }
 
@@ -121,7 +121,7 @@ class Zend_Cloud_StorageService_Adapter_FileSystem implements Zend_Cloud_Storage
         }
 
         $filepath = $this->_getFullPath($path);
-        if (file_exists($filepath)) {
+        if (file_exists((string) $filepath)) {
             unlink($filepath);
         }
     }
@@ -210,7 +210,7 @@ class Zend_Cloud_StorageService_Adapter_FileSystem implements Zend_Cloud_Storage
     {
         $fullPath = $this->_getFullPath($path);
         $metadata = null;
-        if (file_exists($fullPath)) {
+        if (file_exists((string) $fullPath)) {
             $metadata = stat(realpath($fullPath));
         }
 

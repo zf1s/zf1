@@ -131,7 +131,7 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         unset($config['name']);
         try {
             $savePath = ini_get('session.save_path');
-            ini_set('session.save_path', dirname(__FILE__));
+            ini_set('session.save_path', __DIR__);
             $this->_usedSaveHandlers[] =
                 $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
             $this->fail();

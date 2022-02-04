@@ -86,7 +86,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
                 unset($registry[$key]);
             }
         }
-        $this->basePath = dirname(__FILE__) . '/_files/modules';
+        $this->basePath = __DIR__ . '/_files/modules';
         $this->view     = new Zend_View();
         $this->view->doctype('XHTML1_STRICT');
         $this->helper   = new Zend_View_Helper_HeadMeta();
@@ -152,9 +152,9 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
 
     protected function _inflectAction($type)
     {
-        $type = str_replace('-', ' ', $type);
+        $type = str_replace((string) '-', ' ', $type);
         $type = ucwords($type);
-        $type = str_replace(' ', '', $type);
+        $type = str_replace((string) ' ', '', $type);
         return $type;
     }
 
@@ -521,14 +521,14 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
 			'<meta charset="utf-8"/>',
 			$view->headMeta()->toString());
 	}
-    
+
     /**
      * @group ZF-11835
      */
-    public function testConditional() 
+    public function testConditional()
     {
         $html = $this->helper->appendHttpEquiv('foo', 'bar', array('conditional' => 'lt IE 7'))->toString();
-        
+
         $this->assertRegExp("|^<!--\[if lt IE 7\]>|", $html);
         $this->assertRegExp("|<!\[endif\]-->$|", $html);
     }

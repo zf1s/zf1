@@ -75,7 +75,7 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
     {
         // require_once 'Zend/View.php';
         $view = new Zend_View();
-        $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
+        $view->addHelperPath(__DIR__ . '/../../../../library/Zend/View/Helper');
         return $view;
     }
 
@@ -173,7 +173,7 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
     public function testCustomLabelDecorator()
     {
         $form = new Zend_Form();
-        $form->addElementPrefixPath('My_Decorator', dirname(__FILE__) . '/../_files/decorators/', 'decorator');
+        $form->addElementPrefixPath('My_Decorator', __DIR__ . '/../_files/decorators/', 'decorator');
 
         $form->addElement($this->element);
 

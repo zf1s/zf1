@@ -42,7 +42,7 @@ class Zend_Rest_ResultTest extends PHPUnit_Framework_TestCase
 
     public function __construct()
     {
-        self::$path = dirname(__FILE__).'/responses/';
+        self::$path = __DIR__.'/responses/';
     }
 
     public function testResponseSuccess()

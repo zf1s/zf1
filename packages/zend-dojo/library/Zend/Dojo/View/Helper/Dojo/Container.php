@@ -221,7 +221,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
         }
 
         foreach($options as $key => $value) {
-            $key = strtolower($key);
+            $key = strtolower((string) $key);
             switch($key) {
                 case 'requiremodules':
                     $this->requireModule($value);
@@ -882,8 +882,8 @@ EOJ;
      */
     public function addJavascript($js)
     {
-        $js = trim($js);
-        if (!in_array(substr($js, -1), array(';', '}'))) {
+        $js = \trim((string) $js);
+        if (!in_array(substr((string) $js, -1), array(';', '}'))) {
             $js .= ';';
         }
 
@@ -1009,8 +1009,8 @@ EOJ;
 
         $registeredStylesheets = $this->getStylesheetModules();
         foreach ($registeredStylesheets as $stylesheet) {
-            $themeName     = substr($stylesheet, strrpos($stylesheet, '.') + 1);
-            $stylesheet    = str_replace('.', '/', $stylesheet);
+            $themeName     = substr((string) $stylesheet, strrpos($stylesheet, '.') + 1);
+            $stylesheet    = str_replace((string) '.', '/', $stylesheet);
             $stylesheets[] = $base . '/' . $stylesheet . '/' . $themeName . '.css';
         }
 
@@ -1106,7 +1106,7 @@ EOJ;
         foreach ($layers as $path) {
             $html[] = sprintf(
                 '<script type="text/javascript" src="%s"></script>',
-                htmlspecialchars($path, ENT_QUOTES, $enc)
+                htmlspecialchars((string) $path, ENT_QUOTES, $enc)
             );
         }
 

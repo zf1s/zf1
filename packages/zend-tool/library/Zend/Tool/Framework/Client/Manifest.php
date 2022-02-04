@@ -165,7 +165,7 @@ class Zend_Tool_Framework_Client_Manifest
                     $methodLongParams[$parameterInfoData['name']] = $lowerFilter->filter($parameterInfoData['name']);
 
                     // simply lower the character, (its only 1 char after all)
-                    $methodShortParams[$parameterInfoData['name']] = strtolower($parameterInfoData['name'][0]);
+                    $methodShortParams[$parameterInfoData['name']] = strtolower((string) $parameterInfoData['name'][0]);
 
                 }
 

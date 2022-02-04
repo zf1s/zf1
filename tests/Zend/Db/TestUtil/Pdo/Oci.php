@@ -79,7 +79,7 @@ class Zend_Db_TestUtil_Pdo_Oci extends Zend_Db_TestUtil_Pdo_Common
         $tableList = $this->_db->fetchCol('SELECT UPPER(TABLE_NAME) FROM ALL_TABLES '
             . $this->_db->quoteInto(' WHERE UPPER(TABLE_NAME) = UPPER(?)', $tableName)
         );
-        if (in_array(strtoupper($tableName), $tableList)) {
+        if (in_array(strtoupper((string) $tableName), $tableList)) {
             return null;
         }
         return 'CREATE TABLE ' . $this->_db->quoteIdentifier($tableName, true);
@@ -90,7 +90,7 @@ class Zend_Db_TestUtil_Pdo_Oci extends Zend_Db_TestUtil_Pdo_Common
         $tableList = $this->_db->fetchCol('SELECT UPPER(TABLE_NAME) FROM ALL_TABLES '
             . $this->_db->quoteInto(' WHERE UPPER(TABLE_NAME) = UPPER(?)', $tableName)
         );
-        if (in_array(strtoupper($tableName), $tableList)) {
+        if (in_array(strtoupper((string) $tableName), $tableList)) {
             return 'DROP TABLE ' . $this->_db->quoteIdentifier($tableName, true);
         }
         return null;
@@ -101,7 +101,7 @@ class Zend_Db_TestUtil_Pdo_Oci extends Zend_Db_TestUtil_Pdo_Common
         $seqList = $this->_db->fetchCol('SELECT UPPER(SEQUENCE_NAME) FROM ALL_SEQUENCES '
             . $this->_db->quoteInto(' WHERE UPPER(SEQUENCE_NAME) = UPPER(?)', $sequenceName)
         );
-        if (in_array(strtoupper($sequenceName), $seqList)) {
+        if (in_array(strtoupper((string) $sequenceName), $seqList)) {
             return null;
         }
         return 'CREATE SEQUENCE ' . $this->_db->quoteIdentifier($sequenceName, true);
@@ -112,7 +112,7 @@ class Zend_Db_TestUtil_Pdo_Oci extends Zend_Db_TestUtil_Pdo_Common
         $seqList = $this->_db->fetchCol('SELECT UPPER(SEQUENCE_NAME) FROM ALL_SEQUENCES '
             . $this->_db->quoteInto(' WHERE UPPER(SEQUENCE_NAME) = UPPER(?)', $sequenceName)
         );
-        if (in_array(strtoupper($sequenceName), $seqList)) {
+        if (in_array(strtoupper((string) $sequenceName), $seqList)) {
             return 'DROP SEQUENCE ' . $this->_db->quoteIdentifier($sequenceName, true);
         }
         return null;

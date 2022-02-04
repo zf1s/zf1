@@ -201,7 +201,7 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
      */
     public function getPluginLoader($type)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         if ($type == self::CAPTCHA) {
             if (!isset($this->_loaders[$type])) {
                 // require_once 'Zend/Loader/PluginLoader.php';
@@ -228,13 +228,13 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
      */
     public function addPrefixPath($prefix, $path, $type = null)
     {
-        $type = strtoupper($type);
+        $type = strtoupper((string) $type);
         switch ($type) {
             case null:
                 $loader = $this->getPluginLoader(self::CAPTCHA);
-                $nsSeparator = (false !== strpos($prefix, '\\'))?'\\':'_';
-                $cPrefix = rtrim($prefix, $nsSeparator) . $nsSeparator . 'Captcha';
-                $cPath   = rtrim($path, '/\\') . '/Captcha';
+                $nsSeparator = (false !== strpos((string) $prefix, '\\'))?'\\':'_';
+                $cPrefix = rtrim((string) $prefix, $nsSeparator) . $nsSeparator . 'Captcha';
+                $cPath   = rtrim((string) $path, '/\\') . '/Captcha';
                 $loader->addPrefixPath($cPrefix, $cPath);
                 return parent::addPrefixPath($prefix, $path);
             case self::CAPTCHA:
@@ -283,10 +283,10 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
         }
 
         $name     = $this->getFullyQualifiedName();
-        $root     = substr($name, 0, strpos($name, '['));
-        $segments = substr($name, strpos($name, '['));
-        $segments = ltrim($segments, '[');
-        $segments = rtrim($segments, ']');
+        $root     = substr((string) $name, 0, strpos((string) $name, '['));
+        $segments = substr((string) $name, strpos((string) $name, '['));
+        $segments = ltrim((string) $segments, '[');
+        $segments = rtrim((string) $segments, ']');
         $segments = explode('][', $segments);
         array_unshift($segments, $root);
         array_pop($segments);

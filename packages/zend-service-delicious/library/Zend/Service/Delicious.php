@@ -445,7 +445,7 @@ class Zend_Service_Delicious
      */
     public function getUrlDetails($url)
     {
-        $parms = array('hash' => md5($url));
+        $parms = array('hash' => md5((string) $url));
 
         $res = $this->makeRequest(self::JSON_URL, $parms, 'json');
 

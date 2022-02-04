@@ -44,7 +44,7 @@ class Zend_Feed_Reader_Feed_CommonTest extends PHPUnit_Framework_TestCase
             $registry = Zend_Registry::getInstance();
             unset($registry['Zend_Locale']);
         }
-        $this->_feedSamplePath = dirname(__FILE__) . '/_files/Common';
+        $this->_feedSamplePath = __DIR__ . '/_files/Common';
     }
 
     /**
@@ -105,7 +105,7 @@ class Zend_Feed_Reader_Feed_CommonTest extends PHPUnit_Framework_TestCase
         );
         $this->assertEquals(null, $feed->getExtension('Foo'));
     }
-    
+
     /**
      * @group ZF-8213
      */
@@ -116,7 +116,7 @@ class Zend_Feed_Reader_Feed_CommonTest extends PHPUnit_Framework_TestCase
         );
         $this->assertEquals('UTF-8', $feed->getEncoding());
     }
-    
+
     /**
      * @group ZF-8213
      */

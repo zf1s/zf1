@@ -577,7 +577,7 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testIsReadableShouldFailEarlyWhenProvidedInvalidWindowsAbsolutePath()
     {
-        if (strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') {
+        if (strtoupper((string) substr((string) PHP_OS, 0, 3)) != 'WIN') {
             $this->markTestSkipped('Windows-only test');
         }
         $path = 'C:/this/file/should/not/exist.php';
@@ -601,7 +601,7 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
      * @return void
     public function testLoaderAutoloadShouldHideParseError()
     {
-        if (isset($_SERVER['OS'])  &&  strstr($_SERVER['OS'], 'Win')) {
+        if (isset($_SERVER['OS'])  &&  strstr((string) $_SERVER['OS'], 'Win')) {
             $this->markTestSkipped(__METHOD__ . ' does not work on Windows');
         }
         $command = 'php -d include_path='

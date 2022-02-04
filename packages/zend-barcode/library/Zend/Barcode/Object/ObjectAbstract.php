@@ -257,8 +257,8 @@ abstract class Zend_Barcode_Object_ObjectAbstract
         if (is_array($options)) {
             $this->setOptions($options);
         }
-        $this->_type = strtolower(
-            substr(get_class($this), strlen($this->_barcodeNamespace) + 1)
+        $this->_type = strtolower((string) 
+            substr((string) get_class($this), strlen((string) $this->_barcodeNamespace) + 1)
         );
         if ($this->_mandatoryChecksum) {
             $this->_withChecksum = true;
@@ -461,7 +461,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
     public function setForeColor($value)
     {
         if (preg_match('`\#[0-9A-F]{6}`', $value)) {
-            $this->_foreColor = hexdec(ltrim($value, '#'));
+            $this->_foreColor = hexdec(ltrim((string) $value, '#'));
         } elseif (is_numeric($value) && $value >= 0 && $value <= 16777125) {
             $this->_foreColor = (int)$value;
         } else {
@@ -493,7 +493,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
     public function setBackgroundColor($value)
     {
         if (preg_match('`\#[0-9A-F]{6}`', $value)) {
-            $this->_backgroundColor = hexdec(ltrim($value, '#'));
+            $this->_backgroundColor = hexdec(ltrim((string) $value, '#'));
         } elseif (is_numeric($value) && $value >= 0 && $value <= 16777125) {
             $this->_backgroundColor = (int)$value;
         } else {
@@ -605,7 +605,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
      */
     public function setText($value)
     {
-        $this->_text = trim($value);
+        $this->_text = \trim((string) $value);
         return $this;
     }
 
@@ -636,12 +636,12 @@ abstract class Zend_Barcode_Object_ObjectAbstract
             $omitChecksum = (int) ($this->_withChecksum && $withoutChecksum);
             if (is_int($this->_barcodeLength)) {
                 $length = $this->_barcodeLength - $omitChecksum;
-                if (strlen($text) < $length) {
-                    $text = str_repeat('0', $length - strlen($text)) . $text;
+                if (strlen((string) $text) < $length) {
+                    $text = str_repeat('0', $length - strlen((string) $text)) . $text;
                 }
             } else {
                 if ($this->_barcodeLength == 'even') {
-                    $text = ((strlen($text) - $omitChecksum) % 2 ? '0' . $text : $text);
+                    $text = ((strlen((string) $text) - $omitChecksum) % 2 ? '0' . $text : $text);
                 }
             }
         }
@@ -988,7 +988,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
         if ($value === null) {
             $value = $this->_text;
         }
-        if (!strlen($value)) {
+        if (!strlen((string) $value)) {
             // require_once 'Zend/Barcode/Object/Exception.php';
             throw new Zend_Barcode_Object_Exception(
                 'A text must be provide to Barcode before drawing'
@@ -1317,7 +1317,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
         if ($this->_drawText) {
             $text = $this->getTextToDisplay();
             if ($this->_stretchText) {
-                $textLength = strlen($text);
+                $textLength = strlen((string) $text);
                 $space      = ($this->_calculateWidth() - 2 * $this->getQuietZone()) / $textLength;
                 for ($i = 0; $i < $textLength; $i ++) {
                     $leftPosition = $this->getQuietZone() + $space * ($i + 0.5);

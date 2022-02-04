@@ -24,7 +24,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_Http_Client_CurlTest::main');
 }
 
-require_once dirname(__FILE__) . '/CommonHttpTests.php';
+require_once __DIR__ . '/CommonHttpTests.php';
 
 // require_once 'Zend/Http/Client/Adapter/Curl.php';
 
@@ -301,7 +301,7 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
 
         $this->assertTrue(is_resource($adapter->getHandle()));
     }
-    
+
     /**
      * @group ZF-9857
      */

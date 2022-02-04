@@ -19,7 +19,7 @@
  */
 
 // Grab SplAutoloader interface
-// require_once dirname(__FILE__) . '/SplAutoloader.php';
+// require_once __DIR__ . '/SplAutoloader.php';
 
 /**
  * PSR-0 compliant autoloader
@@ -98,7 +98,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
     public function setOptions($options)
     {
         if (!is_array($options) && !($options instanceof Traversable)) {
-            // require_once dirname(__FILE__) . '/Exception/InvalidArgumentException.php';
+            // require_once __DIR__ . '/Exception/InvalidArgumentException.php';
             throw new Zend_Loader_Exception_InvalidArgumentException('Options must be either an array or Traversable');
         }
 
@@ -106,7 +106,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
             switch ($type) {
                 case self::AUTOREGISTER_ZF:
                     if ($pairs) {
-                        $this->registerPrefix('Zend', dirname(dirname(__FILE__)));
+                        $this->registerPrefix('Zend', dirname(__DIR__));
                     }
                     break;
                 case self::LOAD_NS:
@@ -160,7 +160,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
      */
     public function registerNamespace($namespace, $directory)
     {
-        $namespace = rtrim($namespace, self::NS_SEPARATOR). self::NS_SEPARATOR;
+        $namespace = rtrim((string) $namespace, self::NS_SEPARATOR). self::NS_SEPARATOR;
         $this->namespaces[$namespace] = $this->normalizeDirectory($directory);
         return $this;
     }
@@ -174,7 +174,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
     public function registerNamespaces($namespaces)
     {
         if (!is_array($namespaces) && !$namespaces instanceof Traversable) {
-            // require_once dirname(__FILE__) . '/Exception/InvalidArgumentException.php';
+            // require_once __DIR__ . '/Exception/InvalidArgumentException.php';
             throw new Zend_Loader_Exception_InvalidArgumentException('Namespace pairs must be either an array or Traversable');
         }
 
@@ -193,7 +193,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
      */
     public function registerPrefix($prefix, $directory)
     {
-        $prefix = rtrim($prefix, self::PREFIX_SEPARATOR). self::PREFIX_SEPARATOR;
+        $prefix = rtrim((string) $prefix, self::PREFIX_SEPARATOR). self::PREFIX_SEPARATOR;
         $this->prefixes[$prefix] = $this->normalizeDirectory($directory);
         return $this;
     }
@@ -207,7 +207,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
     public function registerPrefixes($prefixes)
     {
         if (!is_array($prefixes) && !$prefixes instanceof Traversable) {
-            // require_once dirname(__FILE__) . '/Exception/InvalidArgumentException.php';
+            // require_once __DIR__ . '/Exception/InvalidArgumentException.php';
             throw new Zend_Loader_Exception_InvalidArgumentException('Prefix pairs must be either an array or Traversable');
         }
 
@@ -226,7 +226,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
     public function autoload($class)
     {
         $isFallback = $this->isFallbackAutoloader();
-        if (false !== strpos($class, self::NS_SEPARATOR)) {
+        if (false !== strpos((string) $class, self::NS_SEPARATOR)) {
             if ($this->loadClass($class, self::LOAD_NS)) {
                 return $class;
             } elseif ($isFallback) {
@@ -234,7 +234,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
             }
             return false;
         }
-        if (false !== strpos($class, self::PREFIX_SEPARATOR)) {
+        if (false !== strpos((string) $class, self::PREFIX_SEPARATOR)) {
             if ($this->loadClass($class, self::LOAD_PREFIX)) {
                 return $class;
             } elseif ($isFallback) {
@@ -263,9 +263,9 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
      *
      * Used by {@link loadClass} during fallback autoloading in PHP versions
      * prior to 5.3.0.
-     * 
-     * @param mixed $errno 
-     * @param mixed $errstr 
+     *
+     * @param mixed $errno
+     * @param mixed $errstr
      * @return void
      */
     public function handleError($errno, $errstr)
@@ -291,8 +291,8 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
         $namespace = (isset($matches['namespace'])) ? $matches['namespace'] : '';
 
         return $directory
-             . str_replace(self::NS_SEPARATOR, '/', $namespace)
-             . str_replace(self::PREFIX_SEPARATOR, '/', $class)
+             . str_replace((string) self::NS_SEPARATOR, '/', $namespace)
+             . str_replace((string) self::PREFIX_SEPARATOR, '/', $class)
              . '.php';
     }
 
@@ -306,7 +306,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
     protected function loadClass($class, $type)
     {
         if (!in_array($type, array(self::LOAD_NS, self::LOAD_PREFIX, self::ACT_AS_FALLBACK))) {
-            // require_once dirname(__FILE__) . '/Exception/InvalidArgumentException.php';
+            // require_once __DIR__ . '/Exception/InvalidArgumentException.php';
             throw new Zend_Loader_Exception_InvalidArgumentException();
         }
 
@@ -333,13 +333,13 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
 
         // Namespace and/or prefix autoloading
         foreach ($this->$type as $leader => $path) {
-            if (0 === strpos($class, $leader)) {
+            if (0 === strpos((string) $class, $leader)) {
                 // Trim off leader (namespace or prefix)
-                $trimmedClass = substr($class, strlen($leader));
+                $trimmedClass = substr((string) $class, strlen((string) $leader));
 
                 // create filename
                 $filename = $this->transformClassNameToFilename($trimmedClass, $path);
-                if (file_exists($filename)) {
+                if (file_exists((string) $filename)) {
                     return include $filename;
                 }
                 return false;
@@ -356,9 +356,9 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
      */
     protected function normalizeDirectory($directory)
     {
-        $last = $directory[strlen($directory) - 1];
+        $last = $directory[strlen((string) $directory) - 1];
         if (in_array($last, array('/', '\\'))) {
-            $directory[strlen($directory) - 1] = DIRECTORY_SEPARATOR;
+            $directory[strlen((string) $directory) - 1] = DIRECTORY_SEPARATOR;
             return $directory;
         }
         $directory .= DIRECTORY_SEPARATOR;

@@ -382,7 +382,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
      */
     public function testClosuresRegisteredWithAutoloaderShouldBeUtilized()
     {
-        $closure = require_once dirname(__FILE__) . '/_files/AutoloaderClosure.php';
+        $closure = require_once __DIR__ . '/_files/AutoloaderClosure.php';
         $this->autoloader->pushAutoloader($closure);
         $this->assertTrue(Zend_Loader_Autoloader::autoload('AutoloaderTest_AutoloaderClosure'));
     }
@@ -417,7 +417,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function addTestIncludePath()
     {
-        set_include_path(dirname(__FILE__) . '/_files/' . PATH_SEPARATOR . $this->includePath);
+        set_include_path(__DIR__ . '/_files/' . PATH_SEPARATOR . $this->includePath);
     }
 
     public function handleErrors($errno, $errstr)

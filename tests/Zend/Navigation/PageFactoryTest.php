@@ -43,7 +43,7 @@ class Zend_Navigation_PageFactoryTest extends PHPUnit_Framework_TestCase
         $this->_oldIncludePath = get_include_path();
 
         // add _files dir to include path
-        $addToPath = dirname(__FILE__) . '/_files';
+        $addToPath = __DIR__ . '/_files';
         set_include_path($addToPath . PATH_SEPARATOR . $this->_oldIncludePath);
     }
 

@@ -81,7 +81,7 @@ class Zend_Mail_Part_File extends Zend_Mail_Part
         }
         $header = '';
         $endPos = isset($params['endPos']) ? $params['endPos'] : null;
-        while (($endPos === null || ftell($this->_fh) < $endPos) && trim($line = fgets($this->_fh))) {
+        while (($endPos === null || ftell($this->_fh) < $endPos) && \trim((string) $line = fgets($this->_fh))) {
             $header .= $line;
         }
 
@@ -125,7 +125,7 @@ class Zend_Mail_Part_File extends Zend_Mail_Part
 
             $lastPos = $pos;
             $pos = ftell($this->_fh);
-            $line = trim($line);
+            $line = \trim((string) $line);
 
             if ($line == '--' . $boundary) {
                 if ($part) {

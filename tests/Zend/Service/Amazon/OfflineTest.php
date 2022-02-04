@@ -104,7 +104,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
      */
     public function testMozardSearchFromFile()
     {
-        $xml = file_get_contents(dirname(__FILE__)."/_files/mozart_result.xml");
+        $xml = file_get_contents(__DIR__."/_files/mozart_result.xml");
         $dom = new DOMDocument();
         $dom->loadXML($xml);
 
@@ -147,7 +147,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
      */
     public function testFullOffersFromFile()
     {
-        $xml = file_get_contents(dirname(__FILE__)."/_files/offers_with_names.xml");
+        $xml = file_get_contents(__DIR__."/_files/offers_with_names.xml");
         $dom = new DOMDocument();
         $dom->loadXML($xml);
 
@@ -318,7 +318,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             $expectedSignature,
-            rawurlencode(Zend_Service_Amazon::computeSignature(
+            rawurlencode((string) Zend_Service_Amazon::computeSignature(
                 $baseUri, '1234567890', $params
             ))
         );
@@ -332,7 +332,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
      */
     public function testAmazonComponentHandlesValidBookResults()
     {
-    	$xml = file_get_contents(dirname(__FILE__)."/_files/amazon-response-valid.xml");
+    	$xml = file_get_contents(__DIR__."/_files/amazon-response-valid.xml");
         $dom = new DOMDocument();
         $dom->loadXML($xml);
 
@@ -356,7 +356,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
      */
     public function testAmazonComponentHandlesEmptyBookResults()
     {
-    	$xml = file_get_contents(dirname(__FILE__)."/_files/amazon-response-invalid.xml");
+    	$xml = file_get_contents(__DIR__."/_files/amazon-response-invalid.xml");
         $dom = new DOMDocument();
         $dom->loadXML($xml);
 

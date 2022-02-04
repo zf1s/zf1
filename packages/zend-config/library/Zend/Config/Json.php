@@ -91,7 +91,7 @@ class Zend_Config_Json extends Zend_Config
             $allowModifications = $options;
         } elseif (is_array($options)) {
             foreach ($options as $key => $value) {
-                switch (strtolower($key)) {
+                switch (strtolower((string) $key)) {
                     case 'allow_modifications':
                     case 'allowmodifications':
                         $allowModifications = (bool) $value;
@@ -219,10 +219,10 @@ class Zend_Config_Json extends Zend_Config
     protected function _replaceConstants($value)
     {
         foreach ($this->_getConstants() as $constant) {
-            if (strstr($value, $constant)) {
+            if (strstr((string) $value, $constant)) {
                 // handle backslashes that may represent windows path names for instance
-                $replacement = str_replace('\\', '\\\\', constant($constant));
-                $value = str_replace($constant, $replacement, $value);
+                $replacement = str_replace((string) '\\', '\\\\', constant($constant));
+                $value = str_replace((string) $constant, $replacement, $value);
             }
         }
         return $value;

@@ -325,7 +325,7 @@ class Zend_Service_Akismet extends Zend_Service_Abstract
     {
         $response = $this->_makeApiCall('/1.1/comment-check', $params);
 
-        $return = trim($response->getBody());
+        $return = \trim((string) $response->getBody());
 
         if ('invalid' == $return) {
             // require_once 'Zend/Service/Exception.php';
@@ -355,7 +355,7 @@ class Zend_Service_Akismet extends Zend_Service_Abstract
     public function submitSpam($params)
     {
         $response = $this->_makeApiCall('/1.1/submit-spam', $params);
-        $value    = trim($response->getBody());
+        $value    = \trim((string) $response->getBody());
         if ('invalid' == $value) {
             // require_once 'Zend/Service/Exception.php';
             throw new Zend_Service_Exception('Invalid API key');

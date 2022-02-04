@@ -236,12 +236,12 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
         }
 
         if ($this->getObscureValue()) {
-            $value = str_repeat('*', strlen($value));
+            $value = str_repeat('*', strlen((string) $value));
         }
 
-        $message = str_replace('%value%', $value, $message);
+        $message = str_replace((string) '%value%', $value, $message);
         foreach ($this->_messageVariables as $ident => $property) {
-            $message = str_replace(
+            $message = str_replace((string) 
                 "%$ident%",
                 implode(' ', (array) $this->$property),
                 $message
@@ -249,8 +249,8 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
         }
 
         $length = self::getMessageLength();
-        if (($length > -1) && (strlen($message) > $length)) {
-            $message = substr($message, 0, (self::getMessageLength() - 3)) . '...';
+        if (($length > -1) && (strlen((string) $message) > $length)) {
+            $message = substr((string) $message, 0, (self::getMessageLength() - 3)) . '...';
         }
 
         return $message;
