@@ -303,6 +303,9 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
             $socket = null;
         }
 
+        if (\PHP_VERSION_ID >= 80100) {
+            \mysqli_report(MYSQLI_REPORT_OFF);
+        }
         $this->_connection = mysqli_init();
 
         if(!empty($this->_config['driver_options'])) {
