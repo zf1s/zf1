@@ -230,7 +230,7 @@ class Zend_Service_WindowsAzure_Storage
     /**
      * Retrieve HTTP client channel
      *
-     * @return Zend_Http_Client_Adapter_Interface
+     * @return Zend_Http_Client|null
      */
     public function getHttpClientChannel()
     {
@@ -435,7 +435,7 @@ class Zend_Service_WindowsAzure_Storage
 	 * Generate metadata headers
 	 *
 	 * @param array $metadata
-	 * @return HTTP headers containing metadata
+	 * @return array headers containing metadata
 	 */
 	protected function _generateMetadataHeaders($metadata = array())
 	{

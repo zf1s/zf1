@@ -394,7 +394,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
      * Converts a binary string to an IP address
      *
      * @param string $binary
-     * @return mixed
+     * @return array
      */
     private function _toIp($binary)
     {

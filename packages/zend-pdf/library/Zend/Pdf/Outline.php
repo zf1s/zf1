@@ -167,7 +167,7 @@ abstract class Zend_Pdf_Outline implements RecursiveIterator, Countable
      * Set outline options
      *
      * @param array $options
-     * @return Zend_Pdf_Action
+     * @return Zend_Pdf_Outline|Zend_Pdf_Outline_Loaded
      * @throws Zend_Pdf_Exception
      */
     public function setOptions(array $options)

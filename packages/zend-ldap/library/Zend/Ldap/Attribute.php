@@ -254,7 +254,7 @@ class Zend_Ldap_Attribute
      * Converts LDAP date/time representation into a timestamp
      *
      * @param  string $value
-     * @return integer|null - null if the value cannot be converted.
+     * @return string|null - null if the value cannot be converted.
      */
     public static function convertFromLdapDateTimeValue($value)
     {
@@ -403,7 +403,7 @@ class Zend_Ldap_Attribute
 
     /**
      * @param  string|DateTime $value
-     * @return integer|null
+     * @return string|null
      */
     private static function _valueFromLdapDateTime($value)
     {

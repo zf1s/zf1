@@ -1375,7 +1375,7 @@ class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_S
 	 * @param string $snapshotId         Snapshot identifier
 	 * @param string $leaseId            Lease identifier
 	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
-	 * @return mixed Blob contents
+	 * @return string|null Blob contents
 	 * @throws Zend_Service_WindowsAzure_Exception
 	 */
 	public function getBlobData($containerName = '', $blobName = '', $snapshotId = null, $leaseId = null, $additionalHeaders = array())
@@ -2043,8 +2043,8 @@ class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_S
 	 * Unregister this object as stream wrapper
 	 *
 	 * @param  string $name Protocol name
-	 * @return Zend_Service_WindowsAzure_Storage_Blob
-	 */
+	 * @return void
+     */
 	public function unregisterStreamWrapper($name = 'azure')
 	{
 		stream_wrapper_unregister($name);

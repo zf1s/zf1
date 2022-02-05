@@ -462,7 +462,7 @@ class Zend_Service_Delicious
      * @param   string $path  Path
      * @param   array  $parms Array of GET parameters
      * @param   string $type  Type of a request ("xml"|"json")
-     * @return  mixed  decoded response from web service
+     * @return  array|bool|DomDocument|SimpleXMLElement|StdClass|void|null  decoded response from web service
      * @throws  Zend_Service_Delicious_Exception
      */
     public function makeRequest($path, array $parms = array(), $type = 'xml')
@@ -508,7 +508,7 @@ class Zend_Service_Delicious
         switch ($type) {
             case 'xml':
                 $dom = new DOMDocument() ;
-    
+
                 if (!$dom = @Zend_Xml_Security::scan($responseBody, $dom)) {
                     /**
                      * @see Zend_Service_Delicious_Exception

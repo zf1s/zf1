@@ -98,7 +98,7 @@ class Zend_Tool_Project_Profile_Resource extends Zend_Tool_Project_Profile_Resou
     /**
      * getContext()
      *
-     * @return Zend_Tool_Project_Context_Interface
+     * @return string|Zend_Tool_Project_Context|null
      */
     public function getContext()
     {
@@ -197,7 +197,7 @@ class Zend_Tool_Project_Profile_Resource extends Zend_Tool_Project_Profile_Resou
     /**
      * isDeleted()
      *
-     * @return Zend_Tool_Project_Profile_Resource
+     * @return bool
      */
     public function isDeleted()
     {

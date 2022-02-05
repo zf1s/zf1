@@ -91,7 +91,7 @@ final class Zend_Amf_Parse_TypeLoader
      * Load the mapped class type into a callback.
      *
      * @param  string $className
-     * @return object|false
+     * @return array|false|string|string[]
      */
     public static function loadType($className)
     {

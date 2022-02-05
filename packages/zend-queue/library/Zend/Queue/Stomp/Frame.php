@@ -86,7 +86,7 @@ class Zend_Queue_Stomp_Frame
      *
      * This is done to make the message sending more reliable.
      *
-     * @return boolean
+     * @return boolean|null
      */
     public function getAutoContentLength()
     {

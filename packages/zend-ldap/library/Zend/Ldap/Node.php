@@ -943,7 +943,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * @param  string|Zend_Ldap_Filter_Abstract $filter
      * @param  integer                          $scope
      * @param  string                           $sort
-     * @return Zend_Ldap_Node_Collection
+     * @return Zend_Ldap_Collection
      * @throws Zend_Ldap_Exception
      */
     public function searchSubtree($filter, $scope = Zend_Ldap::SEARCH_SCOPE_SUB, $sort = null)
@@ -991,7 +991,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      *
      * @param  string|Zend_Ldap_Filter_Abstract $filter
      * @param  string                           $sort
-     * @return Zend_Ldap_Node_Collection
+     * @return Zend_Ldap_Collection
      * @throws Zend_Ldap_Exception
      */
     public function searchChildren($filter, $sort = null)
@@ -1071,7 +1071,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * Return the current attribute.
      * Implements Iterator
      *
-     * @return array
+     * @return Zend_Ldap_Node
      */
     #[\ReturnTypeWillChange]
     public function current()

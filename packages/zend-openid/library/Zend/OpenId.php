@@ -75,7 +75,7 @@ class Zend_OpenId
      * selfUrl() response
      *
      * @param string $selfUrl the URL to be set
-     * @return string the old value of overriding URL
+     * @return string|null the old value of overriding URL
      */
     static public function setSelfUrl($selfUrl = null)
     {
@@ -546,7 +546,7 @@ class Zend_OpenId
      * representation.
      *
      * @param string $bin binary representation of big number
-     * @return mixed
+     * @return GMP|int|resource|string
      * @throws Zend_OpenId_Exception
      */
     static protected function binToBigNum($bin)
@@ -622,7 +622,7 @@ class Zend_OpenId
      * @param string $p prime number in binary representation
      * @param string $g generator in binary representation
      * @param string $priv_key private key in binary representation
-     * @return mixed
+     * @return array|false|resource
      */
     static public function createDhKey($p, $g, $priv_key = null)
     {

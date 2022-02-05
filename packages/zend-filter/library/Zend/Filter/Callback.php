@@ -91,7 +91,7 @@ class Zend_Filter_Callback implements Zend_Filter_Interface
      * Sets a new callback for this filter
      *
      * @param unknown_type $callback
-     * @return unknown
+     * @return Zend_Filter_Callback
      */
     public function setCallback($callback, $options = null)
     {

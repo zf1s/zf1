@@ -225,7 +225,7 @@ class Zend_Json_Server_Smd
      * Set service ID
      *
      * @param  string $Id
-     * @return Zend_Json_Server_Smd
+     * @return string
      */
     public function setId($id)
     {
@@ -247,7 +247,7 @@ class Zend_Json_Server_Smd
      * Set service description
      *
      * @param  string $description
-     * @return Zend_Json_Server_Smd
+     * @return string
      */
     public function setDescription($description)
     {
@@ -291,7 +291,7 @@ class Zend_Json_Server_Smd
      * Add Service
      *
      * @param Zend_Json_Server_Smd_Service|array $service
-     * @return void
+     * @return Zend_Json_Server_Smd
      */
     public function addService($service)
     {

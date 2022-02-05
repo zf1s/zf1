@@ -260,7 +260,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
      * @param  string $domainName
      * @param  string $itemName
      * @param  array $attributes
-     * @return void
+     * @return bool
      */
     public function deleteAttributes($domainName, $itemName, array $attributes = array())
     {
@@ -288,7 +288,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
      *
      * @param int $maxNumberOfDomains
      * @param int $nextToken
-     * @return array              0 or more domain names
+     * @return Zend_Service_Amazon_SimpleDb_Page              0 or more domain names
      */
     public function listDomains($maxNumberOfDomains = 100, $nextToken = null)
     {

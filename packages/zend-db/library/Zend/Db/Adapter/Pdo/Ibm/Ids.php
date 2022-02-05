@@ -275,7 +275,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Ids
      * IDS-specific last sequence id
      *
      * @param string $sequenceName
-     * @return integer
+     * @return string
      */
     public function lastSequenceId($sequenceName)
     {
@@ -289,8 +289,8 @@ class Zend_Db_Adapter_Pdo_Ibm_Ids
      * IDS-specific sequence id value
      *
      *  @param string $sequenceName
-     *  @return integer
-     */
+     *  @return string
+      */
     public function nextSequenceId($sequenceName)
     {
         $sql = 'SELECT '.$this->_adapter->quoteIdentifier($sequenceName).'.NEXTVAL FROM '

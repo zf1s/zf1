@@ -107,7 +107,7 @@ class Zend_Validate_NotEmpty extends Zend_Validate_Abstract
     /**
      * Returns the set types
      *
-     * @return array
+     * @return int
      */
     public function getType()
     {

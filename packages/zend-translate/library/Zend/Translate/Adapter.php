@@ -499,7 +499,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @param  string             $message Message to get the key for
      * @param  string|Zend_Locale $locale (optional) Language to return the message ids from
-     * @return string|array|false
+     * @return false|int|string
      */
     public function getMessageId($message, $locale = null)
     {

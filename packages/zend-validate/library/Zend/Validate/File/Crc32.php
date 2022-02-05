@@ -61,8 +61,8 @@ class Zend_Validate_File_Crc32 extends Zend_Validate_File_Hash
      * Sets validator options
      *
      * @param  string|array|Zend_Config $options
-     * @throws Zend_Validate_Exception
-     * @return Zend_Validate_File_Crc32
+     * @return void
+     *@throws Zend_Validate_Exception
      */
     public function __construct($options)
     {
@@ -81,7 +81,7 @@ class Zend_Validate_File_Crc32 extends Zend_Validate_File_Hash
     /**
      * Returns all set crc32 hashes
      *
-     * @return array
+     * @return string
      */
     public function getCrc32()
     {

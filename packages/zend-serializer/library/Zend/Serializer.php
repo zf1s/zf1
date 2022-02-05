@@ -136,7 +136,7 @@ class Zend_Serializer
     /**
      * Get the default adapter.
      *
-     * @return Zend_Serializer_Adapter_AdapterInterface
+     * @return string|Zend_Serializer_AdapterInterface
      */
     public static function getDefaultAdapter()
     {

@@ -84,7 +84,7 @@ class Zend_Validate_File_Hash extends Zend_Validate_Abstract
     /**
      * Returns the set hash values as array, the hash as key and the algorithm the value
      *
-     * @return array
+     * @return string
      */
     public function getHash()
     {

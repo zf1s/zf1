@@ -113,7 +113,7 @@ class Zend_Soap_Wsdl
      * Set a new uri for this WSDL
      *
      * @param  string|Zend_Uri_Http $uri
-     * @return Zend_Server_Wsdl
+     * @return Zend_Soap_Wsdl
      */
     public function setUri($uri)
     {
@@ -171,7 +171,7 @@ class Zend_Soap_Wsdl
     /**
      * Get the current complex type strategy
      *
-     * @return Zend_Soap_Wsdl_Strategy_Interface
+     * @return Zend_Soap_Wsdl_Strategy_Interface|null
      */
     public function getComplexTypeStrategy()
     {

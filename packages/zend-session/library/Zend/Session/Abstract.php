@@ -172,7 +172,7 @@ abstract class Zend_Session_Abstract
      *
      * @param string $namespace
      * @param string $name
-     * @return mixed
+     * @return array
      */
     protected static function _namespaceGetAll($namespace)
     {

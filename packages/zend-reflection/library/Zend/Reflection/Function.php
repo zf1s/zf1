@@ -115,7 +115,7 @@ class Zend_Reflection_Function extends ReflectionFunction
     /**
      * Get return type tag
      *
-     * @return Zend_Reflection_Docblock_Tag_Return
+     * @return Zend_Reflection_Docblock_Tag
      */
     public function getReturn()
     {

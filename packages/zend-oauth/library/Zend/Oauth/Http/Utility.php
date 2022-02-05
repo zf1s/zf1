@@ -109,7 +109,7 @@ class Zend_Oauth_Http_Utility
      * @param  array $params
      * @param  null|string $realm
      * @param  bool $excludeCustomParams
-     * @return void
+     * @return string
      */
     public function toAuthorizationHeader(array $params, $realm = null, $excludeCustomParams = true)
     {

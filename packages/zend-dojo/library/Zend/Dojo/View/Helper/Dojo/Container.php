@@ -681,7 +681,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
     /**
      * Start capturing routines to run onLoad
      *
-     * @return bool
+     * @return void
      */
     public function onLoadCaptureStart()
     {

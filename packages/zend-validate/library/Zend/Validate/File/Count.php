@@ -181,7 +181,7 @@ class Zend_Validate_File_Count extends Zend_Validate_Abstract
      * Sets the maximum file count
      *
      * @param  integer|array $max The maximum file count
-     * @return Zend_Validate_StringLength Provides a fluent interface
+     * @return Zend_Validate_File_Count Provides a fluent interface
      * @throws Zend_Validate_Exception When max is smaller than min
      */
     public function setMax($max)

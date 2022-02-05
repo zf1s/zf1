@@ -612,7 +612,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      * Sets the maximum file size of the form
      *
      * @param  integer $size
-     * @return integer
+     * @return Zend_Form_Element_File
      */
     public function setMaxFileSize($size)
     {
@@ -746,7 +746,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
     /**
      * Retrieve localization translator object
      *
-     * @return Zend_Translate_Adapter|null
+     * @return Zend_Translate|null
      */
     public function getTranslator()
     {

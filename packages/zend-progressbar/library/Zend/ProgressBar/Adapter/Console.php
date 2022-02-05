@@ -183,7 +183,7 @@ class Zend_ProgressBar_Adapter_Console extends Zend_ProgressBar_Adapter
      * Set a different output-stream
      *
      * @param  string $resource
-     * @return Zend_ProgressBar_Adapter_Console
+     * @return void
      */
     public function setOutputStream($resource)
     {

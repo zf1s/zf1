@@ -56,7 +56,7 @@ class Zend_Application_Resource_Modules extends Zend_Application_Resource_Resour
     /**
      * Initialize modules
      *
-     * @return array
+     * @return ArrayObject
      * @throws Zend_Application_Resource_Exception When bootstrap class was not found
      */
     public function init()

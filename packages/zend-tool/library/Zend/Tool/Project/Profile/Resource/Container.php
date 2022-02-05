@@ -395,7 +395,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
     /**
      * getChildren()
      *
-     * @return array
+     * @return Zend_Tool_Project_Profile_Resource
      */
     #[\ReturnTypeWillChange]
     public function getChildren()

@@ -190,7 +190,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedAccessSignature
 	 * @param string $requestUrl Request URL
 	 * @param string $resourceType Resource type
 	 * @param string $requiredPermission Required permission
-	 * @return string Signed request URL
+	 * @return bool Signed request URL
 	 */
     public function permissionMatchesRequest(
     	$permissionUrl = '',

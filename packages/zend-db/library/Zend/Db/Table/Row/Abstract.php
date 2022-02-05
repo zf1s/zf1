@@ -405,7 +405,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
      * Set the read-only status of the row.
      *
      * @param boolean $flag
-     * @return boolean
+     * @return void
      */
     public function setReadOnly($flag)
     {

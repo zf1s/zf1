@@ -138,7 +138,7 @@ class Zend_Validate_File_Size extends Zend_Validate_Abstract
      * Returns the minimum filesize
      *
      * @param  boolean $byteString Use bytestring ?
-     * @return integer
+     * @return Zend_Validate_File_Size
      */
     public function setUseByteString($byteString = true)
     {
@@ -218,8 +218,8 @@ class Zend_Validate_File_Size extends Zend_Validate_Abstract
      * Sets the maximum filesize
      *
      * @param  integer $max The maximum filesize
-     * @throws Zend_Validate_Exception When max is smaller than min
-     * @return Zend_Validate_StringLength Provides a fluent interface
+     * @return Zend_Validate_File_Size Provides a fluent interface
+     *@throws Zend_Validate_Exception When max is smaller than min
      */
     public function setMax($max)
     {

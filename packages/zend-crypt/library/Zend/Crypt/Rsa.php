@@ -148,7 +148,7 @@ class Zend_Crypt_Rsa
      * @param string $data
      * @param string $signature
      * @param string $format
-     * @return string
+     * @return false|int
      */
     public function verifySignature($data, $signature, $format = null)
     {
@@ -203,9 +203,9 @@ class Zend_Crypt_Rsa
 
     /**
      * @param  array $configargs
-     * 
+     *
      * @throws Zend_Crypt_Rsa_Exception
-     * 
+     *
      * @return ArrayObject
      */
     public function generateKeys(array $configargs = null)

@@ -81,7 +81,7 @@ abstract class Zend_CodeGenerator_Php_Member_Abstract extends Zend_CodeGenerator
      * setDocblock() Set the docblock
      *
      * @param Zend_CodeGenerator_Php_Docblock|array|string $docblock
-     * @return Zend_CodeGenerator_Php_File
+     * @return Zend_CodeGenerator_Php_Member_Abstract
      */
     public function setDocblock($docblock)
     {

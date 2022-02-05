@@ -78,7 +78,7 @@ class Zend_TimeSync implements IteratorAggregate
      *
      * @param  string|array $target - OPTIONAL single timeserver, or an array of timeservers.
      * @param  string       $alias  - OPTIONAL an alias for this timeserver
-     * @return  object
+     * @return  void
      */
     public function __construct($target = null, $alias = null)
     {

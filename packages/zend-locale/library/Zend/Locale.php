@@ -1404,7 +1404,7 @@ class Zend_Locale
     /**
      * Return the accepted charset of the client
      *
-     * @return string
+     * @return array
      */
     public static function getHttpCharset()
     {
@@ -1550,7 +1550,7 @@ class Zend_Locale
      *
      * @param  string $value  Name to get detailed information about
      * @param  string $locale (Optional) Locale for language translation
-     * @return array
+     * @return false|string
      * @deprecated
      */
     public static function getLanguageTranslation($value, $locale = null)
@@ -1564,7 +1564,7 @@ class Zend_Locale
      *
      * @param  string $value  Name to get detailed information about
      * @param  string $locale (Optional) locale for script translation
-     * @return array
+     * @return false|string
      * @deprecated
      */
     public static function getScriptTranslation($value, $locale = null)
@@ -1578,7 +1578,7 @@ class Zend_Locale
      *
      * @param  string             $value  Name to get detailed information about
      * @param  string|Zend_Locale $locale (Optional) Locale for country translation
-     * @return array
+     * @return false|string
      * @deprecated
      */
     public static function getCountryTranslation($value, $locale = null)
@@ -1593,7 +1593,7 @@ class Zend_Locale
      *
      * @param  string             $value  Name to get detailed information about
      * @param  string|Zend_Locale $locale (Optional) Locale for territory translation
-     * @return array
+     * @return false|string
      * @deprecated
      */
     public static function getTerritoryTranslation($value, $locale = null)

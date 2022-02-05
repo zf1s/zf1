@@ -138,7 +138,7 @@ class Zend_Service_WindowsAzure_Log_Writer_WindowsAzure
      * Create a new instance of Zend_Service_Log_Writer_WindowsAzure
      *
      * @param  array $config
-     * @return Zend_Service_Log_Writer_WindowsAzure
+     * @return Zend_Service_WindowsAzure_Log_Writer_WindowsAzure
      * @throws Zend_Service_Log_Exception
      */
     static public function factory($config)

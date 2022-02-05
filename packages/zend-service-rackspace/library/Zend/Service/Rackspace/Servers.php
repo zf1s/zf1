@@ -1201,7 +1201,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      *
      * @param  string $name
      * @param  string $serverId
-     * @return array|boolean
+     * @return false|Zend_Service_Rackspace_Servers_SharedIpGroup
      */
     public function createSharedIpGroup($name,$serverId)
     {

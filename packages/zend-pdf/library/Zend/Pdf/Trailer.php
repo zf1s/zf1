@@ -72,7 +72,7 @@ abstract class Zend_Pdf_Trailer
      * Get handler
      *
      * @param string $property
-     * @return mixed
+     * @return Zend_Pdf_Element|null
      */
     public function __get($property)
     {

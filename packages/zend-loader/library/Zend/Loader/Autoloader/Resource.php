@@ -109,7 +109,7 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
      *
      * @param  string $method
      * @param  array $args
-     * @return mixed
+     * @return object
      * @throws Zend_Loader_Exception if method not beginning with 'get' or not matching a valid resource type is called
      */
     public function __call($method, $args)

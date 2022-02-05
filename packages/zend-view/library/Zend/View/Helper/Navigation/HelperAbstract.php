@@ -322,7 +322,7 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      *                                              should be formatted. Default
      *                                              is true.
      *
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
+     * @return Zend_View_Helper_Navigation_HelperAbstract  fluent interface, returns
      *                                              self
      */
     public function setFormatOutput($formatOutput = true)

@@ -263,7 +263,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      *
      * @param  string $collectionName
      * @param  null|array $options
-     * @return Zend_Cloud_DocumentService_DocumentSet
+     * @return array
      */
     public function listDocuments($collectionName, array $options = null)
     {
@@ -276,7 +276,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      *
      * @param  array|Zend_Cloud_DocumentService_Document $document
      * @param  array                         $options
-     * @return boolean
+     * @return void
      */
     public function insertDocument($collectionName, $document, $options = null)
     {
@@ -310,7 +310,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      *
      * @param  Zend_Cloud_DocumentService_Document $document
      * @param  array                         $options
-     * @return boolean
+     * @return void
      */
     public function replaceDocument($collectionName, $document, $options = null)
     {
@@ -346,7 +346,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      * @param  mixed|Zend_Cloud_DocumentService_Document $documentId Document identifier or document contaiing updates
      * @param  null|array|Zend_Cloud_DocumentService_Document Fields to update (or new fields))
      * @param  array $options
-     * @return boolean
+     * @return void
      */
     public function updateDocument($collectionName, $documentId, $fieldset = null, $options = null)
     {
@@ -534,7 +534,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      * Validate a composite key
      *
      * @param  array $key
-     * @return throws Zend_Cloud_DocumentService_Exception
+     * @return void Zend_Cloud_DocumentService_Exception
      */
     protected function _validateCompositeKey(array $key)
     {

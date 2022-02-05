@@ -121,7 +121,7 @@ class Zend_Markup_TokenList implements RecursiveIterator
     /**
      * Check if the element is valid
      *
-     * @return void
+     * @return bool
      */
     #[\ReturnTypeWillChange]
     public function valid()

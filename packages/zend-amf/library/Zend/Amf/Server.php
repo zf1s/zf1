@@ -235,7 +235,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
      *
      * @param string|object $object Object or class being accessed
      * @param string $function Function or method being accessed
-     * @return unknown_type
+     * @return bool
      */
     protected function _checkAcl($object, $function)
     {
@@ -487,11 +487,11 @@ class Zend_Amf_Server implements Zend_Server_Interface
     /**
      * Takes the deserialized AMF request and performs any operations.
      *
-     * @todo   should implement and SPL observer pattern for custom AMF headers
-     * @todo   DescribeService support
      * @param  Zend_Amf_Request $request
-     * @return Zend_Amf_Response
+     * @return void
      * @throws Zend_Amf_server_Exception|Exception
+     *@todo   DescribeService support
+     * @todo   should implement and SPL observer pattern for custom AMF headers
      */
     protected function _handle(Zend_Amf_Request $request)
     {
@@ -732,7 +732,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
     /**
      * get a reference to the Zend_Amf_response instance
      *
-     * @return Zend_Amf_Server_Response
+     * @return Zend_Amf_Response|null
      */
     public function getResponse()
     {

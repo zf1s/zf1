@@ -82,7 +82,7 @@ class Zend_Tool_Project_Context_Zf_BootstrapFile extends Zend_Tool_Project_Conte
     /**
      * getContents()
      *
-     * @return array
+     * @return string
      */
     public function getContents()
     {

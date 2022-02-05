@@ -287,10 +287,10 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
      * Special handling for hasTop and hasUniqueid. The headers of the first message is
      * retrieved if Top wasn't needed/tried yet.
      *
-     * @see Zend_Mail_Storage_Abstract:__get()
      * @param  string $var
-     * @return string
+     * @return bool|null
      * @throws Zend_Mail_Storage_Exception
+     * @see Zend_Mail_Storage_Abstract:__get()
      */
     public function __get($var)
     {

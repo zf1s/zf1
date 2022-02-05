@@ -75,7 +75,7 @@ class Zend_Dojo_Form extends Zend_Form
      * Ensures that the view object has the dojo view helper path set.
      *
      * @param  Zend_View_Interface $view
-     * @return Zend_Dojo_Form_Element_Dijit
+     * @return Zend_Dojo_Form
      */
     public function setView(Zend_View_Interface $view = null)
     {

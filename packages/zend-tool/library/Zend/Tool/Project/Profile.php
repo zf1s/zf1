@@ -53,7 +53,7 @@ class Zend_Tool_Project_Profile extends Zend_Tool_Project_Profile_Resource_Conta
      * Constructor, standard usage would allow the setting of options
      *
      * @param array $options
-     * @return bool
+     * @return void
      */
     public function __construct($options = null)
     {

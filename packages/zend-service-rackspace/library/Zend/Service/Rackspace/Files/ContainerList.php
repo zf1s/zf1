@@ -54,7 +54,7 @@ class Zend_Service_Rackspace_Files_ContainerList implements Countable, Iterator,
      * Constructor
      *
      * @param  array $list
-     * @return boolean
+     * @return void
      */
     public function __construct($service,$list = array())
     {

@@ -74,7 +74,7 @@ class Zend_Amf_Parse_Amf3_Deserializer extends Zend_Amf_Parse_Deserializer
      * the following value.
      *
      * @param  integer $typeMarker
-     * @return mixed Whatever the corresponding PHP data type is
+     * @return array|bool|float|int|object|SimpleXml|stdClass|String|Zend_Date|null Whatever the corresponding PHP data type is
      * @throws Zend_Amf_Exception for unidentified marker type
      */
     public function readTypeMarker($typeMarker = null)
@@ -413,13 +413,13 @@ class Zend_Amf_Parse_Amf3_Deserializer extends Zend_Amf_Parse_Deserializer
      * Convert XML to SimpleXml
      * If user wants DomDocument they can use dom_import_simplexml
      *
-     * @return SimpleXml Object
+     * @return bool|DomDocument|SimpleXMLElement|null Object
      */
     public function readXmlString()
     {
         $xmlReference = $this->readInteger();
         $length = $xmlReference >> 1;
         $string = $this->_stream->readBytes($length);
-        return Zend_Xml_Security::scan($string); 
+        return Zend_Xml_Security::scan($string);
     }
 }

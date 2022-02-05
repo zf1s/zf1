@@ -179,7 +179,7 @@ class Zend_Http_Client_Adapter_Curl implements Zend_Http_Client_Adapter_Interfac
      *
      * @param  string|int $option
      * @param  mixed $value
-     * @return Zend_Http_Adapter_Curl
+     * @return Zend_Http_Client_Adapter_Curl
      */
     public function setCurlOption($option, $value)
     {
@@ -516,7 +516,7 @@ class Zend_Http_Client_Adapter_Curl implements Zend_Http_Client_Adapter_Interfac
      * Set output stream for the response
      *
      * @param resource $stream
-     * @return Zend_Http_Client_Adapter_Socket
+     * @return Zend_Http_Client_Adapter_Curl
      */
     public function setOutputStream($stream)
     {

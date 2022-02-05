@@ -183,10 +183,11 @@ class Zend_Cloud_StorageService_Adapter_WindowsAzure
      * Store an item in the storage service.
      * WARNING: This operation overwrites any item that is located at
      * $destinationPath.
+     *
      * @param string $destinationPath
      * @param mixed  $data
      * @param  array $options
-     * @return boolean
+     * @return void
      */
     public function storeItem($destinationPath, $data, $options = null)
     {
@@ -434,7 +435,8 @@ class Zend_Cloud_StorageService_Adapter_WindowsAzure
 
     /**
      * Get the concrete adapter.
-     * @return Zend_Service_Azure_Storage_Blob
+     *
+     * @return Zend_Service_WindowsAzure_Storage_Blob|null
      */
     public function getClient()
     {

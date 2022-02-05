@@ -335,7 +335,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
     /**
      * Make an id depending on REQUEST_URI and superglobal arrays (depending on options)
      *
-     * @return mixed|false a cache id (string), false if the cache should have not to be used
+     * @return false|string a cache id (string), false if the cache should have not to be used
      */
     protected function _makeId()
     {
@@ -358,7 +358,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
      * @param  string $arrayName Superglobal array name
      * @param  bool   $bool1     If true, cache is still on even if there are some variables in the superglobal array
      * @param  bool   $bool2     If true, we have to use the content of the superglobal array to make a partial id
-     * @return mixed|false Partial id (string) or false if the cache should have not to be used
+     * @return false|string Partial id (string) or false if the cache should have not to be used
      */
     protected function _makePartialId($arrayName, $bool1, $bool2)
     {

@@ -166,7 +166,7 @@ class Zend_Tool_Framework_Client_Response
      * Add Content Decorator
      *
      * @param Zend_Tool_Framework_Client_Response_ContentDecorator_Interface $contentDecorator
-     * @return unknown
+     * @return Zend_Tool_Framework_Client_Response
      */
     public function addContentDecorator(Zend_Tool_Framework_Client_Response_ContentDecorator_Interface $contentDecorator)
     {

@@ -77,7 +77,7 @@ class ZF
     /**
      * bootstrap()
      *
-     * @return ZF
+     * @return void
      */
     public function bootstrap()
     {
@@ -124,7 +124,7 @@ class ZF
     /**
      * _detectMode()
      *
-     * @return ZF
+     * @return string
      */
     protected function _detectMode()
     {

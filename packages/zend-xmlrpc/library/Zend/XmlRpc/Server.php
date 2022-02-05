@@ -482,7 +482,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
     /**
      * Retrieve dispatch table
      *
-     * @return array
+     * @return Zend_Server_Definition
      */
     public function getDispatchTable()
     {

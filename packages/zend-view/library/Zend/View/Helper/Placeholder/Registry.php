@@ -125,7 +125,7 @@ class Zend_View_Helper_Placeholder_Registry
      *
      * @param  string $key
      * @param  Zend_View_Placeholder_Container_Abstract $container
-     * @return Zend_View_Placeholder_Registry
+     * @return Zend_View_Helper_Placeholder_Registry
      */
     public function setContainer($key, Zend_View_Helper_Placeholder_Container_Abstract $container)
     {

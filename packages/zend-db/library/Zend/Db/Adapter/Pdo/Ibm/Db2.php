@@ -204,7 +204,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
      * DB2-specific last sequence id
      *
      * @param string $sequenceName
-     * @return integer
+     * @return string
      */
     public function lastSequenceId($sequenceName)
     {
@@ -217,7 +217,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
      * DB2-specific sequence id value
      *
      *  @param string $sequenceName
-     *  @return integer
+     *  @return string
      */
     public function nextSequenceId($sequenceName)
     {

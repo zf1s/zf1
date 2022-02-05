@@ -236,7 +236,7 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
      * @param int $style  OPTIONAL Fetch mode for this fetch operation.
      * @param int $cursor OPTIONAL Absolute, relative, or other.
      * @param int $offset OPTIONAL Number for absolute or relative cursors.
-     * @return mixed Array, object, or scalar depending on fetch mode.
+     * @return array|bool|object Array, object, or scalar depending on fetch mode.
      * @throws Zend_Db_Statement_Db2_Exception
      */
     public function fetch($style = null, $cursor = null, $offset = null)
@@ -285,7 +285,7 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
      *
      * @param string $class  OPTIONAL Name of the class to create.
      * @param array  $config OPTIONAL Constructor arguments for the class.
-     * @return mixed One object instance of the specified class.
+     * @return array|bool|object One object instance of the specified class.
      */
     public function fetchObject($class = 'stdClass', array $config = array())
     {

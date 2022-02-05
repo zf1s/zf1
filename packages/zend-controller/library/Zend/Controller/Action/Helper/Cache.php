@@ -217,7 +217,7 @@ class Zend_Controller_Action_Helper_Cache
      * Set an instance of the Cache Manager for this helper
      *
      * @param Zend_Cache_Manager $manager
-     * @return void
+     * @return Zend_Controller_Action_Helper_Cache
      */
     public function setManager(Zend_Cache_Manager $manager)
     {

@@ -160,7 +160,7 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
     /**
      * Required by the Iterator interface.
      *
-     * @return mixed The current row number (starts at 0), or NULL if no rows
+     * @return int The current row number (starts at 0), or NULL if no rows
      */
     #[\ReturnTypeWillChange]
     public function key()
@@ -171,7 +171,7 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
     /**
      * Required by the Iterator interface.
      *
-     * @return mixed The next row, or null if no more rows.
+     * @return void The next row, or null if no more rows.
      */
     #[\ReturnTypeWillChange]
     public function next()
@@ -283,9 +283,9 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
    /**
      * Retrieve the next set of results from this feed.
      *
-     * @throws Zend_Gdata_App_Exception
-     * @return mixed|null Returns the next set of results as a feed of the same
+     * @return string|Zend_Gdata_App_Feed Returns the next set of results as a feed of the same
      *          class as this feed, or null if no results exist.
+     *@throws Zend_Gdata_App_Exception
      */
     public function getNextFeed()
     {
@@ -304,9 +304,9 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
    /**
      * Retrieve the previous set of results from this feed.
      *
-     * @throws Zend_Gdata_App_Exception
-     * @return mixed|null Returns the previous set of results as a feed of
+     * @return string|Zend_Gdata_App_Feed Returns the previous set of results as a feed of
      *          the same class as this feed, or null if no results exist.
+     *@throws Zend_Gdata_App_Exception
      */
     public function getPreviousFeed()
     {

@@ -264,7 +264,7 @@ class Zend_View_Helper_Navigation_Links
      * @param  Zend_Navigation_Page $page       page to find relations for
      * @param  string              $rel         relation, "rel" or "rev"
      * @param  string              $type        link type, e.g. 'start', 'next'
-     * @return Zend_Navigaiton_Page|array|null  page(s), or null if not found
+     * @return array|Zend_Navigation_Page|null  page(s), or null if not found
      * @throws Zend_View_Exception              if $rel is not "rel" or "rev"
      */
     public function findRelation(Zend_Navigation_Page $page, $rel, $type)

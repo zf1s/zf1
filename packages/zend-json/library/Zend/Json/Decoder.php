@@ -139,7 +139,7 @@ class Zend_Json_Decoder
      * @param int $objectDecodeType How objects should be decoded; should be
      * either or {@link Zend_Json::TYPE_ARRAY} or
      * {@link Zend_Json::TYPE_OBJECT}; defaults to TYPE_ARRAY
-     * @return mixed
+     * @return array|StdClass|null
      * @throws Zend_Json_Exception
      */
     public static function decode($source = null, $objectDecodeType = Zend_Json::TYPE_ARRAY)
@@ -161,8 +161,8 @@ class Zend_Json_Decoder
     /**
      * Recursive driving rountine for supported toplevel tops
      *
-     * @throws Zend_Json_Exception
-     * @return mixed
+     * @return array|StdClass|null
+     *@throws Zend_Json_Exception
      */
     protected function _decodeValue()
     {

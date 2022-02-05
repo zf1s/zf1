@@ -166,7 +166,7 @@ abstract class Zend_Feed_Reader_EntryAbstract
      * Set the XPath query
      *
      * @param  DOMXPath $xpath
-     * @return Zend_Feed_Reader_Entry_EntryAbstract
+     * @return void|Zend_Feed_Reader_EntryAbstract
      */
     public function setXpath(DOMXPath $xpath)
     {

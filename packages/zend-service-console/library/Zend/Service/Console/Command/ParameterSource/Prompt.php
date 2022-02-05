@@ -43,8 +43,8 @@ class Zend_Service_Console_Command_ParameterSource_Prompt
 	 *
 	 * @param mixed $parameter Parameter to get a value for
 	 * @param array $argv Argument values passed to the script when run in console.
-	 * @return mixed
-	 */
+	 * @return string
+     */
 	public function getValueForParameter($parameter, $argv = array())
 	{
 		// Default value

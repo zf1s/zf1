@@ -173,8 +173,6 @@ class Zend_Http_Header_SetCookie
     /**
      * Cookie object constructor
      *
-     * @todo Add validation of each one of the parameters (legal domain, etc.)
-     *
      * @param string $name
      * @param string $value
      * @param int $expires
@@ -184,7 +182,9 @@ class Zend_Http_Header_SetCookie
      * @param bool $httponly
      * @param string $maxAge
      * @param int $version
-     * @return SetCookie
+     * @return void
+     *@todo Add validation of each one of the parameters (legal domain, etc.)
+     *
      */
     public function __construct($name = null, $value = null, $expires = null, $path = null, $domain = null, $secure = false, $httponly = false, $maxAge = null, $version = null)
     {
@@ -291,7 +291,7 @@ class Zend_Http_Header_SetCookie
 
     /**
      * @param string $name
-     * @return SetCookie
+     * @return Zend_Http_Header_SetCookie
      */
     public function setName($name)
     {
@@ -377,7 +377,7 @@ class Zend_Http_Header_SetCookie
 
     /**
      * @param int $expires
-     * @return SetCookie
+     * @return Zend_Http_Header_SetCookie
      */
     public function setExpires($expires)
     {

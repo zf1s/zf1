@@ -142,7 +142,7 @@ class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract
      * get a list of messages with number and size
      *
      * @param int $id number of message
-     * @return int|array size of given message of list with all messages as array(num => size)
+     * @return array|string size of given message of list with all messages as array(num => size)
      * @throws Zend_Mail_Protocol_Exception
      */
     public function getSize($id = 0)
@@ -474,7 +474,7 @@ class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract
     /**
      * get Zend_Mail_Storage_Folder instance for current folder
      *
-     * @return Zend_Mail_Storage_Folder instance of current folder
+     * @return string instance of current folder
      * @throws Zend_Mail_Storage_Exception
      */
     public function getCurrentFolder()

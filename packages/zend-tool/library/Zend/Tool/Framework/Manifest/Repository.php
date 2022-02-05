@@ -54,7 +54,7 @@ class Zend_Tool_Framework_Manifest_Repository
      * setRegistry()
      *
      * @param Zend_Tool_Framework_Registry_Interface $registry
-     * @return unknown
+     * @return Zend_Tool_Framework_Manifest_Repository
      */
     public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry)
     {

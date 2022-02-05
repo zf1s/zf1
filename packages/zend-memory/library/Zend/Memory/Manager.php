@@ -303,9 +303,9 @@ class Zend_Memory_Manager
      *
      * Used by Memory container destroy() method
      *
-     * @internal
      * @param integer $id
-     * @return Zend_Memory_Container
+     * @return void
+     *@internal
      */
     public function unlink(Zend_Memory_Container_Movable $container, $id)
     {

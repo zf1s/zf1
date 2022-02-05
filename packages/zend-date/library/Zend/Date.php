@@ -131,7 +131,7 @@ class Zend_Date extends Zend_Date_DateObject
      *                                                 ,depending on $part. If null the actual time is set
      * @param  string                          $part    OPTIONAL Defines the input format of $date
      * @param  string|Zend_Locale              $locale  OPTIONAL Locale for parsing input
-     * @return Zend_Date
+     * @return void
      * @throws Zend_Date_Exception
      */
     public function __construct($date = null, $part = null, $locale = null)
@@ -232,8 +232,8 @@ class Zend_Date extends Zend_Date_DateObject
      * Sets class wide options, if no option was given, the actual set options will be returned
      *
      * @param  array  $options  Options to set
-     * @throws Zend_Date_Exception
-     * @return Options array if no option was given
+     * @return array|void array if no option was given
+     *@throws Zend_Date_Exception
      */
     public static function setOptions(array $options = array())
     {
@@ -3507,7 +3507,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param  string|integer|array|Zend_Date  $date    Date or Part to calculate
      * @param  string                          $type    Datepart for Calculation
      * @param  string|Zend_Locale              $locale  Locale for parsing input
-     * @return integer|string  new date
+     * @return integer|Zend_Date  new date
      * @throws Zend_Date_Exception
      */
     private function _calcdetail($calc, $date, $type, $locale)
@@ -4503,7 +4503,7 @@ class Zend_Date extends Zend_Date_DateObject
     /**
      * Returns the milliseconds of the date object
      *
-     * @return string
+     * @return int
      */
     public function getMilliSecond()
     {
@@ -4776,7 +4776,7 @@ class Zend_Date extends Zend_Date_DateObject
     /**
      * Returns the actual set locale
      *
-     * @return string
+     * @return string|null
      */
     public function getLocale()
     {

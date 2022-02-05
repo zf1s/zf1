@@ -988,7 +988,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
      * Register this object as stream wrapper
      *
      * @param  string $name
-     * @return Zend_Service_Amazon_S3
+     * @return void
      */
     public function registerStreamWrapper($name='s3')
     {
@@ -1005,7 +1005,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
      * Unregister this object as stream wrapper
      *
      * @param  string $name
-     * @return Zend_Service_Amazon_S3
+     * @return void
      */
     public function unregisterStreamWrapper($name='s3')
     {

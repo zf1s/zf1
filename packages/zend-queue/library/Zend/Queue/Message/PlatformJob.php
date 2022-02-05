@@ -123,7 +123,7 @@ class Zend_Queue_Message_PlatformJob extends Zend_Queue_Message
     /**
      * Store queue and data in serialized object
      *
-     * @return array
+     * @return string
      */
     public function __sleep()
     {

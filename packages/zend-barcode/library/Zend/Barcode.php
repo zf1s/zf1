@@ -51,7 +51,7 @@ class Zend_Barcode
      * @param  mixed $barcodeConfig   OPTIONAL; an array or Zend_Config object with barcode parameters.
      * @param  mixed $rendererConfig  OPTIONAL; an array or Zend_Config object with renderer parameters.
      * @param  boolean $automaticRenderError  OPTIONAL; set the automatic rendering of exception
-     * @return Zend_Barcode
+     * @return Zend_Barcode_Renderer_RendererAbstract
      * @throws Zend_Barcode_Exception
      */
     public static function factory(
@@ -106,7 +106,7 @@ class Zend_Barcode
      *
      * @param mixed $barcode        String name of barcode class, or Zend_Config object.
      * @param mixed $barcodeConfig  OPTIONAL; an array or Zend_Config object with barcode parameters.
-     * @return Zend_Barcode_Object
+     * @return Zend_Barcode_Object_ObjectAbstract
      */
     public static function makeBarcode($barcode, $barcodeConfig = array())
     {
@@ -205,7 +205,7 @@ class Zend_Barcode
      *
      * @param mixed $renderer           String name of renderer class, or Zend_Config object.
      * @param mixed $rendererConfig     OPTIONAL; an array or Zend_Config object with renderer parameters.
-     * @return Zend_Barcode_Renderer
+     * @return Zend_Barcode_Renderer_RendererAbstract
      */
     public static function makeRenderer($renderer = 'image', $rendererConfig = array())
     {
@@ -328,7 +328,7 @@ class Zend_Barcode
      * @param string | Zend_Barcode_Renderer $renderer
      * @param array | Zend_Config $barcodeConfig
      * @param array | Zend_Config $rendererConfig
-     * @return mixed
+     * @return DOMDocument|null
      */
     public static function draw(
         $barcode,

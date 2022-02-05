@@ -167,7 +167,7 @@ class Zend_Json
                 $magicKey = $javascriptExpressions[$i]['magicKey'];
                 $value    = $javascriptExpressions[$i]['value'];
 
-                $encodedResult = str_replace((string) 
+                $encodedResult = str_replace((string)
                     //instead of replacing "key:magicKey", we replace directly magicKey by value because "key" never changes.
                     '"' . $magicKey . '"',
                     $value,
@@ -189,13 +189,13 @@ class Zend_Json
      *
      * NOTE: This method is used internally by the encode method.
      *
-     * @see encode
      * @param array|object|Zend_Json_Expr $value a string - object property to be encoded
      * @param array $javascriptExpressions
      * @param null $currentKey
      *
-     * @internal param mixed $valueToCheck
-     * @return void
+     * @return array|object|string|Zend_Json_Expr
+     *@internal param mixed $valueToCheck
+     * @see encode
      */
     protected static function _recursiveJsonExprFinder(&$value, array &$javascriptExpressions, $currentKey = null)
     {
@@ -342,7 +342,7 @@ class Zend_Json
      * @param string $xmlStringContents XML String to be converted
      * @param boolean $ignoreXmlAttributes Include or exclude XML attributes in
      * the xml2json conversion process.
-     * @return mixed - JSON formatted string on success
+     * @return string - JSON formatted string on success
      * @throws Zend_Json_Exception
      */
     public static function fromXml($xmlStringContents, $ignoreXmlAttributes=true)

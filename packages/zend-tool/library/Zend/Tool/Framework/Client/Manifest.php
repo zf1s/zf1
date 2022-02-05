@@ -71,7 +71,7 @@ class Zend_Tool_Framework_Client_Manifest
      * setRegistry() - Required for the Zend_Tool_Framework_Registry_EnabledInterface interface
      *
      * @param Zend_Tool_Framework_Registry_Interface $registry
-     * @return Zend_Tool_Framework_Client_Console_Manifest
+     * @return Zend_Tool_Framework_Client_Manifest
      */
     public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry)
     {

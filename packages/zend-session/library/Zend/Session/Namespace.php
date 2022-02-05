@@ -261,7 +261,7 @@ class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAg
     /**
      * unsetAll() - unset all variables in this namespace
      *
-     * @return true
+     * @return void
      */
     public function unsetAll()
     {
@@ -294,8 +294,8 @@ class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAg
      *
      * @param string $name - programmatic name of a key, in a <key,value> pair in the current namespace
      * @param mixed $value - value in the <key,value> pair to assign to the $name key
-     * @throws Zend_Session_Exception
-     * @return true
+     * @return void
+     *@throws Zend_Session_Exception
      */
     public function __set($name, $value)
     {
@@ -400,7 +400,7 @@ class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAg
      * __unset() - unset a variable in this object's namespace.
      *
      * @param string $name - programmatic name of a key, in a <key,value> pair in the current namespace
-     * @return true
+     * @return void
      */
     public function __unset($name)
     {

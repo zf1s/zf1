@@ -106,7 +106,7 @@ class Zend_Validate_PostCode extends Zend_Validate_Abstract
     /**
      * Returns the set locale
      *
-     * @return string|Zend_Locale The set locale
+     * @return string The set locale
      */
     public function getLocale()
     {
@@ -150,7 +150,7 @@ class Zend_Validate_PostCode extends Zend_Validate_Abstract
     /**
      * Returns the set postal code format
      *
-     * @return string
+     * @return unknown_type
      */
     public function getFormat()
     {

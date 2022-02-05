@@ -763,7 +763,7 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
      * Removes a custom HTML attribute from the page
      *
      * @param  string $name          name of the custom HTML attribute
-     * @return Zend_Navigation_Page  fluent interface, returns self
+     * @return void  fluent interface, returns self
      */
     public function removeCustomHtmlAttrib($name)
     {

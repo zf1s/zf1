@@ -88,7 +88,7 @@ class Zend_Dojo_Form_Decorator_DijitElement extends Zend_Form_Decorator_ViewHelp
      *
      * @param  string $key
      * @param  mixed $value
-     * @return Zend_Dojo_Form_Decorator_DijitContainer
+     * @return Zend_Dojo_Form_Decorator_DijitElement
      */
     public function setDijitParam($key, $value)
     {
@@ -100,7 +100,7 @@ class Zend_Dojo_Form_Decorator_DijitElement extends Zend_Form_Decorator_ViewHelp
      * Set dijit option parameters
      *
      * @param  array $params
-     * @return Zend_Dojo_Form_Decorator_DijitContainer
+     * @return Zend_Dojo_Form_Decorator_DijitElement
      */
     public function setDijitParams(array $params)
     {

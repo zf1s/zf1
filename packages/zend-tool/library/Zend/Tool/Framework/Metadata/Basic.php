@@ -116,7 +116,7 @@ class Zend_Tool_Framework_Metadata_Basic
     /**
      * getName()
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {

@@ -658,7 +658,7 @@ class Zend_Http_UserAgent implements Serializable
      * data that will be introspected.
      *
      * @param  array|ArrayAccess $server
-     * @return void
+     * @return Zend_Http_UserAgent
      * @throws Zend_Http_UserAgent_Exception on invalid parameter
      */
     public function setServer($server)
@@ -720,7 +720,7 @@ class Zend_Http_UserAgent implements Serializable
      *
      * @param  string|int|float $key
      * @param  mixed $value
-     * @return void
+     * @return Zend_Http_UserAgent
      */
     public function setServerValue($key, $value)
     {
@@ -832,7 +832,7 @@ class Zend_Http_UserAgent implements Serializable
      * Run the identification sequence to match the right browser type according to the
      * user agent
      *
-     * @return Zend_Http_UserAgent_Result
+     * @return string
      */
     protected function _matchUserAgent()
     {

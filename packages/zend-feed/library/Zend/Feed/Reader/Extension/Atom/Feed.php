@@ -504,7 +504,7 @@ class Zend_Feed_Reader_Extension_Atom_Feed
      * Get an author entry in RSS format
      *
      * @param  DOMElement $element
-     * @return string
+     * @return array|null
      */
     protected function _getAuthor(DOMElement $element)
     {

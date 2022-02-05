@@ -57,7 +57,7 @@ class Zend_Server_Definition implements Countable, Iterator
      * Set flag indicating whether or not overwriting existing methods is allowed
      *
      * @param mixed $flag
-     * @return void
+     * @return Zend_Server_Definition
      */
     public function setOverwriteExistingMethods($flag)
     {

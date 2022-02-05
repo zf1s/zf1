@@ -138,7 +138,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      * (123456 else)
      *
      * @param  string $id Cache id
-     * @return mixed|false false (a cache is not available) or "last modified" timestamp (int) of the available cache record
+     * @return false|int false (a cache is not available) or "last modified" timestamp (int) of the available cache record
      */
     public function test($id)
     {
@@ -352,7 +352,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      * - mtime : timestamp of last modification time
      *
      * @param string $id cache id
-     * @return array array of metadatas (false if the cache id is not found)
+     * @return false array of metadatas (false if the cache id is not found)
      */
     public function getMetadatas($id)
     {

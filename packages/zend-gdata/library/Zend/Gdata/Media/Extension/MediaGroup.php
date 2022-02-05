@@ -339,7 +339,7 @@ class Zend_Gdata_Media_Extension_MediaGroup extends Zend_Gdata_Extension
 
     /**
      * @param array $value
-     * @return Zend_Gdata_Media_MediaGroup Provides a fluent interface
+     * @return Zend_Gdata_Media_Extension_MediaGroup Provides a fluent interface
      */
     public function setContent($value)
     {
@@ -402,7 +402,7 @@ class Zend_Gdata_Media_Extension_MediaGroup extends Zend_Gdata_Extension
     }
 
     /**
-     * @return Zend_Gdata_Media_Extension_MediaTitle
+     * @return string|null
      */
     public function getTitle()
     {

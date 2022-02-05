@@ -1150,7 +1150,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
     /**
      * Retrieve localization translator object
      *
-     * @return Zend_Translate_Adapter|null
+     * @return Zend_Translate|null
      */
     public function getTranslator()
     {

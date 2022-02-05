@@ -91,7 +91,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      * Set a single author
      *
      * @param  int $index
-     * @return string|null
+     * @return void
      */
     public function addAuthor($name, $email = null, $uri = null)
     {
@@ -143,7 +143,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set an array with feed authors
      *
-     * @return array
+     * @return void
      */
     public function addAuthors(array $authors)
     {
@@ -155,7 +155,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set the copyright entry
      *
-     * @return string|null
+     * @return void
      */
     public function setCopyright($copyright)
     {
@@ -232,7 +232,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set the feed description
      *
-     * @return string|null
+     * @return void
      */
     public function setDescription($description)
     {
@@ -246,7 +246,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set the feed generator entry
      *
-     * @return string|null
+     * @return void
      */
     public function setGenerator($name, $version = null, $uri = null)
     {
@@ -383,7 +383,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set the feed language
      *
-     * @return string|null
+     * @return void
      */
     public function setLanguage($language)
     {
@@ -411,7 +411,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set a link to an XML feed for any feed type/version
      *
-     * @return string|null
+     * @return void
      */
     public function setFeedLink($link, $type)
     {
@@ -429,7 +429,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set the feed title
      *
-     * @return string|null
+     * @return void
      */
     public function setTitle($title)
     {

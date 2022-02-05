@@ -112,7 +112,7 @@ class Zend_Application_Bootstrap_Bootstrap
      * Set module resource loader
      *
      * @param  Zend_Loader_Autoloader_Resource $loader
-     * @return Zend_Application_Module_Bootstrap
+     * @return Zend_Application_Bootstrap_Bootstrap
      */
     public function setResourceLoader(Zend_Loader_Autoloader_Resource $loader)
     {

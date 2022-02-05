@@ -144,7 +144,7 @@ class Zend_Dom_Query_Result implements Iterator,Countable
     /**
      * Iterator: return current element
      *
-     * @return DOMElement
+     * @return DOMNode|null
      */
     #[\ReturnTypeWillChange]
     public function current()

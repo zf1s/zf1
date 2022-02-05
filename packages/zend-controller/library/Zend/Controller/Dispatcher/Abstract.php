@@ -187,7 +187,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * Retrieve the path delimiter character(s) used in
      * controller names
      *
-     * @return array
+     * @return string
      */
     public function getPathDelimiter()
     {

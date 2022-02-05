@@ -62,7 +62,7 @@ class Zend_Amf_Parse_Amf0_Deserializer extends Zend_Amf_Parse_Deserializer
      * the following value.
      *
      * @param  integer $typeMarker
-     * @return mixed whatever the data type is of the marker in php
+     * @return array|bool|DomDocument|float|object|SimpleXMLElement|string|Zend_Date|null whatever the data type is of the marker in php
      * @throws Zend_Amf_Exception for invalid type
      */
     public function readTypeMarker($typeMarker = null)
@@ -194,10 +194,10 @@ class Zend_Amf_Parse_Amf0_Deserializer extends Zend_Amf_Parse_Deserializer
      *
      * Called when marker type is 8
      *
-     * @todo   As of Flash Player 9 there is not support for mixed typed arrays
+     * @return object
+     *@todo   As of Flash Player 9 there is not support for mixed typed arrays
      *         so we handle this as an object. With the introduction of vectors
      *         in Flash Player 10 this may need to be reconsidered.
-     * @return array
      */
     public function readMixedArray()
     {
@@ -246,7 +246,7 @@ class Zend_Amf_Parse_Amf0_Deserializer extends Zend_Amf_Parse_Deserializer
      * Convert XML to SimpleXml
      * If user wants DomDocument they can use dom_import_simplexml
      *
-     * @return SimpleXml Object
+     * @return bool|DomDocument|SimpleXMLElement|null Object
      */
     public function readXmlString()
     {

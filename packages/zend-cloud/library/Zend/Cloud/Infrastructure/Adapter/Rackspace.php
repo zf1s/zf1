@@ -153,7 +153,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
      * Convert the attributes of Rackspace server into attributes of Infrastructure
      *
      * @param  array $attr
-     * @return array|boolean
+     * @return array
      */
     protected function convertAttributes($attr)
     {
@@ -176,7 +176,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
     /**
      * Return a list of the available instancies
      *
-     * @return InstanceList|boolean
+     * @return false|Zend_Cloud_Infrastructure_InstanceList
      */
     public function listInstances()
     {
@@ -236,9 +236,9 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
      *
      * @param string $name
      * @param array $options
+     * @return false|Zend_Cloud_Infrastructure_Instance
+     *@throws Zend_Service_Rackspace_Exception
      * @throws Zend_Cloud_Infrastructure_Exception
-     * @throws Zend_Service_Rackspace_Exception
-     * @return Instance|boolean
      */
     public function createInstance($name, $options)
     {
@@ -306,7 +306,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
     /**
      * Return a list of all the available instance images
      *
-     * @return ImageList|boolean
+     * @return false|Zend_Cloud_Infrastructure_ImageList
      */
     public function imagesInstance()
     {

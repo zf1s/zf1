@@ -50,7 +50,7 @@ class Zend_ProgressBar_Adapter_JsPull extends Zend_ProgressBar_Adapter
      * Set wether to exit after json data send or not
      *
      * @param  boolean $exitAfterSend
-     * @return Zend_ProgressBar_Adapter_JsPull
+     * @return void
      */
     public function setExitAfterSend($exitAfterSend)
     {

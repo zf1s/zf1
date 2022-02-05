@@ -134,7 +134,7 @@ class Zend_CodeGenerator_Php_Property extends Zend_CodeGenerator_Php_Member_Abst
     /**
      * getDefaultValue()
      *
-     * @return Zend_CodeGenerator_Php_Property_DefaultValue
+     * @return string|null
      */
     public function getDefaultValue()
     {

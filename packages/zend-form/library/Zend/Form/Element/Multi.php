@@ -61,7 +61,7 @@ abstract class Zend_Form_Element_Multi extends Zend_Form_Element_Xhtml
     /**
      * Retrieve separator
      *
-     * @return mixed
+     * @return string
      */
     public function getSeparator()
     {

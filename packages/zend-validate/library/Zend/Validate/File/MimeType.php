@@ -274,7 +274,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * Sets the mimetypes
      *
      * @param  string|array $mimetype The mimetypes to validate
-     * @return Zend_Validate_File_Extension Provides a fluent interface
+     * @return Zend_Validate_File_MimeType Provides a fluent interface
      */
     public function setMimeType($mimetype)
     {
@@ -287,8 +287,8 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * Adds the mimetypes
      *
      * @param  string|array $mimetype The mimetypes to add for validation
+     * @return Zend_Validate_File_MimeType Provides a fluent interface
      * @throws Zend_Validate_Exception
-     * @return Zend_Validate_File_Extension Provides a fluent interface
      */
     public function addMimeType($mimetype)
     {

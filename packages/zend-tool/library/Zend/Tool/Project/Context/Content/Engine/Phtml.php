@@ -61,7 +61,7 @@ class Zend_Tool_Project_Context_Content_Engine_Phtml
      *
      * @param Zend_Tool_Project_Context_Interface  $context
      * @param string $method
-     * @return string
+     * @return false
      */
     public function hasContent(Zend_Tool_Project_Context_Interface $context, $method)
     {

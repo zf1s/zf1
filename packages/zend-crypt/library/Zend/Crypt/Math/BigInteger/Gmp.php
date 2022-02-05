@@ -83,7 +83,7 @@ class Zend_Crypt_Math_BigInteger_Gmp implements Zend_Crypt_Math_BigInteger_Inter
      *
      * @param resource $left_operand
      * @param resource $right_operand
-     * @return int
+     * @return string
      */
     public function compare($left_operand, $right_operand)
     {

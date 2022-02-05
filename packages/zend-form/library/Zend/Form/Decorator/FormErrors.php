@@ -321,7 +321,7 @@ class Zend_Form_Decorator_FormErrors extends Zend_Form_Decorator_Abstract
     /**
      * Retrieve ignoreSubForms
      *
-     * @return bool
+     * @return string
      */
     public function ignoreSubForms()
     {

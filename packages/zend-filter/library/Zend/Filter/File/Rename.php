@@ -142,11 +142,11 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
     public function getNewName($value, $source = false)
     {
         $file = $this->_getFileName($value);
-        
+
         if (!is_array($file) || !array_key_exists('source', $file) || !array_key_exists('target', $file)) {
             return $value;
         }
-        
+
         if ($file['source'] == $file['target']) {
             return $value;
         }
@@ -203,7 +203,7 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
      * Supports single and nested arrays
      *
      * @param  array $options
-     * @return array
+     * @return Zend_Filter_File_Rename
      */
     protected function _convertOptions($options) {
         $files = array();

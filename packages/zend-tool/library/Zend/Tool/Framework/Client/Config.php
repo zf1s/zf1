@@ -109,7 +109,7 @@ class Zend_Tool_Framework_Client_Config
     /**
      * Return the filepath of the configuration.
      *
-     * @return string
+     * @return string|null
      */
     public function getConfigFilepath()
     {

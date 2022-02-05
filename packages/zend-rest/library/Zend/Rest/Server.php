@@ -640,7 +640,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
      *
      * @param  string $class
      * @param  array $args
-     * @return mixed
+     * @return DOMDocument
      * @throws Zend_Rest_Server_Exception For invalid class name
      */
     protected function _callObjectMethod($class, array $args)

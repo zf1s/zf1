@@ -64,7 +64,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet extends PHPUnit_Extensions_Dat
      * true a reverse iterator will be returned.
      *
      * @param bool $reverse
-     * @return PHPUnit_Extensions_Database_DB_TableIterator
+     * @return PHPUnit_Extensions_Database_DataSet_DefaultTableIterator
      */
     protected function createIterator($reverse = FALSE)
     {

@@ -405,7 +405,7 @@ class Zend_Gdata_Kind_EventEntry extends Zend_Gdata_Entry
     /**
      * Get this entry's EntryLink element.
      *
-     * @return Zend_Gdata_Extension_EntryLink The requested entry.
+     * @return Zend_Gdata_Extension_EntryLink|null The requested entry.
      */
     public function getEntryLink()
     {
@@ -416,7 +416,7 @@ class Zend_Gdata_Kind_EventEntry extends Zend_Gdata_Entry
      * Set the child's EntryLink element.
      *
      * @param Zend_Gdata_Extension_EntryLink $value The desired value for this attribute.
-     * @return Zend_Gdata_Extension_Who The element being modified.
+     * @return Zend_Gdata_Kind_EventEntry The element being modified.
      */
     public function setEntryLink($value)
     {

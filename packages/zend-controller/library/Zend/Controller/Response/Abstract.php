@@ -504,7 +504,7 @@ abstract class Zend_Controller_Response_Abstract
      *
      * @param string $name
      * @param string $content
-     * @return void
+     * @return Zend_Controller_Response_Abstract
      */
     public function prepend($name, $content)
     {
@@ -720,7 +720,7 @@ abstract class Zend_Controller_Response_Abstract
      * Retrieve all exceptions of a given code
      *
      * @param mixed $code
-     * @return void
+     * @return array|false
      */
     public function getExceptionByCode($code)
     {

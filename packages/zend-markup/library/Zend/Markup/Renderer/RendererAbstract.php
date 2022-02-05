@@ -547,7 +547,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
     /**
      * Get the default filter
      *
-     * @return void
+     * @return Zend_Filter
      */
     public function getDefaultFilter()
     {

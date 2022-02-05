@@ -338,7 +338,7 @@ class Zend_Barcode_Renderer_Image extends Zend_Barcode_Renderer_RendererAbstract
     /**
      * Draw and render the barcode with correct headers
      *
-     * @return mixed
+     * @return void
      */
     public function render()
     {

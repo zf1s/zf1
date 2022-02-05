@@ -316,8 +316,8 @@ class Zend_Pdf
      * @param string  $source - PDF file to load
      * @param integer $revision
      * @param bool    $load
-     * @throws Zend_Pdf_Exception
-     * @return Zend_Pdf
+     * @return void
+     *@throws Zend_Pdf_Exception
      */
     public function __construct($source = null, $revision = null, $load = false)
     {

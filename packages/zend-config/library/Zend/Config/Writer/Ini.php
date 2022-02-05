@@ -119,7 +119,7 @@ class Zend_Config_Writer_Ini extends Zend_Config_Writer_FileAbstract
      * Add a branch to an INI string recursively
      *
      * @param  Zend_Config $config
-     * @return void
+     * @return string
      */
     protected function _addBranch(Zend_Config $config, $parents = array())
     {

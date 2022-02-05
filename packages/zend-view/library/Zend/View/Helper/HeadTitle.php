@@ -111,7 +111,7 @@ class Zend_View_Helper_HeadTitle extends Zend_View_Helper_Placeholder_Container_
     /**
      * Get the default attach order, if any.
      *
-     * @return mixed
+     * @return string|null
      */
     public function getDefaultAttachOrder()
     {

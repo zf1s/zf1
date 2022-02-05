@@ -69,7 +69,7 @@ class Zend_Http_UserAgent_Feed extends Zend_Http_UserAgent_AbstractDevice
     /**
      * Look for features
      *
-     * @return string
+     * @return array|null
      */
     protected function _defineFeatures()
     {

@@ -129,7 +129,7 @@ class Zend_Controller_Action_Helper_ActionStack extends Zend_Controller_Action_H
      * @param  string $controller
      * @param  string $module
      * @param  array $params
-     * @return boolean
+     * @return Zend_Controller_Action_Helper_ActionStack
      */
     public function direct($action, $controller = null, $module = null, array $params = array())
     {

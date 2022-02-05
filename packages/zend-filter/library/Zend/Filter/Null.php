@@ -83,7 +83,7 @@ class Zend_Filter_Null implements Zend_Filter_Interface
     /**
      * Returns the set null types
      *
-     * @return array
+     * @return int
      */
     public function getType()
     {

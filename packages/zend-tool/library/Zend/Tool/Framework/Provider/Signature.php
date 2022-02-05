@@ -122,7 +122,7 @@ class Zend_Tool_Framework_Provider_Signature implements Zend_Tool_Framework_Regi
     /**
      * getName() of the provider
      *
-     * @return unknown
+     * @return string|null
      */
     public function getName()
     {

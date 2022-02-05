@@ -768,7 +768,7 @@ class Zend_Layout
      * $name will be passed to the inflector as the key 'script'.
      *
      * @param  mixed $name
-     * @return mixed
+     * @return string
      */
     public function render($name = null)
     {

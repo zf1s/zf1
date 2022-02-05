@@ -62,7 +62,7 @@ class Zend_Barcode_Renderer_Svg extends Zend_Barcode_Renderer_RendererAbstract
      * Set height of the result image
      *
      * @param null|integer $value
-     * @return Zend_Image_Barcode_Abstract
+     * @return Zend_Barcode_Renderer_Svg
      * @throws Zend_Barcode_Renderer_Exception
      */
     public function setHeight($value)
@@ -120,7 +120,7 @@ class Zend_Barcode_Renderer_Svg extends Zend_Barcode_Renderer_RendererAbstract
      * Set an image resource to draw the barcode inside
      *
      * @param $svg
-     * @return Zend_Barcode_Renderer
+     * @return Zend_Barcode_Renderer_Svg
      * @throws Zend_Barcode_Renderer_Exception
      */
     public function setResource($svg)
@@ -291,7 +291,8 @@ class Zend_Barcode_Renderer_Svg extends Zend_Barcode_Renderer_RendererAbstract
 
     /**
      * Draw the barcode in the rendering resource
-     * @return mixed
+     *
+     * @return DOMDocument|null
      */
     public function draw()
     {
@@ -303,7 +304,7 @@ class Zend_Barcode_Renderer_Svg extends Zend_Barcode_Renderer_RendererAbstract
     /**
      * Draw and render the barcode with correct headers
      *
-     * @return mixed
+     * @return void
      */
     public function render()
     {

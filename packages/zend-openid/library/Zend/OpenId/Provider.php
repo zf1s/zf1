@@ -201,7 +201,7 @@ class Zend_OpenId_Provider
     /**
      * Performs logout. Clears information about logged in user.
      *
-     * @return void
+     * @return bool
      */
     public function logout()
     {
@@ -311,7 +311,7 @@ class Zend_OpenId_Provider
      * Returns list of known consumers for current logged in user or false
      * if he is not logged in.
      *
-     * @return mixed
+     * @return array|false
      */
     public function getTrustedSites()
     {
@@ -331,7 +331,7 @@ class Zend_OpenId_Provider
      * @param mixed $extensions extension object or array of extensions objects
      * @param Zend_Controller_Response_Abstract $response an optional response
      *  object to perform HTTP or HTML form redirection
-     * @return mixed
+     * @return bool|string
      */
     public function handle($params=null, $extensions=null,
                            Zend_Controller_Response_Abstract $response = null)
@@ -389,7 +389,7 @@ class Zend_OpenId_Provider
      * if function is not supported
      *
      * @param string $func hash function (sha1 or sha256)
-     * @return mixed
+     * @return false|string
      */
     protected function _genSecret($func)
     {

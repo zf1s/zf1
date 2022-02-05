@@ -68,7 +68,7 @@ class Zend_Filter_PregReplace implements Zend_Filter_Interface
     /**
      * Method to cache the regex needed to determine if unicode support is available
      *
-     * @return bool
+     * @return void
      */
     static protected function _determineUnicodeSupport()
     {

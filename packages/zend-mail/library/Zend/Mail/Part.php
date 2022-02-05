@@ -555,7 +555,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface, Cou
     /**
      * implements Iterator::key()
      *
-     * @return string key/number of current part
+     * @return int key/number of current part
      */
     #[\ReturnTypeWillChange]
     public function key()

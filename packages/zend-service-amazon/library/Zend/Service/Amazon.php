@@ -81,7 +81,7 @@ class Zend_Service_Amazon
      * @param  string $appId       Developer's Amazon appid
      * @param  string $countryCode Country code for Amazon service; may be US, UK, DE, JP, FR, CA
      * @throws Zend_Service_Exception
-     * @return Zend_Service_Amazon
+     * @return void
      */
     public function __construct($appId, $countryCode = 'US', $secretKey = null)
     {

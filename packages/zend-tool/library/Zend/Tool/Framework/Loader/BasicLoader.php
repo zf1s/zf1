@@ -78,7 +78,7 @@ class Zend_Tool_Framework_Loader_BasicLoader
      * the registry
      *
      * @param Zend_Tool_Framework_Registry_Interface $registry
-     * @return Zend_Tool_Framework_Loader_Abstract
+     * @return Zend_Tool_Framework_Loader_BasicLoader
      */
     public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry)
     {
@@ -88,7 +88,7 @@ class Zend_Tool_Framework_Loader_BasicLoader
 
     /**
      * @param  array $classesToLoad
-     * @return Zend_Tool_Framework_Loader_Abstract
+     * @return Zend_Tool_Framework_Loader_BasicLoader
      */
     public function setClassesToLoad(array $classesToLoad)
     {

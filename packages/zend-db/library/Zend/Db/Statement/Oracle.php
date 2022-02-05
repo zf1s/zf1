@@ -501,7 +501,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
      *
      * @param string $class  OPTIONAL Name of the class to create.
      * @param array  $config OPTIONAL Constructor arguments for the class.
-     * @return mixed One object instance of the specified class.
+     * @return false|object One object instance of the specified class.
      * @throws Zend_Db_Statement_Exception
      */
     public function fetchObject($class = 'stdClass', array $config = array())

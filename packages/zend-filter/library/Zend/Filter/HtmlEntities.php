@@ -167,7 +167,7 @@ class Zend_Filter_HtmlEntities implements Zend_Filter_Interface
     /**
      * Returns the doubleQuote option
      *
-     * @return boolean
+     * @return unknown_type
      */
     public function getDoubleQuote()
     {

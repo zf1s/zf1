@@ -68,7 +68,7 @@ class Zend_XmlRpc_Server_Fault extends Zend_XmlRpc_Fault
      * Constructor
      *
      * @param Exception $e
-     * @return Zend_XmlRpc_Server_Fault
+     * @return void
      */
     public function __construct(Exception $e)
     {

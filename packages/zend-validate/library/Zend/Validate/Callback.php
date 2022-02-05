@@ -94,7 +94,7 @@ class Zend_Validate_Callback extends Zend_Validate_Abstract
     /**
      * Returns the set callback
      *
-     * @return mixed
+     * @return array|string|null
      */
     public function getCallback()
     {

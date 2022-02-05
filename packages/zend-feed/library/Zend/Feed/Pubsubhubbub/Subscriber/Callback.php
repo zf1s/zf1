@@ -298,7 +298,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_Callback
      * This bypasses $_GET which munges parameter names and cannot accept
      * multiple parameters with the same key.
      *
-     * @return array|void
+     * @return array
      */
     protected function _parseQueryString()
     {

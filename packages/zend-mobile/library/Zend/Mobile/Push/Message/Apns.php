@@ -145,7 +145,7 @@ class Zend_Mobile_Push_Message_Apns extends Zend_Mobile_Push_Message_Abstract
      * Set Badge
      *
      * @param int $badge
-     * @return Zend_Mobile_Push_Message_Apns
+     * @return void
      * @throws Zend_Mobile_Push_Message_Exception
      */
     public function setBadge($badge)
@@ -216,7 +216,7 @@ class Zend_Mobile_Push_Message_Apns extends Zend_Mobile_Push_Message_Abstract
      *
      * @param string $key
      * @param mixed $value
-     * @return Zend_Mobile_Push_Message_Apns
+     * @return void
      * @throws Zend_Mobile_Push_Message_Exception
      */
     public function addCustomData($key, $value)
@@ -233,7 +233,7 @@ class Zend_Mobile_Push_Message_Apns extends Zend_Mobile_Push_Message_Abstract
     /**
      * Clear Custom Data
      *
-     * @return throw new Zend_Mobile_Push_Message_Apns
+     * @return Zend_Mobile_Push_Message_Apns new Zend_Mobile_Push_Message_Apns
      */
     public function clearCustomData()
     {

@@ -60,7 +60,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      * Construct
      *
      * @param  array $list
-     * @return boolean
+     * @return void
      */
     public function __construct($service,$list,$container)
     {

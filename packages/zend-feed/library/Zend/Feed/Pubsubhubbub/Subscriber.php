@@ -695,8 +695,8 @@ class Zend_Feed_Pubsubhubbub_Subscriber
      *
      * @param  string $hubUrl
      * @param  string $mode
-     * @throws Zend_Feed_Pubsubhubbub_Exception
      * @return string
+     *@throws Zend_Feed_Pubsubhubbub_Exception
      */
     protected function _getRequestParameters($hubUrl, $mode)
     {
@@ -839,7 +839,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
      * Order outgoing parameters
      *
      * @param  array $params
-     * @return array
+     * @return string
      */
     protected function _toByteValueOrderedString(array $params)
     {

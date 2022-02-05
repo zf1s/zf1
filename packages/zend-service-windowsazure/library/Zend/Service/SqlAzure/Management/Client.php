@@ -167,7 +167,7 @@ class Zend_Service_SqlAzure_Management_Client
     /**
      * Retrieve HTTP client channel
      *
-     * @return Zend_Http_Client_Adapter_Interface
+     * @return Zend_Http_Client|null
      */
     public function getHttpClientChannel()
     {

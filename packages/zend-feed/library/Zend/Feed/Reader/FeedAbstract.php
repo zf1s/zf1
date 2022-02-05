@@ -228,7 +228,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
     /**
      * Return the current feed key
      *
-     * @return unknown
+     * @return int|void
      */
     #[\ReturnTypeWillChange]
     public function key()

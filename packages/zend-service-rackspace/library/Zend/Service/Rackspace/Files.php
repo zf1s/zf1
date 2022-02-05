@@ -124,7 +124,7 @@ class Zend_Service_Rackspace_Files extends Zend_Service_Rackspace_Abstract
      * Get all the CDN containers
      *
      * @param array $options
-     * @return array|bool
+     * @return false|Zend_Service_Rackspace_Files_ContainerList
      */
     public function getCdnContainers($options=array())
     {

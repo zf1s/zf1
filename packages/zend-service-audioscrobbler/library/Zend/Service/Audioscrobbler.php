@@ -210,7 +210,7 @@ class Zend_Service_Audioscrobbler
     /**
     * Utility function to get Audioscrobbler profile information (eg: Name, Gender)
      *
-    * @return array containing information
+    * @return SimpleXMLElement containing information
     */
     public function userGetProfileInformation()
     {
@@ -221,7 +221,7 @@ class Zend_Service_Audioscrobbler
     /**
      * Utility function get this user's 50 most played artists
      *
-     * @return array containing info
+     * @return SimpleXMLElement containing info
     */
     public function userGetTopArtists()
     {
@@ -242,7 +242,8 @@ class Zend_Service_Audioscrobbler
 
     /**
      * Utility function to get this user's 50 most played tracks
-     * @return SimpleXML object containing resut set
+     *
+     * @return SimpleXMLElement object containing resut set
     */
     public function userGetTopTracks()
     {

@@ -129,7 +129,7 @@ class Zend_Cache_Backend_Sqlite extends Zend_Cache_Backend implements Zend_Cache
      * Test if a cache is available or not (for the given id)
      *
      * @param string $id Cache id
-     * @return mixed|false (a cache is not available) or "last modified" timestamp (int) of the available cache record
+     * @return false|int (a cache is not available) or "last modified" timestamp (int) of the available cache record
      */
     public function test($id)
     {
@@ -503,7 +503,7 @@ class Zend_Cache_Backend_Sqlite extends Zend_Cache_Backend implements Zend_Cache
      * Execute an SQL query silently
      *
      * @param string $query SQL query
-     * @return mixed|false query results
+     * @return false|resource query results
      */
     private function _query($query)
     {
@@ -554,7 +554,7 @@ class Zend_Cache_Backend_Sqlite extends Zend_Cache_Backend implements Zend_Cache
     /**
      * Build the database structure
      *
-     * @return false
+     * @return void
      */
     private function _buildStructure()
     {

@@ -167,7 +167,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
     /**
      * Implement IteratorAggregate::getIterator()
      *
-     * @return SimpleXMLIterator
+     * @return bool|DomDocument|SimpleXMLElement|null
      */
     #[\ReturnTypeWillChange]
     public function getIterator()

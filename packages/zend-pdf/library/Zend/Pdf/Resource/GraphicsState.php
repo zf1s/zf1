@@ -83,8 +83,8 @@ class Zend_Pdf_Resource_GraphicsState extends Zend_Pdf_Resource
      *
      * @param float $alpha
      * @param string $mode
-     * @throws Zend_Pdf_Exception
-     * @return Zend_Pdf_Canvas_Interface
+     * @return void
+     *@throws Zend_Pdf_Exception
      */
     public function setAlpha($alpha, $mode = 'Normal')
     {

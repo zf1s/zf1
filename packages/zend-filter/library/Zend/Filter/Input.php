@@ -1141,8 +1141,9 @@ class Zend_Filter_Input
      * Check a validatorRule for the presence of a NotEmpty validator instance.
      * The purpose is to preserve things like a custom message, that may have been
      * set on the validator outside Zend_Filter_Input.
+     *
      * @param array $validatorRule
-     * @return mixed false if none is found, Zend_Validate_NotEmpty instance if found
+     * @return false|Zend_Validate_NotEmpty false if none is found, Zend_Validate_NotEmpty instance if found
      */
     protected function _getNotEmptyValidatorInstance($validatorRule) {
         foreach ($validatorRule as $rule => $value) {
@@ -1156,7 +1157,7 @@ class Zend_Filter_Input
 
     /**
      * @param mixed $classBaseName
-     * @return Zend_Filter_Interface
+     * @return object|null
      */
     protected function _getFilter($classBaseName)
     {
@@ -1165,7 +1166,7 @@ class Zend_Filter_Input
 
     /**
      * @param mixed $classBaseName
-     * @return Zend_Validate_Interface
+     * @return object|null
      */
     protected function _getValidator($classBaseName)
     {
@@ -1175,7 +1176,7 @@ class Zend_Filter_Input
     /**
      * @param string $type
      * @param mixed $classBaseName
-     * @return Zend_Filter_Interface|Zend_Validate_Interface
+     * @return object|null
      * @throws Zend_Filter_Exception
      */
     protected function _getFilterOrValidator($type, $classBaseName)

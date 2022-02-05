@@ -64,7 +64,7 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
     /**
      * Create a new ServiceException.
      *
-     * @return array An array containing a collection of
+     * @return void An array containing a collection of
      *          Zend_Gdata_Gapps_Error objects.
      */
     public function __construct($errors = null) {

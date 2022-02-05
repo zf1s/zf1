@@ -72,7 +72,7 @@ abstract class Zend_Test_PHPUnit_DatabaseTestCase extends PHPUnit_Extensions_Dat
     /**
      * Convenience function to get access to the database connection.
      *
-     * @return Zend_Db_Adapter_Abstract
+     * @return PDO
      */
     protected function getAdapter()
     {
@@ -82,7 +82,7 @@ abstract class Zend_Test_PHPUnit_DatabaseTestCase extends PHPUnit_Extensions_Dat
     /**
      * Returns the database operation executed in test setup.
      *
-     * @return PHPUnit_Extensions_Database_Operation_DatabaseOperation
+     * @return PHPUnit_Extensions_Database_Operation_Composite
      */
     protected function getSetUpOperation()
     {
@@ -95,7 +95,7 @@ abstract class Zend_Test_PHPUnit_DatabaseTestCase extends PHPUnit_Extensions_Dat
     /**
      * Returns the database operation executed in test cleanup.
      *
-     * @return PHPUnit_Extensions_Database_Operation_DatabaseOperation
+     * @return PHPUnit_Extensions_Database_Operation_IDatabaseOperation|PHPUnit_Extensions_Database_Operation_Null
      */
     protected function getTearDownOperation()
     {

@@ -139,7 +139,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzure
      *
      * @param  string $queueId
      * @param  array  $options
-     * @return boolean true if successful, false otherwise
+     * @return void true if successful, false otherwise
      */
     public function deleteQueue($queueId, $options = null)
     {
@@ -225,7 +225,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzure
      * @param  string $queueId
      * @param  string $message
      * @param  array  $options
-     * @return string Message ID
+     * @return void Message ID
      */
     public function sendMessage($queueId, $message, $options = null)
     {
@@ -334,7 +334,8 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzure
 
     /**
      * Get Azure implementation
-     * @return Zend_Service_Azure_Storage_Queue
+     *
+     * @return Zend_Service_WindowsAzure_Storage_Queue|null
      */
     public function getClient()
     {

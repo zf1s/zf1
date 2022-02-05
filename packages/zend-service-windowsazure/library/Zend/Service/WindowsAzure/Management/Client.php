@@ -206,7 +206,7 @@ class Zend_Service_WindowsAzure_Management_Client
     /**
      * Retrieve HTTP client channel
      *
-     * @return Zend_Http_Client_Adapter_Interface
+     * @return Zend_Http_Client|null
      */
     public function getHttpClientChannel()
     {

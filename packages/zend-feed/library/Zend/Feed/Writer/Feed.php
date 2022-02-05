@@ -220,7 +220,7 @@ implements Iterator, Countable
     /**
      * Return the current feed key
      *
-     * @return unknown
+     * @return int
      */
     #[\ReturnTypeWillChange]
     public function key()

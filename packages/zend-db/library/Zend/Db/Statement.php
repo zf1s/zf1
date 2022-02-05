@@ -479,7 +479,8 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
     /**
      * Gets the resource or object setup by the
      * _parse
-     * @return unknown_type
+     *
+     * @return object|resource|null
      */
     public function getDriverStatement()
     {

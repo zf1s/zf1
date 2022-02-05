@@ -78,7 +78,7 @@ class Zend_Feed
     /**
      * Gets the HTTP client object. If none is set, a new Zend_Http_Client will be used.
      *
-     * @return Zend_Http_Client_Abstract
+     * @return Zend_Http_Client|null
      */
     public static function getHttpClient()
     {

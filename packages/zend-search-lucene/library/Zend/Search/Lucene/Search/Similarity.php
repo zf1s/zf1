@@ -494,7 +494,7 @@ abstract class Zend_Search_Lucene_Search_Similarity
      *
      * @param mixed $input
      * @param Zend_Search_Lucene_Interface $reader
-     * @return a score factor for the term
+     * @return float score factor for the term
      */
     public function idf($input, Zend_Search_Lucene_Interface $reader)
     {

@@ -282,7 +282,7 @@ class Zend_Config implements Countable, Iterator
     /**
      * Defined by Iterator interface
      *
-     * @return mixed
+     * @return int|string|null
      */
     #[\ReturnTypeWillChange]
     public function key()

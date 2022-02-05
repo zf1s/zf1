@@ -78,7 +78,7 @@ class Zend_Feed_Writer_Entry
      * Set a single author
      *
      * @param  int $index
-     * @return string|null
+     * @return void
      */
     public function addAuthor($name, $email = null, $uri = null)
     {
@@ -140,7 +140,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set an array with feed authors
      *
-     * @return array
+     * @return void
      */
     public function addAuthors(array $authors)
     {
@@ -152,7 +152,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set the feed character encoding
      *
-     * @return string|null
+     * @return void
      */
     public function setEncoding($encoding)
     {
@@ -179,7 +179,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set the copyright entry
      *
-     * @return string|null
+     * @return void
      */
     public function setCopyright($copyright)
     {
@@ -193,7 +193,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set the entry's content
      *
-     * @return string|null
+     * @return void
      */
     public function setContent($content)
     {
@@ -207,7 +207,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set the feed creation date
      *
-     * @return string|null
+     * @return void
      */
     public function setDateCreated($date = null)
     {
@@ -228,7 +228,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set the feed modification date
      *
-     * @return string|null
+     * @return void
      */
     public function setDateModified($date = null)
     {
@@ -249,7 +249,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set the feed description
      *
-     * @return string|null
+     * @return void
      */
     public function setDescription($description)
     {
@@ -263,7 +263,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set the feed ID
      *
-     * @return string|null
+     * @return void
      */
     public function setId($id)
     {
@@ -277,7 +277,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set a link to the HTML source of this entry
      *
-     * @return string|null
+     * @return void
      */
     public function setLink($link)
     {
@@ -291,7 +291,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set the number of comments associated with this entry
      *
-     * @return string|null
+     * @return void
      */
     public function setCommentCount($count)
     {
@@ -305,7 +305,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set a link to a HTML page containing comments associated with this entry
      *
-     * @return string|null
+     * @return void
      */
     public function setCommentLink($link)
     {
@@ -319,7 +319,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set a link to an XML feed for any comments associated with this entry
      *
-     * @return string|null
+     * @return void
      */
     public function setCommentFeedLink(array $link)
     {
@@ -343,7 +343,7 @@ class Zend_Feed_Writer_Entry
      * Each link is an array with keys "uri" and "type", where type is one of:
      * "atom", "rss" or "rdf".
      *
-     * @return string|null
+     * @return void
      */
     public function setCommentFeedLinks(array $links)
     {
@@ -355,7 +355,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Set the feed title
      *
-     * @return string|null
+     * @return void
      */
     public function setTitle($title)
     {

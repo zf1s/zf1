@@ -396,7 +396,7 @@ class Zend_Soap_Client
     /**
      * Retrieve classmap
      *
-     * @return mixed
+     * @return array|null
      */
     public function getClassmap()
     {
@@ -475,7 +475,7 @@ class Zend_Soap_Client
     /**
      * Retrieve URI
      *
-     * @return string
+     * @return string|null
      */
     public function getUri()
     {
@@ -504,7 +504,7 @@ class Zend_Soap_Client
     /**
      * Retrieve URI
      *
-     * @return string
+     * @return string|null
      */
     public function getLocation()
     {
@@ -535,7 +535,7 @@ class Zend_Soap_Client
     /**
      * Get request style
      *
-     * @return int
+     * @return int|null
      */
     public function getStyle()
     {
@@ -566,7 +566,7 @@ class Zend_Soap_Client
     /**
      * Get message encoding method
      *
-     * @return int
+     * @return int|null
      */
     public function getEncodingMethod()
     {
@@ -591,7 +591,7 @@ class Zend_Soap_Client
     /**
      * Retrieve HTTP Login
      *
-     * @return string
+     * @return string|null
      */
     public function getHttpLogin()
     {
@@ -616,7 +616,7 @@ class Zend_Soap_Client
     /**
      * Retrieve HTTP Password
      *
-     * @return string
+     * @return string|null
      */
     public function getHttpPassword()
     {
@@ -641,7 +641,7 @@ class Zend_Soap_Client
     /**
      * Retrieve proxy host
      *
-     * @return string
+     * @return string|null
      */
     public function getProxyHost()
     {
@@ -666,7 +666,7 @@ class Zend_Soap_Client
     /**
      * Retrieve proxy port
      *
-     * @return int
+     * @return int|null
      */
     public function getProxyPort()
     {
@@ -691,7 +691,7 @@ class Zend_Soap_Client
     /**
      * Retrieve proxy login
      *
-     * @return string
+     * @return string|null
      */
     public function getProxyLogin()
     {
@@ -737,7 +737,7 @@ class Zend_Soap_Client
     /**
      * Get HTTPS client certificate path
      *
-     * @return string
+     * @return string|null
      */
     public function getHttpsCertificate()
     {
@@ -762,7 +762,7 @@ class Zend_Soap_Client
     /**
      * Get HTTPS client certificate passphrase
      *
-     * @return string
+     * @return string|null
      */
     public function getHttpsCertPassphrase()
     {
@@ -789,7 +789,7 @@ class Zend_Soap_Client
     /**
      * Get Compression options
      *
-     * @return int
+     * @return int|null
      */
     public function getCompressionOptions()
     {
@@ -799,7 +799,7 @@ class Zend_Soap_Client
     /**
      * Retrieve proxy password
      *
-     * @return string
+     * @return string|null
      */
     public function getProxyPassword()
     {
@@ -830,7 +830,7 @@ class Zend_Soap_Client
     /**
      * Get Stream Context
      *
-     * @return resource
+     * @return resource|null
      */
     public function getStreamContext()
     {
@@ -854,7 +854,7 @@ class Zend_Soap_Client
     /**
      * Return current SOAP Features options
      *
-     * @return int
+     * @return int|null
      */
     public function getSoapFeatures()
     {
@@ -880,7 +880,7 @@ class Zend_Soap_Client
     /**
      * Get current SOAP Wsdl Caching option
      *
-     * @return int
+     * @return int|null
      */
     public function getWsdlCache()
     {

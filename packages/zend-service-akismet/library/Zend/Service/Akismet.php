@@ -227,7 +227,7 @@ class Zend_Service_Akismet extends Zend_Service_Abstract
      * @param string $host
      * @param string $path
      * @param array  $params
-     * @return mixed
+     * @return Zend_Http_Response
      */
     protected function _post($host, $path, array $params)
     {

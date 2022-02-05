@@ -257,7 +257,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
         if (is_array($options)) {
             $this->setOptions($options);
         }
-        $this->_type = strtolower((string) 
+        $this->_type = strtolower((string)
             substr((string) get_class($this), strlen((string) $this->_barcodeNamespace) + 1)
         );
         if ($this->_mandatoryChecksum) {
@@ -476,7 +476,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
     /**
      * Retrieve color of the barcode and text
      *
-     * @return unknown
+     * @return int
      */
     public function getForeColor()
     {

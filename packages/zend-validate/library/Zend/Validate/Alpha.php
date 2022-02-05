@@ -98,7 +98,7 @@ class Zend_Validate_Alpha extends Zend_Validate_Abstract
      * Sets the allowWhiteSpace option
      *
      * @param boolean $allowWhiteSpace
-     * @return Zend_Filter_Alpha Provides a fluent interface
+     * @return Zend_Validate_Alpha Provides a fluent interface
      */
     public function setAllowWhiteSpace($allowWhiteSpace)
     {

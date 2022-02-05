@@ -307,7 +307,7 @@ abstract class Zend_Mail_Protocol_Abstract
      *
      * @param  string $request
      * @throws Zend_Mail_Protocol_Exception
-     * @return integer|boolean Number of bytes written to remote host
+     * @return integer|void Number of bytes written to remote host
      */
     protected function _send($request)
     {

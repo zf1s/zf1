@@ -112,7 +112,7 @@ class Zend_Search_Lucene_Index_Term
      * Get UTF-8 string length
      *
      * @param string $str
-     * @return string
+     * @return int
      */
     public static function getLength($str)
     {

@@ -324,7 +324,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
      *
      * @param string $title The title of the group
      * @param array $options OPTIONAL Setting 'Collapsed' to true will initialize group collapsed instead of expanded
-     * @return TRUE if the group instruction was added to the response headers or buffered.
+     * @return bool if the group instruction was added to the response headers or buffered.
      */
     public static function group($title, $options=array())
     {
@@ -334,7 +334,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
     /**
      * Ends a group in the Firebug Console
      *
-     * @return TRUE if the group instruction was added to the response headers or buffered.
+     * @return bool if the group instruction was added to the response headers or buffered.
      */
     public static function groupEnd()
     {
@@ -615,7 +615,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
      * Encodes a table by encoding each row and column with _encodeObject()
      *
      * @param array $Table The table to be encoded
-     * @return array
+     * @return array|null
      */
     protected function _encodeTable($table)
     {
@@ -636,7 +636,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
      * Encodes a trace by encoding all "args" with _encodeObject()
      *
      * @param array $Trace The trace to be encoded
-     * @return array The encoded trace
+     * @return array|null The encoded trace
      */
     protected function _encodeTrace($trace)
     {

@@ -86,7 +86,7 @@ class Zend_Wildfire_Plugin_FirePhp_TableMessage extends Zend_Wildfire_Plugin_Fir
     /**
      * Get the actual message to be sent in its final format.
      *
-     * @return mixed Returns the message to be sent.
+     * @return array Returns the message to be sent.
      */
     public function getMessage()
     {

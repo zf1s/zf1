@@ -1128,7 +1128,7 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
      *
      * @param  array $urlOptions
      * @param  bool  $actionControllerModuleOnly
-     * @return mixed
+     * @return array
      */
     public function urlizeOptions($urlOptions, $actionControllerModuleOnly = true)
     {

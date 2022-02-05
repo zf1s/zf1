@@ -537,7 +537,7 @@ class Zend_Locale_Format
      *
      * @param  string $type
      * @param  array  $options Options: locale. See {@link setOptions()} for details.
-     * @return string
+     * @return array
      * @throws Zend_Locale_Exception
      */
     private static function _getRegexForType($type, $options)

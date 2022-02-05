@@ -236,7 +236,7 @@ class Zend_Validate_File_ImageSize extends Zend_Validate_Abstract
      * @param  array $options          The maximum image dimensions
      * @throws Zend_Validate_Exception When maxwidth is smaller than minwidth
      * @throws Zend_Validate_Exception When maxheight is smaller than minheight
-     * @return Zend_Validate_StringLength Provides a fluent interface
+     * @return Zend_Validate_File_ImageSize Provides a fluent interface
      */
     public function setImageMax($options)
     {

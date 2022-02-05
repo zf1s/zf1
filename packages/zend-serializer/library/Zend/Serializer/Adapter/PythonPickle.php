@@ -549,7 +549,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
      * Is an array associative?
      *
      * @param  array $value
-     * @return boolean
+     * @return array
      */
     protected function _isArrayAssoc(array $value)
     {

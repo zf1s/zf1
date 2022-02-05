@@ -71,7 +71,7 @@ class Zend_Feed_Element implements ArrayAccess
      * Returns the underlying DOM object, which can then be
      * manipulated with full DOM methods.
      *
-     * @return DOMDocument
+     * @return DOMElement|null
      */
     public function getDOM()
     {
@@ -404,7 +404,7 @@ class Zend_Feed_Element implements ArrayAccess
      *
      * @param  string $offset
      * @param  string $value
-     * @return string
+     * @return DOMAttr|false|void
      */
     #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)

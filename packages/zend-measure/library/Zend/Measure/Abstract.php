@@ -221,7 +221,7 @@ abstract class Zend_Measure_Abstract
     /**
      * Returns the original type
      *
-     * @return type
+     * @return string
      */
     public function getType()
     {
@@ -409,7 +409,7 @@ abstract class Zend_Measure_Abstract
      * Compares two units
      *
      * @param  Zend_Measure_Abstract $object object of same unit type
-     * @return boolean
+     * @return int
      */
     public function compare($object)
     {
