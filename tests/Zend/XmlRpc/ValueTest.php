@@ -235,11 +235,22 @@ class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
 
     public function testFactoryAutodetectsStringAndSetsValueInArray()
     {
-        $val = Zend_XmlRpc_Value::getXmlRpcValue('<value><array><data>'.
-            '<value><i4>8</i4></value>'.
-            '<value>a</value>'.
-            '<value>false</value>'.
-            '</data></array></value>', Zend_XmlRpc_Value::XML_STRING
+        $val = Zend_XmlRpc_Value::getXmlRpcValue(
+            <<<'XML'
+<value>
+    <array>
+        <data>
+            <value>
+                <i4>8</i4>
+            </value>
+            <value>a</value>
+            <value>false</value>
+        </data>
+    </array>
+</value>
+XML
+            ,
+            Zend_XmlRpc_Value::XML_STRING
         );
         $this->assertXmlRpcType('array', $val);
         $a = $val->getValue();
