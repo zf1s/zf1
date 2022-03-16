@@ -87,10 +87,10 @@ class Zend_Controller_Router_Route_Regex extends Zend_Controller_Router_Route_Ab
     /**
      * Constructor
      *
-     * @param       $route
-     * @param array $defaults
-     * @param array $map
-     * @param null  $reverse
+     * @param string|null $route
+     * @param array       $defaults
+     * @param array       $map
+     * @param string|null $reverse
      */
     public function __construct($route, $defaults = array(), $map = array(), $reverse = null)
     {
