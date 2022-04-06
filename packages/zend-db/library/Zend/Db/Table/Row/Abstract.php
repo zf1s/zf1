@@ -288,6 +288,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
       *
       * @param string $offset
       * @param mixed $value
+      * @return void
       */
      #[\ReturnTypeWillChange]
      public function offsetSet($offset, $value)
@@ -300,11 +301,12 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
       * Required by the ArrayAccess implementation
       *
       * @param string $offset
+      * @return void
       */
      #[\ReturnTypeWillChange]
      public function offsetUnset($offset)
      {
-         return $this->__unset($offset);
+         $this->__unset($offset);
      }
 
     /**
@@ -646,6 +648,9 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
         return $result;
     }
 
+    /**
+     * @return ArrayIterator
+     */
     #[\ReturnTypeWillChange]
     public function getIterator()
     {
