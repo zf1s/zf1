@@ -66,7 +66,7 @@ class Zend_Gdata_GappsOnlineTest extends PHPUnit_Framework_TestCase
         foreach ($this->autoDeletePool as $x) {
             try {
                 $x->delete();
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 // Failed deletes are okay. Try and delete the rest anyway.
             }
         }

@@ -71,7 +71,7 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit_Framework_TestCase
         try {
             new Zend_Log_Filter_Priority('foo');
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/must be an integer/i', $e->getMessage());
         }
@@ -97,7 +97,7 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit_Framework_TestCase
                 'filterName'   => 'Priority',
                 'filterParams' => array(),
             )));
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/must be an integer/', $e->getMessage());
         }

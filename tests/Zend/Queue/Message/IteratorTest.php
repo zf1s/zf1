@@ -114,7 +114,7 @@ class Zend_Queue_Message_IteratorTest extends PHPUnit_Framework_TestCase
             Zend_Loader::loadClass($classname);
             $this->messages = new $classname($config);
             $this->fail('config[data] must be an array.  a message should have been thrown');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
     }

@@ -524,7 +524,7 @@ class Zend_OpenId_Consumer
 
         try {
             $response = $client->request();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->_setError('HTTP Request failed: ' . $e->getMessage());
             return false;
         }

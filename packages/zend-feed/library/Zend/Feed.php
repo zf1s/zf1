@@ -359,7 +359,7 @@ class Zend_Feed
                     }
 
                     $feed = self::import($uri);
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                     continue;
                 }
                 $feeds[$uri->getUri()] = $feed;

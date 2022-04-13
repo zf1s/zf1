@@ -99,7 +99,7 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
 
         try {
             $element = new Zend_Form_Element('foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Zend_Form_Element constructor should accept String values');
         }
 
@@ -718,7 +718,7 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
 
         try {
             $this->element->addValidator('Alnum', false, true);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Should be able to add non-array validator options');
         }
         $validator = $this->element->getValidator('Alnum');
@@ -1054,7 +1054,7 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
                       ->addValidator(new Zend_Validate_EmailAddress());
         try {
             $result = $this->element->isValid('matthew@zend.com');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Validating an element should work');
         }
     }
@@ -1213,7 +1213,7 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
 
         try {
             $this->element->addFilter('Alnum', true);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Should be able to add non-array filter options');
         }
         $filter = $this->element->getFilter('Alnum');

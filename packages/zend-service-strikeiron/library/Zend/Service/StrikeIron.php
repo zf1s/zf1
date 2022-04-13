@@ -75,7 +75,7 @@ class Zend_Service_StrikeIron
             if (!class_exists($class, false)) {
                 throw new Exception('Class file not found');
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $msg = "Service '$class' could not be loaded: " . $e->getMessage();
             /**
              * @see Zend_Service_StrikeIron_Exception

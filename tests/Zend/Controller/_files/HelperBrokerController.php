@@ -78,7 +78,7 @@ class HelperBrokerController extends Zend_Controller_Action
     {
         try {
             $this->_helper->getHelper('NonExistentHelper');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->getResponse()->appendBody($e->getMessage());
         }
     }
@@ -98,7 +98,7 @@ class HelperBrokerController extends Zend_Controller_Action
         try {
             $helper = $this->_helper->getHelper('NamespacedHelper');
             $this->getResponse()->appendBody(get_class($helper));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->getResponse()->appendBody($e->getMessage());
         }
     }

@@ -319,7 +319,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
                 }
                 try {
                     $this->getLoader()->load($className, true, false);
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                     // require_once 'Zend/Amf/Server/Exception.php';
                     throw new Zend_Amf_Server_Exception('Class "' . $className . '" does not exist: '.$e->getMessage(), 0, $e);
                 }
@@ -361,7 +361,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
                 // Object methods
                 try {
                     $object = $info->getDeclaringClass()->newInstance();
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                     // require_once 'Zend/Amf/Server/Exception.php';
                     throw new Zend_Amf_Server_Exception('Error instantiating class ' . $class . ' to invoke method ' . $info->getName() . ': '.$e->getMessage(), 621, $e);
                 }
@@ -528,7 +528,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
                         )
                     );
                 }
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 // Error during authentication; report it
                 $error = $this->_errorMessage(
                     $objectEncoding,
@@ -601,7 +601,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
                         break;
                 }
                 $responseType = Zend_AMF_Constants::RESULT_METHOD;
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 $return = $this->_errorMessage($objectEncoding, $message,
                     $e->getMessage(), $e->getTraceAsString(),$e->getCode(),  $e->getLine());
                 $responseType = Zend_AMF_Constants::STATUS_METHOD;
@@ -660,7 +660,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
             // Serialize to Zend_Amf_response for output stream
             $this->_handle($request);
             $response = $this->getResponse();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // Handle any errors in the serialization and service  calls.
             // require_once 'Zend/Amf/Server/Exception.php';
             throw new Zend_Amf_Server_Exception('Handle error: ' . $e->getMessage() . ' ' . $e->getLine(), 0, $e);
@@ -896,7 +896,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
      *
      * Unimplemented
      *
-     * @param  string|Exception $fault
+     * @param  string|\Throwable $fault
      * @return void
      */
     public function fault($fault = null, $code = 404)

@@ -14,7 +14,7 @@ class Zend_Pdf_Filter_Compression_FlateTest extends PHPUnit_Framework_TestCase
     {
         try {
             Zend_Pdf_Filter_Compression_Flate::encode(null, str_repeat('foo', 1000));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             self::assertInstanceOf('Zend_Pdf_Exception', $e);
             self::assertNotContains('Not implemented yet', $e->getMessage());
 
@@ -28,7 +28,7 @@ class Zend_Pdf_Filter_Compression_FlateTest extends PHPUnit_Framework_TestCase
     {
         try {
             Zend_Pdf_Filter_Compression_Flate::decode(null);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             self::assertInstanceOf('Zend_Pdf_Exception', $e);
             self::assertNotContains('Not implemented yet', $e->getMessage());
         }

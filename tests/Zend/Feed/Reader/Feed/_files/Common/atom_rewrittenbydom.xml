@@ -185,7 +185,7 @@ $person = new Person();
 
 try {
     $person-&gt;age = 10;
-} catch (Exception $e) {
+} catch (\Throwable $e) {
     // Will print "You need to be at least 21 years or older!"
     echo $e-&gt;getMessage();
 }

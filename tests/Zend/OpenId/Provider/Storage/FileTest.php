@@ -64,7 +64,7 @@ class Zend_OpenId_Provider_Storage_FileTest extends PHPUnit_Framework_TestCase
         try {
             $storage = new Zend_OpenId_Provider_Storage_File($dir2);
             $ex = null;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $ex = $e;
         }
         $this->assertTrue( $ex instanceof Zend_OpenId_Exception );

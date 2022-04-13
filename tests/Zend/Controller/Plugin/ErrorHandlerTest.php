@@ -211,7 +211,7 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
         try {
             $this->plugin->postDispatch($this->request);
             $this->fail('Repeated calls with new exceptions should throw exceptions');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $type = get_class($e);
             $this->assertEquals('Zend_Controller_Dispatcher_Exception', $type);
             $this->assertEquals('Another exception', $e->getMessage());
@@ -228,7 +228,7 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
 
         try {
             $this->plugin->postDispatch($this->request);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Repeated calls with no new exceptions should not throw exceptions');
         }
     }

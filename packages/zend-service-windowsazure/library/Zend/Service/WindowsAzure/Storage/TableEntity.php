@@ -344,7 +344,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
 	    		}
 	    		return new DateTime($value, new DateTimeZone('UTC'));
 	    	}
-	    	catch (Exception $ex) {
+	    	catch (\Throwable $ex) {
 	    		return false;
 	    	}
 	    }

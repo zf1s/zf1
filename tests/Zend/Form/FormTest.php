@@ -3495,7 +3495,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         try {
             foreach ($this->form as $item) {
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Exceptions should not be raised by iterator when elements are removed; error message: ' . $e->getMessage());
         }
 
@@ -3506,7 +3506,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         try {
             foreach ($this->form as $item) {
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Exceptions should not be raised by iterator when elements are removed; error message: ' . $e->getMessage());
         }
 
@@ -3518,7 +3518,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         try {
             foreach ($this->form as $item) {
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Exceptions should not be raised by iterator when elements are removed; error message: ' . $e->getMessage());
         }
     }

@@ -91,21 +91,21 @@ class Zend_Queue_Adapter_PlatformJobQueueTest extends Zend_Queue_Adapter_Adapter
       try {
             $queue = $this->createQueue(__FUNCTION__, array());
             $this->fail('The test should fail if no host and password are passed');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue( true, 'Job Queue host and password should be provided');
         }
 
         try {
             $queue = $this->createQueue(__FUNCTION__, array('daemonOptions' => array()));
             $this->fail('The test should fail if no host is passed');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true, 'Platform Job Queue host should be provided');
         }
 
         try {
             $queue = $this->createQueue(__FUNCTION__, array('daemonOptions' => array('host' => 'localhost')));
             $this->fail('The test should fail if no password is passed');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true, 'Platform Job Queue password should be provided');
         }
     }

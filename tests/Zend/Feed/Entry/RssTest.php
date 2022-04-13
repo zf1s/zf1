@@ -74,7 +74,7 @@ class Zend_Feed_Entry_RssTest extends PHPUnit_Framework_TestCase
     {
         try {
             new Zend_Feed_Entry_Rss(null, 'foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             self::assertInstanceOf('Zend_Feed_Exception', $e);
 
             return;

@@ -101,7 +101,7 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
                 }
             }
             $db->commit();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $db->rollBack();
             /**
              * @see Zend_Queue_Exception

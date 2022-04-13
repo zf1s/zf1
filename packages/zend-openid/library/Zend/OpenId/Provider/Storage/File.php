@@ -120,7 +120,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             fclose($f);
             fclose($lock);
             return true;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             fclose($lock);
             throw $e;
         }
@@ -170,7 +170,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             fclose($f);
             fclose($lock);
             return $ret;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             fclose($lock);
             throw $e;
         }
@@ -197,7 +197,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             @unlink($name);
             fclose($lock);
             return true;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             fclose($lock);
             throw $e;
         }
@@ -234,7 +234,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             fclose($f);
             fclose($lock);
             return true;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             fclose($lock);
             throw $e;
         }
@@ -274,7 +274,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             fclose($f);
             fclose($lock);
             return $ret;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             fclose($lock);
             throw $e;
         }
@@ -315,7 +315,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             fclose($f);
             fclose($lock);
             return $ret;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             fclose($lock);
             throw $e;
         }
@@ -342,7 +342,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             @unlink($name);
             fclose($lock);
             return true;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             fclose($lock);
             throw $e;
         }
@@ -383,7 +383,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             fclose($f);
             fclose($lock);
             return $ret;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             fclose($lock);
             throw $e;
         }
@@ -434,7 +434,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             fclose($f);
             fclose($lock);
             return $ret;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             fclose($lock);
             throw $e;
         }

@@ -103,14 +103,14 @@ class Zend_Server_Reflection_PrototypeTest extends PHPUnit_Framework_TestCase
         try {
             $r1 = new Zend_Server_Reflection_Prototype($this->_r->getReturnValue(), $this->_parametersRaw);
             $this->fail('Construction should only accept Z_S_R_Parameters');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // do nothing
         }
 
         try {
             $r1 = new Zend_Server_Reflection_Prototype($this->_r->getReturnValue(), 'string');
             $this->fail('Construction requires an array of parameters');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // do nothing
         }
     }

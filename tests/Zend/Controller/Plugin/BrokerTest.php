@@ -82,7 +82,7 @@ class Zend_Controller_Plugin_BrokerTest extends PHPUnit_Framework_TestCase
         try {
             $broker->registerPlugin($plugin);
             $this->fail('Duplicate registry of plugin object should be disallowed');
-        } catch (Exception $expected) {
+        } catch (\Throwable $expected) {
             $this->assertContains('already', $expected->getMessage());
         }
     }
@@ -195,7 +195,7 @@ class Zend_Controller_Plugin_BrokerTest extends PHPUnit_Framework_TestCase
             $broker->preDispatch($request);
             $broker->postDispatch($request);
             $broker->dispatchLoopShutdown();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Broker should catch exceptions');
         }
 
@@ -231,7 +231,7 @@ class Zend_Controller_Plugin_BrokerTest extends PHPUnit_Framework_TestCase
         try {
             $broker->registerPlugin($plugin2, 5);
             $this->fail('Registering plugins with same stack index should raise exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 

@@ -62,7 +62,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
         try {
             $db = new Zend_Db_Adapter_Static('scalar');
             $this->fail('Expected exception not thrown');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
         }
     }
@@ -150,7 +150,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
         try {
             $db = Zend_Db::factory('Static', 'scalar');
             $this->fail('Expected exception not thrown');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
         }
     }
@@ -160,7 +160,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
         try {
             $db = Zend_Db::factory('Static');
             $this->fail('Expected exception not thrown');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('Configuration must have a key for \'dbname\' that names the database instance', $e->getMessage());
         }
     }
@@ -297,7 +297,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
                 'Dbadapter',
                 array('dbname' => 'dummy', 'adapterNamespace' => 'Test_MyCompany1')
                 );
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             set_include_path($oldIncludePath);
             $this->fail('Could not load file for reason: ' . $e->getMessage());
         }
@@ -325,7 +325,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
                 'Dbadapter',
                 array('dbname' => 'dummy', 'adapterNamespace' => 'Test_MyCompany2')
                 );
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             set_include_path($oldIncludePath);
             $this->assertContains('failed to open stream', $e->getMessage(), '', true);
             return;
@@ -348,7 +348,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
                 'DB_ADAPTER',
                 array('dbname' => 'dummy', 'adapterNamespace' => 'Test_MyCompany1')
                 );
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             set_include_path($oldIncludePath);
             $this->fail('Could not load file for reason: ' . $e->getMessage());
         }

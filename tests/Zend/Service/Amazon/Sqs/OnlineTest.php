@@ -99,7 +99,7 @@ class Zend_Service_Amazon_Sqs_OnlineTest extends PHPUnit_Framework_TestCase
             $this->assertEquals(0, $count);
 
             $this->_amazon->delete($queue_url);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
     }

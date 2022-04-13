@@ -63,7 +63,7 @@ class Zend_Service_WindowsAzure_Diagnostics_ManagerTest extends PHPUnit_Framewor
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++)
         {
-            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_DIAGNOSTICS_CONTAINER_PREFIX . $i); } catch (Exception $e) { }
+            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_DIAGNOSTICS_CONTAINER_PREFIX . $i); } catch (\Throwable $e) { }
         }
     }
 

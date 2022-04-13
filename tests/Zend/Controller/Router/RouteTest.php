@@ -334,7 +334,7 @@ class Zend_Controller_Router_RouteTest extends PHPUnit_Framework_TestCase
         $route = new Zend_Controller_Router_Route('authors/:name');
         try {
             $url = $route->assemble();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return true;
         }
 

@@ -66,7 +66,7 @@ class Zend_Service_WindowsAzure_QueueStorageTest extends PHPUnit_Framework_TestC
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++)
         {
-            try { $storageClient->deleteQueue(TESTS_ZEND_SERVICE_WINDOWSAZURE_QUEUE_PREFIX . $i); } catch (Exception $e) { }
+            try { $storageClient->deleteQueue(TESTS_ZEND_SERVICE_WINDOWSAZURE_QUEUE_PREFIX . $i); } catch (\Throwable $e) { }
         }
     }
 

@@ -197,7 +197,7 @@ class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
         try {
             $response = $this->_controller->run();
             $this->fail('Should not be able to call bar as action');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             //success!
         }
     }

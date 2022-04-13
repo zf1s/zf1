@@ -139,7 +139,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
             $mail->selectFolder($mail->getFolders()->subfolder->test2);
             $mail->selectFolder($mail->getFolders()->subfolder->test3);
             $mail->selectFolder($mail->getFolders()->foo->bar);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('could not get new folders');
         }
 
@@ -156,7 +156,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Writable_Maildir($this->_params);
         try {
             $mail->createFolder('foo..bar');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; //ok
         }
 
@@ -168,7 +168,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Writable_Maildir($this->_params);
         try {
             $mail->createFolder('foo/bar');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; //ok
         }
 
@@ -180,7 +180,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Writable_Maildir($this->_params);
         try {
             $mail->createFolder('foo' . DIRECTORY_SEPARATOR . 'bar');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; //ok
         }
 
@@ -194,7 +194,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->createFolder('subfolder.test');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 
@@ -207,7 +207,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->createFolder('subfolder.test');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 
@@ -221,7 +221,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->selectFolder($mail->getFolders()->subfolder->test);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
         $this->fail('folder still exists');
@@ -234,7 +234,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->selectFolder($mail->getFolders()->subfolder->test);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
         $this->fail('folder still exists');
@@ -246,7 +246,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->removeFolder($mail->getFolders()->subfolder);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 
@@ -260,7 +260,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->removeFolder('subfolder.test');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
         $this->fail('no error while removing selected folder');
@@ -272,7 +272,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->removeFolder('thisFolderDoestNotExist');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
         $this->fail('no error while removing invalid folder');
@@ -284,13 +284,13 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
         try {
             $mail->renameFolder('INBOX.subfolder', 'INBOX.foo');
             $mail->renameFolder($mail->getFolders()->foo, 'subfolder');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('renaming failed');
         }
 
         try {
             $mail->renameFolder('INBOX', 'foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
         $this->fail('no error while renaming INBOX');
@@ -303,7 +303,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->renameFolder('subfolder.test', 'foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
         $this->fail('no error while renaming selected folder');
@@ -315,7 +315,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->renameFolder('subfolder.test', 'subfolder.test.foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
         $this->fail('no error while renaming folder to child of old');
@@ -356,7 +356,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->copyMessage(1, 'justARandomFolder');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
         $this->fail('no error while copying to wrong folder');
@@ -383,7 +383,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->setFlags(1, array(Zend_Mail_Storage::FLAG_RECENT));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
         $this->fail('should not be able to set recent flag');
@@ -396,7 +396,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->setFlags(1, array(Zend_Mail_Storage::FLAG_FLAGGED));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 
@@ -422,7 +422,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->removeMessage(1);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 
@@ -630,7 +630,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
         $e = null;
         try {
             $mail = new Zend_Mail_Storage_Writable_Maildir($this->_params);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
 
         if ($e === null) {
@@ -650,7 +650,7 @@ class Zend_Mail_MaildirWritableTest extends PHPUnit_Framework_TestCase
         $e = null;
         try {
             $mail = new Zend_Mail_Storage_Writable_Maildir($this->_params);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
 
         if ($e === null) {

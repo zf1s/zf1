@@ -145,7 +145,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
             $feed = Zend_Feed_Reader::importFile(
                 __DIR__ . '/Reader/Entry/_files/Atom/title/plain/atom10.xml'
             );
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
     }
@@ -161,7 +161,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
 
         try {
             $feed = Zend_Feed_Reader::import('http://www.planet-php.net/rdf/');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
     }
@@ -193,7 +193,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
 
         try {
             $links = Zend_Feed_Reader::findFeedLinks('http://www.planet-php.net');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
         $this->assertEquals('http://www.planet-php.org/rss/', $links->rss);
@@ -253,7 +253,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
 
         try {
             $links = Zend_Feed_Reader::findFeedLinks('http://www.infopod.com.br');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
         $this->assertEquals('http://feeds.feedburner.com/jonnyken/infoblog', $links->rss);
@@ -273,7 +273,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
 
         try {
             $links = Zend_Feed_Reader::findFeedLinks('http://meiobit.com');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
         $this->assertEquals('http://meiobit.com/rss.xml', $links->rss);
@@ -294,7 +294,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
             $links = Zend_Feed_Reader::findFeedLinks('http://foo/bar');
 
             Zend_Feed_Reader::setHttpClient($currClient);
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
 
@@ -314,7 +314,7 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
         try {
             Zend_Feed_Reader::addPrefixPath('My_FeedReader_Extension',__DIR__ . '/Reader/_files/My/Extension');
             Zend_Feed_Reader::registerExtension('JungleBooks');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
         $this->assertTrue(Zend_Feed_Reader::isRegistered('JungleBooks'));

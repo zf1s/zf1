@@ -122,7 +122,7 @@ class Zend_Filter_PregReplaceTest extends PHPUnit_Framework_TestCase
         try {
             $filtered = $this->filter->filter($string);
             $this->fail('Replacement should fail when no match pattern present');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 

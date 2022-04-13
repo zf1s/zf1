@@ -138,7 +138,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         try {
             Zend_Wildfire_Plugin_FirePhp::send('Hello World');
             $this->fail('Should throw a response object not initialized error');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -192,7 +192,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
             Zend_Wildfire_Plugin_FirePhp::getInstance();
             Zend_Wildfire_Plugin_FirePhp::init(null);
             $this->fail('Should not be able to re-initialize');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -382,14 +382,14 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         try {
           throw new Exception('Test Exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
           Zend_Wildfire_Plugin_FirePhp::send($e);
         }
 
         try {
             Zend_Wildfire_Plugin_FirePhp::send($message, $label, 'UNKNOWN');
             $this->fail('Should not be able to log with undefined log style');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
@@ -480,7 +480,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         try {
             $table->getLastRow();
             $this->fail('Should throw exception when no rows exist');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
@@ -491,14 +491,14 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         try {
             $table->getRowAt(1);
             $this->fail('Should throw exception as no rows present');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
         try {
             $table->setRowAt(1,array());
             $this->fail('Should throw exception as no rows present');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
@@ -520,14 +520,14 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         try {
             $table->getRowAt(2);
             $this->fail('Should throw exception as index is out of bounds');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
         try {
             $table->setRowAt(2,array());
             $this->fail('Should throw exception as index is out of bounds');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
@@ -744,7 +744,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
             Zend_Wildfire_Channel_HttpHeaders::getInstance();
             Zend_Wildfire_Channel_HttpHeaders::init();
             $this->fail('Should not be able to re-initialize');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -779,7 +779,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         try {
             Zend_Wildfire_Plugin_FirePhp::init('Zend_Wildfire_WildfireTest_Request');
             $this->fail('Should not be able to initialize');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
@@ -788,7 +788,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         try {
             Zend_Wildfire_Plugin_FirePhp::init(array());
             $this->fail('Should not be able to initialize');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
@@ -808,7 +808,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         try {
             Zend_Wildfire_Channel_HttpHeaders::init('Zend_Wildfire_WildfireTest_Request');
             $this->fail('Should not be able to initialize');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
@@ -817,7 +817,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         try {
             Zend_Wildfire_Channel_HttpHeaders::init(array());
             $this->fail('Should not be able to initialize');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 

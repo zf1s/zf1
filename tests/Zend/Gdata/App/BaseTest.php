@@ -143,7 +143,7 @@ class Zend_Gdata_App_BaseTest extends PHPUnit_Framework_TestCase
     {
         try {
             $this->base->transferFromXML('foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             self::assertInstanceOf('Zend_Gdata_App_Exception', $e);
             self::assertContains('cannot parse', $e->getMessage());
 

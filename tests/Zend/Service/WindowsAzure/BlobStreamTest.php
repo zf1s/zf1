@@ -73,8 +73,8 @@ class Zend_Service_WindowsAzure_BlobStreamTest extends PHPUnit_Framework_TestCas
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++)
         {
-            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOBSTREAM_CONTAINER_PREFIX . $i); } catch (Exception $e) { }
-            try { $storageClient->unregisterStreamWrapper('azure'); } catch (Exception $e) { }
+            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOBSTREAM_CONTAINER_PREFIX . $i); } catch (\Throwable $e) { }
+            try { $storageClient->unregisterStreamWrapper('azure'); } catch (\Throwable $e) { }
         }
     }
 

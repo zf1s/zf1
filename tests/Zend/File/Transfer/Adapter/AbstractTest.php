@@ -789,7 +789,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends PHPUnit_Framework_TestCase
         try {
             $this->assertTrue(is_string($this->adapter->getDestination('reallynonexisting')));
             $this->fail();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('not find', $e->getMessage());
         }
     }

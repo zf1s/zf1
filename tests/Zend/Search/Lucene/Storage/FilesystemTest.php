@@ -43,7 +43,7 @@ class FilesystemTest extends PHPUnit_Framework_TestCase
     {
         try {
             new Zend_Search_Lucene_Storage_File_Filesystem('/foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             self::assertInstanceOf('Zend_Search_Lucene_Exception', $e);
 
             return;
@@ -63,7 +63,7 @@ class FilesystemTest extends PHPUnit_Framework_TestCase
             if ($fs->renameFile($this->testFile, $newFilename)) {
                 $this->testFile = sys_get_temp_dir() . "/$newFilename";
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             self::assertInstanceOf('Zend_Search_Lucene_Exception', $e);
 
             return;

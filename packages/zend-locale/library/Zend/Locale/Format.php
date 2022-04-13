@@ -1207,7 +1207,7 @@ class Zend_Locale_Format
     {
         try {
             $date = self::getDate($date, $options);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return false;
         }
 

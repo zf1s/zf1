@@ -87,56 +87,56 @@ class Zend_Queue_Stomp_FrameTest extends PHPUnit_Framework_TestCase
         try {
             $frame->setAutoContentLength(array());
             $this->fail('Exception should have been thrown');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $frame->setHeader(array(), 1);
             $this->fail('Exception should have been thrown');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $frame->setHeader('testing', array());
             $this->fail('Exception should have been thrown');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $frame->getHeader(array());
             $this->fail('Exception should have been thrown');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $frame->setBody(array());
             $this->fail('Exception should have been thrown');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $frame->setCommand(array());
             $this->fail('Exception should have been thrown');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $frame->toFrame();
             $this->fail('Exception should have been thrown');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $frame->fromFrame(array());
             $this->fail('Exception should have been thrown');
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
     }

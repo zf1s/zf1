@@ -848,7 +848,7 @@ XML
         try {
             Zend_XmlRpc_Value::getXmlRpcValue('', 'bad type here');
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertRegexp('/given type is not/i', $e->getMessage());
         }
     }

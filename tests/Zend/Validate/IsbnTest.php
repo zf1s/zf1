@@ -76,28 +76,28 @@ class Zend_Validate_IsbnTest extends PHPUnit_Framework_TestCase
         try {
             $validator->setType(Zend_Validate_Isbn::AUTO);
             $this->assertTrue($validator->getType() == Zend_Validate_Isbn::AUTO);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Should accept type 'auto'");
         }
 
         try {
             $validator->setType(Zend_Validate_Isbn::ISBN10);
             $this->assertTrue($validator->getType() == Zend_Validate_Isbn::ISBN10);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Should accept type 'ISBN-10'");
         }
 
         try {
             $validator->setType(Zend_Validate_Isbn::ISBN13);
             $this->assertTrue($validator->getType() == Zend_Validate_Isbn::ISBN13);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Should accept type 'ISBN-13'");
         }
 
         try {
             $validator->setType('X');
             $this->fail("Should not accept type 'X'");
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -114,28 +114,28 @@ class Zend_Validate_IsbnTest extends PHPUnit_Framework_TestCase
         try {
             $validator->setSeparator('-');
             $this->assertTrue($validator->getSeparator() == '-');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Should accept separator '-'");
         }
 
         try {
             $validator->setSeparator(' ');
             $this->assertTrue($validator->getSeparator() == ' ');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Should accept separator ' '");
         }
 
         try {
             $validator->setSeparator('');
             $this->assertTrue($validator->getSeparator() == '');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Should accept empty separator");
         }
 
         try {
             $validator->setSeparator('X');
             $this->fail("Should not accept separator 'X'");
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }

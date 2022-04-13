@@ -147,7 +147,7 @@ EOT;
     {
         try {
             $request = new Zend_XmlRpc_Request_Http('foo', array('bar', 'baz'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Should be able to pass in methods and params to request');
         }
     }
@@ -156,7 +156,7 @@ EOT;
     {
         try {
             $request = new Zend_XmlRpc_Request_HttpTest_Extension('foo', array('bar', 'baz'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Should be able to pass in methods and params to request');
         }
         $this->assertEquals('foo', $request->method);

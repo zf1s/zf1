@@ -62,7 +62,7 @@ class Zend_Cache_PageFrontendTest extends PHPUnit_Framework_TestCase {
     {
         try {
             $test = new Zend_Cache_Frontend_Page(array('http_conditional' => true));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return;
         }
         $this->fail('Zend_Cache_Exception was expected but not thrown');
@@ -72,7 +72,7 @@ class Zend_Cache_PageFrontendTest extends PHPUnit_Framework_TestCase {
     {
         try {
             $test = new Zend_Cache_Frontend_Page(array('default_options' => 'foo'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return;
         }
         $this->fail('Zend_Cache_Exception was expected but not thrown');
@@ -86,7 +86,7 @@ class Zend_Cache_PageFrontendTest extends PHPUnit_Framework_TestCase {
     {
         try {
             $test = new Zend_Cache_Frontend_Page(array('default_options' => array('cache' => true, 1 => 'bar')));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return;
         }
         $this->fail('Zend_Cache_Exception was expected but not thrown');
@@ -96,7 +96,7 @@ class Zend_Cache_PageFrontendTest extends PHPUnit_Framework_TestCase {
     {
         try {
             $test = new Zend_Cache_Frontend_Page(array('regexps' => 'foo'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return;
         }
         $this->fail('Zend_Cache_Exception was expected but not thrown');
@@ -106,7 +106,7 @@ class Zend_Cache_PageFrontendTest extends PHPUnit_Framework_TestCase {
     {
         try {
             $test = new Zend_Cache_Frontend_Page(array('regexps' => array('foo', 'bar')));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return;
         }
         $this->fail('Zend_Cache_Exception was expected but not thrown');
@@ -130,7 +130,7 @@ class Zend_Cache_PageFrontendTest extends PHPUnit_Framework_TestCase {
         );
         try {
             $test = new Zend_Cache_Frontend_Page(array('regexps' => $array));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return;
         }
         $this->fail('Zend_Cache_Exception was expected but not thrown');

@@ -2085,7 +2085,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         try {
             $return = $this->render();
             return $return;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             trigger_error($e->getMessage(), E_USER_WARNING);
             return '';
         }

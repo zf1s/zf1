@@ -266,7 +266,7 @@ class Zend_Log_Writer_MailTest extends PHPUnit_Framework_TestCase
 
         try {
             unset($log);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof PHPUnit_Framework_Error);
         }
     }
@@ -293,7 +293,7 @@ class Zend_Log_Writer_MailTest extends PHPUnit_Framework_TestCase
 
         try {
             unset($log);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof PHPUnit_Framework_Error);
         }
     }

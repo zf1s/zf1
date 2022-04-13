@@ -380,7 +380,7 @@ EOB;
             $json = '[a"],["a]';
             $test = Zend_Json_Decoder::decode($json);
             $this->fail("Should not be able to decode '$json'");
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 
@@ -388,7 +388,7 @@ EOB;
             $expected = 010;
             $test = Zend_Json_Decoder::decode('010');
             $this->fail('Octal values are not supported in JSON notation');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // sucess
         }
     }
@@ -408,14 +408,14 @@ EOB;
 
         try {
             $encoded = Zend_Json_Encoder::encode($everything);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Object cycling checks should check for recursion, not duplicate usage of an item');
         }
 
         try {
             $encoded = Zend_Json_Encoder::encode($everything, true);
             $this->fail('Object cycling not allowed when cycleCheck parameter is true');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }

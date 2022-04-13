@@ -112,7 +112,7 @@ class Zend_View_Helper_PaginationControlTest extends PHPUnit_Framework_TestCase
     {
         try {
             $this->_viewHelper->paginationControl($this->_paginator);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_View_Exception);
             $this->assertEquals('No view partial provided and no default set', $e->getMessage());
         }
@@ -162,7 +162,7 @@ class Zend_View_Helper_PaginationControlTest extends PHPUnit_Framework_TestCase
 
         try {
             $output = $this->_viewHelper->paginationControl();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_View_Exception);
             $this->assertEquals('No paginator instance provided or incorrect type', $e->getMessage());
         }
@@ -175,7 +175,7 @@ class Zend_View_Helper_PaginationControlTest extends PHPUnit_Framework_TestCase
     {
         try {
             $this->_viewHelper->paginationControl($this->_paginator, null, array('partial.phtml', 'test'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             /* We don't care whether or not the module exists--we just want to
              * make sure it gets to Zend_View_Helper_Partial and it's recognized
              * as a module. */
@@ -206,7 +206,7 @@ class Zend_View_Helper_PaginationControlTest extends PHPUnit_Framework_TestCase
 
         try {
             $output = $this->_viewHelper->paginationControl($this->_paginator, $all, 'testPagination.phtml');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Could not use object for sliding style');
         }
 

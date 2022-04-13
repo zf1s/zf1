@@ -479,7 +479,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
 
         try {
             $obj = unserialize($damaged);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             self::assertInstanceOf('Zend_Feed_Exception', $e);
 
             return;
@@ -495,7 +495,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
         try {
             Zend_Feed::setHttpClient(new Zend_Http_Client());
             Zend_Feed::findFeeds('https://www.microsoft.com/');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             #var_dump($e);
         }
     }

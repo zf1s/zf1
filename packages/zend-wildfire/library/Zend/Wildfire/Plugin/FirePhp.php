@@ -397,7 +397,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
         $meta = array();
         $meta['Type'] = $style;
 
-        if ($var instanceof Exception) {
+        if ($var instanceof \Throwable) {
 
             $eTrace = $var->getTrace();
             $eTrace = array_splice($eTrace, 0, $options['maxTraceDepth']);

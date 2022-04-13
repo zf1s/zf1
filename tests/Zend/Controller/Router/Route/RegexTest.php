@@ -323,7 +323,7 @@ class Zend_Controller_Router_Route_RegexTest extends PHPUnit_Framework_TestCase
         try {
             $url = $route->assemble();
             $this->fail();
-        } catch (Exception $e) {}
+        } catch (\Throwable $e) {}
     }
 
     public function testAssembleWithDefaultWithoutMatch()

@@ -241,7 +241,7 @@ class Zend_Validate implements Zend_Validate_Interface
         } catch (Zend_Validate_Exception $ze) {
             // if there is an exception while validating throw it
             throw $ze;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // fallthrough and continue for missing validation classes
         }
 

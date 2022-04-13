@@ -820,14 +820,14 @@ class Zend_Soap_AutoDiscoverTest extends PHPUnit_Framework_TestCase
         try {
             $server->dump(false);
             $this->fail();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Soap_AutoDiscover_Exception);
         }
 
         try {
             $server->toXml();
             $this->fail();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Soap_AutoDiscover_Exception);
         }
     }

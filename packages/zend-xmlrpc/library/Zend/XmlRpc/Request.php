@@ -343,7 +343,7 @@ class Zend_XmlRpc_Request
                     $param   = Zend_XmlRpc_Value::getXmlRpcValue($param->value, Zend_XmlRpc_Value::XML_STRING);
                     $types[] = $param->getType();
                     $argv[]  = $param->getValue();
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                     $this->_fault = new Zend_XmlRpc_Fault(636);
                     $this->_fault->setEncoding($this->getEncoding());
                     return false;

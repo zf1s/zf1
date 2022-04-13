@@ -145,7 +145,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         try {
             $logger->log('foo', 42);
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/bad log priority/i', $e->getMessage());
         }
@@ -157,7 +157,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         try {
             $logger->nonexistantPriority('');
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/bad log priority/i', $e->getMessage());
         }
@@ -169,7 +169,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
             $logger = new Zend_Log($this->writer);
             $logger->addPriority('BOB', 0);
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/existing priorities/i', $e->getMessage());
         }
@@ -388,7 +388,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
             $logger = new Zend_Log();
             $writer = array('writerName' => 'NotExtendedWriterAbstract');
             $logger->addWriter($writer);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('#^(Zend_Log_Writer_NotExtendedWriterAbstract|The\sspecified\swriter)#', $e->getMessage());
         }
@@ -403,7 +403,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
             $logger = new Zend_Log();
             $filter = array('filterName' => 'NotImplementsFilterInterface');
             $logger->addFilter($filter);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('#^(Zend_Log_Filter_NotImplementsFilterInterface|The\sspecified\sfilter)#', $e->getMessage());
         }
@@ -434,7 +434,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         try {
             $logger->addPriority('emerg', 8);
             $this->fail();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertEquals('Existing priorities cannot be overwritten', $e->getMessage());
         }
@@ -443,7 +443,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
             $logger->log('zf10170', 0);
             $logger->log('clone zf10170', 8);
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertEquals('Bad log priority', $e->getMessage());
         }

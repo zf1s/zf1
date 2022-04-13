@@ -955,7 +955,7 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
             $this->assertEquals("1" . self::NBSP . "234,50", $test1);
             $this->assertEquals("1,234.50", $test2);
 
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             setlocale(LC_ALL, $locale);
             throw $e;
         } catch (Throwable $e) {

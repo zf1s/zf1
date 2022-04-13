@@ -162,7 +162,7 @@ EOD;
         try {
             $response = new Zend_XmlRpc_Response();
             $ret      = $response->loadXml($rawResponse);
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Parsing the response should not throw an exception.");
         }
 
@@ -186,7 +186,7 @@ EOD;
     {
         try {
             $sx = new SimpleXMLElement($xml);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Invalid XML returned');
         }
 
@@ -244,7 +244,7 @@ EOD;
         try {
             $this->_response->loadXml($xml);
             $this->fail('Invalid XML-RPC response should raise an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 

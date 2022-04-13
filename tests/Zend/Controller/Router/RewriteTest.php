@@ -186,7 +186,7 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
         try {
             $token = $this->_router->route($request);
             $this->fail('Should throw an Exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Controller_Router_Exception);
         }
     }
@@ -307,14 +307,14 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
         try {
             $route = $this->_router->getCurrentRoute();
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Controller_Router_Exception);
         }
 
         try {
             $route = $this->_router->getCurrentRouteName();
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Controller_Router_Exception);
         }
 
@@ -323,7 +323,7 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
         try {
             $route = $this->_router->getCurrentRoute();
             $name = $this->_router->getCurrentRouteName();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Current route is not set');
         }
 
@@ -344,7 +344,7 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
 
         try {
             $this->_router->addConfig($config, 'database');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Controller_Router_Exception);
             return true;
         }

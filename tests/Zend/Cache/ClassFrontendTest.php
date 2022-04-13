@@ -243,7 +243,7 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
 
         $this->assertNull($return);
         $this->assertEquals('foobar_output(param1,param2)', $data);
-      
+
     }
 
     public function testConstructorWithABadCachedEntity()
@@ -283,7 +283,7 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
         try {
             $this->_instance2->throwException();
             $this->fail("An exception should be thrown");
-        } catch (Exception $e) {}
+        } catch (\Throwable $e) {}
         echo 'end';
 
         $output = ob_get_clean();

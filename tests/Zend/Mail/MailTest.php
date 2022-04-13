@@ -562,7 +562,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         try {
             $mail->send($mock);
             $this->assertTrue($mock->called);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
             $this->assertContains('No body specified', $e->getMessage());
         }
@@ -695,7 +695,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         try {
             $mail->setType('text/plain');
             $this->fail('Invalid Zend_Mime type should throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -771,7 +771,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         try {
             $mail->setDate('invalid date');
             $this->fail('Invalid date should throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -782,7 +782,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         try {
             $mail->setDate(true);
             $this->fail('Invalid date should throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -793,7 +793,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         try {
             $mail->setDate($mail);
             $this->fail('Invalid date should throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -805,7 +805,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         try {
             $mail->setDate(123456789);
             $this->fail('setting date twice should throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -844,7 +844,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         try {
             $mail->setMessageId();
             $this->fail('setting message-id twice should throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 

@@ -113,7 +113,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
             $this->_wait();
 
             $this->assertFalse($this->_commonStorage->fetchItem($dummyNameText));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             try {
                 $this->_commonStorage->deleteItem($dummyNameText);
             } catch (Zend_Cloud_Exception $ignoreMe) {
@@ -143,7 +143,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
             $returnedData = $this->_commonStorage->fetchItem($dummyNameStream);
             $this->assertEquals(file_get_contents($originalFilename), $returnedData);
             $this->_commonStorage->deleteItem($dummyNameStream);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             try {
                 $this->_commonStorage->deleteItem($dummyNameStream);
             } catch (Zend_Cloud_Exception $ignoreMe) {
@@ -170,7 +170,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
             $returnedData = $this->_commonStorage->fetchItem($dummyNameText);
             $this->assertEquals($originalData, $returnedData);
             $this->_commonStorage->deleteItem($dummyNameText);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             try {
                 $this->_commonStorage->deleteItem($dummyNameText);
             } catch (Zend_Cloud_Exception $ignoreMe) {
@@ -197,7 +197,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
             $returnedData = $this->_commonStorage->fetchItem($dummyNameStream);
             $this->assertEquals(file_get_contents($originalFilename), $returnedData);
             $this->_commonStorage->deleteItem($dummyNameStream);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             try {
                 $this->_commonStorage->deleteItem($dummyNameStream);
             } catch (Zend_Cloud_Exception $ignoreMe) {
@@ -228,7 +228,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
             $this->_wait();
 
             $this->assertFalse($this->_commonStorage->fetchItem($dummyName));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             try {
                 $this->_commonStorage->deleteItem($dummyName);
             } catch (Zend_Cloud_Exception $ignorme) {
@@ -264,7 +264,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
             $this->_commonStorage->fetchItem($dummyName1);
             $this->_commonStorage->deleteItem($dummyName2);
             $this->_commonStorage->fetchItem($dummyName2);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             try {
                 $this->_commonStorage->deleteItem($dummyName1);
                 $this->_commonStorage->deleteItem($dummyName2);
@@ -299,7 +299,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
             $this->assertFalse($this->_commonStorage->fetchItem($dummyName1));
             $this->_commonStorage->deleteItem($dummyName2);
             $this->assertFalse($this->_commonStorage->fetchItem($dummyName2));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             try {
                 $this->_commonStorage->deleteItem($dummyName1);
                 $this->_commonStorage->deleteItem($dummyName2);
@@ -329,7 +329,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
             // Hopefully we can assert more about the metadata in the future :/
             $this->assertTrue(is_array($this->_commonStorage->fetchMetadata($dummyName)));
             $this->_commonStorage->deleteItem($dummyName);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             try {
                 $this->_commonStorage->deleteItem($dummyName);
             } catch (Zend_Cloud_Exception $ignoreme) {
@@ -369,7 +369,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
 
             $this->_commonStorage->deleteItem($dummyName1);
             $this->_commonStorage->deleteItem($dummyName2);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             try {
                 $this->_commonStorage->deleteItem($dummyName1);
                 $this->_commonStorage->deleteItem($dummyName2);

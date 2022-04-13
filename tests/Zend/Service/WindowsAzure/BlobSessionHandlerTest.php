@@ -65,7 +65,7 @@ class Zend_Service_WindowsAzure_BlobSessionHandlerTest extends Zend_Service_Wind
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++)
         {
-            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_SESSIONHANDLER_TABLENAME_PREFIX . $i); } catch (Exception $e) { }
+            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_SESSIONHANDLER_TABLENAME_PREFIX . $i); } catch (\Throwable $e) { }
         }
     }
 

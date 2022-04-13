@@ -241,7 +241,7 @@ class Zend_Cache_Frontend_Class extends Zend_Cache_Core
                     $data, $id, $this->_tags, $this->_specificLifetime,
                     $this->_priority
                 );
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 ob_end_clean();
                 throw $e;
             }

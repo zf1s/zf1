@@ -62,7 +62,7 @@ class Zend_Gdata_GdataTest extends PHPUnit_Framework_TestCase
         try {
             $gdata = new Zend_Gdata($obj);
             $this->fail('Expecting to catch Zend_Gdata_App_HttpException');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertThat($e, $this->isInstanceOf('Zend_Gdata_App_HttpException'),
                 'Expecting Zend_Gdata_App_HttpException, got '.get_class($e));
             $this->assertEquals('Argument is not an instance of Zend_Http_Client.', $e->getMessage());

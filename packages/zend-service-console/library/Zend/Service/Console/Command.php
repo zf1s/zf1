@@ -76,7 +76,7 @@ class Zend_Service_Console_Command
 	/**
 	 * Replaces PHP's exception handler
 	 *
-	 * @param Exception $exception
+	 * @param \Throwable $exception
 	 */
 	public static function phpstdex($exception)
 	{

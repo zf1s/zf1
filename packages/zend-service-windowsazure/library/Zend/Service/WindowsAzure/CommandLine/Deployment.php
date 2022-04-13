@@ -233,10 +233,10 @@ class Zend_Service_WindowsAzure_CommandLine_Deployment
 		$client = new Zend_Service_WindowsAzure_Management_Client($subscriptionId, $certificate, $certificatePassphrase);
 
 		$productionDeploymentName = null;
-		try { $productionDeploymentName = $client->getDeploymentBySlot($serviceName, 'production')->Name; } catch (Exception $ex) {}
+		try { $productionDeploymentName = $client->getDeploymentBySlot($serviceName, 'production')->Name; } catch (\Throwable $ex) {}
 
 		$stagingDeploymentName = null;
-		try { $stagingDeploymentName = $client->getDeploymentBySlot($serviceName, 'staging')->Name; } catch (Exception $ex) {}
+		try { $stagingDeploymentName = $client->getDeploymentBySlot($serviceName, 'staging')->Name; } catch (\Throwable $ex) {}
 
 		if (is_null($productionDeploymentName)) {
 			$productionDeploymentName = $stagingDeploymentName;

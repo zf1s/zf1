@@ -149,7 +149,7 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
         try {
             $return = $this->helper->partial('partialTwo.phtml', 'barbazbat');
             $this->fail('Partial should throw exception if module does not exist');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 

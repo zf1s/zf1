@@ -592,7 +592,7 @@ class Zend_Search_Lucene_Index_Writer
             $newSegmentFile->seek($numOfSegmentsOffset);
             $newSegmentFile->writeInt($segmentsCount);  // Update segments count
             $newSegmentFile->close();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             /** Restore previous index generation */
             $generation--;
             $genFile->seek(4, SEEK_SET);

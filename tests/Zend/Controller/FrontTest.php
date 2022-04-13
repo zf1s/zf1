@@ -131,7 +131,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $this->_controller->setRequest('Zend_Controller_Response_Cli');
             $this->fail('Should not be able to set invalid request class');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -153,7 +153,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $this->_controller->setResponse('Zend_Controller_Request_Http');
             $this->fail('Should not be able to set invalid response class');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -175,7 +175,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $this->_controller->setRouter('Zend_Controller_Request_Http');
             $this->fail('Should not be able to set invalid router class');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -298,7 +298,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $this->_controller->dispatch($request);
             $this->fail('Exception should be raised by __call');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -315,7 +315,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $this->_controller->dispatch($request);
             $this->fail('Exception should be raised; no such controller');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -394,7 +394,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $this->_controller->run(__DIR__ . DIRECTORY_SEPARATOR . '_files');
             $this->fail('Should not be able to call run() from object instance');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -424,7 +424,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $this->_controller->setBaseUrl(array());
             $this->fail('Should not be able to set non-string base URL');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -474,7 +474,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $response = $this->_controller->dispatch($request);
             $this->fail('Invalid controller should throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -610,7 +610,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $this->_controller->addModuleDirectory($moduleDir);
             $this->fail('Exception expected but not thrown');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Exception);
             $this->assertRegExp(
                 '/Directory \w+ not readable/', $e->getMessage()

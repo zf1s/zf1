@@ -221,7 +221,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
         try {
             $helper = new Zend_View_Helper_Action();
             $this->fail('Empty front controller should cause action helper to throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -240,7 +240,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
         try {
             $helper = new Zend_View_Helper_Action();
             $this->fail('No request in front controller should cause action helper to throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -258,7 +258,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
         try {
             $helper = new Zend_View_Helper_Action();
             $this->fail('No response in front controller should cause action helper to throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 

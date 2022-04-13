@@ -214,7 +214,7 @@ class Zend_Uri_HttpTest extends PHPUnit_Framework_TestCase
          // First, make sure no exceptions are thrown
          try {
              $uri->setQuery('id=123&url=http://example.com/?bar=foo baz');
-         } catch (Exception $e) {
+         } catch (\Throwable $e) {
              $this->fail('setQuery() was expected to handle unencoded parameters, but failed');
          }
 

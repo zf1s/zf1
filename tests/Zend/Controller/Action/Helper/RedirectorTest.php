@@ -132,13 +132,13 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
         try {
             $this->redirector->setCode(251);
             $this->fail('Invalid redirect code should throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
 
         try {
             $this->redirector->setCode(351);
             $this->fail('Invalid redirect code should throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -150,13 +150,13 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
         try {
             $this->redirector->setCode('251');
             $this->fail('Invalid redirect code should throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
 
         try {
             $this->redirector->setCode('351');
             $this->fail('Invalid redirect code should throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 

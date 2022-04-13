@@ -93,7 +93,7 @@ class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
         try {
             $obj = new Zend_Queue('ops');
             $this->fail('Zend_Queue cannot accept a string');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
     }
@@ -138,14 +138,14 @@ class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
         try {
             $this->queue->createQueue(array());
             $this->fail('createQueue() $name must be a string');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $this->queue->createQueue('test', 'test');
             $this->fail('createQueue() $timeout must be an integer');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
@@ -165,7 +165,7 @@ class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
         try {
             $this->queue->send(array());
             $this->fail('send() $mesage must be a string');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
@@ -180,14 +180,14 @@ class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
         try {
             $this->queue->receive(array());
             $this->fail('receive() $maxMessages must be a integer or null');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $this->queue->receive(1, array());
             $this->fail('receive() $timeout must be a integer or null');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 

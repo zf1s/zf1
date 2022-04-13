@@ -163,7 +163,7 @@ class Zend_Validate_Callback extends Zend_Validate_Abstract
                 $this->_error(self::INVALID_VALUE);
                 return false;
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->_error(self::INVALID_CALLBACK);
             return false;
         }

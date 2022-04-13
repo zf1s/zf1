@@ -142,7 +142,7 @@ class Zend_Layout_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
         try {
             $fullContent = $layout->render();
             $response->setBody($fullContent);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             while (ob_get_level() > $obStartLevel) {
                 $fullContent .= ob_get_clean();
             }

@@ -646,7 +646,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
     {
         try {
             Zend_Gdata_App::importString('foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             self::assertInstanceOf('Zend_Gdata_App_Exception', $e);
             self::assertContains('DOMDocument', $e->getMessage());
 
@@ -660,7 +660,7 @@ class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
     {
         try {
             Zend_Gdata_App::importFile('foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             self::assertInstanceOf('Zend_Gdata_App_Exception', $e);
             self::assertContains('could not be loaded', $e->getMessage());
 

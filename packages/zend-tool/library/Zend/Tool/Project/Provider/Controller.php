@@ -150,7 +150,7 @@ class Zend_Tool_Project_Provider_Controller
                 $testActionResource = Zend_Tool_Project_Provider_Test::createApplicationResource($this->_loadedProfile, $name, 'index', $module);
             }
 
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $response->setException($e);
             return;
         }

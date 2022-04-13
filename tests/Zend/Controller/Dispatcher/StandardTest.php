@@ -221,7 +221,7 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
         try {
             $this->_dispatcher->dispatch($request, $response);
             $this->fail('Exception should be raised by __call');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -235,7 +235,7 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
         try {
             $this->_dispatcher->dispatch($request, $response);
             $this->fail('Exception should be raised; no such controller');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -252,7 +252,7 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
             $this->_dispatcher->dispatch($request, $response);
             $this->assertEquals('index', $request->getControllerName());
             $this->assertEquals('index', $request->getActionName());
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Exception should not be raised when useDefaultControllerAlways set; message: ' . $e->getMessage());
         }
     }
@@ -294,7 +294,7 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
             $this->assertSame('default', $request->getModuleName());
             $this->assertSame('index', $request->getControllerName());
             $this->assertSame('index', $request->getActionName());
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Exception should not be raised when useDefaultControllerAlways set; exception: ' . $e->getMessage());
         }
     }
@@ -499,7 +499,7 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
         try {
             $this->_dispatcher->dispatch($request, $response);
             $this->fail('Exception should have been rethrown');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
         $body = $this->_dispatcher->getResponse()->getBody();
         $this->assertNotContains("In exception action", $body, $body);

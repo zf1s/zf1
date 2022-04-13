@@ -347,7 +347,7 @@ class Zend_Measure_Flow_MoleTest extends PHPUnit_Framework_TestCase
             $value = new Zend_Measure_Flow_Mole('-100',Zend_Measure_Flow_Mole::STANDARD,'de');
             $value->setType('Flow_Mole::UNKNOWN');
             $this->fail('Exception expected because of unknown type');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }

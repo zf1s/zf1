@@ -319,7 +319,7 @@ class Zend_Json_ServerTest extends PHPUnit_Framework_TestCase
             ->setId('foo');
         try {
             $response = $this->server->handle();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Server_Exception);
             $this->assertEquals('Method bar is missing required parameter: one', $e->getMessage());
         }

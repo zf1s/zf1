@@ -110,7 +110,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Maildir(array('dirname' => $this->_maildir));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while loading maildir');
         }
     }
@@ -119,7 +119,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Maildir(new Zend_Config(array('dirname' => $this->_maildir)));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while loading maildir');
         }
     }
@@ -128,7 +128,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Maildir(array('dirname' => '/This/Dir/Does/Not/Exist'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -139,7 +139,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Maildir(array('dirname' => __DIR__));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -152,7 +152,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->close();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while closing maildir');
         }
     }
@@ -177,7 +177,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->noop();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while doing nothing (noop)');
         }
     }
@@ -248,7 +248,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->getSize(0);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -261,7 +261,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->getMessage(0);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -274,7 +274,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->removeMessage(1);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -324,7 +324,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Maildir(array('dirname' => $this->_maildir));
         try {
             $mail->getNumberByUniqueId('this_is_an_invalid_id');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -341,7 +341,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
         $check = false;
         try {
             $mail = new Zend_Mail_Storage_Maildir(array('dirname' => $this->_maildir));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $check = true;
             // test ok
         }
@@ -379,7 +379,7 @@ class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
         $check = false;
         try {
             $mail = new Zend_Mail_Storage_Maildir(array('dirname' => $this->_maildir));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $check = true;
             // test ok
         }

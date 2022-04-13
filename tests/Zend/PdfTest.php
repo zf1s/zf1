@@ -73,7 +73,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
         try {
             $this->_pdf->setTextField('Field1', 'Value1');
             $this->assertTrue(true); // in case of --strict
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Failed to set an existing text field');
         }
     }
@@ -108,7 +108,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
                     | Zend_Pdf::PDF_FORM_FIELD_NOEXPORT
             );
             $this->assertTrue(true); // in case of --strict
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Failed to set property of an existing text field');
         }
     }
@@ -133,7 +133,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
             $this->_pdf->markTextFieldAsReadOnly('Field1');
             $this->_pdf->markTextFieldAsReadOnly('Field2');
             $this->assertTrue(true); // in case of --strict
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Failed to set an existing text field as read-only');
         }
     }

@@ -469,7 +469,7 @@ abstract class Zend_XmlRpc_Value
 
         try {
             $xml = new SimpleXMLElement($xml);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // The given string is not a valid XML
             // require_once 'Zend/XmlRpc/Value/Exception.php';
             throw new Zend_XmlRpc_Value_Exception('Failed to create XML-RPC value from XML string: ' . $e->getMessage(), $e->getCode(), $e);

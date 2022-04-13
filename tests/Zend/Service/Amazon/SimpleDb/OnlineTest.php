@@ -170,7 +170,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
             $this->assertEquals($attributeValue2, current($results[$attributeName2]->getValues()));
 
             $this->request('deleteDomain', array($domainName));
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->request('deleteDomain', array($domainName));
             throw $e;
         }
@@ -202,7 +202,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
             $this->assertEquals($attributes[$attributeName1], $results[$attributeName1]);
             $this->assertEquals($attributes[$attributeName2], $results[$attributeName2]);
             $this->request('deleteDomain', array($domainName));
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->request('deleteDomain', array($domainName));
             throw $e;
         }
@@ -294,7 +294,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
             $this->assertEquals($items[$itemName1], $this->request('getAttributes', array($domainName, $itemName1)));
 
             $this->request('deleteDomain', array($domainName));
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->request('deleteDomain', array($domainName));
             throw $e;
         }
@@ -360,7 +360,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
             $this->assertEquals(0, count($results));
 
             $this->request('deleteDomain', array($domainName));
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->request('deleteDomain', array($domainName));
             throw $e;
         }
@@ -393,7 +393,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
                   try {
                     $this->request('domainMetadata', array($tokenDomainName));
                     $this->fail('listDomains call with 3 domain maximum did not return last page');
-                  } catch (Exception $e) {
+                  } catch (\Throwable $e) {
                     $this->assertContains('The specified domain does not exist', $e->getMessage());
                   }
                 }
@@ -419,7 +419,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
                 $domainName = $this->_testDomainNamePrefix . '_testListDomains' . $i;
                 $this->request('deleteDomain', array($domainName));
             }
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             // Delete the domains
             for($i = 1; $i <= 3; $i++) {
                 $domainName = $this->_testDomainNamePrefix . '_testListDomains' . $i;
@@ -453,7 +453,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
 
             // Delete the domain
             $this->request('deleteDomain', array($domainName));
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->request('deleteDomain', array($domainName));
             throw $e;
         }
@@ -468,7 +468,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
             $this->assertContains($domainName, $domainListPage->getData());
             // Delete the domain
             $this->request('deleteDomain', array($domainName));
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->request('deleteDomain', array($domainName));
             throw $e;
         }
@@ -486,7 +486,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
             $this->request('deleteDomain', array($domainName));
             $domainListPage = $this->request('listDomains');
             $this->assertNotContains($domainName, $domainListPage->getData());
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->request('deleteDomain', array($domainName));
             throw $e;
         }

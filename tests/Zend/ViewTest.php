@@ -409,7 +409,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         try {
             $view->render('somefootemplate.phtml');
             $this->fail('Rendering a template when no script path is set should raise an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success...
             // @todo  assert something?
         }
@@ -479,7 +479,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
                 ->setHelperPath(__DIR__ . '/View/_stubs/HelperDir1')
                 ->setFilterPath(__DIR__ . '/View/_stubs/HelperDir1')
                 ->assign('foo', 'bar');
-        } catch (Exception $e){
+        } catch (\Throwable $e){
             $this->fail('Setters should not throw exceptions');
         }
 
@@ -552,7 +552,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         try {
             $view->_path = 'bar';
             $this->fail('Should not be able to set protected properties');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
             // @todo  assert something?
         }
@@ -606,7 +606,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         try {
             $view->assign('_path', __DIR__ . '/View/_stubs/HelperDir2/');
             $this->fail('Protected/private properties cannot be assigned');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
             // @todo  assert something?
         }
@@ -614,7 +614,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         try {
             $view->assign(array('_path' => __DIR__ . '/View/_stubs/HelperDir2/'));
             $this->fail('Protected/private properties cannot be assigned');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
             // @todo  assert something?
         }
@@ -622,7 +622,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         try {
             $view->assign($this);
             $this->fail('Assign spec requires string or array');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
             // @todo  assert something?
         }
@@ -912,7 +912,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         try {
             $view->render('bazbatNotExists.php.tpl');
             $this->fail('Non-existent view script should cause an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains($base. '_templates', $e->getMessage());
         }
     }
@@ -950,21 +950,21 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         try {
             $view->setHelperPath(__DIR__ . '/View/_stubs/HelperDir1', null);
             $this->fail('Exception for empty prefix was expected.');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('only takes strings', $e->getMessage());
         }
 
         try {
             $view->setHelperPath(__DIR__ . '/View/_stubs/HelperDir1', null);
             $this->fail('Exception for empty prefix was expected.');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('only takes strings', $e->getMessage());
         }
 
 
         try {
             $helper = $view->getHelper('Datetime');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('not found', $e->getMessage());
         }
     }

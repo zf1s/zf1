@@ -149,7 +149,7 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
         if (isset($object)) {
             try {
                 $tmp = @serialize($callback);
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 Zend_Cache::throwException($e->getMessage());
             }
             if (!$tmp) {
@@ -164,7 +164,7 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
         if ($args) {
             try {
                 $argsStr = @serialize(array_values($args));
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 Zend_Cache::throwException($e->getMessage());
             }
             if (!$argsStr) {

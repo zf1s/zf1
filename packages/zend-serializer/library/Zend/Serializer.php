@@ -60,7 +60,7 @@ class Zend_Serializer
         $adapterLoader = self::getAdapterLoader();
         try {
             $adapterClass = $adapterLoader->load($adapterName);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Serializer/Exception.php';
             throw new Zend_Serializer_Exception('Can\'t load serializer adapter "'.$adapterName.'"', 0, $e);
         }

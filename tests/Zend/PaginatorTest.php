@@ -260,7 +260,7 @@ class Zend_PaginatorTest extends PHPUnit_Framework_TestCase
     {
         try {
             $paginator = Zend_Paginator::factory(new stdClass());
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Paginator_Exception);
             $this->assertContains('stdClass', $e->getMessage());
         }
@@ -270,7 +270,7 @@ class Zend_PaginatorTest extends PHPUnit_Framework_TestCase
     {
         try {
             $paginator = Zend_Paginator::factory('invalid argument');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Paginator_Exception);
             $this->assertContains('string', $e->getMessage());
         }
@@ -637,7 +637,7 @@ class Zend_PaginatorTest extends PHPUnit_Framework_TestCase
 
         try {
             $paginator->getItem(1);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Paginator_Exception);
             $this->assertContains('Page 1 does not exist', $e->getMessage());
         }
@@ -647,7 +647,7 @@ class Zend_PaginatorTest extends PHPUnit_Framework_TestCase
     {
         try {
             $this->_paginator->getItem(10, 11);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Paginator_Exception);
             $this->assertContains('Page 11 does not contain item number 10', $e->getMessage());
         }
@@ -756,7 +756,7 @@ class Zend_PaginatorTest extends PHPUnit_Framework_TestCase
     {
         try {
             $this->_paginator->render(new Zend_View());
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_View_Exception);
             $this->assertEquals('No view partial provided and no default set', $e->getMessage());
         }

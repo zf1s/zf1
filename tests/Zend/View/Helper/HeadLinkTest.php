@@ -125,7 +125,7 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit_Framework_TestCase
         try {
             $this->helper->prepend('foo');
             $this->fail('prepend should raise exception without array argument');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -134,7 +134,7 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit_Framework_TestCase
         try {
             $this->helper->append('foo');
             $this->fail('append should raise exception without array argument');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -143,7 +143,7 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit_Framework_TestCase
         try {
             $this->helper->set('foo');
             $this->fail('set should raise exception without array argument');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -152,7 +152,7 @@ class Zend_View_Helper_HeadLinkTest extends PHPUnit_Framework_TestCase
         try {
             $this->helper->offsetSet(1, 'foo');
             $this->fail('set should raise exception without array argument');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 

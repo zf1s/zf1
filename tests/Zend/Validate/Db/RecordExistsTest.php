@@ -177,7 +177,7 @@ class Zend_Validate_Db_RecordExistsTest extends PHPUnit_Framework_TestCase
             $validator = new Zend_Validate_Db_RecordExists('users', 'field1', 'id != 1');
             $valid = $validator->isValid('nosuchvalue');
             $this->markTestFailed('Did not throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -238,7 +238,7 @@ class Zend_Validate_Db_RecordExistsTest extends PHPUnit_Framework_TestCase
         try {
             $validator = new Zend_Validate_Db_RecordExists('users', 'field1', null, $this->_adapterNoResult);
             $this->assertFalse($validator->isValid('value1'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->markTestSkipped('No database available');
         }
     }

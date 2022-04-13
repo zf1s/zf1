@@ -306,7 +306,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
 
         try {
             $controller->dispatch($action);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // Clean output buffer on error
             $curObLevel = ob_get_level();
             if ($curObLevel > $obLevel) {

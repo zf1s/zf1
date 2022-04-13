@@ -222,7 +222,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_Te
         try {
             $helper->initContext();
             $this->assertTrue(true);
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             if($e->getMessage() == 'test testAjaxContextIsRequestDependent failed' ) {
                 $this->fail();
             } else {

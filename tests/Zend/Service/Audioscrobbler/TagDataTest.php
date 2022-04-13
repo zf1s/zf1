@@ -48,7 +48,7 @@ class Zend_Service_Audioscrobbler_TagDataTest extends Zend_Service_Audioscrobble
             $as = new Zend_Service_Audioscrobbler();
             $response = $as->tagGetTopTags();
             $this->assertNotNull(count($response->tag));
-        } catch (Exception $e ) {
+        } catch (\Throwable $e ) {
                 $this->fail("Exception: [" . $e->getMessage() . "] thrown by test");
         }
     }

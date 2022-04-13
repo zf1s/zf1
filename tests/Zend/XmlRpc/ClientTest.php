@@ -320,7 +320,7 @@ class Zend_XmlRpc_ClientTest extends PHPUnit_Framework_TestCase
         try {
             $this->xmlrpcClient->call('foo');
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_XmlRpc_Client_HttpException);
             $this->assertEquals($message, $e->getMessage());
             $this->assertEquals($status, $e->getCode());
@@ -341,7 +341,7 @@ class Zend_XmlRpc_ClientTest extends PHPUnit_Framework_TestCase
         try {
             $this->xmlrpcClient->call('foo');
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_XmlRpc_Client_FaultException);
             $this->assertEquals($message, $e->getMessage());
             $this->assertEquals($code, $e->getCode());

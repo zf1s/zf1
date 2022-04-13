@@ -254,7 +254,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
             default:
                 try {
                     $value = Zend_Locale_Format::getInteger($value, array('locale' => $locale));
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                     // require_once 'Zend/Measure/Exception.php';
                     throw new Zend_Measure_Exception($e->getMessage(), $e->getCode(), $e);
                 }

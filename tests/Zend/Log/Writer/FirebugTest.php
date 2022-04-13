@@ -256,14 +256,14 @@ class Zend_Log_Writer_FirebugTest extends PHPUnit_Framework_TestCase
 
         try {
           throw new Exception('Test Exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
           $this->_logger->err($e);
         }
 
         try {
             Zend_Wildfire_Plugin_FirePhp::send($message, $label, 'UNKNOWN');
             $this->fail('Should not be able to log with undefined log style');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
 

@@ -213,7 +213,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
             if ($queue->save()) {
                 return true;
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception($e->getMessage(), $e->getCode(), $e);
         }
@@ -244,7 +244,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
         if ($queue instanceof Zend_Db_Table_Row_Abstract) {
             try {
                 $queue->delete();
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 // require_once 'Zend/Queue/Exception.php';
                 throw new Zend_Queue_Exception($e->getMessage(), $e->getCode(), $e);
             }
@@ -348,7 +348,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
 
         try {
             $msg->save();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception($e->getMessage(), $e->getCode(), $e);
         }
@@ -431,7 +431,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
                 }
                 $db->commit();
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $db->rollBack();
 
             // require_once 'Zend/Queue/Exception.php';

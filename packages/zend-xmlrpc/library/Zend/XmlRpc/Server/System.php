@@ -144,7 +144,7 @@ class Zend_XmlRpc_Server_System
                     } else {
                         $responses[] = $response->getReturnValue();
                     }
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                     $fault = $this->_server->fault($e);
                 }
             }

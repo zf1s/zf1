@@ -82,7 +82,7 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
             $response = $as->userGetProfileInformation();
             $this->assertNull($response);
 
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return;
         }
 

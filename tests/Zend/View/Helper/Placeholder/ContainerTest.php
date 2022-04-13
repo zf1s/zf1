@@ -324,7 +324,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
                 $this->container->captureStart('SET');
                 $this->container->captureEnd();
             $this->container->captureEnd();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->container->captureEnd();
             $caught = true;
         }

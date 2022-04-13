@@ -84,7 +84,7 @@ class Zend_Db_Select
     const REGEX_COLUMN_EXPR       = '/^([\w]*\s*\(([^\(\)]|(?1))*\))$/';
     const REGEX_COLUMN_EXPR_ORDER = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
     const REGEX_COLUMN_EXPR_GROUP = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
-    
+
     // @see http://stackoverflow.com/a/13823184/2028814
     const REGEX_SQL_COMMENTS      = '@
     (([\'"]).*?[^\\\]\2) # $1 : Skip single & double quoted expressions
@@ -1372,7 +1372,7 @@ class Zend_Db_Select
     {
         try {
             $sql = $this->assemble();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             trigger_error($e->getMessage(), E_USER_WARNING);
             $sql = '';
         }

@@ -205,7 +205,7 @@ class Zend_View_Helper_DoctypeTest extends PHPUnit_Framework_TestCase
         try {
             $doctype = $this->helper->doctype('<!FOO HTML>');
             $this->fail('Malformed doctype should raise exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 

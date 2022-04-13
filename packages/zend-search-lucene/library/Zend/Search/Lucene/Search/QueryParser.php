@@ -380,7 +380,7 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
                     self::$_instance->process($token->type);
 
                     self::$_instance->_lastToken = $token;
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                     if (strpos((string) $e->getMessage(), 'There is no any rule for') !== false) {
                         throw new Zend_Search_Lucene_Search_QueryParserException( 'Syntax error at char position ' . $token->position . '.', 0, $e);
                     }

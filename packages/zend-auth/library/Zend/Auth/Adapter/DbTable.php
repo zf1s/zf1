@@ -481,7 +481,7 @@ class Zend_Auth_Adapter_DbTable implements Zend_Auth_Adapter_Interface
                 $this->_zendDb->setFetchMode($origDbFetchMode);
                 unset($origDbFetchMode);
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             /**
              * @see Zend_Auth_Adapter_Exception
              */

@@ -97,7 +97,7 @@ class Zend_Service_StrikeIron_Base
                                                             $this->_options['options'],
                                                             $this->_options['headers'],
                                                             $this->_outputHeaders);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $message = get_class($e) . ': ' . $e->getMessage();
             /**
              * @see Zend_Service_StrikeIron_Exception

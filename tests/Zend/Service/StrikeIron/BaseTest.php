@@ -188,7 +188,7 @@ class Zend_Service_StrikeIron_BaseTest extends PHPUnit_Framework_TestCase
         try {
             $this->base->throwTheException();
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Service_StrikeIron_Exception);
             $this->assertEquals('Exception: foo', $e->getMessage());
             $this->assertEquals(43, $e->getCode());

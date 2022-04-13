@@ -178,7 +178,7 @@ class Zend_Validate_Db_NoRecordExistsTest extends PHPUnit_Framework_TestCase
             $validator = new Zend_Validate_Db_NoRecordExists('users', 'field1', 'id != 1');
             $valid = $validator->isValid('nosuchvalue');
             $this->markTestFailed('Did not throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -222,7 +222,7 @@ class Zend_Validate_Db_NoRecordExistsTest extends PHPUnit_Framework_TestCase
         try {
             $validator = new Zend_Validate_Db_NoRecordExists('users', 'field1', null, $this->_adapterHasResult);
             $this->assertFalse($validator->isValid('value1'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->markTestSkipped('No database available');
         }
     }
@@ -239,7 +239,7 @@ class Zend_Validate_Db_NoRecordExistsTest extends PHPUnit_Framework_TestCase
         try {
             $validator = new Zend_Validate_Db_NoRecordExists('users', 'field1', null, $this->_adapterNoResult);
             $this->assertTrue($validator->isValid('value1'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->markTestSkipped('No database available');
         }
     }

@@ -76,9 +76,9 @@ class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Fram
         $storageClient = $this->createAdministrativeStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++)
         {
-            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOBSA_CONTAINER_PREFIX . $i); } catch (Exception $e) { }
+            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOBSA_CONTAINER_PREFIX . $i); } catch (\Throwable $e) { }
         }
-        try { $storageClient->deleteContainer('$root'); } catch (Exception $e) { }
+        try { $storageClient->deleteContainer('$root'); } catch (\Throwable $e) { }
     }
 
     protected function createStorageInstance()
@@ -167,7 +167,7 @@ class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Fram
             $exceptionThrown = false;
             try {
                 $storageClient->getBlob($containerName, 'images/WindowsAzure.gif', self::$path . 'WindowsAzure.gif');
-            } catch (Exception $ex) {
+            } catch (\Throwable $ex) {
                 $exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);
@@ -208,7 +208,7 @@ class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Fram
 	                $sharedAccessUrl1,
 	                $sharedAccessUrl2
 	            ));
-            } catch (Exception $ex) {
+            } catch (\Throwable $ex) {
                 $exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);

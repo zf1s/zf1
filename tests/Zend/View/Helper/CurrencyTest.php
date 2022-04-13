@@ -133,7 +133,7 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit_Framework_TestCase
     {
         try {
             $helper = new Zend_View_Helper_Currency('something');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             if (substr((string) $e->getMessage(), 0, 15) == 'No region found') {
                 $this->assertContains('within the locale', $e->getMessage());
             } else {
@@ -146,7 +146,7 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit_Framework_TestCase
     {
         try {
             $this->helper->setCurrency('something');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             if (substr((string) $e->getMessage(), 0, 15) == 'No region found') {
                 $this->assertContains('within the locale', $e->getMessage());
             } else {

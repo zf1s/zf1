@@ -50,7 +50,7 @@ class Zend_Xml_MultibyteTest extends PHPUnit_Framework_TestCase
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
         $result = PHPUnit_TextUI_TestRunner::run($suite);
     }
- 
+
     public function multibyteEncodings()
     {
         return array(
@@ -134,7 +134,7 @@ XML;
         try {
             $result = $this->invokeHeuristicScan($xml);
             $this->assertNull($result);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Security scan raised exception when it should not have');
         }
     }

@@ -1276,7 +1276,7 @@ class Zend_Gdata_Gapps extends Zend_Gdata
         //if the enitiy is not a member, an exception is thrown
         try {
             $results = $this->get($uri);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $results = false;
         }
 
@@ -1390,7 +1390,7 @@ class Zend_Gdata_Gapps extends Zend_Gdata
         //if the enitiy is not an owner of the group, an exception is thrown
         try {
             $results = $this->get($uri);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $results = false;
         }
 

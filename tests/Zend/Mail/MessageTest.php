@@ -66,7 +66,7 @@ class Zend_Mail_MessageTest extends PHPUnit_Framework_TestCase
     {
         try {
             $message = new Zend_Mail_Message(array('file' => '/this/file/does/not/exists'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 
@@ -135,7 +135,7 @@ class Zend_Mail_MessageTest extends PHPUnit_Framework_TestCase
 
         try {
             $message->getPart(-1);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 

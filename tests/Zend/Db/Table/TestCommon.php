@@ -453,7 +453,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         try {
             Zend_Db_Table_Abstract::setDefaultAdapter(327);
             $this->fail('Expected to catch Zend_Db_Table_Exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Db_Table_Exception,
                 'Expecting object of type Zend_Db_Table_Exception, got '.get_class($e));
             $this->assertEquals("Argument must be of type Zend_Db_Adapter_Abstract, or a Registry key where a Zend_Db_Adapter_Abstract object is stored", $e->getMessage());
@@ -1536,7 +1536,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         try {
             Zend_Db_Table_Abstract::setDefaultMetadataCache(327);
             $this->fail('Expected to catch Zend_Db_Table_Exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Db_Table_Exception,
                 'Expecting object of type Zend_Db_Table_Exception, got '.get_class($e));
             $this->assertEquals("Argument must be of type Zend_Cache_Core, or a Registry key where a Zend_Cache_Core object is stored", $e->getMessage());

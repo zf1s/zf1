@@ -103,7 +103,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
         try {
             $result =
                 $ss->getSlideShow(TESTS_ZEND_SERVICE_SLIDESHARE_SLIDESHOWID);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Exception Caught retrieving Slideshow");
         }
 
@@ -117,7 +117,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
 
         try {
             $results = $ss->getSlideShowsByTag('zend', 0, 1);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Exception Caught retrieving Slideshow List (tag)");
         }
 
@@ -139,7 +139,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
                      'php'
                 ), 0, 1
             );
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Exception Caught retrieving Slideshow List (tag)");
         }
 
@@ -161,7 +161,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
             $results = $ss->getSlideShowsByUsername(
                 TESTS_ZEND_SERVICE_SLIDESHARE_USERNAME, 0, 1
             );
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Exception Caught retrieving Slideshow List (tag)");
         }
 
@@ -188,7 +188,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
 
         try {
             $result = $ss->uploadSlideShow($show, false);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
 
             if ($e->getCode()
                 == Zend_Service_SlideShare::SERVICE_ERROR_NOT_SOURCEOBJ

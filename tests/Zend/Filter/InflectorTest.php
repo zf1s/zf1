@@ -326,7 +326,7 @@ class Zend_Filter_InflectorTest extends PHPUnit_Framework_TestCase
         try {
             $filtered = $this->inflector->filter(array('controller' => 'FooBar'));
             $this->fail('Exception was not thrown when it was suppose to be.');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Filter_Exception);
         }
     }
@@ -347,7 +347,7 @@ class Zend_Filter_InflectorTest extends PHPUnit_Framework_TestCase
         try {
             $filtered = $this->inflector->filter(array('controller' => 'FooBar', 'action' => 'MooToo'));
             $this->assertEquals($filtered, 'e:\path\to\foo-bar\Moo-Too.phtml');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
     }
@@ -452,7 +452,7 @@ class Zend_Filter_InflectorTest extends PHPUnit_Framework_TestCase
                 'action' => 'MooToo'
                 ));
             $this->assertEquals($filtered, 'C:\htdocs\public\cache\00\01\42\app\modules' . DIRECTORY_SEPARATOR . 'foo-bar' . DIRECTORY_SEPARATOR . 'Moo-Too.phtml');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail($e->getMessage());
         }
     }

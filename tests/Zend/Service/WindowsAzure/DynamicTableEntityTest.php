@@ -60,7 +60,7 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++)
         {
-            try { $storageClient->deleteTable(TESTS_ZEND_SERVICE_WINDOWSAZURE_TABLE_TABLENAME_PREFIX . $i); } catch (Exception $e) { }
+            try { $storageClient->deleteTable(TESTS_ZEND_SERVICE_WINDOWSAZURE_TABLE_TABLENAME_PREFIX . $i); } catch (\Throwable $e) { }
         }
     }
 

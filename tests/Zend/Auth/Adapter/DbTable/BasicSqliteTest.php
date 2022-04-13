@@ -351,7 +351,7 @@ class Zend_Auth_Adapter_DbTable_BasicSqliteTest extends PHPUnit_Framework_TestCa
         Zend_Db_Table_Abstract::setDefaultAdapter(null);
         try {
             $this->_adapter = new Zend_Auth_Adapter_DbTable();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('No database adapter present', $e->getMessage());
             throw $e;
         }

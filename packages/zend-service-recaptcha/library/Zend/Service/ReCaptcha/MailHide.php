@@ -170,7 +170,7 @@ class Zend_Service_ReCaptcha_MailHide extends Zend_Service_ReCaptcha
     {
         try {
             $return = $this->getHtml();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $return = '';
             trigger_error($e->getMessage(), E_USER_WARNING);
         }

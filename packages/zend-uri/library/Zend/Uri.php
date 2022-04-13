@@ -55,7 +55,7 @@ abstract class Zend_Uri
     {
         try {
             return $this->getUri();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             trigger_error($e->getMessage(), E_USER_WARNING);
             return '';
         }
@@ -73,7 +73,7 @@ abstract class Zend_Uri
     {
         try {
             $uri = self::factory($uri);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return false;
         }
 
@@ -137,7 +137,7 @@ abstract class Zend_Uri
             if (!class_exists($className)) {
                 Zend_Loader::loadClass($className);
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Uri/Exception.php';
             throw new Zend_Uri_Exception("\"$className\" not found");
         }

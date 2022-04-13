@@ -122,7 +122,7 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
         try {
             $response = $rest->restGet('/rest/');
             $this->fail('Should throw exception if no URI in object');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }

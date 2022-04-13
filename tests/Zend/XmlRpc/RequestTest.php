@@ -187,7 +187,7 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
 
         try {
             $parsed = $this->_request->loadXml($xml);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Failed to parse XML: ' . $e->getMessage());
         }
         $this->assertTrue($parsed, $xml);
@@ -199,7 +199,7 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
 
         try {
             $parsed = $this->_request->loadXml('foo');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Failed to parse XML: ' . $e->getMessage());
         }
         $this->assertFalse($parsed, 'Parsed non-XML string?');
@@ -282,7 +282,7 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
     {
         try {
             $sx = new SimpleXMLElement($xml);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Invalid XML returned');
         }
 
@@ -306,7 +306,7 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
                 (string) $sx->params->param[0]->value->string,
                 (bool) $sx->params->param[1]->value->boolean
             );
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('One or more inconsistencies parsing generated XML: ' . $e->getMessage());
         }
 

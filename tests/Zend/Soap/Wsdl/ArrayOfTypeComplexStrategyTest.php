@@ -191,7 +191,7 @@ class Zend_Soap_Wsdl_ArrayOfTypeComplexStrategyTest extends PHPUnit_Framework_Te
         try {
             $return = $this->wsdl->addComplexType("Zend_Soap_Wsdl_ComplexTypeA");
             $wsdl = $this->wsdl->toXml();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("Adding object with nested structure should not throw exception.");
         }
     }

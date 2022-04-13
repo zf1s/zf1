@@ -76,7 +76,7 @@ class Zend_Soap_Wsdl_CompositeStrategyTest extends PHPUnit_Framework_TestCase
         try {
             $strategy->connectTypeToStrategy(array(), "strategy");
             $this->fail();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Soap_Wsdl_Exception);
         }
     }
@@ -89,14 +89,14 @@ class Zend_Soap_Wsdl_CompositeStrategyTest extends PHPUnit_Framework_TestCase
         try {
             $book = $strategy->getStrategyOfType("Book");
             $this->fail();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Soap_Wsdl_Exception);
         }
 
         try {
             $book = $strategy->getStrategyOfType("Anything");
             $this->fail();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Soap_Wsdl_Exception);
         }
     }
@@ -121,7 +121,7 @@ class Zend_Soap_Wsdl_CompositeStrategyTest extends PHPUnit_Framework_TestCase
         try {
             $strategy->addComplexType("Test");
             $this->fail();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Soap_Wsdl_Exception);
         }
     }

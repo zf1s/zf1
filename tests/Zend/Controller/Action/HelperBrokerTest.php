@@ -100,7 +100,7 @@ class Zend_Controller_Action_HelperBrokerTest extends PHPUnit_Framework_TestCase
         try {
             $received = Zend_Controller_Action_HelperBroker::getExistingHelper('testHelper');
             $this->fail('Retrieving unregistered helpers should throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }

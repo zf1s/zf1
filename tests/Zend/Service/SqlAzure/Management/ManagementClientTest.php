@@ -71,7 +71,7 @@ class Zend_Service_SqlAzure_Management_ManagementClientTest extends PHPUnit_Fram
         $managementClient = $this->createManagementClient();
 
         // Remove server
-        try { $managementClient->dropServer(self::$serverName); } catch (Exception $ex) { }
+        try { $managementClient->dropServer(self::$serverName); } catch (\Throwable $ex) { }
     }
 
     protected function createManagementClient()

@@ -42,28 +42,28 @@ class Zend_Server_ReflectionTest extends PHPUnit_Framework_TestCase
         try {
             $reflection = Zend_Server_Reflection::reflectClass('Zend_Server_Reflection_testClass');
             $this->assertTrue($reflection instanceof Zend_Server_Reflection_Class);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Failed to perform class reflection: ' . $e->getMessage());
         }
 
         try {
             $reflection = Zend_Server_Reflection::reflectClass(new Zend_Server_Reflection_testClass());
             $this->assertTrue($reflection instanceof Zend_Server_Reflection_Class);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Failed to perform object reflection: ' . $e->getMessage());
         }
 
         try {
             $reflection = Zend_Server_Reflection::reflectClass('Zend_Server_Reflection_testClass', 'string');
             $this->fail('Passing non-array for argv should fail');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // do nothing
         }
 
         try {
             $reflection = Zend_Server_Reflection::reflectClass(false);
             $this->fail('Passing non-object/class should fail');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // do nothing
         }
     }
@@ -85,21 +85,21 @@ class Zend_Server_ReflectionTest extends PHPUnit_Framework_TestCase
         try {
             $reflection = Zend_Server_Reflection::reflectFunction('Zend_Server_Reflection_testFunction');
             $this->assertTrue($reflection instanceof Zend_Server_Reflection_Function);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Function reflection failed: ' . $e->getMessage());
         }
 
         try {
             $reflection = Zend_Server_Reflection::reflectFunction(false);
             $this->fail('Function reflection should require valid function');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // do nothing
         }
 
         try {
             $reflection = Zend_Server_Reflection::reflectFunction('Zend_Server_Reflection_testFunction', 'string');
             $this->fail('Argv array should be an array');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // do nothing
         }
     }

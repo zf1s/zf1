@@ -529,7 +529,7 @@ class Zend_Form_DisplayGroupTest extends PHPUnit_Framework_TestCase
         try {
             foreach ($this->group as $item) {
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Exceptions should not be raised by iterator when elements are removed; error message: ' . $e->getMessage());
         }
     }

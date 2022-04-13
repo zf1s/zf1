@@ -70,7 +70,7 @@ class Zend_Service_WindowsAzure_TableStorageTest extends PHPUnit_Framework_TestC
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++)
         {
-            try { $storageClient->deleteTable(TESTS_ZEND_SERVICE_WINDOWSAZURE_TABLE_TABLENAME_PREFIX . $i); } catch (Exception $e) { }
+            try { $storageClient->deleteTable(TESTS_ZEND_SERVICE_WINDOWSAZURE_TABLE_TABLENAME_PREFIX . $i); } catch (\Throwable $e) { }
         }
     }
 
@@ -282,7 +282,7 @@ class Zend_Service_WindowsAzure_TableStorageTest extends PHPUnit_Framework_TestC
             $exceptionThrown = false;
             try {
                 $storageClient->deleteEntity($tableName, $entity, true);
-            } catch (Exception $ex) {
+            } catch (\Throwable $ex) {
                 $exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);
@@ -422,7 +422,7 @@ class Zend_Service_WindowsAzure_TableStorageTest extends PHPUnit_Framework_TestC
             $exceptionThrown = false;
             try {
                 $storageClient->updateEntity($tableName, $entity, true);
-            } catch (Exception $ex) {
+            } catch (\Throwable $ex) {
                 $exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);
@@ -488,7 +488,7 @@ class Zend_Service_WindowsAzure_TableStorageTest extends PHPUnit_Framework_TestC
             $exceptionThrown = false;
             try {
                 $storageClient->mergeEntity($tableName, $dynamicEntity, true);
-            } catch (Exception $ex) {
+            } catch (\Throwable $ex) {
                 $exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);
@@ -759,7 +759,7 @@ class Zend_Service_WindowsAzure_TableStorageTest extends PHPUnit_Framework_TestC
             $exceptionThrown = false;
             try {
                 $batch->commit();
-            } catch (Exception $ex) {
+            } catch (\Throwable $ex) {
                 $exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);
@@ -793,7 +793,7 @@ class Zend_Service_WindowsAzure_TableStorageTest extends PHPUnit_Framework_TestC
             $exceptionThrown = false;
             try {
                 $batch->commit();
-            } catch (Exception $ex) {
+            } catch (\Throwable $ex) {
                 $exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);

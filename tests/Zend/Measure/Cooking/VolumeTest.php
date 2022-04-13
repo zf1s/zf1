@@ -267,7 +267,7 @@ class Zend_Measure_Cooking_VolumeTest extends PHPUnit_Framework_TestCase
             $value = new Zend_Measure_Cooking_Volume('100',Zend_Measure_Cooking_Volume::STANDARD,'de');
             $value->setValue('novalue',Zend_Measure_Cooking_Volume::STANDARD,'de');
             $this->fail('Exception expected because of empty value');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }

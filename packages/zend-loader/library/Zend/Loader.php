@@ -234,7 +234,7 @@ class Zend_Loader
         try {
             @self::loadClass($class);
             return $class;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return false;
         }
     }
@@ -338,6 +338,6 @@ class Zend_Loader
             $file      = str_replace((string) '\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
         }
         $file .= str_replace((string) '_', DIRECTORY_SEPARATOR, $fileName) . '.php';
-        return $file;    
+        return $file;
     }
 }

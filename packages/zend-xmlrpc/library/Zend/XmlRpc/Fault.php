@@ -200,7 +200,7 @@ class Zend_XmlRpc_Fault
 
         try {
             $xml = @new SimpleXMLElement($fault);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // Not valid XML
             // require_once 'Zend/XmlRpc/Exception.php';
             throw new Zend_XmlRpc_Exception('Failed to parse XML fault: ' .  $e->getMessage(), 500, $e);

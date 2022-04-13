@@ -119,7 +119,7 @@ class Zend_Service_WindowsAzure_TableEntityTest extends PHPUnit_Framework_TestCa
         {
             $target->setAzureValues($values, true);
         }
-        catch (Exception $ex) {
+        catch (\Throwable $ex) {
             $exceptionRaised = true;
         }
 

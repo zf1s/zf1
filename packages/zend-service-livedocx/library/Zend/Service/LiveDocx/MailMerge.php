@@ -99,7 +99,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
                 'template' => base64_encode(file_get_contents($filename)),
                 'format'   => self::getFormat($filename),
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot set local template', 0, $e
@@ -126,7 +126,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
             $this->getSoapClient()->SetRemoteTemplate(array(
                 'filename' => $filename,
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot set remote template', 0, $e
@@ -161,7 +161,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
             $this->getSoapClient()->SetFieldValues(array(
                 'fieldValues' => self::$method($values),
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot set field values', 0, $e
@@ -207,7 +207,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
                 'blockName'        => $blockName,
                 'blockFieldValues' => self::multiAssocArrayToArrayOfArrayOfString($blockFieldValues)
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot set block field values', 0, $e
@@ -238,7 +238,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
             } else {
                 $this->setFieldValue($field, $value);
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot assign data to template', 0, $e
@@ -266,7 +266,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
             $this->getSoapClient()->SetDocumentPassword(array(
                 'password' => $password
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot set document password. This method can be used on PDF files only.', 0, $e
@@ -311,7 +311,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
                 'permissions' => $permissions,
                 'password'    => $password
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot set document access permissions', 0, $e
@@ -341,7 +341,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
 
         try {
             $this->getSoapClient()->CreateDocument();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot create document', 0, $e
@@ -368,7 +368,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
             $result = $this->getSoapClient()->RetrieveDocument(array(
                 'format' => $format,
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot retrieve document - call setLocalTemplate() or setRemoteTemplate() first', 0, $e
@@ -606,7 +606,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
                 'template' => base64_encode(file_get_contents($filename)),
                 'filename' => basename($filename),
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot upload template', 0, $e
@@ -630,7 +630,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
             $result = $this->getSoapClient()->DownloadTemplate(array(
                 'filename' => basename($filename),
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot download template', 0, $e
@@ -769,7 +769,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
             $result = $this->getSoapClient()->DownloadSharedDocument(array(
                 'filename' => basename($filename),
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot download shared document', 0, $e
@@ -968,7 +968,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
                 'image'    => base64_encode(file_get_contents($filename)),
                 'filename' => basename($filename),
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot upload image', 0, $e
@@ -992,7 +992,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
             $result = $this->getSoapClient()->DownloadImage(array(
                 'filename' => basename($filename),
             ));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Service/LiveDocx/Exception.php';
             throw new Zend_Service_LiveDocx_Exception(
                 'Cannot download image', 0, $e

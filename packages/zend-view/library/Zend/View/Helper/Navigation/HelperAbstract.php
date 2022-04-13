@@ -630,7 +630,7 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
     {
         try {
             return $this->render();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $msg = get_class($e) . ': ' . $e->getMessage();
             trigger_error($msg, E_USER_ERROR);
             return '';

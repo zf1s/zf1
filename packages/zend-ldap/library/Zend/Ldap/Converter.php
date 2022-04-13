@@ -136,7 +136,7 @@ class Zend_Ldap_Converter
                     }
                     break;
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             throw new Zend_Ldap_Converter_Exception($e->getMessage(), $e->getCode(), $e);
         }
     }

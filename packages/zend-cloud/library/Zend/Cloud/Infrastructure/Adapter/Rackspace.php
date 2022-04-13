@@ -139,7 +139,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
 
         try {
             $this->rackspace = new Zend_Service_Rackspace_Servers($this->accessUser,$this->accessKey, $this->region);
-        } catch (Exception  $e) {
+        } catch (\Throwable  $e) {
             // require_once 'Zend/Cloud/Infrastructure/Exception.php';
             throw new Zend_Cloud_Infrastructure_Exception('Error on create: ' . $e->getMessage(), $e->getCode(), $e);
         }

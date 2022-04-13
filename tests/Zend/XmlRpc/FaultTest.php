@@ -134,7 +134,7 @@ class Zend_XmlRpc_FaultTest extends PHPUnit_Framework_TestCase
 
         try {
             $parsed = $this->_fault->loadXml($xml);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Failed to parse XML: ' . $e->getMessage());
         }
         $this->assertTrue($parsed, $xml);
@@ -217,7 +217,7 @@ class Zend_XmlRpc_FaultTest extends PHPUnit_Framework_TestCase
     {
         try {
             $sx = new SimpleXMLElement($xml);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Unable to parse generated XML');
         }
 
@@ -289,7 +289,7 @@ class Zend_XmlRpc_FaultTest extends PHPUnit_Framework_TestCase
 
         try {
             $parsed = $this->_fault->loadXml($xml);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Failed to parse XML: ' . $e->getMessage());
         }
         $this->assertTrue($parsed, $xml);

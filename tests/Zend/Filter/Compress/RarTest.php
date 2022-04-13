@@ -235,14 +235,14 @@ class Zend_Filter_Compress_RarTest extends PHPUnit_Framework_TestCase
         try {
             $filter->compress('test.txt');
             $this->fails('Exception expected');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('No compression callback', $e->getMessage());
         }
 
         try {
             $filter->setCallback('invalidCallback');
             $this->fails('Exception expected');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertContains('Callback can not be accessed', $e->getMessage());
         }
 

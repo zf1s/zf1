@@ -641,7 +641,7 @@ class Zend_Console_GetoptTest extends PHPUnit_Framework_TestCase
         try {
             $opts->parse();
             $this->fail();
-        } catch(Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Console_Getopt_Exception);
         }
     }

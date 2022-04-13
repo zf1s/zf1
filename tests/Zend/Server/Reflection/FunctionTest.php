@@ -44,7 +44,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         try {
             $r = new Zend_Server_Reflection_Function($params[0]);
             $this->fail('Should not be able to construct with non-function');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // do nothing
         }
 

@@ -83,7 +83,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Mbox(array('filename' => $this->_mboxFile));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while loading mbox file');
         }
     }
@@ -92,7 +92,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Mbox(new Zend_Config(array('filename' => $this->_mboxFile)));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while loading mbox folder');
         }
     }
@@ -101,7 +101,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Mbox(array());
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -112,7 +112,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Mbox(array('filename' => 'ThisFileDoesNotExist'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -123,7 +123,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Mbox(array('filename' => __FILE__));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -136,7 +136,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->close();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while closing mbox file');
         }
     }
@@ -161,7 +161,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->noop();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while doing nothing (noop)');
         }
     }
@@ -233,7 +233,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->removeMessage(1);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -263,7 +263,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->seek(INF);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -314,7 +314,7 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
         $check = false;
         try {
             $mail = unserialize($serialzed);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $check = true;
             // test ok
         }

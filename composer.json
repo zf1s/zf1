@@ -3,7 +3,7 @@
     "description": "Monorepo for zf1s (Zend Framework 1) packages",
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=7",
         "ext-ctype": "*",
         "ext-dom": "*",
         "ext-gd": "*",

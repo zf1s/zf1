@@ -113,7 +113,7 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
 
             $this->_commonQueue->deleteQueue($queueURL1);
             $this->_commonQueue->deleteQueue($queueURL2);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             if (isset($queueURL1)) {
                 $this->_commonQueue->deleteQueue($queueURL1);
             }

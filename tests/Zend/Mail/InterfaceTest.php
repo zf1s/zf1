@@ -78,7 +78,7 @@ class Zend_Mail_InterfaceTest extends PHPUnit_Framework_TestCase
 
         try {
             $list[1] = 'test';
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -148,7 +148,7 @@ class Zend_Mail_InterfaceTest extends PHPUnit_Framework_TestCase
         try {
             $result = $list->noop();
             $this->assertTrue($result);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while calling noop thru fallback');
         }
     }
@@ -159,7 +159,7 @@ class Zend_Mail_InterfaceTest extends PHPUnit_Framework_TestCase
 
         try {
             $list->thisdoesnotexist;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -179,7 +179,7 @@ class Zend_Mail_InterfaceTest extends PHPUnit_Framework_TestCase
 
         try {
             $list[1]->thisdoesnotexist;
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 

@@ -215,7 +215,7 @@ class Zend_Validate_Date extends Zend_Validate_Abstract
                 (strpos((string) strtoupper((string) $this->_format), 'YYYY') === false))) {
                 $parsed['year'] = Zend_Date::getFullYear($parsed['year']);
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // Date can not be parsed
             return false;
         } catch (Error $e) {

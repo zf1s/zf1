@@ -89,14 +89,14 @@ class Zend_Service_WindowsAzure_Management_ManagementClientTest extends PHPUnit_
         $managementClient = $this->createManagementClient();
 
         // Remove deployment
-        try { $managementClient->updateDeploymentStatusBySlot(TESTS_ZEND_SERVICE_WINDOWSAZURE_MANAGEMENT_SERVICENAME, 'production', 'suspended'); $managementClient->waitForOperation(); } catch (Exception $ex) { }
-		try { $managementClient->deleteDeploymentBySlot(TESTS_ZEND_SERVICE_WINDOWSAZURE_MANAGEMENT_SERVICENAME, 'production'); $managementClient->waitForOperation(); } catch (Exception $ex) { }
+        try { $managementClient->updateDeploymentStatusBySlot(TESTS_ZEND_SERVICE_WINDOWSAZURE_MANAGEMENT_SERVICENAME, 'production', 'suspended'); $managementClient->waitForOperation(); } catch (\Throwable $ex) { }
+		try { $managementClient->deleteDeploymentBySlot(TESTS_ZEND_SERVICE_WINDOWSAZURE_MANAGEMENT_SERVICENAME, 'production'); $managementClient->waitForOperation(); } catch (\Throwable $ex) { }
 
 		// Remove hosted service
-        try { $managementClient->deleteHostedService(TESTS_ZEND_SERVICE_WINDOWSAZURE_MANAGEMENT_SERVICENAME); $managementClient->waitForOperation(); } catch (Exception $ex) { }
+        try { $managementClient->deleteHostedService(TESTS_ZEND_SERVICE_WINDOWSAZURE_MANAGEMENT_SERVICENAME); $managementClient->waitForOperation(); } catch (\Throwable $ex) { }
 
         // Remove affinity group
-        try { $managementClient->deleteAffinityGroup('test'); } catch (Exception $ex) { }
+        try { $managementClient->deleteAffinityGroup('test'); } catch (\Throwable $ex) { }
     }
 
     protected function createStorageInstance()

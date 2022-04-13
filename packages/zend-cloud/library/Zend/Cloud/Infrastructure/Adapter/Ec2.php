@@ -150,7 +150,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
 
         try {
             $this->ec2 = new Zend_Service_Amazon_Ec2_Instance($options[self::AWS_ACCESS_KEY], $options[self::AWS_SECRET_KEY], $this->region);
-        } catch (Exception  $e) {
+        } catch (\Throwable  $e) {
             // require_once 'Zend/Cloud/Infrastructure/Exception.php';
             throw new Zend_Cloud_Infrastructure_Exception('Error on create: ' . $e->getMessage(), $e->getCode(), $e);
         }

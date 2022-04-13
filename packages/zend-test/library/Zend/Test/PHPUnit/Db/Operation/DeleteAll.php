@@ -52,7 +52,7 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAll implements PHPUnit_Extensions_Dat
             try {
                 $tableName = $table->getTableMetaData()->getTableName();
                 $connection->getConnection()->delete($tableName);
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 throw new PHPUnit_Extensions_Database_Operation_Exception('DELETEALL', 'DELETE FROM '.$tableName.'', array(), $table, $e->getMessage());
             }
         }

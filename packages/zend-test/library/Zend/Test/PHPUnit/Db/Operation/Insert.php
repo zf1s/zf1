@@ -60,7 +60,7 @@ class Zend_Test_PHPUnit_Db_Operation_Insert implements PHPUnit_Extensions_Databa
                 $values = $this->buildInsertValues($table, $i);
                 try {
                     $db->insert($tableName, $values);
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                     throw new PHPUnit_Extensions_Database_Operation_Exception("INSERT", "INSERT INTO ".$tableName." [..]", $values, $table, $e->getMessage());
                 }
             }

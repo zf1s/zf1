@@ -36,7 +36,7 @@ class Zend_Cloud_Exception extends Zend_Exception
     /**
      * Exception for the underlying adapter
      *
-     * @var Exception
+     * @var \Throwable
      */
     protected $_clientException;
 

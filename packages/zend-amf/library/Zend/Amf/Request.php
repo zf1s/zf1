@@ -149,7 +149,7 @@ class Zend_Amf_Request
 
         try {
             $data = $this->_deserializer->readTypeMarker();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Amf/Exception.php';
             throw new Zend_Amf_Exception('Unable to parse ' . $name . ' header data: ' . $e->getMessage() . ' '. $e->getLine(), 0, $e);
         }
@@ -171,7 +171,7 @@ class Zend_Amf_Request
 
         try {
             $data = $this->_deserializer->readTypeMarker();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Amf/Exception.php';
             throw new Zend_Amf_Exception('Unable to parse ' . $targetURI . ' body data ' . $e->getMessage(), 0, $e);
         }

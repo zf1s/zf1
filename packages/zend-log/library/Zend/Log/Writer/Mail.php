@@ -385,7 +385,7 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
             // so we can avoid an exception thrown without a stack frame.
             try {
                 $this->_mail->setBodyHtml($this->_layout->render());
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 trigger_error(
                     "exception occurred when rendering layout; " .
                         "unable to set html body for message; " .
@@ -401,7 +401,7 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
         // stack frame.
         try {
             $this->_mail->send();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             trigger_error(
                 "unable to send log entries via email; " .
                     "message = {$e->getMessage()}; " .

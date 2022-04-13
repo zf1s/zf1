@@ -494,7 +494,7 @@ class Zend_Http_Client_StaticTest extends PHPUnit_Framework_TestCase
     {
         try {
             $this->_client->setMethod($method);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail("An unexpected exception was thrown when setting request method to '{$method}'");
         }
     }

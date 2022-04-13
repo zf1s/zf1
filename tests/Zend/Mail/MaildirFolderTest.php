@@ -130,7 +130,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while loading Maildir folder');
         }
     }
@@ -139,7 +139,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Folder_Maildir(new Zend_Config($this->_params));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while loading Maildir folder');
         }
     }
@@ -148,7 +148,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Folder_Maildir(array());
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -159,7 +159,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
     {
         try {
             $mail = new Zend_Mail_Storage_Folder_Maildir(array('dirname' => 'This/Folder/Does/Not/Exist'));
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -171,7 +171,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $this->_params['folder'] = 'UnknownFolder';
         try {
             $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -183,7 +183,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
         try {
             $mail->selectFolder('subfolder.test');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while selecting existing folder');
         }
 
@@ -195,7 +195,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
         try {
             $mail->selectFolder('/Unknown/Folder/');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // test ok
         }
 
@@ -208,7 +208,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         try {
             // explicit call of __toString() needed for PHP < 5.2
             $this->assertEquals($mail->getFolders()->subfolder->__toString(), 'subfolder');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while selecting existing folder and getting global name');
         }
     }
@@ -218,7 +218,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
         try {
             $this->assertEquals($mail->getFolders()->subfolder->key(), 'test');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('exception raised while selecting existing folder and getting local name');
         }
     }
@@ -350,7 +350,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $check = false;
         try {
             $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $check = true;
             // test ok
         }
@@ -377,7 +377,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $check = false;
         try {
             $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $check = true;
             // test ok
         }
@@ -397,7 +397,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->selectFolder('foobar');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 
@@ -412,7 +412,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->selectFolder('foobar');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 
@@ -427,7 +427,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
 
         try {
             $mail->selectFolder('foobar');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return; // ok
         }
 

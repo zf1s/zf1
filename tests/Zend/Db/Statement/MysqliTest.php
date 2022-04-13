@@ -289,7 +289,7 @@ INPUT;
 
         try {
         	$stmt = $this->_db->query($sql, 1);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         	$this->fail('Bounding params failed: ' . $e->getMessage());
         }
         $result = $stmt->fetch();

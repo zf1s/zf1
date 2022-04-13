@@ -881,13 +881,13 @@ class Zend_Soap_Server implements Zend_Server_Interface
 
         $fault = false;
         ob_start();
-        if ($setRequestException instanceof Exception) {
+        if ($setRequestException instanceof \Throwable) {
             // Create SOAP fault message if we've caught a request exception
             $fault = $this->fault($setRequestException->getMessage(), 'Sender');
         } else {
             try {
                 $soap->handle($this->_request);
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 $fault = $this->fault($e);
             }
         }
@@ -972,13 +972,13 @@ class Zend_Soap_Server implements Zend_Server_Interface
      * {@Link registerFaultException()}.
      *
      * @link   http://www.w3.org/TR/soap12-part1/#faultcodes
-     * @param  string|Exception $fault
+     * @param  string|\Throwable $fault
      * @param  string $code SOAP Fault Codes
      * @return SoapFault
      */
     public function fault($fault = null, $code = "Receiver")
     {
-        if ($fault instanceof Exception) {
+        if ($fault instanceof \Throwable) {
             $class = get_class($fault);
             if (in_array($class, $this->_faultExceptions)) {
                 $message = $fault->getMessage();

@@ -139,7 +139,7 @@ class Zend_Service_AkismetTest extends PHPUnit_Framework_TestCase
         try {
             $this->akismet->isSpam($this->comment);
             $this->fail('Response of "invalid" should trigger exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -189,7 +189,7 @@ class Zend_Service_AkismetTest extends PHPUnit_Framework_TestCase
         try {
             $this->akismet->submitSpam($this->comment);
             $this->fail('Response of "invalid" should trigger exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -208,7 +208,7 @@ class Zend_Service_AkismetTest extends PHPUnit_Framework_TestCase
         $this->adapter->setResponse($response);
         try {
             $this->akismet->submitSpam($this->comment);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Valid key should not throw exceptions');
         }
     }
@@ -227,7 +227,7 @@ class Zend_Service_AkismetTest extends PHPUnit_Framework_TestCase
         $this->adapter->setResponse($response);
         try {
             $this->akismet->submitHam($this->comment);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Valid key should not throw exceptions');
         }
     }

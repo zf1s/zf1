@@ -48,7 +48,7 @@ class Zend_Log_Formatter_SimpleTest extends PHPUnit_Framework_TestCase
         try {
             new Zend_Log_Formatter_Simple(1);
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/must be a string/i', $e->getMessage());
         }

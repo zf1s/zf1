@@ -82,7 +82,7 @@ class Zend_Queue_MessageTest extends PHPUnit_Framework_TestCase
         try {
             $message = new Zend_Queue_Message($this->options);
             $this->assertTrue(true);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('should have gotten a valid object');
         }
 
@@ -92,7 +92,7 @@ class Zend_Queue_MessageTest extends PHPUnit_Framework_TestCase
             $config2['queue'] = 'weee';
             $message = new Zend_Queue_Message($config2);
             $this->fail('should have thrown an exception bad queue var');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
@@ -101,7 +101,7 @@ class Zend_Queue_MessageTest extends PHPUnit_Framework_TestCase
             $config2['data'] = 'weee';
             $message = new Zend_Queue_Message($config2);
             $this->fail('should have thrown an exception bad queue var');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
     }
@@ -118,21 +118,21 @@ class Zend_Queue_MessageTest extends PHPUnit_Framework_TestCase
         try {
             $this->message->__get('hello world');
             $this->fail('key is NOT in variable, should have thrown an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $this->message->__set('hello world', 'good bye');
             $this->fail('key is NOT in variable, should have thrown an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
         try {
             $message = new Zend_Queue_Message($this->options);
             $this->assertTrue(true);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('should have gotten a valid object');
         }
 
@@ -142,7 +142,7 @@ class Zend_Queue_MessageTest extends PHPUnit_Framework_TestCase
             $config2['queue'] = 'weee';
             $message = new Zend_Queue_Message($config2);
             $this->fail('should have thrown an exception bad queue var');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
 
@@ -151,7 +151,7 @@ class Zend_Queue_MessageTest extends PHPUnit_Framework_TestCase
             $config2['data'] = 'weee';
             $message = new Zend_Queue_Message($config2);
             $this->fail('should have thrown an exception bad queue var');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
     }
@@ -171,7 +171,7 @@ class Zend_Queue_MessageTest extends PHPUnit_Framework_TestCase
             $null = new Zend_Queue('Null', array());
             $this->message->setQueue($null);
             $this->fail('invalid class passed to setQueue()');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue(true);
         }
     }

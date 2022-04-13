@@ -51,7 +51,7 @@ class Zend_Log_Filter_MessageTest extends PHPUnit_Framework_TestCase
         try {
             $filter = new Zend_Log_Filter_Message('invalid regexp');
             $this->fail();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegexp('/invalid reg/i', $e->getMessage());
         }

@@ -620,7 +620,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         try {
             $date = new Zend_Date();
             $date->set(0, Zend_Date::TIMES);
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('This usually stems from iconv_substr returnvalues in Zend_Locale_Format not being handled properly');
         } catch (Throwable $e) {
             $this->fail('This usually stems from iconv_substr returnvalues in Zend_Locale_Format not being handled properly');

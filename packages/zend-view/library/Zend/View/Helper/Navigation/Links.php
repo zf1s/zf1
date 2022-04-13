@@ -680,7 +680,7 @@ class Zend_View_Helper_Navigation_Links
                 try {
                     $page = Zend_Navigation_Page::factory($mixed);
                     return $page;
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                 }
             }
         }

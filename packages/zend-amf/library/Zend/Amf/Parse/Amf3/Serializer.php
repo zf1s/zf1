@@ -524,7 +524,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
                     // require_once 'Zend/Amf/Exception.php';
                     throw new Zend_Amf_Exception('Unknown Object Encoding type: ' . $encoding);
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // require_once 'Zend/Amf/Exception.php';
             throw new Zend_Amf_Exception('Unable to writeObject output: ' . $e->getMessage(), 0, $e);
         }

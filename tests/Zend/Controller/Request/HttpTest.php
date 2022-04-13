@@ -151,7 +151,7 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
         try {
             $this->_request->set('foo', 'bar');
             $this->fail('set() should alias to __set(), and throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -191,7 +191,7 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
         try {
             $this->_request->foo = 'bar';
             $this->fail('__set() should throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }
@@ -682,7 +682,7 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
             // Suppressing warning
             $header = @$this->_request->getHeader(null);
             $this->fail('getHeader() should fail with no arguments)');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // success
         }
     }

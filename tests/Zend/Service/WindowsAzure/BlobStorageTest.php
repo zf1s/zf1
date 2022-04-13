@@ -73,9 +73,9 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++)
         {
-            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_CONTAINER_PREFIX . $i); } catch (Exception $e) { }
+            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_CONTAINER_PREFIX . $i); } catch (\Throwable $e) { }
         }
-        try { $storageClient->deleteContainer('$root'); } catch (Exception $e) { }
+        try { $storageClient->deleteContainer('$root'); } catch (\Throwable $e) { }
     }
 
     protected function createStorageInstance()
@@ -463,7 +463,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $exceptionThrown = false;
             try {
             	$storageClient->leaseBlob($containerName, 'test.txt', Zend_Service_WindowsAzure_Storage_Blob::LEASE_ACQUIRE);
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
             	$exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);
@@ -472,7 +472,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $exceptionThrown = false;
             try {
             	$storageClient->deleteBlob($containerName, 'test.txt');
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
             	$exceptionThrown = true;
             }
             $this->markTestIncomplete('Test inconclusive. Verify http://social.msdn.microsoft.com/Forums/en/windowsazure/thread/9ae25614-b1da-43ab-abca-644abc034eb3 for info.');
@@ -482,7 +482,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $exceptionThrown = false;
             try {
             	$storageClient->putBlobData($containerName, 'test.txt', 'Hello!');
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
             	$exceptionThrown = true;
             }
             $this->assertFalse($exceptionThrown);
@@ -549,7 +549,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
                 $storageClient->setBlobMetadata($containerName, 'images/WindowsAzure.gif', array(
 	                'createdby' => "PHPAzure\nx-ms-meta-something:false",
 	            ));
-            } catch (Exception $ex) {
+            } catch (\Throwable $ex) {
                 $exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);

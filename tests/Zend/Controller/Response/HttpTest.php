@@ -308,19 +308,19 @@ class Zend_Controller_Response_HttpTest extends PHPUnit_Framework_TestCase
         try {
             $this->_response->setHttpResponseCode(99);
             $this->fail('Should not accept response codes < 100');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
 
         try {
             $this->_response->setHttpResponseCode(600);
             $this->fail('Should not accept response codes > 599');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
 
         try {
             $this->_response->setHttpResponseCode('bogus');
             $this->fail('Should not accept non-integer response codes');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
         }
     }
 
@@ -339,7 +339,7 @@ class Zend_Controller_Response_HttpTest extends PHPUnit_Framework_TestCase
         try {
             $this->_response->canSendHeaders(true);
             $this->fail('canSendHeaders() should throw exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             var_dump($e->getMessage());
             $this->assertRegExp('/headers already sent in .+, line \d+$/', $e->getMessage());
         }

@@ -154,7 +154,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
     {
         try {
             $this->_server->addFunction('Zend_Amf_Server_testFunction', 'test');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Attachment should have worked');
         }
 
@@ -164,7 +164,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         try {
             $this->_server->addFunction('nosuchfunction');
             $this->fail('nosuchfunction() should not exist and should throw an exception');
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             // do nothing
         }
 
@@ -177,7 +177,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
                 ),
                 'zsr'
             );
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $this->fail('Error attaching array of functions: ' . $e->getMessage());
         }
         $methods = $server->listMethods();

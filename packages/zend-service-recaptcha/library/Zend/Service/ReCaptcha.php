@@ -164,7 +164,7 @@ class Zend_Service_ReCaptcha extends Zend_Service_Abstract
     {
         try {
             $return = $this->getHtml();
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             $return = '';
             trigger_error($e->getMessage(), E_USER_WARNING);
         }
