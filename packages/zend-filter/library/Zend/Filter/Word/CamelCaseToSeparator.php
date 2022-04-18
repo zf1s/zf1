@@ -32,7 +32,10 @@
  */
 class Zend_Filter_Word_CamelCaseToSeparator extends Zend_Filter_Word_Separator_Abstract
 {
-
+    /**
+     * @param string $value
+     * @return string
+     */
     public function filter($value)
     {
         if (self::isUnicodeSupportEnabled()) {
