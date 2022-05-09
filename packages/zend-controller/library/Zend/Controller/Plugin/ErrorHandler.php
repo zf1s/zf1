@@ -211,12 +211,13 @@ class Zend_Controller_Plugin_ErrorHandler extends Zend_Controller_Plugin_Abstrac
     {
         $this->_handleError($request);
     }
-	
+
     /**
      * Post dispatch hook -- check for exceptions and dispatch error handler if
      * necessary
      *
      * @param Zend_Controller_Request_Abstract $request
+     * @return void
      */
     public function postDispatch(Zend_Controller_Request_Abstract $request)
     {

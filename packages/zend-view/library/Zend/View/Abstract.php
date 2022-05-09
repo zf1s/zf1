@@ -1196,7 +1196,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      * Use to include the view script in a scope that only allows public
      * members.
      *
-     * @return mixed
+     * @return void
      */
     abstract protected function _run();
 }
