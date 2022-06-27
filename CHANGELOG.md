@@ -1,5 +1,9 @@
 ## Changelog:
 
+### 1.14.1 - 2022-xx-xx
+- zend-session
+  - added "session.cookie_samesite" option
+
 ### 1.14.0 - 2021-10-01
 - general: php 8.0 compatibility ([#51])
   - Remove default values from method signatures ([#78])
