@@ -239,7 +239,7 @@ class Zend_Barcode_FactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException PHPUnit_Framework_Error
+     * @expectedException Zend_Loader_Exception_FileNotFoundException
      */
     public function testBarcodeObjectFactoryWithUnexistantBarcode()
     {
@@ -338,7 +338,7 @@ class Zend_Barcode_FactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException PHPUnit_Framework_Error
+     * @expectedException Zend_Loader_Exception_FileNotFoundException
      */
     public function testBarcodeRendererFactoryWithUnexistantRenderer()
     {

@@ -134,7 +134,9 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
         if (class_exists('Zend_Validate_Barcode_' . $adapter)) {
             $adapter = 'Zend_Validate_Barcode_' . $adapter;
         } elseif (!class_exists($adapter)) {
-            Zend_Loader::loadClass($adapter);
+            if (!Zend_Loader::tryLoadClass('Zend_Validate_Barcode_' . $adapter)) {
+                Zend_Loader::loadClass($adapter);
+            }
         }
 
         $this->_adapter = new $adapter($options);

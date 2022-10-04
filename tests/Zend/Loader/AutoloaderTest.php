@@ -331,12 +331,18 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Zend_Loader_Autoloader::autoload('ZendLoaderAutoloader_Foo'));
     }
 
+    public function testAutoloadShouldReturnFalseWhenClassIsNotDefinedInClassfile()
+    {
+        $this->addTestIncludePath();
+        $this->autoloader->registerNamespace('ZendLoaderAutoloader');
+        $this->assertFalse(Zend_Loader_Autoloader::autoload('ZendLoaderAutoloader_ClassNonexistent'));
+    }
+
     public function testAutoloadShouldLoadClassWhenNamespaceIsRegisteredAndClassfileExists()
     {
         $this->addTestIncludePath();
         $this->autoloader->registerNamespace('ZendLoaderAutoloader');
-        $result = Zend_Loader_Autoloader::autoload('ZendLoaderAutoloader_Foo');
-        $this->assertFalse($result === false);
+        $this->assertTrue(Zend_Loader_Autoloader::autoload('ZendLoaderAutoloader_Foo'));
         $this->assertTrue(class_exists('ZendLoaderAutoloader_Foo', false));
     }
 
@@ -347,6 +353,20 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
         $this->autoloader->registerNamespace('ZendLoaderAutoloader');
         set_error_handler(array($this, 'handleErrors'));
         $this->assertFalse(Zend_Loader_Autoloader::autoload('ZendLoaderAutoloader_Bar'));
+        restore_error_handler();
+
+        // Zend_Loader does not issue "file not found warnings" anymore because files are now checked for being readable before include call
+        //$this->assertNotNull($this->error);
+        $this->assertNull($this->error);
+    }
+
+    public function testAutoloadShouldNotSuppressErrorsWhenFlagIsDisabled()
+    {
+        $this->addTestIncludePath();
+        $this->autoloader->suppressNotFoundWarnings(false);
+        $this->autoloader->registerNamespace('ZendLoaderAutoloader');
+        set_error_handler(array($this, 'handleErrors'));
+        $this->assertTrue(Zend_Loader_Autoloader::autoload('ZendLoaderAutoloader_SomethingWrong'));
         restore_error_handler();
         $this->assertNotNull($this->error);
     }

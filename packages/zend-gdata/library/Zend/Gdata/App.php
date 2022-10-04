@@ -828,7 +828,7 @@ class Zend_Gdata_App
 
         if (!$doc) {
             $err = error_get_last();
-            $phpErrormsg = $err['message'];
+            $phpErrormsg = isset($err['message'][0]) ? $err['message'] : null;
             // require_once 'Zend/Gdata/App/Exception.php';
             throw new Zend_Gdata_App_Exception(
                 "DOMDocument cannot parse XML: $phpErrormsg");
@@ -1053,12 +1053,7 @@ class Zend_Gdata_App
             $foundClassName = null;
             foreach ($this->_registeredPackages as $name) {
                  try {
-                     // Autoloading disabled on next line for compatibility
-                     // with magic factories. See ZF-6660.
-                     Zend_Loader_Autoloader::setDisabled();
-                     $found = class_exists($name . '_' . $class);
-                     Zend_Loader_Autoloader::setDisabled(false);
-                     if (!$found) {
+                     if (!class_exists($name . '_' . $class)) {
                         // require_once 'Zend/Loader.php';
                         @Zend_Loader::loadClass($name . '_' . $class);
                      }
