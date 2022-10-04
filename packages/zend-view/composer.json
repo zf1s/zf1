@@ -7,11 +7,11 @@
     "require": {
         "php": ">=5.3.3",
         "ext-reflection": "*",
-        "zf1s/zend-controller": "^1.14.0",
-        "zf1s/zend-exception": "^1.14.0",
-        "zf1s/zend-loader": "^1.14.0",
-        "zf1s/zend-locale": "^1.14.0",
-        "zf1s/zend-registry": "^1.14.0"
+        "zf1s/zend-controller": "^1.15.0",
+        "zf1s/zend-exception": "^1.15.0",
+        "zf1s/zend-loader": "^1.15.0",
+        "zf1s/zend-locale": "^1.15.0",
+        "zf1s/zend-registry": "^1.15.0"
     },
     "autoload": {
         "psr-0": {

@@ -1,8 +1,48 @@
 ## Changelog:
 
-### 1.14.1 - 2022-xx-xx
+### 1.15.0 - 2022-10-04
+- zend-loader
+  - overhaul of zend-loader and autoloader done again ([#116])
+  - continues work done initially in [#1] / [76477fb]
+  - potential breaking changes:
+    > Introduced `Zend_Loader_Exception_FileNotFoundException` and `Zend_Loader_Exception_ClassNotFoundException`
+    > 
+    > Instead of throwing `Zend_Exception` in `Zend_Loader::loadClass()` with a generic message `File \"$file\" does not exist or class \"$class\" was not found in the file`
+    > - `Zend_Loader_Exception_FileNotFoundException` will be thrown with message `File "$file" could not be found within configured include_path`. or
+    > - `Zend_Loader_Exception_ClassNotFoundException` with message `Class "$class" was not found in the file "$file".`, in their respective cases.
+    
+    > Not suppressing loading classes with `@` suppressor by default anymore.
+    > 
+    > Regular warnings/errors coming from a loaded file should be visible, otherwise it might be very confusing for devs
+    >
+    > At the same time though, `Zend_Loader` will not emit warnings when checking for files if they exist, by default. Added `isReadable` check inside `loadFile` before `include`/`include_once`.
+    > 
+    > There might be a performance hit, but it should be okay when most of the autoloading is handled by composer autoloader.
+    > 
+    > This change should finally allow seamless integration of `Zend_Loader` with composer autoloader, without any warnings.
+  - fixed issues with loading custom Translate/File_Transfer/Filter adapters
+  - for more details see [#116]
 - zend-session
-  - added "session.cookie_samesite" option
+  - added "session.cookie_samesite" option ([#126])
+- zend-validate
+  - hostname: update TLDs (Version 2022100300) ([#104])
+  - hostname: allow underscores in subdomain parts ([#131])
+- general: docblock annotations
+  - fixed parameter annotation for `Zend_XmlRpc_Fault::setMessage()` ([#117])
+  - fixed parameter annotation for `Zend_Db_Table_Select::setIntegrityCheck()` ([#119])
+  - fixed wrong return-type in `Zend_Form_Element::removeValidator()` ([#121])
+  - fixed annotations for `Zend_Controller_Router_Route_Regex::__construct()` ([#123])
+  
+[#1]: https://github.com/zf1s/zf1/pull/1
+[#104]: https://github.com/zf1s/zf1/pull/104
+[#116]: https://github.com/zf1s/zf1/pull/116
+[#117]: https://github.com/zf1s/zf1/pull/117
+[#119]: https://github.com/zf1s/zf1/pull/119
+[#121]: https://github.com/zf1s/zf1/pull/121
+[#123]: https://github.com/zf1s/zf1/pull/123
+[#126]: https://github.com/zf1s/zf1/pull/126
+[#131]: https://github.com/zf1s/zf1/pull/131
+[76477fb]: https://github.com/zf1s/zf1/commit/76477fbe00a198ef4376ea38c46df3960c574af8
 
 ### 1.14.0 - 2021-10-01
 - general: php 8.0 compatibility ([#51])
