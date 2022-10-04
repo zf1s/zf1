@@ -1773,6 +1773,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
      * (.ES) Spain https://www.nic.es/media/2008-05/1210147705287.pdf
      * (.FI) Finland http://www.ficora.fi/en/index/palvelut/fiverkkotunnukset/aakkostenkaytto.html
      * (.GR) Greece https://grweb.ics.forth.gr/CharacterTable1_en.jsp
+     * (.HR) Croatia https://domene.hr/en/portal/files/Odluka_1,2alfanum_dijak_en.pdf
      * (.HU) Hungary http://www.domain.hu/domain/English/szabalyzat/szabalyzat.html
      * (.INFO) International http://www.nic.info/info/idn
      * (.IO) British Indian Ocean Territory http://www.nic.io/IO-IDN-Policy.pdf
@@ -1832,6 +1833,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
         'FI'  => array(1 => '/^[\x{002d}0-9a-zäåö]{1,63}$/iu'),
         'GR'  => array(1 => '/^[\x{002d}0-9a-zΆΈΉΊΌΎ-ΡΣ-ώἀ-ἕἘ-Ἕἠ-ὅὈ-Ὅὐ-ὗὙὛὝὟ-ώᾀ-ᾴᾶ-ᾼῂῃῄῆ-ῌῐ-ΐῖ-Ίῠ-Ῥῲῳῴῶ-ῼ]{1,63}$/iu'),
         'HK'  => 'Hostname/Cn.php',
+        'HR'  => array(1 => '/^[\x{002d}0-9a-zčćžšđ]{1,63}$/iu'),
         'HU'  => array(1 => '/^[\x{002d}0-9a-záéíóöúüőű]{1,63}$/iu'),
         'IL'  => array(1 => '/^[\x{002d}0-9\x{05D0}-\x{05EA}]{1,63}$/iu',
             2 => '/^[\x{002d}0-9a-z]{1,63}$/i'),
