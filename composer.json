@@ -117,6 +117,7 @@
         }
     },
     "replace": {
+        "zendframework/zendframework1": ">=1.12.20",
         "zf1s/zend-acl": "self.version",
         "zf1s/zend-amf": "self.version",
         "zf1s/zend-application": "self.version",
