@@ -3,6 +3,7 @@
 [![Build Status](https://github.com/zf1s/zf1/actions/workflows/tests.yml/badge.svg)](https://github.com/zf1s/zf1/actions/workflows/tests.yml)
 
 This is a monorepo of a fork of Zend Framework 1, made after it's reached its EOL.
+
 All original framework's components have been split into individual packages, which can be installed separately with `composer`, e.g.
 ```
 composer require zf1s/zend-*
@@ -101,6 +102,19 @@ Currently everything should be compatible with **PHP 5.3-8.0**. _5.2 support is 
 
 They may also contain some fixes, either for long-standing bugs, which haven't made their way into zf1 official repo before EOL, or newly found ones
 and (backwards compatible) adjustments (optimisations for composer autoloader mostly). Maybe even one or two new features.
+
+Still, the main purpose is to allow working on legacy projects on more modern systems, while opening the possibility to **migrate away from zf1 gradually, one component at a time**.
+
+
+### Alternative Installation Method
+
+You may also install the whole framework at once, using composer:
+```
+composer require zf1s/zf1
+```
+to easy up the transition period, but please keep in mind the recommended approach is to
+identify and install only the packages you need.
+
 
 ### Changelog: [here](CHANGELOG.md)
 Original README: [click](README.orig.md)

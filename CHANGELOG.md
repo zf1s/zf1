@@ -1,6 +1,6 @@
 ## Changelog:
 
-### 1.15.0 - 2022-10-04
+### 1.15.0 - 2022-10-05
 - zend-loader
   - overhaul of zend-loader and autoloader done again ([#116])
   - continues work done initially in [#1] / [76477fb]
@@ -32,6 +32,9 @@
   - fixed parameter annotation for `Zend_Db_Table_Select::setIntegrityCheck()` ([#119])
   - fixed wrong return-type in `Zend_Form_Element::removeValidator()` ([#121])
   - fixed annotations for `Zend_Controller_Router_Route_Regex::__construct()` ([#123])
+- general: publish the whole `zf1s/zf1` package on packagist ([#133])
+  - the whole framework package can be now installed at once with `composer require zf1s/zf1` to easy up the transition period,
+    but please keep in mind the recommended approach is to identify and install only the packages you need.
   
 [#1]: https://github.com/zf1s/zf1/pull/1
 [#104]: https://github.com/zf1s/zf1/pull/104
@@ -42,6 +45,7 @@
 [#123]: https://github.com/zf1s/zf1/pull/123
 [#126]: https://github.com/zf1s/zf1/pull/126
 [#131]: https://github.com/zf1s/zf1/pull/131
+[#133]: https://github.com/zf1s/zf1/pull/133
 [76477fb]: https://github.com/zf1s/zf1/commit/76477fbe00a198ef4376ea38c46df3960c574af8
 
 ### 1.14.0 - 2021-10-01
