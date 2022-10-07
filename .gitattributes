@@ -1,3 +1,4 @@
+/.git* export-ignore
 /monorepo-builder.yml export-ignore
 /tests export-ignore
 /phpunit.xml.dist export-ignore
