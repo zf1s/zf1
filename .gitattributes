@@ -1,1 +1,5 @@
+/.editorconfig export-ignore
+/.git* export-ignore
+/monorepo-builder.yml export-ignore
+/phpunit.xml.dist export-ignore
 /tests export-ignore
