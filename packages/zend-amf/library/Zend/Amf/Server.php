@@ -708,9 +708,9 @@ class Zend_Amf_Server implements Zend_Server_Interface
     }
 
     /**
-     * Public access method to private Zend_Amf_Server_Response reference
+     * Public access method to private Zend_Amf_Response reference
      *
-     * @param  string|Zend_Amf_Server_Response $response
+     * @param  string|Zend_Amf_Response $response
      * @return Zend_Amf_Server
      */
     public function setResponse($response)
