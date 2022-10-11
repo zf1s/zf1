@@ -153,7 +153,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      *
      * @param  string $queueId
      * @param  array  $options
-     * @return array
+     * @return array|false
      * @throws Zend_Cloud_QueueService_Exception
      */
     public function fetchQueueMetadata($queueId, $options = null)
