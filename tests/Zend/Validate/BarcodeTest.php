@@ -53,7 +53,7 @@ class Zend_Validate_BarcodeTest extends PHPUnit_Framework_TestCase
             $barcode = new Zend_Validate_Barcode('Zend_Validate_BarcodeTest_NonExistentClassName');
             $this->fail("'Zend_Validate_BarcodeTest_NonExistentClassName' is not a valid barcode type'");
         } catch (Exception $e) {
-            $this->assertRegExp('#not found|No such file#', $e->getMessage());
+            $this->assertRegExp('#could not be found#', $e->getMessage());
         }
     }
 

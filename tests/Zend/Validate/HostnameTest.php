@@ -127,6 +127,55 @@ class Zend_Validate_HostnameTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Ensure the underscore character tests work as expected
+     *
+     */
+    public function testUnderscores()
+    {
+        $valuesExpected = array(
+            array(Zend_Validate_Hostname::ALLOW_DNS, true, array(
+                '_subdomain.domain.com', 'subdomain_.domain.com', 'sub_domain.domain.com', 'sub__domain.domain.com'
+            )),
+            array(Zend_Validate_Hostname::ALLOW_DNS, false, array('_domain.com', 'domain_.com', 'do_main.com'))
+        );
+        foreach ($valuesExpected as $element) {
+            $validator = new Zend_Validate_Hostname($element[0]);
+            $validator->setValidateTld(false);
+            foreach ($element[2] as $input) {
+                $this->assertEquals(
+                    $element[1],
+                    $validator->isValid($input),
+                    implode("\n", $validator->getMessages()) . $input
+                );
+            }
+        }
+    }
+
+    /**
+     * Ensure the underscore character tests work as expected when not using tld check
+     *
+     */
+    public function testValidatorHandlesUnderscoresInDomainsWithoutTldCheckCorrectly()
+    {
+        $valuesExpected = array(
+            array(Zend_Validate_Hostname::ALLOW_DNS, true, array(
+                '_subdomain.domain.com', 'subdomain_.domain.com', 'sub_domain.domain.com', 'sub__domain.domain.com'
+            )),
+            array(Zend_Validate_Hostname::ALLOW_DNS, false, array('_domain.com', 'domain_.com', 'do_main.com'))
+        );
+        foreach ($valuesExpected as $element) {
+            $validator = new Zend_Validate_Hostname($element[0]);
+            foreach ($element[2] as $input) {
+                $this->assertEquals(
+                    $element[1],
+                    $validator->isValid($input),
+                    implode("\n", $validator->getMessages()) . $input
+                );
+            }
+        }
+    }
+
+    /**
      * Ensures that getMessages() returns expected default value
      *
      * @return void

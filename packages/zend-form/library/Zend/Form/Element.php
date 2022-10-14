@@ -1312,7 +1312,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      * Remove a single validator by name
      *
      * @param  string $name
-     * @return bool
+     * @return $this
      */
     public function removeValidator($name)
     {

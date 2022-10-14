@@ -8,8 +8,8 @@
         "jworman/polyfill-php81": "^1.25",
         "php": ">=5.3.3",
         "ext-iconv": "*",
-        "zf1s/zend-exception": "^1.14.0",
-        "zf1s/zend-locale": "^1.14.0"
+        "zf1s/zend-exception": "^1.15.0",
+        "zf1s/zend-locale": "^1.15.0"
     },
     "autoload": {
         "psr-0": {

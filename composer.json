@@ -1,6 +1,6 @@
 {
     "name": "zf1s/zf1",
-    "description": "Monorepo for zf1s (Zend Framework 1) packages",
+    "description": "Zend Framework 1 complete package, PHP 5.3-8.0 compatible. Please consider using individual zf1s/zend-* packages instead - see README.",
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
@@ -22,7 +22,7 @@
     "require-dev": {
         "php-parallel-lint/php-parallel-lint": "1.3.0",
         "phpunit/dbunit": "1.3.2",
-        "zf1s/phpunit": "3.7.39",
+        "zf1s/phpunit": "3.7.41",
         "staabm/annotate-pull-request-from-checkstyle": "1.5.0"
     },
     "autoload": {
@@ -118,6 +118,7 @@
         }
     },
     "replace": {
+        "zendframework/zendframework1": ">=1.12.20",
         "zf1s/zend-acl": "self.version",
         "zf1s/zend-amf": "self.version",
         "zf1s/zend-application": "self.version",

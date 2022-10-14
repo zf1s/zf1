@@ -155,8 +155,8 @@ class Zend_Navigation_PageFactoryTest extends PHPUnit_Framework_TestCase
             );
         } catch(Zend_Exception $e) {
             $this->assertEquals(
-                'File "My' . DIRECTORY_SEPARATOR . 'NonExistant' . DIRECTORY_SEPARATOR . 'Page.php" does not exist or class '
-                . '"My_NonExistant_Page" was not found in the file',
+                'File "My' . DIRECTORY_SEPARATOR . 'NonExistant' . DIRECTORY_SEPARATOR . 'Page.php" '
+                . 'could not be found within configured include_path.',
                 $e->getMessage()
             );
         }

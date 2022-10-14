@@ -8,9 +8,9 @@
         "jworman/polyfill-php81": "^1.25",
         "php": ">=5.3.3",
         "ext-ctype": "*",
-        "zf1s/zend-exception": "^1.14.0",
-        "zf1s/zend-loader": "^1.14.0",
-        "zf1s/zend-uri": "^1.14.0"
+        "zf1s/zend-exception": "^1.15.0",
+        "zf1s/zend-loader": "^1.15.0",
+        "zf1s/zend-uri": "^1.15.0"
     },
     "autoload": {
         "psr-0": {

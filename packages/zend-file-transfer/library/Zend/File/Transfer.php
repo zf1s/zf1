@@ -67,7 +67,9 @@ class Zend_File_Transfer
         if (class_exists('Zend_File_Transfer_Adapter_' . ucfirst($adapter))) {
             $adapter = 'Zend_File_Transfer_Adapter_' . ucfirst($adapter);
         } elseif (!class_exists($adapter)) {
-            Zend_Loader::loadClass($adapter);
+            if (!Zend_Loader::tryLoadClass('Zend_File_Transfer_Adapter_' . ucfirst($adapter), null, true)) {
+                Zend_Loader::loadClass($adapter);
+            }
         }
 
         $direction = (integer) $direction;

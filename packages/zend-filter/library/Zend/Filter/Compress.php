@@ -100,10 +100,9 @@ class Zend_Filter_Compress implements Zend_Filter_Interface
             $adapter = 'Zend_Filter_Compress_' . ucfirst($adapter);
         } elseif (!class_exists($adapter)) {
             // require_once 'Zend/Loader.php';
-            if (Zend_Loader::isReadable('Zend/Filter/Compress/' . ucfirst($adapter) . '.php')) {
-                $adapter = 'Zend_Filter_Compress_' . ucfirst($adapter);
+            if (!Zend_Loader::tryLoadClass('Zend_Filter_Compress_' . ucfirst($adapter))) {
+                Zend_Loader::loadClass($adapter);
             }
-            Zend_Loader::loadClass($adapter);
         }
 
         $this->_adapter = new $adapter($options);
