@@ -16,7 +16,7 @@
         "ext-spl": "*",
         "ext-xml": "*",
         "ext-zlib": "*",
-        "jworman/polyfill-php81": "^1.25",
+        "zf1s/polyfill-php81": "^1.25",
         "symfony/polyfill-php70": "^1.19"
     },
     "require-dev": {
