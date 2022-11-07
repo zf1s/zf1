@@ -525,6 +525,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      * @param  array|object $item
      * @param  string|int|null $id
      * @return array
+     * @throws Zend_Dojo_Exception
      */
     protected function _normalizeItem($item, $id)
     {

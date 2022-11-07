@@ -163,6 +163,7 @@ class Zend_Json_Decoder
      *
      * @throws Zend_Json_Exception
      * @return mixed
+     * @throws Zend_Json_Exception
      */
     protected function _decodeValue()
     {
@@ -313,6 +314,7 @@ class Zend_Json_Decoder
      *
      * @throws Zend_Json_Exception
      * @return int Token constant value specified in class definition
+     * @throws Zend_Json_Exception
      */
     protected function _getNextToken()
     {

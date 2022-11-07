@@ -75,6 +75,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setTitle(DOMDocument $dom, DOMElement $root)
     {
@@ -123,6 +124,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setDateModified(DOMDocument $dom, DOMElement $root)
     {
@@ -199,6 +201,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setFeedLinks(DOMDocument $dom, DOMElement $root)
     {
@@ -274,6 +277,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {

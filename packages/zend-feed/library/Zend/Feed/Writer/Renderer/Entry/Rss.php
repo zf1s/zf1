@@ -84,6 +84,7 @@ class Zend_Feed_Writer_Renderer_Entry_Rss
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setTitle(DOMDocument $dom, DOMElement $root)
     {
@@ -113,6 +114,7 @@ class Zend_Feed_Writer_Renderer_Entry_Rss
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setDescription(DOMDocument $dom, DOMElement $root)
     {
@@ -211,6 +213,7 @@ class Zend_Feed_Writer_Renderer_Entry_Rss
      * @param  DOMDocument $dom
      * @param  DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setEnclosure(DOMDocument $dom, DOMElement $root)
     {

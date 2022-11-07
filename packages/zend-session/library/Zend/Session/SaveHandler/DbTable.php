@@ -225,6 +225,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param int $lifetime
      * @param boolean $overrideLifetime (optional)
      * @return Zend_Session_SaveHandler_DbTable
+     * @throws Zend_Session_SaveHandler_Exception
      */
     public function setLifetime($lifetime, $overrideLifetime = null)
     {

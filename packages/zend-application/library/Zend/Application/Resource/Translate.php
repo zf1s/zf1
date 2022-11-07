@@ -61,6 +61,9 @@ class Zend_Application_Resource_Translate extends Zend_Application_Resource_Reso
      * @return Zend_Translate
      * @throws Zend_Application_Resource_Exception if registry key was used
      *          already but is no instance of Zend_Translate
+     * @throws Zend_Exception
+     * @throws Zend_Log_Exception
+     * @throws Zend_Translate_Exception
      */
     public function getTranslate()
     {
