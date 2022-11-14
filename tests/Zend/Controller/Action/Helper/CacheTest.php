@@ -16,6 +16,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /**
  * Test class for Zend_Controller_Action_Helper_Cache
  */
+#[AllowDynamicProperties]
 class Zend_Controller_Action_Helper_CacheTest extends PHPUnit_Framework_TestCase
 {
 

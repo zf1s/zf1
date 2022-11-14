@@ -36,6 +36,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Captcha
  */
+#[AllowDynamicProperties]
 class Zend_Captcha_ReCaptchaTest extends PHPUnit_Framework_TestCase
 {
     /**

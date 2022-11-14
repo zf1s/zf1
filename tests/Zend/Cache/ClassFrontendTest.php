@@ -78,6 +78,7 @@ class test
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
+#[AllowDynamicProperties]
 class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
 {
     private $_instance1;
