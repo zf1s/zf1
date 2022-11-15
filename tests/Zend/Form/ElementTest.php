@@ -53,6 +53,11 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
      */
     private $element;
 
+    /**
+     *@var string
+     */
+    private $error;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite('Zend_Form_ElementTest');

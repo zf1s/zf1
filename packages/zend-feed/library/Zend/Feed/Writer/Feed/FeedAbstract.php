@@ -63,7 +63,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * @var array
      */
-    protected $_extensions = [];
+    protected $_extensions = array();
 
     /**
      * Contains all Feed level date to append in feed output

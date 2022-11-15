@@ -55,6 +55,11 @@ require_once 'Iterator2.php';
  */
 abstract class Zend_Queue_Adapter_AdapterTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var bool
+     */
+    protected $error;
+
     public function tearDown()
     {
         $this->error = false;

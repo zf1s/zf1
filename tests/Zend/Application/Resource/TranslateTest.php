@@ -42,6 +42,11 @@ class Zend_Application_Resource_TranslateTest extends PHPUnit_Framework_TestCase
     /**
      * @var array
      */
+    protected $loaders;
+
+    /**
+     * @var array
+     */
     protected $_translationOptions = array(
         'data' => array(
             'message1' => 'message1',

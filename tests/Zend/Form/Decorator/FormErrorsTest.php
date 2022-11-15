@@ -44,6 +44,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Decorator_FormErrors
+     */
+    protected $decorator;
+
+    /**
+     * @var Zend_Form
+     */
+    protected $form;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

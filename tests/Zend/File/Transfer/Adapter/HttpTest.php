@@ -46,6 +46,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_File_Transfer_Adapter_HttpTest_MockAdapter
+     */
+    protected $adapter;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

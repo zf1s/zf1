@@ -36,6 +36,11 @@
 class Zend_Translate_Adapter_XliffTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var bool
+     */
+    protected $_errorOccurred;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

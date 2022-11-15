@@ -120,6 +120,10 @@ class Zend_PaginatorTest extends PHPUnit_Framework_TestCase
         $result = PHPUnit_TextUI_TestRunner::run($suite);
     }
 
+    protected $_dbConn;
+
+    protected $cacheDir;
+
     /**
      * Paginator instance
      *

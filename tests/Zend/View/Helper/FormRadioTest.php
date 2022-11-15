@@ -44,6 +44,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_View_Helper_FormRadioTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var Zend_View_Helper_FormRadio
+     */
+    protected $helper;
+
+    /**
      * Runs the test methods of this class.
      *
      * @access public

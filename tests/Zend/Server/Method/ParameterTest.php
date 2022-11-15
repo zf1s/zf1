@@ -41,6 +41,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Server_Method_ParameterTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Server_Method_Parameter
+     */
+    protected $parameter;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

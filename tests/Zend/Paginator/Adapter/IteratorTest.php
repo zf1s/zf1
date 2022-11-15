@@ -40,6 +40,11 @@
 class Zend_Paginator_Adapter_IteratorTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Paginator
+     */
+    protected $_paginator;
+
+    /**
      * @var Zend_Paginator_Adapter_Iterator
      */
     private $_adapter;

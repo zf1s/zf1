@@ -33,6 +33,10 @@
  */
 class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $_options = array();
 
     protected $_feedSamplePath = null;
     

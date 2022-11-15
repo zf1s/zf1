@@ -41,6 +41,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Server_Method_PrototypeTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Server_Method_Prototype
+     */
+    protected $prototype;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

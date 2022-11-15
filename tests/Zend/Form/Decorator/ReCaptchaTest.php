@@ -42,6 +42,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Decorator_ReCaptchaTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Element_Captcha
+     */
+    protected $element;
+
+    /**
+     * @var Zend_Form_Decorator_Captcha_ReCaptcha
+     */
+    protected $decorator;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

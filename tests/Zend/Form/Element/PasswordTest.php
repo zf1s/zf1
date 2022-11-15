@@ -41,6 +41,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Element_PasswordTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Element_Password
+     */
+    protected $element;
+
+    /**
+     * @var array
+     */
+    protected $errors;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

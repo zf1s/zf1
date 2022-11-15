@@ -45,6 +45,11 @@ class Zend_Tool_Framework_Provider_RepositoryTest extends PHPUnit_Framework_Test
 {
 
     /**
+     * @var Zend_Tool_Framework_Registry
+     */
+    protected $_registry;
+
+    /**
      * @var Zend_Tool_Framework_Provider_Repository
      */
     protected $_repository = null;

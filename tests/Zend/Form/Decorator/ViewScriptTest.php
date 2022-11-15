@@ -44,6 +44,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Decorator_ViewScriptTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Decorator_ViewScript
+     */
+    protected $decorator;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

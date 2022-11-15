@@ -54,6 +54,21 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
      */
     public $form;
 
+    /**
+     * @var string
+     */
+    private $error;
+
+    /**
+     * @var array
+     */
+    private $elementValues;
+
+    /**
+     * @var string
+     */
+    private $html;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite('Zend_Form_FormTest');
