@@ -5,16 +5,16 @@
     "homepage": "http://framework.zend.com/",
     "license": "BSD-3-Clause",
     "require": {
-        "zf1s/polyfill-php81": "^1.25",
         "php": ">=5.3.3",
         "ext-ctype": "*",
         "ext-dom": "*",
+        "symfony/polyfill-php70": "^1.19",
+        "zf1s/polyfill-php81": "^1.25",
         "zf1s/zend-exception": "^1.15.0",
         "zf1s/zend-http": "^1.15.0",
         "zf1s/zend-mime": "^1.15.0",
         "zf1s/zend-version": "^1.15.0",
-        "zf1s/zend-xml": "^1.15.0",
-        "symfony/polyfill-php70": "^1.19"
+        "zf1s/zend-xml": "^1.15.0"
     },
     "autoload": {
         "psr-0": {
