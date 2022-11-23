@@ -39,6 +39,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_View|mixed
+     */
+    protected $view;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

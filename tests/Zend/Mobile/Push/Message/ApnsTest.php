@@ -34,6 +34,11 @@
  */
 class Zend_Mobile_Push_Message_ApnsTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Mobile_Push_Message_Apns|mixed
+     */
+    protected $message;
+
     public function setUp()
     {
         $this->message = new Zend_Mobile_Push_Message_Apns();

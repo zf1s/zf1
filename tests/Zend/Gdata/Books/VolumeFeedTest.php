@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Books_VolumeFeedTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $feedText;
+
+    /**
+     * @var \Zend_Gdata_Books_VolumeFeed|mixed
+     */
+    protected $feed;
 
     public function setUp() {
         $this->feedText = file_get_contents(

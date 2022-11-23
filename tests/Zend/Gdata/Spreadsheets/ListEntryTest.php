@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Spreadsheets_ListEntryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Gdata_Spreadsheets_ListEntry|mixed
+     */
+    protected $listEntry;
+
+    /**
+     * @var mixed[]|\Zend_Gdata_Spreadsheets_Extension_Custom[]|mixed
+     */
+    protected $rowData;
 
     public function setUp()
     {

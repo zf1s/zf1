@@ -47,6 +47,16 @@
  */
 class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $config;
+
+    /**
+     * @var \Zend_Queue|mixed
+     */
+    protected $queue;
+
     protected function setUp()
     {
         // Test Zend_Config

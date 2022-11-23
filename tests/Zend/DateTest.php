@@ -55,6 +55,10 @@ if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE')) {
  */
 class Zend_DateTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|mixed
+     */
+    protected $originalTimezone;
 
     private $_cache = null;
     private $_orig  = array();

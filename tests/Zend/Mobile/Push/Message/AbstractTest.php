@@ -32,6 +32,11 @@
  */
 class Zend_Mobile_Push_Message_AbstractTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Mobile_Push_Message_AbstractProxy|mixed
+     */
+    protected $msg;
+
     public function setUp()
     {
         $this->msg = new Zend_Mobile_Push_Message_AbstractProxy();

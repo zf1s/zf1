@@ -39,6 +39,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Amf_Value_MessageBodyTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var \Zend_Amf_Value_MessageBody|mixed
+     */
+    protected $body;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

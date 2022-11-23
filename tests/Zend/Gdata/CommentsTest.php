@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_CommentsTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $commentsText;
+
+    /**
+     * @var \Zend_Gdata_Extension_Comments|mixed
+     */
+    protected $comments;
 
     public function setUp() {
         $this->commentsText = file_get_contents(

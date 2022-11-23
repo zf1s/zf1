@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Calendar_SelectedTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $selectedText;
+
+    /**
+     * @var \Zend_Gdata_Calendar_Extension_Selected|mixed
+     */
+    protected $selected;
 
     public function setUp() {
         $this->selectedText = file_get_contents(

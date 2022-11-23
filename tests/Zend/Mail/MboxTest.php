@@ -76,7 +76,9 @@ class Zend_Mail_MboxTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        unlink($this->_mboxFile);
+        if ($this->_mboxFile) {
+            unlink($this->_mboxFile);
+        }
     }
 
     public function testLoadOk()

@@ -80,6 +80,16 @@ class test
  */
 class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Cache_Backend_Test|mixed
+     */
+    protected $_backend1;
+
+    /**
+     * @var \Zend_Cache_Backend_Test|mixed
+     */
+    protected $_backend2;
+
     private $_instance1;
     private $_instance2;
 

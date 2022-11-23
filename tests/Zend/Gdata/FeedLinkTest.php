@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_FeedLinkTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $feedLinkText;
+
+    /**
+     * @var \Zend_Gdata_Extension_FeedLink|mixed
+     */
+    protected $feedLink;
 
     public function setUp() {
         $this->feedLinkText = file_get_contents(

@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_AttendeeTypeTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $attendeeTypeText;
+
+    /**
+     * @var \Zend_Gdata_Extension_AttendeeType|mixed
+     */
+    protected $attendeeType;
 
     public function setUp() {
         $this->attendeeTypeText = file_get_contents(

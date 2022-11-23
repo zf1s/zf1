@@ -93,7 +93,9 @@ class Zend_Mail_MboxMessageOldTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        unlink($this->_mboxFile);
+        if ($this->_mboxFile) {
+            unlink($this->_mboxFile);
+        }
     }
 
     public function testFetchHeader()

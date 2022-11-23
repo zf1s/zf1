@@ -40,6 +40,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var \Zend_Json_Server_Request|mixed
+     */
+    protected $request;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

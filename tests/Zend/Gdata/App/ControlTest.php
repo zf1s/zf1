@@ -35,6 +35,15 @@
  */
 class Zend_Gdata_App_ControlTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $controlText;
+
+    /**
+     * @var \Zend_Gdata_App_Extension_Control|mixed
+     */
+    protected $control;
 
     public function setUp() {
         $this->controlText = file_get_contents(

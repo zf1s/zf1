@@ -35,6 +35,15 @@
  */
 class Zend_Gdata_Docs_DocumentListEntryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Gdata_Docs_DocumentListEntry|mixed
+     */
+    protected $doc;
+
+    /**
+     * @var \Zend_Gdata_Docs|mixed
+     */
+    protected $docsClient;
 
     public function setUp()
     {

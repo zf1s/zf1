@@ -53,6 +53,46 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var \Zend_Controller_Front|mixed
+     */
+    protected $front;
+
+    /**
+     * @var \Zend_Layout|mixed
+     */
+    protected $layout;
+
+    /**
+     * @var \Zend_Controller_Action_Helper_AjaxContext|mixed
+     */
+    protected $helper;
+
+    /**
+     * @var \Zend_Controller_Request_Http|mixed
+     */
+    protected $request;
+
+    /**
+     * @var \Zend_Controller_Response_Cli|mixed
+     */
+    protected $response;
+
+    /**
+     * @var \Zend_VIew|mixed
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Controller_Action_Helper_Abstract|mixed
+     */
+    protected $viewRenderer;
+
+    /**
+     * @var \Zend_Controller_Action_Helper_AjaxContextTestController|mixed
+     */
+    protected $controller;
+
+    /**
      * Runs the test methods of this class.
      *
      * @access public

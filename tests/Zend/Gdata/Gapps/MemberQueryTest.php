@@ -34,6 +34,10 @@
  */
 class Zend_Gdata_Gapps_MemberQueryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Gdata_Gapps_MemberQuery|mixed
+     */
+    protected $query;
 
     public function setUp()
     {

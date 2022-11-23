@@ -36,6 +36,21 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Loader_ClassMapAutoloaderTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var mixed[]|mixed
+     */
+    protected $loaders;
+
+    /**
+     * @var string|bool|mixed
+     */
+    protected $includePath;
+
+    /**
+     * @var Zend_Loader_ClassMapAutoloader
+     */
+    private $loader;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

@@ -42,6 +42,16 @@
  */
 class Zend_Service_StrikeIron_ZipCodeInfoTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \stdclass|mixed
+     */
+    protected $soapClient;
+
+    /**
+     * @var \Zend_Service_StrikeIron_ZipCodeInfo|mixed
+     */
+    protected $service;
+
     public function setUp()
     {
         $this->soapClient = new stdclass();

@@ -40,6 +40,11 @@
  */
 class Zend_Cache_CoreTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Cache_Backend_Test|mixed
+     */
+    protected $_backend;
+
     private $_instance;
 
     public function setUp()

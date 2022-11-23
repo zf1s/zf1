@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_EntryLinkTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $entryLinkText;
+
+    /**
+     * @var \Zend_Gdata_Extension_EntryLink|mixed
+     */
+    protected $entryLink;
 
     public function setUp() {
         $this->entryLinkText = file_get_contents(

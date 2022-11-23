@@ -35,6 +35,31 @@
  */
 class Zend_Config_IniTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|mixed
+     */
+    protected $_iniFileMultipleInheritanceConfig;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_iniFileSeparatorConfig;
+
+    /**
+     * @var string
+     */
+    protected $_nonReadableConfig;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_iniFileNoSectionsConfig;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_iniFileInvalid;
+
     protected $_iniFileConfig;
     protected $_iniFileAllSectionsConfig;
     protected $_iniFileCircularConfig;

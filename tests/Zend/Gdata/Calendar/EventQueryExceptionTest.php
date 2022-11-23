@@ -35,6 +35,10 @@
  */
 class Zend_Gdata_Calendar_EventQueryExceptionTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Gdata_Calendar_EventQuery|mixed
+     */
+    protected $query;
 
     const GOOGLE_DEVELOPER_CALENDAR = 'developer-calendar@google.com';
 

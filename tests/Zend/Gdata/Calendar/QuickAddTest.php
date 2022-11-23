@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Calendar_QuickAddTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $quickAddText;
+
+    /**
+     * @var \Zend_Gdata_Calendar_Extension_QuickAdd|mixed
+     */
+    protected $quickAdd;
 
     public function setUp() {
         $this->quickAddText = file_get_contents(

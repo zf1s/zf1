@@ -54,6 +54,26 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_Form_Decorator_DijitElementTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var mixed[]|string[]|mixed
+     */
+    protected $errors;
+
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_Form_Decorator_DijitElement|mixed
+     */
+    protected $decorator;
+
+    /**
+     * @var \Zend_Dojo_Form_Element_TextBox
+     */
+    protected $element;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

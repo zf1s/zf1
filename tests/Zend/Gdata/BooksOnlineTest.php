@@ -35,6 +35,10 @@
  */
 class Zend_Gdata_BooksOnlineTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Gdata_Books|mixed
+     */
+    protected $gdata;
 
     public function setUp()
     {

@@ -51,6 +51,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_View_Helper_DateTextBoxTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_DateTextBox|mixed
+     */
+    protected $helper;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

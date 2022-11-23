@@ -48,6 +48,21 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Form_DisplayGroupTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string
+     */
+    protected $error;
+
+    /**
+     * @var \Zend_Loader_PluginLoader|mixed
+     */
+    protected $loader;
+
+    /**
+     * @var \Zend_Form_DisplayGroup|mixed
+     */
+    protected $group;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite('Zend_Form_DisplayGroupTest');

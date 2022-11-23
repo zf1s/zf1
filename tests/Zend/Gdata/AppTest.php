@@ -35,6 +35,46 @@ require_once 'Zend/Gdata/TestUtility/MockHttpClient.php';
  */
 class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string
+     */
+    protected $fileName;
+
+    /**
+     * @var string|mixed
+     */
+    protected $expectedEtag;
+
+    /**
+     * @var int|mixed
+     */
+    protected $expectedMajorProtocolVersion;
+
+    /**
+     * @var int|mixed
+     */
+    protected $expectedMinorProtocolVersion;
+
+    protected $httpEntrySample;
+    protected $httpEntrySampleWithoutVersion;
+    protected $httpFeedSample;
+    protected $httpFeedSampleWithoutVersion;
+
+    /**
+     * @var \Test_Zend_Gdata_MockHttpClient|mixed
+     */
+    protected $adapter;
+
+    /**
+     * @var \Zend_Gdata_HttpClient|mixed
+     */
+    protected $client;
+
+    /**
+     * @var \Zend_Gdata_App|mixed
+     */
+    protected $service;
+
     public function setUp()
     {
         $this->fileName = 'Zend/Gdata/App/_files/FeedSample1.xml';

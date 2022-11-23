@@ -35,6 +35,11 @@
  */
 class Zend_Gdata_Gapps_ServiceExceptionTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $xmlSample;
+
     protected $fixture;
     protected $data;
 

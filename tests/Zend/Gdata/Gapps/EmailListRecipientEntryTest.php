@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Gapps_EmailListRecipientEntryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $entryText;
+
+    /**
+     * @var \Zend_Gdata_Gapps_EmailListRecipientEntry|mixed
+     */
+    protected $entry;
 
     public function setUp() {
         $this->entryText = file_get_contents(

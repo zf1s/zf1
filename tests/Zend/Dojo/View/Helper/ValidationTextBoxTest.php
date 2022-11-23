@@ -51,6 +51,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_View_Helper_ValidationTextBoxTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_ValidationTextBox|mixed
+     */
+    protected $helper;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

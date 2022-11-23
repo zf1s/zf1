@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_OpenSearchTotalResultsTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $openSearchTotalResultsText;
+
+    /**
+     * @var \Zend_Gdata_Extension_OpenSearchTotalResults|mixed
+     */
+    protected $openSearchTotalResults;
 
     public function setUp() {
         $this->openSearchTotalResultsText = file_get_contents(

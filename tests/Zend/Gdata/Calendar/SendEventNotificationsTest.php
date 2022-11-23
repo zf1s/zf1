@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Calendar_SendEventNotificationsTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $sendEventNotificationsText;
+
+    /**
+     * @var \Zend_Gdata_Calendar_Extension_SendEventNotifications|mixed
+     */
+    protected $sendEventNotifications;
 
     public function setUp() {
         $this->sendEventNotificationsText = file_get_contents(

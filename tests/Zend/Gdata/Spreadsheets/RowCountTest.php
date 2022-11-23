@@ -34,6 +34,10 @@
  */
 class Zend_Gdata_Spreadsheets_RowCountTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Gdata_Spreadsheets_Extension_RowCount|mixed
+     */
+    protected $rowCount;
 
     public function setUp()
     {

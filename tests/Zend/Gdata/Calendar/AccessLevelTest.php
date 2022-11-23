@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Calendar_AccessLevelTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $accessLevelText;
+
+    /**
+     * @var \Zend_Gdata_Calendar_Extension_AccessLevel|mixed
+     */
+    protected $accessLevel;
 
     public function setUp() {
         $this->accessLevelText = file_get_contents(

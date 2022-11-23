@@ -34,6 +34,10 @@
  */
 class Zend_Gdata_Spreadsheets_WorksheetFeedTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Gdata_Spreadsheets_WorksheetFeed|mixed
+     */
+    protected $wksFeed;
 
     public function setUp()
     {

@@ -35,6 +35,15 @@
  */
 class Zend_Gdata_App_GeneratorTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $generatorText;
+
+    /**
+     * @var \Zend_Gdata_App_Extension_Generator|mixed
+     */
+    protected $generator;
 
     public function setUp() {
         $this->generatorText = file_get_contents(

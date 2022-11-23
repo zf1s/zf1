@@ -35,6 +35,20 @@ require_once 'Zend/Gdata/TestUtility/MockHttpClient.php';
  */
 class Zend_Gdata_DocsTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Test_Zend_Gdata_MockHttpClient|mixed
+     */
+    protected $adapter;
+
+    /**
+     * @var \Zend_Gdata_HttpClient|mixed
+     */
+    protected $client;
+
+    /**
+     * @var \Zend_Gdata_Docs|mixed
+     */
+    protected $gdata;
 
     public function setUp()
     {

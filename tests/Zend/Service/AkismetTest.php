@@ -41,6 +41,21 @@
  */
 class Zend_Service_AkismetTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var \Zend_Service_Akismet|mixed
+     */
+    protected $akismet;
+
+    /**
+     * @var \Zend_Http_Client_Adapter_Test|mixed
+     */
+    protected $adapter;
+
+    /**
+     * @var array<string, string>|mixed
+     */
+    protected $comment;
+
     public function setUp()
     {
         $this->akismet = new Zend_Service_Akismet('somebogusapikey', 'http://framework.zend.com/wiki/');

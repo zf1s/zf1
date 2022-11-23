@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_OpenSearchItemsPerPageTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $openSearchItemsPerPageText;
+
+    /**
+     * @var \Zend_Gdata_Extension_OpenSearchItemsPerPage|mixed
+     */
+    protected $openSearchItemsPerPage;
 
     public function setUp() {
         $this->openSearchItemsPerPageText = file_get_contents(

@@ -41,6 +41,11 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 {
 
     /**
+     * @var \Zend_Http_Client_Adapter_Test|mixed
+     */
+    protected $adapter;
+
+    /**
      * @var Zend_Service_Amazon_Ec2_Image
      */
     private $Zend_Service_Amazon_Ec2_Image;

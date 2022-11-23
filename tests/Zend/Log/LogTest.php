@@ -46,6 +46,26 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var resource|bool|mixed
+     */
+    protected $log;
+
+    /**
+     * @var \Zend_Log_Writer_Stream|mixed
+     */
+    protected $writer;
+
+    /**
+     * @var \Zend_Log_Writer_Mock|mixed
+     */
+    protected $errWriter;
+
+    /**
+     * @var bool|mixed
+     */
+    protected $expectingLogging;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

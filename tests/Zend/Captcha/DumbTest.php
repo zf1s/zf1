@@ -38,6 +38,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Captcha_DumbTest extends PHPUnit_Framework_TestCase
 {
+    protected $word;
+
+    /**
+     * @var \Zend_Form_Element_Captcha|mixed
+     */
+    protected $element;
+    /**
+     * @var \Zend_Captcha_Adapter|mixed
+     */
+    protected $captcha;
     /**
      * Runs the test methods of this class.
      *

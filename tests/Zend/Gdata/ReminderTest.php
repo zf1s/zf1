@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_ReminderTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $reminderText;
+
+    /**
+     * @var \Zend_Gdata_Extension_Reminder|mixed
+     */
+    protected $reminder;
 
     public function setUp() {
         $this->reminderText = file_get_contents(

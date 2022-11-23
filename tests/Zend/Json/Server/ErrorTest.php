@@ -42,6 +42,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Json_Server_ErrorTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var \Zend_Json_Server_Error|mixed
+     */
+    protected $error;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

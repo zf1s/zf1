@@ -31,7 +31,7 @@
  */
 class Test_Zend_Gdata_MockHttpClient_Request
 {
-    public $methd;
+    public $method;
     public $uri;
     public $http_ver;
     public $headers;

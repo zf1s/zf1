@@ -44,6 +44,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Measure_TemperatureTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $_locale;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

@@ -37,6 +37,21 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|mixed
+     */
+    protected $tableName;
+
+    /**
+     * @var \Zend_Log_Writer_DbTest_MockDbAdapter|mixed
+     */
+    protected $db;
+
+    /**
+     * @var \Zend_Log_Writer_Db|mixed
+     */
+    protected $writer;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

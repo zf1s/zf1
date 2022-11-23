@@ -34,6 +34,11 @@
 class Zend_GData_Analytics_AccountQueryTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var string|mixed
+     */
+    protected $queryBase;
+
+    /**
      * @var Zend_GData_Analytics_AccountQuery
      */
     public $accountQuery;

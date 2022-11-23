@@ -35,6 +35,15 @@
  */
 class Zend_Gdata_Calendar_EventEntryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $entryText;
+
+    /**
+     * @var \Zend_Gdata_Calendar_EventEntry|mixed
+     */
+    protected $entry;
 
     public function setUp() {
         $this->entryText = file_get_contents(

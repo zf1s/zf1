@@ -36,6 +36,10 @@
  * @group      Zend_Cache
  */
 class Zend_Cache_OutputFrontendTest extends PHPUnit_Framework_TestCase {
+    /**
+     * @var \Zend_Cache_Backend_Test|mixed
+     */
+    protected $_backend;
 
     private $_instance;
 

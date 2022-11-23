@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_AttendeeStatusTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $attendeeStatusText;
+
+    /**
+     * @var \Zend_Gdata_Extension_AttendeeStatus|mixed
+     */
+    protected $attendeeStatus;
 
     public function setUp() {
         $this->attendeeStatusText = file_get_contents(

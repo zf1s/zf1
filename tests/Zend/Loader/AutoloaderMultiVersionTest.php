@@ -39,6 +39,46 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Loader_AutoloaderMultiVersionTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var mixed[]|mixed
+     */
+    protected $loaders;
+
+    /**
+     * @var string|bool|mixed
+     */
+    protected $includePath;
+
+    /**
+     * @var mixed
+     */
+    protected $path;
+
+    /**
+     * @var mixed
+     */
+    protected $latest;
+
+    /**
+     * @var mixed
+     */
+    protected $latestMajor;
+
+    /**
+     * @var mixed
+     */
+    protected $latestMinor;
+
+    /**
+     * @var mixed
+     */
+    protected $specific;
+
+    /**
+     * @var \Zend_Loader_Autoloader|mixed
+     */
+    protected $autoloader;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

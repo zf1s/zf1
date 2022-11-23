@@ -35,6 +35,36 @@
  */
 class Zend_Config_XmlTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|mixed
+     */
+    protected $_xmlFileTopLevelStringConfig;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_xmlFileOneTopLevelStringConfig;
+
+    /**
+     * @var string
+     */
+    protected $_nonReadableConfig;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_xmlFileSameNameKeysConfig;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_xmlFileShortParamsOneConfig;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_xmlFileShortParamsTwoConfig;
+
     protected $_xmlFileConfig;
     protected $_xmlFileAllSectionsConfig;
     protected $_xmlFileCircularConfig;
