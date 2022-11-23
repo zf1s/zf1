@@ -51,6 +51,10 @@
  */
 class Zend_Http_Header_SetCookie
 {
+    /**
+     * @var string
+     */
+    protected $type = 'Cookie';
 
     /**
      * Cookie name

@@ -58,6 +58,11 @@
  */
 class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
 {
+    /**
+     * @var \Zend_Uri|mixed
+     */
+    protected $_endpoint;
+
     /* Notes */
     // TODO SSL is required
 

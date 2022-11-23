@@ -72,6 +72,11 @@
 class Zend_Http_Client
 {
     /**
+     * @var mixed|string|bool
+     */
+    protected $_stream_name;
+
+    /**
      * HTTP request methods
      */
     const GET     = 'GET';

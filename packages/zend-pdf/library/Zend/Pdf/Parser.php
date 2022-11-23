@@ -38,6 +38,11 @@
 class Zend_Pdf_Parser
 {
     /**
+     * @var array<string, mixed>
+     */
+    protected $_refTable;
+
+    /**
      * String parser
      *
      * @var Zend_Pdf_StringParser

@@ -30,6 +30,12 @@
 class Zend_Form_DisplayGroup implements Iterator,Countable
 {
     /**
+     * Element Id
+     * @var string
+     */
+    protected $id;
+
+    /**
      * Group attributes
      * @var array
      */

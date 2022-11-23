@@ -48,7 +48,12 @@
  */
 class Zend_Pdf_Resource_Font_Simple_Standard_Courier extends Zend_Pdf_Resource_Font_Simple_Standard
 {
-  /**** Public Interface ****/
+    /**
+     * @var bool
+     */
+    protected $_isMonospaced;
+
+    /**** Public Interface ****/
 
 
   /* Object Lifecycle */

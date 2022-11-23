@@ -34,6 +34,16 @@
 class Zend_View_Helper_Partial extends Zend_View_Helper_Abstract
 {
     /**
+     * @var int
+     */
+    protected $partialCounter = 0;
+
+    /**
+     * @var int
+     */
+    protected $partialTotalCount = 0;
+
+    /**
      * Variable to which object will be assigned
      * @var string
      */
