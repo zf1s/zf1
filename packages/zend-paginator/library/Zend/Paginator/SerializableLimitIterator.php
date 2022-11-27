@@ -62,20 +62,37 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
      */
     public function serialize()
     {
-        return serialize(array(
+        return serialize($this->__serialize());
+    }
+
+    /**
+     * @return array representation of the instance
+     */
+    public function __serialize()
+    {
+        return array(
             'it'     => $this->getInnerIterator(),
             'offset' => $this->_offset,
             'count'  => $this->_count,
             'pos'    => $this->getPosition(),
-        ));
+        );
     }
 
     /**
+     * Unserialize
+     *
      * @param string $data representation of the instance
      */
     public function unserialize($data)
     {
-        $dataArr = unserialize($data);
+        $this->__unserialize(unserialize($data));
+    }
+
+    /**
+     * @param array $dataArr representation of the instance
+     */
+    public function __unserialize($dataArr)
+    {
         $this->__construct($dataArr['it'], $dataArr['offset'], $dataArr['count']);
         $this->seek($dataArr['pos']+$dataArr['offset']);
     }
