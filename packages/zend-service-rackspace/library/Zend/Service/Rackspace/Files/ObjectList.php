@@ -111,6 +111,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      *
      * @return int
      */
+    #[ReturnTypeWillChange]
     public function count()
     {
         return count($this->objects);
@@ -122,6 +123,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      *
      * @return Zend_Service_Rackspace_Files_Object
      */
+    #[ReturnTypeWillChange]
     public function current()
     {
         return $this->objects[$this->iteratorKey];
@@ -133,6 +135,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      *
      * @return int
      */
+    #[ReturnTypeWillChange]
     public function key()
     {
         return $this->iteratorKey;
@@ -144,6 +147,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      *
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function next()
     {
         $this->iteratorKey += 1;
@@ -155,6 +159,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      *
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function rewind()
     {
         $this->iteratorKey = 0;
@@ -166,6 +171,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      *
      * @return bool
      */
+    #[ReturnTypeWillChange]
     public function valid()
     {
         $numItems = $this->count();
@@ -183,6 +189,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      * @param   int     $offset
      * @return  bool
      */
+    #[ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return ($offset < $this->count());
@@ -196,6 +203,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      * @throws  Zend_Service_Rackspace_Files_Exception
      * @return  Zend_Service_Rackspace_Files_Object
      */
+    #[ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if ($this->offsetExists($offset)) {
@@ -215,6 +223,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      * @param   string  $value
      * @throws  Zend_Service_Rackspace_Files_Exception
      */
+    #[ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         // require_once 'Zend/Service/Rackspace/Files/Exception.php';
@@ -229,6 +238,7 @@ class Zend_Service_Rackspace_Files_ObjectList implements Countable, Iterator, Ar
      * @param   int     $offset
      * @throws  Zend_Service_Rackspace_Files_Exception
      */
+    #[ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         // require_once 'Zend/Service/Rackspace/Files/Exception.php';

@@ -262,6 +262,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      * @return integer
      * @throws Zend_Service_Amazon_Sqs_Exception
      */
+    #[ReturnTypeWillChange]
     public function count($queue_url)
     {
         return (int)$this->getAttribute($queue_url, 'ApproximateNumberOfMessages');

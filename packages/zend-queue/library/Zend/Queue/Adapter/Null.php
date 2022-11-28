@@ -102,6 +102,7 @@ class Zend_Queue_Adapter_Null extends Zend_Queue_Adapter_AdapterAbstract
      *
      * @throws Zend_Queue_Exception - not supported.
      */
+    #[ReturnTypeWillChange]
     public function count(Zend_Queue $queue=null)
     {
         // require_once 'Zend/Queue/Exception.php';

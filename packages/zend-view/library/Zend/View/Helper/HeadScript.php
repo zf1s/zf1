@@ -370,6 +370,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
      * @param  mixed $value
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function offsetSet($index, $value)
     {
         if (!$this->_isValid($value)) {
