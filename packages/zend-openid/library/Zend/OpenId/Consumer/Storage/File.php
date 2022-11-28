@@ -153,7 +153,6 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
             if ($f2) {
                 fwrite($f2, $data);
                 fclose($f2);
-                @unlink($name1);
                 $ret = true;
             } else {
                 $ret = false;
