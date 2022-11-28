@@ -61,6 +61,7 @@ class Zend_Server_Reflection_Method extends Zend_Server_Reflection_Function_Abst
     {
         $this->_classReflection = $class;
         $this->_reflection      = $r;
+        $this->name = $r->name;
 
         $classNamespace = $class->getNamespace();
 
