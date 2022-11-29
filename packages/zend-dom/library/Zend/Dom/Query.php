@@ -129,7 +129,7 @@ class Zend_Dom_Query
         if ($document instanceof DOMDocument) {
             return $this->setDocumentDom($document);
         }
-        if (0 === strlen($document)) {
+        if (!is_string($document) || 0 === strlen($document)) {
             return $this;
         }
         // breaking XML declaration to make syntax highlighting work

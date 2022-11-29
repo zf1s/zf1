@@ -142,8 +142,8 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
         // Set ID for element
         if (array_key_exists('id', $attribs)) {
             $info['id'] = (string)$attribs['id'];
-        } else if ('' !== $info['name']) {
-            $info['id'] = trim(strtr($info['name'],
+        } else if ('' !== (string)$info['name']) {
+            $info['id'] = trim(strtr((string)$info['name'],
                                      array('[' => '-', ']' => '')), '-');
         }
         

@@ -124,7 +124,7 @@ abstract class Zend_Gdata_App_Base
     public function getText($trim = true)
     {
         if ($trim) {
-            return trim($this->_text);
+            return trim((string) $this->_text);
         } else {
             return $this->_text;
         }

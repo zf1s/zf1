@@ -1187,7 +1187,7 @@ class Zend_Service_Twitter
      */
     protected function validInteger($int)
     {
-        if (preg_match("/(\d+)/", $int)) {
+        if ($int !== null && preg_match("/(\d+)/", $int)) {
             return $int;
         }
         return 0;

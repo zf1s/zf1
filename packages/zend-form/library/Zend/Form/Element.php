@@ -1023,7 +1023,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
         switch ($type) {
             case self::DECORATOR:
             case self::FILTER:
@@ -1048,7 +1048,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function getPluginLoader($type)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
         switch ($type) {
             case self::FILTER:
             case self::VALIDATE:
@@ -1091,7 +1091,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function addPrefixPath($prefix, $path, $type = null)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
         switch ($type) {
             case self::DECORATOR:
             case self::FILTER:
@@ -2277,6 +2277,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
                     $aggregateMessages[] = str_replace('%value%', $val, $message);
                 }
                 if (count($aggregateMessages)) {
+                    $aggregateMessages = array_unique($aggregateMessages); //prevent repeating the identical error message for multichoice-items
                     if ($this->_concatJustValuesInErrorMessage) {
                         $values = implode($this->getErrorMessageSeparator(), $value);
                         $messages[$key] = str_replace('%value%', $values, $message);
@@ -2285,7 +2286,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
                     }
                 }
             } else {
-                $messages[$key] = str_replace('%value%', $value, $message);
+                $messages[$key] = str_replace('%value%', (string) $value, $message);
             }
         }
         return $messages;

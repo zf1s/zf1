@@ -417,7 +417,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type = null)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
         switch ($type) {
             case self::DECORATOR:
             case self::ELEMENT:
@@ -445,7 +445,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function getPluginLoader($type = null)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
         if (!isset($this->_loaders[$type])) {
             switch ($type) {
                 case self::DECORATOR:
@@ -495,7 +495,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function addPrefixPath($prefix, $path, $type = null)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
         switch ($type) {
             case self::DECORATOR:
             case self::ELEMENT:
@@ -911,7 +911,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
         $id = $this->getFullyQualifiedName();
 
         // Bail early if no array notation detected
-        if (!strstr($id, '[')) {
+        if ($id === null || !strstr($id, '[')) {
             return $id;
         }
 
@@ -2123,7 +2123,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     protected function _dissolveArrayValue($value, $arrayPath)
     {
         // As long as we have more levels
-        while ($arrayPos = strpos($arrayPath, '[')) {
+        while ($arrayPos = strpos((string) $arrayPath, '[')) {
             // Get the next key in the path
             $arrayKey = trim(substr($arrayPath, 0, $arrayPos), ']');
 

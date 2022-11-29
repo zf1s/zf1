@@ -106,7 +106,7 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
     #[ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        $currentOffset = $this->key();
+        $currentOffset = (int) $this->key();
         $this->seek($offset);
         $current = $this->current();
         $this->seek($currentOffset);

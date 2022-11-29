@@ -111,6 +111,11 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
                     $type = PDO::PARAM_STR;
                 }
             }
+            if ($length === null) {
+                // PDOStatement::bindParam(): Passing null to parameter #4 ($maxLength) of type int is deprecated
+                // since php 8.1.0
+                $length = 0;
+            }
             return $this->_stmt->bindParam($parameter, $variable, $type, $length, $options);
         } catch (PDOException $e) {
             // require_once 'Zend/Db/Statement/Exception.php';
@@ -245,10 +250,13 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return mixed Array, object, or scalar depending on fetch mode.
      * @throws Zend_Db_Statement_Exception
      */
-    public function fetch($style = null, $cursor = null, $offset = null)
+    public function fetch($style = null, $cursor = null, $offset = 0)
     {
         if ($style === null) {
             $style = $this->_fetchMode;
+        }
+        if ($cursor === null) {
+            $cursor = PDO::FETCH_ORI_NEXT;
         }
         try {
             return $this->_stmt->fetch($style, $cursor, $offset);

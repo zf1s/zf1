@@ -1195,12 +1195,12 @@ class Zend_Date extends Zend_Date_DateObject
         }
 
         $match = array();
-        preg_match('/\dZ$/', $zone, $match);
+        preg_match('/\dZ$/', (string) $zone, $match);
         if (!empty($match)) {
             return "Etc/UTC";
         }
 
-        preg_match('/([+-]\d{2}):{0,1}\d{2}/', $zone, $match);
+        preg_match('/([+-]\d{2}):{0,1}\d{2}/', (string) $zone, $match);
         if (!empty($match) and ($match[count($match) - 1] <= 14) and ($match[count($match) - 1] >= -12)) {
             $zone = "Etc/GMT";
             $zone .= ($match[count($match) - 1] < 0) ? "+" : "-";
@@ -1208,7 +1208,7 @@ class Zend_Date extends Zend_Date_DateObject
             return $zone;
         }
 
-        preg_match('/([[:alpha:]\/_]{3,30})(?!.*([[:alpha:]\/]{3,30}))/', $zone, $match);
+        preg_match('/([[:alpha:]\/_]{3,30})(?!.*([[:alpha:]\/]{3,30}))/', (string) $zone, $match);
         try {
             if (!empty($match) and (!is_int($match[count($match) - 1]))) {
                 $oldzone = $this->getTimezone();
@@ -3004,7 +3004,7 @@ class Zend_Date extends Zend_Date_DateObject
                     }
 
                     $parsed = Zend_Locale_Format::getDate($date, array('date_format' => $format, 'locale' => $locale, 'format_type' => 'iso'));
-                    if ((strpos(strtoupper($format), 'YY') !== false) and (strpos(strtoupper($format), 'YYYY') === false)) {
+                    if (is_string($format) && (strpos(strtoupper($format), 'YY') !== false) and (strpos(strtoupper($format), 'YYYY') === false)) {
                         $parsed['year'] = self::getFullYear($parsed['year']);
                     }
                 } catch (Zend_Locale_Exception $e) {

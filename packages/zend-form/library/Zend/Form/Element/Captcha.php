@@ -201,7 +201,7 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
      */
     public function getPluginLoader($type)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
         if ($type == self::CAPTCHA) {
             if (!isset($this->_loaders[$type])) {
                 // require_once 'Zend/Loader/PluginLoader.php';
@@ -228,7 +228,7 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
      */
     public function addPrefixPath($prefix, $path, $type = null)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
         switch ($type) {
             case null:
                 $loader = $this->getPluginLoader(self::CAPTCHA);

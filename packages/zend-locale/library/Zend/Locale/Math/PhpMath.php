@@ -195,8 +195,10 @@ class Zend_Locale_Math_PhpMath extends Zend_Locale_Math
         if (empty($op2)) {
             return NULL;
         }
-        $op1 = self::floatalize($op1);
-        $op2 = self::floatalize($op2);
+        // this is stupid, but historically it was meant to operate only on integers.
+        // php modulo operator does not handle floats correctly
+        $op1 = (int) self::floatalize($op1);
+        $op2 = (int) self::floatalize($op2);
         if ((int)$op2 == 0) {
             return NULL;
         }
