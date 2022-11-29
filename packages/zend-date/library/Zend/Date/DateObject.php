@@ -906,20 +906,31 @@ abstract class Zend_Date_DateObject {
     /**
      * Calculates the sunrise or sunset based on a location
      *
-     * @param  array  $location  Location for calculation MUST include 'latitude', 'longitude', 'horizon'
-     * @param  bool   $horizon   true: sunrise; false: sunset
+     * @param  array  $location  Location for calculation MUST include 'latitude', 'longitude'
+     *                           and optional 'horizon' (civil, nautic, astronomical or effective [default])
+     * @param  bool   $rise      true: sunrise; false: sunset
      * @return mixed  - false: midnight sun, integer:
      */
-    protected function calcSun($location, $horizon, $rise = false)
+    protected function calcSun($location, $rise = false)
     {
+        $horizon = isset($location['horizon']) ? $location['horizon'] : 'effective';
+
         // timestamp within 32bit
         if (abs($this->_unixTimestamp) <= 0x7FFFFFFF) {
-            if ($rise === false) {
-                return date_sunset($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
-                                   $location['longitude'], 90 + $horizon, $this->getGmtOffset() / 3600);
+            $suninfo = date_sun_info($this->_unixTimestamp, $location['latitude'], $location['longitude']);
+            $prop = $rise ? 'sunrise' : 'sunset';
+            switch ($horizon) {
+                case 'civil':
+                    $prop = $rise ? 'civil_twilight_begin' : 'civil_twilight_end';
+                    break;
+                case 'nautic':
+                    $prop = $rise ? 'nautical_twilight_begin' : 'nautical_twilight_end';
+                    break;
+                case 'astronomic':
+                    $prop = $rise ? 'astronomical_twilight_begin' : 'astronomical_twilight_end';
+                    break;
             }
-            return date_sunrise($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
-                                $location['longitude'], 90 + $horizon, $this->getGmtOffset() / 3600);
+            return $suninfo[$prop];
         }
 
         // self calculation - timestamp bigger than 32bit
@@ -965,7 +976,26 @@ abstract class Zend_Date_DateObject {
         $solDeclination /=  sqrt(-$solDeclination * $solDeclination + 1);
         $solDeclination  = atan2($solDeclination, 1);
 
-        $solHorizon = $horizon - sin($solDeclination) * sin($radLatitude);
+        // Even though horizon declinations should rather be set to (minus) radian values of 0.35', 6, 12, 18 degrees respectively,
+        // the following values were used to be in sync with the old date_sunrise() and date_sunset() functions
+        // and they are taken from original sources by William C. Bell / Chris Spratt et. al.
+        // https://github.com/hollie/misterhouse/blob/67b4e36de6fccfb159c6b04c2f3e4b238ad23b5b/bin/sun_time#L97-L100
+        // and were defined exactly like that in Zend_Date::_checkLocation() - they are now moved here.
+        $horizonDeclination = -0.0145439;
+        switch ($horizon) {
+            case 'civil':
+                $horizonDeclination = -0.104528;
+                break;
+            case 'nautic':
+                $horizonDeclination = -0.207912;
+                break;
+            case 'astronomic':
+                $horizonDeclination = -0.309017;
+                break;
+        }
+
+        $solHorizon = $horizonDeclination - sin($solDeclination) * sin($radLatitude);
+        //$solHorizon = $horizon - sin($solDeclination) * sin($radLatitude);
         $solHorizon /= cos($solDeclination) * cos($radLatitude);
 
         // midnight sun, always night
