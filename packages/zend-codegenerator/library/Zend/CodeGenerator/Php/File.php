@@ -351,7 +351,7 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
      */
     public function getBody()
     {
-        return $this->_body;
+        return is_string($this->_body) ? $this->_body : '';
     }
 
     /**
