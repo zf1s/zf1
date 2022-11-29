@@ -347,7 +347,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         }
 
         $date = new Zend_Date_DateObjectTestHelper(-148309884);
-        if (PHP_VERSION_ID >= 80100) {
+        if (PHP_VERSION_ID >= 80000) {
             $this->assertSame(-148322895, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), true ));
             $this->assertSame(-148274514, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), false));
             $this->assertSame(-148318410, $date->calcSun(array('latitude' => -38.4, 'longitude' => -29), true ));
