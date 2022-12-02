@@ -432,11 +432,20 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
             $this->fail(sprintf("Failed loading helper; paths: %s", var_export($paths, 1)));
         }
         $this->assertTrue(file_exists($cacheFile));
-        $cache = file_get_contents($cacheFile);
-        if (substr(PHP_OS, 0, 3) !== 'WIN') {
-            // windows reads an empty string, without any error, if a file is flock-ed...
-            $this->assertContains('CacheTest.php', $cache);
+        
+        // on php versions lower than 7.4, file_get_contents returned empty string on Windows
+        // starting php 7.4, it throws an error "file_get_contents(): read of 8192 bytes failed with errno=13 Permission denied"
+        // releasing the lock helps in this case and contents are returned properly
+        // @see https://bugs.php.net/bug.php?id=79398
+        // releasing the lock is conducted by passing "null" value to setIncludeFileCache method
+        
+        if (substr(PHP_OS, 0, 3) === 'WIN') {
+            Zend_Loader_PluginLoader::setIncludeFileCache(null);
         }
+        
+        $cache = file_get_contents($cacheFile);
+        
+        $this->assertContains('CacheTest.php', $cache);
     }
 
     /**
