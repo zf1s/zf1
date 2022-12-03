@@ -56,6 +56,37 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
     }
 
     /**
+     * Convert microtime (result of microtime() as string "msec sec") to NTP timestamp
+     *
+     * NTP timestamps are represented as a 64-bit fixed-point number, in
+     * seconds relative to 0000 UT on 1 January 1900.  The integer part is
+     * in the first 32 bits and the fraction part in the last 32 bits
+     *
+     * @param string $microtime
+     * @return string
+     */
+    public static function microtimeToNtp($microtime)
+    {
+        list($frac, $sec) = explode(' ', $microtime);
+        $frac = (int) round((float) $frac * 0x100000000); // represent fraction in 0:(2^32)-1 range (32bit)
+        $fracba = ($frac & 0xff000000) >> 24;
+        $fracbb = ($frac & 0x00ff0000) >> 16;
+        $fracbc = ($frac & 0x0000ff00) >> 8;
+        $fracbd = ($frac & 0x000000ff);
+
+        $sec = $sec + 2208988800; // add 70 years in seconds, as ntp counts from 1900
+        $secba = ($sec & 0xff000000) >> 24;
+        $secbb = ($sec & 0x00ff0000) >> 16;
+        $secbc = ($sec & 0x0000ff00) >> 8;
+        $secbd = ($sec & 0x000000ff);
+
+        $ntp  = chr($secba)  . chr($secbb)  . chr($secbc)  . chr($secbd);
+        $ntp .= chr($fracba) . chr($fracbb) . chr($fracbc) . chr($fracbd);
+
+        return $ntp;
+    }
+
+    /**
      * Prepare local timestamp for transmission in our request packet
      *
      * NTP timestamps are represented as a 64-bit fixed-point number, in
@@ -66,18 +97,7 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _prepare()
     {
-        list($frac, $sec) = explode(' ', microtime());
-        $frac = (int) round((float) $frac * 4294967296);
-        $fracba = ($frac & 0xff000000) >> 24;
-        $fracbb = ($frac & 0x00ff0000) >> 16;
-        $fracbc = ($frac & 0x0000ff00) >> 8;
-        $fracbd = ($frac & 0x000000ff);
-
-        $sec = $sec + 2208988800;
-        $secba = ($sec & 0xff000000) >> 24;
-        $secbb = ($sec & 0x00ff0000) >> 16;
-        $secbc = ($sec & 0x0000ff00) >> 8;
-        $secbd = ($sec & 0x000000ff);
+        $ntptime = self::microtimeToNtp(microtime());
 
         // Flags
         $nul       = chr(0x00);
@@ -111,8 +131,7 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
          * The local time, in timestamp format, at the peer when its latest NTP message
          * was sent. Contanis an integer and a fractional part
          */
-        $ntppacket .= chr($secba)  . chr($secbb)  . chr($secbc)  . chr($secbd);
-        $ntppacket .= chr($fracba) . chr($fracbb) . chr($fracbc) . chr($fracbd);
+        $ntppacket .= $ntptime;
 
         /*
          * The local time, in timestamp format, at the peer. Contains an integer
@@ -133,8 +152,7 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
          * NTP message departed the sender. Contanis an integer
          * and a fractional part.
          */
-        $ntppacket .= chr($secba)  . chr($secbb)  . chr($secbc)  . chr($secbd);
-        $ntppacket .= chr($fracba) . chr($fracbb) . chr($fracbc) . chr($fracbd);
+        $ntppacket .= $ntptime;
 
         return $ntppacket;
     }

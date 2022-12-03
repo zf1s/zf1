@@ -344,4 +344,10 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
             // nothing
         }
     }
+
+    public function testMicrotimeToNtp()
+    {
+        $ntp = Zend_TimeSync_Ntp::microtimeToNtp('0.123456 1234567890');
+        $this->assertSame(pack('NN', 0xcd408152, 0x1f9acffa), $ntp);
+    }
 }
