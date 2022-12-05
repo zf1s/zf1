@@ -235,7 +235,7 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
      */
     public function testAdapterZendConfigEmptyDriverOptions()
     {
-        Zend_Loader::loadClass('Zend_Config');
+        // Zend_Loader::loadClass('Zend_Config');
         $params = $this->_util->getParams();
         $params['driver_options'] = '';
         $params = new Zend_Config($params);

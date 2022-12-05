@@ -61,7 +61,7 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
         $sql = preg_replace('/\\s+/', ' ', $select->__toString());
         $this->assertEquals('SELECT "zfproducts".* FROM "zfproducts"', $sql);
         $stmt = $select->query();
-        Zend_Loader::loadClass('Zend_Db_Statement_Static');
+        // Zend_Loader::loadClass('Zend_Db_Statement_Static');
         $this->assertTrue($stmt instanceof Zend_Db_Statement_Static);
     }
 
@@ -77,7 +77,7 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
         $this->assertEquals('SELECT "zfproducts".* FROM "zfproducts" WHERE (product_id = :product_id)', $sql);
 
         $stmt = $select->query();
-        Zend_Loader::loadClass('Zend_Db_Statement_Static');
+        // Zend_Loader::loadClass('Zend_Db_Statement_Static');
         $this->assertTrue($stmt instanceof Zend_Db_Statement_Static);
     }
 
