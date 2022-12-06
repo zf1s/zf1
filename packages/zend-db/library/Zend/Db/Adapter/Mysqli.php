@@ -424,8 +424,12 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
      */
     protected function _beginTransaction()
     {
-        $this->_connect();
-        $this->_connection->autocommit(false);
+        try {
+            $this->_connect();
+            $this->_connection->autocommit(false);
+        } catch (mysqli_sql_exception $e) {
+            throw Zend_Db_Adapter_Mysqli_Exception::fromMysqliException($e);
+        }
     }
 
     /**
@@ -435,9 +439,13 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
      */
     protected function _commit()
     {
-        $this->_connect();
-        $this->_connection->commit();
-        $this->_connection->autocommit(true);
+        try {
+            $this->_connect();
+            $this->_connection->commit();
+            $this->_connection->autocommit(true);
+        } catch (mysqli_sql_exception $e) {
+            throw Zend_Db_Adapter_Mysqli_Exception::fromMysqliException($e);
+        }
     }
 
     /**
@@ -447,9 +455,13 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
      */
     protected function _rollBack()
     {
-        $this->_connect();
-        $this->_connection->rollback();
-        $this->_connection->autocommit(true);
+        try {
+            $this->_connect();
+            $this->_connection->rollback();
+            $this->_connection->autocommit(true);
+        } catch (mysqli_sql_exception $e) {
+            throw Zend_Db_Adapter_Mysqli_Exception::fromMysqliException($e);
+        }
     }
 
     /**
