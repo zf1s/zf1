@@ -417,7 +417,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type = null)
     {
-        $type = is_string($type) ? strtoupper($type) : $type;
+        $type = strtoupper((string) $type);
         switch ($type) {
             case self::DECORATOR:
             case self::ELEMENT:
@@ -445,7 +445,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function getPluginLoader($type = null)
     {
-        $type = is_string($type) ? strtoupper($type) : $type;
+        $type = strtoupper((string) $type);
         if (!isset($this->_loaders[$type])) {
             switch ($type) {
                 case self::DECORATOR:

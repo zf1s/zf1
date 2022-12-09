@@ -1048,7 +1048,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function getPluginLoader($type)
     {
-        $type = is_string($type) ? strtoupper($type) : $type;
+        $type = strtoupper((string) $type);
         switch ($type) {
             case self::FILTER:
             case self::VALIDATE:
