@@ -67,7 +67,11 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
     {
         $mysqli = $this->_adapter->getConnection();
 
-        $this->_stmt = $mysqli->prepare($sql);
+        try {
+            $this->_stmt = $mysqli->prepare($sql);
+        } catch (mysqli_sql_exception $e) {
+            throw Zend_Db_Statement_Mysqli_Exception::fromMysqliException($e);
+        }
 
         if ($this->_stmt === false || $mysqli->errno) {
             /**
@@ -204,8 +208,13 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
                 );
         }
 
-        // execute the statement
-        $retval = $this->_stmt->execute();
+        try {
+            // execute the statement
+            $retval = $this->_stmt->execute();
+        } catch (mysqli_sql_exception $e) {
+            throw Zend_Db_Statement_Mysqli_Exception::fromMysqliException($e);
+        }
+
         if ($retval === false) {
             /**
              * @see Zend_Db_Statement_Mysqli_Exception

@@ -338,7 +338,7 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
             
             // Use regex?
             if (true === $useRegex) {
-                if (preg_match($value, $pageProperty)) {
+                if (preg_match($value, (string) $pageProperty)) {
                     return $page;
                 }
             } else {
@@ -409,7 +409,7 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
             
             // Use regex?
             if (true === $useRegex) {
-                if (0 !== preg_match($value, $pageProperty)) {
+                if (0 !== preg_match($value, (string) $pageProperty)) {
                     $found[] = $page;
                 }
             } else {

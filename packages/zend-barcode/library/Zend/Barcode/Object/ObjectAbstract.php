@@ -616,7 +616,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
      */
     public function getText()
     {
-        $text = $this->_text;
+        $text = (string) $this->_text;
         if ($this->_withChecksum) {
             $text .= $this->getChecksum($this->_text);
         }
@@ -986,7 +986,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
     protected function _checkText($value = null)
     {
         if ($value === null) {
-            $value = $this->_text;
+            $value = (string) $this->_text;
         }
         if (!strlen($value)) {
             // require_once 'Zend/Barcode/Object/Exception.php';

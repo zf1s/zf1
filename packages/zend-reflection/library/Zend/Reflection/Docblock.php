@@ -57,12 +57,12 @@ class Zend_Reflection_Docblock implements Reflector
     /**
      * @var string
      */
-    protected $_longDescription = null;
+    protected $_longDescription = '';
 
     /**
      * @var string
      */
-    protected $_shortDescription = null;
+    protected $_shortDescription = '';
 
     /**
      * @var array

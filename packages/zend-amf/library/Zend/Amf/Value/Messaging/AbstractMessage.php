@@ -31,6 +31,19 @@
  */
 class Zend_Amf_Value_Messaging_AbstractMessage
 {
+    // Copied the `correlationId` property definition from Zend_Amf_Value_Messaging_AsyncMessage,
+    // to keep the order of properties when they are being serialized same as PHP <8.1
+    // https://github.com/php/php-src/blob/578b67da49af51b2f796a48782e51ceb62860943/UPGRADING#L334-L341
+    // In PHP 8.1, the order of properties is the same as in the class definition, but properties from parent class
+    // always go after properties from the current class.
+    // `correlationId` prop is expected to be at the beginning of serialized messages,
+    // otherwise it breaks Zend_Amf_ResponseTest cases for php 8.1+.
+    /**
+     * The message id to be responded to.
+     * @var String
+     */
+    public $correlationId;
+
     /**
      * @var string Client identifier
      */

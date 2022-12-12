@@ -295,7 +295,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
         $data = array(
             'month' => '6abc '
         );
-        Zend_Loader::loadClass('Zend_Filter_Digits');
+        // Zend_Loader::loadClass('Zend_Filter_Digits');
         $filters = array(
             'month' => array(new Zend_Filter_Digits())
         );
@@ -442,7 +442,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
         $data = array(
             'month' => '6'
         );
-        Zend_Loader::loadClass('Zend_Validate_Digits');
+        // Zend_Loader::loadClass('Zend_Validate_Digits');
         $validators = array(
             'month' => array(
                 new Zend_Validate_Digits()
@@ -498,7 +498,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
             'field2' => 'abc123',
             'field3' => 150,
         );
-        Zend_Loader::loadClass('Zend_Validate_Between');
+        // Zend_Loader::loadClass('Zend_Validate_Between');
         $btw = new Zend_Validate_Between(1, 100);
         $validators = array(
             'field1' => array('digits', $btw),
@@ -527,7 +527,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
         $data = array(
             'field2' => 'abc123',
         );
-        Zend_Loader::loadClass('Zend_Validate_Between');
+        // Zend_Loader::loadClass('Zend_Validate_Between');
         $validators = array(
             'field2a' => array(
                 'digits',
@@ -705,7 +705,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
             'field2' => '150'
         );
 
-        Zend_Loader::loadClass('Zend_Validate_Between');
+        // Zend_Loader::loadClass('Zend_Validate_Between');
 
         $btw1 = new Zend_Validate_Between(1, 100);
 
@@ -1047,7 +1047,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
         $data = array('month' => '13abc');
         $digitsMesg = 'Month should consist of digits';
         $betweenMesg = 'Month should be between 1 and 12';
-        Zend_Loader::loadClass('Zend_Validate_Between');
+        // Zend_Loader::loadClass('Zend_Validate_Between');
         $validators = array(
             'month' => array(
                 'digits',
@@ -1078,7 +1078,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
         $data = array('field1' => array('13abc', '234'));
         $digitsMesg = 'Field1 should consist of digits';
         $betweenMesg = 'Field1 should be between 1 and 12';
-        Zend_Loader::loadClass('Zend_Validate_Between');
+        // Zend_Loader::loadClass('Zend_Validate_Between');
         $validators = array(
             'field1' => array(
                 'digits',
@@ -1108,7 +1108,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
     {
         $data = array('month' => '13abc');
         $betweenMesg = 'Month should be between 1 and 12';
-        Zend_Loader::loadClass('Zend_Validate_Between');
+        // Zend_Loader::loadClass('Zend_Validate_Between');
         $validators = array(
             'month' => array(
                 'digits',
@@ -1164,7 +1164,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
         $data = array('month' => '13abc');
         $digitsMesg = 'Month should consist of digits';
         $betweenMesg = 'Month should be between 1 and 12';
-        Zend_Loader::loadClass('Zend_Validate_Between');
+        // Zend_Loader::loadClass('Zend_Validate_Between');
         $validators = array(
             'month' => array(
                 'digits',
@@ -1195,7 +1195,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
         $data = array('month' => '13abc');
         $digitsMesg = 'Month should consist of digits';
         $betweenMesg = 'Month should be between 1 and 12';
-        Zend_Loader::loadClass('Zend_Validate_Between');
+        // Zend_Loader::loadClass('Zend_Validate_Between');
         $validators = array(
             'month' => array(
                 'digits',
@@ -1582,7 +1582,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
         $data = array(
             'field1' => '150'
         );
-        Zend_Loader::loadClass('Zend_Validate_Between');
+        // Zend_Loader::loadClass('Zend_Validate_Between');
         $btw1 = new Zend_Validate_Between(1, 100);
         $btw2 = new Zend_Validate_Between(1, 125);
         $validators = array(

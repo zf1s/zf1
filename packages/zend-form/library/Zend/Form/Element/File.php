@@ -104,7 +104,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      */
     public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
 
         if ($type != self::TRANSFER_ADAPTER) {
             return parent::setPluginLoader($loader, $type);
@@ -122,7 +122,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      */
     public function getPluginLoader($type)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
 
         if ($type != self::TRANSFER_ADAPTER) {
             return parent::getPluginLoader($type);
@@ -149,7 +149,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      */
     public function addPrefixPath($prefix, $path, $type = null)
     {
-        $type = strtoupper($type);
+        $type = is_string($type) ? strtoupper($type) : $type;
         if (!empty($type) && ($type != self::TRANSFER_ADAPTER)) {
             return parent::addPrefixPath($prefix, $path, $type);
         }

@@ -34,5 +34,16 @@
 
 class Zend_Db_Statement_Mysqli_Exception extends Zend_Db_Statement_Exception
 {
-}
+    public static function fromMysqliException(mysqli_sql_exception $exception)
+    {
+        $p = new ReflectionProperty('mysqli_sql_exception', 'sqlstate');
+        $p->setAccessible(true);
+        $sqlstate = $p->getValue($exception);
 
+        return new self(
+            'Mysqli statement error:' . $exception->getMessage() . ' SQLSTATE: ' . $sqlstate,
+            $exception->getCode(),
+            $exception
+        );
+    }
+}

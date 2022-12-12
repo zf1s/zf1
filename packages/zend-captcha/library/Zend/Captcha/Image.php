@@ -506,7 +506,7 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
         $textbox = imageftbbox($fsize, 0, $font, $word);
         $x = ($w - ($textbox[2] - $textbox[0])) / 2;
         $y = ($h - ($textbox[7] - $textbox[1])) / 2;
-        imagefttext($img, $fsize, 0, $x, $y, $text_color, $font, $word);
+        imagefttext($img, $fsize, 0, (int) $x, (int) $y, $text_color, $font, $word);
 
        // generate noise
         for ($i=0; $i<$this->_dotNoiseLevel; $i++) {
@@ -542,10 +542,12 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
                 if ($sx < 0 || $sy < 0 || $sx >= $w - 1 || $sy >= $h - 1) {
                     continue;
                 } else {
-                    $color    = (imagecolorat($img, $sx, $sy) >> 16)         & 0xFF;
-                    $color_x  = (imagecolorat($img, $sx + 1, $sy) >> 16)     & 0xFF;
-                    $color_y  = (imagecolorat($img, $sx, $sy + 1) >> 16)     & 0xFF;
-                    $color_xy = (imagecolorat($img, $sx + 1, $sy + 1) >> 16) & 0xFF;
+                    $intsx = floor($sx);
+                    $intsy = floor($sy);
+                    $color    = (imagecolorat($img, $intsx, $intsy) >> 16)         & 0xFF;
+                    $color_x  = (imagecolorat($img, $intsx + 1, $intsy) >> 16)     & 0xFF;
+                    $color_y  = (imagecolorat($img, $intsx, $intsy + 1) >> 16)     & 0xFF;
+                    $color_xy = (imagecolorat($img, $intsx + 1, $intsy + 1) >> 16) & 0xFF;
                 }
                 if ($color == 255 && $color_x == 255 && $color_y == 255 && $color_xy == 255) {
                     // ignore background
@@ -564,6 +566,7 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
                               + $color_x  * $frac_x  * $frac_y1
                               + $color_y  * $frac_x1 * $frac_y
                               + $color_xy * $frac_x  * $frac_y;
+                    $newcolor = round($newcolor);
                 }
                 imagesetpixel($img2, $x, $y, imagecolorallocate($img2, $newcolor, $newcolor, $newcolor));
             }

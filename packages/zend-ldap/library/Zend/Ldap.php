@@ -304,7 +304,7 @@ class Zend_Ldap
                                 $val === '1' || strcasecmp($val, 'true') == 0);
                         break;
                     default:
-                        $permittedOptions[$key] = trim($val);
+                        $permittedOptions[$key] = trim((string) $val);
                         break;
                 }
             }

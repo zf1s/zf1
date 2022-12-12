@@ -215,7 +215,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                 case self::STATE_SCAN:
                     $matches = array();
                     $regex   = '#\G(?<text>[^\[]*)(?<open>\[(?<name>[' . self::NAME_CHARSET . ']+)?)?#';
-                    preg_match($regex, $this->_value, $matches, null, $this->_pointer);
+                    preg_match($regex, $this->_value, $matches, 0, $this->_pointer);
 
                     $this->_pointer += strlen($matches[0]);
 
@@ -257,7 +257,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                 case self::STATE_SCANATTRS:
                     $matches = array();
                     $regex   = '#\G((?<end>\s*\])|\s+(?<attribute>[' . self::NAME_CHARSET . ']+)(?<eq>=?))#';
-                    if (!preg_match($regex, $this->_value, $matches, null, $this->_pointer)) {
+                    if (!preg_match($regex, $this->_value, $matches, 0, $this->_pointer)) {
                         break 2;
                     }
 
@@ -296,7 +296,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                 case self::STATE_PARSEVALUE:
                     $matches = array();
                     $regex   = '#\G((?<quote>"|\')(?<valuequote>.*?)\\2|(?<value>[^\]\s]+))#';
-                    if (!preg_match($regex, $this->_value, $matches, null, $this->_pointer)) {
+                    if (!preg_match($regex, $this->_value, $matches, 0, $this->_pointer)) {
                         $this->_state = self::STATE_SCANATTRS;
                         break;
                     }

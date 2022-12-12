@@ -291,18 +291,20 @@ class Zend_Date_Cities
      * Returns the location from the selected city
      *
      * @param  string $city    City to get location for
-     * @param  string $horizon Horizon to use :
+     * @param  string|null $horizon Horizon to use :
      *                         default: effective
      *                         others are civil, nautic, astronomic
      * @return array
      * @throws Zend_Date_Exception When city is unknown
      */
-    public static function City($city, $horizon = false)
+    public static function City($city, $horizon = null)
     {
         foreach (self::$cities as $key => $value) {
             if (strtolower($key) === strtolower($city)) {
                 $return            = $value;
-                $return['horizon'] = $horizon;
+                if ($horizon !== null) {
+                    $return['horizon'] = $horizon;
+                }
                 return $return;
             }
         }

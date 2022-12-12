@@ -165,11 +165,21 @@ class Zend_Http_UserAgent implements Serializable
     }
 
     /**
-     * Serialized representation of the object
+     * Serialize object
      *
      * @return string
      */
     public function serialize()
+    {
+        return serialize($this->__serialize());
+    }
+
+    /**
+     * Serialize object
+     *
+     * @return array
+     */
+    public function __serialize()
     {
         $device = $this->getDevice();
         $spec = array(
@@ -180,19 +190,28 @@ class Zend_Http_UserAgent implements Serializable
             'user_agent'   => $this->getServerValue('http_user_agent'),
             'http_accept'  => $this->getServerValue('http_accept'),
         );
-        return serialize($spec);
+        return $spec;
     }
 
     /**
      * Unserialize a previous representation of the object
      *
-     * @param  string $serialized
+     * @param  string $data
      * @return void
      */
-    public function unserialize($serialized)
+    public function unserialize($data)
     {
-        $spec = unserialize($serialized);
+        $this->__unserialize(unserialize($data));
+    }
 
+    /**
+     * Unserialize a previous representation of the object
+     *
+     * @param  array $spec
+     * @return void
+     */
+    public function __unserialize($spec)
+    {
         $this->setOptions($spec);
 
         // Determine device class and ensure the class is loaded

@@ -61,7 +61,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        if (file_exists($this->_includeCache)) {
+        if ($this->_includeCache && file_exists($this->_includeCache)) {
             unlink($this->_includeCache);
         }
         Zend_Loader_PluginLoader::setIncludeFileCache(null);
@@ -80,7 +80,7 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
     {
         $this->clearStaticPaths();
         Zend_Loader_PluginLoader::setIncludeFileCache(null);
-        if (file_exists($this->_includeCache)) {
+        if ($this->_includeCache && file_exists($this->_includeCache)) {
             unlink($this->_includeCache);
         }
     }
