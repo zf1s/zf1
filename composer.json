@@ -1,6 +1,6 @@
 {
     "name": "zf1s/zf1",
-    "description": "Zend Framework 1 complete package, PHP 5.3-8.0 compatible. Please consider using individual zf1s/zend-* packages instead - see README.",
+    "description": "Zend Framework 1 complete package, PHP 5.3-8.1 compatible. Please consider using individual zf1s/zend-* packages instead - see README.",
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
