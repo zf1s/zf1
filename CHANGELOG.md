@@ -1,5 +1,62 @@
 ## Changelog:
 
+### 1.15.1 - 2022-12-12
+- general
+  - php 8.1 compatibility fixes ([#149])
+  - php 8.1 compat: `ReturnTypeWillChange` Attribute ([#147])
+  - require php extensions in dev only - avoid composer warnings for missing extensions when installing `zf1s/zf1` package ([#136])
+  - add missing `@throws` annotations ([#140])
+  - fix psr-0 autoloading issues ([#135])
+  - clean up `zf1s/zf1` package by ignoring unwanted files in export-ignore ([#134])
+- zend-amf
+  - fix for php 8.1+ keep the order of properties when they are being serialized same as PHP <8.1 ([#149])
+  - phpdoc: fix `Zend_Amf_Server_Response` class name, should be `Zend_Amf_Response` ([#137])
+- zend-console-getopt
+  - Fix `str_split('')` logic to keep same as PHP before 8.2 on PHP 8.2 ([#143])
+- zend-date
+  - properly calculate sunrise, sunset and twilight times ([#151])
+- zend-db
+  - fix MySQLi adapter after changing default reporting mode by PHP 8.1 ([#156], [#158])
+- zend-openid
+  -  fix for `Zend_OpenId_Consumer_Storage_File` when symlinks are not used (i.e. on windows) ([#148])
+- zend-progressbar
+  - fix "stty: 'standard input': Inappropriate ioctl for device" spam ([#155])
+- zend-server
+  - fix issues with `Zend_Server_Reflection_Method` ([#149])
+- zend-timesync
+  - fix ntp time sync ([#153])
+- general: CI
+  - enable php 8.1/8.2 builds ([#129])
+  - fix CI warnings: Node.js 12 actions are deprecated ([#139])
+  - utilize continue-on-error for 'experimental' flag ([#142])
+  - enable SQLite tests ([#157])
+- general: tests
+  - fix running tests on windows with composer v2 ([#150])
+  - [zend-loader] fix failing Zend_Loader_PluginLoaderTest on windows ([#154])
+  - [zend-paginator] use a temporary fixture test file for unit testing that git ignores ([#160])
+
+[#129]: https://github.com/zf1s/zf1/pull/129
+[#134]: https://github.com/zf1s/zf1/pull/134
+[#135]: https://github.com/zf1s/zf1/pull/135
+[#136]: https://github.com/zf1s/zf1/pull/136
+[#137]: https://github.com/zf1s/zf1/pull/137
+[#139]: https://github.com/zf1s/zf1/pull/139
+[#140]: https://github.com/zf1s/zf1/pull/140
+[#142]: https://github.com/zf1s/zf1/pull/142
+[#143]: https://github.com/zf1s/zf1/pull/143
+[#147]: https://github.com/zf1s/zf1/pull/147
+[#148]: https://github.com/zf1s/zf1/pull/148
+[#149]: https://github.com/zf1s/zf1/pull/149
+[#150]: https://github.com/zf1s/zf1/pull/150
+[#151]: https://github.com/zf1s/zf1/pull/151
+[#153]: https://github.com/zf1s/zf1/pull/153
+[#154]: https://github.com/zf1s/zf1/pull/154
+[#155]: https://github.com/zf1s/zf1/pull/155
+[#156]: https://github.com/zf1s/zf1/pull/156
+[#157]: https://github.com/zf1s/zf1/pull/157
+[#158]: https://github.com/zf1s/zf1/pull/158
+[#160]: https://github.com/zf1s/zf1/pull/160
+
 ### 1.15.0 - 2022-10-05
 - zend-loader
   - overhaul of zend-loader and autoloader done again ([#116])
