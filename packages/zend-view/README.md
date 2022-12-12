@@ -1,7 +1,7 @@
 # zend-view (Zend Framework 1)
 
 This package is a part of the Zend Framework 1. Each component was separated and put into its own composer package.
-**PHP 5.3-8.0** compatible.
+**PHP 5.3-8.1** compatible.
 
 - [Report issues](https://github.com/zf1s/zf1/issues) and
   [send Pull Requests](https://github.com/zf1s/zf1/pulls)
