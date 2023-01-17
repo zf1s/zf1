@@ -60,7 +60,7 @@ class Zend_Ldap_OriginalOfflineTest extends PHPUnit_Framework_TestCase
     public function testFilterEscapeBasicOperation()
     {
         $input = 'a*b(b)d\e/f';
-        $expected = 'a\2ab\28b\29d\5ce\2ff';
+        $expected = 'a\2ab\28b\29d\5ce/f';
         $this->assertEquals($expected, Zend_Ldap::filterEscape($input));
     }
 

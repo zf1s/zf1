@@ -162,6 +162,11 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
 
     public function testSorting()
     {
+        if (PHP_VERSION_ID >= 70000) {
+            $this->markTestSkipped("Test skipped due to removal of ldap_sort from PHP: https://www.php.net/ldap_sort");
+            return;
+        }
+    
         $lSorted=array('a', 'b', 'c', 'd', 'e');
         $items=$this->_getLdap()->search('(l=*)', TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
             Zend_Ldap::SEARCH_SCOPE_SUB, array(), 'l');
@@ -361,6 +366,11 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
      */
     public function testReverseSortingWithSearchEntriesShortcut()
     {
+        if (PHP_VERSION_ID >= 70000) {
+            $this->markTestSkipped("Test skipped due to removal of ldap_sort from PHP: https://www.php.net/ldap_sort");
+            return;
+        }
+    
         $lSorted = array('e', 'd', 'c', 'b', 'a');
         $items = $this->_getLdap()->searchEntries('(l=*)', TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
             Zend_Ldap::SEARCH_SCOPE_SUB, array(), 'l', true);
@@ -374,6 +384,11 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
      */
     public function testReverseSortingWithSearchEntriesShortcutWithOptionsArray()
     {
+        if (PHP_VERSION_ID >= 70000) {
+            $this->markTestSkipped("Test skipped due to removal of ldap_sort from PHP: https://www.php.net/ldap_sort");
+            return;
+        }
+    
         $lSorted = array('e', 'd', 'c', 'b', 'a');
         $items = $this->_getLdap()->searchEntries(array(
             'filter'      => '(l=*)',
