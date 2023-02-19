@@ -133,7 +133,7 @@ Original README: [click](README.orig.md)
 2. Bump interdependencies of packages to the next version
 
     ```bash
-    ../monorepo-builder/bin/monorepo-builder bump-interdependency "^1.15.2"
+    ../monorepo-builder/bin/monorepo-builder bump-interdependency "^1.15.3"
     ```
    
 3. Add git tag and push to this monorepo
@@ -147,7 +147,7 @@ Original README: [click](README.orig.md)
    
     Split operation:
     ```bash
-    ../monorepo-builder/bin/monorepo-builder split --max-processes=1 --tag=1.15.2
+    ../monorepo-builder/bin/monorepo-builder split --max-processes=1 --tag=1.15.3
     ```
 
 _Note: I had no success splitting this repo on win os, so unix-based system is recommended. (or WSL)

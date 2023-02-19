@@ -1,5 +1,14 @@
 ## Changelog:
 
+### 1.15.2 - 2023-02-19
+- zend-ldap
+  - php 8.1 compatibility fixes ([#159])
+- zend-session
+  - `Zend_Session_SaveHandler_DbTable` - fix "Failed to write session data using user defined save handler" warning on php 7+ ([#164])
+
+[#159]: https://github.com/zf1s/zf1/pull/159
+[#164]: https://github.com/zf1s/zf1/pull/164
+
 ### 1.15.1 - 2022-12-12
 - general
   - php 8.1 compatibility fixes ([#149])

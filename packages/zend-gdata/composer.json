@@ -8,11 +8,11 @@
         "php": ">=5.3.3",
         "ext-ctype": "*",
         "ext-dom": "*",
-        "zf1s/zend-exception": "^1.15.1",
-        "zf1s/zend-http": "^1.15.1",
-        "zf1s/zend-mime": "^1.15.1",
-        "zf1s/zend-version": "^1.15.1",
-        "zf1s/zend-xml": "^1.15.1",
+        "zf1s/zend-exception": "^1.15.2",
+        "zf1s/zend-http": "^1.15.2",
+        "zf1s/zend-mime": "^1.15.2",
+        "zf1s/zend-version": "^1.15.2",
+        "zf1s/zend-xml": "^1.15.2",
         "symfony/polyfill-php70": "^1.19"
     },
     "autoload": {

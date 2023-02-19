@@ -7,10 +7,10 @@
     "require": {
         "php": ">=5.3.3",
         "ext-iconv": "*",
-        "zf1s/zend-exception": "^1.15.1",
-        "zf1s/zend-xml": "^1.15.1",
-        "zf1s/zend-cache": "^1.15.1",
-        "zf1s/zend-registry": "^1.15.1"
+        "zf1s/zend-exception": "^1.15.2",
+        "zf1s/zend-xml": "^1.15.2",
+        "zf1s/zend-cache": "^1.15.2",
+        "zf1s/zend-registry": "^1.15.2"
     },
     "autoload": {
         "psr-0": {
