@@ -135,6 +135,8 @@ abstract class Zend_Ldap_OnlineTestCase extends Zend_Ldap_TestCase
 
     protected function _cleanupLdapServer()
     {
+        if (!$this->_ldap) return;
+
         $ldap=$this->_ldap->getResource();
         foreach (array_reverse($this->_nodes) as $dn => $entry) {
             ldap_delete($ldap, $dn);

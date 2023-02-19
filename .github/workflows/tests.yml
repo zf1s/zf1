@@ -37,10 +37,21 @@ jobs:
       MYSQL_PASSWORD: "zftest"
       MYSQL_DATABASE: "zftest"
       MYSQL_HOST: "127.0.0.1"
+      
       POSTGRES_USER: "zftest"
       POSTGRES_PASSWORD: "zftest"
       POSTGRES_DB: "zftest"
       POSTGRES_HOST: "127.0.0.1"
+
+      # https://hub.docker.com/r/bitnami/openldap
+      LDAP_ROOT: "dc=example,dc=com"
+      LDAP_ALLOW_ANON_BINDING: false
+      LDAP_SKIP_DEFAULT_TREE: "yes"
+      LDAP_ADMIN_USERNAME: "admin"
+      LDAP_ADMIN_PASSWORD: "insecure"
+      LDAP_CONFIG_ADMIN_USERNAME: "admin"
+      LDAP_CONFIG_ADMIN_PASSWORD: "configpassword"
+
       # Default locales are: C C.UTF-8 POSIX en_US.utf8
       LOCALES: "fr_FR@euro fr_FR fr_BE.UTF-8 de en_US"
 
@@ -75,6 +86,20 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
+      openldap:
+        image: bitnami/openldap:2.5
+        ports:
+          - 1389:1389
+        env:
+          LDAP_ROOT: ${{ env.LDAP_ROOT }}
+          LDAP_ALLOW_ANON_BINDING: ${{ env.LDAP_ALLOW_ANON_BINDING }}
+          LDAP_SKIP_DEFAULT_TREE: ${{ env.LDAP_SKIP_DEFAULT_TREE }}
+          LDAP_ADMIN_USERNAME: ${{ env.LDAP_ADMIN_USERNAME }}
+          LDAP_ADMIN_PASSWORD: ${{ env.LDAP_ADMIN_PASSWORD }}
+          LDAP_CONFIG_ADMIN_ENABLED: "yes"
+          LDAP_CONFIG_ADMIN_USERNAME: ${{ env.LDAP_CONFIG_ADMIN_USERNAME }}
+          LDAP_CONFIG_ADMIN_PASSWORD: ${{ env.LDAP_CONFIG_ADMIN_PASSWORD }}
 
     steps:
       - name: Checkout Code
@@ -111,6 +136,11 @@ jobs:
           sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen $LOCALES
           echo "All languages..."
           locale -a
+
+      - name: Setup LDAP
+        run: |
+          sudo apt-get install -y libnss-ldap libpam-ldap ldap-utils
+          tests/resources/openldap/docker-entrypoint-initdb.d/init.sh
 
       - name: "Run PHPUnit tests (Experimental: ${{ matrix.experimental }})"
         run: vendor/bin/phpunit --verbose

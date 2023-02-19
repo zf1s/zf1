@@ -103,6 +103,8 @@ class Zend_Ldap_CopyRenameTest extends Zend_Ldap_OnlineTestCase
 
     protected function tearDown()
     {
+        if (!$this->_getLdap()) return;
+
         if ($this->_getLdap()->exists($this->_newDn))
             $this->_getLdap()->delete($this->_newDn, false);
         if ($this->_getLdap()->exists($this->_orgDn))
