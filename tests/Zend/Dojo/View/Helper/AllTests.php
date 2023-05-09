@@ -62,6 +62,7 @@ require_once 'Zend/Dojo/View/Helper/VerticalSliderTest.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
+#[\AllowDynamicProperties]
 class Zend_Dojo_View_Helper_AllTests
 {
     public static function main()

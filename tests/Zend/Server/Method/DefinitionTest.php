@@ -44,6 +44,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
+#[\AllowDynamicProperties]
 class Zend_Server_Method_DefinitionTest extends PHPUnit_Framework_TestCase
 {
     /**

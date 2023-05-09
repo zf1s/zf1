@@ -45,6 +45,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
+#[\AllowDynamicProperties]
 class Zend_Queue_Stomp_Connection_Mock
     extends Zend_Queue_Stomp_Client_Connection
 {
@@ -117,6 +118,7 @@ class Zend_Queue_Stomp_Connection_Mock
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
+#[\AllowDynamicProperties]
 class Zend_Queue_Stomp_ClientTest extends PHPUnit_Framework_TestCase
 {
     public function testConstruct()

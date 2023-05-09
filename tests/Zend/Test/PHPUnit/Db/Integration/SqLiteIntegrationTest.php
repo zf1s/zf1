@@ -30,6 +30,7 @@ require_once "AbstractTestCase.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
+#[\AllowDynamicProperties]
 class Zend_Test_PHPUnit_Db_Integration_SqLiteIntegrationTest extends Zend_Test_PHPUnit_Db_Integration_AbstractTestCase
 {
     public function setUp()

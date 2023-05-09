@@ -40,6 +40,7 @@ require_once 'Contact.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Amf
  */
+#[\AllowDynamicProperties]
 class Zend_Amf_RequestTest extends PHPUnit_Framework_TestCase
 {
     /**

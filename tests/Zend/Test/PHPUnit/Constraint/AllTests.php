@@ -35,6 +35,7 @@ require_once 'Zend/Test/PHPUnit/Constraint/DomQueryTest.php';
  * @group      Zend_Test
  * @group      Zend_Test_PHPUnit
  */
+#[\AllowDynamicProperties]
 class Zend_Test_PHPUnit_Constraint_AllTests
 {
     public static function main()

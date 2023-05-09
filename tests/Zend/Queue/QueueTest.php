@@ -45,6 +45,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
+#[\AllowDynamicProperties]
 class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
 {
     protected function setUp()

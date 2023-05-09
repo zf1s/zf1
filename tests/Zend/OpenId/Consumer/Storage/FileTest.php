@@ -33,6 +33,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_OpenId
  */
+#[\AllowDynamicProperties]
 class Zend_OpenId_Consumer_Storage_FileTest extends PHPUnit_Framework_TestCase
 {
     const URL      = "http://www.myopenid.com/";

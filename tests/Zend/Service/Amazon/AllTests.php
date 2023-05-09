@@ -41,6 +41,7 @@ require_once 'Zend/Service/Amazon/Authentication/AllTests.php';
  * @group      Zend_Service
  * @group      Zend_Service_Amazon
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Amazon_AllTests
 {
     /**

@@ -45,6 +45,7 @@ require_once 'Zend/Log/Writer/ZendMonitorTest.php';
  * @group      Zend_Log
  * @group      Zend_Log_Writer
  */
+#[\AllowDynamicProperties]
 class Zend_Log_Writer_AllTests
 {
     public static function main()

@@ -32,6 +32,7 @@ require_once 'Zend/Db/Select/OracleTest.php';
  * @group      Zend_Db
  * @group      Zend_Db_Select
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Select_Pdo_OciTest extends Zend_Db_Select_TestCommon
 {
 

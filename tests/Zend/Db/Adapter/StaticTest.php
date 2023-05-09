@@ -45,6 +45,7 @@ require_once 'Zend/Db/Adapter/Static.php';
  * @group      Zend_Db
  * @group      Zend_Db_Adapter
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
 {
 

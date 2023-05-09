@@ -41,6 +41,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Rest
  * @group      Zend_Rest_Server
  */
+#[\AllowDynamicProperties]
 class Zend_Rest_ServerTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -736,6 +737,7 @@ function Zend_Rest_Server_TestFunc12()
 /**
  * Test Class
  */
+#[\AllowDynamicProperties]
 class Zend_Rest_Server_Test
 {
     /**
@@ -840,6 +842,7 @@ class Zend_Rest_Server_Test
     }
 }
 
+#[\AllowDynamicProperties]
 class Zend_Rest_Server_Test2
 {
     public function __construct($arg1 = 'unset')

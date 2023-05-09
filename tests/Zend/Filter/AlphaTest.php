@@ -35,6 +35,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
+#[\AllowDynamicProperties]
 class Zend_Filter_AlphaTest extends PHPUnit_Framework_TestCase
 {
     /**

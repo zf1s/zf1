@@ -40,6 +40,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Controller
  * @group      Zend_Controller_Router
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_Router_Route_ModuleTest extends PHPUnit_Framework_TestCase
 {
 

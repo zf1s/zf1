@@ -36,6 +36,7 @@ error_reporting( E_ALL | E_STRICT ); // now required for each test suite
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Json
  */
+#[\AllowDynamicProperties]
 class Zend_Json_JsonXMLTest extends PHPUnit_Framework_TestCase
 {
     /**

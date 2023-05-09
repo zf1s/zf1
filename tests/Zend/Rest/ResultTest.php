@@ -36,6 +36,7 @@
  * @group      Zend_Rest
  * @group      Zend_Rest_Result
  */
+#[\AllowDynamicProperties]
 class Zend_Rest_ResultTest extends PHPUnit_Framework_TestCase
 {
     static $path;

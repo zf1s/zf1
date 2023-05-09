@@ -40,6 +40,7 @@ require_once dirname(__FILE__) . '/SocketTest.php';
  * @group      Zend_Http
  * @group      Zend_Http_Client
  */
+#[\AllowDynamicProperties]
 class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
 {
     /**

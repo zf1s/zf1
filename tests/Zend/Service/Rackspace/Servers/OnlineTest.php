@@ -30,6 +30,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Service_Rackspace_Servers
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Rackspace_Servers_OnlineTest extends PHPUnit_Framework_TestCase
 {
     /**

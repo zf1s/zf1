@@ -44,6 +44,7 @@ require_once 'Zend/View/Helper/Navigation/SitemapTest.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
+#[\AllowDynamicProperties]
 class Zend_View_Helper_Navigation_AllTests
 {
     public static function main()

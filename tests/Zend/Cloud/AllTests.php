@@ -51,6 +51,7 @@ require_once 'Zend/Cloud/Infrastructure/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cloud
  */
+#[\AllowDynamicProperties]
 class Zend_Cloud_AllTests
 {
     public static function main()

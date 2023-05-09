@@ -37,6 +37,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Filter_Compress_ZipTest extends PHPUnit_Framework_TestCase
 {
     /**

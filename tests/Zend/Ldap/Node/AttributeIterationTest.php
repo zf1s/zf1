@@ -38,6 +38,7 @@ require_once dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'TestCase.php';
  * @group      Zend_Ldap
  * @group      Zend_Ldap_Node
  */
+#[\AllowDynamicProperties]
 class Zend_Ldap_Node_AttributeIterationTest extends Zend_Ldap_TestCase
 {
     public function testSimpleIteration()

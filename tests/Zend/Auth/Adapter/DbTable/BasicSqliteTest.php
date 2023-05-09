@@ -50,6 +50,7 @@
  * @group      Zend_Auth
  * @group      Zend_Db_Table
  */
+#[\AllowDynamicProperties]
 class Zend_Auth_Adapter_DbTable_BasicSqliteTest extends PHPUnit_Framework_TestCase
 {
     /**

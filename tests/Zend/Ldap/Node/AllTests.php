@@ -46,6 +46,7 @@ if (defined('TESTS_ZEND_LDAP_ONLINE_ENABLED')
  * @group      Zend_Ldap
  * @group      Zend_Ldap_Node
  */
+#[\AllowDynamicProperties]
 class Zend_Ldap_Node_AllTests
 {
     public static function main()

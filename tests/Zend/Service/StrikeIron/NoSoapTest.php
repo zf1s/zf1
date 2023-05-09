@@ -36,6 +36,7 @@ require_once 'Zend/Service/StrikeIron/BaseTest.php';
  * @group      Zend_Service
  * @group      Zend_Service_StrikeIron
  */
+#[\AllowDynamicProperties]
 class Zend_Service_StrikeIron_NoSoapTest extends PHPUnit_Framework_TestCase
 {
 

@@ -44,6 +44,7 @@ require_once 'Zend/XmlRpc/Server/FaultTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_XmlRpc
  */
+#[\AllowDynamicProperties]
 class Zend_XmlRpc_AllTests
 {
     public static function main()

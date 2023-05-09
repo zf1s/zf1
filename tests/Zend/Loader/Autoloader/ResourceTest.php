@@ -50,6 +50,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Loader
  */
+#[\AllowDynamicProperties]
 class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
 {
     public static function main()

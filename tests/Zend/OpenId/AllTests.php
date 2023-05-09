@@ -40,6 +40,7 @@ require_once 'Zend/OpenId/Extension/SregTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_OpenId
  */
+#[\AllowDynamicProperties]
 class Zend_OpenId_AllTests
 {
     public static function main()

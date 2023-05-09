@@ -33,6 +33,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Translate
  */
+#[\AllowDynamicProperties]
 class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
 {
     /**

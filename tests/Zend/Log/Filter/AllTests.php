@@ -38,6 +38,7 @@ require_once 'Zend/Log/Filter/SuppressTest.php';
  * @group      Zend_Log
  * @group      Zend_Log_Filter
  */
+#[\AllowDynamicProperties]
 class Zend_Log_Filter_AllTests
 {
     public static function main()

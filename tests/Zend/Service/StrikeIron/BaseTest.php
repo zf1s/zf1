@@ -34,6 +34,7 @@ require_once 'Zend/Service/StrikeIron/BaseTest.php';
  * @group      Zend_Service
  * @group      Zend_Service_StrikeIron
  */
+#[\AllowDynamicProperties]
 class Zend_Service_StrikeIron_BaseTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -259,6 +260,7 @@ class Zend_Service_StrikeIron_BaseTest extends PHPUnit_Framework_TestCase
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Service_StrikeIron_BaseTest_MockSoapClient
 {
     public static $outputHeaders = array('SubscriptionInfo' => array('RemainingHits' => 3));

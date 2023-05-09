@@ -34,6 +34,7 @@ require_once 'Zend/CodeGenerator/Php/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_CodeGenerator
  */
+#[\AllowDynamicProperties]
 class Zend_CodeGenerator_AllTests
 {
     public static function main()

@@ -41,6 +41,7 @@ require_once 'Zend/Service/Ebay/Finding/OnlineTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Service
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Ebay_Finding_AllTests
 {
     public static function main()

@@ -32,6 +32,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Calendar
  */
+#[\AllowDynamicProperties]
 class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
 {
 

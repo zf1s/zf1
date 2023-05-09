@@ -31,6 +31,7 @@
  * @group      Zend_Feed
  * @group      Zend_Feed_Reader
  */
+#[\AllowDynamicProperties]
 class Zend_Feed_Reader_Integration_PodcastRss2Test extends PHPUnit_Framework_TestCase
 {
 

@@ -48,6 +48,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Json
  */
+#[\AllowDynamicProperties]
 class Zend_JsonTest extends PHPUnit_Framework_TestCase
 {
     private $_originalUseBuiltinEncoderDecoderValue;
@@ -925,6 +926,7 @@ EOB;
 /**
  * Zend_JsonTest_Item: test item for use with testZf461()
  */
+#[\AllowDynamicProperties]
 class Zend_JsonTest_Item
 {
 }
@@ -932,6 +934,7 @@ class Zend_JsonTest_Item
 /**
  * Zend_JsonTest_Object: test class for encoding classes
  */
+#[\AllowDynamicProperties]
 class Zend_JsonTest_Object
 {
     const FOO = 'bar';
@@ -1013,6 +1016,7 @@ class ZF11167_ToArrayToJsonClass extends ZF11167_ToArrayClass
  * ISSUE  ZF-4946
  *
  */
+#[\AllowDynamicProperties]
 class Zend_Json_ToJsonWithExpr
 {
     private $_string = 'text';

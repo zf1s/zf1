@@ -47,6 +47,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_View
  */
+#[\AllowDynamicProperties]
 class Zend_ViewTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -1163,6 +1164,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_ViewTest_Extension extends Zend_View
 {
     public function init()

@@ -34,6 +34,7 @@ require_once dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'OnlineTestCase.
  * @group      Zend_Ldap
  * @group      Zend_Ldap_Node
  */
+#[\AllowDynamicProperties]
 class Zend_Ldap_Node_RootDseTest extends Zend_Ldap_OnlineTestCase
 {
     public function testLoadRootDseNode()

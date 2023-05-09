@@ -39,6 +39,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_Akismet
  */
+#[\AllowDynamicProperties]
 class Zend_Service_AkismetTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()

@@ -50,6 +50,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Auth
  */
+#[\AllowDynamicProperties]
 class Zend_AuthTest extends PHPUnit_Framework_TestCase
 {
     /**

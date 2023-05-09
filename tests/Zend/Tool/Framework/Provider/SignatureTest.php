@@ -46,6 +46,7 @@ require_once '_files/ProviderFullFeaturedBadSpecialties2.php';
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Provider
  */
+#[\AllowDynamicProperties]
 class Zend_Tool_Framework_Provider_SignatureTest extends PHPUnit_Framework_TestCase
 {
 

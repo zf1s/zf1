@@ -49,6 +49,7 @@ require_once dirname(__FILE__) . '/CommonHttpTests.php';
  * @group      Zend_Http
  * @group      Zend_Http_Client
  */
+#[\AllowDynamicProperties]
 class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
 {
     /**

@@ -37,6 +37,7 @@ require_once 'Zend/Navigation/Page/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Navigation
  */
+#[\AllowDynamicProperties]
 class Zend_Navigation_AllTests
 {
     public static function main()

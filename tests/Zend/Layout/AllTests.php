@@ -37,6 +37,7 @@ require_once 'Zend/Layout/FunctionalTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Layout
  */
+#[\AllowDynamicProperties]
 class Zend_Layout_AllTests
 {
     public static function main()

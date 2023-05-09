@@ -35,6 +35,7 @@ require_once 'BigInteger/GmpTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Crypt
  */
+#[\AllowDynamicProperties]
 class Zend_Crypt_Math_AllTests
 {
     public static function main()

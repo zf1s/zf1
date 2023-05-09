@@ -35,6 +35,7 @@
  * @group Zend_CodeGenerator_Php
  * @group Zend_CodeGenerator_Php_File
  */
+#[\AllowDynamicProperties]
 class Zend_CodeGenerator_Php_FileTest extends PHPUnit_Framework_TestCase
 {
 

@@ -34,6 +34,7 @@ Zend_OpenId::$exitOnRedirect = false;
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_OpenId_ResponseHelper extends Zend_Controller_Response_Abstract
 {
     private $_canSendHeaders;

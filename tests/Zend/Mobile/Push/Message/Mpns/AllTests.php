@@ -36,6 +36,7 @@ require_once 'Zend/Mobile/Push/Message/Mpns/ToastTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mobile
  */
+#[\AllowDynamicProperties]
 class Zend_Mobile_Push_Message_Mpns_AllTests
 {
     public static function main()

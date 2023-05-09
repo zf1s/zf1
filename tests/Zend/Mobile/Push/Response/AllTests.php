@@ -34,6 +34,7 @@ require_once 'Zend/Mobile/Push/Response/GcmTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mobile
  */
+#[\AllowDynamicProperties]
 class Zend_Mobile_Push_Response_AllTests
 {
     public static function main()

@@ -107,6 +107,7 @@ function Zend_Soap_TestAsset_TestFunc9($foo, $bar)
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_TestFixingMultiplePrototypes
 {
     /**
@@ -128,6 +129,7 @@ class Zend_Soap_TestAsset_TestFixingMultiplePrototypes
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_Test
 {
     /**
@@ -192,6 +194,7 @@ class Zend_Soap_TestAsset_AutoDiscoverTestClass1
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_AutoDiscoverTestClass2
 {
     /**
@@ -229,6 +232,7 @@ class Zend_Soap_TestAsset_AutoDiscoverTestClass2
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_ComplexTypeB
 {
     /**
@@ -246,6 +250,7 @@ class Zend_Soap_TestAsset_ComplexTypeB
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_ComplexTypeA
 {
     /**
@@ -259,6 +264,7 @@ class Zend_Soap_TestAsset_ComplexTypeA
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_ComplexTest
 {
     /**
@@ -272,6 +278,7 @@ class Zend_Soap_TestAsset_ComplexTest
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_ComplexObjectStructure
 {
     /**
@@ -300,6 +307,7 @@ class Zend_Soap_TestAsset_ComplexObjectStructure
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_ComplexObjectWithObjectStructure
 {
     /**
@@ -313,6 +321,7 @@ class Zend_Soap_TestAsset_ComplexObjectWithObjectStructure
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_MyService
 {
     /**
@@ -344,6 +353,7 @@ class Zend_Soap_TestAsset_MyService
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_MyServiceSequence
 {
     /**
@@ -383,6 +393,7 @@ class Zend_Soap_TestAsset_MyServiceSequence
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_MyResponse
 {
     /**
@@ -396,6 +407,7 @@ class Zend_Soap_TestAsset_MyResponse
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_Recursion
 {
     /**
@@ -422,6 +434,7 @@ function Zend_Soap_TestAsset_OneWay($message)
  * @package    Zend_Soap
  * @subpackage UnitTests
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_NoReturnType
 {
     /**
@@ -436,6 +449,7 @@ class Zend_Soap_TestAsset_NoReturnType
 
 /* Client test classes */
 /** Test Class */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_TestClass
 {
     /**
@@ -483,6 +497,7 @@ class Zend_Soap_TestAsset_TestClass
 }
 
 /** Test class 2 */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_TestData1
 {
     /**
@@ -501,6 +516,7 @@ class Zend_Soap_TestAsset_TestData1
 }
 
 /** Test class 2 */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_TestData2
 {
     /**
@@ -540,6 +556,7 @@ class Zend_Soap_TestAsset_MockServer extends Zend_Soap_Server
 
 
 /** Server test classes */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_ServerTestClass
 {
     /**
@@ -599,6 +616,7 @@ class Zend_Soap_TestAsset_ServerTestClass
 if (extension_loaded('soap')) {
 
 /** Local SOAP client */
+#[\AllowDynamicProperties]
 class Zend_Soap_TestAsset_TestLocalSoapClient extends SoapClient
 {
     /**

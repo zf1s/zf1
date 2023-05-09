@@ -32,6 +32,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
+#[\AllowDynamicProperties]
 class Zend_Queue_Adapter_ActivemqOfflineTest extends PHPUnit_Framework_TestCase
 {
     /**

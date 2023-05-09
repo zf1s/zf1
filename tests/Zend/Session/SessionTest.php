@@ -39,6 +39,7 @@ require_once 'Zend/Session/SessionHelper.php';
  * @group      Zend_Session
  * @runTestsInSeparateProcesses
  */
+#[\AllowDynamicProperties]
 class Zend_SessionTest extends PHPUnit_Framework_TestCase
 {
     /**

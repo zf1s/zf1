@@ -33,6 +33,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Feed
  */
+#[\AllowDynamicProperties]
 class Zend_Feed_IteratorTest extends PHPUnit_Framework_TestCase
 {
     private $_feed;

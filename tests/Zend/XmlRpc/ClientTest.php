@@ -42,6 +42,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_XmlRpc
  */
+#[\AllowDynamicProperties]
 class Zend_XmlRpc_ClientTest extends PHPUnit_Framework_TestCase
 {
     /**

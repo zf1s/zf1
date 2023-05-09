@@ -58,6 +58,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @group      Zend_Controller
  * @group      Zend_Controller_Router
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
 {
     protected $_router;
@@ -773,6 +774,7 @@ class Zend_Controller_Router_RewriteTest extends PHPUnit_Framework_TestCase
  *
  * @uses Zend_Controller_Request_Interface
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_Router_RewriteTest_Request extends Zend_Controller_Request_Http
 {
     protected $_host;
@@ -801,6 +803,7 @@ class Zend_Controller_Router_RewriteTest_Request extends Zend_Controller_Request
 /**
  * Zend_Controller_RouterTest_Dispatcher
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_Router_RewriteTest_Dispatcher extends Zend_Controller_Dispatcher_Standard
 {
     public function getDefaultControllerName()
@@ -819,6 +822,7 @@ class Zend_Controller_Router_RewriteTest_Dispatcher extends Zend_Controller_Disp
  *
  * @uses Zend_Controller_Request_Abstract
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_Router_RewriteTest_Request_Incorrect extends Zend_Controller_Request_Abstract
 {
 }
@@ -828,6 +832,7 @@ class Zend_Controller_Router_RewriteTest_Request_Incorrect extends Zend_Controll
  *
  * @uses Zend_Controller_Request_Abstract
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_RouterTest_RouteV2_Stub extends Zend_Controller_Router_Route_Abstract
 {
     public function match($request) {

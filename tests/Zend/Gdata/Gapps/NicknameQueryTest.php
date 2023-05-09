@@ -32,6 +32,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
+#[\AllowDynamicProperties]
 class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
 {
 

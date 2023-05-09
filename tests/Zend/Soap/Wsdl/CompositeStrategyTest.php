@@ -43,6 +43,7 @@
  * @group      Zend_Soap
  * @group      Zend_Soap_Wsdl
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_Wsdl_CompositeStrategyTest extends PHPUnit_Framework_TestCase
 {
     public function testCompositeApiAddingStragiesToTypes()

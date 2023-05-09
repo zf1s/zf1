@@ -35,6 +35,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_OpenId
  */
+#[\AllowDynamicProperties]
 class Zend_OpenId_ExtensionTest extends PHPUnit_Framework_TestCase
 {
     /**

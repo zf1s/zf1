@@ -34,6 +34,7 @@
  * @group      Zend_Mobile_Push
  * @group      Zend_Mobile_Push_Gcm
  */
+#[\AllowDynamicProperties]
 class Zend_Mobile_Push_gcmTest extends PHPUnit_Framework_TestCase
 {
 

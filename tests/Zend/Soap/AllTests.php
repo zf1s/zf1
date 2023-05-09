@@ -40,6 +40,7 @@ require_once 'Zend/Soap/AutoDiscover/OnlineTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Soap
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AllTests
 {
     public static function main()

@@ -32,6 +32,7 @@ require_once 'Zend/Db/Statement/TestCommon.php';
  * @group      Zend_Db
  * @group      Zend_Db_Statement
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Statement_OracleTest extends Zend_Db_Statement_TestCommon
 {
 

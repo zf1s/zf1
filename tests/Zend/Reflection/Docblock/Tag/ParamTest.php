@@ -34,6 +34,7 @@
  * @group      Zend_Reflection_Docblock_Tag
  * @group      Zend_Reflection_Docblock_Tag_Param
  */
+#[\AllowDynamicProperties]
 class Zend_Reflection_Docblock_Tag_ParamTest extends PHPUnit_Framework_TestCase
 {
 

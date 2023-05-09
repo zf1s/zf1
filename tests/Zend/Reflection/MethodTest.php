@@ -39,6 +39,7 @@ require_once dirname(__FILE__) . '/_files/ZF9018TestClass.php';
  * @group      Zend_Reflection
  * @group      Zend_Reflection_Method
  */
+#[\AllowDynamicProperties]
 class Zend_Reflection_MethodTest extends PHPUnit_Framework_TestCase
 {
 

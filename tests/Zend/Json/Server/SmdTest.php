@@ -40,6 +40,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Json
  * @group      Zend_Json_Server
  */
+#[\AllowDynamicProperties]
 class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 {
     /**

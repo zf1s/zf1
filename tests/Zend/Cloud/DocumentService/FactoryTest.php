@@ -44,6 +44,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cloud
  */
+#[\AllowDynamicProperties]
 class Zend_Cloud_DocumentService_FactoryTest extends PHPUnit_Framework_TestCase
 {
     /**

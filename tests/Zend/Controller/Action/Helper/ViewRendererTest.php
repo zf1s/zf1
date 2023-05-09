@@ -47,6 +47,7 @@ require_once dirname(__FILE__) . '/../../_files/modules/bar/controllers/IndexCon
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_Action_Helper_ViewRendererTest extends PHPUnit_Framework_TestCase
 {
     /**

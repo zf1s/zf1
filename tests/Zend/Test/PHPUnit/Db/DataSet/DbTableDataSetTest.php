@@ -31,6 +31,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
+#[\AllowDynamicProperties]
 class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSetTest extends PHPUnit_Framework_TestCase
 {
     public function testAddTableAppendedToTableNames()

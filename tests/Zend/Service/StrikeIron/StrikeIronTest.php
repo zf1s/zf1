@@ -34,6 +34,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_StrikeIron
  */
+#[\AllowDynamicProperties]
 class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -106,6 +107,7 @@ class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Service_StrikeIron_StrikeIronTest_StubbedBase
 {
     public function __construct($options)

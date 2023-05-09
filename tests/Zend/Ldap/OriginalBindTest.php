@@ -34,6 +34,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Ldap
  */
+#[\AllowDynamicProperties]
 class Zend_Ldap_OriginalBindTest extends PHPUnit_Framework_TestCase
 {
     protected $_options = null;

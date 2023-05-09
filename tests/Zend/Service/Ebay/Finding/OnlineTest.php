@@ -32,6 +32,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -180,6 +181,7 @@ class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
  * @group      Zend_Service
  * @group      Zend_Service_Ebay
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Ebay_Finding_OnlineSkipTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()

@@ -54,6 +54,7 @@ require_once 'Zend/Cache/ZendServerShMemTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
+#[\AllowDynamicProperties]
 class Zend_Cache_AllTests
 {
     public static function main()

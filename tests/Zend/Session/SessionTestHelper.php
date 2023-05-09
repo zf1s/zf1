@@ -35,6 +35,7 @@ require dirname(dirname(dirname(dirname(__FILE__)))) .'/vendor/autoload.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Session
  */
+#[\AllowDynamicProperties]
 class Zend_Session_TestHelper
 {
     /**

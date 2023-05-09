@@ -42,6 +42,7 @@ require_once "Zend/Test/PHPUnit/Db/DataSet/DataSetTestCase.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
+#[\AllowDynamicProperties]
 class Zend_Test_PHPUnit_Db_DataSet_QueryDataSetTest extends Zend_Test_PHPUnit_Db_DataSet_DataSetTestCase
 {
     public function testCreateQueryDataSetWithoutZendDbAdapterThrowsException()

@@ -29,6 +29,7 @@
  * @group      Zend_Http
  * @group      Zend_Http_Client
  */
+#[\AllowDynamicProperties]
 class Zend_Http_Client_Skip_SocketTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -51,6 +52,7 @@ class Zend_Http_Client_Skip_SocketTest extends PHPUnit_Framework_TestCase
  * @group      Zend_Http
  * @group      Zend_Http_Client
  */
+#[\AllowDynamicProperties]
 class Zend_Http_Client_Skip_ProxyAdapterTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()

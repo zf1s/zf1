@@ -44,6 +44,7 @@ require_once 'Zend/CodeGenerator/Php/Property/DefaultValueTest.php';
  * @group      Zend_CodeGenerator
  * @group      Zend_CodeGenerator_Php
  */
+#[\AllowDynamicProperties]
 class Zend_CodeGenerator_Php_AllTests
 {
     public static function main()

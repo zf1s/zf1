@@ -34,6 +34,7 @@
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Sqs
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Amazon_Sqs_OfflineTest extends PHPUnit_Framework_TestCase
 {
     /**

@@ -121,6 +121,7 @@ function Zend_Soap_AutoDiscover_TestFunc9($foo, $bar)
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AutoDiscover_TestFixingMultiplePrototypes
 {
     /**
@@ -144,6 +145,7 @@ class Zend_Soap_AutoDiscover_TestFixingMultiplePrototypes
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AutoDiscover_Test {
     /**
      * Test Function 1
@@ -209,6 +211,7 @@ class Zend_Soap_AutoDiscoverTestClass1
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AutoDiscoverTestClass2
 {
     /**
@@ -248,6 +251,7 @@ class Zend_Soap_AutoDiscoverTestClass2
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_Wsdl_ComplexTypeB
 {
     /**
@@ -267,6 +271,7 @@ class Zend_Soap_Wsdl_ComplexTypeB
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_Wsdl_ComplexTypeA
 {
     /**
@@ -282,6 +287,7 @@ class Zend_Soap_Wsdl_ComplexTypeA
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_Wsdl_ComplexTest
 {
     /**
@@ -297,6 +303,7 @@ class Zend_Soap_Wsdl_ComplexTest
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_Wsdl_ComplexObjectStructure
 {
     /**
@@ -327,6 +334,7 @@ class Zend_Soap_Wsdl_ComplexObjectStructure
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_Wsdl_ComplexObjectWithObjectStructure
 {
     /**
@@ -342,6 +350,7 @@ class Zend_Soap_Wsdl_ComplexObjectWithObjectStructure
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AutoDiscover_MyService
 {
     /**
@@ -372,6 +381,7 @@ class Zend_Soap_AutoDiscover_MyService
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AutoDiscover_MyServiceSequence
 {
     /**
@@ -409,6 +419,7 @@ class Zend_Soap_AutoDiscover_MyServiceSequence
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AutoDiscover_MyResponse
 {
     /**
@@ -424,6 +435,7 @@ class Zend_Soap_AutoDiscover_MyResponse
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AutoDiscover_Recursion
 {
     /**
@@ -452,6 +464,7 @@ function Zend_Soap_AutoDiscover_OneWay($message)
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AutoDiscover_NoReturnType
 {
     /**

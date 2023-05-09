@@ -79,6 +79,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Gdata_Gapps extends Zend_Gdata
 {
 
@@ -877,7 +878,7 @@ class Zend_Gdata_Gapps extends Zend_Gdata
             } else {
                 // require_once 'Zend/Gdata/App/Exception.php';
                 throw new Zend_Gdata_App_Exception(
-                        "Unable to find '${class}' in registered packages");
+                        "Unable to find '{$class}' in registered packages");
             }
         } else {
             return parent::__call($method, $args);

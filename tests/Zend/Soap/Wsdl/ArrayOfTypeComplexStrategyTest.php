@@ -37,6 +37,7 @@ require_once dirname(__FILE__)."/../_files/commontypes.php";
  * @group      Zend_Soap
  * @group      Zend_Soap_Wsdl
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_Wsdl_ArrayOfTypeComplexStrategyTest extends PHPUnit_Framework_TestCase
 {
     private $wsdl;

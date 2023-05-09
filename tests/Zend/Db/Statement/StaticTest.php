@@ -32,6 +32,7 @@
  * @group      Zend_Db
  * @group      Zend_Db_Statement
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Statement_StaticTest extends PHPUnit_Framework_TestCase
 {
 

@@ -37,6 +37,7 @@ require_once 'Zend/Service/Amazon/Sqs/OnlineTest.php';
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Sqs
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Amazon_Sqs_AllTests
 {
     /**

@@ -39,6 +39,7 @@ require_once 'Zend/Memory/MemoryManagerTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Memory
  */
+#[\AllowDynamicProperties]
 class Zend_Memory_AllTests
 {
     public static function main()

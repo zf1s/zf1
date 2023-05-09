@@ -42,6 +42,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
+#[\AllowDynamicProperties]
 class Zend_Application_Resource_FrontcontrollerTest extends PHPUnit_Framework_TestCase
 {
     public static function main()

@@ -55,6 +55,7 @@ require_once 'Router/RewriteTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Controller
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_AllTests
 {
     public static function main()

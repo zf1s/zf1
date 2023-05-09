@@ -34,6 +34,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Memory_Manager_Dummy extends Zend_Memory_Manager
 {
     /** @var boolean */
@@ -73,6 +74,7 @@ class Zend_Memory_Manager_Dummy extends Zend_Memory_Manager
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Memory
  */
+#[\AllowDynamicProperties]
 class Zend_Memory_Container_MovableTest extends PHPUnit_Framework_TestCase
 {
     /**

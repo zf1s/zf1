@@ -56,6 +56,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_Amazon
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
 {
     /**

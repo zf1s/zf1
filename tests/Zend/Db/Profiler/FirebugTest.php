@@ -48,6 +48,7 @@
  * @group      Zend_Db
  * @group      Zend_Db_Profiler
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Profiler_FirebugTest extends PHPUnit_Framework_TestCase
 {
 

@@ -51,6 +51,7 @@ if (defined('TESTS_ZEND_LDAP_ONLINE_ENABLED')
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Ldap
  */
+#[\AllowDynamicProperties]
 class Zend_Ldap_AllTests
 {
     public static function main()
@@ -95,6 +96,7 @@ class Zend_Ldap_AllTests
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Ldap
  */
+#[\AllowDynamicProperties]
 class Zend_Ldap_SkipOnlineTests extends PHPUnit_Framework_TestCase
 {
     public function setUp()

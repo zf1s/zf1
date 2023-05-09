@@ -32,6 +32,7 @@
  * @group      Zend_Reflection_Docblock
  * @group      Zend_Reflection_Docblock_Tag
  */
+#[\AllowDynamicProperties]
 class Zend_Reflection_Docblock_TagTest extends PHPUnit_Framework_TestCase
 {
 

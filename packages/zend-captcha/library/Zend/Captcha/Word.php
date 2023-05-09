@@ -37,6 +37,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
+#[\AllowDynamicProperties]
 abstract class Zend_Captcha_Word extends Zend_Captcha_Base
 {
     /**#@+

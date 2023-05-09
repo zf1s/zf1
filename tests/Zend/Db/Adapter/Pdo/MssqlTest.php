@@ -40,6 +40,7 @@ require_once 'Zend/Db/Adapter/Pdo/TestCommon.php';
  * @group      Zend_Db
  * @group      Zend_Db_Adapter
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
 {
 

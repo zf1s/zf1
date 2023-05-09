@@ -35,6 +35,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Locale
  */
+#[\AllowDynamicProperties]
 class Zend_Locale_MathTest extends PHPUnit_Framework_TestCase
 {
     private static $savedLocale = 'C';

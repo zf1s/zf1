@@ -33,6 +33,7 @@ require_once 'Zend/Gdata/TestUtility/MockHttpClient.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_App
  */
+#[\AllowDynamicProperties]
 class Zend_Gdata_AppTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()

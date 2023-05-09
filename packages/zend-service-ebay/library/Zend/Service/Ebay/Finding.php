@@ -36,6 +36,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @uses       Zend_Service_Ebay_Abstract
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
 {
     const SERVICE_NAME         = 'FindingService';

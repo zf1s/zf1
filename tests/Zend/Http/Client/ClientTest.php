@@ -31,6 +31,7 @@
  * @group      Zend_Http
  * @group      Zend_Http_Client
  */
+#[\AllowDynamicProperties]
 class Zend_Http_Client_ClientTest extends PHPUnit_Framework_TestCase
 {
     /**

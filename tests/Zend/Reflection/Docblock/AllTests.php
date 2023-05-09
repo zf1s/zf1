@@ -36,6 +36,7 @@ require_once 'Zend/Reflection/Docblock/Tag/ReturnTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Reflection
  */
+#[\AllowDynamicProperties]
 class Zend_Reflection_Docblock_AllTests
 {
     public static function main()

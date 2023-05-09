@@ -35,6 +35,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_Audioscrobbler
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Audioscrobbler_AudioscrobblerTestCase extends PHPUnit_Framework_TestCase
 {
     /**

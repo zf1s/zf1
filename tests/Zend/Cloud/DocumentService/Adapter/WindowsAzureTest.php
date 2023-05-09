@@ -50,6 +50,7 @@ require_once 'Zend/Cloud/DocumentService/TestCase.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest
     extends Zend_Cloud_DocumentService_TestCase
 {

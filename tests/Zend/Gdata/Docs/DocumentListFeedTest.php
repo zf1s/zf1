@@ -32,6 +32,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Docs
  */
+#[\AllowDynamicProperties]
 class Zend_Gdata_Docs_DocumentListFeedTest extends PHPUnit_Framework_TestCase
 {
 

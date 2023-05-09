@@ -38,6 +38,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mail
  */
+#[\AllowDynamicProperties]
 class Zend_Mail_MaildirTest extends PHPUnit_Framework_TestCase
 {
     protected $_originalMaildir;

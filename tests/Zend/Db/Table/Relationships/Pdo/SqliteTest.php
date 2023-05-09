@@ -36,6 +36,7 @@ require_once 'Zend/Db/Table/Relationships/TestCommon.php';
  * @group      Zend_Db_Table
  * @group      Zend_Db_Table_Relationships
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Table_Relationships_Pdo_SqliteTest extends Zend_Db_Table_Relationships_TestCommon
 {
 

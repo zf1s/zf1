@@ -41,6 +41,7 @@ require_once dirname(__FILE__) . '/TestAsset/commontypes.php';
  * @group      Zend_Soap
  * @group      Zend_Soap_Server
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_ServerTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -1018,6 +1019,7 @@ class Zend_Soap_ServerTest extends PHPUnit_Framework_TestCase
 if (extension_loaded('soap')) {
 
 /** Local SOAP client */
+#[\AllowDynamicProperties]
 class Zend_Soap_Server_TestLocalSoapClient extends SoapClient
 {
     /**
@@ -1071,6 +1073,7 @@ class Zend_Soap_MockServer extends Zend_Soap_Server {
 }
 
 /** Test Class */
+#[\AllowDynamicProperties]
 class Zend_Soap_Server_TestClass {
     /**
      * Test Function 1
@@ -1128,6 +1131,7 @@ class Zend_Soap_Server_TestClass {
 
 
 /** Test class 2 */
+#[\AllowDynamicProperties]
 class Zend_Soap_Server_TestData1 {
     /**
      * Property1
@@ -1145,6 +1149,7 @@ class Zend_Soap_Server_TestData1 {
 }
 
 /** Test class 2 */
+#[\AllowDynamicProperties]
 class Zend_Soap_Server_TestData2 {
     /**
      * Property1

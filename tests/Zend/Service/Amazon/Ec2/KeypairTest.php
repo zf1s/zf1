@@ -36,6 +36,7 @@
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Ec2
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Amazon_Ec2_KeypairTest extends PHPUnit_Framework_TestCase
 {
 

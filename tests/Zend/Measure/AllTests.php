@@ -68,6 +68,7 @@ require_once 'Zend/Measure/WeightTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Measure
  */
+#[\AllowDynamicProperties]
 class Zend_Measure_AllTests
 {
     public static function main()

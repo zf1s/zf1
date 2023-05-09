@@ -43,6 +43,7 @@
  * @group      Zend_Http_Header
  * @group      ZF-4520
  */
+#[\AllowDynamicProperties]
 class Zend_Http_Header_SetCookieTest extends PHPUnit_Framework_TestCase
 {
 

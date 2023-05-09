@@ -35,6 +35,7 @@ require_once 'Zend/Service/Twitter/TwitterTest.php';
  * @group      Zend_Service
  * @group      Zend_Service_Twitter
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Twitter_AllTests
 {
     /**

@@ -33,6 +33,7 @@ require_once dirname(__FILE__)."/../_files/commontypes.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Soap
  */
+#[\AllowDynamicProperties]
 class Zend_Soap_AutoDiscover_OnlineTest extends PHPUnit_Framework_TestCase
 {
     protected $baseuri;

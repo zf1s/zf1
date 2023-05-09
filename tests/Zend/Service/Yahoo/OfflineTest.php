@@ -54,6 +54,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_Yahoo
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Yahoo_OfflineTest extends PHPUnit_Framework_TestCase
 {
     /**

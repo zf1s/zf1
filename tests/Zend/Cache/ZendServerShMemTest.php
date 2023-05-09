@@ -39,6 +39,7 @@ require_once 'CommonBackendTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
+#[\AllowDynamicProperties]
 class Zend_Cache_ZendServerShMemTest extends Zend_Cache_CommonBackendTest {
 
     protected $_instance;

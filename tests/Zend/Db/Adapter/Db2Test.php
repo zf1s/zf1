@@ -39,6 +39,7 @@ require_once 'Zend/Db/Adapter/TestCommon.php';
  * @group      Zend_Db
  * @group      Zend_Db_Adapter
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
 {
 

@@ -44,6 +44,7 @@ require_once '_files/EmptyLoader.php';
  * @group Zend_Tool
  * @group Zend_Tool_Framework
  */
+#[\AllowDynamicProperties]
 class Zend_Tool_Framework_RegistryTest extends PHPUnit_Framework_TestCase
 {
 

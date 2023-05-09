@@ -36,6 +36,7 @@ require_once 'Zend/Service/Flickr/OnlineTest.php';
  * @group      Zend_Service
  * @group      Zend_Service_Flickr
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Flickr_AllTests
 {
     /**

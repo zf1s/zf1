@@ -37,6 +37,7 @@ require_once 'Zend/Service/Rackspace/Servers/AllTests.php';
  * @group      Zend_Service
  * @group      Zend_Service_Rackspace
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Rackspace_AllTests
 {
     public static function main()

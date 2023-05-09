@@ -34,6 +34,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mime
  */
+#[\AllowDynamicProperties]
 class Zend_MimeTest extends PHPUnit_Framework_TestCase
 {
     public function testBoundary()

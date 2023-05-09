@@ -43,6 +43,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_Action_HelperBrokerTest extends PHPUnit_Framework_TestCase
 {
     /**

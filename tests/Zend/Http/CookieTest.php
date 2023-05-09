@@ -33,6 +33,7 @@
  * @group      Zend_Http
  * @group      Zend_Http_Cookie
  */
+#[\AllowDynamicProperties]
 class Zend_Http_CookieTest extends PHPUnit_Framework_TestCase
 {
     /**

@@ -47,6 +47,7 @@ require_once 'Zend/Service/Yahoo/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Service
  */
+#[\AllowDynamicProperties]
 class Zend_Service_AllTests
 {
     /**

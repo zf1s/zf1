@@ -31,6 +31,7 @@
  * @group      Zend_Oauth
  * @group      Zend_Oauth_Http
  */
+#[\AllowDynamicProperties]
 class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
 {
 

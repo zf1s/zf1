@@ -30,6 +30,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
+#[\AllowDynamicProperties]
 class Zend_Gdata_EntryTest extends PHPUnit_Framework_TestCase
 {
 

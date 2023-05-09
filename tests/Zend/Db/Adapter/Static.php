@@ -45,6 +45,7 @@ require_once 'Zend/Db/Statement/Static.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
 {
     public $config = null;

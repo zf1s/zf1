@@ -26,6 +26,7 @@ require_once 'Zend/Db/Statement/TestCommon.php';
 /**
  * Wrapper class for test protected function _stripQuoted
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Statement_Mysqli_Test_Class extends Zend_Db_Statement_Mysqli
 {
     public function stripQuoted($sql)
@@ -43,6 +44,7 @@ class Zend_Db_Statement_Mysqli_Test_Class extends Zend_Db_Statement_Mysqli
  * @group      Zend_Db
  * @group      Zend_Db_Statement
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Statement_MysqliTest extends Zend_Db_Statement_TestCommon
 {
     protected $_Zend_Db_Statement_Mysqli_Test_Class = null;

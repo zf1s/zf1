@@ -48,6 +48,7 @@ require_once dirname(__FILE__) . '/AdapterTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
+#[\AllowDynamicProperties]
 class Zend_Queue_Adapter_MemcacheqTest extends Zend_Queue_Adapter_AdapterTest
 {
     /**

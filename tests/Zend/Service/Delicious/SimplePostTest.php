@@ -35,6 +35,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_Delicious
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
 {
     /**

@@ -35,6 +35,7 @@ require_once 'Zend/Db/Statement/Pdo/TestCommon.php';
  * @group      Zend_Db
  * @group      Zend_Db_Statement
  */
+#[\AllowDynamicProperties]
 class Zend_Db_Statement_Pdo_OciTest extends Zend_Db_Statement_Pdo_TestCommon
 {
 

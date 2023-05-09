@@ -40,6 +40,7 @@ require_once 'Zend/Ldap/Dn/MiscTest.php';
  * @group      Zend_Ldap
  * @group      Zend_Ldap_Dn
  */
+#[\AllowDynamicProperties]
 class Zend_Ldap_Dn_AllTests
 {
     public static function main()

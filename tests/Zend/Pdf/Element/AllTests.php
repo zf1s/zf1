@@ -44,6 +44,7 @@ require_once 'Zend/Pdf/Element/String/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Pdf
  */
+#[\AllowDynamicProperties]
 class Zend_Pdf_Element_AllTests
 {
     public static function main()

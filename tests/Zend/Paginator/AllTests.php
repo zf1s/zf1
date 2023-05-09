@@ -49,6 +49,7 @@ require_once 'Zend/View/Helper/PaginationControlTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Paginator
  */
+#[\AllowDynamicProperties]
 class Zend_Paginator_AllTests
 {
     public static function main()

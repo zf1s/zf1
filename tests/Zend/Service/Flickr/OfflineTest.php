@@ -35,6 +35,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_Flickr
  */
+#[\AllowDynamicProperties]
 class Zend_Service_Flickr_OfflineTest extends PHPUnit_Framework_TestCase
 {
     /**

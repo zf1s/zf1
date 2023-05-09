@@ -45,6 +45,7 @@ require_once 'Zend/Session/SessionHelper.php';
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
+#[\AllowDynamicProperties]
 class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework_TestCase
 {
     /**
