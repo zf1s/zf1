@@ -105,16 +105,32 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Determine memcache version to install
+        id: memcacheVersion
+        run: |
+          if [ "${{ matrix.php }}" = "8.2" ]; then
+            echo "memcache_version=-8.2" >> "$GITHUB_OUTPUT"
+          else
+            echo "memcache_version=" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           ini-values: display_errors=off, log_errors=on
           tools: cs2pr
-          extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache-8.2, memcached, pdo_sqlite, bcmath
+          extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache${{ steps.memcacheVersion.outputs.memcache_version }}, pdo_sqlite, bcmath
         env:
           # https://github.com/shivammathur/setup-php/issues/407#issuecomment-773675741
           fail-fast: true
+
+      - name: Remove duplicate ini file for memcache (PHP 8.2)
+        run: |
+          if [ "${{ matrix.php }}" = "8.2" ] && [ -f /etc/php/8.2/mods-available/memcache.ini ]; then
+            sudo rm /etc/php/8.2/mods-available/memcache.ini
+          fi
+          php -i | grep "memcache support" -A 5
 
       # https://github.com/zf1s/zf1/pull/6#issuecomment-495397170
       - name: Validate composer.json for all packages
