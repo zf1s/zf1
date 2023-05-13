@@ -111,7 +111,7 @@ jobs:
           php-version: ${{ matrix.php }}
           ini-values: display_errors=off, log_errors=on
           tools: cs2pr
-          extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache, memcached, pdo_sqlite, bcmath
+          extensions: :xdebug, ctype, dom, gd, iconv, ldap, mbstring, reflection, session, simplexml, spl, xml, zlib, memcache-8.2, memcached, pdo_sqlite, bcmath
         env:
           # https://github.com/shivammathur/setup-php/issues/407#issuecomment-773675741
           fail-fast: true
