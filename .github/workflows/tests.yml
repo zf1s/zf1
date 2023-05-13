@@ -127,7 +127,6 @@ jobs:
       - name: Lint PHP source files
         run: |
           composer lint.checkstyle | cs2pr
-           php -i | grep "memcache support" -A 5
 
       - name: Setup environment for PHPUnit
         run: |
