@@ -65,7 +65,9 @@ class Zend_Log_Filter_ChainingTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        fclose($this->log);
+        if ($this->log) {
+            fclose($this->log);
+        }
     }
 
     public function testFilterAllWriters()
