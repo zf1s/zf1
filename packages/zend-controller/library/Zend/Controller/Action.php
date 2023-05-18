@@ -99,6 +99,12 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     protected $_helper = null;
 
     /**
+     * Controller's contexts, managed by Zend_Controller_Action_Helper_ContextSwitch
+     * @var array
+     */
+    public $contexts;
+
+    /**
      * Class constructor
      *
      * The request and response objects should be registered with the
