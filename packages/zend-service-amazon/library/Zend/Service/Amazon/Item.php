@@ -39,12 +39,167 @@ class Zend_Service_Amazon_Item
     /**
      * @var string
      */
+    public $Creator;
+
+    /**
+     * @var string
+     */
+    public $CurrencyCode;
+
+    /**
+     * @var string
+     */
     public $DetailPageURL;
+
+    /**
+     * @var string
+     */
+    public $Manufacturer;
+
+    /**
+     * @var string
+     */
+    public $ProductGroup;
+
+    /**
+     * @var string
+     */
+    public $Title;
+
+    /**
+     * @var string
+     */
+    public $Artist;
+
+    /**
+     * @var string
+     */
+    public $Author;
+
+    /**
+     * @var string
+     */
+    public $Binding;
+
+    /**
+     * @var string
+     */
+    public $Brand;
+
+    /**
+     * @var string
+     */
+    public $Department;
+
+    /**
+     * @var string
+     */
+    public $DeweyDecimalNumber;
+
+    /**
+     * @var string
+     */
+    public $EAN;
+
+    /**
+     * @var string
+     */
+    public $Edition;
+
+    /**
+     * @var string
+     */
+    public $Feature;
+
+    /**
+     * @var string
+     */
+    public $ISBN;
+
+    /**
+     * @var boolean
+     */
+    public $IsAutographed;
+
+    /**
+     * @var boolean
+     */
+    public $IsMemorabilia;
+
+    /**
+     * @var string
+     */
+    public $Label;
+
+    /**
+     * @var string
+     */
+    public $LegalDisclaimer;
+
+    /**
+     * @var string
+     */
+    public $Model;
+
+    /**
+     * @var string
+     */
+    public $MPN;
+
+    /**
+     * @var string
+     */
+    public $PublicationDate;
+
+    /**
+     * @var string
+     */
+    public $Publisher;
+
+    /**
+     * @var string
+     */
+    public $ReleaseDate;
+
+    /**
+     * @var string
+     */
+    public $Studio;
+
+    /**
+     * @var string
+     */
+    public $UPC;
+
+    /**
+     * @var string
+     */
+    public $Warranty;
 
     /**
      * @var int
      */
     public $SalesRank;
+
+    /**
+     * @var int
+     */
+    public $Amount;
+
+    /**
+     * @var string
+     */
+    public $FormattedPrice;
+
+    /**
+     * @var int
+     */
+    public $NumberOfItems;
+
+    /**
+     * @var int
+     */
+    public $NumberOfPages;
 
     /**
      * @var int
@@ -146,6 +301,11 @@ class Zend_Service_Amazon_Item
         $result = $xpath->query('./az:ItemAttributes/az:*/text()', $dom);
         if ($result->length >= 1) {
             foreach ($result as $v) {
+                if (in_array($v->parentNode->tagName, array('ItemDimensions', 'PackageDimensions', 'ListPrice'))) {
+                    // <ItemDimensions> and <PackageDimensions> consist sub-elements, but $v->data is casted with text() to a string value containing only whitespace
+                    // <ListPrice> is already handled, no need to set $this->ListPrice with whitespace-only string
+                    continue;
+                }
                 if (isset($this->{$v->parentNode->tagName})) {
                     if (is_array($this->{$v->parentNode->tagName})) {
                         array_push($this->{$v->parentNode->tagName}, (string) $v->data);

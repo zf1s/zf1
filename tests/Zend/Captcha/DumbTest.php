@@ -134,6 +134,8 @@ class Zend_Captcha_DumbTest extends PHPUnit_Framework_TestCase
 
 class Zend_Captcha_DumbTest_SessionContainer
 {
+    public $setExpirationHops;
+    public $setExpirationSeconds;
     protected static $_word;
 
     public function __get($name)

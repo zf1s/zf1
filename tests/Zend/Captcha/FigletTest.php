@@ -337,6 +337,8 @@ class Zend_Captcha_FigletTest extends PHPUnit_Framework_TestCase
 
 class Zend_Captcha_FigletTest_SessionContainer
 {
+    public $setExpirationHops;
+    public $setExpirationSeconds;
     protected static $_word;
 
     public function __get($name)
