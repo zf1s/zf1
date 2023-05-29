@@ -40,7 +40,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Loader_AutoloaderMultiVersionTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var mixed[]|mixed
+     * @var array
      */
     protected $loaders;
 
@@ -75,7 +75,7 @@ class Zend_Loader_AutoloaderMultiVersionTest extends PHPUnit_Framework_TestCase
     protected $specific;
 
     /**
-     * @var \Zend_Loader_Autoloader|mixed
+     * $var Zend_Loader_Autoloader
      */
     protected $autoloader;
 

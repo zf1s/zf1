@@ -35,7 +35,7 @@
 class Zend_Gdata_SpreadsheetsTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Spreadsheets
+     * $var Zend_Gdata_Spreadsheets
      */
     protected $gdata;
 

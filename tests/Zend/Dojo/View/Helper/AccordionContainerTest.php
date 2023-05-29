@@ -51,12 +51,12 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_View
+     * $var Zend_View
      */
     protected $view;
 
     /**
-     * @var \Zend_Dojo_View_Helper_AccordionContainer|mixed
+     * $var Zend_Dojo_View_Helper_AccordionContainer
      */
     protected $helper;
 

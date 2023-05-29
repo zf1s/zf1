@@ -43,12 +43,12 @@
 class Zend_Service_StrikeIron_USAddressVerificationTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \stdclass|mixed
+     * $var stdclass
      */
     protected $soapClient;
 
     /**
-     * @var \Zend_Service_StrikeIron_USAddressVerification|mixed
+     * $var Zend_Service_StrikeIron_USAddressVerification
      */
     protected $service;
 

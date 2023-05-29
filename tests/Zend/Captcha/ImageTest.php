@@ -49,12 +49,12 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
     protected $testDir;
 
     /**
-     * @var \Zend_Form_Element_Captcha|mixed
+     * $var Zend_Form_Element_Captcha
      */
     protected $element;
 
     /**
-     * @var \Zend_Captcha_Adapter|mixed
+     * $var Zend_Captcha_Adapter
      */
     protected $captcha;
 

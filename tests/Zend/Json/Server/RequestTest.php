@@ -40,7 +40,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Json_Server_Request|mixed
+     * $var Zend_Json_Server_Request
      */
     protected $request;
 

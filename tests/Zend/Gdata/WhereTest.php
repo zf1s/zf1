@@ -39,7 +39,7 @@ class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
     protected $whereText;
 
     /**
-     * @var \Zend_Gdata_Extension_Where|mixed
+     * $var Zend_Gdata_Extension_Where
      */
     protected $where;
 

@@ -53,7 +53,7 @@ class Zend_Dojo_View_Helper_SubmitButtonTest extends PHPUnit_Framework_TestCase
     protected $view;
 
     /**
-     * @var \Zend_Dojo_View_Helper_SubmitButton|mixed
+     * $var Zend_Dojo_View_Helper_SubmitButton
      */
     protected $helper;
 

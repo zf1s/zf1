@@ -39,7 +39,7 @@ class Zend_Gdata_VisibilityTest extends PHPUnit_Framework_TestCase
     protected $visibilityText;
 
     /**
-     * @var \Zend_Gdata_Extension_Visibility|mixed
+     * $var Zend_Gdata_Extension_Visibility
      */
     protected $visibility;
 

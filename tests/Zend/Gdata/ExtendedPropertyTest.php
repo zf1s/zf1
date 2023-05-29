@@ -39,7 +39,7 @@ class Zend_Gdata_ExtendedPropertyTest extends PHPUnit_Framework_TestCase
     protected $extendedPropertyText;
 
     /**
-     * @var \Zend_Gdata_Extension_ExtendedProperty|mixed
+     * $var Zend_Gdata_Extension_ExtendedProperty
      */
     protected $extendedProperty;
 

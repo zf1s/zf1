@@ -46,12 +46,12 @@ class Zend_XmlRpc_Request_HttpTest extends PHPUnit_Framework_TestCase
     protected $xml;
 
     /**
-     * @var \Zend_XmlRpc_Request_Http|mixed
+     * $var Zend_XmlRpc_Request_Http
      */
     protected $request;
 
     /**
-     * @var array<string, mixed>|mixed
+     * @var array
      */
     protected $server;
 

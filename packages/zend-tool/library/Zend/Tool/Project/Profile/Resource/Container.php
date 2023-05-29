@@ -36,7 +36,7 @@
 class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator, Countable
 {
     /**
-     * @var \Zend_Tool_Project_Profile_Resource_Container|mixed
+     * @var Zend_Tool_Project_Profile_Resource_Container
      */
     protected $_parentResource;
 

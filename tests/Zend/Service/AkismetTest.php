@@ -42,17 +42,17 @@
 class Zend_Service_AkismetTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Service_Akismet|mixed
+     * $var Zend_Service_Akismet
      */
     protected $akismet;
 
     /**
-     * @var \Zend_Http_Client_Adapter_Test|mixed
+     * $var Zend_Http_Client_Adapter_Test
      */
     protected $adapter;
 
     /**
-     * @var array<string, string>|mixed
+     * @var array
      */
     protected $comment;
 

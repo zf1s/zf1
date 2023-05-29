@@ -40,7 +40,7 @@ class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
     protected $webContentText;
 
     /**
-     * @var \Zend_Gdata_Calendar_Extension_WebContent|mixed
+     * $var Zend_Gdata_Calendar_Extension_WebContent
      */
     protected $webContent;
 

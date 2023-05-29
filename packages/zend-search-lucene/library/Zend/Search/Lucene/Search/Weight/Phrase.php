@@ -37,7 +37,7 @@
 class Zend_Search_Lucene_Search_Weight_Phrase extends Zend_Search_Lucene_Search_Weight
 {
     /**
-     * @var float|mixed
+     * @var float
      */
     private $_queryWeight;
 

@@ -33,7 +33,7 @@
 class Zend_Gdata_EntryTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Entry|mixed
+     * $var Zend_Gdata_Entry
      */
     protected $entry;
 

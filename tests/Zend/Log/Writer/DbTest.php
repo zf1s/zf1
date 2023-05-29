@@ -43,12 +43,12 @@ class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
     protected $tableName;
 
     /**
-     * @var \Zend_Log_Writer_DbTest_MockDbAdapter|mixed
+     * $var Zend_Log_Writer_DbTest_MockDbAdapter
      */
     protected $db;
 
     /**
-     * @var \Zend_Log_Writer_Db|mixed
+     * $var Zend_Log_Writer_Db
      */
     protected $writer;
 

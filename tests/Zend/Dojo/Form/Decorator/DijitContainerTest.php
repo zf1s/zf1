@@ -57,19 +57,19 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_Form_Decorator_DijitContainerTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var mixed[]|string[]|mixed
+     * @var array
      */
     protected $errors;
 
     protected $view;
 
     /**
-     * @var \Zend_Dojo_Form_Decorator_ContentPane|mixed
+     * $var Zend_Dojo_Form_Decorator_ContentPane
      */
     protected $decorator;
 
     /**
-     * @var \Zend_Dojo_Form
+     * $var Zend_Dojo_Form
      */
     protected $element;
 

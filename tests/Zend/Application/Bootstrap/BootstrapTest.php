@@ -40,22 +40,22 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Application_Bootstrap_BootstrapTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var mixed[]|mixed
+     * @var array
      */
     protected $loaders;
 
     /**
-     * @var \Zend_Loader_Autoloader
+     * $var Zend_Loader_Autoloader
      */
     protected $autoloader;
 
     /**
-     * @var \Zend_Application|mixed
+     * $var Zend_Application
      */
     protected $application;
 
     /**
-     * @var \Zend_Application_Bootstrap_Bootstrap|mixed
+     * $var Zend_Application_Bootstrap_Bootstrap
      */
     protected $bootstrap;
 

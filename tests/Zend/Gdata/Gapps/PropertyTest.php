@@ -40,7 +40,7 @@ class Zend_Gdata_Gapps_PropertyTest extends PHPUnit_Framework_TestCase
     protected $thePropertyText;
 
     /**
-     * @var \Zend_Gdata_Gapps_Extension_Property|mixed
+     * $var Zend_Gdata_Gapps_Extension_Property
      */
     protected $theProperty;
 

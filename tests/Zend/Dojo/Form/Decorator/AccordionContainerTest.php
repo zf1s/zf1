@@ -56,12 +56,12 @@ class Zend_Dojo_Form_Decorator_AccordionContainerTest extends PHPUnit_Framework_
     protected $view;
 
     /**
-     * @var \Zend_Dojo_Form_Decorator_AccordionContainer|mixed
+     * $var Zend_Dojo_Form_Decorator_AccordionContainer
      */
     protected $decorator;
 
     /**
-     * @var \Zend_Dojo_Form
+     * $var Zend_Dojo_Form
      */
     protected $element;
 

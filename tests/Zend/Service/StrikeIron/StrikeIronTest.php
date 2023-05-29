@@ -37,17 +37,17 @@
 class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \stdclass|mixed
+     * $var stdclass
      */
     protected $soapClient;
 
     /**
-     * @var array<string, \stdclass>|mixed
+     * @var array
      */
     protected $options;
 
     /**
-     * @var \Zend_Service_StrikeIron|mixed
+     * $var Zend_Service_StrikeIron
      */
     protected $strikeIron;
 

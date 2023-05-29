@@ -51,12 +51,12 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_View_Helper_TextareaTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_View
+     * $var Zend_View
      */
     protected $view;
 
     /**
-     * @var \Zend_Dojo_View_Helper_Textarea|mixed
+     * $var Zend_Dojo_View_Helper_Textarea
      */
     protected $helper;
 

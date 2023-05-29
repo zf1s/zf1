@@ -51,7 +51,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete|mixed
+     * $var Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete
      */
     protected $testCase;
 

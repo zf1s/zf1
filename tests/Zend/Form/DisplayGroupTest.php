@@ -54,12 +54,12 @@ class Zend_Form_DisplayGroupTest extends PHPUnit_Framework_TestCase
     protected $error;
 
     /**
-     * @var \Zend_Loader_PluginLoader|mixed
+     * $var Zend_Loader_PluginLoader
      */
     protected $loader;
 
     /**
-     * @var \Zend_Form_DisplayGroup|mixed
+     * $var Zend_Form_DisplayGroup
      */
     protected $group;
 

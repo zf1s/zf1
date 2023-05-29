@@ -42,7 +42,7 @@ class InstanceWindowsTest extends PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var \Zend_Http_Client_Adapter_Test|mixed
+     * $var Zend_Http_Client_Adapter_Test
      */
     protected $adapter;
 

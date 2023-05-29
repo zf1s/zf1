@@ -40,7 +40,7 @@ class Zend_Gdata_Calendar_TimezoneTest extends PHPUnit_Framework_TestCase
     protected $timezoneText;
 
     /**
-     * @var \Zend_Gdata_Calendar_Extension_Timezone|mixed
+     * $var Zend_Gdata_Calendar_Extension_Timezone
      */
     protected $timezone;
 

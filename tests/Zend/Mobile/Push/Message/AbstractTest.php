@@ -33,7 +33,7 @@
 class Zend_Mobile_Push_Message_AbstractTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Mobile_Push_Message_AbstractProxy|mixed
+     * $var Zend_Mobile_Push_Message_AbstractProxy
      */
     protected $msg;
 

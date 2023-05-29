@@ -46,7 +46,7 @@ class Zend_Log_Filter_ChainingTest extends PHPUnit_Framework_TestCase
     protected $log;
 
     /**
-     * @var \Zend_Log|mixed
+     * $var Zend_Log
      */
     protected $logger;
 

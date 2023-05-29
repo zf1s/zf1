@@ -42,7 +42,7 @@ class Test_Oauth_Client extends Zend_Oauth_Client {
 class Zend_Oauth_ClientTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Oauth_Client|mixed
+     * $var Zend_Oauth_Client
      */
     protected $client;
 

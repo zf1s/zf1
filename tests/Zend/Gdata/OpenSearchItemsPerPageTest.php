@@ -40,7 +40,7 @@ class Zend_Gdata_OpenSearchItemsPerPageTest extends PHPUnit_Framework_TestCase
     protected $openSearchItemsPerPageText;
 
     /**
-     * @var \Zend_Gdata_Extension_OpenSearchItemsPerPage|mixed
+     * $var Zend_Gdata_Extension_OpenSearchItemsPerPage
      */
     protected $openSearchItemsPerPage;
 

@@ -43,7 +43,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Json_Server_Smd|mixed
+     * $var Zend_Json_Server_Smd
      */
     protected $smd;
 

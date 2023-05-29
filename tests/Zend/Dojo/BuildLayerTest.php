@@ -40,7 +40,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_View|mixed
+     * $var Zend_View
      */
     protected $view;
 

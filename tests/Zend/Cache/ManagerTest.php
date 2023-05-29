@@ -34,7 +34,7 @@ class Zend_Cache_ManagerTest extends PHPUnit_Framework_TestCase
     protected $_cache_dir;
 
     /**
-     * @var \Zend_Cache_Core|null|mixed
+     * $var Zend_Cache_Core|null
      */
     protected $_cache;
 

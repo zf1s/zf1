@@ -35,7 +35,7 @@
 class Zend_Gdata_Gapps_GroupQueryTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Gapps_GroupQuery|mixed
+     * $var Zend_Gdata_Gapps_GroupQuery
      */
     protected $query;
 

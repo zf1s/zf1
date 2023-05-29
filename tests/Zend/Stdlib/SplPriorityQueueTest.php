@@ -37,7 +37,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Stdlib_SplPriorityQueueTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Stdlib_SplPriorityQueue|mixed
+     * $var Zend_Stdlib_SplPriorityQueue
      */
     protected $queue;
 

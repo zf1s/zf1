@@ -50,7 +50,7 @@ class Zend_Gdata_FeedTest extends PHPUnit_Framework_TestCase
     protected $expectedMismatchExceptionMessage;
 
     /**
-     * @var \Zend_Gdata_Feed|mixed
+     * $var Zend_Gdata_Feed
      */
     protected $feed;
 

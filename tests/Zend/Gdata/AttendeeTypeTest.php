@@ -39,7 +39,7 @@ class Zend_Gdata_AttendeeTypeTest extends PHPUnit_Framework_TestCase
     protected $attendeeTypeText;
 
     /**
-     * @var \Zend_Gdata_Extension_AttendeeType|mixed
+     * $var Zend_Gdata_Extension_AttendeeType
      */
     protected $attendeeType;
 

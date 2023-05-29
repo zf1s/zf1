@@ -52,12 +52,12 @@ class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
     protected $default;
 
     /**
-     * @var \Zend_EventManager_EventManager|mixed
+     * $var Zend_EventManager_EventManager
      */
     protected $events;
 
     /**
-     * @var string|class-string<\FOO>|mixed
+     * @var string
      */
     protected $foo;
 
@@ -67,7 +67,7 @@ class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
     protected $bar;
 
     /**
-     * @var \stdClass|mixed
+     * $var stdClass
      */
     protected $test;
 

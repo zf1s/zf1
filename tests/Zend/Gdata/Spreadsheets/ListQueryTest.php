@@ -35,7 +35,7 @@
 class Zend_Gdata_Spreadsheets_ListQueryTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Spreadsheets_ListQuery|mixed
+     * $var Zend_Gdata_Spreadsheets_ListQuery
      */
     protected $docQuery;
 

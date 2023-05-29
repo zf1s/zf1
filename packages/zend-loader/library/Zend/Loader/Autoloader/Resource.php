@@ -35,7 +35,7 @@
 class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interface
 {
     /**
-     * @var array<string, mixed>|array<string, object>
+     * @var array
      */
     protected $_resources;
 

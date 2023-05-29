@@ -53,7 +53,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var mixed[]|mixed
+     * @var array
      */
     protected $loaders;
 
@@ -63,7 +63,7 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
     protected $includePath;
 
     /**
-     * @var \Zend_Loader_Autoloader
+     * $var Zend_Loader_Autoloader
      */
     protected $autoloader;
 
@@ -73,7 +73,7 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
     protected $error;
 
     /**
-     * @var \Zend_Loader_Autoloader_Resource|mixed
+     * $var Zend_Loader_Autoloader_Resource
      */
     protected $loader;
 

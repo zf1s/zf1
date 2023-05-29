@@ -41,7 +41,7 @@ class Zend_Gdata_DocsOnlineTest extends PHPUnit_Framework_TestCase
     protected $docTitle;
 
     /**
-     * @var \Zend_Gdata_Docs|mixed
+     * $var Zend_Gdata_Docs
      */
     protected $gdata;
 

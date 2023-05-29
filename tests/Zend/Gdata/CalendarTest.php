@@ -42,7 +42,7 @@ class Zend_Gdata_CalendarTest extends PHPUnit_Framework_TestCase
     protected $eventFeedText;
 
     /**
-     * @var \Zend_Gdata_Calendar_EventFeed|mixed
+     * $var Zend_Gdata_Calendar_EventFeed
      */
     protected $eventFeed;
 

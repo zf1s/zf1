@@ -40,7 +40,7 @@ class Zend_Gdata_Calendar_ColorTest extends PHPUnit_Framework_TestCase
     protected $colorText;
 
     /**
-     * @var \Zend_Gdata_Calendar_Extension_Color|mixed
+     * $var Zend_Gdata_Calendar_Extension_Color
      */
     protected $color;
 

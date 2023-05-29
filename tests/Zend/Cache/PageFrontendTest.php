@@ -37,7 +37,7 @@
  */
 class Zend_Cache_PageFrontendTest extends PHPUnit_Framework_TestCase {
     /**
-     * @var \Zend_Cache_Backend_Test|mixed
+     * $var Zend_Cache_Backend_Test
      */
     protected $_backend;
 

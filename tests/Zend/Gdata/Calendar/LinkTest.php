@@ -41,7 +41,7 @@ class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
     protected $linkText;
 
     /**
-     * @var \Zend_Gdata_Calendar_Extension_Link|mixed
+     * $var Zend_Gdata_Calendar_Extension_Link
      */
     protected $link;
 

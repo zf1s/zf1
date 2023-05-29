@@ -35,7 +35,7 @@
 class Zend_Gdata_Gapps_EmailListQueryTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Gapps_EmailListQuery|mixed
+     * $var Zend_Gdata_Gapps_EmailListQuery
      */
     protected $query;
 

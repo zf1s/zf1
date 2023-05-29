@@ -40,7 +40,7 @@ class Zend_Gdata_Gapps_OwnerEntryTest extends PHPUnit_Framework_TestCase
     protected $entryText;
 
     /**
-     * @var \Zend_Gdata_Gapps_OwnerEntry|mixed
+     * $var Zend_Gdata_Gapps_OwnerEntry
      */
     protected $entry;
 

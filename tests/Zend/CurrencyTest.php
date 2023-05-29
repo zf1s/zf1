@@ -38,7 +38,7 @@
 class Zend_CurrencyTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Cache_Core|mixed
+     * @var Zend_Cache_Core
      */
     protected $_cache;
 

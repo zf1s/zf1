@@ -40,7 +40,7 @@ class Zend_Gdata_Gapps_NameTest extends PHPUnit_Framework_TestCase
     protected $theNameText;
 
     /**
-     * @var \Zend_Gdata_Gapps_Extension_Name|mixed
+     * $var Zend_Gdata_Gapps_Extension_Name
      */
     protected $theName;
 

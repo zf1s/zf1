@@ -35,7 +35,7 @@
 class Zend_Gdata_Spreadsheets_CustomTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Spreadsheets_Extension_Custom|mixed
+     * $var Zend_Gdata_Spreadsheets_Extension_Custom
      */
     protected $custom;
 

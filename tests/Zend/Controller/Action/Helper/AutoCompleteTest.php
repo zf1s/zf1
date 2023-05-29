@@ -52,27 +52,27 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Controller_Request_Http|mixed
+     * $var Zend_Controller_Request_Http
      */
     protected $request;
 
     /**
-     * @var \Zend_Controller_Response_Cli|mixed
+     * $var Zend_Controller_Response_Cli
      */
     protected $response;
 
     /**
-     * @var \Zend_Controller_Front|mixed
+     * $var Zend_Controller_Front
      */
     protected $front;
 
     /**
-     * @var \Zend_Controller_Action_Helper_Abstract|mixed
+     * $var Zend_Controller_Action_Helper_Abstract
      */
     protected $viewRenderer;
 
     /**
-     * @var \Zend_Layout|mixed
+     * $var Zend_Layout
      */
     protected $layout;
 

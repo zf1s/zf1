@@ -41,7 +41,7 @@ class Zend_Gdata_Calendar_EventEntryTest extends PHPUnit_Framework_TestCase
     protected $entryText;
 
     /**
-     * @var \Zend_Gdata_Calendar_EventEntry|mixed
+     * $var Zend_Gdata_Calendar_EventEntry
      */
     protected $entry;
 

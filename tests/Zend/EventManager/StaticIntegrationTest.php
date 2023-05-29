@@ -39,12 +39,12 @@ require_once 'Zend/EventManager/TestAsset/StaticEventsMock.php';
 class Zend_EventManager_StaticIntegrationTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \stdClass|mixed
+     * $var stdClass
      */
     protected $counter;
 
     /**
-     * @var \stdClass|mixed
+     * $var stdClass
      */
     protected $test;
 

@@ -59,7 +59,7 @@
 class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
 {
     /**
-     * @var \Zend_Uri|mixed
+     * @var Zend_Uri
      */
     protected $_endpoint;
 

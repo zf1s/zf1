@@ -34,7 +34,7 @@
 class Zend_Oauth_ConfigTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Oauth_Config|mixed
+     * $var Zend_Oauth_Config
      */
     protected $config;
 

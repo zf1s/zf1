@@ -35,7 +35,7 @@
 class Zend_Gdata_Gapps_ErrorTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Gapps_Error|mixed
+     * $var Zend_Gdata_Gapps_Error
      */
     protected $error;
 

@@ -39,7 +39,7 @@ class Zend_Gdata_EntryLinkTest extends PHPUnit_Framework_TestCase
     protected $entryLinkText;
 
     /**
-     * @var \Zend_Gdata_Extension_EntryLink|mixed
+     * $var Zend_Gdata_Extension_EntryLink
      */
     protected $entryLink;
 

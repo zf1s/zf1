@@ -35,7 +35,7 @@
 class Zend_Gdata_Spreadsheets_ColCountTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Spreadsheets_Extension_ColCount|mixed
+     * $var Zend_Gdata_Spreadsheets_Extension_ColCount
      */
     protected $colCount;
 

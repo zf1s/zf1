@@ -40,7 +40,7 @@ class Zend_Gdata_Gapps_NicknameTest extends PHPUnit_Framework_TestCase
     protected $nicknameText;
 
     /**
-     * @var \Zend_Gdata_Gapps_Extension_Nickname|mixed
+     * $var Zend_Gdata_Gapps_Extension_Nickname
      */
     protected $nickname;
 

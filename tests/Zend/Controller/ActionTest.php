@@ -44,7 +44,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Controller_ActionTest_TestController|mixed
+     * $var Zend_Controller_ActionTest_TestController
      */
     protected $_controller;
 

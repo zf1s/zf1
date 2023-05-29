@@ -43,7 +43,7 @@
 class Zend_Service_Amazon_S3_StreamTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Service_Amazon_S3|mixed
+     * $var Zend_Service_Amazon_S3
      */
     protected $_amazon;
 
@@ -53,7 +53,7 @@ class Zend_Service_Amazon_S3_StreamTest extends PHPUnit_Framework_TestCase
     protected $_nosuchbucket;
 
     /**
-     * @var \Zend_Http_Client_Adapter_Socket|mixed
+     * $var Zend_Http_Client_Adapter_Socket
      */
     protected $_httpClientAdapterSocket;
 

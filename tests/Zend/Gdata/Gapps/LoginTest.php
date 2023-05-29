@@ -40,7 +40,7 @@ class Zend_Gdata_Gapps_LoginTest extends PHPUnit_Framework_TestCase
     protected $loginText;
 
     /**
-     * @var \Zend_Gdata_Gapps_Extension_Login|mixed
+     * $var Zend_Gdata_Gapps_Extension_Login
      */
     protected $login;
 

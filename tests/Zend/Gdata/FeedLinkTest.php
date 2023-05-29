@@ -39,7 +39,7 @@ class Zend_Gdata_FeedLinkTest extends PHPUnit_Framework_TestCase
     protected $feedLinkText;
 
     /**
-     * @var \Zend_Gdata_Extension_FeedLink|mixed
+     * $var Zend_Gdata_Extension_FeedLink
      */
     protected $feedLink;
 

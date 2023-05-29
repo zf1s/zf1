@@ -35,7 +35,7 @@
 class Zend_Gdata_BooksTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Books
+     * $var Zend_Gdata_Books
      */
     protected $gdata;
 

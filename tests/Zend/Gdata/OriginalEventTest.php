@@ -39,7 +39,7 @@ class Zend_Gdata_OriginalEventTest extends PHPUnit_Framework_TestCase
     protected $originalEventText;
 
     /**
-     * @var \Zend_Gdata_Extension_OriginalEvent|mixed
+     * $var Zend_Gdata_Extension_OriginalEvent
      */
     protected $originalEvent;
 

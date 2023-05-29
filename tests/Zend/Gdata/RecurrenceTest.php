@@ -39,7 +39,7 @@ class Zend_Gdata_RecurrenceTest extends PHPUnit_Framework_TestCase
     protected $recurrenceText;
 
     /**
-     * @var \Zend_Gdata_Extension_Recurrence|mixed
+     * $var Zend_Gdata_Extension_Recurrence
      */
     protected $recurrence;
 

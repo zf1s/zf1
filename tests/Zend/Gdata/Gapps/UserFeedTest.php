@@ -35,7 +35,7 @@
 class Zend_Gdata_Gapps_UserFeedTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Gapps_UserFeed|mixed
+     * $var Zend_Gdata_Gapps_UserFeed
      */
     protected $emptyUserFeed;
 

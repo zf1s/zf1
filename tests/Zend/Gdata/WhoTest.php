@@ -39,7 +39,7 @@ class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
     protected $whoText;
 
     /**
-     * @var \Zend_Gdata_Extension_Who|mixed
+     * $var Zend_Gdata_Extension_Who
      */
     protected $who;
 

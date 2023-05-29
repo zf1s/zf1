@@ -37,12 +37,12 @@ require_once 'Zend/Service/StrikeIron/BaseTest.php';
 class Zend_Service_StrikeIron_BaseTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Service_StrikeIron_BaseTest_MockSoapClient|mixed
+     * $var Zend_Service_StrikeIron_BaseTest_MockSoapClient
      */
     protected $soapClient;
 
     /**
-     * @var \Zend_Service_StrikeIron_Base|mixed
+     * $var Zend_Service_StrikeIron_Base
      */
     protected $base;
 

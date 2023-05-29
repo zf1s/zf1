@@ -40,7 +40,7 @@ class Zend_Gdata_App_CategoryTest extends PHPUnit_Framework_TestCase
     protected $categoryText;
 
     /**
-     * @var \Zend_Gdata_App_Extension_Category|mixed
+     * $var Zend_Gdata_App_Extension_Category
      */
     protected $category;
 

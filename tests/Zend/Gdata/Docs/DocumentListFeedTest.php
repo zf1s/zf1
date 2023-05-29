@@ -35,7 +35,7 @@
 class Zend_Gdata_Docs_DocumentListFeedTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Docs_DocumentListFeed|mixed
+     * $var Zend_Gdata_Docs_DocumentListFeed
      */
     protected $docFeed;
 

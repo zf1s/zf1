@@ -39,7 +39,7 @@
 class Zend_Amf_Adobe_Introspector
 {
     /**
-     * @var \DOMElement|mixed
+     * @var DOMElement
      */
     protected $_ops;
 

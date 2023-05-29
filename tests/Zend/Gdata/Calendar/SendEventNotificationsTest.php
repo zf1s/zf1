@@ -40,7 +40,7 @@ class Zend_Gdata_Calendar_SendEventNotificationsTest extends PHPUnit_Framework_T
     protected $sendEventNotificationsText;
 
     /**
-     * @var \Zend_Gdata_Calendar_Extension_SendEventNotifications|mixed
+     * $var Zend_Gdata_Calendar_Extension_SendEventNotifications
      */
     protected $sendEventNotifications;
 

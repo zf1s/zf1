@@ -41,7 +41,7 @@ class Zend_Gdata_App_FeedTest extends PHPUnit_Framework_TestCase
     protected $feedText;
 
     /**
-     * @var \Zend_Gdata_App_Feed|mixed
+     * $var Zend_Gdata_App_Feed
      */
     protected $feed;
 

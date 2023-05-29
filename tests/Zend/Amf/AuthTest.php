@@ -47,7 +47,7 @@ class Zend_Amf_AuthTest extends PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var \Zend_Acl|mixed
+     * $var Zend_Acl
      */
     protected $_acl;
 

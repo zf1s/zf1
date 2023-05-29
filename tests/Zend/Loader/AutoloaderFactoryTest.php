@@ -41,7 +41,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Loader_AutoloaderFactoryTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var mixed[]|mixed
+     * @var array
      */
     protected $loaders;
 

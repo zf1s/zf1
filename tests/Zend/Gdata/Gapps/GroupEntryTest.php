@@ -40,7 +40,7 @@ class Zend_Gdata_Gapps_GroupEntryTest extends PHPUnit_Framework_TestCase
     protected $entryText;
 
     /**
-     * @var \Zend_Gdata_Gapps_GroupEntry|mixed
+     * $var Zend_Gdata_Gapps_GroupEntry
      */
     protected $entry;
 

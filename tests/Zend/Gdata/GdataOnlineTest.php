@@ -38,7 +38,7 @@
 class Zend_Gdata_GdataOnlineTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata|mixed
+     * $var Zend_Gdata
      */
     protected $gdata;
 

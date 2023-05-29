@@ -37,22 +37,22 @@
 class Zend_Mobile_Push_gcmTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Http_Client_Adapter_Test|mixed
+     * $var Zend_Http_Client_Adapter_Test
      */
     protected $adapter;
 
     /**
-     * @var \Zend_Http_Client|mixed
+     * $var Zend_Http_Client
      */
     protected $client;
 
     /**
-     * @var \Zend_Mobile_Push_Gcm|mixed
+     * $var Zend_Mobile_Push_Gcm
      */
     protected $gcm;
 
     /**
-     * @var \Zend_Mobile_Push_Message_Gcm|mixed
+     * $var Zend_Mobile_Push_Message_Gcm
      */
     protected $message;
 

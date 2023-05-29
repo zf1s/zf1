@@ -37,7 +37,7 @@
 class Zend_Search_Lucene_Search_Query_Phrase extends Zend_Search_Lucene_Search_Query
 {
     /**
-     * @var \Zend_Search_Lucene_Search_Weight_Term[]
+     * @var Zend_Search_Lucene_Search_Weight_Term[]
      */
     private $_weights;
 

@@ -53,7 +53,7 @@ class Zend_Dojo_View_Helper_StackContainerTest extends PHPUnit_Framework_TestCas
     protected $view;
 
     /**
-     * @var \Zend_Dojo_View_Helper_StackContainer|mixed
+     * $var Zend_Dojo_View_Helper_StackContainer
      */
     protected $helper;
 

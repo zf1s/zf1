@@ -41,22 +41,22 @@ class Zend_Gdata_App_EntryTest extends PHPUnit_Framework_TestCase
     protected $httpEntrySample;
 
     /**
-     * @var \Zend_Gdata_App_Entry|mixed
+     * $var Zend_Gdata_App_Entry
      */
     protected $enry;
 
     /**
-     * @var \Test_Zend_Gdata_MockHttpClient|mixed
+     * $var Test_Zend_Gdata_MockHttpClient
      */
     protected $adapter;
 
     /**
-     * @var \Zend_Gdata_HttpClient|mixed
+     * $var Zend_Gdata_HttpClient
      */
     protected $client;
 
     /**
-     * @var \Zend_Gdata_App|mixed
+     * $var Zend_Gdata_App
      */
     protected $service;
 

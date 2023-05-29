@@ -35,7 +35,7 @@ class Zend_Service_Amazon_Authentication_V1Test extends PHPUnit_Framework_TestCa
 {
 
     /**
-     * @var \Zend_Service_Amazon_Authentication_V1|null|mixed
+     * $var Zend_Service_Amazon_Authentication_V1|null
      */
     protected $Zend_Service_Amazon_Authentication_V1;
 

@@ -40,7 +40,7 @@ class Zend_Gdata_Gapps_QuotaTest extends PHPUnit_Framework_TestCase
     protected $quotaText;
 
     /**
-     * @var \Zend_Gdata_Gapps_Extension_Quota|mixed
+     * $var Zend_Gdata_Gapps_Extension_Quota
      */
     protected $quota;
 

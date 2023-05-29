@@ -36,7 +36,7 @@
 class Zend_Gdata_Calendar_EventQueryExceptionTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Calendar_EventQuery|mixed
+     * $var Zend_Gdata_Calendar_EventQuery
      */
     protected $query;
 

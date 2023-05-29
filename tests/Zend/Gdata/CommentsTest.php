@@ -39,7 +39,7 @@ class Zend_Gdata_CommentsTest extends PHPUnit_Framework_TestCase
     protected $commentsText;
 
     /**
-     * @var \Zend_Gdata_Extension_Comments|mixed
+     * $var Zend_Gdata_Extension_Comments
      */
     protected $comments;
 

@@ -34,7 +34,7 @@
 class Zend_Oauth_Http_AccessTokenTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Test_Http_Utility_39745|mixed
+     * $var Test_Http_Utility_39745
      */
     protected $stubHttpUtility;
 

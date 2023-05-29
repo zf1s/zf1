@@ -56,7 +56,7 @@ class Zend_Dojo_Form_Decorator_AccordionPaneTest extends PHPUnit_Framework_TestC
     protected $view;
 
     /**
-     * @var \Zend_Dojo_Form_Decorator_AccordionPane|mixed
+     * $var Zend_Dojo_Form_Decorator_AccordionPane
      */
     protected $decorator;
 

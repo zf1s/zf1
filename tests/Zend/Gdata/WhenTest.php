@@ -39,7 +39,7 @@ class Zend_Gdata_WhenTest extends PHPUnit_Framework_TestCase
     protected $whenText;
 
     /**
-     * @var \Zend_Gdata_Extension_When|mixed
+     * $var Zend_Gdata_Extension_When
      */
     protected $when;
 

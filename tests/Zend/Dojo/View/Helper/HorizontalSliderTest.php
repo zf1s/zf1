@@ -57,12 +57,12 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_View_Helper_HorizontalSliderTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_View
+     * $var Zend_View
      */
     protected $view;
 
     /**
-     * @var \Zend_Dojo_View_Helper_HorizontalSlider|mixed
+     * $var Zend_Dojo_View_Helper_HorizontalSlider
      */
     protected $helper;
 

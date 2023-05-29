@@ -41,7 +41,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Log_Filter_SuppressTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Log_Filter_Suppress|mixed
+     * $var Zend_Log_Filter_Suppress
      */
     protected $filter;
 

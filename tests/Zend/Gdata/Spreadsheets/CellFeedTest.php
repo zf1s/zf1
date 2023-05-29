@@ -35,7 +35,7 @@
 class Zend_Gdata_Spreadsheets_CellFeedTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Spreadsheets_CellFeed|mixed
+     * $var Zend_Gdata_Spreadsheets_CellFeed
      */
     protected $cellFeed;
 

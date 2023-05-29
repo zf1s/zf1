@@ -40,7 +40,7 @@ class Zend_Gdata_Gapps_EmailListEntryTest extends PHPUnit_Framework_TestCase
     protected $entryText;
 
     /**
-     * @var \Zend_Gdata_Gapps_EmailListEntry|mixed
+     * $var Zend_Gdata_Gapps_EmailListEntry
      */
     protected $entry;
 

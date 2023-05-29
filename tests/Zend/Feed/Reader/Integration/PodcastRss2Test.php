@@ -34,7 +34,7 @@
 class Zend_Feed_Reader_Integration_PodcastRss2Test extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var mixed[]|void|mixed
+     * @var array
      */
     protected $_options;
 

@@ -38,7 +38,7 @@ require_once 'Zend/Loader/TestAsset/StandardAutoloader.php';
 class Zend_Loader_StandardAutoloaderTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var mixed[]|mixed
+     * @var array
      */
     protected $loaders;
 

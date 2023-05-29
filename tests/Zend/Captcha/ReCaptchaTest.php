@@ -41,12 +41,12 @@ class Zend_Captcha_ReCaptchaTest extends PHPUnit_Framework_TestCase
     protected $word;
 
     /**
-     * @var \Zend_Form_Element_Captcha|mixed
+     * $var Zend_Form_Element_Captcha
      */
     protected $element;
 
     /**
-     * @var \Zend_Captcha_Adapter
+     * $var Zend_Captcha_Adapter
      */
     protected $captcha;
 

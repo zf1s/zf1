@@ -35,7 +35,7 @@
 class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Gapps_NicknameQuery|mixed
+     * $var Zend_Gdata_Gapps_NicknameQuery
      */
     protected $query;
 

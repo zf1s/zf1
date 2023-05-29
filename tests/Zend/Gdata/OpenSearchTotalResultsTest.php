@@ -40,7 +40,7 @@ class Zend_Gdata_OpenSearchTotalResultsTest extends PHPUnit_Framework_TestCase
     protected $openSearchTotalResultsText;
 
     /**
-     * @var \Zend_Gdata_Extension_OpenSearchTotalResults|mixed
+     * $var Zend_Gdata_Extension_OpenSearchTotalResults
      */
     protected $openSearchTotalResults;
 

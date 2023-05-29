@@ -43,7 +43,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
     protected $message;
 
     /**
-     * @var \Zend_EventManager_FilterChain|mixed
+     * $var Zend_EventManager_FilterChain
      */
     protected $filterchain;
 

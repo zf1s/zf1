@@ -39,7 +39,7 @@ class Zend_Gdata_TransparencyTest extends PHPUnit_Framework_TestCase
     protected $transparencyText;
 
     /**
-     * @var \Zend_Gdata_Extension_Transparency|mixed
+     * $var Zend_Gdata_Extension_Transparency
      */
     protected $transparency;
 

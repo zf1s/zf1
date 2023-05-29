@@ -34,7 +34,7 @@ class Zend_Service_Yahoo_Result
     protected $_namespace;
 
     /**
-     * @var \Zend_Service_Yahoo_Image|null
+     * @var Zend_Service_Yahoo_Image|null
      */
     public $Thumbnail;
 

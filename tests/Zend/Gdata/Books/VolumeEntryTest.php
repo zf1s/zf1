@@ -40,7 +40,7 @@ class Zend_Gdata_Books_VolumeEntryTest extends PHPUnit_Framework_TestCase
     protected $entryText;
 
     /**
-     * @var \Zend_Gdata_Books_VolumeEntry|mixed
+     * $var Zend_Gdata_Books_VolumeEntry
      */
     protected $entry;
 

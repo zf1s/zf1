@@ -47,7 +47,7 @@ class Zend_Gdata_App_HttpExceptionTest extends PHPUnit_Framework_TestCase
     protected $wksId;
 
     /**
-     * @var \Zend_Gdata_Spreadsheets|mixed
+     * $var Zend_Gdata_Spreadsheets
      */
     protected $gdata;
 

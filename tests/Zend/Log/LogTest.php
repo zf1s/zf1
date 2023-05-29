@@ -52,12 +52,12 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     protected $log;
 
     /**
-     * @var \Zend_Log_Writer_Stream|mixed
+     * $var Zend_Log_Writer_Stream
      */
     protected $writer;
 
     /**
-     * @var \Zend_Log_Writer_Mock|mixed
+     * $var Zend_Log_Writer_Mock
      */
     protected $errWriter;
 

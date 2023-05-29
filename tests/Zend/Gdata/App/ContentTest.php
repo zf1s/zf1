@@ -45,7 +45,7 @@ class Zend_Gdata_App_ContentTest extends PHPUnit_Framework_TestCase
     protected $contentText2;
 
     /**
-     * @var \Zend_Gdata_App_Extension_Content|mixed
+     * $var Zend_Gdata_App_Extension_Content
      */
     protected $content;
 

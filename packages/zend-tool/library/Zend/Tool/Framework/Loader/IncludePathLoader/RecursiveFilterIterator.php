@@ -29,7 +29,7 @@
 class Zend_Tool_Framework_Loader_IncludePathLoader_RecursiveFilterIterator extends RecursiveFilterIterator
 {
     /**
-     * @var mixed|\ReflectionClass
+     * @var ReflectionClass
      */
     public $ref;
 

@@ -41,7 +41,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
     protected $originalTimezone;
 
     /**
-     * @var \Zend_Cache_Core|mixed
+     * $var Zend_Cache_Core
      */
     protected $_cache;
 

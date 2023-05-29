@@ -39,7 +39,7 @@ class Zend_Gdata_AttendeeStatusTest extends PHPUnit_Framework_TestCase
     protected $attendeeStatusText;
 
     /**
-     * @var \Zend_Gdata_Extension_AttendeeStatus|mixed
+     * $var Zend_Gdata_Extension_AttendeeStatus
      */
     protected $attendeeStatus;
 

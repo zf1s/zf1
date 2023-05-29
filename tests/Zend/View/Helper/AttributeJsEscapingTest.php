@@ -43,12 +43,12 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_View_Helper_AttributeJsEscapingTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_View|mixed
+     * $var Zend_View
      */
     protected $view;
 
     /**
-     * @var \Zend_View_Helper_FormSubmit|mixed
+     * $var Zend_View_Helper_FormSubmit
      */
     protected $helper;
 

@@ -35,7 +35,7 @@
 class Zend_Mobile_Push_Message_ApnsTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Mobile_Push_Message_Apns|mixed
+     * $var Zend_Mobile_Push_Message_Apns
      */
     protected $message;
 

@@ -50,12 +50,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Filter_InflectorTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Filter_Inflector|mixed
+     * $var Zend_Filter_Inflector
      */
     protected $inflector;
 
     /**
-     * @var \Zend_Loader_PluginLoader_Interface|mixed
+     * $var Zend_Loader_PluginLoader_Interface
      */
     protected $loader;
 

@@ -40,7 +40,7 @@ class Zend_Gdata_Books_VolumeFeedTest extends PHPUnit_Framework_TestCase
     protected $feedText;
 
     /**
-     * @var \Zend_Gdata_Books_VolumeFeed|mixed
+     * $var Zend_Gdata_Books_VolumeFeed
      */
     protected $feed;
 

@@ -53,7 +53,7 @@ class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
     protected $config;
 
     /**
-     * @var \Zend_Queue|mixed
+     * $var Zend_Queue
      */
     protected $queue;
 

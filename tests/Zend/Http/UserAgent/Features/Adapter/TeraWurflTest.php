@@ -35,7 +35,7 @@
 class Zend_Http_UserAgent_Features_Adapter_TeraWurflTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var array<string, mixed>
+     * @var array
      */
     protected $config;
 

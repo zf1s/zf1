@@ -45,7 +45,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_Form_FormTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Dojo_Form|mixed
+     * $var Zend_Dojo_Form
      */
     protected $form;
 

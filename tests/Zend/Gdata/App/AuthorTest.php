@@ -40,7 +40,7 @@ class Zend_Gdata_App_AuthorTest extends PHPUnit_Framework_TestCase
     protected $authorText;
 
     /**
-     * @var \Zend_Gdata_App_Extension_Author|mixed
+     * $var Zend_Gdata_App_Extension_Author
      */
     protected $author;
 

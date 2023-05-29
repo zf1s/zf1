@@ -46,11 +46,11 @@ class Zend_Gdata_GappsOnlineTest extends PHPUnit_Framework_TestCase
      */
     protected $domain;
     /**
-     * @var \Zend_Gdata_Gapps|mixed
+     * $var Zend_Gdata_Gapps
      */
     protected $gdata;
     /**
-     * @var mixed[]|mixed
+     * @var array
      */
     protected $autoDeletePool;
 

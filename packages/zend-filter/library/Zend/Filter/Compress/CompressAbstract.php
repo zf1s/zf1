@@ -35,7 +35,7 @@
 abstract class Zend_Filter_Compress_CompressAbstract implements Zend_Filter_Compress_CompressInterface
 {
     /**
-     * @var mixed|array<string, mixed>
+     * @var array
      */
     protected $_options;
 

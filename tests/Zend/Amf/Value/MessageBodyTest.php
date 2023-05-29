@@ -39,7 +39,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Amf_Value_MessageBodyTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Amf_Value_MessageBody|mixed
+     * $var Zend_Amf_Value_MessageBody
      */
     protected $body;
 

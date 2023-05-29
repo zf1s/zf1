@@ -37,7 +37,7 @@
 class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Calendar|mixed
+     * $var Zend_Gdata_Calendar
      */
     protected $gdata;
 

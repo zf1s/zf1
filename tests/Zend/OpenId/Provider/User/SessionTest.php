@@ -37,12 +37,12 @@
 class Zend_OpenId_Provider_User_SessionTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_OpenId_Provider_User_Session|mixed
+     * $var Zend_OpenId_Provider_User_Session
      */
     protected $_user1;
 
     /**
-     * @var \Zend_OpenId_Provider_User_Session|mixed
+     * $var Zend_OpenId_Provider_User_Session
      */
     protected $_user2;
 

@@ -40,7 +40,7 @@ class Zend_Gdata_Calendar_SelectedTest extends PHPUnit_Framework_TestCase
     protected $selectedText;
 
     /**
-     * @var \Zend_Gdata_Calendar_Extension_Selected|mixed
+     * $var Zend_Gdata_Calendar_Extension_Selected
      */
     protected $selected;
 

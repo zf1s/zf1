@@ -38,7 +38,7 @@
 class Zend_Pdf_Parser
 {
     /**
-     * @var array<string, mixed>
+     * @var array
      */
     protected $_refTable;
 

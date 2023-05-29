@@ -48,7 +48,7 @@ class Zend_Gdata_MediaMimeStreamTest extends PHPUnit_Framework_TestCase
     protected $testMediaType;
 
     /**
-     * @var \Zend_Gdata_MediaMimeStream|mixed
+     * $var Zend_Gdata_MediaMimeStream
      */
     protected $mediaMimeStream;
 

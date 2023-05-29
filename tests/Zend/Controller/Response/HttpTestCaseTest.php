@@ -42,7 +42,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Controller_Response_HttpTestCaseTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Controller_Response_HttpTestCase|mixed
+     * $var Zend_Controller_Response_HttpTestCase
      */
     protected $response;
 

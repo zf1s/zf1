@@ -51,12 +51,12 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_View_Helper_PasswordTextBoxTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_View
+     * $var Zend_View
      */
     protected $view;
 
     /**
-     * @var \Zend_Dojo_View_Helper_PasswordTextBox|mixed
+     * $var Zend_Dojo_View_Helper_PasswordTextBox
      */
     protected $helper;
 

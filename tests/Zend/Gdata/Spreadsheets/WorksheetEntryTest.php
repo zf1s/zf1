@@ -35,7 +35,7 @@
 class Zend_Gdata_Spreadsheets_WorksheetEntryTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Gdata_Spreadsheets_WorksheetEntry|mixed
+     * $var Zend_Gdata_Spreadsheets_WorksheetEntry
      */
     protected $wksEntry;
 

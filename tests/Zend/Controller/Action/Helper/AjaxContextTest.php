@@ -53,42 +53,42 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Controller_Front|mixed
+     * $var Zend_Controller_Front
      */
     protected $front;
 
     /**
-     * @var \Zend_Layout|mixed
+     * $var Zend_Layout
      */
     protected $layout;
 
     /**
-     * @var \Zend_Controller_Action_Helper_AjaxContext|mixed
+     * $var Zend_Controller_Action_Helper_AjaxContext
      */
     protected $helper;
 
     /**
-     * @var \Zend_Controller_Request_Http|mixed
+     * $var Zend_Controller_Request_Http
      */
     protected $request;
 
     /**
-     * @var \Zend_Controller_Response_Cli|mixed
+     * $var Zend_Controller_Response_Cli
      */
     protected $response;
 
     /**
-     * @var \Zend_VIew|mixed
+     * $var Zend_VIew
      */
     protected $view;
 
     /**
-     * @var \Zend_Controller_Action_Helper_Abstract|mixed
+     * $var Zend_Controller_Action_Helper_Abstract
      */
     protected $viewRenderer;
 
     /**
-     * @var \Zend_Controller_Action_Helper_AjaxContextTestController|mixed
+     * $var Zend_Controller_Action_Helper_AjaxContextTestController
      */
     protected $controller;
 

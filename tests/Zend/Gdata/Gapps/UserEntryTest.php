@@ -40,7 +40,7 @@ class Zend_Gdata_Gapps_UserEntryTest extends PHPUnit_Framework_TestCase
     protected $entryText;
 
     /**
-     * @var \Zend_Gdata_Gapps_UserEntry|mixed
+     * $var Zend_Gdata_Gapps_UserEntry
      */
     protected $entry;
 

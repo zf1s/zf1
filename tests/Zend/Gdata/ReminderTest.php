@@ -39,7 +39,7 @@ class Zend_Gdata_ReminderTest extends PHPUnit_Framework_TestCase
     protected $reminderText;
 
     /**
-     * @var \Zend_Gdata_Extension_Reminder|mixed
+     * $var Zend_Gdata_Extension_Reminder
      */
     protected $reminder;
 

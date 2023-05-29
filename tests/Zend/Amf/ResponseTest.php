@@ -47,12 +47,12 @@ require_once 'ContactVO.php';
 class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend_Amf_Value_MessageHeader|mixed
+     * $var Zend_Amf_Value_MessageHeader
      */
     protected $header1;
 
     /**
-     * @var \Zend_Amf_Value_MessageHeader|mixed
+     * $var Zend_Amf_Value_MessageHeader
      */
     protected $header2;
 

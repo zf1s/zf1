@@ -39,7 +39,7 @@ class Zend_Gdata_EventStatusTest extends PHPUnit_Framework_TestCase
     protected $eventStatusText;
 
     /**
-     * @var \Zend_Gdata_Extension_EventStatus|mixed
+     * $var Zend_Gdata_Extension_EventStatus
      */
     protected $eventStatus;
 

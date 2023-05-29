@@ -41,7 +41,7 @@ class Zend_Gdata_App_GeneratorTest extends PHPUnit_Framework_TestCase
     protected $generatorText;
 
     /**
-     * @var \Zend_Gdata_App_Extension_Generator|mixed
+     * $var Zend_Gdata_App_Extension_Generator
      */
     protected $generator;
 
