@@ -57,6 +57,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
+#[AllowDynamicProperties]
 class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -272,10 +273,12 @@ class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestC
 }
 
 
+#[AllowDynamicProperties]
 class Zend_Cache_Backend_Custom_Naming extends Zend_Cache_Backend
 {
 }
 
+#[AllowDynamicProperties]
 class Zend_Cache_Frontend_CustomNaming extends Zend_Cache_Core
 {
 }

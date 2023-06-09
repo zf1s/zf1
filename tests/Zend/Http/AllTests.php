@@ -39,6 +39,7 @@ require_once 'Zend/Http/UserAgent/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Http
  */
+#[AllowDynamicProperties]
 class Zend_Http_AllTests
 {
     public static function main()

@@ -42,6 +42,7 @@ require_once 'Custom/Messages.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
+#[AllowDynamicProperties]
 class Custom_Object {
     public $a;
 
@@ -66,6 +67,7 @@ class Custom_Object {
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Queue_CustomTest extends PHPUnit_Framework_TestCase
 {
     public function test_behavior()

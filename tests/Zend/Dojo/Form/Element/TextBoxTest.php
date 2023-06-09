@@ -48,6 +48,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
+#[AllowDynamicProperties]
 class Zend_Dojo_Form_Element_TextBoxTest extends PHPUnit_Framework_TestCase
 {
     /**

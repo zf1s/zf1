@@ -42,6 +42,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
+#[AllowDynamicProperties]
 class Zend_Application_Resource_FrontcontrollerTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -388,7 +389,7 @@ class Zend_Application_Resource_FrontcontrollerTest extends PHPUnit_Framework_Te
         $front = $resource->getFrontController();
         $this->assertTrue($front->returnResponse());
     }
-    
+
     /**
      * @group ZF-9724
      */
@@ -411,6 +412,7 @@ class Zend_Application_Resource_FrontcontrollerTest extends PHPUnit_Framework_Te
 }
 
 // require_once 'Zend/Controller/Dispatcher/Standard.php';
+#[AllowDynamicProperties]
 class ZF9724_Dispatcher extends Zend_Controller_Dispatcher_Standard {}
 
 if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_FrontcontrollerTest::main') {

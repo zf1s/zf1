@@ -58,6 +58,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Search_Lucene
  */
+#[AllowDynamicProperties]
 class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
 {
 
@@ -336,6 +337,7 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
 }
 
 
+#[AllowDynamicProperties]
 class Zend_Search_Lucene_DocumentTest_DocHighlightingContainer {
     public static function extendedHighlightingCallback($stringToHighlight, $param1, $param2)
     {

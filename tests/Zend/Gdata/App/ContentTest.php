@@ -32,6 +32,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_App
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_App_ContentTest extends PHPUnit_Framework_TestCase
 {
 

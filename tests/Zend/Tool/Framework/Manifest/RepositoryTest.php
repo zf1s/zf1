@@ -46,6 +46,7 @@ require_once '_files/ManifestBadMetadata.php';
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Manifest
  */
+#[AllowDynamicProperties]
 class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_TestCase
 {
     /**

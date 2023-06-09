@@ -34,6 +34,7 @@ require_once 'Zend/Wildfire/WildfireTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Wildfire
  */
+#[AllowDynamicProperties]
 class Zend_Wildfire_AllTests
 {
     public static function main()

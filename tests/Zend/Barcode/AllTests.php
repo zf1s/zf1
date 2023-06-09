@@ -63,6 +63,7 @@ require_once 'Zend/Barcode/Renderer/SvgTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Feed
  */
+#[AllowDynamicProperties]
 class Zend_Barcode_AllTests
 {
     public static function main()

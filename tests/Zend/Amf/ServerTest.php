@@ -46,6 +46,7 @@ require_once 'Zend/Session/SessionHelper.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Amf
  */
+#[AllowDynamicProperties]
 class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
 {
     protected $_server;
@@ -1214,6 +1215,7 @@ function Zend_Amf_Server_testFunction2()
  * Class to used with Zend_Amf_Server unit tests.
  *
  */
+#[AllowDynamicProperties]
 class Zend_Amf_testclass
 {
     public function __construct()
@@ -1319,6 +1321,7 @@ class Zend_Amf_testclass
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Amf_testException
 {
     public function __construct() {
@@ -1333,6 +1336,7 @@ class Zend_Amf_testException
 /**
  * Class with private constructor
  */
+#[AllowDynamicProperties]
 class Zend_Amf_testclassPrivate
 {
     private function __construct()
@@ -1361,6 +1365,7 @@ class Zend_Amf_testclassPrivate
 /**
  * Example class for sending a session back to ActionScript.
  */
+#[AllowDynamicProperties]
 class Zend_Amf_testSession
 {
     /** Check if the session is available or create it. */

@@ -54,6 +54,7 @@ if (!defined("PHPUnit_MAIN_METHOD"))
  * @group      Zend_Controller
  * @group      Zend_Controller_Plugin
  */
+#[AllowDynamicProperties]
 class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
 {
     /**

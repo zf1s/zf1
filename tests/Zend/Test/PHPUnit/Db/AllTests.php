@@ -27,7 +27,6 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 require_once "DataSet/AllTests.php";
 require_once "Operation/AllTests.php";
 require_once "Metadata/GenericTest.php";
-require_once "TestCaseTest.php";
 require_once "ConnectionTest.php";
 require_once "SimpleTesterTest.php";
 require_once "Integration/SqLiteIntegrationTest.php";
@@ -41,6 +40,7 @@ require_once "Integration/MysqlIntegrationTest.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
+#[AllowDynamicProperties]
 class Zend_Test_PHPUnit_Db_AllTests
 {
     public static function main()
@@ -52,7 +52,6 @@ class Zend_Test_PHPUnit_Db_AllTests
     {
         $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Test_PHPUnit_Db');
 
-        $suite->addTestSuite('Zend_Test_PHPUnit_Db_TestCaseTest');
         $suite->addTestSuite('Zend_Test_PHPUnit_Db_ConnectionTest');
         $suite->addTestSuite('Zend_Test_PHPUnit_Db_SimpleTesterTest');
         $suite->addTest(Zend_Test_PHPUnit_Db_DataSet_AllTests::suite());

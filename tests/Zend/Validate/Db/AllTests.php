@@ -35,6 +35,7 @@ require_once 'Zend/Validate/Db/NoRecordExistsTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
+#[AllowDynamicProperties]
 class Zend_Validate_Db_AllTests
 {
     public static function main()

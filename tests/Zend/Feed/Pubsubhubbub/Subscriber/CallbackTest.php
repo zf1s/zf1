@@ -36,6 +36,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends PHPUnit_Framework_TestCase
 {
 
@@ -507,6 +508,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends PHPUnit_Framework_T
 /**
  * Stubs for storage access
  * DEPRECATED
+#[AllowDynamicProperties]
 class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTestStorageHas implements Zend_Feed_Pubsubhubbub_Storage_StorageInterface
 {
     public function setSubscription($key, array $data){}
@@ -522,6 +524,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTestStorageHas implements Zend_F
     public function removeSubscription($key){}
     public function cleanup($type){}
 }
+#[AllowDynamicProperties]
 class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTestStorageHasNot implements Zend_Feed_Pubsubhubbub_Storage_StorageInterface
 {
     public function setSubscription($key, array $data){}
@@ -530,6 +533,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTestStorageHasNot implements Zen
     public function removeSubscription($key){}
     public function cleanup($type){}
 }
+#[AllowDynamicProperties]
 class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTestStorageHasButWrong implements Zend_Feed_Pubsubhubbub_Storage_StorageInterface
 {
     public function setSubscription($key, array $data){}

@@ -35,6 +35,7 @@ require_once 'Zend/Mobile/Push/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mobile
  */
+#[AllowDynamicProperties]
 class Zend_Mobile_AllTests
 {
     public static function main()

@@ -25,7 +25,7 @@
 // require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 // require_once 'Zend/Tool/Project/Provider/Controller.php';
 // require_once 'Zend/Tool/Project/Provider/Exception.php';
-        
+
 /**
  * @category   Zend
  * @package    Zend_Tool
@@ -37,12 +37,13 @@
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Action
  */
+#[AllowDynamicProperties]
 class Zend_Tool_Project_Provider_ControllerTest extends PHPUnit_Framework_TestCase
 {
     /**
      *
      * @group ZF-8305
-     */   
+     */
     public function testHasResourceWithNonexistentModuleDiesFatalError()
     {
         $this->assertFalse(Zend_Tool_Project_Provider_Controller::hasResource(new Zend_Tool_Project_Profile(),

@@ -35,6 +35,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Log
  */
+#[AllowDynamicProperties]
 class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -132,6 +133,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class WriterSyslogCustom extends Zend_Log_Writer_Syslog
 {
     public function getFacility()

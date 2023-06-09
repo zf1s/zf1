@@ -35,6 +35,7 @@ require_once 'Zend/Cloud/StorageService/TestCase.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Cloud_StorageService_Adapter_RackspaceTest extends Zend_Cloud_StorageService_TestCase
 {
     protected $_clientType = 'Zend_Service_Rackspace_Files';
@@ -64,16 +65,16 @@ class Zend_Cloud_StorageService_Adapter_RackspaceTest extends Zend_Cloud_Storage
 
         parent::setUp();
         $this->_waitPeriod = 5;
-        
+
         // Create the container here
         $rackspace= new Zend_Service_Rackspace_Files(
             $this->_config->get(Zend_Cloud_StorageService_Adapter_Rackspace::USER),
             $this->_config->get(Zend_Cloud_StorageService_Adapter_Rackspace::API_KEY)
         );
-        $rackspace->createContainer( 
+        $rackspace->createContainer(
             $this->_config->get(Zend_Cloud_StorageService_Adapter_Rackspace::REMOTE_CONTAINER)
         );
-        
+
     }
 
     /**
@@ -94,19 +95,19 @@ class Zend_Cloud_StorageService_Adapter_RackspaceTest extends Zend_Cloud_Storage
         );
         $files = $rackspace->getObjects(
             $this->_config->get(Zend_Cloud_StorageService_Adapter_Rackspace::REMOTE_CONTAINER)
-        );             
+        );
         if ($files==!false) {
             foreach ($files as $file) {
                 $rackspace->deleteObject(
                     $this->_config->get(Zend_Cloud_StorageService_Adapter_Rackspace::REMOTE_CONTAINER),
-                    $file->getName()    
+                    $file->getName()
                 );
             }
-        }    
+        }
         $rackspace->deleteContainer(
-            $this->_config->get(Zend_Cloud_StorageService_Adapter_Rackspace::REMOTE_CONTAINER)   
+            $this->_config->get(Zend_Cloud_StorageService_Adapter_Rackspace::REMOTE_CONTAINER)
         );
-        
+
         parent::tearDown();
     }
 

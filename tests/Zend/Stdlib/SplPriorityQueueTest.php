@@ -34,6 +34,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Stdlib_SplPriorityQueueTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -88,9 +89,9 @@ class Zend_Stdlib_SplPriorityQueueTest extends PHPUnit_Framework_TestCase
     public function testCanRetrieveQueueAsArray()
     {
         $expected = array(
-            'bar', 
-            'foo', 
-            'baz', 
+            'bar',
+            'foo',
+            'baz',
             'bat',
         );
         $test     = $this->queue->toArray();

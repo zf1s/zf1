@@ -33,6 +33,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_OpenId
  */
+#[AllowDynamicProperties]
 class Zend_OpenId_Provider_Storage_FileTest extends PHPUnit_Framework_TestCase
 {
     const HANDLE   = "d41d8cd98f00b204e9800998ecf8427e";

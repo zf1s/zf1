@@ -65,6 +65,7 @@ require_once __DIR__ . '/_files/Db/MockHasResult.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
+#[AllowDynamicProperties]
 class Zend_Validate_Db_NoRecordExistsTest extends PHPUnit_Framework_TestCase
 {
 
@@ -243,9 +244,9 @@ class Zend_Validate_Db_NoRecordExistsTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('No database available');
         }
     }
-    
+
     /**
-     * 
+     *
      * @group ZF-10705
      */
     public function testCreatesQueryBasedOnNamedOrPositionalAvailablity()
@@ -255,7 +256,7 @@ class Zend_Validate_Db_NoRecordExistsTest extends PHPUnit_Framework_TestCase
         $validator = new Zend_Validate_Db_RecordExists('users', 'field1', null, $this->_adapterHasResult);
         $wherePart = $validator->getSelect()->getPart('where');
         $this->assertEquals($wherePart[0], '("field1" = ?)');
-        
+
         $this->_adapterHasResult->setSupportsParametersValues(array('named' => true, 'positional' => true));
         $validator = new Zend_Validate_Db_RecordExists('users', 'field1', null, $this->_adapterHasResult);
         $wherePart = $validator->getSelect()->getPart('where');

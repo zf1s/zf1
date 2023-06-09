@@ -31,15 +31,16 @@
  * @group      Zend_Feed
  * @group      Zend_Feed_Reader
  */
+#[AllowDynamicProperties]
 class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
 {
 
     protected $_feedSamplePath = null;
-    
+
     protected $_expectedCats = array();
-    
+
     protected $_expectedCatsRdf = array();
-    
+
     protected $_expectedCatsAtom = array();
 
     public function setup()
@@ -104,7 +105,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
             )
         );
     }
-    
+
     public function teardown()
     {
         Zend_Date::setOptions($this->_options);
@@ -2792,13 +2793,13 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $entry = $feed->current();
         $this->assertEquals(null, $entry->getCommentFeedLink());
     }
-    
+
     /**
      * Get category data
      */
-    
+
     // RSS 2.0
-    
+
     public function testGetsCategoriesFromRss20()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2808,9 +2809,9 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCats, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     // DC 1.0
-    
+
     public function testGetsCategoriesFromRss090_Dc10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2820,7 +2821,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss091_Dc10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2830,7 +2831,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss092_Dc10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2840,7 +2841,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss093_Dc10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2850,7 +2851,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss094_Dc10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2860,7 +2861,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss10_Dc10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2870,9 +2871,9 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     // DC 1.1
-    
+
     public function testGetsCategoriesFromRss090_Dc11()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2882,7 +2883,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss091_Dc11()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2892,7 +2893,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss092_Dc11()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2902,7 +2903,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss093_Dc11()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2912,7 +2913,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss094_Dc11()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2922,7 +2923,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss10_Dc11()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2932,9 +2933,9 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsRdf, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     // Atom 1.0
-    
+
     public function testGetsCategoriesFromRss090_Atom10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2944,7 +2945,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsAtom, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss091_Atom10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2954,7 +2955,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsAtom, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss092_Atom10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2964,7 +2965,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsAtom, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss093_Atom10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2974,7 +2975,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsAtom, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss094_Atom10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2984,7 +2985,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsAtom, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss10_Atom10()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -2994,9 +2995,9 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->_expectedCatsAtom, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
     }
-    
+
     // No Categories In Entry
-    
+
     public function testGetsCategoriesFromRss20_None()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -3006,7 +3007,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(), (array) $entry->getCategories());
         $this->assertEquals(array(), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss090_None()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -3016,7 +3017,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(), (array) $entry->getCategories());
         $this->assertEquals(array(), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss091_None()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -3026,7 +3027,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(), (array) $entry->getCategories());
         $this->assertEquals(array(), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss092_None()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -3036,7 +3037,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(), (array) $entry->getCategories());
         $this->assertEquals(array(), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss093_None()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -3046,7 +3047,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(), (array) $entry->getCategories());
         $this->assertEquals(array(), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss094_None()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -3056,7 +3057,7 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(), (array) $entry->getCategories());
         $this->assertEquals(array(), array_values($entry->getCategories()->getValues()));
     }
-    
+
     public function testGetsCategoriesFromRss10_None()
     {
         $feed = Zend_Feed_Reader::importString(
@@ -3066,6 +3067,6 @@ class Zend_Feed_Reader_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(array(), (array) $entry->getCategories());
         $this->assertEquals(array(), array_values($entry->getCategories()->getValues()));
     }
-    
-    
+
+
 }

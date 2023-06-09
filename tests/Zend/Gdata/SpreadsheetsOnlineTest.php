@@ -33,6 +33,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Spreadsheets
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_SpreadsheetsOnlineTest extends PHPUnit_Framework_TestCase
 {
 

@@ -64,7 +64,6 @@ parameters:
         packages/zend-service-audioscrobbler: 'https://github.com/zf1s/zend-service-audioscrobbler.git'
         packages/zend-service-console: 'https://github.com/zf1s/zend-service-console.git'
         packages/zend-service-delicious: 'https://github.com/zf1s/zend-service-delicious.git'
-        packages/zend-service-ebay: 'https://github.com/zf1s/zend-service-ebay.git'
         packages/zend-service-flickr: 'https://github.com/zf1s/zend-service-flickr.git'
         packages/zend-service-livedocx: 'https://github.com/zf1s/zend-service-livedocx.git'
         packages/zend-service-rackspace: 'https://github.com/zf1s/zend-service-rackspace.git'

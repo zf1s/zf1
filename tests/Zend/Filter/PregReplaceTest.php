@@ -42,6 +42,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
+#[AllowDynamicProperties]
 class Zend_Filter_PregReplaceTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -140,6 +141,7 @@ class Zend_Filter_PregReplaceTest extends PHPUnit_Framework_TestCase
 /**
  * @group ZF-9202
  */
+#[AllowDynamicProperties]
 class XPregReplace extends Zend_Filter_PregReplace
 {
     protected $_matchPattern = '~(&gt;){3,}~i';

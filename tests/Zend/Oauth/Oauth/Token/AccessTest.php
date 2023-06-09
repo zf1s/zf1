@@ -32,6 +32,7 @@
  * @group      Zend_Oauth
  * @group      Zend_Oauth_Token
  */
+#[AllowDynamicProperties]
 class Zend_Oauth_Token_AccessTest extends PHPUnit_Framework_TestCase
 {
 
@@ -100,7 +101,7 @@ class Zend_Oauth_Token_AccessTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($token->isValid());
     }
 
-    public function testToHeaderReturnsValidHeaderString() 
+    public function testToHeaderReturnsValidHeaderString()
     {
         $token = new Zend_Oauth_Token_Access(null, new Test_Http_Utility_90244);
         $value = $token->toHeader(
@@ -112,6 +113,7 @@ class Zend_Oauth_Token_AccessTest extends PHPUnit_Framework_TestCase
 
 }
 
+#[AllowDynamicProperties]
 class Test_Http_Utility_90244 extends Zend_Oauth_Http_Utility
 {
     public function __construct(){}
@@ -124,6 +126,7 @@ class Test_Http_Utility_90244 extends Zend_Oauth_Http_Utility
     }
 }
 
+#[AllowDynamicProperties]
 class Test_Config_90244 extends Zend_Oauth_Config
 {
     public function getConsumerKey(){return '1234567890';}
@@ -133,6 +136,6 @@ class Test_Config_90244 extends Zend_Oauth_Config
     public function getToken(){$token = new Zend_Oauth_Token_Access;
         $token->setToken('abcde');
         return $token;}
-    public function getRequestMethod() 
+    public function getRequestMethod()
     {return 'POST';}
 }

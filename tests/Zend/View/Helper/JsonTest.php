@@ -42,6 +42,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
+#[AllowDynamicProperties]
 class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -163,7 +164,7 @@ class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($layout->isEnabled());
         $this->assertSame(array('foobar'), $data);
     }
-    
+
     /**
      * @group ZF-10977
      */
@@ -172,7 +173,7 @@ class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
         $data = $this->helper->json(Zend_Json::encode(array('f')), false, false);
         $this->assertEquals('["f"]', $data);
     }
-    
+
     /**
      * @group ZF-10977
      */
@@ -186,6 +187,7 @@ class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
 /**
  * Zend_Layout subclass to allow resetting MVC instance
  */
+#[AllowDynamicProperties]
 class Zend_View_Helper_JsonTest_Layout extends Zend_Layout
 {
     public static function resetMvcInstance()

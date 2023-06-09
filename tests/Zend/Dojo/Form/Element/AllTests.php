@@ -53,6 +53,7 @@ require_once 'Zend/Dojo/Form/Element/VerticalSliderTest.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
+#[AllowDynamicProperties]
 class Zend_Dojo_Form_Element_AllTests
 {
     public static function main()

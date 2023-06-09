@@ -40,6 +40,7 @@ require_once __DIR__ . '/SocketTest.php';
  * @group      Zend_Http
  * @group      Zend_Http_Client
  */
+#[AllowDynamicProperties]
 class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
 {
     /**
@@ -200,6 +201,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
  * Exposes internal variable connectHandshakeRequest for test purposes
  * @see ZF-3189
  */
+#[AllowDynamicProperties]
 class ZF3189_ProxyAdapter extends Zend_Http_Client_Adapter_Proxy
 {
 

@@ -33,6 +33,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_App
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_App_UtilTest extends PHPUnit_Framework_TestCase
 {
 
@@ -149,7 +150,7 @@ class Zend_Gdata_App_UtilTest extends PHPUnit_Framework_TestCase
         // Excetion not thrown, this is bad.
         $this->fail("Exception not thrown.");
     }
-    
+
     /**
      * @group ZF-11610
      */

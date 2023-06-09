@@ -32,6 +32,7 @@ require_once 'Zend/Db/Statement/TestCommon.php';
  * @group      Zend_Db
  * @group      Zend_Db_Statement
  */
+#[AllowDynamicProperties]
 class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
 {
     // http://msdn.microsoft.com/en-us/library/cc296197(SQL.90).aspx

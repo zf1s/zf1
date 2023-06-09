@@ -28,11 +28,12 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Loader
  */
+#[AllowDynamicProperties]
 class Zend_Loader_TestAsset_StandardAutoloader extends Zend_Loader_StandardAutoloader
 {
     /**
      * Get registered namespaces
-     * 
+     *
      * @return array
      */
     public function getNamespaces()
@@ -42,7 +43,7 @@ class Zend_Loader_TestAsset_StandardAutoloader extends Zend_Loader_StandardAutol
 
     /**
      * Get registered prefixes
-     * 
+     *
      * @return array
      */
     public function getPrefixes()

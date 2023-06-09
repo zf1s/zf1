@@ -41,22 +41,23 @@ require_once __DIR__ . '/../../../TestConfiguration.dist.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Service_WindowsAzure_RetryPolicyTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Helper variable for counting retries
-     * 
+     *
      * @var int
      */
     protected $_executedRetries = 0;
-    
+
     /**
-     * Helper variable for setting Exception count 
-     * 
+     * Helper variable for setting Exception count
+     *
      * @var int
      */
     protected $_exceptionCount = 0;
-    
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite("Zend_Service_WindowsAzure_RetryPolicyTest");
@@ -75,7 +76,7 @@ class Zend_Service_WindowsAzure_RetryPolicyTest extends PHPUnit_Framework_TestCa
         );
         $this->assertEquals(1, $retries);
     }
-    
+
     /**
      * Test retry policy - retryN
      */
@@ -83,14 +84,14 @@ class Zend_Service_WindowsAzure_RetryPolicyTest extends PHPUnit_Framework_TestCa
     {
         $this->_executedRetries = 0;
         $this->_exceptionCount = 9;
-        
+
         $policy = Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract::retryN(10, 100);
         $retries = $policy->execute(
             array($this, '_countRetriesAndThrowExceptions')
         );
         $this->assertEquals(10, $retries);
     }
-    
+
     /**
      * Helper function, counting retries
      */
@@ -98,7 +99,7 @@ class Zend_Service_WindowsAzure_RetryPolicyTest extends PHPUnit_Framework_TestCa
     {
         return ++$this->_executedRetries;
     }
-    
+
     /**
      * Helper function, counting retries and generating number of exceptions
      */

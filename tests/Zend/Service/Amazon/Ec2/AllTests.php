@@ -44,6 +44,7 @@ require_once 'Zend/Service/Amazon/Ec2/SecuritygroupsTest.php';
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Ec2
  */
+#[AllowDynamicProperties]
 class Zend_Service_Amazon_Ec2_AllTests
 {
     /**

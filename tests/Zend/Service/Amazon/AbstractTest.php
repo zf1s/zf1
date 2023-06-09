@@ -33,6 +33,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_Amazon
  */
+#[AllowDynamicProperties]
 class AmamzonAbstract extends PHPUnit_Framework_TestCase
 {
     /**
@@ -95,6 +96,7 @@ class AmamzonAbstract extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class TestAmamzonAbstract extends Zend_Service_Amazon_Abstract
 {
     public function returnAccessKey()

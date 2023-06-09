@@ -40,6 +40,7 @@ require_once __DIR__ . '/_classes/TagDummy.php';
  * @group      Zend_Tag
  * @group      Zend_Tag_Cloud
  */
+#[AllowDynamicProperties]
 class Zend_Tag_Cloud_CloudTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -338,6 +339,7 @@ class Zend_Tag_Cloud_CloudTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Tag_ItemListDummy extends Zend_Tag_ItemList {}
 
 if (PHPUnit_MAIN_METHOD == 'Zend_Tag_Cloud_CloudTest::main') {

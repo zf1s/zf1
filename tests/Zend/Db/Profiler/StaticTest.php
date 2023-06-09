@@ -36,6 +36,7 @@ require_once 'Zend/Db/TestSetup.php';
  * @group      Zend_Db
  * @group      Zend_Db_Profiler
  */
+#[AllowDynamicProperties]
 class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
 {
 

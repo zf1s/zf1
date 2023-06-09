@@ -49,6 +49,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Controller
  * @group      Zend_Controller_Plugin
  */
+#[AllowDynamicProperties]
 class Zend_Controller_Plugin_BrokerTest extends PHPUnit_Framework_TestCase
 {
     public $controller;
@@ -270,6 +271,7 @@ class Zend_Controller_Plugin_BrokerTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Controller_Plugin_BrokerTest_TestPlugin extends Zend_Controller_Plugin_Abstract
 {
     public function routeStartup(Zend_Controller_Request_Abstract $request)
@@ -303,10 +305,12 @@ class Zend_Controller_Plugin_BrokerTest_TestPlugin extends Zend_Controller_Plugi
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Controller_Plugin_BrokerTest_TestPlugin2 extends Zend_Controller_Plugin_BrokerTest_TestPlugin
 {
 }
 
+#[AllowDynamicProperties]
 class Zend_Controller_Plugin_BrokerTest_ExceptionTestPlugin extends Zend_Controller_Plugin_Abstract
 {
     public function routeStartup(Zend_Controller_Request_Abstract $request)

@@ -34,6 +34,7 @@ require_once 'Helper/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_View
  */
+#[AllowDynamicProperties]
 class Zend_View_AllTests
 {
     public static function main()

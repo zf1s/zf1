@@ -53,6 +53,7 @@ require_once 'Zend/OpenId/ResponseHelper.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_OpenId
  */
+#[AllowDynamicProperties]
 class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
 {
     const ID       = "http://id.myopenid.com/";
@@ -1023,7 +1024,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
 
     /**
      * Test the required parameters for the signature
-     * @see https://openid.net/specs/openid-authentication-2_0.html#positive_assertions 
+     * @see https://openid.net/specs/openid-authentication-2_0.html#positive_assertions
      */
     public function testSignedParams()
     {
@@ -1057,6 +1058,7 @@ class Zend_OpenId_ConsumerTest extends PHPUnit_Framework_TestCase
 
 }
 
+#[AllowDynamicProperties]
 class Zend_OpenId_ConsumerHelper extends Zend_OpenId_Consumer {
 
     public function addAssociation($url, $handle, $macFunc, $secret, $expires)

@@ -36,6 +36,7 @@ require_once 'Zend/Tag/Cloud/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Tag
  */
+#[AllowDynamicProperties]
 class Zend_Tag_AllTests
 {
     public static function main()

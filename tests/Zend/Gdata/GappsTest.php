@@ -34,6 +34,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_GappsTest extends PHPUnit_Framework_TestCase
 {
     const TEST_DOMAIN = 'nowhere.invalid';

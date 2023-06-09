@@ -43,6 +43,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
+#[AllowDynamicProperties]
 class Zend_Controller_Action_HelperBrokerTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -350,6 +351,7 @@ class Zend_Controller_Action_HelperBrokerTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Controller_Action_HelperBroker_TestHelper extends Zend_Controller_Action_Helper_Abstract
 {
     public $count = 0;
@@ -360,6 +362,7 @@ class Zend_Controller_Action_HelperBroker_TestHelper extends Zend_Controller_Act
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Controller_Action_HelperBrokerController extends Zend_Controller_Action
 {
     public $helper;

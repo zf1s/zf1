@@ -147,6 +147,7 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Test_PHPUnit_Db_TableFoo extends Zend_Db_Table_Abstract
 {
     protected $_name = "foo";
@@ -154,6 +155,7 @@ class Zend_Test_PHPUnit_Db_TableFoo extends Zend_Db_Table_Abstract
     protected $_primary = "id";
 }
 
+#[AllowDynamicProperties]
 class Zend_Test_PHPUnit_Db_TableBar extends Zend_Db_Table_Abstract
 {
     protected $_name = "bar";

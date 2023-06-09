@@ -39,6 +39,7 @@ require_once 'TableBugsProductsCustom.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class My_ZendDbTable_TableProductsCustom extends My_ZendDbTable_TableProducts
 {
     protected $_rowClass    = 'My_ZendDbTable_Row_TestMyRow';

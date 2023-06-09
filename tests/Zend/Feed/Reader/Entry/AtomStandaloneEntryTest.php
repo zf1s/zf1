@@ -31,13 +31,14 @@
  * @group      Zend_Feed
  * @group      Zend_Feed_Reader
  */
+#[AllowDynamicProperties]
 class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_TestCase
 {
 
     protected $_feedSamplePath = null;
-    
+
     protected $_expectedCats = array();
-    
+
     protected $_expectedCatsDc = array();
 
     public function setup()
@@ -85,12 +86,12 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
             )
         );
     }
-    
+
     public function teardown()
     {
         Zend_Date::setOptions($this->_options);
     }
-    
+
     public function testReaderImportOfAtomEntryDocumentReturnsEntryClass()
     {
         $object = Zend_Feed_Reader::importString(
@@ -214,7 +215,7 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
 
         $this->assertEquals($expected, $entry->getEnclosure());
     }
-    
+
     /**
      * TEXT
      * @group ZFRATOMCONTENT
@@ -226,7 +227,7 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
         );
         $this->assertEquals('Entry Content &amp;', $entry->getContent());
     }
-    
+
     /**
      * HTML Escaped
      * @group ZFRATOMCONTENT
@@ -238,7 +239,7 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
         );
         $this->assertEquals('<p>Entry Content &amp;</p>', $entry->getContent());
     }
-    
+
     /**
      * HTML CDATA Escaped
      * @group ZFRATOMCONTENT
@@ -250,7 +251,7 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
         );
         $this->assertEquals('<p>Entry Content &amp;</p>', $entry->getContent());
     }
-    
+
     /**
      * XHTML
      * @group ZFRATOMCONTENT
@@ -286,7 +287,7 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
         );
         $this->assertEquals('http://www.example.com/entry/comments', $entry->getCommentLink());
     }
-    
+
     /**
      * Get category data
      * @group ZFR002
@@ -299,5 +300,5 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
         $this->assertEquals($this->_expectedCats, (array) $entry->getCategories());
         $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
     }
-    
+
 }

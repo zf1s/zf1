@@ -47,6 +47,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
+#[AllowDynamicProperties]
 class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -4853,10 +4854,12 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Form_FormTest_DisplayGroup extends Zend_Form_DisplayGroup
 {
 }
 
+#[AllowDynamicProperties]
 class Zend_Form_FormTest_FormExtension extends Zend_Form
 {
     public function init()
@@ -4865,6 +4868,7 @@ class Zend_Form_FormTest_FormExtension extends Zend_Form
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Form_FormTest_WithDisplayGroup extends Zend_Form
 {
     public function init()
@@ -4879,6 +4883,7 @@ class Zend_Form_FormTest_WithDisplayGroup extends Zend_Form
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Form_FormTest_AddToDisplayGroup extends Zend_Form_FormTest_WithDisplayGroup
 {
     public function init()
@@ -4893,6 +4898,7 @@ class Zend_Form_FormTest_AddToDisplayGroup extends Zend_Form_FormTest_WithDispla
     }
 }
 
+#[AllowDynamicProperties]
 class MyTestView extends Zend_View
 {
 

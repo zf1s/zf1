@@ -302,7 +302,7 @@ abstract class Zend_Gdata_App_Base
     {
         if ($xml) {
             error_clear_last();
-            
+
             // Load the feed as an XML DOMDocument object
             $doc = new DOMDocument();
             $doc = @Zend_Xml_Security::scan($xml, $doc);
@@ -482,7 +482,7 @@ abstract class Zend_Gdata_App_Base
         $method = 'get'.ucfirst($name);
         if (method_exists($this, $method)) {
             return call_user_func(array(&$this, $method));
-        } else if (property_exists($this, "_${name}")) {
+        } else if (property_exists($this, "_{$name}")) {
             return $this->{'_' . $name};
         } else {
             // require_once 'Zend/Gdata/App/InvalidArgumentException.php';

@@ -39,6 +39,7 @@ require_once 'Zend/Service/LiveDocx/MailMergeTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id: $
  */
+#[AllowDynamicProperties]
 class Zend_Service_LiveDocx_AllTests
 {
     public static function main()

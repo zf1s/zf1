@@ -39,6 +39,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
+#[AllowDynamicProperties]
 class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -606,7 +607,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
         $expected = 'text';
         $this->assertEquals($expected, $this->_filter->filter($input));
     }
-    
+
     /**
      * @group ZF-11617
      */
@@ -614,10 +615,10 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
     {
         $input     = '<li data-disallowed="no!" data-name="Test User" data-id="11223"></li>';
         $expected  = '<li data-name="Test User" data-id="11223"></li>';
-        
+
         $this->_filter->setTagsAllowed('li');
         $this->_filter->setAttributesAllowed(array('data-id','data-name'));
-        
+
         $this->assertEquals($expected, $this->_filter->filter($input));
     }
 }

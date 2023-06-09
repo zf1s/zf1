@@ -39,6 +39,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
+#[AllowDynamicProperties]
 class Zend_View_Helper_FormSelectTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -338,7 +339,7 @@ class Zend_View_Helper_FormSelectTest extends PHPUnit_Framework_TestCase
         $this->assertNotRegexp('/<select[^>]*?(multiple="multiple")/', $html, $html);
     }
 
-    /** 
+    /**
      * @group ZF-8252
      */
     public function testOptGroupHasAnId()
@@ -356,7 +357,7 @@ class Zend_View_Helper_FormSelectTest extends PHPUnit_Framework_TestCase
         ));
         $this->assertRegexp('/<optgroup[^>]*?id="baz-optgroup-bar"[^>]*?"bar"[^>]*?/', $html, $html);
     }
- 
+
     public function testCanApplyOptionClasses()
     {
         $html = $this->helper->formSelect(array(

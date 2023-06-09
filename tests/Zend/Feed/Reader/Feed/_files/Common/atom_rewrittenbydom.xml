@@ -94,6 +94,7 @@ So what&#8217;s the big deal about those properties? In short, they make a devel
 Lets have a look at a use-case to demonstrate where properties will not only save you time, but it will also save your sanity. In this example we&#8217;re modeling a Person class. In the beginning of the project, the requirements for the Person class are quite simple: a Person has an age and a name. In the simplest form we can code that as follows:</p>
 <pre name="code" class="php:nogutter">
 &lt;?php
+#[AllowDynamicProperties]
 class Person
 {
     public $age;
@@ -106,6 +107,7 @@ class Person
 <p>But, pesky as they are, the client suddenly wants some logic added to our Person class! A Person suddenly can&#8217;t be younger than 21 years old. This poses a problem. To add logic to our Person class, we would have to switch the public age attribute with a pair of getters and setters:</p>
 <pre name="code" class="php:nogutter">
 &lt;?php
+#[AllowDynamicProperties]
 class Person
 {
     private $_age = null;
@@ -160,6 +162,7 @@ abstract class ModelAbstract
 <p>We&#8217;ll take a look at what this does exactly later. The important thing to note is that we can now do the following:</p>
 <pre name="code" class="php:nogutter">
 &lt;?php
+#[AllowDynamicProperties]
 class Person extends ModelAbstract
 {
     private $_age = null;
@@ -219,6 +222,7 @@ So why would you want to apply filters to your result set? Usually my domain mod
 <p>Lets have a look at an example. In this example I want to list all my users from the database. I&#8217;ll grab the name of the user from the row and inject it into a User object.</p>
 <pre name="code" class="php:nogutter">
 &lt;?php
+#[AllowDynamicProperties]
 class User
 {
     private $_name = '';
@@ -234,6 +238,7 @@ class User
     }
 }
 
+#[AllowDynamicProperties]
 class UserFilter implements Zend_Filter_Interface
 {
     public function filter($rows)
@@ -251,6 +256,7 @@ class UserFilter implements Zend_Filter_Interface
     }
 }
 
+#[AllowDynamicProperties]
 class MyModel
 {
     public static function getUserPaginator()
@@ -274,6 +280,7 @@ foreach ($items as $user) {
 <p>To simplify adding a simple filter to your paginator I&#8217;ve also added Zend_Filter_Callback. This allows you to specify a callback method that does the same as the filter in the previous example.</p>
 <pre name="code" class="php:nogutter">
 &lt;?php
+#[AllowDynamicProperties]
 class MyModel
 {
     public static function getUserPaginator()
@@ -520,6 +527,7 @@ require_once $configFile;
  *
  * @author norm2782
  */
+#[AllowDynamicProperties]
 class Wp_Amf_Gateway
 {
     /**
@@ -688,12 +696,14 @@ $server-&gt;setProduction($production)
 
 
 &#60;?php
+#[AllowDynamicProperties]
 class Bar
 {
     [...]]]></summary>
 		<content type="html" xml:base="http://www.norm2782.com/2009/01/properties-in-php/"><![CDATA[<p>A while ago Dynom from #php_bnl pointed me to an interesting entry on the <a title="PHP 5.3 wiki page" href="http://wiki.php.net/todo/php53">PHP 5.3 wiki page</a>. In the &#8220;Future PHP releases&#8221; sections there&#8217;s an entry called &#8220;29. “real” properties with attached getters and setters&#8221;. Personally I can&#8217;t wait for this. Hopefully it will look something like ActionScript 3&#8217;s properties:</p>
 <pre name="code" class="php:nogutter">
 &lt;?php
+#[AllowDynamicProperties]
 class Bar
 {
     private $_foo = 'foo';

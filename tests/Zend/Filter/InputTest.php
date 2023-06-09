@@ -39,6 +39,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
+#[AllowDynamicProperties]
 class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -2301,6 +2302,7 @@ class Zend_Filter_InputTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class MyZend_Filter_Date implements Zend_Filter_Interface
 {
     public function filter($value)
@@ -2309,6 +2311,7 @@ class MyZend_Filter_Date implements Zend_Filter_Interface
     }
 }
 
+#[AllowDynamicProperties]
 class MyZend_Validate_Date implements Zend_Validate_Interface
 {
     public function isValid($value)

@@ -34,6 +34,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_App
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_App_HttpExceptionTest extends PHPUnit_Framework_TestCase
 {
 

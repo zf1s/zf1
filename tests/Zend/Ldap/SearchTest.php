@@ -42,6 +42,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'OnlineTestCase.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Ldap
  */
+#[AllowDynamicProperties]
 class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
 {
     protected function setUp()
@@ -596,6 +597,7 @@ function Zend_Ldap_SearchTest_customNaming($attrib)
     return strtoupper((string) strrev($attrib));
 }
 
+#[AllowDynamicProperties]
 class Zend_Ldap_SearchTest_CustomNaming
 {
     public static function name1($attrib)
@@ -609,5 +611,6 @@ class Zend_Ldap_SearchTest_CustomNaming
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Ldap_SearchTest_CollectionClassNotSubclassingZendLdapCollection
 { }

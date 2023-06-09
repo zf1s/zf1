@@ -32,6 +32,7 @@
  * @group      Zend_Feed
  * @group      Zend_Feed_Reader
  */
+#[AllowDynamicProperties]
 class Zend_Feed_Reader_Feed_RssTest extends PHPUnit_Framework_TestCase
 {
 

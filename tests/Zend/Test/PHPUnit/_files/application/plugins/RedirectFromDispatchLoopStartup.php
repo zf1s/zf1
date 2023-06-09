@@ -27,6 +27,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Application_Plugin_RedirectFromDispatchLoopStartup extends Zend_Controller_Plugin_Abstract
 {
     public function dispatchLoopStartup(Zend_Controller_Request_Abstract $r)

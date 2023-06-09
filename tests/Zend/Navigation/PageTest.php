@@ -34,6 +34,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Navigation
  */
+#[AllowDynamicProperties]
 class Zend_Navigation_PageTest extends PHPUnit_Framework_TestCase
 {
     /**

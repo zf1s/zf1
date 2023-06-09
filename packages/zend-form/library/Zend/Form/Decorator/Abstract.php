@@ -31,6 +31,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
+#[AllowDynamicProperties]
 abstract class Zend_Form_Decorator_Abstract implements Zend_Form_Decorator_Interface
 {
     /**

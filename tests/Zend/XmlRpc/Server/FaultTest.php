@@ -40,6 +40,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_XmlRpc
  */
+#[AllowDynamicProperties]
 class Zend_XmlRpc_Server_FaultTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -248,11 +249,16 @@ class Zend_XmlRpc_Server_FaultTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class zxrs_fault_test_exception extends Exception {}
+#[AllowDynamicProperties]
 class zxrs_fault_test_exception2 extends Exception {}
+#[AllowDynamicProperties]
 class zxrs_fault_test_exception3 extends Exception {}
+#[AllowDynamicProperties]
 class zxrs_fault_test_exception4 extends zxrs_fault_test_exception {}
 
+#[AllowDynamicProperties]
 class zxrs_fault_observer
 {
     private static $_instance = false;

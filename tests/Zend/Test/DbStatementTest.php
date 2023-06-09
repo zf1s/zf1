@@ -31,6 +31,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
+#[AllowDynamicProperties]
 class Zend_Test_DbStatementTest extends PHPUnit_Framework_TestCase
 {
     public function testRowCountDefault()

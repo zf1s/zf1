@@ -48,6 +48,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
+#[AllowDynamicProperties]
 class Zend_Dojo_Form_Element_EditorTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -262,29 +263,29 @@ class Zend_Dojo_Form_Element_EditorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->element->getDijitParam('updateInterval'), $this->element->getUpdateInterval());
         $this->assertEquals(300, $this->element->getUpdateInterval());
     }
-    
+
     public function testCanAddMultipleSeparatorsToEditor()
     {
         $this->element->setPlugins(array('undo', '|', 'bold', '|', 'italic'));
-        
+
         $plugins = $this->element->getPlugins();
         $this->assertEquals(5, count($plugins));
     }
-    
+
     public function testMinHeightCanBeSetToPixels()
     {
         $this->element->setMinHeight('250px');
         $this->assertEquals($this->element->getDijitParam('minHeight'), $this->element->getMinHeight());
         $this->assertEquals('250px', $this->element->getMinHeight());
     }
-    
+
     public function testMinHeightCanBeSetToPercentage()
     {
         $this->element->setMinHeight('50%');
         $this->assertEquals($this->element->getDijitParam('minHeight'), $this->element->getMinHeight());
         $this->assertEquals('50%', $this->element->getMinHeight());
     }
-    
+
     public function testMinHeightDefaultMeasurementIsEm()
     {
         $this->element->setMinHeight('10');

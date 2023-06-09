@@ -58,6 +58,7 @@ require_once 'Zend/Queue/Adapter/ActivemqOfflineTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
+#[AllowDynamicProperties]
 class Zend_Queue_AllTests
 {
     public static function main()

@@ -31,6 +31,7 @@
  * @group      Zend_Oauth
  * @group      Zend_Oauth_Http
  */
+#[AllowDynamicProperties]
 class Zend_Oauth_Http_AccessTokenTest extends PHPUnit_Framework_TestCase
 {
 
@@ -168,6 +169,7 @@ class Zend_Oauth_Http_AccessTokenTest extends PHPUnit_Framework_TestCase
 
 }
 
+#[AllowDynamicProperties]
 class Test_Consumer_39745 extends Zend_Oauth_Consumer
 {
     public function getConsumerKey(){return '1234567890';}
@@ -181,6 +183,7 @@ class Test_Consumer_39745 extends Zend_Oauth_Consumer
     }
 }
 
+#[AllowDynamicProperties]
 class Test_Http_Utility_39745 extends Zend_Oauth_Http_Utility
 {
     public function __construct(){}
@@ -193,11 +196,13 @@ class Test_Http_Utility_39745 extends Zend_Oauth_Http_Utility
     }
 }
 
+#[AllowDynamicProperties]
 class Test_Client_39745 extends Zend_Http_Client
 {
     public function getRawData(){return $this->raw_post_data;}
 }
 
+#[AllowDynamicProperties]
 class Test_Token_39745 extends Zend_Oauth_Token_Request
 {
     public function getToken(){return '0987654321';}

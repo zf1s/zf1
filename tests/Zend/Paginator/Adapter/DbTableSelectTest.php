@@ -40,6 +40,7 @@ require_once __DIR__ . '/DbSelectTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Paginator
  */
+#[AllowDynamicProperties]
 class Zend_Paginator_Adapter_DbTableSelectTest extends Zend_Paginator_Adapter_DbSelectTest
 {
     /**

@@ -31,6 +31,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Analytics
  */
+#[AllowDynamicProperties]
 class Zend_GData_Analytics_DataQueryTest extends PHPUnit_Framework_TestCase
 {
 

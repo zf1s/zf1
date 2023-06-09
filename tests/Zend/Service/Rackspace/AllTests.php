@@ -37,6 +37,7 @@ require_once 'Zend/Service/Rackspace/Servers/AllTests.php';
  * @group      Zend_Service
  * @group      Zend_Service_Rackspace
  */
+#[AllowDynamicProperties]
 class Zend_Service_Rackspace_AllTests
 {
     public static function main()
@@ -50,7 +51,7 @@ class Zend_Service_Rackspace_AllTests
 
         $suite->addTest(Zend_Service_Rackspace_Files_AllTests::suite());
         $suite->addTest(Zend_Service_Rackspace_Servers_AllTests::suite());
-        
+
         $suite->addTestSuite('Zend_Service_Rackspace_OfflineTest');
 
         return $suite;

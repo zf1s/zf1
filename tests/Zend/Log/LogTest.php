@@ -44,6 +44,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Log
  */
+#[AllowDynamicProperties]
 class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -575,6 +576,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Log_Writer_NotExtendedWriterAbstract implements Zend_Log_FactoryInterface
 {
     public static function factory($config)
@@ -582,6 +584,7 @@ class Zend_Log_Writer_NotExtendedWriterAbstract implements Zend_Log_FactoryInter
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Log_Filter_NotImplementsFilterInterface implements Zend_Log_FactoryInterface
 {
     public static function factory($config)
@@ -589,6 +592,7 @@ class Zend_Log_Filter_NotImplementsFilterInterface implements Zend_Log_FactoryIn
     }
 }
 
+#[AllowDynamicProperties]
 class Custom_Formatter_Mock extends Zend_Log_Formatter_Abstract
 {
     public static function factory($config)
@@ -606,7 +610,9 @@ class Custom_Formatter_Mock extends Zend_Log_Formatter_Abstract
  *
  * @group #85
  */
+#[AllowDynamicProperties]
 class ZLTest_My_Log extends Zend_Log {}
+#[AllowDynamicProperties]
 class ZLTest_My_LogNotExtending {}
 
 if (PHPUnit_MAIN_METHOD == 'Zend_Log_LogTest::main') {

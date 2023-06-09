@@ -39,6 +39,7 @@ require_once 'CommonExtendedBackendTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
+#[AllowDynamicProperties]
 class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest {
 
     protected $_instance;

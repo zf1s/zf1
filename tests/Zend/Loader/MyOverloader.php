@@ -38,6 +38,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
+#[AllowDynamicProperties]
 class Zend_Loader_MyOverloader extends Zend_Loader
 {
     public static function loadClass($class, $dirs = null)

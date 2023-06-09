@@ -45,6 +45,7 @@ require_once 'Zend/XmlRpc/TestProvider.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_XmlRpc
  */
+#[AllowDynamicProperties]
 class Zend_XmlRpc_ValueTest extends PHPUnit_Framework_TestCase
 {
     public $xmlRpcDateFormat = 'Ymd\\TH:i:s';
@@ -950,6 +951,7 @@ XML
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_XmlRpc_SerializableTestClass
 {
     protected $_property;

@@ -24,6 +24,7 @@
 // require_once 'Zend/Oauth/Config.php';
 // require_once 'Zend/Oauth/Client.php';
 
+#[AllowDynamicProperties]
 class Test_Oauth_Client extends Zend_Oauth_Client {
     public function getSignableParametersAsQueryString()
     {
@@ -39,6 +40,7 @@ class Test_Oauth_Client extends Zend_Oauth_Client {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Oauth
  */
+#[AllowDynamicProperties]
 class Zend_Oauth_ClientTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()

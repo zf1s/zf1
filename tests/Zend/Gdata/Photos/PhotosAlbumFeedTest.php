@@ -34,6 +34,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Photos
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 {
 

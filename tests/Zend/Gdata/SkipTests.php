@@ -28,6 +28,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_SkipOnlineTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -41,6 +42,7 @@ class Zend_Gdata_SkipOnlineTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Gdata_SkipClientLoginTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()

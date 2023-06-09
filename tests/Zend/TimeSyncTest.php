@@ -33,6 +33,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_TimeSync
  */
+#[AllowDynamicProperties]
 class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
 {
     public $timeservers = array(

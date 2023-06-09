@@ -524,9 +524,9 @@ class Zend_Console_Getopt
         $doc->appendChild($optionsNode);
         foreach ($this->_options as $flag => $value) {
             $optionNode = $doc->createElement('option');
-            $optionNode->setAttribute('flag', utf8_encode($flag));
+            $optionNode->setAttribute('flag', mb_convert_encoding($flag, 'UTF-8', 'ISO-8859-1'));
             if ($value !== true) {
-                $optionNode->setAttribute('parameter', utf8_encode($value));
+                $optionNode->setAttribute('parameter', mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1'));
             }
             $optionsNode->appendChild($optionNode);
         }
@@ -784,7 +784,8 @@ class Zend_Console_Getopt
     protected function _parseShortOptionCluster(&$argv)
     {
         $flagCluster = ltrim((string) array_shift($argv), '-');
-        foreach (str_split($flagCluster) as $flag) {
+        $splitString = $flagCluster === '' ? [''] : str_split($flagCluster);
+        foreach ($splitString as $flag) {
             $this->_parseSingleOption($flag, $argv);
         }
     }

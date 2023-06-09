@@ -40,6 +40,7 @@ require_once __DIR__ . '/../_files/My/ZendDbTable/Row/TestMockRow.php';
  * @group      Zend_Db_Table
  * @group      Zend_Db_Table_Relationships
  */
+#[AllowDynamicProperties]
 class Zend_Db_Table_Relationships_StaticTest extends PHPUnit_Framework_TestCase
 {
 

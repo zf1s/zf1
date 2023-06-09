@@ -32,6 +32,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Analytics
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_Analytics_AccountFeedTest extends PHPUnit_Framework_TestCase
 {
     /** @var AccountFeed */

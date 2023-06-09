@@ -39,6 +39,7 @@ require_once 'Zend/Mobile/Push/MpnsTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mobile
  */
+#[AllowDynamicProperties]
 class Zend_Mobile_Push_AllTests
 {
     public static function main()
@@ -51,7 +52,7 @@ class Zend_Mobile_Push_AllTests
         $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Mobile_Push');
 
         $suite->addTest(Zend_Mobile_Push_Message_AllTests::suite());
-         
+
         $suite->addTestSuite('Zend_Mobile_Push_AbstractTest');
         $suite->addTestSuite('Zend_Mobile_Push_ApnsTest');
         $suite->addTestSuite('Zend_Mobile_Push_GcmTest');

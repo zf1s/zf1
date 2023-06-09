@@ -62,6 +62,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
+#[AllowDynamicProperties]
 class Zend_Application_Bootstrap_BootstrapAbstractTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -782,6 +783,7 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest extends PHPUnit_Framework
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Application_Bootstrap_BootstrapAbstractTest_View
     extends Zend_Application_Resource_ResourceAbstract
 {
@@ -791,6 +793,7 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest_View
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Application_Bootstrap_BootstrapAbstractTest_Layout
     extends Zend_Application_Resource_ResourceAbstract
 {
@@ -811,6 +814,7 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest_Layout
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Application_Bootstrap_BootstrapAbstractTest_Foo
     extends Zend_Application_Resource_ResourceAbstract
 {
@@ -830,6 +834,7 @@ class Zend_Application_Bootstrap_BootstrapAbstractTest_Foo
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Application_Bootstrap_BootstrapAbstractTest_OptionKeys
     extends Zend_Application_Bootstrap_Bootstrap
 {

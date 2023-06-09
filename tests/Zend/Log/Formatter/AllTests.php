@@ -37,6 +37,7 @@ require_once 'Zend/Log/Formatter/XmlTest.php';
  * @group      Zend_Log
  * @group      Zend_Log_Formatter
  */
+#[AllowDynamicProperties]
 class Zend_Log_Formatter_AllTests
 {
     public static function main()

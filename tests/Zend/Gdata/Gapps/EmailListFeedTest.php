@@ -32,6 +32,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_Gapps_EmailListFeedTest extends PHPUnit_Framework_TestCase
 {
     protected $emailListFeed = null;

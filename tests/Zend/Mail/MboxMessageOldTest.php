@@ -39,6 +39,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Mail_Storage_Mbox_OldMessage extends Zend_Mail_Storage_Mbox
 {
     /**
@@ -56,6 +57,7 @@ class Zend_Mail_Storage_Mbox_OldMessage extends Zend_Mail_Storage_Mbox
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mail
  */
+#[AllowDynamicProperties]
 class Zend_Mail_MboxMessageOldTest extends PHPUnit_Framework_TestCase
 {
     protected $_mboxOriginalFile;

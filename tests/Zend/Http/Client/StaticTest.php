@@ -38,6 +38,7 @@
  * @group      Zend_Http
  * @group      Zend_Http_Client
  */
+#[AllowDynamicProperties]
 class Zend_Http_Client_StaticTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -779,6 +780,7 @@ class Zend_Http_Client_StaticTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Http_Client_StaticTest_Mock extends Zend_Http_Client
 {
     public $config = array(
@@ -796,6 +798,7 @@ class Zend_Http_Client_StaticTest_Mock extends Zend_Http_Client
     );
 }
 
+#[AllowDynamicProperties]
 class Zend_Http_Client_StaticTest_TestAdapter_Mock extends Zend_Http_Client_Adapter_Test
 {
     public $config = array();

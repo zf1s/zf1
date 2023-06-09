@@ -37,6 +37,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Paginator
  */
+#[AllowDynamicProperties]
 class Zend_Paginator_Adapter_IteratorTest extends PHPUnit_Framework_TestCase
 {
     /**

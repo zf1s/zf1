@@ -43,6 +43,7 @@ require_once 'Zend/Service/StrikeIron/NoSoapTest.php';
  * @group      Zend_Service
  * @group      Zend_Service_StrikeIron
  */
+#[AllowDynamicProperties]
 class Zend_Service_StrikeIron_AllTests
 {
     public static function main()

@@ -32,6 +32,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
+#[AllowDynamicProperties]
 class Zend_Gdata_App_MockBase extends Zend_Gdata_App_Base
 {
     // This space intentionally left blank.

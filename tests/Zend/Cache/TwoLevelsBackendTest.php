@@ -40,6 +40,7 @@ require_once 'CommonExtendedBackendTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
+#[AllowDynamicProperties]
 class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTest {
 
     protected $_instance;
@@ -117,11 +118,11 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
 
         $id = 'test'.uniqid();
         $this->assertTrue($cache->save(10, $id)); //fast usage at 0%
-        
+
         $this->assertTrue($cache->save(100, $id)); //fast usage at 90%
         $this->assertEquals(100, $cache->load($id));
     }
-    
+
     /**
      * @group ZF-9855
      */
@@ -144,14 +145,14 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
         ));
 
         $id = 'test'.uniqid();
-        
-        $this->assertTrue($cache->save(90, $id)); //fast usage at 90%, failing for 
+
+        $this->assertTrue($cache->save(90, $id)); //fast usage at 90%, failing for
         $this->assertEquals(90, $cache->load($id));
-                
+
         $this->assertTrue($cache->save(100, $id)); //fast usage at 90%
         $this->assertEquals(100, $cache->load($id));
     }
-    
+
 }
 
 

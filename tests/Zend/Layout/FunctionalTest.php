@@ -37,6 +37,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Layout
  */
+#[AllowDynamicProperties]
 class Zend_Layout_FunctionalTest extends Zend_Test_PHPUnit_ControllerTestCase
 {
     /**

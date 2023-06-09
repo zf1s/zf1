@@ -35,6 +35,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_StrikeIron
  */
+#[AllowDynamicProperties]
 class Zend_Service_StrikeIron_DecoratorTest extends PHPUnit_Framework_TestCase
 {
     public function testNoNoticesWhenDecoratedObjectIsNotAnObject()

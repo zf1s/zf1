@@ -34,6 +34,7 @@ require_once __DIR__ . '/languages/AllTests.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class resources_AllTests
 {
     public static function main()

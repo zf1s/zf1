@@ -39,6 +39,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
+#[AllowDynamicProperties]
 class Zend_View_Helper_Placeholder_RegistryTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -222,6 +223,7 @@ class Zend_View_Helper_Placeholder_RegistryTest extends PHPUnit_Framework_TestCa
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_View_Helper_Placeholder_RegistryTest_Container extends Zend_View_Helper_Placeholder_Container_Abstract
 {
     public $data = array();
@@ -232,6 +234,7 @@ class Zend_View_Helper_Placeholder_RegistryTest_Container extends Zend_View_Help
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_View_Helper_Placeholder_RegistryTest_BogusContainer
 {
 }

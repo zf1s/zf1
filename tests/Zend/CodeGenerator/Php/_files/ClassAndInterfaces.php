@@ -1,10 +1,12 @@
 <?php
 
+#[AllowDynamicProperties]
 class Zend_CodeGenerator_Php_ClassWithInterface implements Zend_Code_Generator_Php_OneInterface, Zend_Code_Generator_Php_TwoInterface
 {
 
 }
 
+#[AllowDynamicProperties]
 class Zend_CodeGenerator_Php_NewClassWithInterface extends Zend_CodeGenerator_Php_ClassWithInterface implements Zend_Code_Generator_Php_ThreeInterface
 {
 

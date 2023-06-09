@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 class MyBarcode3 extends Zend_Validate_Barcode_AdapterAbstract
 {
     protected $_length     = array(1,3,6, -1);

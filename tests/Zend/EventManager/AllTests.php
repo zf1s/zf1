@@ -38,6 +38,7 @@ require_once 'Zend/EventManager/StaticIntegrationTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_EventManager
  */
+#[AllowDynamicProperties]
 class Zend_EventManager_AllTests
 {
     public static function main()

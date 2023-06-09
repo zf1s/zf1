@@ -54,6 +54,7 @@ require_once 'Zend/Cache/ZendServerShMemTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
+#[AllowDynamicProperties]
 class Zend_Cache_AllTests
 {
     public static function main()
@@ -124,7 +125,7 @@ class Zend_Cache_AllTests
         } else {
             $suite->addTestSuite('Zend_Cache_WinCacheBackendTest');
         }
-        
+
         /*
          * Check if Xcache tests are enabled, and if extension is available.
          */
@@ -255,7 +256,7 @@ class Zend_Cache_AllTests
         } else {
             $suite->addTestSuite('Zend_Cache_TwoLevelsBackendTest');
         }
-        
+
         return $suite;
     }
 }

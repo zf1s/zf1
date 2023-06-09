@@ -34,6 +34,7 @@ require_once 'Zend/Paginator/Adapter/DbSelect/OracleTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Paginator
  */
+#[AllowDynamicProperties]
 class Zend_Paginator_Adapter_DbTableSelect_OracleTest extends Zend_Paginator_Adapter_DbSelect_OracleTest
 {
     /**

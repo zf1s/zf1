@@ -48,6 +48,7 @@ require_once __DIR__ . '/AdapterTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
+#[AllowDynamicProperties]
 class Zend_Queue_Adapter_ArrayTest extends Zend_Queue_Adapter_AdapterTest
 {
     /**

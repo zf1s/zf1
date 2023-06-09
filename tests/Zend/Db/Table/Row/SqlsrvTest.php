@@ -35,6 +35,7 @@ require_once 'Zend/Db/Table/Row/TestCommon.php';
  * @group      Zend_Db_Table
  * @group      Zend_Db_Table_Row
  */
+#[AllowDynamicProperties]
 class Zend_Db_Table_Row_SqlsrvTest extends Zend_Db_Table_Row_TestCommon
 {
 

@@ -39,6 +39,7 @@ require_once 'CommonExtendedBackendTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
+#[AllowDynamicProperties]
 class Zend_Cache_WinCacheBackendTest extends Zend_Cache_CommonExtendedBackendTest {
 
     protected $_instance;
@@ -90,47 +91,47 @@ class Zend_Cache_WinCacheBackendTest extends Zend_Cache_CommonExtendedBackendTes
     public function testGetWithAnExpiredCacheId() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testCleanModeMatchingTags2() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testCleanModeNotMatchingTags2() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testCleanModeNotMatchingTags3() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testGetIdsMatchingTags() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testGetIdsMatchingTags2() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testGetIdsMatchingTags3() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testGetIdsMatchingTags4() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testGetIdsNotMatchingTags() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testGetIdsNotMatchingTags2() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testGetIdsNotMatchingTags3() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
-    
+
     public function testGetTags() {
     	$this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }

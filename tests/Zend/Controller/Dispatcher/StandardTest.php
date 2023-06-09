@@ -41,6 +41,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Controller
  * @group      Zend_Controller_Dispatcher
  */
+#[AllowDynamicProperties]
 class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
 {
     protected $_dispatcher;

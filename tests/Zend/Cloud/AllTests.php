@@ -51,6 +51,7 @@ require_once 'Zend/Cloud/Infrastructure/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cloud
  */
+#[AllowDynamicProperties]
 class Zend_Cloud_AllTests
 {
     public static function main()
@@ -66,7 +67,7 @@ class Zend_Cloud_AllTests
         $suite->addTest(Zend_Cloud_QueueService_AllTests::suite());
         $suite->addTest(Zend_Cloud_StorageService_AllTests::suite());
         $suite->addTest(Zend_Cloud_Infrastructure_AllTests::suite());
-        
+
         return $suite;
     }
 }

@@ -32,6 +32,7 @@
  * @group      Zend_Mobile_Push
  * @group      Zend_Mobile_Push_Mpns
  */
+#[AllowDynamicProperties]
 class Zend_Mobile_Push_Message_Mpns_RawTest extends PHPUnit_Framework_TestCase
 {
     private $_msg;
@@ -88,7 +89,7 @@ class Zend_Mobile_Push_Message_Mpns_RawTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Zend_Mobile_Push_Message_Exception 
+     * @expectedException Zend_Mobile_Push_Message_Exception
      */
     public function testSetMessageThrowsExceptionOnNonXml()
     {

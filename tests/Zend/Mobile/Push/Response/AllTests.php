@@ -34,6 +34,7 @@ require_once 'Zend/Mobile/Push/Response/GcmTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mobile
  */
+#[AllowDynamicProperties]
 class Zend_Mobile_Push_Response_AllTests
 {
     public static function main()
@@ -46,7 +47,7 @@ class Zend_Mobile_Push_Response_AllTests
         $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Mobile_Push_Response');
 
         $suite->addTest(Zend_Mobile_Push_Response_Mpns_AllTests::suite());
-         
+
         $suite->addTestSuite('Zend_Mobile_Push_Response_GcmTest');
 
         return $suite;

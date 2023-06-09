@@ -54,6 +54,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
+#[AllowDynamicProperties]
 class Zend_Dojo_View_Helper_HorizontalSliderTest extends PHPUnit_Framework_TestCase
 {
     /**

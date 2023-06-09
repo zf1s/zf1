@@ -41,6 +41,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Controller
  * @group      Zend_Controller_Plugin
  */
+#[AllowDynamicProperties]
 class Zend_Controller_Plugin_ActionStackTest extends PHPUnit_Framework_TestCase
 {
     public $key       = 'Zend_Controller_Plugin_ActionStack';
@@ -389,6 +390,7 @@ class Zend_Controller_Plugin_ActionStackTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Controller_Plugin_ActionStack_Registry extends Zend_Registry
 {
     protected static $_registryClassName = 'Zend_Controller_Plugin_ActionStack_Registry';

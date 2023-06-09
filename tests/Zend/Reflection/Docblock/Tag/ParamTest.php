@@ -34,6 +34,7 @@
  * @group      Zend_Reflection_Docblock_Tag
  * @group      Zend_Reflection_Docblock_Tag_Param
  */
+#[AllowDynamicProperties]
 class Zend_Reflection_Docblock_Tag_ParamTest extends PHPUnit_Framework_TestCase
 {
 
@@ -80,7 +81,7 @@ class Zend_Reflection_Docblock_Tag_ParamTest extends PHPUnit_Framework_TestCase
      * @group ZF-8307
      */
     public function testNamespaceInParam()
-    {    
+    {
         $classReflection = new Zend_Reflection_Class('Zend_Reflection_Docblock_Param_WithNamespace');
         $paramTag = $classReflection->getMethod('doSomething')->getDocblock()->getTag('param');
 

@@ -38,6 +38,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'OnlineTestCase.php';
  * @group      Zend_Ldap
  * @group      Zend_Ldap_Node
  */
+#[AllowDynamicProperties]
 class Zend_Ldap_Node_ChildrenTest extends Zend_Ldap_OnlineTestCase
 {
     protected function setUp()

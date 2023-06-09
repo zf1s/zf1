@@ -37,6 +37,7 @@ require_once 'Zend/Log/Writer/AllTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Log
  */
+#[AllowDynamicProperties]
 class Zend_Log_AllTests
 {
     public static function main()

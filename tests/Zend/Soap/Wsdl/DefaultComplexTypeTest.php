@@ -32,6 +32,7 @@
  * @group      Zend_Soap
  * @group      Zend_Soap_Wsdl
  */
+#[AllowDynamicProperties]
 class Zend_Soap_Wsdl_DefaultComplexTypeTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -65,6 +66,7 @@ class Zend_Soap_Wsdl_DefaultComplexTypeTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Soap_Wsdl_DefaultComplexTypeTest_PublicPrivateProtected
 {
     const PROTECTED_VAR_NAME = 'bar';

@@ -35,6 +35,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Amf
  */
+#[AllowDynamicProperties]
 class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
 {
 
@@ -205,6 +206,7 @@ class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
 
 }
 
+#[AllowDynamicProperties]
 class Zend_Amf_Value_ArrayCollectionTest_SerializableData
 {
     public function __toString()

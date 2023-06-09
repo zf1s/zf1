@@ -48,6 +48,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Json
  */
+#[AllowDynamicProperties]
 class Zend_JsonTest extends PHPUnit_Framework_TestCase
 {
     private $_originalUseBuiltinEncoderDecoderValue;
@@ -925,6 +926,7 @@ EOB;
 /**
  * Zend_JsonTest_Item: test item for use with testZf461()
  */
+#[AllowDynamicProperties]
 class Zend_JsonTest_Item
 {
 }
@@ -932,6 +934,7 @@ class Zend_JsonTest_Item
 /**
  * Zend_JsonTest_Object: test class for encoding classes
  */
+#[AllowDynamicProperties]
 class Zend_JsonTest_Object
 {
     const FOO = 'bar';
@@ -954,6 +957,7 @@ class Zend_JsonTest_Object
     }
 }
 
+#[AllowDynamicProperties]
 class ToJsonClass
 {
     private $_firstName = 'John';
@@ -978,6 +982,7 @@ class ToJsonClass
  * Serializable class exposing a toArray() method
  * @see ZF-11167
  */
+#[AllowDynamicProperties]
 class ZF11167_ToArrayClass
 {
     private $_firstName = 'John';
@@ -1001,6 +1006,7 @@ class ZF11167_ToArrayClass
  * Serializable class exposing both toArray() and toJson() methods
  * @see ZF-11167
  */
+#[AllowDynamicProperties]
 class ZF11167_ToArrayToJsonClass extends ZF11167_ToArrayClass
 {
     public function toJson()
@@ -1013,6 +1019,7 @@ class ZF11167_ToArrayToJsonClass extends ZF11167_ToArrayClass
  * ISSUE  ZF-4946
  *
  */
+#[AllowDynamicProperties]
 class Zend_Json_ToJsonWithExpr
 {
     private $_string = 'text';
@@ -1034,6 +1041,7 @@ class Zend_Json_ToJsonWithExpr
 /**
  * @see ZF-12347
  */
+#[AllowDynamicProperties]
 class ZF12347_IteratorAggregate implements IteratorAggregate
 {
     protected $array = array(

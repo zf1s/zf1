@@ -34,6 +34,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class IncludedController extends Zend_Controller_Action
 {
     public function indexAction()
@@ -41,6 +42,7 @@ class IncludedController extends Zend_Controller_Action
     }
 }
 
+#[AllowDynamicProperties]
 class Default_IncludedPrefixController extends Zend_Controller_Action
 {
     public function indexAction()
@@ -48,6 +50,7 @@ class Default_IncludedPrefixController extends Zend_Controller_Action
     }
 }
 
+#[AllowDynamicProperties]
 class Admin_IncludedAdminController extends Zend_Controller_Action
 {
     public function indexAction()

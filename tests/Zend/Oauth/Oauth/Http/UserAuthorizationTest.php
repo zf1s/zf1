@@ -31,6 +31,7 @@
  * @group      Zend_Oauth
  * @group      Zend_Oauth_Http
  */
+#[AllowDynamicProperties]
 class Zend_Oauth_Http_UserAuthorizationTest extends PHPUnit_Framework_TestCase
 {
 
@@ -74,12 +75,14 @@ class Zend_Oauth_Http_UserAuthorizationTest extends PHPUnit_Framework_TestCase
 
 }
 
+#[AllowDynamicProperties]
 class Test_Consumer_34879 extends Zend_Oauth_Consumer
 {
     public function getUserAuthorizationUrl(){return 'http://www.example.com/authorize';}
     public function getCallbackUrl(){return 'http://www.example.com/local';}
     public function getLastRequestToken(){$r=new Test_Token_34879;return $r;}
 }
+#[AllowDynamicProperties]
 class Test_Token_34879
 {
     public function getToken(){return '1234567890';}

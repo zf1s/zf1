@@ -39,6 +39,7 @@ require_once 'Zend/Service/SqlAzure/Management/ManagementClientTest.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Service_SqlAzure_Management_AllTests
 {
     public static function main()
@@ -50,7 +51,7 @@ class Zend_Service_SqlAzure_Management_AllTests
     {
         $suite = new PHPUnit_Framework_TestSuite(__CLASS__);
         $suite->addTestSuite('Zend_Service_SqlAzure_Management_ManagementClientTest');
-        
+
         return $suite;
     }
 }

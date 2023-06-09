@@ -42,6 +42,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Paginator
  */
+#[AllowDynamicProperties]
 class Zend_Paginator_Adapter_NullTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -109,7 +110,7 @@ class Zend_Paginator_Adapter_NullTest extends PHPUnit_Framework_TestCase
         $actual = $this->_adapter->getItems(0, 10);
         $this->assertEquals(array(), $actual);
     }
-    
+
     /**
      * Verify that the fix for ZF-4151 doesn't create an OBO error
      */

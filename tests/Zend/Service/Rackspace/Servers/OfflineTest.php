@@ -30,6 +30,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Service_Rackspace_Servers
  */
+#[AllowDynamicProperties]
 class Zend_Service_Rackspace_Servers_OfflineTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -40,43 +41,43 @@ class Zend_Service_Rackspace_Servers_OfflineTest extends PHPUnit_Framework_TestC
     protected $rackspace;
     /**
      * Check if the resize was successfully done
-     * 
-     * @var boolean 
+     *
+     * @var boolean
      */
     protected static $resize;
     /**
      * List of flavors available
-     * 
+     *
      * @var array
      */
     protected static $flavors;
     /**
      * List of images available
-     * 
-     * @var Zend_Service_Rackspace_Servers_ImageList 
+     *
+     * @var Zend_Service_Rackspace_Servers_ImageList
      */
     protected static $images;
     /**
      * Id of the image created
-     * 
+     *
      * @var string
      */
     protected static $imageId;
     /**
      * Server id of testing
-     * 
-     * @var integer 
+     *
+     * @var integer
      */
     protected static $serverId;
     /**
      * Admin password of the server
-     * 
-     * @var string 
+     *
+     * @var string
      */
     protected static $adminPass;
     /**
      * Shared Ip group
-     * 
+     *
      * @var Zend_Service_Rackspace_Servers_SharedIpGroup
      */
     protected static $sharedIpGroup;
@@ -92,19 +93,19 @@ class Zend_Service_Rackspace_Servers_OfflineTest extends PHPUnit_Framework_TestC
     public function setUp()
     {
         $this->rackspace= new Zend_Service_Rackspace_Servers('foo','bar');
-        
+
         $this->httpClientAdapterTest = new Zend_Http_Client_Adapter_Test();
 
         $this->rackspace->getHttpClient()
                         ->setAdapter($this->httpClientAdapterTest);
-        
+
         // authentication (from a file)
         $this->httpClientAdapterTest->setResponse(self::loadResponse('../../_files/testAuthenticate'));
-        $this->assertTrue($this->rackspace->authenticate(),'Authentication failed'); 
-        
+        $this->assertTrue($this->rackspace->authenticate(),'Authentication failed');
+
         // load the HTTP response (from a file)
-        $this->httpClientAdapterTest->setResponse($this->loadResponse($this->getName()));   
-       
+        $this->httpClientAdapterTest->setResponse($this->loadResponse($this->getName()));
+
     }
     /**
      * Utility method for returning a string HTTP response, which is loaded from a file
@@ -116,7 +117,7 @@ class Zend_Service_Rackspace_Servers_OfflineTest extends PHPUnit_Framework_TestC
     {
         return @file_get_contents(__DIR__ . '/_files/' . $name . '.response');
     }
-    
+
     /**
      * Test constants
      */
@@ -130,14 +131,14 @@ class Zend_Service_Rackspace_Servers_OfflineTest extends PHPUnit_Framework_TestC
      * Test create server
      */
     public function testCreateServer()
-    {       
+    {
         $data = array (
             'name'     => TESTS_ZEND_SERVICE_RACKSPACE_SERVER_NAME,
             'imageId'  => TESTS_ZEND_SERVICE_RACKSPACE_SERVER_IMAGEID,
             'flavorId' => TESTS_ZEND_SERVICE_RACKSPACE_SERVER_FLAVORID
         );
         $server= $this->rackspace->createServer($data);
-        
+
         $this->assertTrue($server!==false);
         self::$serverId= $server->getId();
         $this->assertEquals(TESTS_ZEND_SERVICE_RACKSPACE_SERVER_NAME,$server->getName());
@@ -358,21 +359,21 @@ class Zend_Service_Rackspace_Servers_OfflineTest extends PHPUnit_Framework_TestC
         $this->assertTrue($groups!==false);
     }
     /**
-     * Test get shared IP group 
+     * Test get shared IP group
      */
     public function testGetSharedIpGroup()
     {
         $groupId= self::$sharedIpGroup->getId();
         $group= $this->rackspace->getSharedIpGroup($groupId);
         $this->assertTrue($group!==false);
-        $this->assertEquals($group->getId(), $groupId);   
+        $this->assertEquals($group->getId(), $groupId);
     }
     /**
      * Test delete shared ip group
      */
     public function testDeleteSharedIpGroup()
     {
-        $this->assertTrue($this->rackspace->deleteSharedIpGroup(self::$sharedIpGroup->getId())); 
+        $this->assertTrue($this->rackspace->deleteSharedIpGroup(self::$sharedIpGroup->getId()));
     }
     /**
      * Test delete server

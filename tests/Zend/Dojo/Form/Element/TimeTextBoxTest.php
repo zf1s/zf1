@@ -48,6 +48,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
+#[AllowDynamicProperties]
 class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -191,7 +192,7 @@ class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
     {
         $this->element->setValue('T08:00');
         $html = $this->element->render();
-        
+
         $this->assertSame('T08:00', $this->element->getValue());
         $this->assertContains('value="T08:00"', $html);
     }

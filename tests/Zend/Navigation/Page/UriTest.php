@@ -32,6 +32,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Navigation
  */
+#[AllowDynamicProperties]
 class Zend_Navigation_Page_UriTest extends PHPUnit_Framework_TestCase
 {
     public function testUriOptionAsString()
@@ -107,15 +108,15 @@ class Zend_Navigation_Page_UriTest extends PHPUnit_Framework_TestCase
     public function testGetHrefWithFragmentIdentifier()
     {
         $uri = 'http://www.example.com/foo.html';
-        
+
         $page = new Zend_Navigation_Page_Uri();
         $page->setUri($uri);
         $page->setFragment('bar');
-        
+
         $this->assertEquals($uri . '#bar', $page->getHref());
-        
+
         $page->setUri('#');
-        
+
         $this->assertEquals('#bar', $page->getHref());
     }
 }

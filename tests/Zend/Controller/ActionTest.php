@@ -41,6 +41,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Controller
  * @group      Zend_Controller_Action
  */
+#[AllowDynamicProperties]
 class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -502,6 +503,7 @@ class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Controller_ActionTest_TestController extends Zend_Controller_Action
 {
     public $initArgs = array();

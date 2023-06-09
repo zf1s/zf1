@@ -45,6 +45,7 @@ require_once 'Zend/Session/SessionHelper.php';
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
+#[AllowDynamicProperties]
 class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -229,6 +230,7 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework
  * Subclass of FlashMessenger action helper which exposes a reset method
  * to allow faking a second (fresh) request
  */
+#[AllowDynamicProperties]
 class FlashMessengerControllerActionHelper extends Zend_Controller_Action_Helper_FlashMessenger
 {
     public function getName() { return 'FlashMessenger'; }

@@ -37,6 +37,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_XmlRpc
  */
+#[AllowDynamicProperties]
 class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -692,6 +693,7 @@ function Zend_XmlRpc_Server_testFunction2()
 }
 
 
+#[AllowDynamicProperties]
 class Zend_XmlRpc_Server_testClass
 {
     private $_value1;
@@ -766,10 +768,12 @@ class Zend_XmlRpc_Server_testClass
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_XmlRpc_Server_testResponse extends Zend_XmlRpc_Response
 {
 }
 
+#[AllowDynamicProperties]
 class Zend_XmlRpc_Server_testRequest extends Zend_XmlRpc_Request
 {
 }

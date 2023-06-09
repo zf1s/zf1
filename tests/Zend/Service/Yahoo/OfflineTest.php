@@ -54,6 +54,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_Yahoo
  */
+#[AllowDynamicProperties]
 class Zend_Service_Yahoo_OfflineTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -546,6 +547,7 @@ class Zend_Service_Yahoo_OfflineTest extends PHPUnit_Framework_TestCase
 }
 
 
+#[AllowDynamicProperties]
 class Zend_Service_Yahoo_OfflineTest_ResultSet extends Zend_Service_Yahoo_ResultSet
 {
     protected $_namespace = '';

@@ -38,6 +38,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Loader
  */
+#[AllowDynamicProperties]
 class Zend_Loader_AutoloaderFactoryTest extends PHPUnit_Framework_TestCase
 {
     public static function main()

@@ -40,6 +40,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Controller
  * @group      Zend_Controller_Request
  */
+#[AllowDynamicProperties]
 class Zend_Controller_Request_Apache404Test extends PHPUnit_Framework_TestCase
 {
     /**

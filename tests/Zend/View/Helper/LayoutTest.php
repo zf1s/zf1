@@ -41,6 +41,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
+#[AllowDynamicProperties]
 class Zend_View_Helper_LayoutTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -124,6 +125,7 @@ class Zend_View_Helper_LayoutTest extends PHPUnit_Framework_TestCase
 /**
  * Zend_Layout extension to allow resetting MVC instance
  */
+#[AllowDynamicProperties]
 class Zend_View_Helper_LayoutTest_Layout extends Zend_Layout
 {
     public static function resetMvcInstance()

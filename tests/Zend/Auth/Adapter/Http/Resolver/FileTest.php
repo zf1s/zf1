@@ -40,6 +40,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Auth
  */
+#[AllowDynamicProperties]
 class Zend_Auth_Adapter_Http_Resolver_FileTest extends PHPUnit_Framework_TestCase
 {
     /**

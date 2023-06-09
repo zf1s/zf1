@@ -52,6 +52,7 @@ require_once 'Zend/Validate/File/WordCountTest.php';
  * @group      Zend_Validate
  * @group      Zend_Validate_File
  */
+#[AllowDynamicProperties]
 class Zend_Validate_File_AllTests
 {
     public static function main()

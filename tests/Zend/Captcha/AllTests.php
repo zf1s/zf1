@@ -37,6 +37,7 @@ require_once 'Zend/Captcha/ReCaptchaTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Captcha
  */
+#[AllowDynamicProperties]
 class Zend_Captcha_AllTests
 {
     public static function main()

@@ -50,6 +50,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
+#[AllowDynamicProperties]
 class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -232,6 +233,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_Te
     }
 }
 
+#[AllowDynamicProperties]
 class ZendTest_Controller_Request_SimpleMock_AjaxTest
     extends Zend_Controller_Request_Simple
 {
@@ -244,6 +246,7 @@ class ZendTest_Controller_Request_SimpleMock_AjaxTest
          }
 }
 
+#[AllowDynamicProperties]
 class Zend_Controller_Action_Helper_AjaxContextTestController extends Zend_Controller_Action
 {
     public $ajaxable = array(
@@ -253,6 +256,7 @@ class Zend_Controller_Action_Helper_AjaxContextTestController extends Zend_Contr
     );
 }
 
+#[AllowDynamicProperties]
 class Zend_Controller_Action_Helper_AjaxContextTest_LayoutOverride extends Zend_Layout
 {
     public static function resetMvcInstance()

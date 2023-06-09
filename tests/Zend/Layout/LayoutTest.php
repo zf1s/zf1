@@ -44,6 +44,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Layout
  */
+#[AllowDynamicProperties]
 class Zend_Layout_LayoutTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -560,6 +561,7 @@ class Zend_Layout_LayoutTest extends PHPUnit_Framework_TestCase
 /**
  * Zend_Layout extension to allow resetting mvcInstance static member
  */
+#[AllowDynamicProperties]
 class Zend_Layout_LayoutTest_Override extends Zend_Layout
 {
     public static function resetMvcInstance()
@@ -568,10 +570,12 @@ class Zend_Layout_LayoutTest_Override extends Zend_Layout
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Layout_LayoutTest_Controller_Plugin_Layout extends Zend_Layout_Controller_Plugin_Layout
 {
 }
 
+#[AllowDynamicProperties]
 class Zend_Layout_LayoutTest_Controller_Action_Helper_Layout extends Zend_Layout_Controller_Action_Helper_Layout
 {
 }

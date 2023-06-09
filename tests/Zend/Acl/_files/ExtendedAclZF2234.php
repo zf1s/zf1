@@ -1,5 +1,6 @@
 <?php
 
+#[AllowDynamicProperties]
 class Zend_Acl_ExtendedAclZF2234 extends Zend_Acl
 {
     public function roleDFSVisitAllPrivileges(Zend_Acl_Role_Interface $role, Zend_Acl_Resource_Interface $resource = null,

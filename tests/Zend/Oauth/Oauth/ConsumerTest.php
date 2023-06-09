@@ -30,6 +30,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Oauth
  */
+#[AllowDynamicProperties]
 class Zend_Oauth_ConsumerTest extends PHPUnit_Framework_TestCase
 {
 
@@ -251,6 +252,7 @@ class Zend_Oauth_ConsumerTest extends PHPUnit_Framework_TestCase
 
 }
 
+#[AllowDynamicProperties]
 class Test_Http_RequestToken_48231 extends Zend_Oauth_Http_RequestToken
 {
     public function __construct(){}
@@ -260,6 +262,7 @@ class Test_Http_RequestToken_48231 extends Zend_Oauth_Http_RequestToken
     public function setParams(array $customServiceParameters){}
 }
 
+#[AllowDynamicProperties]
 class Test_Http_AccessToken_48231 extends Zend_Oauth_Http_AccessToken
 {
     public function __construct(){}
@@ -269,6 +272,7 @@ class Test_Http_AccessToken_48231 extends Zend_Oauth_Http_AccessToken
     public function setParams(array $customServiceParameters){}
 }
 
+#[AllowDynamicProperties]
 class Test_Consumer_48231 extends Zend_Oauth_Consumer
 {
     public function __construct(array $options = array()){

@@ -26,6 +26,7 @@
  * @package  Zend_Service
  * @subpackage  UnitTests
  */
+#[AllowDynamicProperties]
 class Zend_Service_ShortUrl_JdemCzTest extends PHPUnit_Framework_TestCase
 {
     /**

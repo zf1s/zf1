@@ -35,6 +35,7 @@ require_once 'Zend/Db/TestUtil/Mysqli.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Db_TestUtil_Pdo_Mysql extends Zend_Db_TestUtil_Mysqli
 {
     protected function _rawQuery($sql)

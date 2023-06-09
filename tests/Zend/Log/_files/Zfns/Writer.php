@@ -2,6 +2,7 @@
 
 namespace Zfns;
 
+#[AllowDynamicProperties]
 class Writer extends \Zend_Log_Writer_Abstract
 {
     /**

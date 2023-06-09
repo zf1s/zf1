@@ -30,7 +30,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 require_once 'Zend/Gdata/AuthSubTest.php';
 
 /**
- * 
+ *
  */
 require_once 'Zend/Gdata/Analytics/AccountFeedTest.php';
 require_once 'Zend/Gdata/Analytics/AccountQueryTest.php';
@@ -181,6 +181,7 @@ require_once 'Zend/Gdata/SkipTests.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_AllTests
 {
 

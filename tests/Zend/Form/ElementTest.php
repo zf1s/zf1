@@ -46,6 +46,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
+#[AllowDynamicProperties]
 class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -2244,10 +2245,12 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Form_ElementTest_Decorator extends Zend_Form_Decorator_Abstract
 {
 }
 
+#[AllowDynamicProperties]
 class Zend_Form_ElementTest_Element extends Zend_Form_Element
 {
     public function init()
@@ -2256,6 +2259,7 @@ class Zend_Form_ElementTest_Element extends Zend_Form_Element
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Form_ElementTest_ArrayFilter implements Zend_Filter_Interface
 {
     public function filter($value)

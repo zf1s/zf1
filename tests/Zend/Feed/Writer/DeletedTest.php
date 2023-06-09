@@ -31,6 +31,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Feed_Writer_DeletedTest extends PHPUnit_Framework_TestCase
 {
 
@@ -72,7 +73,7 @@ class Zend_Feed_Writer_DeletedTest extends PHPUnit_Framework_TestCase
         $myDate = new Zend_Date('1234567890', Zend_Date::TIMESTAMP);
         $this->assertTrue($myDate->equals($entry->getWhen()));
     }
- 
+
     /**
      * @group ZF-12070
      */
@@ -83,7 +84,7 @@ class Zend_Feed_Writer_DeletedTest extends PHPUnit_Framework_TestCase
         $myDate = new Zend_Date('123456789', Zend_Date::TIMESTAMP);
         $this->assertTrue($myDate->equals($entry->getWhen()));
     }
- 
+
     /**
      * @group ZF-11610
      */

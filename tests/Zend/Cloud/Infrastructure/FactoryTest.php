@@ -49,6 +49,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cloud
  */
+#[AllowDynamicProperties]
 class Zend_Cloud_Infrastructure_FactoryTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -74,7 +75,7 @@ class Zend_Cloud_Infrastructure_FactoryTest extends PHPUnit_Framework_TestCase
                                 );
 
         $this->assertEquals('Zend_Cloud_Infrastructure_Adapter_Ec2', get_class($Ec2Adapter));
-        
+
         // Rackspace adapter
         $rackspaceAdapter = Zend_Cloud_Infrastructure_Factory::getAdapter(
                                     new Zend_Config(Zend_Cloud_Infrastructure_Adapter_RackspaceTest::getConfigArray())

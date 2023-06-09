@@ -32,6 +32,7 @@
  * @group      Zend_Mobile_Push
  * @group      Zend_Mobile_Push_Mpns
  */
+#[AllowDynamicProperties]
 class Zend_Mobile_Push_Message_Mpns_TileTest extends PHPUnit_Framework_TestCase
 {
     private $_msg;

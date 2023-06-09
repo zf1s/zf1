@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 class MyBarcode5
 {
     protected $_length     = 'odd';

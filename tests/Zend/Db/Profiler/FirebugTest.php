@@ -48,6 +48,7 @@
  * @group      Zend_Db
  * @group      Zend_Db_Profiler
  */
+#[AllowDynamicProperties]
 class Zend_Db_Profiler_FirebugTest extends PHPUnit_Framework_TestCase
 {
 
@@ -200,6 +201,7 @@ class Zend_Db_Profiler_FirebugTest extends PHPUnit_Framework_TestCase
 }
 
 
+#[AllowDynamicProperties]
 class Zend_Db_Profiler_FirebugTest_Request extends Zend_Controller_Request_Http
 {
     public function getHeader($header)
@@ -210,6 +212,7 @@ class Zend_Db_Profiler_FirebugTest_Request extends Zend_Controller_Request_Http
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Db_Profiler_FirebugTest_Response extends Zend_Controller_Response_Http
 {
     public function canSendHeaders($throw = false)

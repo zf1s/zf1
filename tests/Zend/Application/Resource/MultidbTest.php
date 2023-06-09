@@ -45,6 +45,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
+#[AllowDynamicProperties]
 class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
 {
     protected $_dbOptions = array('db1' => array('adapter' => 'pdo_mysql','dbname' => 'db1','password' => 'XXXX','username' => 'webuser'),

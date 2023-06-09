@@ -39,6 +39,7 @@ require_once 'Zend/Queue/QueueBaseTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
+#[AllowDynamicProperties]
 class Zend_Queue_Queue2Test extends Zend_Queue_QueueBaseTest
 {
     protected function setUp()

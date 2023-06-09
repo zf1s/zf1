@@ -47,6 +47,7 @@ require_once 'Zend/Form/Decorator/ViewScriptTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
+#[AllowDynamicProperties]
 class Zend_Form_Decorator_AllTests
 {
     public static function main()

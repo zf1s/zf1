@@ -27,11 +27,15 @@
 
 
 // require_once 'Zend/Cache/Backend/File.php';
+#[AllowDynamicProperties]
 class Zend_Cache_Backend_FooBarTest extends Zend_Cache_Backend_File { }
+#[AllowDynamicProperties]
 class FooBarTestBackend extends Zend_Cache_Backend_File { }
 
 // require_once 'Zend/Cache/Core.php';
+#[AllowDynamicProperties]
 class Zend_Cache_Frontend_FooBarTest extends Zend_Cache_Core { }
+#[AllowDynamicProperties]
 class FooBarTestFrontend extends Zend_Cache_Core { }
 
 /**
@@ -42,6 +46,7 @@ class FooBarTestFrontend extends Zend_Cache_Core { }
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
+#[AllowDynamicProperties]
 class Zend_Cache_FactoryTest extends PHPUnit_Framework_TestCase
 {
 
@@ -113,7 +118,7 @@ class Zend_Cache_FactoryTest extends PHPUnit_Framework_TestCase
         }
         $this->fail('Zend_Exception was expected but not thrown');
     }
-    
+
     /**
      * @group ZF-11988
      */
@@ -126,7 +131,7 @@ class Zend_Cache_FactoryTest extends PHPUnit_Framework_TestCase
             $this->assertNotEquals('Invalid frontend name [ZF11988\Frontend]', $e->getMessage());
         }
     }
-    
+
     /**
      * @group ZF-11988
      */

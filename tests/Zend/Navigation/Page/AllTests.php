@@ -35,6 +35,7 @@ require_once 'Zend/Navigation/Page/UriTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Navigation
  */
+#[AllowDynamicProperties]
 class Zend_Navigation_Page_AllTests
 {
     public static function main()

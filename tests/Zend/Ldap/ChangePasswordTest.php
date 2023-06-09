@@ -34,6 +34,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'OnlineTestCase.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
+#[AllowDynamicProperties]
 class Zend_Ldap_ChangePasswordTest extends Zend_Ldap_OnlineTestCase
 {
     public function testAddNewUserWithPasswordOpenLdap()

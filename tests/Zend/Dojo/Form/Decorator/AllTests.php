@@ -43,6 +43,7 @@ require_once 'Zend/Dojo/Form/Decorator/TabContainerTest.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
+#[AllowDynamicProperties]
 class Zend_Dojo_Form_Decorator_AllTests
 {
     public static function main()

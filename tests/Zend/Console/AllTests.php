@@ -34,6 +34,7 @@ require_once 'Zend/Console/GetoptTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Console
  */
+#[AllowDynamicProperties]
 class Zend_Console_AllTests
 {
     public static function main()

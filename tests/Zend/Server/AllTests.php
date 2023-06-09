@@ -47,6 +47,7 @@ require_once 'Zend/Server/Reflection/ReturnValueTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
+#[AllowDynamicProperties]
 class Zend_Server_AllTests
 {
     public static function main()

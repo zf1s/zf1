@@ -33,6 +33,7 @@ require_once __DIR__ . '/TestAbstract.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
+#[AllowDynamicProperties]
 class Zend_View_Helper_Navigation_BreadcrumbsTest
     extends Zend_View_Helper_Navigation_TestAbstract
 {

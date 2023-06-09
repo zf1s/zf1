@@ -29,6 +29,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Test_Zend_Gdata_MockHttpClient_Request
 {
     public $methd;
@@ -45,6 +46,7 @@ class Test_Zend_Gdata_MockHttpClient_Request
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Test_Zend_Gdata_MockHttpClient extends Zend_Http_Client_Adapter_Test
 {
     protected $_requests;

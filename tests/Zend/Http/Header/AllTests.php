@@ -43,6 +43,7 @@ require_once 'Zend/Http/Header/SetCookieTest.php';
  * @group      Zend_Http
  * @group      Zend_Http_Header
  */
+#[AllowDynamicProperties]
 class Zend_Http_Header_AllTests
 {
     public static function main()

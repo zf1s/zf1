@@ -37,6 +37,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
+#[AllowDynamicProperties]
 class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -202,6 +203,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
 }
 
 // require_once 'Zend/Application/Resource/Modules.php';
+#[AllowDynamicProperties]
 class ZendTest_Application_Resource_ModulesHalf
     extends Zend_Application_Resource_Modules
 {

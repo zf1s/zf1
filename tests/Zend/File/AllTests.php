@@ -35,6 +35,7 @@ require_once 'Zend/File/ClassFileLocatorTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_File
  */
+#[AllowDynamicProperties]
 class Zend_File_AllTests
 {
     public static function main()

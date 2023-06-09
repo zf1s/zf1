@@ -30,6 +30,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
 {
     /**
@@ -241,7 +242,7 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
 
         $message = str_replace((string) '%value%', $value, $message);
         foreach ($this->_messageVariables as $ident => $property) {
-            $message = str_replace((string) 
+            $message = str_replace((string)
                 "%$ident%",
                 implode(' ', (array) $this->$property),
                 $message

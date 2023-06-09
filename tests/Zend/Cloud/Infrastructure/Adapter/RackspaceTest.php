@@ -23,6 +23,7 @@
 // require_once 'Zend/Cloud/Infrastructure/Adapter/Rackspace.php';
 // require_once 'Zend/Cloud/Infrastructure/Factory.php';
 
+#[AllowDynamicProperties]
 class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_TestCase
 {
     /**

@@ -46,6 +46,7 @@ if (defined('TESTS_ZEND_LDAP_ONLINE_ENABLED')
  * @group      Zend_Ldap
  * @group      Zend_Ldap_Node
  */
+#[AllowDynamicProperties]
 class Zend_Ldap_Node_AllTests
 {
     public static function main()
@@ -76,6 +77,7 @@ class Zend_Ldap_Node_AllTests
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Ldap_Node_SkipOnlineTests extends PHPUnit_Framework_TestCase
 {
     public function setUp()

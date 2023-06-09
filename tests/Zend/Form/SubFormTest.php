@@ -38,6 +38,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
+#[AllowDynamicProperties]
 class Zend_Form_SubFormTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -159,6 +160,7 @@ class Zend_Form_SubFormTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Form_SubFormTest_SubForm extends Zend_Form_SubForm
 {
     public function init()

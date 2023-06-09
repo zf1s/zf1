@@ -35,6 +35,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -53,13 +54,13 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testSubscribeShouldReturnCallbackHandler()
     {
-        $handle = $this->filterchain->attach(array( $this, __METHOD__ ));
+        $handle = $this->filterchain->attach(array( $this, 'testSubscribeShouldReturnCallbackHandler' ));
         $this->assertTrue($handle instanceof Zend_Stdlib_CallbackHandler);
     }
 
     public function testSubscribeShouldAddCallbackHandlerToFilters()
     {
-        $handler  = $this->filterchain->attach(array($this, __METHOD__));
+        $handler  = $this->filterchain->attach(array($this, 'testSubscribeShouldAddCallbackHandlerToFilters'));
         $handlers = $this->filterchain->getFilters();
         $this->assertEquals(1, count($handlers));
         $this->assertTrue($handlers->contains($handler));
@@ -67,7 +68,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testDetachShouldRemoveCallbackHandlerFromFilters()
     {
-        $handle = $this->filterchain->attach(array( $this, __METHOD__ ));
+        $handle = $this->filterchain->attach(array( $this, 'testDetachShouldRemoveCallbackHandlerFromFilters' ));
         $handles = $this->filterchain->getFilters();
         $this->assertTrue($handles->contains($handle));
         $this->filterchain->detach($handle);
@@ -77,7 +78,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testDetachShouldReturnFalseIfCallbackHandlerDoesNotExist()
     {
-        $handle1 = $this->filterchain->attach(array( $this, __METHOD__ ));
+        $handle1 = $this->filterchain->attach(array( $this, 'testDetachShouldReturnFalseIfCallbackHandlerDoesNotExist' ));
         $this->filterchain->clearFilters();
         $handle2 = $this->filterchain->attach(array( $this, 'handleTestTopic' ));
         $this->assertFalse($this->filterchain->detach($handle1));

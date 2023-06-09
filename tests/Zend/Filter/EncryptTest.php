@@ -34,6 +34,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
+#[AllowDynamicProperties]
 class Zend_Filter_EncryptTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -286,6 +287,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt');
     }
 }
 
+#[AllowDynamicProperties]
 class TestAdapter2
 {
 }

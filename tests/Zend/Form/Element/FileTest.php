@@ -43,6 +43,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
+#[AllowDynamicProperties]
 class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -575,6 +576,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Form_Element_FileTest_MockAdapter extends Zend_File_Transfer_Adapter_Abstract
 {
     public $received = false;

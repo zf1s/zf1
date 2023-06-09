@@ -33,6 +33,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Config
  */
+#[AllowDynamicProperties]
 class Zend_Config_IniTest extends PHPUnit_Framework_TestCase
 {
     protected $_iniFileConfig;

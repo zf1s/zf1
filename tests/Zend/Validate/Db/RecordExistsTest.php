@@ -64,6 +64,7 @@ require_once __DIR__ . '/_files/Db/MockHasResult.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
+#[AllowDynamicProperties]
 class Zend_Validate_Db_RecordExistsTest extends PHPUnit_Framework_TestCase
 {
 

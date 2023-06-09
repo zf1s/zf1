@@ -37,6 +37,7 @@ require_once "AudioscrobblerTestCase.php";
  * @group      Zend_Service
  * @group      Zend_Service_Audioscrobbler
  */
+#[AllowDynamicProperties]
 class Zend_Service_Audioscrobbler_ArtistTest extends Zend_Service_Audioscrobbler_AudioscrobblerTestCase
 {
     private $header = "HTTP/1.1 200 OK\r\nContent-type: text/xml\r\n\r\n";

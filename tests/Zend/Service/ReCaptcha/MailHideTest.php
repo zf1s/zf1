@@ -35,6 +35,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_ReCaptcha
  */
+#[AllowDynamicProperties]
 class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
 {
     protected $_publicKey = TESTS_ZEND_SERVICE_RECAPTCHA_MAILHIDE_PUBLIC_KEY;

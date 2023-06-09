@@ -34,6 +34,7 @@ require_once 'Zend/Uri/HttpTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Uri
  */
+#[AllowDynamicProperties]
 class Zend_Uri_AllTests
 {
     /**

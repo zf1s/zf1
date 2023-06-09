@@ -39,6 +39,7 @@ require_once 'Zend/Filter/Compress/ZipTest.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Filter_Compress_AllTests
 {
     /**

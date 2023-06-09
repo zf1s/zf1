@@ -35,6 +35,7 @@ require_once 'Zend/Mime/MessageTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mime
  */
+#[AllowDynamicProperties]
 class Zend_Mime_AllTests
 {
     public static function main()

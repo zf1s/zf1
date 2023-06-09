@@ -38,6 +38,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_ProgressBar
  */
+#[AllowDynamicProperties]
 class Zend_ProgressBar_Adapter_JsPullTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -76,6 +77,7 @@ class Zend_ProgressBar_Adapter_JsPullTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_ProgressBar_Adapter_JsPull_Stub extends Zend_ProgressBar_Adapter_JsPull
 {
     protected $_lastOutput = null;

@@ -46,6 +46,7 @@ require_once 'Zend/Tool/Framework/Provider/SignatureTest.php';
  * @group      Zend_Tool
  * @group      Zend_Tool_Framework
  */
+#[AllowDynamicProperties]
 class Zend_Tool_Framework_AllTests
 {
     public static function main()

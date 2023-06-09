@@ -48,6 +48,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
+#[AllowDynamicProperties]
 class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -127,7 +128,7 @@ class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
         $html = $this->helper->form('foo', array('id' => 'bar'));
         $this->assertRegexp('/<form[^>]*(id="bar")/', $html);
     }
-    
+
     public function testShouldNotRenderClosingTagIfContentIsFalse()
     {
         $html = $this->helper->form('foo');

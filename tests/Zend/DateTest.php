@@ -53,6 +53,7 @@ if (!defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Date
  */
+#[AllowDynamicProperties]
 class Zend_DateTest extends PHPUnit_Framework_TestCase
 {
 
@@ -5776,6 +5777,7 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Date_TestHelper extends Zend_Date
 {
     public function _setTime($timestamp)

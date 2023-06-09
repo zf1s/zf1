@@ -40,6 +40,7 @@ require_once 'Zend/Locale/MathTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Locale
  */
+#[AllowDynamicProperties]
 class Zend_Locale_AllTests
 {
     public static function main()

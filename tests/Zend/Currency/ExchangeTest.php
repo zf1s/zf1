@@ -33,6 +33,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Currency
  */
+#[AllowDynamicProperties]
 class ExchangeTest implements Zend_Currency_CurrencyInterface
 {
     /**

@@ -42,6 +42,7 @@ require_once 'Zend/Db/Adapter/Db2Test.php';
  * @group      Zend_Db
  * @group      Zend_Db_Adapter
  */
+#[AllowDynamicProperties]
 class Zend_Db_Adapter_Pdo_IbmTest extends Zend_Db_Adapter_Db2Test
 {
     public function getDriver()

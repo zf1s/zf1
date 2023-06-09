@@ -35,6 +35,7 @@ require_once 'Zend/Xml/SecurityTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Xml
  */
+#[AllowDynamicProperties]
 class Zend_Xml_AllTests
 {
     public static function main()

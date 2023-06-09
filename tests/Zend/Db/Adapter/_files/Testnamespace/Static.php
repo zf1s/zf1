@@ -39,6 +39,7 @@ require_once 'Zend/Db/Adapter/Static.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Testnamespace_Static extends Zend_Db_Adapter_Static
 {
 }

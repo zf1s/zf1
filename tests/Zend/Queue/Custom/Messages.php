@@ -33,6 +33,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Custom_Messages
 extends Zend_Queue_Message_Iterator
 implements ArrayAccess

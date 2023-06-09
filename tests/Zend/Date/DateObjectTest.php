@@ -33,6 +33,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Date
  */
+#[AllowDynamicProperties]
 class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
 {
 
@@ -630,6 +631,7 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Date_DateObjectTestHelper extends Zend_Date
 {
     public function __construct($date = null, $part = null, $locale = null)

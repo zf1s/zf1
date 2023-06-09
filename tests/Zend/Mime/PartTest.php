@@ -33,6 +33,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mime
  */
+#[AllowDynamicProperties]
 class Zend_Mime_PartTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -114,7 +115,7 @@ class Zend_Mime_PartTest extends PHPUnit_Framework_TestCase
         fclose($fp);
         $this->assertEquals(quoted_printable_decode($encoded),$original);
     }
-    
+
     /**
      * @group ZF-1491
      */
@@ -122,5 +123,5 @@ class Zend_Mime_PartTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->testText, $this->part->getRawContent());
     }
-    
+
 }

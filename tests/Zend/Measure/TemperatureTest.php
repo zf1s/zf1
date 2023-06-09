@@ -42,6 +42,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Measure
  */
+#[AllowDynamicProperties]
 class Zend_Measure_TemperatureTest extends PHPUnit_Framework_TestCase
 {
     public static function main()

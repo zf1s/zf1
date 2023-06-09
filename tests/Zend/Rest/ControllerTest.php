@@ -41,6 +41,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Rest_TestController extends Zend_Rest_Controller
 {
     public $testValue = '';
@@ -84,6 +85,7 @@ class Zend_Rest_TestController extends Zend_Rest_Controller
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Rest
  */
+#[AllowDynamicProperties]
 class Zend_Rest_ControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $_testController;

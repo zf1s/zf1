@@ -33,6 +33,7 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Docs
  */
+#[AllowDynamicProperties]
 class Zend_Gdata_Docs_QueryTest extends PHPUnit_Framework_TestCase
 {
 

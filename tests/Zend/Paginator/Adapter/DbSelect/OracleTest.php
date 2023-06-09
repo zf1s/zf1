@@ -45,6 +45,7 @@ require_once __DIR__ . '/../../_files/TestTable.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Paginator
  */
+#[AllowDynamicProperties]
 class Zend_Paginator_Adapter_DbSelect_OracleTest extends Zend_Paginator_Adapter_DbSelectTest
 {
 

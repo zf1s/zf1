@@ -38,6 +38,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Text
  */
+#[AllowDynamicProperties]
 class Zend_Text_MultiByteTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -107,7 +108,7 @@ class Zend_Text_MultiByteTest extends PHPUnit_Framework_TestCase
         $line = Zend_Text_MultiByte::wordWrap('äöüäöü ', 3, '-', true);
         $this->assertEquals('äöü-äöü-', $line);
     }
-    
+
     public function testWordWrapCutEndingTwoSpaces()
     {
         $line = Zend_Text_MultiByte::wordWrap('äüöäöü  ', 3, ' ', true);
@@ -125,7 +126,7 @@ class Zend_Text_MultiByteTest extends PHPUnit_Framework_TestCase
         $line = Zend_Text_MultiByte::wordWrap('12345  ', 5, '-', false);
         $this->assertEquals('12345- ', $line);
     }
-    
+
     public function testWordWrapCutEndingThreeSpaces()
     {
         $line = Zend_Text_MultiByte::wordWrap('äüöäöü  ', 3, ' ', true);

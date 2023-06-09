@@ -41,6 +41,7 @@ require_once __DIR__ . '/../../../TestConfiguration.dist.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Service_WindowsAzure_StorageTest extends PHPUnit_Framework_TestCase
 {
     public static function main()
@@ -57,7 +58,7 @@ class Zend_Service_WindowsAzure_StorageTest extends PHPUnit_Framework_TestCase
         $storage = new Zend_Service_WindowsAzure_Storage();
         $this->assertEquals('http://127.0.0.1:10000/devstoreaccount1', $storage->getBaseUrl());
     }
-    
+
     /**
      * Test constructor for production
      */

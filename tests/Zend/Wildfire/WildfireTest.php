@@ -62,6 +62,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Wildfire
  */
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 {
 
@@ -1071,6 +1072,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_TestObject1
 {
   var $name = 'Name';
@@ -1078,6 +1080,7 @@ class Zend_Wildfire_WildfireTest_TestObject1
   protected static $protectedStatic = 'ProtectedStatic';
 }
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_TestObject2
 {
   var $public = 'Public';
@@ -1089,25 +1092,30 @@ class Zend_Wildfire_WildfireTest_TestObject2
   static protected $staticProtected = 'StaticProtected';
 }
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_TestObject3
 {
   var $name = 'Name';
   var $value = 'Value';
 }
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_JsonEncodingTestClass
 {
 }
 
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_FirePhpPlugin extends Zend_Wildfire_Plugin_FirePhp
 {
 }
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_HttpHeadersChannel extends Zend_Wildfire_Channel_HttpHeaders
 {
 }
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_Request extends Zend_Controller_Request_HttpTestCase
 {
 
@@ -1138,6 +1146,7 @@ class Zend_Wildfire_WildfireTest_Request extends Zend_Controller_Request_HttpTes
 }
 
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_Response extends Zend_Controller_Response_HttpTestCase
 {
 

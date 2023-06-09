@@ -31,6 +31,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Pdf
  */
+#[AllowDynamicProperties]
 class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -354,6 +355,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
 }
 
 
+#[AllowDynamicProperties]
 class ExtendedZendPdf extends Zend_Pdf
 {
     public function __get($name) {
@@ -362,6 +364,7 @@ class ExtendedZendPdf extends Zend_Pdf
         }
     }
 }
+#[AllowDynamicProperties]
 class ExtendedZendPdfPage extends Zend_Pdf_Page
 {
     public function __get($name) {

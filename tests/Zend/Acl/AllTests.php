@@ -34,6 +34,7 @@ require_once 'Zend/Acl/AclTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Acl
  */
+#[AllowDynamicProperties]
 class Zend_Acl_AllTests
 {
     public static function main()

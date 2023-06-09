@@ -1,5 +1,6 @@
 <?php
 
+#[AllowDynamicProperties]
 class Zend_Acl_UseCase1_Acl extends Zend_Acl
 {
 

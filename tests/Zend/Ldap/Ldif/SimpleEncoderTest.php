@@ -38,6 +38,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'TestCase.php';
  * @group      Zend_Ldap
  * @group      Zend_Ldap_Ldif
  */
+#[AllowDynamicProperties]
 class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
 {
     public static function stringEncodingProvider()

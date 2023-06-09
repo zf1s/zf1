@@ -38,6 +38,7 @@
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Client
  */
+#[AllowDynamicProperties]
 class Zend_Tool_Framework_Client_ResponseTest extends PHPUnit_Framework_TestCase
 {
 

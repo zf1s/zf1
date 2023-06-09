@@ -38,6 +38,7 @@
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Ec2
  */
+#[AllowDynamicProperties]
 class InstanceWindowsTest extends PHPUnit_Framework_TestCase
 {
 

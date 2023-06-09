@@ -36,6 +36,7 @@ require_once 'Zend/Mobile/Push/Message/Mpns/ToastTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mobile
  */
+#[AllowDynamicProperties]
 class Zend_Mobile_Push_Message_Mpns_AllTests
 {
     public static function main()
@@ -46,7 +47,7 @@ class Zend_Mobile_Push_Message_Mpns_AllTests
     public static function suite()
     {
         $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Mobile_Push_Message_Mpns');
-        
+
         $suite->addTestSuite('Zend_Mobile_Push_Message_Mpns_RawTest');
         $suite->addTestSuite('Zend_Mobile_Push_Message_Mpns_TileTest');
         $suite->addTestSuite('Zend_Mobile_Push_Message_Mpns_ToastTest');

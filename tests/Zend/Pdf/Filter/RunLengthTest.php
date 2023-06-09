@@ -32,6 +32,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Pdf
  */
+#[AllowDynamicProperties]
 class Zend_Pdf_Filter_RunLengthTest extends PHPUnit_Framework_TestCase
 {
     public function testSimpleStringEncode()

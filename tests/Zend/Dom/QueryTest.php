@@ -38,6 +38,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Dom
  */
+#[AllowDynamicProperties]
 class Zend_Dom_QueryTest extends PHPUnit_Framework_TestCase
 {
     public $html;
@@ -329,7 +330,7 @@ EOF;
         $this->assertTrue($doc instanceof DOMDocument);
         $this->assertEquals('utf-8', $doc->encoding);
     }
-    
+
     /**
      * @group ZF-11376
      */
@@ -345,7 +346,7 @@ EOB;
         $this->query->setDocument($xhtmlWithXmlDecl, 'utf-8');
         $this->assertEquals(1, $this->query->query('//p')->count());
     }
-    
+
     /**
      * @group ZF-12106
      */

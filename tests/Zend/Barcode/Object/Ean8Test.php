@@ -32,6 +32,7 @@ require_once __DIR__ . '/TestCommon.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[AllowDynamicProperties]
 class Zend_Barcode_Object_Ean8Test extends Zend_Barcode_Object_TestCommon
 {
 

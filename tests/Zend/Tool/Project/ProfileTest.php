@@ -33,6 +33,7 @@
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Action
  */
+#[AllowDynamicProperties]
 class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
 {
 

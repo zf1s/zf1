@@ -32,6 +32,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
+#[AllowDynamicProperties]
 class Zend_Server_ReflectionTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -132,6 +133,7 @@ function Zend_Server_Reflection_testFunction($arg1, $arg2, $arg3 = 'string', $ar
 /**
  * Zend_Server_Reflection_testClass -- test class reflection
  */
+#[AllowDynamicProperties]
 class Zend_Server_Reflection_testClass
 {
     /**

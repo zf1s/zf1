@@ -27,6 +27,7 @@
  * @subpackage  UnitTests
  * @see http://metamark.net/docs/api/rest.html
  */
+#[AllowDynamicProperties]
 class Zend_Service_ShortUrl_MetamarkNetTest extends PHPUnit_Framework_TestCase
 {
     /**

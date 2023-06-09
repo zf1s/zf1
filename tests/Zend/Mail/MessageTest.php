@@ -43,6 +43,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mail
  */
+#[AllowDynamicProperties]
 class Zend_Mail_MessageTest extends PHPUnit_Framework_TestCase
 {
     protected $_file;
@@ -548,6 +549,7 @@ class Zend_Mail_MessageTest extends PHPUnit_Framework_TestCase
  * Message class which sets a pre-defined default flag set
  * @see ZF-11514
  */
+#[AllowDynamicProperties]
 class ZF11514_Mail_Message extends Zend_Mail_Message
 {
     protected $_flags = array(
@@ -555,6 +557,7 @@ class ZF11514_Mail_Message extends Zend_Mail_Message
     );
 }
 
+#[AllowDynamicProperties]
 class ZF3745_Mail_Part extends Zend_Mail_Part
 {
 }

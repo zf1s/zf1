@@ -48,6 +48,7 @@ require_once 'Oauth/Token/AccessTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Oauth
  */
+#[AllowDynamicProperties]
 class Zend_Oauth_AllTests
 {
     public static function main()

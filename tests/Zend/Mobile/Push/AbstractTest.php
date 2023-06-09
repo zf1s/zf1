@@ -34,6 +34,7 @@
  * @group      Zend_Mobile_Push_Abstract
  */
 
+#[AllowDynamicProperties]
 class Zend_Mobile_Push_AbstractTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -63,11 +64,13 @@ class Zend_Mobile_Push_AbstractTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Mobile_Push_AbstractProxy extends Zend_Mobile_Push_Abstract
 {
-    
+
 }
 
+#[AllowDynamicProperties]
 class Zend_Mobile_Push_AbstractProxy_Message extends Zend_Mobile_Push_Message_Abstract
 {
 

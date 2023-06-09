@@ -31,15 +31,16 @@
  * @group      Zend_Oauth
  * @group      Zend_Oauth_Signature
  */
+#[AllowDynamicProperties]
 class Zend_Oauth_Signature_RsaTest extends PHPUnit_Framework_TestCase
 {
 
-    public function testSignatureWithoutAccessSecretIsHashedWithConsumerSecret() 
+    public function testSignatureWithoutAccessSecretIsHashedWithConsumerSecret()
     {
         $this->markTestIncomplete('Zend_Crypt_Rsa finalisation outstanding');
     }
 
-    public function testSignatureWithAccessSecretIsHashedWithConsumerAndAccessSecret() 
+    public function testSignatureWithAccessSecretIsHashedWithConsumerAndAccessSecret()
     {
         $this->markTestIncomplete('Zend_Crypt_Rsa finalisation outstanding');
     }

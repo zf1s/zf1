@@ -37,6 +37,7 @@
  * @group      Zend_Mobile_Push
  * @group      Zend_Mobile_Push_Mpns
  */
+#[AllowDynamicProperties]
 class Zend_Mobile_Push_MpnsTest extends PHPUnit_Framework_TestCase
 {
 

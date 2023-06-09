@@ -34,6 +34,7 @@
  * @group      Zend_Ldap
  * @group      Zend_Ldap_Dn
  */
+#[AllowDynamicProperties]
 class Zend_Ldap_Dn_ExplodingTest extends PHPUnit_Framework_TestCase
 {
     public static function explodeDnOperationProvider()

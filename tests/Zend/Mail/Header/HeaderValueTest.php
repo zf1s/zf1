@@ -25,6 +25,7 @@
  */
 // require_once 'Zend/Mail/Header/HeaderValue.php';
 
+#[AllowDynamicProperties]
 class Zend_Mail_Header_HeaderValueTest extends PHPUnit_Framework_TestCase
 {
     /**

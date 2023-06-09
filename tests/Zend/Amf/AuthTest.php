@@ -43,6 +43,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Amf
  */
+#[AllowDynamicProperties]
 class Zend_Amf_AuthTest extends PHPUnit_Framework_TestCase
 {
 
@@ -283,6 +284,7 @@ class Zend_Amf_AuthTest extends PHPUnit_Framework_TestCase
     }
 }
 
+#[AllowDynamicProperties]
 class WrongPassword extends Zend_Amf_Auth_Abstract
 {
     public function authenticate() {
@@ -293,6 +295,7 @@ class WrongPassword extends Zend_Amf_Auth_Abstract
     }
 }
 
+#[AllowDynamicProperties]
 class RightPassword extends Zend_Amf_Auth_Abstract
 {
     public function __construct($name, $role)
@@ -309,12 +312,14 @@ class RightPassword extends Zend_Amf_Auth_Abstract
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Amf_Auth_testclass {
     function hello() {
         return "hello!";
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Amf_Auth_testclass_Acl {
     function hello() {
         return "hello!";
@@ -331,6 +336,7 @@ class Zend_Amf_Auth_testclass_Acl {
     }
 }
 
+#[AllowDynamicProperties]
 class Zend_Amf_Auth_testclass_NoAcl {
     function hello() {
         return "hello!";

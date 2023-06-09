@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 class Zend_Session_SessionHelper
 {
     /**

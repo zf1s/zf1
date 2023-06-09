@@ -48,6 +48,7 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
+#[AllowDynamicProperties]
 class Zend_Dojo_Form_Element_ValidationTextBoxTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -178,13 +179,13 @@ class Zend_Dojo_Form_Element_ValidationTextBoxTest extends PHPUnit_Framework_Tes
         $html = $this->element->render();
         $this->assertContains('dojoType="dijit.form.ValidationTextBox"', $html);
     }
-    
+
     public function testSettingMultipleConstraintsShouldNotOverridePreviousConstraints()
     {
         $this->element->setConstraint('foo', 'bar');
-        
+
         $this->element->setConstraints(array('spam' => 'ham'));
-        
+
         $this->assertEquals('bar', $this->element->getConstraint('foo'));
     }
 }
