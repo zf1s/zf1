@@ -208,10 +208,8 @@ class Zend_Form_Element_Hash extends Zend_Form_Element_Xhtml
 
     /**
      * Override getLabel() to always be empty
-     *
-     * @return null
      */
-    public function getLabel()
+    public function getLabel(): string|null
     {
         return null;
     }
@@ -251,7 +249,7 @@ class Zend_Form_Element_Hash extends Zend_Form_Element_Xhtml
      */
     protected function _generateHash()
     {
-        $this->_hash = md5((string) 
+        $this->_hash = md5((string)
             Zend_Crypt_Math::randBytes(32)
         );
         $this->setValue($this->_hash);

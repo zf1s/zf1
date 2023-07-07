@@ -62,10 +62,8 @@ class Zend_Dojo_Form_Element_Button extends Zend_Dojo_Form_Element_Dijit
      * If no label is present, returns the currently set name.
      *
      * If a translator is present, returns the translated label.
-     *
-     * @return string
      */
-    public function getLabel()
+    public function getLabel(): string|null
     {
         $value = parent::getLabel();
 
