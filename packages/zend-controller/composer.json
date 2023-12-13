@@ -10,6 +10,7 @@
         "ext-session": "*",
         "zf1s/zend-config": "^1.15.2",
         "zf1s/zend-exception": "^1.15.2",
+        "zf1s/zend-filter": "^1.15.2",
         "zf1s/zend-loader": "^1.15.2",
         "zf1s/zend-registry": "^1.15.2",
         "zf1s/zend-uri": "^1.15.2",
@@ -23,7 +24,6 @@
     },
     "suggest": {
         "zf1s/zend-dojo": "Used in special situations or with special adapters",
-        "zf1s/zend-filter": "Used in special situations or with special adapters",
         "zf1s/zend-json": "Used in special situations or with special adapters",
         "zf1s/zend-layout": "Used in special situations or with special adapters"
     },
