@@ -181,7 +181,7 @@ class Zend_Ldap_BindTest extends PHPUnit_Framework_TestCase
         } catch (Zend_Ldap_Exception $zle) {
             /* Note that if your server actually allows anonymous binds this test will fail.
              */
-            $this->assertContains('No object found for', $zle->getMessage());
+            $this->assertContains('Failed to retrieve DN', $zle->getMessage());
         }
     }
 
