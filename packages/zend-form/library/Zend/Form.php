@@ -2260,13 +2260,12 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     /**
      * Validate the form
      *
-     * @param  array $data
-     * @throws Zend_Form_Exception
+     * @param  array $value
      * @return bool
      */
-    public function isValid($data)
+    public function isValid($value)
     {
-        if (!is_array($data)) {
+        if (!is_array($value)) {
             // require_once 'Zend/Form/Exception.php';
             throw new Zend_Form_Exception(__METHOD__ . ' expects an array');
         }
@@ -2276,24 +2275,24 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
 
         if ($this->isArray()) {
             $eBelongTo = $this->getElementsBelongTo();
-            $data = $this->_dissolveArrayValue($data, $eBelongTo);
+            $value = $this->_dissolveArrayValue($value, $eBelongTo);
         }
-        $context = $data;
+        $context = $value;
         /** @var Zend_Form_Element $element */
         foreach ($this->getElements() as $key => $element) {
             if (null !== $translator && $this->hasTranslator()
                     && !$element->hasTranslator()) {
                 $element->setTranslator($translator);
             }
-            $check = $data;
+            $check = $value;
             if (($belongsTo = $element->getBelongsTo()) !== $eBelongTo) {
-                $check = $this->_dissolveArrayValue($data, $belongsTo);
+                $check = $this->_dissolveArrayValue($value, $belongsTo);
             }
             if (!isset($check[$key])) {
                 $valid = $element->isValid(null, $context) && $valid;
             } else {
                 $valid = $element->isValid($check[$key], $context) && $valid;
-                $data = $this->_dissolveArrayUnsetKey($data, $belongsTo, $key);
+                $value = $this->_dissolveArrayUnsetKey($value, $belongsTo, $key);
             }
         }
         /** @var Zend_Form_SubForm $form */
@@ -2302,10 +2301,10 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                     && !$form->hasTranslator()) {
                 $form->setTranslator($translator);
             }
-            if (isset($data[$key]) && !$form->isArray()) {
-                $valid = $form->isValid($data[$key]) && $valid;
+            if (isset($value[$key]) && !$form->isArray()) {
+                $valid = $form->isValid($value[$key]) && $valid;
             } else {
-                $valid = $form->isValid($data) && $valid;
+                $valid = $form->isValid($value) && $valid;
             }
         }
 
