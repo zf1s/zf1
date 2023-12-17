@@ -264,7 +264,7 @@ class Zend_View_Helper_Navigation_Links
      * @param  Zend_Navigation_Page $page       page to find relations for
      * @param  string              $rel         relation, "rel" or "rev"
      * @param  string              $type        link type, e.g. 'start', 'next'
-     * @return Zend_Navigaiton_Page|array|null  page(s), or null if not found
+     * @return Zend_Navigation_Page|array|null  page(s), or null if not found
      * @throws Zend_View_Exception              if $rel is not "rel" or "rev"
      */
     public function findRelation(Zend_Navigation_Page $page, $rel, $type)
@@ -611,7 +611,7 @@ class Zend_View_Helper_Navigation_Links
      * makes sure finder methods will not traverse above the container given
      * to the render method.
      *
-     * @param  Zend_Navigaiton_Page $page  page to find root for
+     * @param  Zend_Navigation_Page $page  page to find root for
      * @return Zend_Navigation_Container   the root container of the given page
      */
     protected function _findRoot(Zend_Navigation_Page $page)
