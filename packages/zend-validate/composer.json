@@ -9,8 +9,7 @@
         "ext-ctype": "*",
         "ext-reflection": "*",
         "zf1s/zend-exception": "^1.15.2",
-        "zf1s/zend-loader": "^1.15.2",
-        "zf1s/zend-locale": "^1.15.2"
+        "zf1s/zend-registry": "^1.15.2"
     },
     "autoload": {
         "psr-0": {
@@ -18,9 +17,16 @@
         }
     },
     "suggest": {
+        "zf1s/zend-config": "Used in special situations or with special adapters",
         "zf1s/zend-date": "Used in special situations or with special adapters",
+        "zf1s/zend-db": "Used in special situations or with special adapters",
+        "zf1s/zend-file": "Used in special situations or with special adapters",
         "zf1s/zend-filter": "Used in special situations or with special adapters",
-        "zf1s/zend-registry": "Used in special situations or with special adapters"
+        "zf1s/zend-ldap": "Used in special situations or with special adapters",
+        "zf1s/zend-loader": "Used in special situations or with special adapters",
+        "zf1s/zend-locale": "Used in special situations or with special adapters",
+        "zf1s/zend-translate": "Used in special situations or with special adapters",
+        "zf1s/zend-uri": "Used in special situations or with special adapters"
     },
     "replace": {
         "zf1/zend-validate": "^1.12"
