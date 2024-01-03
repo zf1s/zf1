@@ -35,6 +35,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Translate_Adapter_CustomAdapterTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var string
+     */
+    private $includePath;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

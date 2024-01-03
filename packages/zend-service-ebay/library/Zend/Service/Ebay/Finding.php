@@ -417,7 +417,13 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
 
         // add xpath to dom document
         // it allows service_ebay_finding classes use this
-        $dom->ebayFindingXPath = $xpath;
+        //
+        // [php8.2] commented out for php 8.2, as it triggers a deprecation warning
+        // "Creation of dynamic property DOMDocument::$ebayFindingXPath is deprecated"
+        // Since there is no other way to attach an arbitrary property to a DOMDocument,
+        // skip the "caching" and re-instantiate the DOMXPath object each time it is needed in a "finding" class.
+        //
+        // $dom->ebayFindingXPath = $xpath;
 
         return $dom;
     }
