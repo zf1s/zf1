@@ -4004,7 +4004,15 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         $form->reset();
         $test = $form->getValues();
         $this->assertNotEquals($values, $test);
-        $this->assertEquals(0, array_sum($test));
+        $this->assertEquals(array(
+            'bar' => null,
+            'baz' => null,
+            'bat' => null,
+            'foo' => array(
+                'one' => null,
+                'two' => null,
+            ),
+        ), $test);
     }
 
     /**
