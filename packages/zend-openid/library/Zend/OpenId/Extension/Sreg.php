@@ -261,7 +261,7 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
      */
     public function getTrustData(&$data)
     {
-        $data[get_class()] = $this->getProperties();
+        $data[get_class($this)] = $this->getProperties();
         return true;
     }
 
@@ -277,7 +277,7 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
     {
         if (is_array($this->_props) && count($this->_props) > 0) {
             $props = array();
-            $name = get_class();
+            $name = get_class($this);
             if (isset($data[$name])) {
                 $props = $data[$name];
             } else {
