@@ -264,6 +264,14 @@ class Zend_Markup_BbcodeAndHtmlTest extends PHPUnit_Framework_TestCase
     {
         $input = "[code][b][/code][list][*]Foo[/*][/list]";
         $expected = "<code><span style=\"color: #000000\">\n[b]</span>\n</code><ul><li>Foo</li></ul>";
+
+        if (PHP_VERSION_ID >= 80300) {
+            // Zend_Markup_Renderer_Html_Code uses `highlight_string` function internally
+            // and output of that function has changed in PHP 8.3
+            // https://php.watch/versions/8.3/highlight_file-highlight_string-html-changes
+            $expected = "<pre><code style=\"color: #000000\">[b]</code></pre><ul><li>Foo</li></ul>";
+        }
+
         $this->assertEquals($expected, $this->_markup->render($input));
     }
 
@@ -319,6 +327,14 @@ class Zend_Markup_BbcodeAndHtmlTest extends PHPUnit_Framework_TestCase
         $expected = '<code><span style="color: #000000">' . "\n"
                   . '<span style="color: #0000BB">&lt;?php<br /></span>'
                   . "<span style=\"color: #007700\">exit;</span>\n</span>\n</code>";
+
+        if (PHP_VERSION_ID >= 80300) {
+            // Zend_Markup_Renderer_Html_Code uses `highlight_string` function internally
+            // and output of that function has changed in PHP 8.3
+            // https://php.watch/versions/8.3/highlight_file-highlight_string-html-changes
+            $expected = '<pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php' . "\n"
+                      . '</span><span style="color: #007700">exit;</span></code></pre>';
+        }
 
         $this->assertEquals($expected, $m->render("[code]<?php\nexit;[/code]"));
         $this->assertEquals('<p>I</p>', $m->render('[p]I[/p]'));
