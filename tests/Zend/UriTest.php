@@ -44,6 +44,26 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_UriTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $notices;
+
+    /**
+     * @var int
+     */
+    protected $errorReporting;
+
+    /**
+     * @var string
+     */
+    protected $displayErrors;
+
+    /**
+     * @var string
+     */
+    protected $error;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite("Zend_UriTest");

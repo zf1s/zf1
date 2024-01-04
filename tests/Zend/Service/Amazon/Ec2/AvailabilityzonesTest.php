@@ -40,6 +40,11 @@ class Zend_Service_Amazon_Ec2_AvailabilityzonesTest extends PHPUnit_Framework_Te
 {
 
     /**
+     * $var Zend_Http_Client_Adapter_Test
+     */
+    protected $adapter;
+
+    /**
      * @var Zend_Service_Amazon_Ec2_Availabilityzones
      */
     private $Zend_Service_Amazon_Ec2_Availabilityzones;

@@ -33,6 +33,10 @@
  */
 class Zend_Feed_Reader_Integration_LautDeRdfTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $_options = array();
 
     protected $_feedSamplePath = null;
 

@@ -52,6 +52,31 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var string|bool|mixed
+     */
+    protected $includePath;
+
+    /**
+     * $var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
+    /**
+     * @var null
+     */
+    protected $error;
+
+    /**
+     * $var Zend_Loader_Autoloader_Resource
+     */
+    protected $loader;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

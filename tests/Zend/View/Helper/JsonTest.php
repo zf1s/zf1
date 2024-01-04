@@ -45,6 +45,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
 {
     /**
+      * @var Zend_View_Helper_Json
+     */
+    protected $helper;
+
+    /**
+     * @var Zend_Controller_Response_Http
+     */
+    protected $response;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

@@ -40,6 +40,16 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Loader_AutoloaderFactoryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var string|bool|mixed
+     */
+    protected $includePath;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

@@ -57,6 +57,8 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
     private $_locale = null;
     private $_httpAcceptLanguage;
 
+    private $_errorOccurred = null;
+
     public function setUp()
     {
         $this->_locale = setlocale(LC_ALL, 0);

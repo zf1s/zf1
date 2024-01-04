@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_EventStatusTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $eventStatusText;
+
+    /**
+     * $var Zend_Gdata_Extension_EventStatus
+     */
+    protected $eventStatus;
 
     public function setUp() {
         $this->eventStatusText = file_get_contents(

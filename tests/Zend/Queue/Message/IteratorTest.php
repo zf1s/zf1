@@ -49,6 +49,23 @@
  */
 class Zend_Queue_Message_IteratorTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $options;
+
+    /**
+     * @var Zend_Queue
+     */
+    protected $queue;
+
+    protected $messages;
+
+    /**
+     * @var int
+     */
+    protected $message_count;
+
     protected function setUp()
     {
         // Test Zend_Config

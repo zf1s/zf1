@@ -51,6 +51,11 @@
  */
 class Zend_AllTests_StreamWrapper_PhpInput
 {
+    // php 8.2+ needs this
+    // otherwise `stream_wrapper_register('php', 'Zend_AllTests_StreamWrapper_PhpInput');`
+    // triggers `Creation of dynamic property Zend_AllTests_StreamWrapper_PhpInput::$context is deprecated`
+    public $context;
+
     protected static $_data;
 
     protected static $_returnValues = array();

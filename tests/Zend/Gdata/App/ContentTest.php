@@ -34,6 +34,20 @@
  */
 class Zend_Gdata_App_ContentTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $contentText;
+
+    /**
+     * @var string|bool|mixed
+     */
+    protected $contentText2;
+
+    /**
+     * $var Zend_Gdata_App_Extension_Content
+     */
+    protected $content;
 
     public function setUp() {
         $this->contentText = file_get_contents(

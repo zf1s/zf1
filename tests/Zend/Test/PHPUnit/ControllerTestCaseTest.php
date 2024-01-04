@@ -51,6 +51,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * $var Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete
+     */
+    protected $testCase;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

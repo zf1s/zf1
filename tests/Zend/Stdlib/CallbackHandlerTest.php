@@ -39,6 +39,16 @@ require_once 'Zend/Stdlib/TestAsset/SignalHandlers/ObjectCallback.php';
  */
 class Zend_Stdlib_CallbackHandlerTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var mixed|mixed[]
+     */
+    protected $args;
+
+    /**
+     * @var bool
+     */
+    protected $error;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

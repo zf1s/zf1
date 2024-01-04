@@ -33,6 +33,11 @@
 class Zend_EventManager_FilterChain implements Zend_EventManager_Filter
 {
     /**
+     * @var Zend_EventManager_ResponseCollection
+     */
+    protected $responses;
+
+    /**
      * @var Zend_EventManager_Filter_FilterIterator All filters
      */
     protected $filters;

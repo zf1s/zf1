@@ -36,6 +36,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var stdClass
+     */
+    protected $test;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

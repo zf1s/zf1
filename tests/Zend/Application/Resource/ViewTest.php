@@ -41,6 +41,26 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Application_Resource_ViewTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var ZfAppBootstrap
+     */
+    protected $bootstrap;
+
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

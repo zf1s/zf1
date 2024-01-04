@@ -36,6 +36,21 @@
  */
 class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var stdclass
+     */
+    protected $soapClient;
+
+    /**
+     * @var array
+     */
+    protected $options;
+
+    /**
+     * $var Zend_Service_StrikeIron
+     */
+    protected $strikeIron;
+
     public function setUp()
     {
         // stub out SOAPClient instance
@@ -108,6 +123,7 @@ class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
  */
 class Zend_Service_StrikeIron_StrikeIronTest_StubbedBase
 {
+    public $options;
     public function __construct($options)
     {
         $this->options = $options;

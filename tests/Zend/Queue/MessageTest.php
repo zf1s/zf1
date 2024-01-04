@@ -49,6 +49,26 @@
  */
 class Zend_Queue_MessageTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Zend_Queue_Message
+     */
+    protected $message;
+
+    /**
+     * @var array
+     */
+    protected $data;
+
+    /**
+     * @var array
+     */
+    protected $options;
+
+    /**
+     * @var Zend_Queue
+     */
+    protected $queue;
+
     protected function setUp()
     {
         // Test Zend_Config

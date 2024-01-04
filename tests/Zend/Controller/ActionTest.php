@@ -44,6 +44,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * $var Zend_Controller_ActionTest_TestController
+     */
+    protected $_controller;
+
+    /**
      * Runs the test methods of this class.
      *
      * @access public

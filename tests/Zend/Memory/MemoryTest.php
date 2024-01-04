@@ -37,6 +37,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Memory_MemoryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string
+     */
+    protected $cacheDir;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

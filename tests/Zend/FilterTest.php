@@ -37,6 +37,16 @@
 class Zend_FilterTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var null|bool
+     */
+    protected $error;
+
+    /**
+     * @var bool
+     */
+    protected $_errorOccurred;
+
+    /**
      * Zend_Filter object
      *
      * @var Zend_Filter

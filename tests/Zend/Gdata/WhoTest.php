@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $whoText;
+
+    /**
+     * $var Zend_Gdata_Extension_Who
+     */
+    protected $who;
 
     public function setUp() {
         $this->whoText = file_get_contents(

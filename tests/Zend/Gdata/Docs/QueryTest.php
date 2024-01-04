@@ -35,6 +35,10 @@
  */
 class Zend_Gdata_Docs_QueryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_Docs_Query
+     */
+    protected $docQuery;
 
     public function setUp()
     {

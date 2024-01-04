@@ -47,6 +47,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * $var Zend_Controller_Router_Interface
+     */
+    protected $router;
+
+    /**
+     * @var array
+     */
+    protected $_server;
+
+    /**
      * @var Zend_Controller_Action_Helper_Redirector
      */
     public $redirector;

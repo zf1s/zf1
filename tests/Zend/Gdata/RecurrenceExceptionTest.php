@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_RecurrenceExceptionTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $recurrenceExceptionText;
+
+    /**
+     * $var Zend_Gdata_Extension_RecurrenceException
+     */
+    protected $recurrenceException;
 
     public function setUp() {
         $this->recurrenceExceptionText = file_get_contents(

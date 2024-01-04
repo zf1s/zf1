@@ -41,6 +41,11 @@
 class Zend_TranslateTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var bool
+     */
+    protected $_errorOccured;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

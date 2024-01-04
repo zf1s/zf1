@@ -49,6 +49,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_View_Helper_UrlTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Controller_Front
+     */
+    protected $front;
+
+    /**
+     * @var Zend_View_Helper_Url
+     */
+    protected $helper;
+
+    /**
      * Runs the test methods of this class.
      *
      * @access public

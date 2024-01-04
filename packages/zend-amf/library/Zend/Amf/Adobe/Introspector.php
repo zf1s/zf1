@@ -39,6 +39,11 @@
 class Zend_Amf_Adobe_Introspector
 {
     /**
+     * @var DOMElement
+     */
+    protected $_ops;
+
+    /**
      * Options used:
      * - server: instance of Zend_Amf_Server to use
      * - directories: directories where class files may be looked up

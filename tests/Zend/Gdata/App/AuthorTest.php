@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_App_AuthorTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $authorText;
+
+    /**
+     * $var Zend_Gdata_App_Extension_Author
+     */
+    protected $author;
 
     public function setUp() {
         $this->authorText = file_get_contents(

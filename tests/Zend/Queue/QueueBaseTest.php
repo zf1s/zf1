@@ -50,6 +50,16 @@
  */
 abstract class Zend_Queue_QueueBaseTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $config;
+
+    /**
+     * @var Zend_Queue
+     */
+    protected $queue;
+
     protected function setUp()
     {
         // Test Zend_Config

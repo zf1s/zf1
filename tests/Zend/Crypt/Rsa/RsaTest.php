@@ -33,6 +33,20 @@
  */
 class Zend_Crypt_RsaTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|mixed
+     */
+    protected $_testPemStringPublic;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_testCertificateString;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_testCertificatePath;
 
     protected $_testPemString = null;
 

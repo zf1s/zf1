@@ -40,6 +40,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Element_Radio
+     */
+    protected $element;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

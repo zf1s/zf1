@@ -7,6 +7,7 @@
     "require": {
         "php": ">=5.3.3",
         "ext-dom": "*",
+        "ext-mbstring": "*",
         "zf1s/zend-exception": "^1.15.2",
         "zf1s/zend-http": "^1.15.2",
         "zf1s/zend-rest": "^1.15.2",

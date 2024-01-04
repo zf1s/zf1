@@ -34,6 +34,10 @@
  */
 class Zend_Gdata_Gapps_ErrorTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_Gapps_Error
+     */
+    protected $error;
 
     public function setUp() {
         $this->error = new Zend_Gdata_Gapps_Error();

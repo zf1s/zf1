@@ -38,6 +38,8 @@
  */
 class Zend_Test_PHPUnit_Db_TestCaseTest extends Zend_Test_PHPUnit_DatabaseTestCase
 {
+    protected $databaseTester;
+
     /**
      * Contains a Database Connection
      *

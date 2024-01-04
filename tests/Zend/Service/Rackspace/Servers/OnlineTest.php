@@ -33,6 +33,11 @@
 class Zend_Service_Rackspace_Servers_OnlineTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var string
+     */
+    protected $filename;
+
+    /**
      * Reference to Rackspace Servers object
      *
      * @var Zend_Service_Rackspace_Servers

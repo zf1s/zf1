@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_TransparencyTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $transparencyText;
+
+    /**
+     * $var Zend_Gdata_Extension_Transparency
+     */
+    protected $transparency;
 
     public function setUp() {
         $this->transparencyText = file_get_contents(

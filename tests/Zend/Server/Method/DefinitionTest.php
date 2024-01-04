@@ -47,6 +47,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Server_Method_DefinitionTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Server_Method_Definition
+     */
+    protected $definition;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

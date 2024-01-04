@@ -32,6 +32,30 @@
  */
 class Zend_Gdata_MediaMimeStreamTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|mixed
+     */
+    protected $locationOfFakeBinary;
+
+    /**
+     * @var string|mixed
+     */
+    protected $smallXMLString;
+
+    /**
+     * @var string|mixed
+     */
+    protected $testMediaType;
+
+    /**
+     * $var Zend_Gdata_MediaMimeStream
+     */
+    protected $mediaMimeStream;
+
+    /**
+     * @var int|mixed
+     */
+    protected $exceptedLenOfMimeMessage;
 
     public function setUp()
     {

@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Gapps_NameTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $theNameText;
+
+    /**
+     * $var Zend_Gdata_Gapps_Extension_Name
+     */
+    protected $theName;
 
     public function setUp() {
         $this->theNameText = file_get_contents(

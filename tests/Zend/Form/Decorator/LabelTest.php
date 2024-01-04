@@ -45,6 +45,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Decorator_LabelTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Decorator_Label
+     */
+    protected $decorator;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

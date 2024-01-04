@@ -43,6 +43,8 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
 {
+    protected $error;
+
     protected $_dispatcher;
 
     /**

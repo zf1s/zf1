@@ -1008,7 +1008,7 @@ class Zend_Service_WindowsAzure_Management_Client
     	}
     	
     	if (@file_exists($configuration)) {
-    		$configuration = utf8_decode(file_get_contents($configuration));
+    		$configuration = mb_convert_encoding(file_get_contents($configuration), 'ISO-8859-1', 'UTF-8');
     	}
     	
     	// Clean up the configuration
@@ -1479,7 +1479,7 @@ class Zend_Service_WindowsAzure_Management_Client
     	}
     	
         if (@file_exists($configuration)) {
-    		$configuration = utf8_decode(file_get_contents($configuration));
+    		$configuration = mb_convert_encoding(file_get_contents($configuration), 'ISO-8859-1', 'UTF-8');
     	}
     	
     	$operationUrl = self::OP_HOSTED_SERVICES . '/' . $serviceName . '/deploymentslots/' . $deploymentSlot;
@@ -1512,7 +1512,7 @@ class Zend_Service_WindowsAzure_Management_Client
     	}
     	
         if (@file_exists($configuration)) {
-    		$configuration = utf8_decode(file_get_contents($configuration));
+    		$configuration = mb_convert_encoding(file_get_contents($configuration), 'ISO-8859-1', 'UTF-8');
     	}
     	
     	$operationUrl = self::OP_HOSTED_SERVICES . '/' . $serviceName . '/deployments/' . $deploymentId;
@@ -1590,7 +1590,7 @@ class Zend_Service_WindowsAzure_Management_Client
     	}
     	
     	if (@file_exists($configuration)) {
-    		$configuration = utf8_decode(file_get_contents($configuration));
+    		$configuration = mb_convert_encoding(file_get_contents($configuration), 'ISO-8859-1', 'UTF-8');
     	}
     	
 		$operationUrl = self::OP_HOSTED_SERVICES . '/' . $serviceName . '/deploymentslots/' . $deploymentSlot;
@@ -1642,7 +1642,7 @@ class Zend_Service_WindowsAzure_Management_Client
     	}
     	
     	if (@file_exists($configuration)) {
-    		$configuration = utf8_decode(file_get_contents($configuration));
+    		$configuration = mb_convert_encoding(file_get_contents($configuration), 'ISO-8859-1', 'UTF-8');
     	}
     	
 		$operationUrl = self::OP_HOSTED_SERVICES . '/' . $serviceName . '/deployments/' . $deploymentId;

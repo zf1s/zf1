@@ -38,6 +38,31 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var mixed|string
+     */
+    protected $word;
+
+    /**
+     * @var string|mixed
+     */
+    protected $testDir;
+
+    /**
+     * $var Zend_Form_Element_Captcha
+     */
+    protected $element;
+
+    /**
+     * $var Zend_Captcha_Adapter
+     */
+    protected $captcha;
+
+    /**
+     * @var string
+     */
+    protected $id;
+
     protected $_tmpDir;
 
     /**
@@ -365,6 +390,8 @@ class Zend_Captcha_ImageTest extends PHPUnit_Framework_TestCase
 
 class Zend_Captcha_ImageTest_SessionContainer
 {
+    public $setExpirationHops;
+    public $setExpirationSeconds;
     protected static $_word;
 
     public function __get($name)

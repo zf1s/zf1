@@ -40,6 +40,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Element_Select
+     */
+    protected $element;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

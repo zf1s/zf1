@@ -37,6 +37,11 @@
  */
 class Zend_Gdata_GdataOnlineTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata
+     */
+    protected $gdata;
+
     private $blog = null; // blog ID from config
 
     public function setUp()

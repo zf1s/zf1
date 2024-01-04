@@ -49,6 +49,26 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_ViewTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $notices;
+
+    /**
+     * @var int
+     */
+    protected $errorReporting;
+
+    /**
+     * @var string
+     */
+    protected $displayErrors;
+
+    /**
+     * @var Zend_View
+     */
+    protected $view;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite("Zend_ViewTest");

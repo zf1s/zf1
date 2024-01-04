@@ -123,6 +123,21 @@ class Zend_Service_Flickr_Result
     public $iconserver;
 
     /**
+     * @var string
+     */
+    public $farm;
+
+    /**
+     * @var string
+     */
+    public $datetakengranularity;
+
+    /**
+     * @var string
+     */
+    public $iconfarm;
+
+    /**
      * A 75x75 pixel square thumbnail of the image.
      *
      * @var Zend_Service_Flickr_Image

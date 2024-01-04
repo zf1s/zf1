@@ -35,6 +35,15 @@
  */
 class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $linkText;
+
+    /**
+     * $var Zend_Gdata_Calendar_Extension_Link
+     */
+    protected $link;
 
     public function setUp() {
         $this->linkText = file_get_contents(

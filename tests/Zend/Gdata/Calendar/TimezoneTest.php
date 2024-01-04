@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Calendar_TimezoneTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $timezoneText;
+
+    /**
+     * $var Zend_Gdata_Calendar_Extension_Timezone
+     */
+    protected $timezone;
 
     public function setUp() {
         $this->timezoneText = file_get_contents(

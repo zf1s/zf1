@@ -30,6 +30,13 @@
 abstract class Zend_TimeSync_Protocol
 {
     /**
+     * Port number for this timeserver
+     *
+     * @var integer
+     */
+    protected $_port = -1;
+
+    /**
      * Holds the current socket connection
      *
      * @var array

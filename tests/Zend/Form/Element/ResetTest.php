@@ -40,6 +40,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Element_ResetTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Element_Reset
+     */
+    protected $element;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

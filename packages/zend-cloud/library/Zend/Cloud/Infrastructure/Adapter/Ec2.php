@@ -28,6 +28,11 @@
 class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Adapter_AbstractAdapter
 {
     /**
+     * @var bool
+     */
+    protected $error;
+
+    /**
      * AWS constants
      */
     const AWS_ACCESS_KEY     = 'aws_accesskey';

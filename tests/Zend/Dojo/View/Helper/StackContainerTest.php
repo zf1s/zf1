@@ -50,6 +50,13 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Dojo_View_Helper_StackContainerTest extends PHPUnit_Framework_TestCase
 {
+    protected $view;
+
+    /**
+     * $var Zend_Dojo_View_Helper_StackContainer
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *

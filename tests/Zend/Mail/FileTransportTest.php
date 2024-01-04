@@ -40,6 +40,10 @@
  */
 class Zend_Mail_FileTransportTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var bool|mixed
+     */
+    protected $createdTmpDir;
     protected $_params;
     protected $_transport;
     protected $_tmpdir;

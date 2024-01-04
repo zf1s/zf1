@@ -98,6 +98,11 @@ abstract class Zend_Application_Bootstrap_BootstrapAbstract
     protected $_started = array();
 
     /**
+     * @var Zend_Controller_Front
+     */
+    public $frontController = null;
+
+    /**
      * Constructor
      *
      * Sets application object, initializes options, and prepares list of

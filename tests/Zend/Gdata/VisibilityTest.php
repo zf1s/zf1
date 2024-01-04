@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_VisibilityTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $visibilityText;
+
+    /**
+     * $var Zend_Gdata_Extension_Visibility
+     */
+    protected $visibility;
 
     public function setUp() {
         $this->visibilityText = file_get_contents(

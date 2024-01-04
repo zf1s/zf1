@@ -36,6 +36,7 @@
  */
 class Zend_Service_WindowsAzure_SessionHandlerTest extends PHPUnit_Framework_TestCase
 {
+    protected $status;
 
     protected static $uniqId = 0;
 

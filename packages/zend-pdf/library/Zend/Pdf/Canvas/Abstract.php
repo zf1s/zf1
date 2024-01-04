@@ -47,6 +47,13 @@
 abstract class Zend_Pdf_Canvas_Abstract implements Zend_Pdf_Canvas_Interface
 {
     /**
+     * Page dictionary (refers to an inderect Zend_Pdf_Element_Dictionary object).
+     *
+     * @var Zend_Pdf_Element_Reference|Zend_Pdf_Element_Object
+     */
+    protected $_dictionary;
+
+    /**
      * Drawing instructions
      *
      * @var string

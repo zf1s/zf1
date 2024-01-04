@@ -41,6 +41,36 @@ require_once 'Zend/EventManager/TestAsset/MockAggregate.php';
  */
 class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string
+     */
+    protected $message;
+
+    /**
+     * @var string|mixed
+     */
+    protected $default;
+
+    /**
+     * $var Zend_EventManager_EventManager
+     */
+    protected $events;
+
+    /**
+     * @var string
+     */
+    protected $foo;
+
+    /**
+     * @var string|mixed
+     */
+    protected $bar;
+
+    /**
+     * $var stdClass
+     */
+    protected $test;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
@@ -58,13 +88,13 @@ class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
 
     public function testAttachShouldReturnCallbackHandler()
     {
-        $listener = $this->events->attach('test', array($this, __METHOD__));
+        $listener = $this->events->attach('test', array($this, __FUNCTION__));
         $this->assertTrue($listener instanceof Zend_Stdlib_CallbackHandler);
     }
 
     public function testAttachShouldAddListenerToEvent()
     {
-        $listener  = $this->events->attach('test', array($this, __METHOD__));
+        $listener  = $this->events->attach('test', array($this, __FUNCTION__));
         $listeners = $this->events->getListeners('test');
         $this->assertEquals(1, count($listeners));
         $this->assertContains($listener, $listeners);
@@ -74,7 +104,7 @@ class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
     {
         $events = $this->events->getEvents();
         $this->assertTrue(empty($events), var_export($events, 1));
-        $listener = $this->events->attach('test', array($this, __METHOD__));
+        $listener = $this->events->attach('test', array($this, __FUNCTION__));
         $events = $this->events->getEvents();
         $this->assertFalse(empty($events));
         $this->assertContains('test', $events);
@@ -109,7 +139,7 @@ class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
 
     public function testDetachShouldRemoveListenerFromEvent()
     {
-        $listener  = $this->events->attach('test', array($this, __METHOD__));
+        $listener  = $this->events->attach('test', array($this, __FUNCTION__));
         $listeners = $this->events->getListeners('test');
         $this->assertContains($listener, $listeners);
         $this->events->detach($listener);
@@ -119,14 +149,14 @@ class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
 
     public function testDetachShouldReturnFalseIfEventDoesNotExist()
     {
-        $listener = $this->events->attach('test', array($this, __METHOD__));
+        $listener = $this->events->attach('test', array($this, __FUNCTION__));
         $this->events->clearListeners('test');
         $this->assertFalse($this->events->detach($listener));
     }
 
     public function testDetachShouldReturnFalseIfListenerDoesNotExist()
     {
-        $listener1 = $this->events->attach('test', array($this, __METHOD__));
+        $listener1 = $this->events->attach('test', array($this, __FUNCTION__));
         $this->events->clearListeners('test');
         $listener2 = $this->events->attach('test', array($this, 'handleTestEvent'));
         $this->assertFalse($this->events->detach($listener1));

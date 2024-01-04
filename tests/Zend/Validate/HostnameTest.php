@@ -44,6 +44,11 @@ class Zend_Validate_HostnameTest extends PHPUnit_Framework_TestCase
     protected $_validator;
 
     /**
+     * @var string
+     */
+    protected $_origEncoding;
+
+    /**
      * Creates a new Zend_Validate_Hostname object for each test method
      *
      * @return void

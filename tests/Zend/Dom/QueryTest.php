@@ -40,6 +40,19 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Dom_QueryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Dom_Query
+     */
+    protected $query;
+
+    /**
+     * @var string
+     */
+    protected $error;
+
+    /**
+     * @var string
+     */
     public $html;
 
     /**

@@ -35,6 +35,15 @@
  */
 class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|mixed
+     */
+    protected $originalTimezone;
+
+    /**
+     * $var Zend_Cache_Core
+     */
+    protected $_cache;
 
     public function setUp()
     {

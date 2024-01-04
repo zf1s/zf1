@@ -56,6 +56,10 @@ class fooclass {
  * @group      Zend_Cache
  */
 class Zend_Cache_FunctionFrontendTest extends PHPUnit_Framework_TestCase {
+    /**
+     * $var Zend_Cache_Backend_Test
+     */
+    protected $_backend;
 
     private $_instance;
 

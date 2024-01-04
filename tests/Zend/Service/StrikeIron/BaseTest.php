@@ -36,6 +36,16 @@ require_once 'Zend/Service/StrikeIron/BaseTest.php';
  */
 class Zend_Service_StrikeIron_BaseTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Service_StrikeIron_BaseTest_MockSoapClient
+     */
+    protected $soapClient;
+
+    /**
+     * $var Zend_Service_StrikeIron_Base
+     */
+    protected $base;
+
     public function setUp()
     {
         $this->soapClient = new Zend_Service_StrikeIron_BaseTest_MockSoapClient;

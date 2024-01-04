@@ -40,6 +40,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Element_HashTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Element_Hash
+     */
+    protected $element;
+
+    /**
+     * @var string
+     */
+    protected $hash;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void
@@ -207,6 +217,10 @@ class Zend_Form_Element_HashTest extends PHPUnit_Framework_TestCase
 class Zend_Form_Element_HashTest_SessionContainer
 {
     protected static $_hash;
+
+    public $setExpirationHops;
+
+    public $setExpirationSeconds;
 
     public function __get($name)
     {

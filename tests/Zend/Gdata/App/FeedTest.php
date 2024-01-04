@@ -35,6 +35,15 @@
  */
 class Zend_Gdata_App_FeedTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $feedText;
+
+    /**
+     * $var Zend_Gdata_App_Feed
+     */
+    protected $feed;
 
     public function setUp() {
         $this->feedText = file_get_contents(
