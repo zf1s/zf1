@@ -9,9 +9,9 @@
         "ext-ctype": "*",
         "ext-dom": "*",
         "ext-iconv": "*",
-        "zf1s/zend-exception": "^1.15.2",
-        "zf1s/zend-search": "^1.15.2",
-        "zf1s/zend-xml": "^1.15.2",
+        "zf1s/zend-exception": "^1.15.3",
+        "zf1s/zend-search": "^1.15.3",
+        "zf1s/zend-xml": "^1.15.3",
         "symfony/polyfill-php70": "^1.19"
     },
     "autoload": {
