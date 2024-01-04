@@ -30,6 +30,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
+#[AllowDynamicProperties]
 class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
 {
     /**#@+
