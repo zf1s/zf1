@@ -1,5 +1,36 @@
 ## Changelog:
 
+### 1.15.3 - 2024-01-04
+- general: php 8.2 & 8.3 compatibility
+  - php 8.3 compatibility fixes ([#182])
+  - php 8.2 compatibility fixes ([#183]), including:
+    - add missing class properties, to address `Creation of dynamic property {x} is deprecated` deprecation messages + more fixes ([#170])
+    - allow dynamic props in `Zend_Form`, `Zend_Form_Element` and `Zend_View_Abstract` ([#180])
+    - remaining compatibility fixes ([#181])
+- zend-controller
+  - make zend-filter dependency required ([#171])
+- zend-uri
+  - update required and suggested dependencies according to usage ([#177])
+- zend-validate
+  - update required and suggested dependencies according to usage ([#179])
+- zend-view
+  - update required and suggested dependencies according to usage ([#178])
+- general: ci & tests
+  - github weekly workflow run ([#173])
+  - zend-ldap: fix failing tests due to changes in `bitnami/openldap:2.5` ([#172])
+
+[#170]: https://github.com/zf1s/zf1/pull/170
+[#171]: https://github.com/zf1s/zf1/pull/171
+[#172]: https://github.com/zf1s/zf1/pull/172
+[#173]: https://github.com/zf1s/zf1/pull/173
+[#177]: https://github.com/zf1s/zf1/pull/177
+[#178]: https://github.com/zf1s/zf1/pull/178
+[#179]: https://github.com/zf1s/zf1/pull/179
+[#180]: https://github.com/zf1s/zf1/pull/180
+[#181]: https://github.com/zf1s/zf1/pull/181
+[#182]: https://github.com/zf1s/zf1/pull/182
+[#183]: https://github.com/zf1s/zf1/pull/183
+
 ### 1.15.2 - 2023-02-19
 - zend-ldap
   - php 8.1 compatibility fixes ([#159])
