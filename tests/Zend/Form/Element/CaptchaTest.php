@@ -44,6 +44,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Form_Element_CaptchaTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Zend_Form_Element_Captcha
+     */
+    protected $element;
+
+    /**
+     * @var Zend_Form
+     */
+    protected $form;
+
     public static function main()
     {
 
@@ -444,6 +454,10 @@ class Zend_Form_Element_CaptchaTest extends PHPUnit_Framework_TestCase
  */
 class Zend_Form_Element_CaptchaTest_SessionContainer
 {
+    protected $setExpirationHops;
+
+    protected $setExpirationSeconds;
+
     protected static $_word;
 
     public function __get($name)

@@ -34,6 +34,11 @@
  */
 class Zend_Gdata_Gapps_MemberFeedTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_Gapps_MemberFeed
+     */
+    protected $emptyMemberFeed;
+
     protected $memberFeed = null;
 
     /**

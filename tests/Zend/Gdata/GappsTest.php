@@ -36,6 +36,11 @@
  */
 class Zend_Gdata_GappsTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_Gapps
+     */
+    protected $gdata;
+
     const TEST_DOMAIN = 'nowhere.invalid';
 
     public function setUp()

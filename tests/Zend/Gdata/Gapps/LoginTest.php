@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Gapps_LoginTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $loginText;
+
+    /**
+     * $var Zend_Gdata_Gapps_Extension_Login
+     */
+    protected $login;
 
     public function setUp() {
         $this->loginText = file_get_contents(

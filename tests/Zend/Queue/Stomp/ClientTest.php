@@ -49,6 +49,10 @@ class Zend_Queue_Stomp_Connection_Mock
     extends Zend_Queue_Stomp_Client_Connection
 {
     /**
+     * @var array
+     */
+    protected $_buffer;
+    /**
      * open() opens a socket to the Stomp server
      *
      * @param array $config ('scheme', 'host', 'port')

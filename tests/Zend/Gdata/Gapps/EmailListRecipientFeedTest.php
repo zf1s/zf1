@@ -34,6 +34,11 @@
  */
 class Zend_Gdata_Gapps_EmailListRecipientFeedTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_Gapps_EmailListRecipientFeed
+     */
+    protected $emptyEmailListRecipientFeed;
+
     protected $emailListRecipientFeed = null;
 
     /**

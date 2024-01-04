@@ -46,6 +46,16 @@
 class Zend_ValidateTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var bool
+     */
+    protected $error;
+
+    /**
+     * @var bool
+     */
+    protected $_errorOccurred;
+
+    /**
      * Zend_Validate object
      *
      * @var Zend_Validate

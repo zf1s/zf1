@@ -40,6 +40,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var bool
+     */
+    protected $multipleOptionsDetected;
+
+    /**
      * Default instance created for all test methods
      *
      * @var Zend_Validate_EmailAddress

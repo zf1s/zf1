@@ -34,6 +34,10 @@
  */
 class Zend_Gdata_Books_CollectionEntryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_Books_CollectionEntry
+     */
+    protected $gdata;
 
     public function setUp()
     {

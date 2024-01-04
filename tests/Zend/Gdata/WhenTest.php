@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_WhenTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $whenText;
+
+    /**
+     * $var Zend_Gdata_Extension_When
+     */
+    protected $when;
 
     public function setUp() {
         $this->whenText = file_get_contents(

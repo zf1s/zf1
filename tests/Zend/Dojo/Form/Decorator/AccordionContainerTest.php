@@ -53,6 +53,18 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Dojo_Form_Decorator_AccordionContainerTest extends PHPUnit_Framework_TestCase
 {
+    protected $view;
+
+    /**
+     * $var Zend_Dojo_Form_Decorator_AccordionContainer
+     */
+    protected $decorator;
+
+    /**
+     * $var Zend_Dojo_Form
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *

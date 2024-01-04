@@ -49,6 +49,7 @@ class Zend_LoaderTest extends PHPUnit_Framework_TestCase
      * @var array
      */
     private $loaders;
+
     /**
      * @var string
      */

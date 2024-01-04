@@ -45,6 +45,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_Form_SubFormTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * $var Zend_Dojo_Form_SubForm
+     */
+    protected $form;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

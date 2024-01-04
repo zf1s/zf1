@@ -51,6 +51,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Dojo_Form_Element_FilteringSelectTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * $var Zend_View
+     */
+    protected $view;
+
+    /**
+     * $var Zend_Dojo_Form_Element_FilteringSelect
+     */
+    protected $element;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

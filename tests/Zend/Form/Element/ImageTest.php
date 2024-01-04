@@ -42,6 +42,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Element_Image
+     */
+    protected $element;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

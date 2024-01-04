@@ -36,6 +36,10 @@
  */
 class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_Calendar
+     */
+    protected $gdata;
 
     const GOOGLE_DEVELOPER_CALENDAR = 'developer-calendar@google.com';
     const ZEND_CONFERENCE_EVENT = 'bn2h4o4mc3a03ci4t48j3m56pg';

@@ -40,6 +40,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_View_Helper_DeclareVarsTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_View
+     */
+    protected $view;
+
+    /**
      * Runs the test methods of this class.
      *
      * @access public

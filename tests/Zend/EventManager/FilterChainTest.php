@@ -37,6 +37,16 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string
+     */
+    protected $message;
+
+    /**
+     * $var Zend_EventManager_FilterChain
+     */
+    protected $filterchain;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

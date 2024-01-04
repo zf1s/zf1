@@ -35,6 +35,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Stdlib_PriorityQueueTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Stdlib_PriorityQueue
+     */
+    protected $queue;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

@@ -40,6 +40,16 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Log_Filter_ChainingTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var resource|bool|mixed
+     */
+    protected $log;
+
+    /**
+     * $var Zend_Log
+     */
+    protected $logger;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
@@ -55,7 +65,9 @@ class Zend_Log_Filter_ChainingTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        fclose($this->log);
+        if ($this->log) {
+            fclose($this->log);
+        }
     }
 
     public function testFilterAllWriters()

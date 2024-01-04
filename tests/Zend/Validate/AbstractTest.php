@@ -44,6 +44,16 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Validate_AbstractTest_Concrete
+     */
+    protected $validator;
+
+    /**
+     * @var bool
+     */
+    protected $_errorOccurred;
+
+    /**
      * Runs this test suite
      *
      * @return void

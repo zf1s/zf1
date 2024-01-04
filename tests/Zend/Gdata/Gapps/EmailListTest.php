@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Gapps_EmailListTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $emailListText;
+
+    /**
+     * $var Zend_Gdata_Gapps_Extension_EmailList
+     */
+    protected $emailList;
 
     public function setUp() {
         $this->emailListText = file_get_contents(

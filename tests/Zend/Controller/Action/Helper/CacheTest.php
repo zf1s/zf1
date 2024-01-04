@@ -18,7 +18,14 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
  */
 class Zend_Controller_Action_Helper_CacheTest extends PHPUnit_Framework_TestCase
 {
-
+    /**
+     * $var Zend_Controller_Front
+     */
+    protected $front;
+    /**
+     * $var Zend_Controller_Request_Http
+     */
+    protected $request;
     protected $_requestUriOld;
 
     /**

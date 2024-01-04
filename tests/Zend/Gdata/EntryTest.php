@@ -32,6 +32,45 @@
  */
 class Zend_Gdata_EntryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_Entry
+     */
+    protected $entry;
+
+    /**
+     * @var string|bool|mixed
+     */
+    protected $entryText;
+
+    /**
+     * @var string|mixed
+     */
+    protected $etagLocalName;
+
+    /**
+     * @var string|mixed
+     */
+    protected $expectedEtag;
+
+    /**
+     * @var string|mixed
+     */
+    protected $expectedMismatchExceptionMessage;
+
+    /**
+     * @var string|mixed
+     */
+    protected $gdNamespace;
+
+    /**
+     * @var string|mixed
+     */
+    protected $openSearchNamespacev1;
+
+    /**
+     * @var string|mixed
+     */
+    protected $openSearchNamespacev2;
 
     public function setUp() {
         $this->entry = new Zend_Gdata_Entry();

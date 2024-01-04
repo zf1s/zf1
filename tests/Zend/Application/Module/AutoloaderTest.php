@@ -52,6 +52,33 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
 {
+    protected $error;
+
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Application_Module_Autoloader
+     */
+    protected $loader;
+
+    /**
+     * @var array
+     */
+    protected $includePath;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

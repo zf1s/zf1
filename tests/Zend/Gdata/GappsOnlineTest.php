@@ -37,6 +37,22 @@
  */
 class Zend_Gdata_GappsOnlineTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|mixed
+     */
+    protected $id;
+    /**
+     * @var mixed
+     */
+    protected $domain;
+    /**
+     * $var Zend_Gdata_Gapps
+     */
+    protected $gdata;
+    /**
+     * @var array
+     */
+    protected $autoDeletePool;
 
     const GIVEN_NAME = 'Zend_Gdata';
     const FAMILY_NAME = 'Automated Test Account';

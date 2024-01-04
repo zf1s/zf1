@@ -30,6 +30,10 @@
  */
 class Zend_Tool_Project_Profile_Iterator_ContextFilter extends RecursiveFilterIterator
 {
+    /**
+     * @var ReflectionClass
+     */
+    public $ref;
 
     /**
      * @var array

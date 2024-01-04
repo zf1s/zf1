@@ -44,6 +44,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_Form_Decorator_File
+     */
+    protected $decorator;
+
+    /**
+     * @var Zend_Form_Element_File
+     */
+    protected $element;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

@@ -83,7 +83,12 @@
  */
 class Zend_Pdf
 {
-  /**** Class Constants ****/
+    /**
+     * @var string
+     */
+    protected $_pdfHeaderVersion;
+
+    /**** Class Constants ****/
 
     /**
      * Version number of generated PDF documents.

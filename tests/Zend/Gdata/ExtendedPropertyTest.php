@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_ExtendedPropertyTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $extendedPropertyText;
+
+    /**
+     * $var Zend_Gdata_Extension_ExtendedProperty
+     */
+    protected $extendedProperty;
 
     public function setUp() {
         $this->extendedPropertyText = file_get_contents(

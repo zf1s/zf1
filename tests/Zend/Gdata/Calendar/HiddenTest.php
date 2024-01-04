@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Calendar_HiddenTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $hiddenText;
+
+    /**
+     * $var Zend_Gdata_Calendar_Extension_Hidden
+     */
+    protected $hidden;
 
     public function setUp() {
         $this->hiddenText = file_get_contents(

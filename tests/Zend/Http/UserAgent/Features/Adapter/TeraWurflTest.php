@@ -34,6 +34,11 @@
  */
 class Zend_Http_UserAgent_Features_Adapter_TeraWurflTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $config;
+
     public function setUp()
     {
         if (!constant('TESTS_ZEND_HTTP_USERAGENT_TERAWURFL_LIB_DIR')) {

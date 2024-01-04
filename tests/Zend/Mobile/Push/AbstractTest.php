@@ -33,9 +33,13 @@
  * @group      Zend_Mobile_Push
  * @group      Zend_Mobile_Push_Abstract
  */
-
 class Zend_Mobile_Push_AbstractTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Mobile_Push_AbstractProxy
+     */
+    protected $adapter;
+
     public function setUp()
     {
         $this->adapter = new Zend_Mobile_Push_AbstractProxy();

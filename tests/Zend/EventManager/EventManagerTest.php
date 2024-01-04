@@ -41,6 +41,36 @@ require_once 'Zend/EventManager/TestAsset/MockAggregate.php';
  */
 class Zend_EventManager_EventManagerTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string
+     */
+    protected $message;
+
+    /**
+     * @var string|mixed
+     */
+    protected $default;
+
+    /**
+     * $var Zend_EventManager_EventManager
+     */
+    protected $events;
+
+    /**
+     * @var string
+     */
+    protected $foo;
+
+    /**
+     * @var string|mixed
+     */
+    protected $bar;
+
+    /**
+     * $var stdClass
+     */
+    protected $test;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

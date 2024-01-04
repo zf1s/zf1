@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_OpenSearchStartIndexTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $openSearchStartIndexText;
+
+    /**
+     * $var Zend_Gdata_Extension_OpenSearchStartIndex
+     */
+    protected $openSearchStartIndex;
 
     public function setUp() {
         $this->openSearchStartIndexText = file_get_contents(

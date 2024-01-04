@@ -45,6 +45,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 class Zend_Filter_PregReplaceTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * $var Zend_Filter_PregReplace
+     */
+    protected $filter;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

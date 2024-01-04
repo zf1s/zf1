@@ -36,6 +36,25 @@
  */
 class Zend_Mobile_Push_gcmTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Http_Client_Adapter_Test
+     */
+    protected $adapter;
+
+    /**
+     * $var Zend_Http_Client
+     */
+    protected $client;
+
+    /**
+     * $var Zend_Mobile_Push_Gcm
+     */
+    protected $gcm;
+
+    /**
+     * $var Zend_Mobile_Push_Message_Gcm
+     */
+    protected $message;
 
     protected function _createJSONResponse($id, $success, $failure, $ids, $results)
     {

@@ -33,6 +33,10 @@
  */
 class Zend_Gdata_App_CaptchaRequiredExceptionTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_App_CaptchaRequiredException
+     */
+    protected $exampleException;
 
     public function setUp() {
         $this->exampleException = new Zend_Gdata_App_CaptchaRequiredException('testtoken', 'Captcha?ctoken=testtoken');

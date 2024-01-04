@@ -44,6 +44,21 @@
 class Zend_Service_Amazon_S3_OnlineTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var string|mixed
+     */
+    protected $_nosuchbucket;
+
+    /**
+     * @var mixed
+     */
+    protected $_bucket;
+
+    /**
+     * @var string|mixed
+     */
+    protected $_bucketEu;
+
+    /**
      * Reference to Amazon service consumer object
      *
      * @var Zend_Service_Amazon_S3

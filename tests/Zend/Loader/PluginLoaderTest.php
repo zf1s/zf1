@@ -39,6 +39,16 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $libPath;
+
+    /**
+     * @var null|mixed|string
+     */
+    protected $key;
+
     protected $_includeCache;
 
     /**

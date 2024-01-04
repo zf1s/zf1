@@ -48,7 +48,12 @@
  */
 class Zend_Pdf_Resource_Font_Simple_Standard_ZapfDingbats extends Zend_Pdf_Resource_Font_Simple_Standard
 {
-  /**** Instance Variables ****/
+    /**
+     * @var bool
+     */
+    protected $_isMonospaced;
+
+    /**** Instance Variables ****/
 
 
     /**

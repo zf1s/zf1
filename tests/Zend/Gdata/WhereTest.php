@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $whereText;
+
+    /**
+     * $var Zend_Gdata_Extension_Where
+     */
+    protected $where;
 
     public function setUp() {
         $this->whereText = file_get_contents(

@@ -40,6 +40,16 @@ class Zend_Service_Amazon_Ec2_RegionTest extends PHPUnit_Framework_TestCase
 {
 
     /**
+     * $var Zend_Http_Client_Adapter_Test
+     */
+    protected $adapter;
+
+    /**
+     * @var null
+     */
+    protected $Zend_Service_Amazon_Ec2_Availabilityzones;
+
+    /**
      * @var Zend_Service_Amazon_Ec2_Availabilityzones
      */
     private $Zend_Service_Amazon_Ec2_Region;

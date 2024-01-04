@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Gapps_PropertyTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $thePropertyText;
+
+    /**
+     * $var Zend_Gdata_Gapps_Extension_Property
+     */
+    protected $theProperty;
 
     public function setUp() {
         $this->thePropertyText = file_get_contents(

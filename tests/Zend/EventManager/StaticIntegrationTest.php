@@ -38,6 +38,16 @@ require_once 'Zend/EventManager/TestAsset/StaticEventsMock.php';
  */
 class Zend_EventManager_StaticIntegrationTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var stdClass
+     */
+    protected $counter;
+
+    /**
+     * $var stdClass
+     */
+    protected $test;
+
     public static function main()
     {
         $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);

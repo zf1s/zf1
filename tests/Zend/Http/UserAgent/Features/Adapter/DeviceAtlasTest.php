@@ -30,6 +30,10 @@
  */
 class Zend_Http_UserAgent_Features_Adapter_DeviceAtlasTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $config;
 
     public function setUp()
     {

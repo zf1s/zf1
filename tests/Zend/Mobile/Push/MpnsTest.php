@@ -39,6 +39,20 @@
  */
 class Zend_Mobile_Push_MpnsTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Http_Client_Adapter_Test
+     */
+    protected $adapter;
+
+    /**
+     * $var Zend_Http_Client
+     */
+    protected $client;
+
+    /**
+     * $var Zend_Mobile_Push_Mpns
+     */
+    protected $mpns;
 
     public function setUp()
     {

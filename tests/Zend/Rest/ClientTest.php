@@ -39,6 +39,21 @@
  */
 class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var Zend_Http_Client_Adapter_Test
+     */
+    protected $adapter;
+
+    /**
+     * @var Zend_Rest_Client
+     */
+    protected $rest;
+
     public function setUp()
     {
         $this->path = dirname(__FILE__) . '/responses/';

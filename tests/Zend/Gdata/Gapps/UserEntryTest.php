@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Gapps_UserEntryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $entryText;
+
+    /**
+     * $var Zend_Gdata_Gapps_UserEntry
+     */
+    protected $entry;
 
     public function setUp() {
         $this->entryText = file_get_contents(

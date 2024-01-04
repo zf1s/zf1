@@ -34,6 +34,10 @@
  */
 class Zend_Gdata_Spreadsheets_CellEntryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * $var Zend_Gdata_Spreadsheets_CellEntry
+     */
+    protected $cellEntry;
 
     public function setUp()
     {

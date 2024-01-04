@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $webContentText;
+
+    /**
+     * $var Zend_Gdata_Calendar_Extension_WebContent
+     */
+    protected $webContent;
 
     public function setUp() {
         $this->webContentText = file_get_contents(

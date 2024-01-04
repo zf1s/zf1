@@ -44,6 +44,12 @@
  */
 abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
 {
+    /**
+     * PDO type.
+     *
+     * @var string
+     */
+    protected $_pdoType = null;
 
     /**
      * Default class name for a DB statement.

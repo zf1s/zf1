@@ -33,6 +33,15 @@
  */
 class Zend_Gdata_OriginalEventTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $originalEventText;
+
+    /**
+     * $var Zend_Gdata_Extension_OriginalEvent
+     */
+    protected $originalEvent;
 
     public function setUp() {
         $this->originalEventText = file_get_contents(

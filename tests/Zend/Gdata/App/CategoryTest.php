@@ -34,6 +34,15 @@
  */
 class Zend_Gdata_App_CategoryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $categoryText;
+
+    /**
+     * $var Zend_Gdata_App_Extension_Category
+     */
+    protected $category;
 
     public function setUp() {
         $this->categoryText = file_get_contents(

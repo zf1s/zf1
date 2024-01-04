@@ -43,6 +43,7 @@
  */
 class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends PHPUnit_Framework_TestCase
 {
+    protected $_storage;
 
     protected $_subscriber = null;
 

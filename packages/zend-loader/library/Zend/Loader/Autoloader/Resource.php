@@ -35,6 +35,11 @@
 class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interface
 {
     /**
+     * @var array
+     */
+    protected $_resources;
+
+    /**
      * @var string Base path to resource classes
      */
     protected $_basePath;

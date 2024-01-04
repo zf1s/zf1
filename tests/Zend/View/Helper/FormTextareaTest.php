@@ -46,6 +46,16 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_View_Helper_FormTextareaTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var Zend_View_Helper_FormTextarea
+     */
+    protected $helper;
+
+    /**
      * Runs the test methods of this class.
      *
      * @access public

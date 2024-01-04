@@ -43,6 +43,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Json_Server_Smd_ServiceTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * $var Zend_Json_Server_Smd_Service
+     */
+    protected $service;
+
+    /**
      * Runs the test methods of this class.
      *
      * @return void

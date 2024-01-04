@@ -36,6 +36,11 @@
 class Zend_Service_Amazon_Sqs_OnlineTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var mixed
+     */
+    protected $_queue_name;
+
+    /**
      * Reference to Amazon service consumer object
      *
      * @var Zend_Service_Amazon_Sqs

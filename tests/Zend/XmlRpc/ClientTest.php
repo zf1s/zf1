@@ -45,7 +45,17 @@
 class Zend_XmlRpc_ClientTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var Zend_Http_Client_Adapter_Abstract
+     * @var Zend_XmlRpc_Client_ServerIntrospection
+     */
+    protected $mockedIntrospector;
+
+    /**
+     * @var Zend_Http_Client
+     */
+    protected $mockedHttpClient;
+
+    /**
+     * @var Zend_Http_Client_Adapter_Interface
      */
     protected $httpAdapter;
 

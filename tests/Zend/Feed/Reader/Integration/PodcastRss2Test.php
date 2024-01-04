@@ -33,6 +33,10 @@
  */
 class Zend_Feed_Reader_Integration_PodcastRss2Test extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var array
+     */
+    protected $_options;
 
     protected $_feedSamplePath = null;
 

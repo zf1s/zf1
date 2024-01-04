@@ -40,6 +40,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_View_Helper_HtmlFlashTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var Zend_View
+     */
+    protected $view;
+
+    /**
      * @var Zend_View_Helper_HtmlFlash
      */
     public $helper;
