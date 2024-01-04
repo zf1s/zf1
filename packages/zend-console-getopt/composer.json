@@ -14,6 +14,7 @@
         }
     },
     "suggest": {
+        "ext-mbstring": "Required only if toXml() method is used",
         "zf1s/zend-json": "Used in special situations or with special adapters"
     },
     "replace": {
