@@ -7,10 +7,8 @@
     "require": {
         "php": ">=5.3.3",
         "ext-reflection": "*",
-        "zf1s/zend-controller": "^1.15.2",
         "zf1s/zend-exception": "^1.15.2",
         "zf1s/zend-loader": "^1.15.2",
-        "zf1s/zend-locale": "^1.15.2",
         "zf1s/zend-registry": "^1.15.2"
     },
     "autoload": {
@@ -19,8 +17,19 @@
         }
     },
     "suggest": {
+        "zf1s/zend-controller": "Used in special situations or with special adapters",
+        "zf1s/zend-config": "Used in special situations or with special adapters",
+        "zf1s/zend-currency": "Used in special situations or with special adapters",
         "zf1s/zend-json": "Used in special situations or with special adapters",
-        "zf1s/zend-layout": "Used in special situations or with special adapters"
+        "zf1s/zend-layout": "Used in special situations or with special adapters",
+        "zf1s/zend-locale": "Used in special situations or with special adapters",
+        "zf1s/zend-filter": "Used in special situations or with special adapters",
+        "zf1s/zend-http": "Used in special situations or with special adapters",
+        "zf1s/zend-navigation": "Used in special situations or with special adapters",
+        "zf1s/zend-paginator": "Used in special situations or with special adapters",
+        "zf1s/zend-translate": "Used in special situations or with special adapters",
+        "zf1s/zend-uri": "Used in special situations or with special adapters",
+        "zf1s/zend-validate": "Used in special situations or with special adapters"
     },
     "replace": {
         "zf1/zend-view": "^1.12"
