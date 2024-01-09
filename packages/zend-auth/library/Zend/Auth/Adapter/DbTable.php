@@ -472,9 +472,9 @@ class Zend_Auth_Adapter_DbTable implements Zend_Auth_Adapter_Interface
     protected function _authenticateQuerySelect(Zend_Db_Select $dbSelect)
     {
         try {
-            if ($this->_zendDb->getFetchMode() != Zend_DB::FETCH_ASSOC) {
+            if ($this->_zendDb->getFetchMode() != Zend_Db::FETCH_ASSOC) {
                 $origDbFetchMode = $this->_zendDb->getFetchMode();
-                $this->_zendDb->setFetchMode(Zend_DB::FETCH_ASSOC);
+                $this->_zendDb->setFetchMode(Zend_Db::FETCH_ASSOC);
             }
             $resultIdentities = $this->_zendDb->fetchAll($dbSelect);
             if (isset($origDbFetchMode)) {
