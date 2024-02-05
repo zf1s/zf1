@@ -39,12 +39,12 @@ class Zend_Soap_Server_Proxy
     {
         $class = new ReflectionClass($className);
         $constructor = $class->getConstructor();
-	if ($constructor === null) {
+        if ($constructor === null) {
             $this->_classInstance = $class->newInstance();
-	} else {
+        } else {
             $this->_classInstance = $class->newInstanceArgs($classArgs);
-	}
-	$this->_className = $className;
+        }
+        $this->_className = $className;
     }
     /**
      * Proxy for the WS-I compliant call

@@ -2113,7 +2113,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         } else {
             $r = new ReflectionClass($name);
             if ($r->hasMethod('__construct')) {
-                $instance = $r->newInstanceArgs((array) $filter['options']);
+                $instance = $r->newInstanceArgs(array_values((array) $filter['options']));
             } else {
                 $instance = $r->newInstance();
             }
@@ -2180,7 +2180,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
                 }
 
                 if ($numeric) {
-                    $instance = $r->newInstanceArgs((array) $validator['options']);
+                    $instance = $r->newInstanceArgs(array_values((array) $validator['options']));
                 } else {
                     $instance = $r->newInstance($validator['options']);
                 }

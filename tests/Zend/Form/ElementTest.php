@@ -1225,6 +1225,18 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter instanceof Zend_Filter_Alnum);
         $this->assertTrue($filter->allowWhiteSpace);
     }
+    
+    public function testOptionsAsArray()
+    {
+        try {
+            $this->element->addFilter('Boolean', array('type' => Zend_Filter_Boolean::PHP + Zend_Filter_Boolean::FALSE_STRING));
+        } catch (Exception $e) {
+            $this->fail('Should be able to add array filter options');
+        }
+        $filter = $this->element->getFilter('Boolean');
+        $this->assertTrue($filter instanceof Zend_Filter_Boolean);
+        $this->assertTrue($filter->getType() >= Zend_Filter_Boolean::PHP);
+    }
 
     public function testShouldUseFilterConstructorOptionsAsPassedToAddFilter()
     {
