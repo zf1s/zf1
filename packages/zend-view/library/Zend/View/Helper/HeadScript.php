@@ -425,11 +425,16 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
                 {
                     continue;
                 }
-                if ('defer' === $key && !$isHTML5) {
+                if ('defer' === $key && $value !== false) {
                     $value = 'defer';
                 }
-                if ($isHTML5 && empty($value)) {
-                    $attrString .= sprintf(' %s', $key);
+
+                if ($value === false) {
+                    continue;
+                }
+
+                if ($isHTML5 && ($value === true || $value === '' || $value === $key)) {
+                    $attrString .= ' ' . $key;
                 } else {
                     $attrString .= sprintf(' %s="%s"', $key, ($this->_autoEscape) ? $this->_escape($value) : $value);
                 }

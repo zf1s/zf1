@@ -534,6 +534,44 @@ document.write(bar.strlen());');
         $this->assertContains('<!--[if !IE]><!--><', $test);
         $this->assertContains('<!--<![endif]-->', $test);
     }
+
+    public function testRenderWithHtml5Doctype()
+    {
+        $view = new Zend_View();
+        $view->doctype('HTML5');
+        $this->helper->setView($view);
+
+        // case: defer attribute is true - renders minimized form, charset attribute is non-empty string - renders full form
+        $this->helper->setFile(
+            'example.js', 'text/javascript', array('defer' => true, 'charset' => 'utf-8')
+        );
+
+        $result = $this->helper->toString();
+
+        $this->assertNotContains('type="text/javascript"', $result);
+        $this->assertNotContains('defer="', $result);
+        $this->assertContains(' defer', $result);
+        $this->assertContains(' charset="utf-8"', $result);
+
+        // case: defer attribute is empty string, renders minimized form
+        $this->helper->setFile(
+            'example.js', 'text/javascript', array('defer' => '')
+        );
+
+        $result = $this->helper->toString();
+
+        $this->assertNotContains('defer="', $result);
+        $this->assertContains(' defer', $result);
+
+        // case: defer attribute is false, skips the attribute
+        $this->helper->setFile(
+            'example.js', 'text/javascript', array('defer' => false)
+        );
+
+        $result = $this->helper->toString();
+
+        $this->assertNotContains('defer', $result);
+    }
 }
 
 // Call Zend_View_Helper_HeadScriptTest::main() if this source file is executed directly.
