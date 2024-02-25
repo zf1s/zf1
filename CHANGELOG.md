@@ -1,5 +1,32 @@
 ## Changelog:
 
+### 1.15.4 - 2024-02-25
+- zend-application
+  - update dependencies according to usage (#185)
+- zend-auth
+  - update dependencies according to usage (#186)
+- zend-controller
+  - update dependencies according to usage (#188)
+- zend-form
+  - fix instantiating filters with options via `addFilter()` in php 8.0+ (#194)
+- zend-json
+  - update dependencies according to usage (#189)
+- zend-layout
+  - update dependencies according to usage (#190)
+- zend-mail
+  - update dependencies according to usage (#191)
+- zend-view
+  - updated `HeadScript` to allow for proper html5 syntax creation (#103)
+
+[#103]: https://github.com/zf1s/zf1/pull/103
+[#185]: https://github.com/zf1s/zf1/pull/185
+[#186]: https://github.com/zf1s/zf1/pull/186
+[#188]: https://github.com/zf1s/zf1/pull/188
+[#189]: https://github.com/zf1s/zf1/pull/189
+[#190]: https://github.com/zf1s/zf1/pull/190
+[#191]: https://github.com/zf1s/zf1/pull/191
+[#194]: https://github.com/zf1s/zf1/pull/194
+
 ### 1.15.3 - 2024-01-04
 - general: php 8.2 & 8.3 compatibility
   - php 8.3 compatibility fixes ([#182])

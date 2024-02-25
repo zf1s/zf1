@@ -10,11 +10,11 @@
         "ext-dom": "*",
         "ext-reflection": "*",
         "ext-simplexml": "*",
-        "zf1s/zend-exception": "^1.15.3",
-        "zf1s/zend-server": "^1.15.3",
-        "zf1s/zend-service": "^1.15.3",
-        "zf1s/zend-uri": "^1.15.3",
-        "zf1s/zend-xml": "^1.15.3"
+        "zf1s/zend-exception": "^1.15.4",
+        "zf1s/zend-server": "^1.15.4",
+        "zf1s/zend-service": "^1.15.4",
+        "zf1s/zend-uri": "^1.15.4",
+        "zf1s/zend-xml": "^1.15.4"
     },
     "autoload": {
         "psr-0": {

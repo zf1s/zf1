@@ -7,8 +7,8 @@
     "require": {
         "php": ">=5.3.3",
         "ext-mbstring": "*",
-        "zf1s/zend-service": "^1.15.3",
-        "zf1s/zend-xml": "^1.15.3"
+        "zf1s/zend-service": "^1.15.4",
+        "zf1s/zend-xml": "^1.15.4"
     },
     "autoload": {
         "psr-0": {
