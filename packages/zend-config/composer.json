@@ -6,8 +6,7 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.3.3",
-        "zf1s/zend-exception": "^1.15.3",
-        "zf1s/zend-xml": "^1.15.3"
+        "zf1s/zend-exception": "^1.15.3"
     },
     "autoload": {
         "psr-0": {
@@ -15,7 +14,9 @@
         }
     },
     "suggest": {
-        "ext-simplexml": "Used in special situations or with special adapters (Zend_Config_Xml)"
+        "ext-simplexml": "Used in special situations or with special adapters (Zend_Config_Xml)",
+        "zf1s/zend-json": "Used in special situations or with special adapters",
+        "zf1s/zend-xml": "Used in special situations or with special adapters"
     },
     "replace": {
         "zf1/zend-config": "^1.12"
