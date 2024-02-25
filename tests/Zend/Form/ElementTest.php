@@ -1226,15 +1226,57 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->allowWhiteSpace);
     }
 
-    public function testShouldUseFilterConstructorOptionsAsPassedToAddFilter()
+    public function testCanPassFirstAndSecondArgument()
     {
-        $this->element->addFilter('HtmlEntities', array(array('quotestyle' => ENT_QUOTES, 'charset' => 'UTF-8')));
+        try {
+            // public function __construct($searchSeparator = ' ', $replacementSeparator = '-')
+            $this->element->addFilter('Word_SeparatorToSeparator', array('-', '_'));
+        } catch (Exception $e) {
+            $this->fail('Should be able to add array filter options');
+        }
+        $filter = $this->element->getFilter('SeparatorToSeparator');
+        $this->assertEquals('-', $filter->getSearchSeparator());
+        $this->assertEquals('_', $filter->getReplacementSeparator());
+    }    
+    
+    public function testCanPassFirstOptionAsFirstArgument()
+    {
+        try {
+            // public function __construct($options = null)
+            $this->element->addFilter('Boolean', array('type' => Zend_Filter_Boolean::PHP + Zend_Filter_Boolean::FALSE_STRING));
+        } catch (Exception $e) {
+            $this->fail('Should be able to add array filter options');
+        }
+        $filter = $this->element->getFilter('Boolean');
+        $this->assertTrue($filter instanceof Zend_Filter_Boolean);
+        $this->assertSame($filter->getType(), Zend_Filter_Boolean::PHP + Zend_Filter_Boolean::FALSE_STRING);
+    }
+    
+    public function testCanPassMultipleOptionsAsAnAssociativeArray()
+    {
+        // public function __construct($options = array())
+        $this->element->addFilter('HtmlEntities', array('quotestyle' => ENT_QUOTES, 'charset' => 'MacRoman'));
         $filter = $this->element->getFilter('HtmlEntities');
         $this->assertTrue($filter instanceof Zend_Filter_HtmlEntities);
         $this->assertEquals(ENT_QUOTES, $filter->getQuoteStyle());
-        $this->assertEquals('UTF-8', $filter->getCharSet());
+        $this->assertEquals('MacRoman', $filter->getCharSet());
     }
 
+    public function testAnyOptionIsHandledByConstructorWhenPassedInOptionsArray()
+    {
+        try {
+            // pass an option, which is not the same as first argument, and it's value is not the same as default one
+            // to check if it's really set
+            // public function __construct($options = array())
+            $this->element->addFilter('HtmlEntities', array('encoding' => 'MacRoman'));
+        } catch (Exception $e) {
+            $this->fail('Should be able to add array filter options');
+        }
+        $filter = $this->element->getFilter('HtmlEntities');
+        $this->assertTrue($filter instanceof Zend_Filter_HtmlEntities);
+        $this->assertSame($filter->getEncoding(), 'MacRoman');
+    }
+    
     public function testCanAddMultipleFilters()
     {
         $this->_checkZf2794();
