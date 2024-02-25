@@ -416,6 +416,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
      */
     public function itemToString($item, $indent, $escapeStart, $escapeEnd)
     {
+        $isHTML5 = $this->view instanceof Zend_View_Abstract && $this->view->doctype()->isHtml5();
         $attrString = '';
         if (!empty($item->attributes)) {
             foreach ($item->attributes as $key => $value) {
@@ -424,17 +425,31 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
                 {
                     continue;
                 }
-                if ('defer' == $key) {
+                if ('defer' === $key && $value !== false) {
                     $value = 'defer';
                 }
-                $attrString .= sprintf(' %s="%s"', $key, ($this->_autoEscape) ? $this->_escape($value) : $value);
+
+                if ($value === false) {
+                    continue;
+                }
+
+                if ($isHTML5 && ($value === true || $value === '' || $value === $key)) {
+                    $attrString .= ' ' . $key;
+                } else {
+                    $attrString .= sprintf(' %s="%s"', $key, ($this->_autoEscape) ? $this->_escape($value) : $value);
+                }
             }
         }
 
         $addScriptEscape = !(isset($item->attributes['noescape']) && filter_var($item->attributes['noescape'], FILTER_VALIDATE_BOOLEAN));
 
         $type = ($this->_autoEscape) ? $this->_escape($item->type) : $item->type;
-        $html  = '<script type="' . $type . '"' . $attrString . '>';
+        if ($isHTML5 && $type === 'text/javascript') {
+            $html  = '<script' . $attrString . '>';
+        } else {
+            $html  = '<script type="' . $type . '"' . $attrString . '>';
+        }
+
         if (!empty($item->source)) {
             $html .= PHP_EOL ;
 
