@@ -24,7 +24,6 @@
         }
     },
     "suggest": {
-        "zf1s/zend-config": "Used in special situations or with special adapters"
     },
     "replace": {
         "zf1/zend-rest": "^1.12"
