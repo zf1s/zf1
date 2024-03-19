@@ -103,6 +103,12 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @var array
      */
     public $contexts;
+    
+    /**
+     * Controller's ajax contexts, managed by Zend_Controller_Action_Helper_AjaxContext
+     * @var array
+     */
+    public $ajaxable;
 
     /**
      * Class constructor

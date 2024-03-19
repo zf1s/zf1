@@ -159,6 +159,25 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_Te
             unset($_SERVER['HTTP_X_REQUESTED_WITH']);
         }
     }
+    
+    public function testAddActionContext()
+    {
+        // test covering PHP 8.2+ changes:
+        // Creation of dynamic property ::$ajaxable is deprecated
+        $controller = new Zend_Controller_Action_Helper_AjaxContextNoConfigTestController(
+            $this->request,
+            $this->response,
+            array()
+        );
+        $this->helper->setActionController($controller);
+    
+        $this->helper
+            ->addActionContext('error', 'html')
+            ->initContext('html');
+            
+        $actionContexts = $this->helper->getActionContexts('error');	
+        $this->assertEquals('html', $actionContexts[0]);
+    }
 
     public function testDefaultContextsIncludesHtml()
     {
@@ -291,6 +310,10 @@ class Zend_Controller_Action_Helper_AjaxContextTestController extends Zend_Contr
         'bar' => array('xml', 'json'),
         'baz' => array(),
     );
+}
+
+class Zend_Controller_Action_Helper_AjaxContextNoConfigTestController extends Zend_Controller_Action
+{
 }
 
 class Zend_Controller_Action_Helper_AjaxContextTest_LayoutOverride extends Zend_Layout
