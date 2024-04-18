@@ -8,10 +8,10 @@
         "php": ">=5.3.3",
         "ext-dom": "*",
         "ext-mbstring": "*",
-        "zf1s/zend-exception": "^1.15.4",
-        "zf1s/zend-http": "^1.15.4",
-        "zf1s/zend-rest": "^1.15.4",
-        "zf1s/zend-xml": "^1.15.4"
+        "zf1s/zend-exception": "^1.15.5",
+        "zf1s/zend-http": "^1.15.5",
+        "zf1s/zend-rest": "^1.15.5",
+        "zf1s/zend-xml": "^1.15.5"
     },
     "autoload": {
         "psr-0": {

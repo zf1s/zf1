@@ -1,5 +1,11 @@
 ## Changelog:
 
+### 1.15.5 - 2024-04-18
+- zend-controller
+  - fixes "Creation of dynamic property ::$ajaxable is deprecated" on PHP 8.2+ when using `ContextSwitch` helper ([#196])
+
+[#196]: https://github.com/zf1s/zf1/pull/196
+
 ### 1.15.4 - 2024-02-25
 - zend-application
   - update dependencies according to usage ([#185])

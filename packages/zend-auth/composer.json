@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.3.3",
         "ext-ctype": "*",
-        "zf1s/zend-exception": "^1.15.4"
+        "zf1s/zend-exception": "^1.15.5"
     },
     "autoload": {
         "psr-0": {
