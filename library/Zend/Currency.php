@@ -1,0 +1,1 @@
+../../packages/zend-currency/library/Zend/Currency.php
