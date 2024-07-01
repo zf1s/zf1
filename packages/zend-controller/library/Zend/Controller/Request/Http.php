@@ -390,19 +390,13 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
     public function setRequestUri($requestUri = null)
     {
         if ($requestUri === null) {
-            if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) { 
-                // IIS with Microsoft Rewrite Module
-                $requestUri = $_SERVER['HTTP_X_ORIGINAL_URL'];
-            } elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) { 
-                // IIS with ISAPI_Rewrite
-                $requestUri = $_SERVER['HTTP_X_REWRITE_URL'];
-            } elseif (
-                // IIS7 with URL Rewrite: make sure we get the unencoded url (double slash problem)
+            if (
                 isset($_SERVER['IIS_WasUrlRewritten'])
                 && $_SERVER['IIS_WasUrlRewritten'] == '1'
                 && isset($_SERVER['UNENCODED_URL'])
                 && $_SERVER['UNENCODED_URL'] != ''
                 ) {
+                // IIS7 with URL Rewrite: make sure we get the unencoded url (double slash problem)
                 $requestUri = $_SERVER['UNENCODED_URL'];
             } elseif (isset($_SERVER['REQUEST_URI'])) {
                 $requestUri = $_SERVER['REQUEST_URI'];
