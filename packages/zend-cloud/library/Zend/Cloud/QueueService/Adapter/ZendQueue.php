@@ -48,7 +48,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
     /**
      * @var array All queues
      */
-    protected $_queues = array();
+    protected $_queues = [];
 
     /**
      * Constructor
@@ -57,7 +57,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      * @return void
      * @throws Zend_Cloud_QueueService_Exception
      */
-    public function __construct ($options = array())
+    public function __construct ($options = [])
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
@@ -232,7 +232,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
             if ($res instanceof Iterator) {
                 return $this->_makeMessages($res);
             } else {
-                return $this->_makeMessages(array($res));
+                return $this->_makeMessages([$res]);
             }
         } catch (Zend_Queue_Exception $e) {
             throw new Zend_Cloud_QueueService_Exception('Error on recieving messages: '.$e->getMessage(), $e->getCode(), $e);
@@ -250,7 +250,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
     {
         $messageClass = $this->getMessageClass();
         $setClass     = $this->getMessageSetClass();
-        $result = array();
+        $result = [];
         foreach ($messages as $message) {
             $result[] = new $messageClass($message->body, $message);
         }

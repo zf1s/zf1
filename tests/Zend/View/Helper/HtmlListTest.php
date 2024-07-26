@@ -82,7 +82,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
 
     public function testMakeUnorderedList()
     {
-        $items = array('one', 'two', 'three');
+        $items = ['one', 'two', 'three'];
 
         $list = $this->helper->htmlList($items);
 
@@ -95,7 +95,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
 
     public function testMakeOrderedList()
     {
-        $items = array('one', 'two', 'three');
+        $items = ['one', 'two', 'three'];
 
         $list = $this->helper->htmlList($items, true);
 
@@ -108,8 +108,8 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
 
     public function testMakeUnorderedListWithAttribs()
     {
-        $items = array('one', 'two', 'three');
-        $attribs = array('class' => 'selected', 'name' => 'list');
+        $items = ['one', 'two', 'three'];
+        $attribs = ['class' => 'selected', 'name' => 'list'];
 
         $list = $this->helper->htmlList($items, false, $attribs);
 
@@ -124,8 +124,8 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
 
     public function testMakeOrderedListWithAttribs()
     {
-        $items = array('one', 'two', 'three');
-        $attribs = array('class' => 'selected', 'name' => 'list');
+        $items = ['one', 'two', 'three'];
+        $attribs = ['class' => 'selected', 'name' => 'list'];
 
         $list = $this->helper->htmlList($items, true, $attribs);
 
@@ -143,7 +143,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
      */
     public function testMakeNestedUnorderedList()
     {
-        $items = array('one', array('four', 'five', 'six'), 'two', 'three');
+        $items = ['one', ['four', 'five', 'six'], 'two', 'three'];
 
         $list = $this->helper->htmlList($items);
 
@@ -159,7 +159,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
      */
     public function testMakeNestedDeepUnorderedList()
     {
-        $items = array('one', array('four', array('six', 'seven', 'eight'), 'five'), 'two', 'three');
+        $items = ['one', ['four', ['six', 'seven', 'eight'], 'five'], 'two', 'three'];
 
         $list = $this->helper->htmlList($items);
 
@@ -173,7 +173,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
 
     public function testListWithValuesToEscapeForZF2283()
     {
-        $items = array('one <small> test', 'second & third', 'And \'some\' "final" test');
+        $items = ['one <small> test', 'second & third', 'And \'some\' "final" test'];
 
         $list = $this->helper->htmlList($items);
 
@@ -187,7 +187,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
 
     public function testListEscapeSwitchedOffForZF2283()
     {
-        $items = array('one <b>small</b> test');
+        $items = ['one <b>small</b> test'];
 
         $list = $this->helper->htmlList($items, false, false, false);
 
@@ -202,7 +202,7 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
      */
     public function testEscapeFlagHonoredForMultidimensionalLists()
     {
-        $items = array('<b>one</b>', array('<b>four</b>', '<b>five</b>', '<b>six</b>'), '<b>two</b>', '<b>three</b>');
+        $items = ['<b>one</b>', ['<b>four</b>', '<b>five</b>', '<b>six</b>'], '<b>two</b>', '<b>three</b>'];
 
         $list = $this->helper->htmlList($items, false, false, false);
 
@@ -217,9 +217,9 @@ class Zend_View_Helper_HtmlListTest extends PHPUnit_Framework_TestCase
      */
     public function testAttribsPassedIntoMultidimensionalLists()
     {
-        $items = array('one', array('four', 'five', 'six'), 'two', 'three');
+        $items = ['one', ['four', 'five', 'six'], 'two', 'three'];
 
-        $list = $this->helper->htmlList($items, false, array('class' => 'foo'));
+        $list = $this->helper->htmlList($items, false, ['class' => 'foo']);
 
         foreach ($items[1] as $item) {
             $this->assertRegexp('#<ul[^>]*?class="foo"[^>]*>.*?(<li>' . $item . ')#s', $list);

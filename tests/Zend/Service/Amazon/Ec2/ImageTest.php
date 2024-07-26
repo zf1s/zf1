@@ -60,9 +60,9 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
         $this->Zend_Service_Amazon_Ec2_Image = new Zend_Service_Amazon_Ec2_Image('access_key', 'secret_access_key');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Image::setHttpClient($client);
     }
@@ -135,10 +135,10 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                     . "</DescribeImagesResponse>";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $return = $this->Zend_Service_Amazon_Ec2_Image->describe(array('ami-be3adfd7', 'ami-be3adfd6'));
+        $return = $this->Zend_Service_Amazon_Ec2_Image->describe(['ami-be3adfd7', 'ami-be3adfd6']);
 
-        $arrImage = array(
-            array(
+        $arrImage = [
+            [
                 'imageId'   => 'ami-be3adfd7',
                 'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
                 'imageState'   => 'available',
@@ -149,8 +149,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                 'kernelId'   => 'aki-4438dd2d',
                 'ramdiskId'   => 'ari-4538dd2c',
                 'platform'   => '',
-            ),
-            array(
+            ],
+            [
                 'imageId'   => 'ami-be3adfd6',
                 'imageLocation'   => 'ec2-public-images/ubuntu-8.10-i386-base-v1.04.manifest.xml',
                 'imageState'   => 'available',
@@ -161,8 +161,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                 'kernelId'   => 'aki-4438dd2d',
                 'ramdiskId'   => 'ari-4538dd2c',
                 'platform'   => '',
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrImage, $return);
     }
@@ -197,8 +197,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Image->describe('ami-be3adfd7');
 
-        $arrImage = array(
-            array(
+        $arrImage = [
+            [
                 'imageId'   => 'ami-be3adfd7',
                 'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
                 'imageState'   => 'available',
@@ -209,8 +209,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                 'kernelId'   => 'aki-4438dd2d',
                 'ramdiskId'   => 'ari-4538dd2c',
                 'platform'   => '',
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrImage, $return);
     }
@@ -254,10 +254,10 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                     . "</DescribeImagesResponse>";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $return = $this->Zend_Service_Amazon_Ec2_Image->describe(null, array('2060296256884', '206029621532'));
+        $return = $this->Zend_Service_Amazon_Ec2_Image->describe(null, ['2060296256884', '206029621532']);
 
-        $arrImage = array(
-            array(
+        $arrImage = [
+            [
                 'imageId'   => 'ami-be3adfd7',
                 'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
                 'imageState'   => 'available',
@@ -268,8 +268,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                 'kernelId'   => 'aki-4438dd2d',
                 'ramdiskId'   => 'ari-4538dd2c',
                 'platform'   => '',
-            ),
-            array(
+            ],
+            [
                 'imageId'   => 'ami-be3adfd6',
                 'imageLocation'   => 'ec2-public-images/ubuntu-8.10-i386-base-v1.04.manifest.xml',
                 'imageState'   => 'available',
@@ -280,8 +280,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                 'kernelId'   => 'aki-4438dd2d',
                 'ramdiskId'   => 'ari-4538dd2c',
                 'platform'   => '',
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrImage, $return);
     }
@@ -316,8 +316,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Image->describe(null, '206029621532');
 
-        $arrImage = array(
-            array(
+        $arrImage = [
+            [
                 'imageId'   => 'ami-be3adfd7',
                 'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
                 'imageState'   => 'available',
@@ -328,8 +328,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                 'kernelId'   => 'aki-4438dd2d',
                 'ramdiskId'   => 'ari-4538dd2c',
                 'platform'   => '',
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrImage, $return);
     }
@@ -373,10 +373,10 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                     . "</DescribeImagesResponse>";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $return = $this->Zend_Service_Amazon_Ec2_Image->describe(null, null, array('46361432890', '432432265322'));
+        $return = $this->Zend_Service_Amazon_Ec2_Image->describe(null, null, ['46361432890', '432432265322']);
 
-        $arrImage = array(
-            array(
+        $arrImage = [
+            [
                 'imageId'   => 'ami-be3adfd7',
                 'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
                 'imageState'   => 'available',
@@ -387,8 +387,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                 'kernelId'   => 'aki-4438dd2d',
                 'ramdiskId'   => 'ari-4538dd2c',
                 'platform'   => '',
-            ),
-            array(
+            ],
+            [
                 'imageId'   => 'ami-be3adfd6',
                 'imageLocation'   => 'ec2-public-images/ubuntu-8.10-i386-base-v1.04.manifest.xml',
                 'imageState'   => 'available',
@@ -399,8 +399,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                 'kernelId'   => 'aki-4438dd2d',
                 'ramdiskId'   => 'ari-4538dd2c',
                 'platform'   => '',
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrImage, $return);
     }
@@ -435,8 +435,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Image->describe(null, null, '46361432890');
 
-        $arrImage = array(
-            array(
+        $arrImage = [
+            [
                 'imageId'   => 'ami-be3adfd7',
                 'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
                 'imageState'   => 'available',
@@ -447,8 +447,8 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                 'kernelId'   => 'aki-4438dd2d',
                 'ramdiskId'   => 'ari-4538dd2c',
                 'platform'   => '',
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrImage, $return);
     }
@@ -543,7 +543,7 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
                     . "</ModifyImageAttributeResponse>\r\n";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $return = $this->Zend_Service_Amazon_Ec2_Image->modifyAttribute('ami-61a54008', 'launchPermission', 'add', array('495219933132', '495219933133'), array('all', 'all'));
+        $return = $this->Zend_Service_Amazon_Ec2_Image->modifyAttribute('ami-61a54008', 'launchPermission', 'add', ['495219933132', '495219933133'], ['all', 'all']);
         $this->assertTrue($return);
     }
 

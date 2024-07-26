@@ -353,10 +353,10 @@ class Zend_Json_Server extends Zend_Server_Abstract
      */
     protected function _addMethodServiceMap(Zend_Server_Method_Definition $method)
     {
-        $serviceInfo = array(
+        $serviceInfo = [
             'name'   => $method->getName(),
             'return' => $this->_getReturnType($method),
-        );
+        ];
         $params = $this->_getParams($method);
         $serviceInfo['params'] = $params;
         $serviceMap = $this->getServiceMap();
@@ -405,15 +405,15 @@ class Zend_Json_Server extends Zend_Server_Abstract
      */
     protected function _getParams(Zend_Server_Method_Definition $method)
     {
-        $params = array();
+        $params = [];
         foreach ($method->getPrototypes() as $prototype) {
             foreach ($prototype->getParameterObjects() as $key => $parameter) {
                 if (!isset($params[$key])) {
-                    $params[$key] = array(
+                    $params[$key] = [
                         'type'     => $parameter->getType(),
                         'name'     => $parameter->getName(),
                         'optional' => $parameter->isOptional(),
-                    );
+                    ];
                     if (null !== ($default = $parameter->getDefaultValue())) {
                         $params[$key]['default'] = $default;
                     }
@@ -467,7 +467,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
      */
     protected function _getReturnType(Zend_Server_Method_Definition $method)
     {
-        $return = array();
+        $return = [];
         foreach ($method->getPrototypes() as $prototype) {
             $return[] = $prototype->getReturnType();
         }
@@ -485,7 +485,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     protected function _getSmdMethods()
     {
         if (null === $this->_smdMethods) {
-            $this->_smdMethods = array();
+            $this->_smdMethods = [];
             // require_once 'Zend/Json/Server/Smd.php';
             $methods = get_class_methods('Zend_Json_Server_Smd');
             foreach ($methods as $key => $method) {
@@ -551,7 +551,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
                 $refParams = $reflection->getParameters();
             }
 
-            $orderedParams = array();
+            $orderedParams = [];
             foreach( $reflection->getParameters() as $refParam ) {
                 if( isset( $params[ $refParam->getName() ] ) ) {
                     $orderedParams[ $refParam->getName() ] = $params[ $refParam->getName() ];

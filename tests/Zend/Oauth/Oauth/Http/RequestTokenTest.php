@@ -66,14 +66,14 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
 
     public function testConstructorSetsCustomServiceParameters()
     {
-        $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, array(1,2,3), $this->stubHttpUtility);
-        $this->assertEquals(array(1,2,3), $request->getParameters());
+        $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, [1,2,3], $this->stubHttpUtility);
+        $this->assertEquals([1,2,3], $request->getParameters());
     }
 
     public function testAssembleParametersCorrectlyAggregatesOauthParameters()
     {
         $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, null, $this->stubHttpUtility);
-        $expectedParams = array (
+        $expectedParams =  [
             'oauth_consumer_key' => '1234567890',
             'oauth_nonce' => 'e807f1fcf82d132f9bb018ca6738a19f',
             'oauth_timestamp' => '12345678901',
@@ -81,14 +81,14 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
             'oauth_version' => '1.0',
             'oauth_callback' => 'http://www.example.com/local',
             'oauth_signature' => '6fb42da0e32e07b61c9f0251fe627a9c'
-        );
+        ];
         $this->assertEquals($expectedParams, $request->assembleParams());
     }
 
     public function testAssembleParametersCorrectlyAggregatesOauthParametersIfCallbackUrlMissing()
     {
         $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer2, null, $this->stubHttpUtility);
-        $expectedParams = array (
+        $expectedParams =  [
             'oauth_consumer_key' => '1234567890',
             'oauth_nonce' => 'e807f1fcf82d132f9bb018ca6738a19f',
             'oauth_timestamp' => '12345678901',
@@ -97,17 +97,17 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
             'oauth_callback' => 'oob', // out-of-band when missing callback - 1.0a
             'oauth_signature' => '6fb42da0e32e07b61c9f0251fe627a9c'
 
-        );
+        ];
         $this->assertEquals($expectedParams, $request->assembleParams());
     }
 
     public function testAssembleParametersCorrectlyAggregatesCustomParameters()
     {
-        $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, array(
+        $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, [
             'custom_param1'=>'foo',
             'custom_param2'=>'bar'
-        ), $this->stubHttpUtility);
-        $expectedParams = array (
+        ], $this->stubHttpUtility);
+        $expectedParams =  [
             'oauth_consumer_key' => '1234567890',
             'oauth_nonce' => 'e807f1fcf82d132f9bb018ca6738a19f',
             'oauth_timestamp' => '12345678901',
@@ -117,14 +117,14 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
             'custom_param1' => 'foo',
             'custom_param2' => 'bar',
             'oauth_signature' => '6fb42da0e32e07b61c9f0251fe627a9c'
-        );
+        ];
         $this->assertEquals($expectedParams, $request->assembleParams());
     }
 
     public function testGetRequestSchemeHeaderClientSetsCorrectlyEncodedAuthorizationHeader()
     {
         $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, null, $this->stubHttpUtility);
-        $params = array (
+        $params =  [
             'oauth_consumer_key' => '1234567890',
             'oauth_nonce' => 'e807f1fcf82d132f9bb018ca6738a19f',
             'oauth_signature_method' => 'HMAC-SHA1',
@@ -134,7 +134,7 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
             'oauth_signature' => '6fb42da0e32e07b61c9f0251fe627a9c~',
             'custom_param1' => 'foo',
             'custom_param2' => 'bar'
-        );
+        ];
         $client = $request->getRequestSchemeHeaderClient($params);
         $this->assertEquals(
         'OAuth realm="",oauth_consumer_key="1234567890",oauth_nonce="e807f1fcf82d132f9b'
@@ -148,7 +148,7 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
     public function testGetRequestSchemePostBodyClientSetsCorrectlyEncodedRawData()
     {
         $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, null, $this->stubHttpUtility);
-        $params = array (
+        $params =  [
             'oauth_consumer_key' => '1234567890',
             'oauth_nonce' => 'e807f1fcf82d132f9bb018ca6738a19f',
             'oauth_signature_method' => 'HMAC-SHA1',
@@ -158,7 +158,7 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
             'oauth_signature' => '6fb42da0e32e07b61c9f0251fe627a9c~',
             'custom_param1' => 'foo',
             'custom_param2' => 'bar'
-        );
+        ];
         $client = $request->getRequestSchemePostBodyClient($params);
         $this->assertEquals(
             'oauth_consumer_key=1234567890&oauth_nonce=e807f1fcf82d132f9bb018c'
@@ -173,7 +173,7 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
     public function testGetRequestSchemeQueryStringClientSetsCorrectlyEncodedQueryString()
     {
         $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, null, $this->stubHttpUtility);
-        $params = array (
+        $params =  [
             'oauth_consumer_key' => '1234567890',
             'oauth_nonce' => 'e807f1fcf82d132f9bb018ca6738a19f',
             'oauth_signature_method' => 'HMAC-SHA1',
@@ -183,7 +183,7 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
             'oauth_signature' => '6fb42da0e32e07b61c9f0251fe627a9c',
             'custom_param1' => 'foo',
             'custom_param2' => 'bar'
-        );
+        ];
         $client = $request->getRequestSchemeQueryStringClient($params, 'http://www.example.com');
         $this->assertEquals(
             'oauth_consumer_key=1234567890&oauth_nonce=e807f1fcf82d132f9bb018c'

@@ -66,7 +66,7 @@ class Zend_EventManager_Filter_FilterIterator extends Zend_Stdlib_SplPriorityQue
 
         // Iterate and remove any matches
         $removed = false;
-        $items   = array();
+        $items   = [];
         $this->rewind();
         while (!$this->isEmpty()) {
             $item = $this->extract();
@@ -97,7 +97,7 @@ class Zend_EventManager_Filter_FilterIterator extends Zend_Stdlib_SplPriorityQue
      * @return mixed
      */
     #[ReturnTypeWillChange]
-    public function next($context = null, array $params = array(), $chain = null)
+    public function next($context = null, array $params = [], $chain = null)
     {
         if (empty($context) || $chain->isEmpty()) {
             return;

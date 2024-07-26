@@ -107,8 +107,8 @@ class Zend_Dojo_View_Helper_SubmitButtonTest extends PHPUnit_Framework_TestCase
         return $this->helper->submitButton(
             'elementId',
             'foo',
-            array(),
-            array()
+            [],
+            []
         );
     }
 
@@ -133,7 +133,7 @@ class Zend_Dojo_View_Helper_SubmitButtonTest extends PHPUnit_Framework_TestCase
      */
     public function testHelperShouldRenderContentKeyAsLabelWhenPassed()
     {
-        $html = $this->helper->submitButton('foo', '', array('content' => 'Label'));
+        $html = $this->helper->submitButton('foo', '', ['content' => 'Label']);
         $this->assertRegexp('/<input[^>]*(value="Label")/', $html, $html);
     }
 }

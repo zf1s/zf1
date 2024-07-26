@@ -142,7 +142,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_Te
         $this->controller = new Zend_Controller_Action_Helper_AjaxContextTestController(
             $this->request,
             $this->response,
-            array()
+            []
         );
         $this->helper->setActionController($this->controller);
     }
@@ -167,7 +167,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_Te
         $controller = new Zend_Controller_Action_Helper_AjaxContextNoConfigTestController(
             $this->request,
             $this->response,
-            array()
+            []
         );
         $this->helper->setActionController($controller);
     
@@ -274,7 +274,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends PHPUnit_Framework_Te
                     new Zend_Controller_Action_Helper_AjaxContextTestController(
                         $request,
                         $this->response,
-                        array()
+                        []
                     )
         );
 
@@ -305,11 +305,11 @@ class ZendTest_Controller_Request_SimpleMock_AjaxTest
 
 class Zend_Controller_Action_Helper_AjaxContextTestController extends Zend_Controller_Action
 {
-    public $ajaxable = array(
-        'foo' => array('xml'),
-        'bar' => array('xml', 'json'),
-        'baz' => array(),
-    );
+    public $ajaxable = [
+        'foo' => ['xml'],
+        'bar' => ['xml', 'json'],
+        'baz' => [],
+    ];
 }
 
 class Zend_Controller_Action_Helper_AjaxContextNoConfigTestController extends Zend_Controller_Action

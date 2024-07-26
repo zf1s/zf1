@@ -53,7 +53,7 @@ class Zend_Dojo_View_Helper_CustomDijit extends Zend_Dojo_View_Helper_DijitConta
      * @return string|Zend_Dojo_View_Helper_CustomDijit
      * @throws Zend_Dojo_View_Exception
      */
-    public function customDijit($id = null, $value = null, array $params = array(), array $attribs = array())
+    public function customDijit($id = null, $value = null, array $params = [], array $attribs = [])
     {
         if (null === $id) {
             return $this;
@@ -93,7 +93,7 @@ class Zend_Dojo_View_Helper_CustomDijit extends Zend_Dojo_View_Helper_DijitConta
      * @return void
      * @throws Zend_Dojo_View_Exception
      */
-    public function captureStart($id, array $params = array(), array $attribs = array())
+    public function captureStart($id, array $params = [], array $attribs = [])
     {
         if (!array_key_exists('dojoType', $params)
             && (null === $this->_defaultDojoType)

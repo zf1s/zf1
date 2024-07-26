@@ -109,12 +109,12 @@ class Zend_Dojo_Form_Element_VerticalSliderTest extends PHPUnit_Framework_TestCa
     {
         $element = new Zend_Dojo_Form_Element_VerticalSlider(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'VerticalSlider',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }
@@ -147,7 +147,7 @@ class Zend_Dojo_Form_Element_VerticalSliderTest extends PHPUnit_Framework_TestCa
 
     public function testSettingLeftDecorationLabelsShouldProxyToLeftDecorationDijitParam()
     {
-        $labels = array('0%', '50%', '100%');
+        $labels = ['0%', '50%', '100%'];
         $this->element->setLeftDecorationLabels($labels);
         $this->assertTrue($this->element->hasDijitParam('leftDecoration'));
         $leftDecoration = $this->element->getDijitParam('leftDecoration');
@@ -161,14 +161,14 @@ class Zend_Dojo_Form_Element_VerticalSliderTest extends PHPUnit_Framework_TestCa
 
     public function testSettingLeftDecorationParamsShouldProxyToLeftDecorationDijitParam()
     {
-        $params = array(
-            'container' => array(
+        $params = [
+            'container' => [
                 'style' => 'height:1.2em; font-size=75%;color:gray;',
-            ),
-            'list' => array(
+            ],
+            'list' => [
                 'style' => 'height:1em; font-size=75%;color:gray;',
-            ),
-        );
+            ],
+        ];
         $this->element->setLeftDecorationParams($params);
         $this->assertTrue($this->element->hasDijitParam('leftDecoration'));
         $leftDecoration = $this->element->getDijitParam('leftDecoration');
@@ -182,14 +182,14 @@ class Zend_Dojo_Form_Element_VerticalSliderTest extends PHPUnit_Framework_TestCa
 
     public function testSettingLeftDecorationAttribsShouldProxyToLeftDecorationDijitParam()
     {
-        $attribs = array(
-            'container' => array(
+        $attribs = [
+            'container' => [
                 'style' => 'height:1.2em; font-size=75%;color:gray;',
-            ),
-            'list' => array(
+            ],
+            'list' => [
                 'style' => 'height:1em; font-size=75%;color:gray;',
-            ),
-        );
+            ],
+        ];
         $this->element->setLeftDecorationAttribs($attribs);
         $this->assertTrue($this->element->hasDijitParam('leftDecoration'));
         $leftDecoration = $this->element->getDijitParam('leftDecoration');
@@ -229,7 +229,7 @@ class Zend_Dojo_Form_Element_VerticalSliderTest extends PHPUnit_Framework_TestCa
 
     public function testSettingRightDecorationLabelsShouldProxyToRightDecorationDijitParam()
     {
-        $labels = array('0%', '50%', '100%');
+        $labels = ['0%', '50%', '100%'];
         $this->element->setRightDecorationLabels($labels);
         $this->assertTrue($this->element->hasDijitParam('rightDecoration'));
         $rightDecoration = $this->element->getDijitParam('rightDecoration');
@@ -243,14 +243,14 @@ class Zend_Dojo_Form_Element_VerticalSliderTest extends PHPUnit_Framework_TestCa
 
     public function testSettingRightDecorationParamsShouldProxyToRightDecorationDijitParam()
     {
-        $params = array(
-            'container' => array(
+        $params = [
+            'container' => [
                 'style' => 'height:1.2em; font-size=75%;color:gray;',
-            ),
-            'list' => array(
+            ],
+            'list' => [
                 'style' => 'height:1em; font-size=75%;color:gray;',
-            ),
-        );
+            ],
+        ];
         $this->element->setRightDecorationParams($params);
         $this->assertTrue($this->element->hasDijitParam('rightDecoration'));
         $rightDecoration = $this->element->getDijitParam('rightDecoration');
@@ -264,14 +264,14 @@ class Zend_Dojo_Form_Element_VerticalSliderTest extends PHPUnit_Framework_TestCa
 
     public function testSettingRightDecorationAttribsShouldProxyToRightDecorationDijitParam()
     {
-        $attribs = array(
-            'container' => array(
+        $attribs = [
+            'container' => [
                 'style' => 'height:1.2em; font-size=75%;color:gray;',
-            ),
-            'list' => array(
+            ],
+            'list' => [
                 'style' => 'height:1em; font-size=75%;color:gray;',
-            ),
-        );
+            ],
+        ];
         $this->element->setRightDecorationAttribs($attribs);
         $this->assertTrue($this->element->hasDijitParam('rightDecoration'));
         $rightDecoration = $this->element->getDijitParam('rightDecoration');

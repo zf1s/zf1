@@ -111,11 +111,11 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
      *
      * @var array
      */
-    public static $namespaces = array(
-        array('gs', 'http://schemas.google.com/spreadsheets/2006', 1, 0),
-        array(
-            'gsx', 'http://schemas.google.com/spreadsheets/2006/extended', 1, 0)
-    );
+    public static $namespaces = [
+        ['gs', 'http://schemas.google.com/spreadsheets/2006', 1, 0],
+        [
+            'gsx', 'http://schemas.google.com/spreadsheets/2006/extended', 1, 0]
+    ];
 
     /**
      * Create Gdata_Spreadsheets object
@@ -324,7 +324,7 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
     public function insertRow($rowData, $key, $wkshtId = 'default')
     {
         $newEntry = new Zend_Gdata_Spreadsheets_ListEntry();
-        $newCustomArr = array();
+        $newCustomArr = [];
         foreach ($rowData as $k => $v) {
             $newCustom = new Zend_Gdata_Spreadsheets_Extension_Custom();
             $newCustom->setText($v)->setColumnName($k);
@@ -349,7 +349,7 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
      */
     public function updateRow($entry, $newRowData)
     {
-        $newCustomArr = array();
+        $newCustomArr = [];
         foreach ($newRowData as $k => $v) {
             $newCustom = new Zend_Gdata_Spreadsheets_Extension_Custom();
             $newCustom->setText($v)->setColumnName($k);
@@ -380,9 +380,9 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
     {
         $listFeed = $this->getListFeed($location);
         $listFeed = $this->retrieveAllEntriesForFeed($listFeed);
-        $spreadsheetContents = array();
+        $spreadsheetContents = [];
         foreach ($listFeed as $listEntry) {
-            $rowContents = array();
+            $rowContents = [];
             $customArray = $listEntry->getCustom();
             foreach ($customArray as $custom) {
                 $rowContents[$custom->getColumnName()] = $custom->getText();
@@ -425,9 +425,9 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
 
         $cellFeed = $this->getCellFeed($cellQuery);
         $cellFeed = $this->retrieveAllEntriesForFeed($cellFeed);
-        $spreadsheetContents = array();
+        $spreadsheetContents = [];
         foreach ($cellFeed as $cellEntry) {
-            $cellContents = array();
+            $cellContents = [];
             $cell = $cellEntry->getCell();
             $cellContents['formula'] = $cell->getInputValue();
             $cellContents['value'] = $cell->getText();

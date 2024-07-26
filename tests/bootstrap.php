@@ -16,10 +16,10 @@ $zfTests = $rootDir . '/tests';
  * Prepend the tests/ directory to the include_path.
  * This allows the tests to run without additional autoloader
  */
-$path = array(
+$path = [
     $zfTests,
     get_include_path()
-);
+];
 set_include_path(implode(PATH_SEPARATOR, $path));
 
 /*

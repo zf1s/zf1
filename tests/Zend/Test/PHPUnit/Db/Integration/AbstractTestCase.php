@@ -73,15 +73,15 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
             "bar", $dataSet->getTableMetaData("bar")->getTableName()
         );
 
-        $this->assertEquals(array("foo", "bar"), $dataSet->getTableNames());
+        $this->assertEquals(["foo", "bar"], $dataSet->getTableNames());
     }
 
     public function testZendDbTableEqualsXmlDataSet()
     {
         $fooTable = $this->createFooTable();
-        $fooTable->insert(array("id" => null, "foo" => "foo", "bar" => "bar", "baz" => "baz"));
-        $fooTable->insert(array("id" => null, "foo" => "bar", "bar" => "bar", "baz" => "bar"));
-        $fooTable->insert(array("id" => null, "foo" => "baz", "bar" => "baz", "baz" => "baz"));
+        $fooTable->insert(["id" => null, "foo" => "foo", "bar" => "bar", "baz" => "baz"]);
+        $fooTable->insert(["id" => null, "foo" => "bar", "bar" => "bar", "baz" => "bar"]);
+        $fooTable->insert(["id" => null, "foo" => "baz", "bar" => "baz", "baz" => "baz"]);
 
         $dataSet = new Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet();
         $dataSet->addTable($fooTable);
@@ -133,7 +133,7 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
      */
     public function createFooTable()
     {
-        $table = new Zend_Test_PHPUnit_Db_TableFoo(array('db' => $this->dbAdapter));
+        $table = new Zend_Test_PHPUnit_Db_TableFoo(['db' => $this->dbAdapter]);
         return $table;
     }
 
@@ -142,7 +142,7 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
      */
     public function createBarTable()
     {
-        $table = new Zend_Test_PHPUnit_Db_TableBar(array('db' => $this->dbAdapter));
+        $table = new Zend_Test_PHPUnit_Db_TableBar(['db' => $this->dbAdapter]);
         return $table;
     }
 }

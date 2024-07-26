@@ -109,11 +109,11 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
     {
         $element = new Zend_Dojo_Form_Element_CheckBox(
             'foo',
-            array(
+            [
                 'label'          => 'CheckBox',
                 'class'          => 'someclass',
                 'style'          => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }
@@ -217,10 +217,10 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
 
     public function testSetOptionsSetsInitialValueAccordingToCheckedAndUncheckedValues()
     {
-        $options = array(
+        $options = [
             'checkedValue'   => 'foo',
             'uncheckedValue' => 'bar',
-        );
+        ];
 
         $element = new Zend_Dojo_Form_Element_CheckBox('test', $options);
         $this->assertEquals($options['uncheckedValue'], $element->getValue());
@@ -228,18 +228,18 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
 
     public function testSetOptionsSetsInitialValueAccordingToSubmittedValues()
     {
-        $options = array(
-            'test1' => array(
+        $options = [
+            'test1' => [
                 'value'          => 'foo',
                 'checkedValue'   => 'foo',
                 'uncheckedValue' => 'bar',
-            ),
-            'test2' => array(
+            ],
+            'test2' => [
                 'value'          => 'bar',
                 'checkedValue'   => 'foo',
                 'uncheckedValue' => 'bar',
-            ),
-        );
+            ],
+        ];
 
         foreach ($options as $current) {
             $element = new Zend_Dojo_Form_Element_CheckBox('test', $current);
@@ -269,10 +269,10 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckedValuesCanBePassedInConstructor()
     {
-        $element = new Zend_Dojo_Form_Element_CheckBox('myCheckbox',    array(
+        $element = new Zend_Dojo_Form_Element_CheckBox('myCheckbox',    [
                     'checkedValue' => 'checkedVal',
                     'unCheckedValue' => 'UNCHECKED',
-                ));
+                ]);
         $element->setView(new Zend_View());
         $html = $element->render();
         $this->assertContains('value="checkedVal"', $html, $html);

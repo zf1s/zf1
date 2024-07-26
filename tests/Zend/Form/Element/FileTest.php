@@ -113,7 +113,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     public function testElementShouldAddToAllPluginLoadersWhenAddingNullPrefixPath()
     {
         $this->element->addPrefixPath('Foo', 'Foo');
-        foreach (array('validate', 'filter', 'decorator', 'transfer_adapter') as $type) {
+        foreach (['validate', 'filter', 'decorator', 'transfer_adapter'] as $type) {
             $loader = $this->element->getPluginLoader($type);
             $string = str_replace('_', ' ', $type);
             $string = ucwords($string);
@@ -166,10 +166,10 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     {
         $this->testElementShouldAllowSpecifyingAdapterUsingConcreteInstance();
         $this->element->addValidator('Count', false, 1)
-                      ->addValidators(array(
+                      ->addValidators([
                           'Extension' => 'jpg',
                           new Zend_Validate_File_Upload(),
-                      ));
+                      ]);
         $validators = $this->element->getValidators();
         $test       = $this->element->getTransferAdapter()->getValidators();
         $this->assertEquals($validators, $test);
@@ -184,11 +184,11 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
         $this->element->removeValidator('Extension');
         $this->assertFalse($this->element->getTransferAdapter()->hasValidator('Extension'));
 
-        $this->element->setValidators(array(
+        $this->element->setValidators([
             'Upload',
-            array('validator' => 'Extension', 'options' => 'jpg'),
-            array('validator' => 'Count', 'options' => 1),
-        ));
+            ['validator' => 'Extension', 'options' => 'jpg'],
+            ['validator' => 'Count', 'options' => 1],
+        ]);
         $validators = $this->element->getValidators();
         $test       = $this->element->getTransferAdapter()->getValidators();
         $this->assertSame($validators, $test);
@@ -303,7 +303,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($max, $this->element->getMaxFileSize());
 
         $this->_errorOccurred = false;
-        set_error_handler(array($this, 'errorHandlerIgnore'));
+        set_error_handler([$this, 'errorHandlerIgnore']);
         $this->element->setMaxFileSize(999999999999);
         if (!$this->_errorOccurred) {
             $this->fail('INI exception expected');
@@ -320,7 +320,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     public function testTranslatingValidatorErrors()
     {
         // require_once 'Zend/Translate.php';
-        $translate = new Zend_Translate('array', array('unused', 'foo' => 'bar'), 'en');
+        $translate = new Zend_Translate('array', ['unused', 'foo' => 'bar'], 'en');
         $this->element->setTranslator($translate);
 
         $adapter = $this->element->getTranslator();
@@ -371,13 +371,13 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     public function testDefaultDecorators()
     {
         $this->element->clearDecorators();
-        $this->assertEquals(array(), $this->element->getDecorators());
+        $this->assertEquals([], $this->element->getDecorators());
         $this->element->setDisableLoadDefaultDecorators(true);
         $this->element->loadDefaultDecorators();
-        $this->assertEquals(array(), $this->element->getDecorators());
+        $this->assertEquals([], $this->element->getDecorators());
         $this->element->setDisableLoadDefaultDecorators(false);
         $this->element->loadDefaultDecorators();
-        $this->assertNotEquals(array(), $this->element->getDecorators());
+        $this->assertNotEquals([], $this->element->getDecorators());
     }
 
     public function testValueGetAndSet()
@@ -390,7 +390,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
 
     public function testMarkerInterfaceForFileElement()
     {
-        $this->element->setDecorators(array('ViewHelper'));
+        $this->element->setDecorators(['ViewHelper']);
         $this->assertCount(1, $this->element->getDecorators());
 
         try {
@@ -408,7 +408,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
         $element->setTransferAdapter($adapter);
 
         $this->assertEquals('1.14kB', $element->getFileSize('baz.text'));
-        $adapter->setOptions(array('useByteString' => false));
+        $adapter->setOptions(['useByteString' => false]);
         $this->assertEquals(1172, $element->getFileSize('baz.text'));
     }
 
@@ -437,7 +437,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     public function testGetTranslatorRetrievesGlobalDefaultWhenAvailable()
     {
         $this->assertNull($this->element->getTranslator());
-        $translator = new Zend_Translate('array', array('foo' => 'bar'));
+        $translator = new Zend_Translate('array', ['foo' => 'bar']);
         // require_once 'Zend/Form.php';
         Zend_Form::setDefaultTranslator($translator);
         $received = $this->element->getTranslator();
@@ -484,7 +484,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
      * @param  array   $errcontext
      * @return void
      */
-    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = array())
+    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = [])
     {
         $this->_errorOccurred = true;
     }
@@ -545,12 +545,12 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     public function testCallbackFunctionAtHtmlTag()
     {
         $this->assertEquals(
-            array(
-                 'callback' => array(
+            [
+                 'callback' => [
                      'Zend_Form_Element_File',
                      'resolveElementId',
-                 ),
-            ),
+                 ],
+            ],
             $this->element->getDecorator('HtmlTag')->getOption('id')
         );
     }
@@ -560,13 +560,13 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
      */
     public function testDefaultDecoratorOrder()
     {
-        $expected = array(
+        $expected = [
             'Zend_Form_Decorator_File',
             'Zend_Form_Decorator_Errors',
             'Zend_Form_Decorator_Description',
             'Zend_Form_Decorator_HtmlTag',
             'Zend_Form_Decorator_Label',
-        );
+        ];
 
         $this->assertEquals(
             $expected,
@@ -582,63 +582,63 @@ class Zend_Form_Element_FileTest_MockAdapter extends Zend_File_Transfer_Adapter_
     public function __construct()
     {
         $testfile = __DIR__ . '/../../File/Transfer/Adapter/_files/test.txt';
-        $this->_files = array(
-            'foo' => array(
+        $this->_files = [
+            'foo' => [
                 'name'       => 'foo.jpg',
                 'type'       => 'image/jpeg',
                 'size'       => 126976,
                 'tmp_name'   => '/tmp/489127ba5c89c',
-                'options'   => array('ignoreNoFile' => false, 'useByteString' => true),
+                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
                 'validated'  => false,
                 'received'   => false,
                 'filtered'   => false,
-                'validators' => array(),
-            ),
-            'bar' => array(
+                'validators' => [],
+            ],
+            'bar' => [
                 'name'       => 'bar.png',
                 'type'       => 'image/png',
                 'size'       => 91136,
                 'tmp_name'   => '/tmp/489128284b51f',
-                'options'   => array('ignoreNoFile' => false, 'useByteString' => true),
+                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
                 'validated'  => false,
                 'received'   => false,
                 'filtered'   => false,
-                'validators' => array(),
-            ),
-            'baz' => array(
+                'validators' => [],
+            ],
+            'baz' => [
                 'name'       => 'baz.text',
                 'type'       => 'text/plain',
                 'size'       => 1172,
                 'tmp_name'   => $testfile,
-                'options'   => array('ignoreNoFile' => false, 'useByteString' => true),
+                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
                 'validated'  => false,
                 'received'   => false,
                 'filtered'   => false,
-                'validators' => array(),
-            ),
-            'file_1_' => array(
+                'validators' => [],
+            ],
+            'file_1_' => [
                 'name'       => 'baz.text',
                 'type'       => 'text/plain',
                 'size'       => 1172,
                 'tmp_name'   => '/tmp/4891286cceff3',
-                'options'   => array('ignoreNoFile' => false, 'useByteString' => true),
+                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
                 'validated'  => false,
                 'received'   => false,
                 'filtered'   => false,
-                'validators' => array(),
-            ),
-            'file_2_' => array(
+                'validators' => [],
+            ],
+            'file_2_' => [
                 'name'       => 'baz.text',
                 'type'       => 'text/plain',
                 'size'       => 1172,
                 'tmp_name'   => '/tmp/4891286cceff3',
-                'options'   => array('ignoreNoFile' => false, 'useByteString' => true),
+                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
                 'validated'  => false,
                 'received'   => false,
                 'filtered'   => false,
-                'validators' => array(),
-            ),
-            );
+                'validators' => [],
+            ],
+            ];
     }
 
     public function send($options = null)

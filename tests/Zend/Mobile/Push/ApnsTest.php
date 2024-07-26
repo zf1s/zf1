@@ -80,7 +80,7 @@ class Zend_Mobile_Push_ApnsTest extends PHPUnit_Framework_TestCase
      */
     public function testSetCertificateThrowsExceptionOnNonString()
     {
-        $this->apns->setCertificate(array('foo'));
+        $this->apns->setCertificate(['foo']);
     }
 
     /**
@@ -102,7 +102,7 @@ class Zend_Mobile_Push_ApnsTest extends PHPUnit_Framework_TestCase
      */
     public function testSetCertificatePassphraseThrowsExceptionOnNonString()
     {
-        $this->apns->setCertificatePassphrase(array('foo'));
+        $this->apns->setCertificatePassphrase(['foo']);
     }
 
     public function testSetCertificatePassphraseReturnsInstance()

@@ -70,7 +70,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
             $this->assertContains('Error opening translation file', $e->getMessage());
         }
 
-        set_error_handler(array($this, 'errorHandlerIgnore'));
+        set_error_handler([$this, 'errorHandlerIgnore']);
         $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/failed.csv', 'en');
         restore_error_handler();
     }
@@ -117,7 +117,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
             $this->assertContains('does not exist', $e->getMessage());
         }
 
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.csv', 'de', array('clear' => true));
+        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.csv', 'de', ['clear' => true]);
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
     }
@@ -125,8 +125,8 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
     public function testOptions()
     {
         $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
-        $adapter->setOptions(array('testoption' => 'testkey'));
-        $expected = array(
+        $adapter->setOptions(['testoption' => 'testkey']);
+        $expected = [
             'delimiter'       => ';',
             'testoption'      => 'testkey',
             'clear'           => false,
@@ -141,7 +141,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
             'logMessage'      => 'Untranslated message within \'%locale%\': %message%',
             'logUntranslated' => false,
             'reload'          => false,
-        );
+        ];
         $options = $adapter->getOptions();
 
         foreach ($expected as $key => $value) {
@@ -158,7 +158,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
         $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 60', $adapter->translate('Message 60'));
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.csv', 'de', array('clear' => true));
+        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.csv', 'de', ['clear' => true]);
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));
         $this->assertEquals('Message 4', $adapter->translate('Message 4'));
     }
@@ -178,7 +178,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
             $this->assertContains('does not exist', $e->getMessage());
         }
 
-        set_error_handler(array($this, 'errorHandlerIgnore'));
+        set_error_handler([$this, 'errorHandlerIgnore']);
         $adapter->setLocale('de');
         restore_error_handler();
         $this->assertEquals('de', $adapter->getLocale());
@@ -187,9 +187,9 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
     public function testList()
     {
         $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv', 'en');
-        $this->assertEquals(array('en' => 'en'), $adapter->getList());
+        $this->assertEquals(['en' => 'en'], $adapter->getList());
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.csv', 'de');
-        $this->assertEquals(array('en' => 'en', 'de' => 'de'), $adapter->getList());
+        $this->assertEquals(['en' => 'en', 'de' => 'de'], $adapter->getList());
         $this->assertTrue($adapter->isAvailable('de'));
         $locale = new Zend_Locale('en');
         $this->assertTrue($adapter->isAvailable($locale));
@@ -199,22 +199,22 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
     public function testOptionLocaleDirectory()
     {
         // require_once 'Zend/Translate.php';
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/testcsv', 'de_AT', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
-        $this->assertEquals(array('de_AT' => 'de_AT', 'en_GB' => 'en_GB'), $adapter->getList());
+        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/testcsv', 'de_AT', ['scan' => Zend_Translate::LOCALE_DIRECTORY]);
+        $this->assertEquals(['de_AT' => 'de_AT', 'en_GB' => 'en_GB'], $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
     }
 
     public function testOptionLocaleFilename()
     {
         // require_once 'Zend/Translate.php';
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/testcsv', 'de_DE', array('scan' => Zend_Translate::LOCALE_FILENAME));
-        $this->assertEquals(array('de_DE' => 'de_DE', 'en_US' => 'en_US'), $adapter->getList());
+        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/testcsv', 'de_DE', ['scan' => Zend_Translate::LOCALE_FILENAME]);
+        $this->assertEquals(['de_DE' => 'de_DE', 'en_US' => 'en_US'], $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
     }
 
     public function testOtherDelimiter()
     {
-        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_otherdelimiter.csv', 'en', array('delimiter' => ','));
+        $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_otherdelimiter.csv', 'en', ['delimiter' => ',']);
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 4 (en)', $adapter->translate('Message 4,'));
         $this->assertEquals('Message 5, (en)', $adapter->translate('Message 5'));
@@ -240,7 +240,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit_Framework_TestCase
      * @param  array   $errcontext
      * @return void
      */
-    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = array())
+    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = [])
     {
         $this->_errorOccurred = true;
     }
