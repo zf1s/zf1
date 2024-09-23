@@ -67,11 +67,11 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      */
     protected $_sqsSignatureMethod = 'HmacSHA256';
 
-    protected $_sqsEndpoints = array('us-east-1' => 'sqs.us-east-1.amazonaws.com',
+    protected $_sqsEndpoints = ['us-east-1' => 'sqs.us-east-1.amazonaws.com',
                                      'us-west-1' => 'sqs.us-west-1.amazonaws.com',
                                      'eu-west-1' => 'sqs.eu-west-1.amazonaws.com',
                                      'ap-southeast-1' => 'sqs.ap-southeast-1.amazonaws.com',
-                                     'ap-northeast-1' => 'sqs.ap-northeast-1.amazonaws.com');
+                                     'ap-northeast-1' => 'sqs.ap-northeast-1.amazonaws.com'];
     /**
      * Constructor
      *
@@ -171,7 +171,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      */
     public function create($queue_name, $timeout = null)
     {
-        $params = array();
+        $params = [];
         $params['QueueName'] = $queue_name;
         $timeout = ($timeout === null) ? self::CREATE_TIMEOUT_DEFAULT : (int)$timeout;
         $params['DefaultVisibilityTimeout'] = $timeout;
@@ -244,10 +244,10 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
         if (!isset($result->ListQueuesResult->QueueUrl)
             || empty($result->ListQueuesResult->QueueUrl)
         ) {
-            return array();
+            return [];
         }
 
-        $queues = array();
+        $queues = [];
         foreach ($result->ListQueuesResult->QueueUrl as $queue_url) {
             $queues[] = (string)$queue_url;
         }
@@ -278,7 +278,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      */
     public function send($queue_url, $message)
     {
-        $params = array();
+        $params = [];
         $params['MessageBody'] = urlencode($message);
 
         $checksum = md5($params['MessageBody']);
@@ -309,7 +309,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      */
     public function receive($queue_url, $max_messages = null, $timeout = null)
     {
-        $params = array();
+        $params = [];
 
         // If not set, the visibility timeout on the queue is used
         if ($timeout !== null) {
@@ -332,17 +332,17 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
             || empty($result->ReceiveMessageResult->Message)
         ) {
             // no messages found
-            return array();
+            return [];
         }
 
-        $data = array();
+        $data = [];
         foreach ($result->ReceiveMessageResult->Message as $message) {
-            $data[] = array(
+            $data[] = [
                 'message_id' => (string)$message->MessageId,
                 'handle'     => (string)$message->ReceiptHandle,
                 'md5'        => (string)$message->MD5OfBody,
                 'body'       => urldecode((string)$message->Body),
-            );
+            ];
         }
 
         return $data;
@@ -361,7 +361,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      */
     public function deleteMessage($queue_url, $handle)
     {
-        $params = array();
+        $params = [];
         $params['ReceiptHandle'] = (string)$handle;
 
         $result = $this->_makeRequest($queue_url, 'DeleteMessage', $params);
@@ -386,7 +386,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      */
     public function getAttribute($queue_url, $attribute = 'All')
     {
-        $params = array();
+        $params = [];
         $params['AttributeName'] = $attribute;
 
         $result = $this->_makeRequest($queue_url, 'GetQueueAttributes', $params);
@@ -399,7 +399,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
         }
 
         if(count($result->GetQueueAttributesResult->Attribute) > 1) {
-            $attr_result = array();
+            $attr_result = [];
             foreach($result->GetQueueAttributesResult->Attribute as $attribute) {
                 $attr_result[(string)$attribute->Name] = (string)$attribute->Value;
             }
@@ -417,7 +417,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      * @param  array            $params
      * @return SimpleXMLElement
      */
-    private function _makeRequest($queue_url, $action, $params = array())
+    private function _makeRequest($queue_url, $action, $params = [])
     {
         $params['Action'] = $action;
         $params = $this->addRequiredParameters($queue_url, $params);
@@ -529,7 +529,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
         uksort($paramaters, 'strcmp');
         unset($paramaters['Signature']);
 
-        $arrData = array();
+        $arrData = [];
         foreach($paramaters as $key => $value) {
             $arrData[] = $key . '=' . str_replace('%7E', '~', urlencode($value));
         }

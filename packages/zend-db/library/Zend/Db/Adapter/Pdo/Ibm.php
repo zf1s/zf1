@@ -68,7 +68,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      *
      * @var array Associative array of datatypes to values 0, 1, or 2.
      */
-    protected $_numericDataTypes = array(
+    protected $_numericDataTypes = [
                         Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
                         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
                         Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
@@ -81,7 +81,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
                         'NUMERIC'            => Zend_Db::FLOAT_TYPE,
                         'DOUBLE PRECISION'   => Zend_Db::FLOAT_TYPE,
                         'FLOAT'              => Zend_Db::FLOAT_TYPE
-                        );
+                        ];
 
     /**
      * Creates a PDO object and connects to the database.
@@ -262,7 +262,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
     public function insert($table, array $bind)
     {
         $this->_connect();
-        $newbind = array();
+        $newbind = [];
         if (is_array($bind)) {
             foreach ($bind as $name => $value) {
                 if($value !== null) {

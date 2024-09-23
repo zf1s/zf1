@@ -1,9 +1,9 @@
 <?php
 
 class My_CustomAdapter extends Zend_Translate_Adapter {
-    protected function _loadTranslationData($data, $locale, array $options = array())
+    protected function _loadTranslationData($data, $locale, array $options = [])
     {
-        return array($locale => $data);
+        return [$locale => $data];
     }
 
     public function toString()

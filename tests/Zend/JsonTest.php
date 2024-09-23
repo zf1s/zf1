@@ -68,13 +68,13 @@ class Zend_JsonTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('JSON extension is not loaded');
         }
         Zend_Json::$useBuiltinEncoderDecoder = false;
-        $this->_testJson(array('string', 327, true, null));
+        $this->_testJson(['string', 327, true, null]);
     }
 
     public function testJsonWithBuiltins()
     {
         Zend_Json::$useBuiltinEncoderDecoder = true;
-        $this->_testJson(array('string', 327, true, null));
+        $this->_testJson(['string', 327, true, null]);
     }
 
     /**
@@ -93,7 +93,7 @@ class Zend_JsonTest extends PHPUnit_Framework_TestCase
      */
     public function testNull()
     {
-        $this->_testEncodeDecode(array(null));
+        $this->_testEncodeDecode([null]);
     }
 
 
@@ -112,8 +112,8 @@ class Zend_JsonTest extends PHPUnit_Framework_TestCase
      */
     public function testInteger()
     {
-        $this->_testEncodeDecode(array(-2));
-        $this->_testEncodeDecode(array(-1));
+        $this->_testEncodeDecode([-2]);
+        $this->_testEncodeDecode([-1]);
 
         $zero = Zend_Json_Decoder::decode(Zend_Json_Encoder::encode(0));
         $this->assertEquals(0, $zero, 'Failed 0 integer test. Encoded: ' . serialize(Zend_Json_Encoder::encode(0)));
@@ -130,18 +130,18 @@ class Zend_JsonTest extends PHPUnit_Framework_TestCase
 
         // The escaped double-quote in item 'stringwithjsonchars' ensures that
         // escaped double-quotes don't throw off prettyPrint's string literal detection
-        $test = array(
+        $test = [
             'simple'=>'simple test string',
             'stringwithjsonchars'=>'\"[1,2]',
-            'complex'=>array(
+            'complex'=>[
                 'foo'=>'bar',
                 'far'=>'boo',
-                'faz'=>array(
+                'faz'=>[
                     'obj'=>$o
-                )
-            )
-        );
-        $pretty = Zend_Json::prettyPrint(Zend_Json::encode($test), array('indent' => ' '));
+                ]
+            ]
+        ];
+        $pretty = Zend_Json::prettyPrint(Zend_Json::encode($test), ['indent' => ' ']);
         $expected = <<<EOB
 {
  "simple":"simple test string",
@@ -166,7 +166,7 @@ EOB;
      */
     public function testFloat()
     {
-        $this->_testEncodeDecode(array(-2.1, 1.2));
+        $this->_testEncodeDecode([-2.1, 1.2]);
     }
 
     /**
@@ -174,7 +174,7 @@ EOB;
      */
     public function testString()
     {
-        $this->_testEncodeDecode(array('string'));
+        $this->_testEncodeDecode(['string']);
         $this->assertEquals('', Zend_Json_Decoder::decode(Zend_Json_Encoder::encode('')), 'Empty string encoded: ' . serialize(Zend_Json_Encoder::encode('')));
     }
 
@@ -231,7 +231,7 @@ EOB;
      */
     public function testArray()
     {
-        $array = array(1, 'one', 2, 'two');
+        $array = [1, 'one', 2, 'two'];
         $encoded = Zend_Json_Encoder::encode($array);
         $this->assertSame($array, Zend_Json_Decoder::decode($encoded), 'Decoded array does not match: ' . serialize($encoded));
     }
@@ -241,7 +241,7 @@ EOB;
      */
     public function testAssocArray()
     {
-        $this->_testEncodeDecode(array(array('one' => 1, 'two' => 2)));
+        $this->_testEncodeDecode([['one' => 1, 'two' => 2]]);
     }
 
     /**
@@ -249,7 +249,7 @@ EOB;
      */
     public function testAssocArray2()
     {
-        $this->_testEncodeDecode(array(array('one' => 1, 2 => 2)));
+        $this->_testEncodeDecode([['one' => 1, 2 => 2]]);
     }
 
     /**
@@ -257,7 +257,7 @@ EOB;
      */
     public function testAssocArray3()
     {
-        $this->_testEncodeDecode(array(array(1 => 'one', 2 => 'two')));
+        $this->_testEncodeDecode([[1 => 'one', 2 => 'two']]);
     }
 
     /**
@@ -269,7 +269,7 @@ EOB;
         $value->one = 1;
         $value->two = 2;
 
-        $array = array('__className' => 'stdClass', 'one' => 1, 'two' => 2);
+        $array = ['__className' => 'stdClass', 'one' => 1, 'two' => 2];
 
         $encoded = Zend_Json_Encoder::encode($value);
         $this->assertSame($array, Zend_Json_Decoder::decode($encoded));
@@ -298,7 +298,7 @@ EOB;
     public function testDecodeArrayOfObjects()
     {
         $value = '[{"id":1},{"foo":2}]';
-        $expect = array(array('id' => 1), array('foo' => 2));
+        $expect = [['id' => 1], ['foo' => 2]];
         $this->assertEquals($expect, Zend_Json_Decoder::decode($value));
     }
 
@@ -308,15 +308,15 @@ EOB;
     public function testDecodeObjectOfArrays()
     {
         $value = '{"codeDbVar" : {"age" : ["int", 5], "prenom" : ["varchar", 50]}, "234" : [22, "jb"], "346" : [64, "francois"], "21" : [12, "paul"]}';
-        $expect = array(
-            'codeDbVar' => array(
-                'age'   => array('int', 5),
-                'prenom' => array('varchar', 50),
-            ),
-            234 => array(22, 'jb'),
-            346 => array(64, 'francois'),
-            21  => array(12, 'paul')
-        );
+        $expect = [
+            'codeDbVar' => [
+                'age'   => ['int', 5],
+                'prenom' => ['varchar', 50],
+            ],
+            234 => [22, 'jb'],
+            346 => [64, 'francois'],
+            21  => [12, 'paul']
+        ];
         $this->assertEquals($expect, Zend_Json_Decoder::decode($value));
     }
 
@@ -341,7 +341,7 @@ EOB;
     {
         $value = '4.10';
 
-        $this->_testEncodeDecode(array($value));
+        $this->_testEncodeDecode([$value]);
     }
 
     /**
@@ -350,7 +350,7 @@ EOB;
      */
     public function testEarlyLineBreak()
     {
-        $expected = array('data' => array(1, 2, 3, 4));
+        $expected = ['data' => [1, 2, 3, 4]];
 
         $json = '{"data":[1,2,3,4' . "\n]}";
         $this->assertEquals($expected, Zend_Json_Decoder::decode($json));
@@ -369,7 +369,7 @@ EOB;
      */
     public function testZf504()
     {
-        $test = array();
+        $test = [];
         $this->assertSame('[]', Zend_Json_Encoder::encode($test));
 
         try {
@@ -402,8 +402,8 @@ EOB;
     {
         $item1 = new Zend_JsonTest_Item() ;
         $item2 = new Zend_JsonTest_Item() ;
-        $everything = array() ;
-        $everything['allItems'] = array($item1, $item2) ;
+        $everything = [] ;
+        $everything['allItems'] = [$item1, $item2] ;
         $everything['currentItem'] = $item1 ;
 
         try {
@@ -430,11 +430,11 @@ EOB;
     {
         $item1 = new Zend_JsonTest_Item() ;
         $item2 = new Zend_JsonTest_Item() ;
-        $everything = array() ;
-        $everything['allItems'] = array($item1, $item2) ;
+        $everything = [] ;
+        $everything['allItems'] = [$item1, $item2] ;
         $everything['currentItem'] = $item1 ;
 
-        $options = array('silenceCyclicalExceptions'=>true);
+        $options = ['silenceCyclicalExceptions'=>true];
 
         Zend_Json::$useBuiltinEncoderDecoder = true;
         $encoded = Zend_Json::encode($everything, true, $options);
@@ -473,7 +473,7 @@ EOB;
 
     public function testEncodeClasses()
     {
-        $encoded = Zend_Json_Encoder::encodeClasses(array('Zend_JsonTest_Object', 'Zend_JsonTest'));
+        $encoded = Zend_Json_Encoder::encodeClasses(['Zend_JsonTest_Object', 'Zend_JsonTest']);
 
         $this->assertContains("Class.create('Zend_JsonTest_Object'", $encoded);
         $this->assertContains("Class.create('Zend_JsonTest'", $encoded);
@@ -496,8 +496,8 @@ EOB;
     public function testEncodingArrayWithExpr()
     {
         $expr = new Zend_Json_Expr('window.alert("Zend Json Expr")');
-        $array = array('expr'=>$expr, 'int'=>9, 'string'=>'text');
-        $result = Zend_Json::encode($array, false, array('enableJsonExprFinder' => true));
+        $array = ['expr'=>$expr, 'int'=>9, 'string'=>'text'];
+        $result = Zend_Json::encode($array, false, ['enableJsonExprFinder' => true]);
         $expected = '{"expr":window.alert("Zend Json Expr"),"int":9,"string":"text"}';
         $this->assertEquals($expected, $result);
     }
@@ -516,7 +516,7 @@ EOB;
         $obj->expr = $expr;
         $obj->int = 9;
         $obj->string = 'text';
-        $result = Zend_Json::encode($obj, false, array('enableJsonExprFinder' => true));
+        $result = Zend_Json::encode($obj, false, ['enableJsonExprFinder' => true]);
         $expected = '{"__className":"stdClass","expr":window.alert("Zend Json Expr"),"int":9,"string":"text"}';
         $this->assertEquals($expected, $result);
     }
@@ -539,7 +539,7 @@ EOB;
         $obj->expr = $expr;
         $obj->int = 9;
         $obj->string = 'text';
-        $result = Zend_Json::encode($obj, false, array('enableJsonExprFinder' => true));
+        $result = Zend_Json::encode($obj, false, ['enableJsonExprFinder' => true]);
         $expected = '{"expr":window.alert("Zend Json Expr"),"int":9,"string":"text"}';
         $this->assertEquals($expected, $result);
     }
@@ -554,7 +554,7 @@ EOB;
         Zend_Json::$useBuiltinEncoderDecoder = true;
 
         $obj = new Zend_Json_ToJsonWithExpr();
-        $result = Zend_Json::encode($obj, false, array('enableJsonExprFinder' => true));
+        $result = Zend_Json::encode($obj, false, ['enableJsonExprFinder' => true]);
         $expected = '{"expr":window.alert("Zend Json Expr"),"int":9,"string":"text"}';
         $this->assertEquals($expected, $result);
     }
@@ -566,21 +566,21 @@ EOB;
      */
     public function testEncodingMultipleNestedSwitchingSameNameKeysWithDifferentJsonExprSettings()
     {
-        $data = array(
-            0 => array(
+        $data = [
+            0 => [
                 'alpha' => new Zend_Json_Expr('function(){}'),
                 'beta' => 'gamma',
-            ),
-            1 => array(
+            ],
+            1 => [
                 'alpha' => 'gamma',
                 'beta' => new Zend_Json_Expr('function(){}'),
-            ),
-            2 => array(
+            ],
+            2 => [
                 'alpha' => 'gamma',
                 'beta' => 'gamma',
-            )
-        );
-        $result = Zend_Json::encode($data, false, array('enableJsonExprFinder' => true));
+            ]
+        ];
+        $result = Zend_Json::encode($data, false, ['enableJsonExprFinder' => true]);
 
         $this->assertEquals(
             '[{"alpha":function(){},"beta":"gamma"},{"alpha":"gamma","beta":function(){}},{"alpha":"gamma","beta":"gamma"}]',
@@ -595,24 +595,24 @@ EOB;
      */
     public function testEncodingMultipleNestedIteratedSameNameKeysWithDifferentJsonExprSettings()
     {
-        $data = array(
-            0 => array(
+        $data = [
+            0 => [
                 'alpha' => 'alpha'
-            ),
-            1 => array(
+            ],
+            1 => [
                 'alpha' => 'beta',
-            ),
-            2 => array(
+            ],
+            2 => [
                 'alpha' => new Zend_Json_Expr('gamma'),
-            ),
-            3 => array(
+            ],
+            3 => [
                 'alpha' => 'delta',
-            ),
-            4 => array(
+            ],
+            4 => [
                 'alpha' => new Zend_Json_Expr('epsilon'),
-            )
-        );
-        $result = Zend_Json::encode($data, false, array('enableJsonExprFinder' => true));
+            ]
+        ];
+        $result = Zend_Json::encode($data, false, ['enableJsonExprFinder' => true]);
 
         $this->assertEquals('[{"alpha":"alpha"},{"alpha":"beta"},{"alpha":gamma},{"alpha":"delta"},{"alpha":epsilon}]', $result);
     }
@@ -621,12 +621,12 @@ EOB;
     {
         Zend_Json::$useBuiltinEncoderDecoder = true;
 
-        $data = array(
-            0 => array(
+        $data = [
+            0 => [
                 'alpha' => new Zend_Json_Expr('function(){}'),
                 'beta' => 'gamma',
-            ),
-        );
+            ],
+        ];
         $result = Zend_Json::encode($data);
 
         $this->assertEquals(
@@ -640,7 +640,7 @@ EOB;
      */
     public function testEncodeWithUtf8IsTransformedToPackedSyntax()
     {
-        $data = array('Отмена');
+        $data = ['Отмена'];
         $result = Zend_Json_Encoder::encode($data);
 
         $this->assertEquals('["\u041e\u0442\u043c\u0435\u043d\u0430"]', $result);
@@ -727,14 +727,14 @@ EOB;
      */
     public function testUtf8JsonExprFinder()
     {
-        $data = array('Отмена' => new Zend_Json_Expr('foo'));
+        $data = ['Отмена' => new Zend_Json_Expr('foo')];
 
         Zend_Json::$useBuiltinEncoderDecoder = true;
-        $result = Zend_Json::encode($data, false, array('enableJsonExprFinder' => true));
+        $result = Zend_Json::encode($data, false, ['enableJsonExprFinder' => true]);
         $this->assertEquals('{"\u041e\u0442\u043c\u0435\u043d\u0430":foo}', $result);
         Zend_Json::$useBuiltinEncoderDecoder = false;
 
-        $result = Zend_Json::encode($data, false, array('enableJsonExprFinder' => true));
+        $result = Zend_Json::encode($data, false, ['enableJsonExprFinder' => true]);
         $this->assertEquals('{"\u041e\u0442\u043c\u0435\u043d\u0430":foo}', $result);
     }
 
@@ -749,17 +749,17 @@ EOB;
         }
 
         Zend_Json::$useBuiltinEncoderDecoder = true;
-        $this->assertEquals('[1.20, 1.68]', Zend_Json_Encoder::encode(array(
+        $this->assertEquals('[1.20, 1.68]', Zend_Json_Encoder::encode([
             (float)'1,20', (float)'1,68'
-        )));
+        ]));
     }
 
     public function testEncodeObjectImplementingIterator()
     {
-        $iterator = new ArrayIterator(array(
+        $iterator = new ArrayIterator([
             'foo' => 'bar',
             'baz' => 5
-        ));
+        ]);
         $target = '{"__className":"ArrayIterator","foo":"bar","baz":5}';
 
         Zend_Json::$useBuiltinEncoderDecoder = true;
@@ -820,7 +820,7 @@ EOB;
      */
     public function testIteratorWithoutDefinedKey()
     {
-        $inputValue = new ArrayIterator(array('foo'));
+        $inputValue = new ArrayIterator(['foo']);
         $encoded = Zend_Json_Encoder::encode($inputValue);
         $expectedDecoding = '{"__className":"ArrayIterator","0":"foo"}';
         $this->assertEquals($encoded, $expectedDecoding);
@@ -833,7 +833,7 @@ EOB;
     {
         require_once __DIR__ . '/Json/_files/ZF11356-NamespacedClass.php';
         $className = '\Zend\JsonTest\ZF11356\NamespacedClass';
-        $inputValue = new $className(array('foo'));
+        $inputValue = new $className(['foo']);
 
         $encoded = Zend_Json_Encoder::encode($inputValue);
         $this->assertEquals(
@@ -849,7 +849,7 @@ EOB;
     {
         $o = new stdClass;
         $o->four = 4;
-        $o->foo = array(1,2,3);
+        $o->foo = [1,2,3];
 
         $jsonstr = Zend_Json::encode($o);
 
@@ -864,11 +864,11 @@ EOB;
     {
         $o = new stdClass;
         $o->four = 4;
-        $o->foo = array(1,2,3);
+        $o->foo = [1,2,3];
 
         $jsonstr = Zend_Json::encode($o);
         $targetHtmlOutput = '{<br />&nbsp;&nbsp;&nbsp;&nbsp;"four":4,<br />&nbsp;&nbsp;&nbsp;&nbsp;"foo":[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br />&nbsp;&nbsp;&nbsp;&nbsp;]<br />}';
-        $this->assertEquals($targetHtmlOutput, Zend_Json::prettyPrint($jsonstr, array('format' => 'html')));
+        $this->assertEquals($targetHtmlOutput, Zend_Json::prettyPrint($jsonstr, ['format' => 'html']));
     }
 
     /**
@@ -899,7 +899,7 @@ EOB;
      */
     public function testWillEncodeArrayOfObjectsEachWithToJsonMethod()
     {
-        $array = array('one'=>new ToJsonClass());
+        $array = ['one'=>new ToJsonClass()];
         $expected = '{"one":{"__className":"ToJsonClass","firstName":"John","lastName":"Doe","email":"john@doe.com"}}';
 
         Zend_Json::$useBuiltinEncoderDecoder = true;
@@ -964,11 +964,11 @@ class ToJsonClass
 
     public function toJson()
     {
-        $data = array(
+        $data = [
             'firstName' => $this->_firstName,
             'lastName'  => $this->_lastName,
             'email'     => $this->_email
-        );
+        ];
 
         return Zend_Json::encode($data);
     }
@@ -988,11 +988,11 @@ class ZF11167_ToArrayClass
 
     public function toArray()
     {
-        $data = array(
+        $data = [
             'firstName' => $this->_firstName,
             'lastName'  => $this->_lastName,
             'email'     => $this->_email
-        );
+        ];
         return $data;
     }
 }
@@ -1021,13 +1021,13 @@ class Zend_Json_ToJsonWithExpr
 
     public function toJson()
     {
-        $data = array(
+        $data = [
             'expr'   => new Zend_Json_Expr($this->_expr),
             'int'    => $this->_int,
             'string' => $this->_string
-        );
+        ];
 
-        return Zend_Json::encode($data, false, array('enableJsonExprFinder' => true));
+        return Zend_Json::encode($data, false, ['enableJsonExprFinder' => true]);
     }
 }
 
@@ -1036,10 +1036,10 @@ class Zend_Json_ToJsonWithExpr
  */
 class ZF12347_IteratorAggregate implements IteratorAggregate
 {
-    protected $array = array(
+    protected $array = [
         'foo' => 'bar',
         'baz' => 5
-    );
+    ];
 
     #[ReturnTypeWillChange]
     public function getIterator() {

@@ -53,7 +53,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
         // return in the order registered. In the userland version, this is not
         // necessary.
         if (!is_array($priority)) {
-            $priority = array($priority, $this->serial--);
+            $priority = [$priority, $this->serial--];
         }
         parent::insert($datum, $priority);
     }
@@ -68,7 +68,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
     public function toArray()
     {
         $this->setExtractFlags(self::EXTR_BOTH);
-        $array = array();
+        $array = [];
         while ($this->valid()) {
             $array[] = $this->current();
             $this->next();
@@ -81,7 +81,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
         }
 
         // Return only the data
-        $return = array();
+        $return = [];
         foreach ($array as $item) {
             $return[] = $item['data'];
         }
@@ -106,7 +106,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
      */
     public function __serialize()
     {
-        $data = array();
+        $data = [];
         $this->setExtractFlags(self::EXTR_BOTH);
         while ($this->valid()) {
             $data[] = $this->current();

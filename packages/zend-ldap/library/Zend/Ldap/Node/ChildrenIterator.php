@@ -212,7 +212,7 @@ class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveI
      */
     public function toArray()
     {
-        $data = array();
+        $data = [];
         foreach ($this as $rdn => $node) {
             $data[$rdn] = $node;
         }

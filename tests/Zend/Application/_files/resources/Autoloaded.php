@@ -31,6 +31,6 @@ class Zabt_Resource_Autoloaded extends Zend_Application_Resource_ResourceAbstrac
 {
     public function init()
     {
-        $this->getBootstrap()->setOptions(array('executedAutoloadedResource' => true));
+        $this->getBootstrap()->setOptions(['executedAutoloadedResource' => true]);
     }
 }

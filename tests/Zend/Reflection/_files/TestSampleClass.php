@@ -47,7 +47,7 @@ class Zend_Reflection_TestSampleClass2 implements IteratorAggregate
     #[ReturnTypeWillChange]
     public function getIterator()
     {
-        return array();
+        return [];
     }
 
 }

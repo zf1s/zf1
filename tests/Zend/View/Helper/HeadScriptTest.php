@@ -363,14 +363,14 @@ document.write(bar.strlen());');
 
     public function testRenderingDoesNotRenderArbitraryAttributesByDefault()
     {
-        $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', array('bogus' => 'deferred'));
+        $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', ['bogus' => 'deferred']);
         $test = $this->helper->headScript()->toString();
         $this->assertNotContains('bogus="deferred"', $test);
     }
 
     public function testCanRenderArbitraryAttributesOnRequest()
     {
-        $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', array('bogus' => 'deferred'))
+        $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', ['bogus' => 'deferred'])
              ->setAllowArbitraryAttributes(true);
         $test = $this->helper->headScript()->toString();
         $this->assertContains('bogus="deferred"', $test);
@@ -416,14 +416,14 @@ document.write(bar.strlen());');
 
     public function testConditionalScript()
     {
-        $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', array('conditional' => 'lt IE 7'));
+        $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', ['conditional' => 'lt IE 7']);
         $test = $this->helper->headScript()->toString();
         $this->assertContains('<!--[if lt IE 7]>', $test);
     }
 
     public function testConditionalScriptWidthIndentation()
     {
-        $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', array('conditional' => 'lt IE 7'));
+        $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', ['conditional' => 'lt IE 7']);
         $this->helper->headScript()->setIndent(4);
         $test = $this->helper->headScript()->toString();
         $this->assertContains('    <!--[if lt IE 7]>', $test);
@@ -472,7 +472,7 @@ document.write(bar.strlen());');
     {
         $this->helper->setAllowArbitraryAttributes(true);
         $this->helper->appendFile(
-            '/js/foo.js', 'text/javascript', array('conditional' => 'lt IE 7')
+            '/js/foo.js', 'text/javascript', ['conditional' => 'lt IE 7']
         );
         $test = $this->helper->toString();
 
@@ -486,7 +486,7 @@ document.write(bar.strlen());');
     {
         $this->helper->setAllowArbitraryAttributes(true);
         $this->helper->appendScript(
-            '// some script', 'text/javascript', array('noescape' => true)
+            '// some script', 'text/javascript', ['noescape' => true]
         );
         $test = $this->helper->toString();
 
@@ -499,7 +499,7 @@ document.write(bar.strlen());');
     public function testNoEscapeDefaultsToFalse()
     {
         $this->helper->appendScript(
-            '// some script' . PHP_EOL, 'text/javascript', array()
+            '// some script' . PHP_EOL, 'text/javascript', []
         );
         $test = $this->helper->toString();
 
@@ -513,7 +513,7 @@ document.write(bar.strlen());');
     public function testNoEscapeTrue()
     {
         $this->helper->appendScript(
-            '// some script' . PHP_EOL, 'text/javascript', array('noescape' => true)
+            '// some script' . PHP_EOL, 'text/javascript', ['noescape' => true]
         );
         $test = $this->helper->toString();
 
@@ -528,7 +528,7 @@ document.write(bar.strlen());');
     {
         $this->helper->setAllowArbitraryAttributes(true);
         $this->helper->appendFile(
-            '/js/foo.js', 'text/javascript', array('conditional' => '!IE')
+            '/js/foo.js', 'text/javascript', ['conditional' => '!IE']
         );
         $test = $this->helper->toString();
         $this->assertContains('<!--[if !IE]><!--><', $test);
@@ -543,7 +543,7 @@ document.write(bar.strlen());');
 
         // case: defer attribute is true - renders minimized form, charset attribute is non-empty string - renders full form
         $this->helper->setFile(
-            'example.js', 'text/javascript', array('defer' => true, 'charset' => 'utf-8')
+            'example.js', 'text/javascript', ['defer' => true, 'charset' => 'utf-8']
         );
 
         $result = $this->helper->toString();
@@ -555,7 +555,7 @@ document.write(bar.strlen());');
 
         // case: defer attribute is empty string, renders minimized form
         $this->helper->setFile(
-            'example.js', 'text/javascript', array('defer' => '')
+            'example.js', 'text/javascript', ['defer' => '']
         );
 
         $result = $this->helper->toString();
@@ -565,7 +565,7 @@ document.write(bar.strlen());');
 
         // case: defer attribute is false, skips the attribute
         $this->helper->setFile(
-            'example.js', 'text/javascript', array('defer' => false)
+            'example.js', 'text/javascript', ['defer' => false]
         );
 
         $result = $this->helper->toString();

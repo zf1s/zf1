@@ -134,7 +134,7 @@ class Zend_Dojo_View_Helper_DojoTest extends PHPUnit_Framework_TestCase
      */
     public function testShouldAllowRequiringMultipleModulesAtOnce()
     {
-        $modules = array('foo.bar', 'bar.baz', 'baz.bat');
+        $modules = ['foo.bar', 'bar.baz', 'baz.bat'];
         $this->helper->requireModule($modules);
         $test = $this->helper->getModules();
         foreach ($modules as $module) {
@@ -278,7 +278,7 @@ class Zend_Dojo_View_Helper_DojoTest extends PHPUnit_Framework_TestCase
 
     public function testShouldAllowSpecifyingDjConfig()
     {
-        $this->helper->setDjConfig(array('parseOnLoad' => 'true'));
+        $this->helper->setDjConfig(['parseOnLoad' => 'true']);
         $config = $this->helper->getDjConfig();
         $this->assertTrue(is_array($config));
         $this->assertTrue(array_key_exists('parseOnLoad', $config));
@@ -293,7 +293,7 @@ class Zend_Dojo_View_Helper_DojoTest extends PHPUnit_Framework_TestCase
 
     public function testGetDjConfigShouldReturnEmptyArrayByDefault()
     {
-        $this->assertSame(array(), $this->helper->getDjConfig());
+        $this->assertSame([], $this->helper->getDjConfig());
     }
 
     public function testGetDjConfigOptionShouldReturnNullWhenKeyDoesNotExist()
@@ -533,7 +533,7 @@ function() {
 
     public function testAddingProgrammaticDijitsShouldAcceptIdAndArrayOfDijitParams()
     {
-        $this->helper->addDijit('foo', array('dojoType' => 'dijit.form.Form'));
+        $this->helper->addDijit('foo', ['dojoType' => 'dijit.form.Form']);
         $dijits = $this->helper->getDijits();
         $this->assertTrue(is_array($dijits));
         $this->assertEquals(1, count($dijits));
@@ -554,14 +554,14 @@ function() {
      */
     public function testAddingDuplicateProgrammaticDijitsShouldRaiseExceptions()
     {
-        $this->helper->addDijit('foo', array('dojoType' => 'dijit.form.Form'));
-        $this->helper->addDijit('foo', array('dojoType' => 'dijit.form.ComboBox'));
+        $this->helper->addDijit('foo', ['dojoType' => 'dijit.form.Form']);
+        $this->helper->addDijit('foo', ['dojoType' => 'dijit.form.ComboBox']);
     }
 
     public function testSettingProgrammaticDijitsShouldOverwriteExistingDijits()
     {
         $this->testAddingProgrammaticDijitsShouldAcceptIdAndArrayOfDijitParams();
-        $this->helper->setDijit('foo', array('dojoType' => 'dijit.form.ComboBox'));
+        $this->helper->setDijit('foo', ['dojoType' => 'dijit.form.ComboBox']);
         $dijits = $this->helper->getDijits();
         $this->assertTrue(is_array($dijits));
         $this->assertEquals(1, count($dijits));
@@ -571,19 +571,19 @@ function() {
 
     public function testShouldAllowAddingMultipleDijitsAtOnce()
     {
-        $dijits = array(
-            'foo' => array(
+        $dijits = [
+            'foo' => [
                 'dojoType' => 'dijit.form.Form'
-            ),
-            'bar' => array(
+            ],
+            'bar' => [
                 'dojoType' => 'dijit.form.TextBox',
-            ),
-        );
+            ],
+        ];
         $this->helper->addDijits($dijits);
         $test = $this->helper->getDijits();
         $this->assertTrue(is_array($test));
         $this->assertEquals(2, count($test));
-        $keys = array();
+        $keys = [];
         foreach ($test as $dijit) {
             $keys[] = $dijit['id'];
         }
@@ -593,19 +593,19 @@ function() {
     public function testSettingMultipleDijitsAtOnceShouldOverwriteAllDijits()
     {
         $this->testAddingProgrammaticDijitsShouldAcceptIdAndArrayOfDijitParams();
-        $dijits = array(
-            'bar' => array(
+        $dijits = [
+            'bar' => [
                 'dojoType' => 'dijit.form.Form'
-            ),
-            'baz' => array(
+            ],
+            'baz' => [
                 'dojoType' => 'dijit.form.TextBox',
-            ),
-        );
+            ],
+        ];
         $this->helper->setDijits($dijits);
         $test = $this->helper->getDijits();
         $this->assertTrue(is_array($test));
         $this->assertEquals(2, count($test));
-        $keys = array();
+        $keys = [];
         foreach ($test as $dijit) {
             $keys[] = $dijit['id'];
         }
@@ -614,7 +614,7 @@ function() {
 
     public function testRetrievingDijitsByIdShouldReturnJustParams()
     {
-        $this->helper->addDijit('foo', array('dojoType' => 'dijit.form.Form'));
+        $this->helper->addDijit('foo', ['dojoType' => 'dijit.form.Form']);
         $params = $this->helper->getDijit('foo');
         $this->assertTrue(is_array($params));
         $this->assertEquals(1, count($params), var_export($params, 1));
@@ -624,7 +624,7 @@ function() {
 
     public function testShouldAllowRemovingIndividualDijits()
     {
-        $this->helper->addDijit('foo', array('dojoType' => 'dijit.form.Form'));
+        $this->helper->addDijit('foo', ['dojoType' => 'dijit.form.Form']);
         $dijits = $this->helper->getDijits();
         $this->assertTrue(is_array($dijits));
         $this->assertEquals(1, count($dijits));
@@ -650,13 +650,13 @@ function() {
         $array = Zend_Json::decode($json);
         $this->assertTrue(is_array($array));
 
-        $keys  = array();
+        $keys  = [];
         foreach ($array as $dijit) {
             $keys[] = $dijit['id'];
             $this->assertTrue(array_key_exists('params', $dijit));
             $this->assertTrue(is_array($dijit['params']));
         }
-        $this->assertSame(array('foo', 'bar'), $keys);
+        $this->assertSame(['foo', 'bar'], $keys);
     }
 
     public function testRenderingShouldCreateZendDijitsObjectAndAddOnloadForDijitsWhenDijitsArePresent()
@@ -784,10 +784,10 @@ function() {
         $xPath = new DOMXPath($doc);
         $results = $xPath->query('//script');
 
-        $found = array();
+        $found = [];
         for ($i = 0; $i < $results->length; ++$i) {
             $script = $doc->saveXML($results->item($i));
-            foreach (array('foo', 'bar') as $layerType) {
+            foreach (['foo', 'bar'] as $layerType) {
                 $layer = sprintf('/js/%s/%s.xd.js', $layerType, $layerType);
                 if (strstr($script, $layer)) {
                     $found[] = $layerType;
@@ -795,7 +795,7 @@ function() {
                 }
             }
         }
-        $this->assertSame(array('foo', 'bar'), $found);
+        $this->assertSame(['foo', 'bar'], $found);
     }
 
     /**
@@ -876,7 +876,7 @@ function() {
 
     public function testDojoViewHelperContainerAddOptionsPassesOnAllStringOptions() {
         $helper = $this->helper;
-        $options = array(
+        $options = [
             'requireModules' => 'ZfTestRequiredModule',
             'laYers' => '_added_layer_',
             'cdnBase' => 'ZF-RLZ',
@@ -886,36 +886,36 @@ function() {
             'stylesheetmodules' => 'test.stylesheet.module',
             'stylesheets' => 'someStyleSheet',
             'registerdojostylesheet' => true
-        );
+        ];
 
         $helper->setOptions($options);
 
-        $this->assertEquals(array('ZfTestRequiredModule'), $helper->getModules());
-        $this->assertEquals(array('_added_layer_'), $helper->getLayers());
+        $this->assertEquals(['ZfTestRequiredModule'], $helper->getModules());
+        $this->assertEquals(['_added_layer_'], $helper->getLayers());
         $this->assertEquals('ZF-RLZ', $helper->getCdnBase());
         $this->assertEquals('1.9.5', $helper->getCdnVersion());
         $this->assertEquals('_cdn_dojo_path_', $helper->getCdnDojoPath());
         $this->assertEquals('/srv/ZF/dojo/', $helper->getLocalPath());
-        $this->assertEquals(array('test.stylesheet.module'), $helper->getStyleSheetModules());
-        $this->assertEquals(array('someStyleSheet'), $helper->getStylesheets());
+        $this->assertEquals(['test.stylesheet.module'], $helper->getStyleSheetModules());
+        $this->assertEquals(['someStyleSheet'], $helper->getStylesheets());
         $this->assertTrue($helper->registerDojoStylesheet());
     }
 
     public function testDojoViewHelperContainerAddOptionsPassesOnAllArrayOptions() {
         $helper = $this->helper;
-        $modulePaths = array('module1' => 'path1', 'module2' => 'path2');
-        $layers = array('layer_two','layer_three');
-        $djConfig = array('foo1' => 'bar1', 'foo2' => 'bar2');
-        $stylesheetMods = array('test.one.style', 'test.two.style');
-        $stylesheets = array('style1', 'style2');
-        $options = array(
+        $modulePaths = ['module1' => 'path1', 'module2' => 'path2'];
+        $layers = ['layer_two','layer_three'];
+        $djConfig = ['foo1' => 'bar1', 'foo2' => 'bar2'];
+        $stylesheetMods = ['test.one.style', 'test.two.style'];
+        $stylesheets = ['style1', 'style2'];
+        $options = [
             'modulePaths'   => $modulePaths,
             'layers'        => $layers,
             'djConfig'      => $djConfig,
             'styleShEEtModules' => $stylesheetMods,
             'stylesheets'   => $stylesheets,
             'registerdojostylesheet' => false
-        );
+        ];
 
         $helper->setOptions($options);
 
@@ -930,9 +930,9 @@ function() {
     public function testJsonExpressionRenders()
     {
         $this->helper->addDijit('foo',
-                array('dojoType' => 'dijit.form.TextBox',
+                ['dojoType' => 'dijit.form.TextBox',
                       'onChange' => new Zend_Json_Expr('function(){alert(\'foo\');}'),
-                      ));
+                      ]);
         $output = $this->helper->dijitsToJson();
         $this->assertRegexp('#(function\\(\\){alert\\(\'foo\'\\);})#', $output);
     }
@@ -943,12 +943,12 @@ function() {
     public function testRenderStylesheetsOrder()
     {
         $helper = $this->helper;
-        $options = array(
+        $options = [
             'localPath'              => '',
             'stylesheetmodules'      => 'test.stylesheet.module',
             'registerdojostylesheet' => true,
             'enable'                 => true,
-        );
+        ];
         $helper->setOptions($options);
 
         $expected = '<style type="text/css">' . PHP_EOL
@@ -971,7 +971,7 @@ function() {
                      ->registerModulePath('custom', '../custom')
                      ->requireModule('custom.foo')
                      ->setCdnVersion('1.1')
-                     ->setDjConfig(array('parseOnLoad' => 'true'))
+                     ->setDjConfig(['parseOnLoad' => 'true'])
                      ->addStylesheetModule('dijit.themes.tundra')
                      ->addStylesheet('/css/custom.css')
                      ->addOnLoad('foo');

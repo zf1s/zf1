@@ -55,7 +55,7 @@ class Zend_Mobile_Push_Message_AbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTokenThrowsExceptionOnNonStringToken()
     {
-        $this->msg->setToken(array('dummy'));
+        $this->msg->setToken(['dummy']);
     }
 
     public function testSetId()
@@ -71,7 +71,7 @@ class Zend_Mobile_Push_Message_AbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testSetIdThrowsExceptionOnNonScalar()
     {
-        $this->msg->setId(array('foo'));
+        $this->msg->setId(['foo']);
     }
 
     public function testSetOptions()
@@ -79,10 +79,10 @@ class Zend_Mobile_Push_Message_AbstractTest extends PHPUnit_Framework_TestCase
         $token = 'token';
         $id = 'id';
 
-        $ret = $this->msg->setOptions(array(
+        $ret = $this->msg->setOptions([
             'id' => $id,
             'token' => $token
-        ));
+        ]);
         $this->assertEquals($this->msg, $ret);
         $this->assertEquals($token, $this->msg->getToken());
         $this->assertEquals($id, $this->msg->getId());
@@ -93,9 +93,9 @@ class Zend_Mobile_Push_Message_AbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testSetOptionsThrowsExceptionOnMissingMethod()
     {
-        $this->msg->setOptions(array(
+        $this->msg->setOptions([
             'thisMethodDoesNotExist' => 'value'
-        ));
+        ]);
     }
 
     public function testValidateReturnsTrue()

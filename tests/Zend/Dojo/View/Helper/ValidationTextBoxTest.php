@@ -110,11 +110,11 @@ class Zend_Dojo_View_Helper_ValidationTextBoxTest extends PHPUnit_Framework_Test
         return $this->helper->validationTextBox(
             'elementId',
             '2008-07-07',
-            array(
+            [
                 'required'    => true,
                 'regExp'      => '[\w]+',
-            ),
-            array()
+            ],
+            []
         );
     }
 
@@ -155,11 +155,11 @@ class Zend_Dojo_View_Helper_ValidationTextBoxTest extends PHPUnit_Framework_Test
         $html = $this->helper->validationTextBox(
             'elementId',
             '2008-07-07',
-            array(
+            [
                 'required'    => false,
                 'regExp'      => '[\w]+',
-            ),
-            array()
+            ],
+            []
         );
         $this->assertContains('required="false"', $html);
     }

@@ -135,12 +135,12 @@ EOX;
 
     public function testGetHeaders()
     {
-        $expected = array(
+        $expected = [
             'User-Agent'     => 'Zend_XmlRpc_Client',
             'Host'           => 'localhost',
             'Content-Type'   => 'text/xml',
             'Content-Length' => 958
-        );
+        ];
         $this->assertEquals($expected, $this->request->getHeaders());
     }
 
@@ -161,7 +161,7 @@ EOT;
     public function testCanPassInMethodAndParams()
     {
         try {
-            $request = new Zend_XmlRpc_Request_Http('foo', array('bar', 'baz'));
+            $request = new Zend_XmlRpc_Request_Http('foo', ['bar', 'baz']);
         } catch (Exception $e) {
             $this->fail('Should be able to pass in methods and params to request');
         }
@@ -170,12 +170,12 @@ EOT;
     public function testExtendingClassShouldBeAbleToReceiveMethodAndParams()
     {
         try {
-            $request = new Zend_XmlRpc_Request_HttpTest_Extension('foo', array('bar', 'baz'));
+            $request = new Zend_XmlRpc_Request_HttpTest_Extension('foo', ['bar', 'baz']);
         } catch (Exception $e) {
             $this->fail('Should be able to pass in methods and params to request');
         }
         $this->assertEquals('foo', $request->method);
-        $this->assertEquals(array('bar', 'baz'), $request->params);
+        $this->assertEquals(['bar', 'baz'], $request->params);
     }
 
     public function testHttpRequestReadsFromPhpInput()

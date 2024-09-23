@@ -36,13 +36,13 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
     /**
      * @var array
      */
-    protected $_options = array();
+    protected $_options = [];
 
     protected $_feedSamplePath = null;
     
-    protected $_expectedCats = array();
+    protected $_expectedCats = [];
     
-    protected $_expectedCatsDc = array();
+    protected $_expectedCatsDc = [];
 
     public function setup()
     {
@@ -58,36 +58,36 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
                 unset($this->_options[$k]);
             }
         }
-        Zend_Date::setOptions(array('format_type'=>'iso'));
-        $this->_expectedCats = array(
-            array(
+        Zend_Date::setOptions(['format_type'=>'iso']);
+        $this->_expectedCats = [
+            [
                 'term' => 'topic1',
                 'scheme' => 'http://example.com/schema1',
                 'label' => 'topic1'
-            ),
-            array(
+            ],
+            [
                 'term' => 'topic1',
                 'scheme' => 'http://example.com/schema2',
                 'label' => 'topic1'
-            ),
-            array(
+            ],
+            [
                 'term' => 'cat_dog',
                 'scheme' => 'http://example.com/schema1',
                 'label' => 'Cat & Dog'
-            )
-        );
-        $this->_expectedCatsDc = array(
-            array(
+            ]
+        ];
+        $this->_expectedCatsDc = [
+            [
                 'term' => 'topic1',
                 'scheme' => null,
                 'label' => 'topic1'
-            ),
-            array(
+            ],
+            [
                 'term' => 'topic2',
                 'scheme' => null,
                 'label' => 'topic2'
-            )
-        );
+            ]
+        ];
     }
     
     public function teardown()
@@ -165,14 +165,14 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
             file_get_contents($this->_feedSamplePath . '/author/atom10.xml')
         );
 
-        $authors = array(
-            array('email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs'),
-            array('email'=>'joe@example.com','uri'=>'http://www.example.com'),
-            array('uri'=>'http://www.example.com'),
-            array('email'=>'joe@example.com')
-        );
+        $authors = [
+            ['email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs'],
+            ['email'=>'joe@example.com','uri'=>'http://www.example.com'],
+            ['uri'=>'http://www.example.com'],
+            ['email'=>'joe@example.com']
+        ];
 
         $this->assertEquals($authors, (array) $entry->getAuthors());
     }
@@ -186,7 +186,7 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
         $entry = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath . '/author/atom10.xml')
         );
-        $this->assertEquals(array('name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'), $entry->getAuthor());
+        $this->assertEquals(['name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'], $entry->getAuthor());
     }
 
     /**
@@ -301,7 +301,7 @@ class Zend_Feed_Reader_Entry_AtomStandaloneEntryTest extends PHPUnit_Framework_T
             file_get_contents($this->_feedSamplePath.'/category/atom10.xml')
         );
         $this->assertEquals($this->_expectedCats, (array) $entry->getCategories());
-        $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
+        $this->assertEquals(['topic1','Cat & Dog'], array_values($entry->getCategories()->getValues()));
     }
     
 }

@@ -85,11 +85,11 @@ class Zend_View_Helper_FormTextareaTest extends PHPUnit_Framework_TestCase
      */
     public function testCanDisableElement()
     {
-        $html = $this->helper->formTextarea(array(
+        $html = $this->helper->formTextarea([
             'name'    => 'foo',
             'value'   => 'bar',
-            'attribs' => array('disable' => true)
-        ));
+            'attribs' => ['disable' => true]
+        ]);
 
         $this->assertRegexp('/<textarea[^>]*?(disabled="disabled")/', $html);
     }
@@ -99,11 +99,11 @@ class Zend_View_Helper_FormTextareaTest extends PHPUnit_Framework_TestCase
      */
     public function testDisablingElementDoesNotRenderHiddenElements()
     {
-        $html = $this->helper->formTextarea(array(
+        $html = $this->helper->formTextarea([
             'name'    => 'foo',
             'value'   => 'bar',
-            'attribs' => array('disable' => true)
-        ));
+            'attribs' => ['disable' => true]
+        ]);
 
         $this->assertNotRegexp('/<textarea[^>]*?(type="hidden")/', $html);
     }

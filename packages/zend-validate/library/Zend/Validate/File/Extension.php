@@ -43,10 +43,10 @@ class Zend_Validate_File_Extension extends Zend_Validate_Abstract
     /**
      * @var array Error message templates
      */
-    protected $_messageTemplates = array(
+    protected $_messageTemplates = [
         self::FALSE_EXTENSION => "File '%value%' has a false extension",
         self::NOT_FOUND       => "File '%value%' is not readable or does not exist",
-    );
+    ];
 
     /**
      * Internal list of extensions
@@ -64,9 +64,9 @@ class Zend_Validate_File_Extension extends Zend_Validate_Abstract
     /**
      * @var array Error message template variables
      */
-    protected $_messageVariables = array(
+    protected $_messageVariables = [
         'extension' => '_extension'
-    );
+    ];
 
     /**
      * Sets validator options
@@ -84,7 +84,7 @@ class Zend_Validate_File_Extension extends Zend_Validate_Abstract
             $this->setCase($case);
         }
 
-        if (is_array($options) and isset($options['case'])) {
+        if (is_array($options) && isset($options['case'])) {
             $this->setCase($options['case']);
             unset($options['case']);
         }
@@ -122,7 +122,7 @@ class Zend_Validate_File_Extension extends Zend_Validate_Abstract
     public function getExtension()
     {
         if ($this->_extension === null) {
-            return array();
+            return [];
         }
 
         $extension = explode(',', $this->_extension);

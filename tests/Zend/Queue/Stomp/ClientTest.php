@@ -58,7 +58,7 @@ class Zend_Queue_Stomp_Connection_Mock
      * @param array $config ('scheme', 'host', 'port')
      * @return true;
      */
-    public function open($scheme, $host, $port, array $options = array())
+    public function open($scheme, $host, $port, array $options = [])
     {
         if ( $port == 0 )  return false;
         return true;

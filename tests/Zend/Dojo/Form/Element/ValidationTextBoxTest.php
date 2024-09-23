@@ -109,12 +109,12 @@ class Zend_Dojo_Form_Element_ValidationTextBoxTest extends PHPUnit_Framework_Tes
     {
         $element = new Zend_Dojo_Form_Element_ValidationTextBox(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'ValidationTextBox',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }
@@ -152,7 +152,7 @@ class Zend_Dojo_Form_Element_ValidationTextBoxTest extends PHPUnit_Framework_Tes
         $this->assertTrue(empty($constraints));
         $this->assertFalse(array_key_exists('constraints', $this->element->dijitParams));
 
-        $constraints = array('foo' => 'bar', 'bar' => 'baz');
+        $constraints = ['foo' => 'bar', 'bar' => 'baz'];
         $this->element->setConstraints($constraints);
         $this->assertSame($constraints, $this->element->getConstraints());
         $this->assertSame($constraints, $this->element->dijitParams['constraints']);
@@ -193,7 +193,7 @@ class Zend_Dojo_Form_Element_ValidationTextBoxTest extends PHPUnit_Framework_Tes
     {
         $this->element->setConstraint('foo', 'bar');
         
-        $this->element->setConstraints(array('spam' => 'ham'));
+        $this->element->setConstraints(['spam' => 'ham']);
         
         $this->assertEquals('bar', $this->element->getConstraint('foo'));
     }

@@ -193,7 +193,7 @@ class Zend_Config_YamlTest extends PHPUnit_Framework_TestCase
 
     public function testZF413_MultiSections()
     {
-        $config = new Zend_Config_Yaml($this->_iniFileAllSectionsConfig, array('staging','other_staging'));
+        $config = new Zend_Config_Yaml($this->_iniFileAllSectionsConfig, ['staging','other_staging']);
 
         $this->assertEquals('otherStaging', $config->only_in);
         $this->assertEquals('staging', $config->hostname);
@@ -217,8 +217,8 @@ class Zend_Config_YamlTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('all', $config->getSectionName());
         $this->assertEquals(false, $config->areAllSectionsLoaded());
 
-        $config = new Zend_Config_Yaml($this->_iniFileAllSectionsConfig, array('staging','other_staging'));
-        $this->assertEquals(array('staging','other_staging'), $config->getSectionName());
+        $config = new Zend_Config_Yaml($this->_iniFileAllSectionsConfig, ['staging','other_staging']);
+        $this->assertEquals(['staging','other_staging'], $config->getSectionName());
         $this->assertEquals(false, $config->areAllSectionsLoaded());
     }
 
@@ -245,7 +245,7 @@ class Zend_Config_YamlTest extends PHPUnit_Framework_TestCase
     public function testErrorNoSectionFound()
     {
         try {
-            $config = new Zend_Config_Yaml($this->_iniFileConfig,array('all', 'notthere'));
+            $config = new Zend_Config_Yaml($this->_iniFileConfig,['all', 'notthere']);
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
             $this->assertContains('cannot be found', $expected->getMessage());
@@ -298,16 +298,16 @@ class Zend_Config_YamlTest extends PHPUnit_Framework_TestCase
 
     public function testHonorsOptionsProvidedToConstructor()
     {
-        $config = new Zend_Config_Yaml($this->_iniFileAllSectionsConfig, 'debug', array(
+        $config = new Zend_Config_Yaml($this->_iniFileAllSectionsConfig, 'debug', [
             'allow_modifications' => true,
             'skip_extends'        => true,
-            'yaml_decoder'        => array($this, 'yamlDecoder'),
+            'yaml_decoder'        => [$this, 'yamlDecoder'],
             'foo'                 => 'bar', // ignored
-        ));
+        ]);
         $this->assertNull($config->name); // verifies extends were skipped
         $config->foo = 'bar';
         $this->assertEquals('bar', $config->foo); // verifies allows modifications
-        $this->assertEquals(array($this, 'yamlDecoder'), $config->getYamlDecoder());
+        $this->assertEquals([$this, 'yamlDecoder'], $config->getYamlDecoder());
     }
 
     public function testConstructorRaisesExceptionWhenUnableToLoadFile()
@@ -325,9 +325,9 @@ class Zend_Config_YamlTest extends PHPUnit_Framework_TestCase
     public function testPassingBadYamlDecoderRaisesException()
     {
         $this->setExpectedException('Zend_Config_Exception', 'must be callable');
-        $config = new Zend_Config_Yaml($this->_iniFileAllSectionsConfig, 'debug', array(
+        $config = new Zend_Config_Yaml($this->_iniFileAllSectionsConfig, 'debug', [
             'yaml_decoder' => '__foo__',
-        ));
+        ]);
     }
 
     public function testParsesBooleansAccordingToOneDotOneSpecification()
@@ -396,7 +396,7 @@ class Zend_Config_YamlTest extends PHPUnit_Framework_TestCase
             define('ZEND_CONFIG_YAML_ENV_PATH', dirname(__FILE__));
         }
         $config = new Zend_Config_Yaml(
-            $this->_constantsConfig, 'production', array('ignore_constants' => true)
+            $this->_constantsConfig, 'production', ['ignore_constants' => true]
         );
         $this->assertEquals('ZEND_CONFIG_YAML_ENV', $config->env);
         $this->assertEquals('ZEND_CONFIG_YAML_ENV_PATH/test/this', $config->path);

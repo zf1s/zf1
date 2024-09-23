@@ -36,13 +36,13 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
      * Registry of map files that have already been loaded
      * @var array
      */
-    protected $mapsLoaded = array();
+    protected $mapsLoaded = [];
 
     /**
      * Class name/filename map
      * @var array
      */
-    protected $map = array();
+    protected $map = [];
 
     /**
      * Constructor
@@ -156,7 +156,7 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
      */
     public function register()
     {
-        spl_autoload_register(array($this, 'autoload'), true, true);
+        spl_autoload_register([$this, 'autoload'], true, true);
     }
 
     /**
@@ -204,12 +204,12 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
             return;
         }
         
-        $parts = explode('/', str_replace(array('/','\\'), '/', substr($path, 7)));
+        $parts = explode('/', str_replace(['/','\\'], '/', substr($path, 7)));
         $prependSlash = $parts && $parts[0] === '' ? '/' : '';
-        $parts = array_values(array_filter($parts, array(__CLASS__, 'concatPharParts')));
+        $parts = array_values(array_filter($parts, [__CLASS__, 'concatPharParts']));
 
         // resolve parent paths - discard occurrences of '..' and point to parent directory
-        $out = array();
+        $out = [];
         foreach ($parts as $value) {
             if ($value === '..') {
                 array_pop($out);

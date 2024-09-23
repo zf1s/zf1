@@ -196,7 +196,7 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
      */
     public function setSubscriberCount($count)
     {
-        $count = intval($count);
+        $count = (int) $count;
         if ($count <= 0) {
             // require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Subscriber count must be'

@@ -92,7 +92,7 @@ class Zend_Json_Server_ErrorTest extends PHPUnit_Framework_TestCase
 
     public function testCodeShouldBeLimitedToStandardIntegers()
     {
-        foreach (array(true, 'foo', array(), new stdClass, 2.0, 25) as $code) {
+        foreach ([true, 'foo', [], new stdClass, 2.0, 25] as $code) {
             $this->error->setCode($code);
             $this->assertEquals(Zend_Json_Server_Error::ERROR_OTHER, $this->error->getCode());
         }
@@ -113,7 +113,7 @@ class Zend_Json_Server_ErrorTest extends PHPUnit_Framework_TestCase
 
     public function testSetMessageShouldCastToString()
     {
-        foreach (array(true, 2.0, 25) as $message) {
+        foreach ([true, 2.0, 25] as $message) {
             $this->error->setMessage($message);
             $this->assertEquals((string) $message, $this->error->getMessage());
         }
@@ -121,7 +121,7 @@ class Zend_Json_Server_ErrorTest extends PHPUnit_Framework_TestCase
 
     public function testSetMessageToNonScalarShouldSilentlyFail()
     {
-        foreach (array(array(), new stdClass) as $message) {
+        foreach ([[], new stdClass] as $message) {
             $this->error->setMessage($message);
             $this->assertNull($this->error->getMessage());
         }
@@ -134,7 +134,7 @@ class Zend_Json_Server_ErrorTest extends PHPUnit_Framework_TestCase
 
     public function testShouldAllowArbitraryData()
     {
-        foreach (array(true, 'foo', 2, 2.0, array(), new stdClass) as $datum) {
+        foreach ([true, 'foo', 2, 2.0, [], new stdClass] as $datum) {
             $this->error->setData($datum);
             $this->assertEquals($datum, $this->error->getData());
         }
@@ -165,7 +165,7 @@ class Zend_Json_Server_ErrorTest extends PHPUnit_Framework_TestCase
     {
         $this->error->setCode(Zend_Json_Server_Error::ERROR_OTHER)
                     ->setMessage('Unknown Error')
-                    ->setData(array('foo' => 'bar'));
+                    ->setData(['foo' => 'bar']);
     }
 
     public function validateArray($error)

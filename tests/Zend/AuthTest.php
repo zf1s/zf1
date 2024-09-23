@@ -96,7 +96,7 @@ class Zend_AuthTest extends PHPUnit_Framework_TestCase
     {
         // workaround for Undefined variable: _SESSION at Zend\Session\Abstract.php:122
         if(!isset($_SESSION)) {
-            $_SESSION = array();
+            $_SESSION = [];
         }
 
         $auth = Zend_Auth::getInstance();

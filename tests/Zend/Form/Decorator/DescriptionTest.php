@@ -189,7 +189,7 @@ class Zend_Form_Decorator_DescriptionTest extends PHPUnit_Framework_TestCase
     public function testDescriptionIsTranslatedWhenTranslationAvailable()
     {
         // require_once 'Zend/Translate.php';
-        $translations = array('description' => 'This is the description');
+        $translations = ['description' => 'This is the description'];
         $translate = new Zend_Translate('array', $translations);
         $this->element->setDescription('description')
                       ->setTranslator($translate);
@@ -205,14 +205,14 @@ class Zend_Form_Decorator_DescriptionTest extends PHPUnit_Framework_TestCase
         // Init translator
         // require_once 'Zend/Translate.php';
         $translate = new Zend_Translate(
-            array(
+            [
                  'adapter' => 'array',
-                 'content' => array(
+                 'content' => [
                      'firstDescription'  => 'secondDescription',
                      'secondDescription' => 'thirdDescription',
-                 ),
+                 ],
                  'locale'  => 'en'
-            )
+            ]
         );
 
         // Create element

@@ -93,7 +93,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $product_id = $this->_db->quoteIdentifier('product_id');
 
         $select = $this->_select()->where("$product_id = :product_id")
-                                  ->bind(array(':product_id' => 1));
+                                  ->bind([':product_id' => 1]);
 
         $this->assertTrue($select instanceof Zend_Db_Select,
             'Expecting object of type Zend_Db_Select, got '.get_class($select));
@@ -127,7 +127,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectColumnsArray()
     {
         $select = $this->_db->select()
-            ->from('zfproducts', array('product_id', 'product_name')); // array
+            ->from('zfproducts', ['product_id', 'product_name']); // array
         return $select;
     }
 
@@ -149,7 +149,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectColumnsAliases()
     {
         $select = $this->_db->select()
-            ->from('zfproducts', array('alias' => 'product_name'));
+            ->from('zfproducts', ['alias' => 'product_name']);
         return $select;
     }
 
@@ -212,7 +212,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectColumnsAutoExpr()
     {
         $select = $this->_db->select()
-            ->from('zfproducts', array('count' => 'COUNT(*)'));
+            ->from('zfproducts', ['count' => 'COUNT(*)']);
         return $select;
     }
 
@@ -302,7 +302,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectColumnsReset()
     {
         $select = $this->_db->select()
-            ->from(array('p' => 'zfproducts'), array('product_id', 'product_name'));
+            ->from(['p' => 'zfproducts'], ['product_id', 'product_name']);
         return $select;
     }
 
@@ -420,8 +420,8 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $xyz2 = $this->_db->quoteIdentifier('xyz2');
 
         $select = $this->_db->select()
-            ->from( array('xyz1' => 'zfproducts') )
-            ->join( array('xyz2' => 'zfbugs_products'), "$xyz1.$product_id = $xyz2.$product_id")
+            ->from( ['xyz1' => 'zfproducts'] )
+            ->join( ['xyz2' => 'zfbugs_products'], "$xyz1.$product_id = $xyz2.$product_id")
             ->where("$xyz1.$product_id = 1");
         return $select;
     }
@@ -473,7 +473,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
 
         $select = $this->_db->select()
             ->from('zfproducts')
-            ->join('zfbugs', "$bugs.$bug_id = 1", array())
+            ->join('zfbugs', "$bugs.$bug_id = 1", [])
             ->join('zfbugs_products', "$products.$product_id = $bugs_products.$product_id AND $bugs_products.$bug_id = $bugs.$bug_id", null);
         return $select;
     }
@@ -525,8 +525,8 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $bugsProductBugId = $this->_db->quoteIdentifier('bp.bug_id');
 
         $select = $this->_db->select()
-            ->from(array('b' => 'zfbugs'), array('b.bug_id', 'bp.product_id', 'b.bug_description'))
-            ->joinLeft(array('bp' => 'zfbugs_products'), "$bugsBugId = $bugsProductBugId", array());
+            ->from(['b' => 'zfbugs'], ['b.bug_id', 'bp.product_id', 'b.bug_description'])
+            ->joinLeft(['bp' => 'zfbugs_products'], "$bugsBugId = $bugsProductBugId", []);
 
         return $select;
     }
@@ -766,7 +766,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
 
         $select = $this->_db->select()
             ->from('zfproducts')
-            ->where("$product_id IN (?)", array(1, 2, 3));
+            ->where("$product_id IN (?)", [1, 2, 3]);
         return $select;
     }
 
@@ -943,7 +943,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $thecount = $this->_db->quoteIdentifier('thecount');
 
         $select = $this->_db->select()
-            ->from('zfbugs_products', array('bug_id', new Zend_Db_Expr("COUNT(*) AS $thecount")))
+            ->from('zfbugs_products', ['bug_id', new Zend_Db_Expr("COUNT(*) AS $thecount")])
             ->group('bug_id')
             ->order('bug_id');
         return $select;
@@ -972,7 +972,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $thecount = $this->_db->quoteIdentifier('thecount');
 
         $select = $this->_db->select()
-            ->from('zfbugs_products', array('bug_id', new Zend_Db_Expr("COUNT(*) AS $thecount")))
+            ->from('zfbugs_products', ['bug_id', new Zend_Db_Expr("COUNT(*) AS $thecount")])
             ->group("zfbugs_products.bug_id")
             ->order('bug_id');
         return $select;
@@ -1002,7 +1002,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $bug_id = $this->_db->quoteIdentifier('bug_id');
 
         $select = $this->_db->select()
-            ->from('zfbugs_products', array('bug_id'=>new Zend_Db_Expr("$bug_id+1"), new Zend_Db_Expr("COUNT(*) AS $thecount")))
+            ->from('zfbugs_products', ['bug_id'=>new Zend_Db_Expr("$bug_id+1"), new Zend_Db_Expr("COUNT(*) AS $thecount")])
             ->group(new Zend_Db_Expr("$bug_id+1"))
             ->order(new Zend_Db_Expr("$bug_id+1"));
         return $select;
@@ -1039,7 +1039,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $bug_id = $this->_db->quoteIdentifier('bug_id');
 
         $select = $this->_db->select()
-            ->from('zfbugs_products', array('bug_id'=>"ABS($bugs_products.$bug_id)", new Zend_Db_Expr("COUNT(*) AS $thecount")))
+            ->from('zfbugs_products', ['bug_id'=>"ABS($bugs_products.$bug_id)", new Zend_Db_Expr("COUNT(*) AS $thecount")])
             ->group("ABS($bugs_products.$bug_id)")
             ->order("ABS($bugs_products.$bug_id)");
         return $select;
@@ -1063,7 +1063,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectHaving()
     {
         $select = $this->_db->select()
-            ->from('zfbugs_products', array('bug_id', 'COUNT(*) AS thecount'))
+            ->from('zfbugs_products', ['bug_id', 'COUNT(*) AS thecount'])
             ->group('bug_id')
             ->having('COUNT(*) > 1')
             ->order('bug_id');
@@ -1083,7 +1083,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectHavingAnd()
     {
         $select = $this->_db->select()
-            ->from('zfbugs_products', array('bug_id', 'COUNT(*) AS thecount'))
+            ->from('zfbugs_products', ['bug_id', 'COUNT(*) AS thecount'])
             ->group('bug_id')
             ->having('COUNT(*) > 1')
             ->having('COUNT(*) = 1')
@@ -1107,7 +1107,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectHavingWithParameter()
     {
         $select = $this->_db->select()
-            ->from('zfbugs_products', array('bug_id', 'COUNT(*) AS thecount'))
+            ->from('zfbugs_products', ['bug_id', 'COUNT(*) AS thecount'])
             ->group('bug_id')
             ->having('COUNT(*) > ?', 1)
             ->order('bug_id');
@@ -1131,7 +1131,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectHavingOr()
     {
         $select = $this->_db->select()
-            ->from('zfbugs_products', array('bug_id', 'COUNT(*) AS thecount'))
+            ->from('zfbugs_products', ['bug_id', 'COUNT(*) AS thecount'])
             ->group('bug_id')
             ->orHaving('COUNT(*) > 1')
             ->orHaving('COUNT(*) = 1')
@@ -1158,7 +1158,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectHavingOrWithParameter()
     {
         $select = $this->_db->select()
-            ->from('zfbugs_products', array('bug_id', 'COUNT(*) AS thecount'))
+            ->from('zfbugs_products', ['bug_id', 'COUNT(*) AS thecount'])
             ->group('bug_id')
             ->orHaving('COUNT(*) > ?', 1)
             ->orHaving('COUNT(*) = ?', 1)
@@ -1201,7 +1201,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     {
         $select = $this->_db->select()
             ->from('zfproducts')
-            ->order(array('product_name', 'product_id'));
+            ->order(['product_name', 'product_id']);
         return $select;
     }
 
@@ -1298,7 +1298,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     {
         $select = $this->_db->select()
             ->from('zfproducts')
-            ->order(array('2 DESC', '1 DESC'));
+            ->order(['2 DESC', '1 DESC']);
         return $select;
     }
 
@@ -1600,7 +1600,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $sql2 = "SELECT $product_id AS $id, $product_name AS $name FROM $products";
 
         $select = $this->_db->select()
-            ->union(array($sql1, $sql2))
+            ->union([$sql1, $sql2])
             ->order('id');
         return $select;
     }
@@ -1629,7 +1629,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
      */
     public function testSelectUnionInvalidUnionTypeThrowsException()
     {
-        $this->_db->select()->union(array(), 'foo');
+        $this->_db->select()->union([], 'foo');
     }
 
     /**
@@ -1638,12 +1638,12 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     public function testSelectIsTheSameWhenCallingFromAndJoinInDifferentOrders()
     {
         $selectFromThenJoin = $this->_db->select();
-        $selectFromThenJoin->from(array('f' => 'foo'), array('columnfoo'))
-            ->joinLeft(array('b' => 'bar'), 'f.columnfoo2 = b.barcolumn2', array('baralias' => 'barcolumn'));
+        $selectFromThenJoin->from(['f' => 'foo'], ['columnfoo'])
+            ->joinLeft(['b' => 'bar'], 'f.columnfoo2 = b.barcolumn2', ['baralias' => 'barcolumn']);
 
         $selectJoinThenFrom = $this->_db->select();
-        $selectJoinThenFrom->joinLeft(array('b' => 'bar'), 'f.columnfoo2 = b.barcolumn2', array('baralias' => 'barcolumn'))
-            ->from(array('f' => 'foo'), array('columnfoo'));
+        $selectJoinThenFrom->joinLeft(['b' => 'bar'], 'f.columnfoo2 = b.barcolumn2', ['baralias' => 'barcolumn'])
+            ->from(['f' => 'foo'], ['columnfoo']);
 
         $sqlSelectFromThenJoin = $selectFromThenJoin->assemble();
         $sqlSelectJoinThenFrom = $selectJoinThenFrom->assemble();
@@ -1656,14 +1656,14 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     public function testSelectIsTheSameWhenCallingMultipleFromsAfterJoin()
     {
         $selectFromThenJoin = $this->_db->select();
-        $selectFromThenJoin->from(array('f' => 'foo'), array('columnfoo'))
-            ->from(array('d' => 'doo'), array('columndoo'))
-            ->joinLeft(array('b' => 'bar'), 'f.columnfoo2 = b.barcolumn2', array('baralias' => 'barcolumn'));
+        $selectFromThenJoin->from(['f' => 'foo'], ['columnfoo'])
+            ->from(['d' => 'doo'], ['columndoo'])
+            ->joinLeft(['b' => 'bar'], 'f.columnfoo2 = b.barcolumn2', ['baralias' => 'barcolumn']);
 
         $selectJoinThenFrom = $this->_db->select();
-        $selectJoinThenFrom->joinLeft(array('b' => 'bar'), 'f.columnfoo2 = b.barcolumn2', array('baralias' => 'barcolumn'))
-            ->from(array('f' => 'foo'), array('columnfoo'))
-            ->from(array('d' => 'doo'), array('columndoo'));
+        $selectJoinThenFrom->joinLeft(['b' => 'bar'], 'f.columnfoo2 = b.barcolumn2', ['baralias' => 'barcolumn'])
+            ->from(['f' => 'foo'], ['columnfoo'])
+            ->from(['d' => 'doo'], ['columndoo']);
 
         $sqlSelectFromThenJoin = $selectFromThenJoin->assemble();
         $sqlSelectJoinThenFrom = $selectJoinThenFrom->assemble();
@@ -1689,9 +1689,9 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     protected function _selectWithMultipleFromsAfterAJoinWillProperlyOrderColumns()
     {
         $selectJoinThenFrom = $this->_db->select();
-        $selectJoinThenFrom->joinLeft(array('b' => 'bar'), 'f.columnfoo2 = b.barcolumn2', array('baralias' => 'barcolumn'))
-            ->from(array('f' => 'foo'), array('columnfoo'))
-            ->from(array('d' => 'doo'), array('columndoo'));
+        $selectJoinThenFrom->joinLeft(['b' => 'bar'], 'f.columnfoo2 = b.barcolumn2', ['baralias' => 'barcolumn'])
+            ->from(['f' => 'foo'], ['columnfoo'])
+            ->from(['d' => 'doo'], ['columndoo']);
         return $selectJoinThenFrom;
     }
 
@@ -1726,7 +1726,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $colOne  = $this->_db->quoteIdentifier('colOne');
         $colTwo  = $this->_db->quoteIdentifier('colTwo');
 
-        $s = $this->_db->select()->from('A')->joinUsing('B', array($colOne,$colTwo));
+        $s = $this->_db->select()->from('A')->joinUsing('B', [$colOne,$colTwo]);
         $this->assertContains(
             "JOIN {$table_B} ON {$table_B}.{$colOne} = {$table_A}.{$colOne}"
             . " AND {$table_B}.{$colTwo} = {$table_A}.{$colTwo}",
@@ -1758,18 +1758,18 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $colname = $this->_db->quoteIdentifier('column1');
 
         $select = $this->_db->select();
-        $select->from('table1')->joinUsing(array('t2'=>'table2'), $colname);
+        $select->from('table1')->joinUsing(['t2'=>'table2'], $colname);
         $this->assertRegexp("/ON {$table2_alias}.{$colname}/s", $select->assemble());
     }
 
     public function testSqlInjectionWithOrder()
     {
         $select = $this->_db->select();
-        $select->from(array('p' => 'products'))->order('MD5(1);select');
+        $select->from(['p' => 'products'])->order('MD5(1);select');
         $this->assertEquals('SELECT `p`.* FROM `products` AS `p` ORDER BY `MD5(1);select` ASC', $select->assemble());
 
         $select = $this->_db->select();
-        $select->from(array('p' => 'products'))->order('name;select;MD5(1)');
+        $select->from(['p' => 'products'])->order('name;select;MD5(1)');
         $this->assertEquals('SELECT `p`.* FROM `products` AS `p` ORDER BY `name;select;MD5(1)` ASC', $select->assemble());
     }
 
@@ -1779,7 +1779,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     public function testOrderOfSingleFieldWithDirection()
     {
         $select = $this->_db->select();
-        $select->from(array ('p' => 'product'))
+        $select->from( ['p' => 'product'])
             ->order('productId DESC');
 
         $expected = 'SELECT `p`.* FROM `product` AS `p` ORDER BY `productId` DESC';
@@ -1793,8 +1793,8 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     public function testOrderOfMultiFieldWithDirection()
     {
         $select = $this->_db->select();
-        $select->from(array ('p' => 'product'))
-            ->order(array ('productId DESC', 'userId ASC'));
+        $select->from( ['p' => 'product'])
+            ->order( ['productId DESC', 'userId ASC']);
 
         $expected = 'SELECT `p`.* FROM `product` AS `p` ORDER BY `productId` DESC, `userId` ASC';
         $this->assertEquals($expected, $select->assemble(),
@@ -1807,8 +1807,8 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     public function testOrderOfMultiFieldButOnlyOneWithDirection()
     {
         $select = $this->_db->select();
-        $select->from(array ('p' => 'product'))
-            ->order(array ('productId', 'userId DESC'));
+        $select->from( ['p' => 'product'])
+            ->order( ['productId', 'userId DESC']);
 
         $expected = 'SELECT `p`.* FROM `product` AS `p` ORDER BY `productId` ASC, `userId` DESC';
         $this->assertEquals($expected, $select->assemble(),
@@ -1822,7 +1822,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     public function testOrderOfConditionalFieldWithDirection()
     {
         $select = $this->_db->select();
-        $select->from(array ('p' => 'product'))
+        $select->from( ['p' => 'product'])
             ->order('IF(`productId` > 5,1,0) ASC');
 
         $expected = 'SELECT `p`.* FROM `product` AS `p` ORDER BY IF(`productId` > 5,1,0) ASC';

@@ -44,7 +44,7 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
      * Array of child outlines (array of Zend_Pdf_Outline objects)
      * @var array
      */
-    public $childOutlines = array();
+    public $childOutlines = [];
 
     /**
      * Action dictionary
@@ -65,7 +65,7 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
      *
      * @var array  Array of Zend_Pdf_Action objects
      */
-    public $next = array();
+    public $next = [];
 
     /**
      * Object constructor

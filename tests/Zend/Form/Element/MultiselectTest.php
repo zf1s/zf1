@@ -145,12 +145,12 @@ class Zend_Form_Element_MultiselectTest extends PHPUnit_Framework_TestCase
         $this->testMultiOptionsEmptyByDefault();
         $this->element->addMultiOption('foo', 'foovalue');
         $this->assertEquals('foovalue', $this->element->getMultiOption('foo'));
-        $this->element->setMultiOptions(array('bar' => 'barvalue', 'baz' => 'bazvalue'));
-        $this->assertEquals(array('bar' => 'barvalue', 'baz' => 'bazvalue'), $this->element->getMultiOptions());
-        $this->element->addMultiOptions(array('bat' => 'batvalue', 'foo' => 'foovalue'));
-        $this->assertEquals(array('bar' => 'barvalue', 'baz' => 'bazvalue', 'bat' => 'batvalue', 'foo' => 'foovalue'), $this->element->getMultiOptions());
+        $this->element->setMultiOptions(['bar' => 'barvalue', 'baz' => 'bazvalue']);
+        $this->assertEquals(['bar' => 'barvalue', 'baz' => 'bazvalue'], $this->element->getMultiOptions());
+        $this->element->addMultiOptions(['bat' => 'batvalue', 'foo' => 'foovalue']);
+        $this->assertEquals(['bar' => 'barvalue', 'baz' => 'bazvalue', 'bat' => 'batvalue', 'foo' => 'foovalue'], $this->element->getMultiOptions());
         $this->element->addMultiOption('test', 'testvalue');
-        $this->assertEquals(array('bar' => 'barvalue', 'baz' => 'bazvalue', 'bat' => 'batvalue', 'foo' => 'foovalue', 'test' => 'testvalue'), $this->element->getMultiOptions());
+        $this->assertEquals(['bar' => 'barvalue', 'baz' => 'bazvalue', 'bat' => 'batvalue', 'foo' => 'foovalue', 'test' => 'testvalue'], $this->element->getMultiOptions());
     }
 
     /**
@@ -158,20 +158,20 @@ class Zend_Form_Element_MultiselectTest extends PHPUnit_Framework_TestCase
      */
     public function testCanSetMultiOptionsUsingAssocArraysWithKeyValueKeys()
     {
-        $options = array(
-            array(
+        $options = [
+            [
                 'value' => '1',
                 'key'   => 'aa',
-            ),
-            array (
+            ],
+             [
                 'key'   => '2',
                 'value' => 'xxxx',
-            ),
-            array (
+            ],
+             [
                 'value' => '444',
                 'key'   => 'ssss',
-            ),
-        );
+            ],
+        ];
         $this->element->addMultiOptions($options);
         $this->assertEquals($options[0]['value'], $this->element->getMultiOption('aa'));
         $this->assertEquals($options[1]['value'], $this->element->getMultiOption(2));
@@ -210,10 +210,10 @@ class Zend_Form_Element_MultiselectTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsAreRenderedInFinalMarkup()
     {
-        $options = array(
+        $options = [
             'foovalue' => 'Foo',
             'barvalue' => 'Bar'
-        );
+        ];
         $this->element->addMultiOptions($options);
         $html = $this->element->render($this->getView());
         foreach ($options as $value => $label) {
@@ -223,18 +223,18 @@ class Zend_Form_Element_MultiselectTest extends PHPUnit_Framework_TestCase
 
     public function testTranslatedOptionsAreRenderedInFinalMarkupWhenTranslatorPresent()
     {
-        $translations = array(
+        $translations = [
             'ThisShouldNotShow'   => 'Foo Value',
             'ThisShouldNeverShow' => 'Bar Value'
-        );
+        ];
         // require_once 'Zend/Translate.php';
         $translate = new Zend_Translate('array', $translations, 'en');
         $translate->setLocale('en');
 
-        $options = array(
+        $options = [
             'foovalue' => 'ThisShouldNotShow',
             'barvalue' => 'ThisShouldNeverShow'
-        );
+        ];
 
         $this->element->setTranslator($translate)
                       ->addMultiOptions($options);
@@ -252,10 +252,10 @@ class Zend_Form_Element_MultiselectTest extends PHPUnit_Framework_TestCase
         $translate    = new Zend_Translate('array', $translations, 'en');
         $translate->setLocale('en');
 
-        $options = array(
+        $options = [
             'foovalue' => 'Foo',
             'barvalue' => 'Bar'
-        );
+        ];
         $this->element->addMultiOptions($options)
                       ->setTranslator($translate);
         $test = $this->element->getMultiOption('barvalue');
@@ -273,11 +273,11 @@ class Zend_Form_Element_MultiselectTest extends PHPUnit_Framework_TestCase
         $translate    = new Zend_Translate('array', $translations, 'en');
         $translate->setLocale('en');
 
-        $options = array(
+        $options = [
             'foovalue' => 'Foo',
             'barvalue' => 'Bar',
             'testing'  => 'Test Value',
-        );
+        ];
         $this->element->addMultiOptions($options)
                       ->setTranslator($translate);
         $test = $this->element->getMultiOption('testing');
@@ -294,21 +294,21 @@ class Zend_Form_Element_MultiselectTest extends PHPUnit_Framework_TestCase
      */
     public function testOptGroupTranslationsShouldWorkAfterPopulatingElement()
     {
-        $translations = array(
+        $translations = [
             'ThisIsTheLabel'      => 'Optgroup label',
             'ThisShouldNotShow'   => 'Foo Value',
             'ThisShouldNeverShow' => 'Bar Value'
-        );
+        ];
         // require_once 'Zend/Translate.php';
         $translate = new Zend_Translate('array', $translations, 'en');
         $translate->setLocale('en');
 
-        $options = array(
-            'ThisIsTheLabel' => array(
+        $options = [
+            'ThisIsTheLabel' => [
                 'foovalue' => 'ThisShouldNotShow',
                 'barvalue' => 'ThisShouldNeverShow',
-            ),
-        );
+            ],
+        ];
 
         $this->element->setTranslator($translate)
                       ->addMultiOptions($options);
@@ -324,9 +324,9 @@ class Zend_Form_Element_MultiselectTest extends PHPUnit_Framework_TestCase
      */
     public function testAddMultiOptionShouldWorkAfterTranslatorIsDisabled()
     {
-        $options = array(
+        $options = [
             'foovalue' => 'Foo',
-        );
+        ];
         $this->element->setDisableTranslator(true)
                       ->addMultiOptions($options);
         $test = $this->element->getMultiOption('foovalue');
@@ -341,23 +341,23 @@ class Zend_Form_Element_MultiselectTest extends PHPUnit_Framework_TestCase
         $this->element->setConcatJustValuesInErrorMessage(true);
 
         // create element with 4 checkboxes
-        $this->element->setMultiOptions(array(
-            'multiOptions' => array(
-                array('key' => 'a', 'value' => 'A'),
-                array('key' => 'b', 'value' => 'B'),
-                array('key' => 'c', 'value' => 'C'),
-                array('key' => 'd', 'value' => 'D'),
-            )
-        ));
+        $this->element->setMultiOptions([
+            'multiOptions' => [
+                ['key' => 'a', 'value' => 'A'],
+                ['key' => 'b', 'value' => 'B'],
+                ['key' => 'c', 'value' => 'C'],
+                ['key' => 'd', 'value' => 'D'],
+            ]
+        ]);
 
         // check 3 of them
-        $this->element->setValue(array('A', 'B', 'D'));
+        $this->element->setValue(['A', 'B', 'D']);
 
         // later on, fails some validation on submit
         $this->element->addError('some error! %value%');
 
         $this->assertEquals(
-            array('some error! A; B; D'),
+            ['some error! A; B; D'],
             $this->element->getMessages()
         );
     }

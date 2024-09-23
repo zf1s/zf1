@@ -49,7 +49,7 @@ class ZF
     /**
      * @var array of messages
      */
-    protected $_messages = array();
+    protected $_messages = [];
 
     /**
      * @var string
@@ -589,7 +589,7 @@ EOS;
     protected function _runTool()
     {
 
-        $configOptions = array();
+        $configOptions = [];
         if (isset($this->_configFile) && $this->_configFile) {
             $configOptions['configOptions']['configFilepath'] = $this->_configFile;
         }
