@@ -546,7 +546,8 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
         );
         $request = new Zend_Controller_Request_Http();
 
-        $this->assertEquals('/index.php', $request->getBaseUrl());
+        // legacy rewrite headers should not be processed, see https://framework.zend.com/security/advisory/ZF2018-01
+        $this->assertEquals('', $request->getBaseUrl());
     }
 
     public function testSetBaseUrlAutoDiscoveryUsingXOriginalUrl()
@@ -561,7 +562,8 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
         );
         $request = new Zend_Controller_Request_Http();
 
-        $this->assertEquals('/index.php', $request->getBaseUrl());
+        // legacy rewrite headers should not be processed, see https://framework.zend.com/security/advisory/ZF2018-01
+        $this->assertEquals('', $request->getBaseUrl());
     }
 
     public function testSetBaseUrlAutoDiscoveryUsingOrigPathInfo()
