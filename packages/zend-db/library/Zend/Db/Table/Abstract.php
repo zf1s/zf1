@@ -119,7 +119,7 @@ abstract class Zend_Db_Table_Abstract
     /**
      * The schema name (default null means current schema)
      *
-     * @var array
+     * @var string
      */
     protected $_schema = null;
 
