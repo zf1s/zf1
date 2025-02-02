@@ -112,9 +112,9 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
             $id      = 'pane' . $i;
             $title   = 'Pane ' . $i;
             $content = 'This is the content of pane ' . $i;
-            $html   .= $this->view->accordionPane($id, $content, array('title' => $title));
+            $html   .= $this->view->accordionPane($id, $content, ['title' => $title]);
         }
-        return $this->helper->accordionContainer('container', $html, array(), array('style' => 'height: 200px; width: 100px;'));
+        return $this->helper->accordionContainer('container', $html, [], ['style' => 'height: 200px; width: 100px;']);
     }
 
     public function testShouldAllowDeclarativeDijitCreation()
@@ -133,10 +133,10 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
 
     public function testShouldAllowCapturingNestedContent()
     {
-        $this->helper->captureStart('foo', array(), array('style' => 'height: 200px; width: 100px;'));
-        $this->view->accordionPane()->captureStart('bar', array('title' => 'Captured Pane'));
+        $this->helper->captureStart('foo', [], ['style' => 'height: 200px; width: 100px;']);
+        $this->view->accordionPane()->captureStart('bar', ['title' => 'Captured Pane']);
         echo "Captured content started\n";
-        $this->view->accordionPane()->captureStart('baz', array('title' => 'Nested Pane'));
+        $this->view->accordionPane()->captureStart('baz', ['title' => 'Nested Pane']);
         echo 'Nested Content';
         echo $this->view->accordionPane()->captureEnd('baz');
         echo "Captured content ended\n";
@@ -157,9 +157,9 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
      */
     public function testCapturingShouldRaiseErrorWhenDuplicateIdDiscovered()
     {
-        $this->helper->captureStart('foo', array(), array('style' => 'height: 200px; width: 100px;'));
-        $this->view->accordionPane()->captureStart('bar', array('title' => 'Captured Pane'));
-        $this->view->accordionPane()->captureStart('bar', array('title' => 'Captured Pane'));
+        $this->helper->captureStart('foo', [], ['style' => 'height: 200px; width: 100px;']);
+        $this->view->accordionPane()->captureStart('bar', ['title' => 'Captured Pane']);
+        $this->view->accordionPane()->captureStart('bar', ['title' => 'Captured Pane']);
         echo 'Captured Content';
         echo $this->view->accordionPane()->captureEnd('bar');
         echo $this->view->accordionPane()->captureEnd('bar');
@@ -171,7 +171,7 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
      */
     public function testCapturingShouldRaiseErrorWhenNonexistentIdPassedToEnd()
     {
-        $this->helper->captureStart('foo', array(), array('style' => 'height: 200px; width: 100px;'));
+        $this->helper->captureStart('foo', [], ['style' => 'height: 200px; width: 100px;']);
         $html = $this->helper->captureEnd('bar');
     }
 }

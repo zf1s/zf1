@@ -95,7 +95,7 @@ class Zend_Dojo_Form_Decorator_DijitElementTest extends PHPUnit_Framework_TestCa
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->errors = array();
+        $this->errors = [];
         $this->view   = $this->getView();
         $this->decorator = new Zend_Dojo_Form_Decorator_DijitElement();
         $this->element   = $this->getElement();
@@ -125,14 +125,14 @@ class Zend_Dojo_Form_Decorator_DijitElementTest extends PHPUnit_Framework_TestCa
     {
         $element = new Zend_Dojo_Form_Element_TextBox(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'TextBox',
                 'trim'  => true,
                 'propercase' => true,
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }
@@ -176,9 +176,9 @@ class Zend_Dojo_Form_Decorator_DijitElementTest extends PHPUnit_Framework_TestCa
 
     public function testRenderingShouldTriggerErrorWhenDuplicateDijitDetected()
     {
-        $this->view->dojo()->addDijit('foo', array('dojoType' => 'dijit.form.TextBox'));
+        $this->view->dojo()->addDijit('foo', ['dojoType' => 'dijit.form.TextBox']);
 
-        $handler = set_error_handler(array($this, 'handleError'));
+        $handler = set_error_handler([$this, 'handleError']);
         $html = $this->decorator->render('');
         restore_error_handler();
         $this->assertFalse(empty($this->errors), var_export($this->errors, 1));
@@ -206,14 +206,14 @@ class Zend_Dojo_Form_Decorator_DijitElementTest extends PHPUnit_Framework_TestCa
     {
         $element = new Zend_Dojo_Form_Element_TextBox(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'TextBox',
                 'trim'  => true,
                 'propercase' => true,
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         $this->decorator->setElement($element);
         $html = $this->decorator->render('');

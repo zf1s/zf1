@@ -50,7 +50,7 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
         Zend_Debug::setSapi('cli');
         $data = 'string';
         $result = Zend_Debug::Dump($data, null, false);
-        $result = str_replace(array(PHP_EOL, "\n"), '_', $result);
+        $result = str_replace([PHP_EOL, "\n"], '_', $result);
         $expected = "__.*string\(6\) \"string\"__";
         $this->assertRegExp('/^' . $expected . '$/', $result);
     }
@@ -86,7 +86,7 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
         $data = 'string';
         $label = 'LABEL';
         $result = Zend_Debug::Dump($data, $label, false);
-        $result = str_replace(array(PHP_EOL, "\n"), '_', $result);
+        $result = str_replace([PHP_EOL, "\n"], '_', $result);
         $expected = "_{$label} .*_string\(6\) \"string\"__";
         $this->assertRegExp('/^' . $expected . '$/', $result);
     }
@@ -102,7 +102,7 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
         }
 
         Zend_Debug::setSapi('apache');
-        $a = array("a" => "b");
+        $a = ["a" => "b"];
 
         $result = Zend_Debug::dump($a, "LABEL", false);
         $this->assertContains("<pre>", $result);

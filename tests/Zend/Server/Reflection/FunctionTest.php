@@ -51,7 +51,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         $r = new Zend_Server_Reflection_Function($function, 'namespace');
         $this->assertEquals('namespace', $r->getNamespace());
 
-        $argv = array('string1', 'string2');
+        $argv = ['string1', 'string2'];
         $r = new Zend_Server_Reflection_Function($function, 'namespace', $argv);
         $this->assertInternalType('array', $r->getInvokeArguments());
         $this->assertSame($argv, $r->getInvokeArguments());
@@ -128,7 +128,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $args);
         $this->assertCount(0, $args);
 
-        $argv = array('string1', 'string2');
+        $argv = ['string1', 'string2'];
         $r = new Zend_Server_Reflection_Function($function, null, $argv);
         $args = $r->getInvokeArguments();
         $this->assertInternalType('array', $args);

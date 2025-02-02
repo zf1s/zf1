@@ -39,7 +39,7 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
     /**
      * @var array
      */
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * Constructor
@@ -92,7 +92,7 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
         if ($timeout === null) {
             $timeout = self::CREATE_TIMEOUT_DEFAULT;
         }
-        $this->_data[$name] = array();
+        $this->_data[$name] = [];
 
         return true;
     }
@@ -182,22 +182,22 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
         }
 
         // create the message
-        $data = array(
+        $data = [
             'message_id' => md5(uniqid(rand(), true)),
             'body'       => $message,
             'md5'        => md5($message),
             'handle'     => null,
             'created'    => time(),
             'queue_name' => $queue->getName(),
-        );
+        ];
 
         // add $data to the "queue"
         $this->_data[$queue->getName()][] = $data;
 
-        $options = array(
+        $options = [
             'queue' => $queue,
             'data'  => $data,
-        );
+        ];
 
         $classname = $queue->getMessageClass();
         if (!class_exists($classname)) {
@@ -227,7 +227,7 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
             $queue = $this->_queue;
         }
 
-        $data       = array();
+        $data       = [];
         if ($maxMessages > 0) {
             $start_time = microtime(true);
 
@@ -252,11 +252,11 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
             }
         }
 
-        $options = array(
+        $options = [
             'queue'        => $queue,
             'data'         => $data,
             'messageClass' => $queue->getMessageClass(),
-        );
+        ];
 
         $classname = $queue->getMessageSetClass();
         if (!class_exists($classname)) {
@@ -306,7 +306,7 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
      */
     public function getCapabilities()
     {
-        return array(
+        return [
             'create'        => true,
             'delete'        => true,
             'send'          => true,
@@ -315,7 +315,7 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
             'getQueues'     => true,
             'count'         => true,
             'isExists'      => true,
-        );
+        ];
     }
 
     /********************************************************************
@@ -327,7 +327,7 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
      */
     public function __sleep()
     {
-        return array('_data');
+        return ['_data'];
     }
 
     /*

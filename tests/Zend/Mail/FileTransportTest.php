@@ -102,10 +102,10 @@ class Zend_Mail_FileTransportTest extends PHPUnit_Framework_TestCase
     {
         $transport = new Zend_Mail_Transport_File();
 
-        $transport = new Zend_Mail_Transport_File(array(
+        $transport = new Zend_Mail_Transport_File([
             'path'     => $this->_tmpdir,
             'callback' => 'test_function'
-        ));
+        ]);
     }
 
     protected function _prepareMail()
@@ -121,9 +121,9 @@ class Zend_Mail_FileTransportTest extends PHPUnit_Framework_TestCase
 
     public function testNotWritablePathFailure()
     {
-        $transport = new Zend_Mail_Transport_File(array(
-            'callback' => array($this, 'directoryNotExisting')
-        ));
+        $transport = new Zend_Mail_Transport_File([
+            'callback' => [$this, 'directoryNotExisting']
+        ]);
 
         $mail = $this->_prepareMail();
 
@@ -133,7 +133,7 @@ class Zend_Mail_FileTransportTest extends PHPUnit_Framework_TestCase
 
     public function testTransportSendMail()
     {
-        $transport = new Zend_Mail_Transport_File(array('path' => $this->_tmpdir));
+        $transport = new Zend_Mail_Transport_File(['path' => $this->_tmpdir]);
 
         $mail = $this->_prepareMail();
         $mail->send($transport);
@@ -162,10 +162,10 @@ class Zend_Mail_FileTransportTest extends PHPUnit_Framework_TestCase
 
     public function testPrependToCallback()
     {
-        $transport = new Zend_Mail_Transport_File(array(
+        $transport = new Zend_Mail_Transport_File([
             'path' => $this->_tmpdir,
-            'callback' => array($this, 'prependCallback')
-        ));
+            'callback' => [$this, 'prependCallback']
+        ]);
 
         $mail = $this->_prepareMail();
         $mail->send($transport);

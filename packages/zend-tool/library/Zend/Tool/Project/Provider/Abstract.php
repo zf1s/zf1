@@ -108,7 +108,7 @@ abstract class Zend_Tool_Project_Provider_Abstract
 
     public function getContextClasses()
     {
-        return array();
+        return [];
     }
 
     /**

@@ -69,7 +69,7 @@ class Zend_Translate_Adapter_CustomAdapterTest extends PHPUnit_Framework_TestCas
     {
         $this->addTestIncludePath();
 
-        $translate = new Zend_Translate('My_CustomAdapter', array('test' => 'translated'), 'en');
+        $translate = new Zend_Translate('My_CustomAdapter', ['test' => 'translated'], 'en');
         $this->assertTrue(true);
     }
 
@@ -80,7 +80,7 @@ class Zend_Translate_Adapter_CustomAdapterTest extends PHPUnit_Framework_TestCas
         // register zend autoloader
         Zend_Loader_Autoloader::getInstance();
 
-        $translate = new Zend_Translate('My_CustomAdapter', array('test' => 'translated'), 'en');
+        $translate = new Zend_Translate('My_CustomAdapter', ['test' => 'translated'], 'en');
         $this->assertTrue(true);
     }
 

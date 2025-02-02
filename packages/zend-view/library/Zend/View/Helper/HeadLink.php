@@ -48,7 +48,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
      *
      * @var array
      */
-    protected $_itemKeys = array(
+    protected $_itemKeys = [
         'charset',
         'href',
         'hreflang',
@@ -60,7 +60,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
         'title',
         'extras',
         'sizes',
-    );
+    ];
 
     /**
      * @var string registry key
@@ -341,7 +341,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
                 ? $this->getWhitespace($indent)
                 : $this->getIndent();
 
-        $items = array();
+        $items = [];
         $this->getContainer()->ksort();
         foreach ($this as $item) {
             $items[] = $this->itemToString($item);
@@ -375,7 +375,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
         $media                 = 'screen';
         $conditionalStylesheet = false;
         $href                  = array_shift($args);
-        $extras                = array();
+        $extras                = [];
 
         if ($this->_isDuplicateStylesheet($href)) {
             return false;
@@ -442,7 +442,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
         $href  = array_shift($args);
         $type  = array_shift($args);
         $title = array_shift($args);
-        $extras = array();
+        $extras = [];
 
         if(0 < count($args) && is_array($args[0])) {
             $extras = array_shift($args);

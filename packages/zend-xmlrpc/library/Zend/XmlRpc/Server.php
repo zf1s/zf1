@@ -149,7 +149,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
      * PHP types => XML-RPC types
      * @var array
      */
-    protected $_typeMap = array(
+    protected $_typeMap = [
         'i4'                         => 'i4',
         'int'                        => 'int',
         'integer'                    => 'int',
@@ -179,7 +179,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
         'ex:nil'                     => 'nil',
         'void'                       => 'void',
         'mixed'                      => 'struct',
-    );
+    ];
 
     /**
      * Send arguments to all methods or just constructor?
@@ -216,7 +216,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
             // require_once 'Zend/XmlRpc/Server/Exception.php';
             throw new Zend_XmlRpc_Server_Exception('Unknown instance method called on server: ' . $method);
         }
-        return call_user_func_array(array($system, $method), $params);
+        return call_user_func_array([$system, $method], $params);
     }
 
     /**
@@ -464,8 +464,8 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
      */
     public function setResponseClass($class)
     {
-        if (!class_exists($class) or
-            ($c = new ReflectionClass($class) and !$c->isSubclassOf('Zend_XmlRpc_Response'))) {
+        if (!class_exists($class) ||
+            ($c = new ReflectionClass($class) && !$c->isSubclassOf('Zend_XmlRpc_Response'))) {
 
             // require_once 'Zend/XmlRpc/Server/Exception.php';
             throw new Zend_XmlRpc_Server_Exception('Invalid response class');
@@ -571,7 +571,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
         $info     = $this->_table->getMethod($method);
         $params   = $request->getParams();
         $argv     = $info->getInvokeArguments();
-        if (0 < count($argv) and $this->sendArgumentsToAllMethods()) {
+        if (0 < count($argv) && $this->sendArgumentsToAllMethods()) {
             $params = array_merge($params, $argv);
         }
 

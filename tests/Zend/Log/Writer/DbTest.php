@@ -81,8 +81,8 @@ class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
     public function testWriteWithDefaults()
     {
         // log to the mock db adapter
-        $fields = array('message'  => 'foo',
-                        'priority' => 42);
+        $fields = ['message'  => 'foo',
+                        'priority' => 42];
 
         $this->writer->write($fields);
 
@@ -91,41 +91,41 @@ class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($this->db->calls['insert']));
 
         // ...with the correct table and binds for the database
-        $binds = array('message'  => $fields['message'],
-                       'priority' => $fields['priority']);
-        $this->assertEquals(array($this->tableName, $binds),
+        $binds = ['message'  => $fields['message'],
+                       'priority' => $fields['priority']];
+        $this->assertEquals([$this->tableName, $binds],
                             $this->db->calls['insert'][0]);
     }
 
     public function testWriteUsesOptionalCustomColumnNames()
     {
         $this->writer = new Zend_Log_Writer_Db($this->db, $this->tableName,
-                                                array('new-message-field'  => 'message',
-                                                      'new-message-field' => 'priority'));
+                                                ['new-message-field'  => 'message',
+                                                      'new-message-field' => 'priority']);
 
         // log to the mock db adapter
         $message  = 'message-to-log';
         $priority = 2;
-        $this->writer->write(array('message' => $message, 'priority' => $priority));
+        $this->writer->write(['message' => $message, 'priority' => $priority]);
 
         // insert should be called once...
         $this->assertContains('insert', array_keys($this->db->calls));
         $this->assertEquals(1, count($this->db->calls['insert']));
 
         // ...with the correct table and binds for the database
-        $binds = array('new-message-field' => $message,
-                       'new-message-field' => $priority);
-        $this->assertEquals(array($this->tableName, $binds),
+        $binds = ['new-message-field' => $message,
+                       'new-message-field' => $priority];
+        $this->assertEquals([$this->tableName, $binds],
                             $this->db->calls['insert'][0]);
     }
 
     public function testShutdownRemovesReferenceToDatabaseInstance()
     {
-        $this->writer->write(array('message' => 'this should not fail'));
+        $this->writer->write(['message' => 'this should not fail']);
         $this->writer->shutdown();
 
         try {
-            $this->writer->write(array('message' => 'this should fail'));
+            $this->writer->write(['message' => 'this should fail']);
             $this->fail();
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
@@ -135,13 +135,13 @@ class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
 
     public function testFactory()
     {
-        $cfg = array('log' => array('memory' => array(
+        $cfg = ['log' => ['memory' => [
             'writerName'   => "Db",
-            'writerParams' => array(
+            'writerParams' => [
                 'db'    => $this->db,
                 'table' => $this->tableName,
-            ),
-        )));
+            ],
+        ]]];
 
         // require_once 'Zend/Log.php';
         $logger = Zend_Log::factory($cfg['log']);
@@ -173,11 +173,11 @@ class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
         // Init writer
         $this->writer = new Zend_Log_Writer_Db(
             $this->db, $this->tableName,
-            array(
+            [
                  'message-field'  => 'message',
                  'priority-field' => 'priority',
                  'info-field'     => 'info',
-            )
+            ]
         );
 
         // Log
@@ -185,21 +185,21 @@ class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
         $priority = 2;
         $info     = 'extra-info';
         $this->writer->write(
-            array(
+            [
                  'message'  => $message,
                  'priority' => $priority,
                  'info'     => $info,
-            )
+            ]
         );
 
         // Test
-        $binds = array(
+        $binds = [
             'message-field'  => $message,
             'priority-field' => $priority,
             'info-field'     => $info,
-        );
+        ];
         $this->assertEquals(
-            array($this->tableName, $binds),
+            [$this->tableName, $binds],
             $this->db->calls['insert'][0]
         );
     }
@@ -212,30 +212,30 @@ class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
         // Init writer
         $this->writer = new Zend_Log_Writer_Db(
             $this->db, $this->tableName,
-            array(
+            [
                  'message-field'  => 'message',
                  'priority-field' => 'priority',
                  'info-field'     => 'info',
-            )
+            ]
         );
 
         // Log
         $message  = 'message-to-log';
         $priority = 2;
         $this->writer->write(
-            array(
+            [
                  'message'  => $message,
                  'priority' => $priority,
-            )
+            ]
         );
 
         // Test
-        $binds = array(
+        $binds = [
             'message-field'  => $message,
             'priority-field' => $priority,
-        );
+        ];
         $this->assertEquals(
-            array($this->tableName, $binds),
+            [$this->tableName, $binds],
             $this->db->calls['insert'][0]
         );
     }
@@ -244,7 +244,7 @@ class Zend_Log_Writer_DbTest extends PHPUnit_Framework_TestCase
 
 class Zend_Log_Writer_DbTest_MockDbAdapter
 {
-    public $calls = array();
+    public $calls = [];
 
     public function __call($method, $params)
     {
