@@ -334,7 +334,11 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         $oldErrorLevel = error_reporting();
 
         $this->expectingLogging = true;
-        error_reporting(E_ALL | E_STRICT);
+        
+        error_reporting(E_ALL);
+        if (PHP_VERSION_ID < 70400) {
+            error_reporting(E_ALL | E_STRICT);
+        }
 
         $oldHandler = set_error_handler(array($this, 'verifyHandlerData'));
         $logger->registerErrorHandler();
