@@ -115,6 +115,15 @@ composer require zf1s/zf1
 to easy up the transition period, but please keep in mind the recommended approach is to
 identify and install only the packages you need.
 
+### Running tests
+Run all tests:  
+```
+vendor/bin/phpunit --color --stop-on-error --stop-on-failure --stop-on-incomplete
+```
+Run a single test:
+```
+vendor/bin/phpunit --color --stop-on-error --stop-on-failure --stop-on-incomplete --filter=Zend_Form_ElementTest::testOptionsAreCastToArrayWhenAddingFilter
+```
 
 ### Changelog: [here](CHANGELOG.md)
 Original README: [click](README.orig.md)
