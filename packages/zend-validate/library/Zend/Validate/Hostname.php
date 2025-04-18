@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -2042,11 +2045,13 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
     }
 
     /**
-     * @param Zend_Validate_Ip $ipValidator OPTIONAL
+     * @param Zend_Validate_Ip|null $ipValidator OPTIONAL
      * @return Zend_Validate_Hostname
      */
-    public function setIpValidator(Zend_Validate_Ip $ipValidator = null)
+    public function setIpValidator($ipValidator = null)
     {
+        Types::isNullable('ipValidator', $ipValidator, 'Zend_Validate_Ip');
+
         if ($ipValidator === null) {
             $ipValidator = new Zend_Validate_Ip();
         }

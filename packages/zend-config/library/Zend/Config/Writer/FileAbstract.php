@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -76,12 +79,14 @@ class Zend_Config_Writer_FileAbstract extends Zend_Config_Writer
      * Write configuration to file.
      *
      * @param string $filename
-     * @param Zend_Config $config
+     * @param Zend_Config|null $config
      * @param bool $exclusiveLock
      * @return void
      */
-    public function write($filename = null, Zend_Config $config = null, $exclusiveLock = null)
+    public function write($filename = null, $config = null, $exclusiveLock = null)
     {
+        Types::isNullable('config', $config, 'Zend_Config');
+
         if ($filename !== null) {
             $this->setFilename($filename);
         }

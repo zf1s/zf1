@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -885,11 +888,13 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
     /**
      * Set view
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @return Zend_Form_DisplayGroup
      */
-    public function setView(Zend_View_Interface $view = null)
+    public function setView($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         $this->_view = $view;
         return $this;
     }
@@ -915,8 +920,10 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      *
      * @return string
      */
-    public function render(Zend_View_Interface $view = null)
+    public function render($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         if (null !== $view) {
             $this->setView($view);
         }

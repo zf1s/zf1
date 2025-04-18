@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -78,11 +81,13 @@ class Zend_Filter_LocalizedToNormalized implements Zend_Filter_Interface
     /**
      * Sets options to use
      *
-     * @param  array $options (Optional) Options to use
+     * @param  array|null $options (Optional) Options to use
      * @return Zend_Filter_LocalizedToNormalized
      */
-    public function setOptions(array $options = null)
+    public function setOptions($options = null)
     {
+        Types::isNullable('options', $options, 'array');
+
         $this->_options = $options + $this->_options;
         return $this;
     }

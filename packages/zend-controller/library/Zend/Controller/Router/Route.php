@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -484,11 +487,13 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
     /**
      * Set a default translator
      *
-     * @param  Zend_Translate $translator
+     * @param  Zend_Translate|null $translator
      * @return void
      */
-    public static function setDefaultTranslator(Zend_Translate $translator = null)
+    public static function setDefaultTranslator($translator = null)
     {
+        Types::isNullable('translator', $translator, 'Zend_Translate');
+
         self::$_defaultTranslator = $translator;
     }
 

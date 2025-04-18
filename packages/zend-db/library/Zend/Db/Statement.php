@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -180,7 +183,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
         // get the character for value quoting
         // this should be '
         $q = $this->_adapter->quote('a');
-        $q = $q[0];        
+        $q = $q[0];
         // get the value used as an escaped quote,
         // e.g. \' or ''
         $qe = $this->_adapter->quote($q);
@@ -193,7 +196,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
             // this segfaults only after 65,000 characters instead of 9,000
             $sql = preg_replace("/$q([^$q{$escapeChar}]*|($qe)*)*$q/s", '', $sql);
         }
-        
+
         // get a version of the SQL statement with all quoted
         // values and delimited identifiers stripped out
         // remove "foo\"bar"
@@ -291,11 +294,13 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
     /**
      * Executes a prepared statement.
      *
-     * @param array $params OPTIONAL Values to bind to parameter placeholders.
+     * @param array|null $params OPTIONAL Values to bind to parameter placeholders.
      * @return bool
      */
-    public function execute(array $params = null)
+    public function execute($params = null)
     {
+        Types::isNullable('params', $params, 'array');
+
         /*
          * Simple case - no query profiler to manage.
          */

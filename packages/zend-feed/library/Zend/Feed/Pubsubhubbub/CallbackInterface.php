@@ -34,10 +34,10 @@ interface Zend_Feed_Pubsubhubbub_CallbackInterface
      * unsubscription request. This should be the Hub Server confirming the
      * the request prior to taking action on it.
      *
-     * @param array $httpData GET/POST data if available and not in $_GET/POST
+     * @param array|null $httpData GET/POST data if available and not in $_GET/POST
      * @param bool $sendResponseNow Whether to send response now or when asked
      */
-    public function handle(array $httpData = null, $sendResponseNow = false);
+    public function handle($httpData = null, $sendResponseNow = false);
 
     /**
      * Send the response, including all headers.

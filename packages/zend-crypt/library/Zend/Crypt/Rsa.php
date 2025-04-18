@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -64,11 +67,13 @@ class Zend_Crypt_Rsa
     /**
      * Class constructor
      *
-     * @param array $options
+     * @param array|null $options
      * @throws Zend_Crypt_Rsa_Exception
      */
-    public function __construct(array $options = null)
+    public function __construct($options = null)
     {
+        Types::isNullable('options', $options, 'array');
+
         if (!extension_loaded('openssl')) {
             // require_once 'Zend/Crypt/Rsa/Exception.php';
             throw new Zend_Crypt_Rsa_Exception('Zend_Crypt_Rsa requires openssl extension to be loaded.');
@@ -121,12 +126,14 @@ class Zend_Crypt_Rsa
 
     /**
      * @param string $data
-     * @param Zend_Crypt_Rsa_Key_Private $privateKey
+     * @param Zend_Crypt_Rsa_Key_Private|null $privateKey
      * @param string $format
      * @return string
      */
-    public function sign($data, Zend_Crypt_Rsa_Key_Private $privateKey = null, $format = null)
+    public function sign($data, $privateKey = null, $format = null)
     {
+        Types::isNullable('privateKey', $privateKey, 'Zend_Crypt_Rsa_Key_Private');
+
         $signature = '';
         if (isset($privateKey)) {
             $opensslKeyResource = $privateKey->getOpensslKeyResource();
@@ -202,14 +209,16 @@ class Zend_Crypt_Rsa
     }
 
     /**
-     * @param  array $configargs
-     * 
+     * @param  array|null $configargs
+     *
      * @throws Zend_Crypt_Rsa_Exception
-     * 
+     *
      * @return ArrayObject
      */
-    public function generateKeys(array $configargs = null)
+    public function generateKeys($configargs = null)
     {
+        Types::isNullable('configargs', $configargs, 'array');
+
         $config = null;
         $passPhrase = null;
         if ($configargs !== null) {
@@ -320,8 +329,10 @@ class Zend_Crypt_Rsa
         return $this->_hashAlgorithm;
     }
 
-    protected function _parseConfigArgs(array $config = null)
+    protected function _parseConfigArgs($config = null)
     {
+        Types::isNullable('config', $config, 'array');
+
         $configs = array();
         if (isset($config['private_key_bits'])) {
             $configs['private_key_bits'] = $config['private_key_bits'];

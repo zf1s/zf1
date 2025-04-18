@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -109,13 +112,15 @@ class Zend_View_Helper_Navigation_Links
      * View helper entry point:
      * Retrieves helper and optionally sets container to operate on
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container  [optional] container to
      *                                               operate on
      * @return Zend_View_Helper_Navigation_Links     fluent interface, returns
      *                                               self
      */
-    public function links(Zend_Navigation_Container $container = null)
+    public function links($container = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if (null !== $container) {
             $this->setContainer($container);
         }
@@ -741,14 +746,16 @@ class Zend_View_Helper_Navigation_Links
      *
      * Implements {@link Zend_View_Helper_Navigation_Helper::render()}.
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container  [optional] container to
      *                                               render. Default is to
      *                                               render the container
      *                                               registered in the helper.
      * @return string                                helper output
      */
-    public function render(Zend_Navigation_Container $container = null)
+    public function render($container = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if (null === $container) {
             $container = $this->getContainer();
         }

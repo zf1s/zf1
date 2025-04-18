@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -41,7 +44,7 @@ class Zend_Captcha_Dumb extends Zend_Captcha_Word
      * @type string
      */
     protected $_label = 'Please type this word backwards';
-    
+
     /**
      * Set the label for the CAPTCHA
      * @param string $label
@@ -50,7 +53,7 @@ class Zend_Captcha_Dumb extends Zend_Captcha_Word
     {
         $this->_label = $label;
     }
-    
+
     /**
      * Retrieve the label for the CAPTCHA
      * @return string
@@ -62,12 +65,14 @@ class Zend_Captcha_Dumb extends Zend_Captcha_Word
     /**
      * Render the captcha
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @param  mixed $element
      * @return string
      */
-    public function render(Zend_View_Interface $view = null, $element = null)
+    public function render($view = null, $element = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         return $this->getLabel() . ': <b>'
              . strrev($this->getWord())
              . '</b>';

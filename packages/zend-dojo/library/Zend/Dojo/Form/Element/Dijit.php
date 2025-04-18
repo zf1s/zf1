@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -174,11 +177,13 @@ abstract class Zend_Dojo_Form_Element_Dijit extends Zend_Form_Element
      *
      * Ensures that the view object has the dojo view helper path set.
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @return Zend_Dojo_Form_Element_Dijit
      */
-    public function setView(Zend_View_Interface $view = null)
+    public function setView($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         if (null !== $view) {
             if (false === $view->getPluginLoader('helper')->getPaths('Zend_Dojo_View_Helper')) {
                 $view->addHelperPath('Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');

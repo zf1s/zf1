@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -54,11 +57,13 @@ class Zend_View_Helper_FormErrors extends Zend_View_Helper_FormElement
      * Render form errors
      *
      * @param  string|array $errors Error(s) to render
-     * @param  array $options
+     * @param  array|null $options
      * @return string
      */
-    public function formErrors($errors, array $options = null)
+    public function formErrors($errors, $options = null)
     {
+        Types::isNullable('options', $options, 'array');
+
         $escape = true;
         if (isset($options['escape'])) {
             $escape = (bool) $options['escape'];

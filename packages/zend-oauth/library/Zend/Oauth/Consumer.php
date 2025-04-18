@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -98,10 +101,13 @@ class Zend_Oauth_Consumer extends Zend_Oauth
      * @return Zend_Oauth_Token_Request
      */
     public function getRequestToken(
-        array $customServiceParameters = null,
+        $customServiceParameters = null,
         $httpMethod = null,
-        Zend_Oauth_Http_RequestToken $request = null
+        $request = null
     ) {
+        Types::isNullable('customServiceParameters', $customServiceParameters, 'array');
+        Types::isNullable('request', $request, 'Zend_Oauth_Http_RequestToken');
+
         if ($request === null) {
             $request = new Zend_Oauth_Http_RequestToken($this, $customServiceParameters);
         } elseif($customServiceParameters !== null) {
@@ -130,10 +136,14 @@ class Zend_Oauth_Consumer extends Zend_Oauth
      * @return string
      */
     public function getRedirectUrl(
-        array $customServiceParameters = null,
-        Zend_Oauth_Token_Request $token = null,
-        Zend_Oauth_Http_UserAuthorization $redirect = null
+        $customServiceParameters = null,
+        $token = null,
+        $redirect = null
     ) {
+        Types::isNullable('customServiceParameters', $customServiceParameters, 'array');
+        Types::isNullable('token', $token, 'Zend_Oauth_Token_Request');
+        Types::isNullable('redirect', $redirect, 'Zend_Oauth_Http_UserAuthorization');
+
         if ($redirect === null) {
             $redirect = new Zend_Oauth_Http_UserAuthorization($this, $customServiceParameters);
         } elseif($customServiceParameters !== null) {
@@ -157,10 +167,14 @@ class Zend_Oauth_Consumer extends Zend_Oauth
      * @return void
      */
     public function redirect(
-        array $customServiceParameters = null,
-        Zend_Oauth_Token_Request $token = null,
-        Zend_Oauth_Http_UserAuthorization $request = null
+        $customServiceParameters = null,
+        $token = null,
+        $request = null
     ) {
+        Types::isNullable('customServiceParameters', $customServiceParameters, 'array');
+        Types::isNullable('token', $token, 'Zend_Oauth_Token_Request');
+        Types::isNullable('request', $request, 'Zend_Oauth_Http_UserAuthorization');
+
         if ($token instanceof Zend_Oauth_Http_UserAuthorization) {
             $request = $token;
             $token = null;
@@ -177,7 +191,7 @@ class Zend_Oauth_Consumer extends Zend_Oauth
      * @param  array $queryData GET data returned in user's redirect from Provider
      * @param  Zend_Oauth_Token_Request Request Token information
      * @param  string $httpMethod
-     * @param  Zend_Oauth_Http_AccessToken $request
+     * @param  Zend_Oauth_Http_AccessToken|null $request
      * @return Zend_Oauth_Token_Access
      * @throws Zend_Oauth_Exception on invalid authorization token, non-matching response authorization token, or unprovided authorization token
      */
@@ -185,8 +199,10 @@ class Zend_Oauth_Consumer extends Zend_Oauth
         $queryData,
         Zend_Oauth_Token_Request $token,
         $httpMethod = null,
-        Zend_Oauth_Http_AccessToken $request = null
+        $request = null
     ) {
+        Types::isNullable('request', $request, 'Zend_Oauth_Http_AccessToken');
+
         $authorizedToken = new Zend_Oauth_Token_AuthorizedRequest($queryData);
         if (!$authorizedToken->isValid()) {
             // require_once 'Zend/Oauth/Exception.php';

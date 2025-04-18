@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -47,11 +50,13 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
      *
      * @param  integer    $maxMessages
      * @param  integer    $timeout
-     * @param  Zend_Queue $queue
+     * @param  Zend_Queue|null $queue
      * @return Zend_Queue_Message_Iterator
      */
-    public function receive($maxMessages=null, $timeout=null, Zend_Queue $queue=null)
+    public function receive($maxMessages=null, $timeout=null, $queue=null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         if ($maxMessages === null) {
             $maxMessages = 1;
         }

@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -34,8 +37,10 @@ class Zend_EventManager_TestAsset_ClassWithEvents
 {
     protected $events;
 
-    public function events(Zend_EventManager_EventCollection $events = null)
+    public function events($events = null)
     {
+        Types::isNullable('events', $events, 'Zend_EventManager_EventCollection');
+
         if (null !== $events) {
             $this->events = $events;
         }

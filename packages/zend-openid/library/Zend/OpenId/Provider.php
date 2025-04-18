@@ -1,5 +1,7 @@
 <?php
 
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -94,10 +96,10 @@ class Zend_OpenId_Provider
      * @param string $trustUrl is an URL that shows a question if end-user
      *  trust to given consumer (by default it is the same URL with additional
      *  GET variable openid.action=trust)
-     * @param Zend_OpenId_Provider_User $user is an object for communication
+     * @param Zend_OpenId_Provider_User|null $user is an object for communication
      *  with User-Agent and store information about logged-in user (it is a
      *  Zend_OpenId_Provider_User_Session object by default)
-     * @param Zend_OpenId_Provider_Storage $storage is an object for keeping
+     * @param Zend_OpenId_Provider_Storage|null $storage is an object for keeping
      *  persistent database (it is a Zend_OpenId_Provider_Storage_File object
      *  by default)
      * @param integer $sessionTtl is a default time to live for association
@@ -106,10 +108,13 @@ class Zend_OpenId_Provider
      */
     public function __construct($loginUrl = null,
                                 $trustUrl = null,
-                                Zend_OpenId_Provider_User $user = null,
-                                Zend_OpenId_Provider_Storage $storage = null,
+                                $user = null,
+                                $storage = null,
                                 $sessionTtl = 3600)
     {
+        Types::isNullable('user', $user, 'Zend_OpenId_Provider_User');
+        Types::isNullable('storage', $storage, 'Zend_OpenId_Provider_Storage');
+
         if ($loginUrl === null) {
             $loginUrl = Zend_OpenId::selfUrl() . '?openid.action=login';
         } else {
@@ -329,13 +334,15 @@ class Zend_OpenId_Provider
      *  or set to null, then $_GET or $_POST superglobal variable is used
      *  according to REQUEST_METHOD.
      * @param mixed $extensions extension object or array of extensions objects
-     * @param Zend_Controller_Response_Abstract $response an optional response
+     * @param Zend_Controller_Response_Abstract|null $response an optional response
      *  object to perform HTTP or HTML form redirection
      * @return mixed
      */
     public function handle($params=null, $extensions=null,
-                           Zend_Controller_Response_Abstract $response = null)
+                           $response = null)
     {
+        Types::isNullable('response', $response, 'Zend_Controller_Response_Abstract');
+
         if ($params === null) {
             if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 $params = $_GET;
@@ -508,12 +515,14 @@ class Zend_OpenId_Provider
      * @param array $params GET or POST request variables
      * @param bool $immediate enables or disables interaction with user
      * @param mixed $extensions extension object or array of extensions objects
-     * @param Zend_Controller_Response_Abstract $response
+     * @param Zend_Controller_Response_Abstract|null $response
      * @return array
      */
     protected function _checkId($version, $params, $immediate, $extensions=null,
-        Zend_Controller_Response_Abstract $response = null)
+        $response = null)
     {
+        Types::isNullable('response', $response, 'Zend_Controller_Response_Abstract');
+
         $ret = array();
 
         if ($version >= 2.0) {
@@ -638,13 +647,15 @@ class Zend_OpenId_Provider
      *
      * @param array $params GET or POST request variables
      * @param mixed $extensions extension object or array of extensions objects
-     * @param Zend_Controller_Response_Abstract $response an optional response
+     * @param Zend_Controller_Response_Abstract|null $response an optional response
      *  object to perform HTTP or HTML form redirection
      * @return bool
      */
     public function respondToConsumer($params, $extensions=null,
-                           Zend_Controller_Response_Abstract $response = null)
+                           $response = null)
     {
+        Types::isNullable('response', $response, 'Zend_Controller_Response_Abstract');
+
         $version = 1.1;
         if (isset($params['openid_ns']) &&
             $params['openid_ns'] == Zend_OpenId::NS_2_0) {

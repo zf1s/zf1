@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -157,7 +160,7 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      *
      * Implements {@link Zend_View_Helper_Navigation_Interface::setContainer()}.
      *
-     * @param  Zend_Navigation_Container $container        [optional] container
+     * @param  null|Zend_Navigation_Container $container        [optional] container
      *                                                     to operate on.
      *                                                     Default is null,
      *                                                     meaning container
@@ -165,8 +168,10 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      * @return Zend_View_Helper_Navigation_HelperAbstract  fluent interface,
      *                                                     returns self
      */
-    public function setContainer(Zend_Navigation_Container $container = null)
+    public function setContainer($container = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         $this->_container = $container;
         return $this;
     }
@@ -438,13 +443,15 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      *
      * Implements {@link Zend_View_Helper_Navigation_Helper::setAcl()}.
      *
-     * @param  Zend_Acl $acl                               [optional] ACL object.
+     * @param  Zend_Acl|null $acl                          [optional] ACL object.
      *                                                     Default is null.
      * @return Zend_View_Helper_Navigation_HelperAbstract  fluent interface,
      *                                                     returns self
      */
-    public function setAcl(Zend_Acl $acl = null)
+    public function setAcl($acl = null)
     {
+        Types::isNullable('acl', $acl, 'Zend_Acl');
+
         $this->_acl = $acl;
         return $this;
     }
@@ -922,7 +929,7 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      * @return string           Normalized ID
      */
     protected function _normalizeId($value)
-    {        
+    {
         if (false === $this->_skipPrefixForId) {
             $prefix = $this->getPrefixForId();
 
@@ -939,12 +946,14 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
     /**
      * Sets default ACL to use if another ACL is not explicitly set
      *
-     * @param  Zend_Acl $acl  [optional] ACL object. Default is null, which
+     * @param  Zend_Acl|null $acl  [optional] ACL object. Default is null, which
      *                        sets no ACL object.
      * @return void
      */
-    public static function setDefaultAcl(Zend_Acl $acl = null)
+    public static function setDefaultAcl($acl = null)
     {
+        Types::isNullable('acl', $acl, 'Zend_Acl');
+
         self::$_defaultAcl = $acl;
     }
 

@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -116,8 +119,10 @@ class Zend_Log
      *
      * @param Zend_Log_Writer_Abstract|null  $writer  default writer
      */
-    public function __construct(Zend_Log_Writer_Abstract $writer = null)
+    public function __construct($writer = null)
     {
+        Types::isNullable('writer', $writer, 'Zend_Log_Writer_Abstract');
+
         $r = new ReflectionClass($this);
         $this->_priorities = array_flip($r->getConstants());
 

@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -47,11 +50,13 @@ class Zend_Text_Table_Row
      * Create a new column and append it to the row
      *
      * @param  string $content
-     * @param  array  $options
+     * @param  array|null $options
      * @return Zend_Text_Table_Row
      */
-    public function createColumn($content, array $options = null)
+    public function createColumn($content, $options = null)
     {
+        Types::isNullable('options', $options, 'array');
+
         $align    = null;
         $colSpan  = null;
         $encoding = null;

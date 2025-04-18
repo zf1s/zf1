@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -183,8 +186,10 @@ class Zend_Controller_Router_Route_Chain extends Zend_Controller_Router_Route_Ab
      * @param  Zend_Controller_Request_Abstract|null $request
      * @return void
      */
-    public function setRequest(Zend_Controller_Request_Abstract $request = null)
+    public function setRequest($request = null)
     {
+        Types::isNullable('request', $request, 'Zend_Controller_Request_Abstract');
+
         $this->_request = $request;
 
         foreach ($this->_routes as $route) {

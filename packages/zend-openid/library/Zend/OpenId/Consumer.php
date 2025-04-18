@@ -1,5 +1,7 @@
 <?php
 
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -106,14 +108,16 @@ class Zend_OpenId_Consumer
      * Enables or disables future association with server based on
      * Diffie-Hellman key agreement.
      *
-     * @param Zend_OpenId_Consumer_Storage $storage implementation of custom
+     * @param Zend_OpenId_Consumer_Storage|null $storage implementation of custom
      *  storage object
      * @param bool $dumbMode Enables or disables consumer to use association
      *  with server based on Diffie-Hellman key agreement
      */
-    public function __construct(Zend_OpenId_Consumer_Storage $storage = null,
+    public function __construct($storage = null,
                                 $dumbMode = false)
     {
+        Types::isNullable('storage', $storage, 'Zend_OpenId_Consumer_Storage');
+
         if ($storage === null) {
             // require_once "Zend/OpenId/Consumer/Storage/File.php";
             $this->_storage = new Zend_OpenId_Consumer_Storage_File();
@@ -134,13 +138,15 @@ class Zend_OpenId_Consumer
      * @param string $returnTo URL to redirect response from server to
      * @param string $root HTTP URL to identify consumer on server
      * @param mixed $extensions extension object or array of extensions objects
-     * @param Zend_Controller_Response_Abstract $response an optional response
+     * @param Zend_Controller_Response_Abstract|null $response an optional response
      *  object to perform HTTP or HTML form redirection
      * @return bool
      */
     public function login($id, $returnTo = null, $root = null, $extensions = null,
-                          Zend_Controller_Response_Abstract $response = null)
+                          $response = null)
     {
+        Types::isNullable('response', $response, 'Zend_Controller_Response_Abstract');
+
         return $this->_checkId(
             false,
             $id,
@@ -161,14 +167,16 @@ class Zend_OpenId_Consumer
      * @param string $returnTo HTTP URL to redirect response from server to
      * @param string $root HTTP URL to identify consumer on server
      * @param mixed $extensions extension object or array of extensions objects
-     * @param Zend_Controller_Response_Abstract $response an optional response
+     * @param Zend_Controller_Response_Abstract|null $response an optional response
      *  object to perform HTTP or HTML form redirection
      * @return bool
      */
     public function check($id, $returnTo=null, $root=null, $extensions = null,
-                          Zend_Controller_Response_Abstract $response = null)
+                          $response = null)
 
     {
+        Types::isNullable('response', $response, 'Zend_Controller_Response_Abstract');
+
         return $this->_checkId(
             true,
             $id,
@@ -300,7 +308,7 @@ class Zend_OpenId_Consumer
             if (isset($params['openid_op_endpoint']) && $url !== $params['openid_op_endpoint']) {
                 $this->_setError("The op_endpoint URI is not the same of URI associated with the assoc_handle");
                 return false;
-            }       
+            }
             $signed = explode(',', $params['openid_signed']);
             // Check the parameters for the signature
             // @see https://openid.net/specs/openid-authentication-2_0.html#positive_assertions
@@ -314,7 +322,7 @@ class Zend_OpenId_Consumer
                     return false;
                 }
             }
-            
+
             $data = '';
             foreach ($signed as $key) {
                 $data .= $key . ':' . $params['openid_' . strtr($key,'.','_')] . "\n";
@@ -763,13 +771,13 @@ class Zend_OpenId_Consumer
                 $r)) {
             $XRDS = $r[3];
             $version = 2.0;
-            $response = $this->_httpRequest($XRDS); 
+            $response = $this->_httpRequest($XRDS);
             if (preg_match(
                     '/<URI>([^\t]*)<\/URI>/i',
                     $response,
                     $x)) {
                 $server = $x[1];
-                // $realId 
+                // $realId
                 $realId = 'http://specs.openid.net/auth/2.0/identifier_select';
             }
             else {
@@ -854,8 +862,10 @@ class Zend_OpenId_Consumer
      * @return bool
      */
     protected function _checkId($immediate, $id, $returnTo=null, $root=null,
-        $extensions=null, Zend_Controller_Response_Abstract $response = null)
+        $extensions=null, $response = null)
     {
+        Types::isNullable('response', $response, 'Zend_Controller_Response_Abstract');
+
         $this->_setError('');
 
         if (!Zend_OpenId::normalize($id)) {

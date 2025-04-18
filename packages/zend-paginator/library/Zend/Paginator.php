@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -264,12 +267,14 @@ class Zend_Paginator implements Countable, IteratorAggregate
      *
      * @param  mixed $data
      * @param  string $adapter
-     * @param  array $prefixPaths
+     * @param  array|null $prefixPaths
      * @return Zend_Paginator
      */
     public static function factory($data, $adapter = self::INTERNAL_ADAPTER,
-                                   array $prefixPaths = null)
+                                   $prefixPaths = null)
     {
+        Types::isNullable('prefixPaths', $prefixPaths, 'array');
+
         if ($data instanceof Zend_Paginator_AdapterAggregate) {
             return new self($data->getPaginatorAdapter());
         } else {
@@ -534,7 +539,7 @@ class Zend_Paginator implements Countable, IteratorAggregate
         if (!$this->_cacheEnabled()) {
             return count($this->getAdapter());
         } else {
-            $cacheId   = md5($this->_getCacheInternalId(). '_itemCount');            
+            $cacheId   = md5($this->_getCacheInternalId(). '_itemCount');
             $itemCount = self::$_cache->load($cacheId);
 
             if ($itemCount === false) {
@@ -542,7 +547,7 @@ class Zend_Paginator implements Countable, IteratorAggregate
 
                 self::$_cache->save($itemCount, $cacheId, array($this->_getCacheInternalId()));
             }
-            
+
             return $itemCount;
         }
     }
@@ -933,11 +938,13 @@ class Zend_Paginator implements Countable, IteratorAggregate
     /**
      * Sets the view object.
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @return Zend_Paginator
      */
-    public function setView(Zend_View_Interface $view = null)
+    public function setView($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         $this->_view = $view;
 
         return $this;
@@ -990,11 +997,13 @@ class Zend_Paginator implements Countable, IteratorAggregate
     /**
      * Renders the paginator.
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @return string
      */
-    public function render(Zend_View_Interface $view = null)
+    public function render($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         if (null !== $view) {
             $this->setView($view);
         }
@@ -1060,7 +1069,7 @@ class Zend_Paginator implements Countable, IteratorAggregate
     protected function _getCacheInternalId()
     {
         $adapter = $this->getAdapter();
-        
+
         if (method_exists($adapter, 'getCacheIdentifier')) {
             return md5(serialize(array(
                 $adapter->getCacheIdentifier(), $this->getItemCountPerPage()

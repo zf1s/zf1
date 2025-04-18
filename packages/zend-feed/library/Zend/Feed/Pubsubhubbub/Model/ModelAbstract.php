@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -47,10 +50,12 @@ class Zend_Feed_Pubsubhubbub_Model_ModelAbstract
     /**
      * Constructor
      *
-     * @param  Zend_Db_Table_Abstract $tableGateway
+     * @param  Zend_Db_Table_Abstract|null $tableGateway
      */
-    public function __construct(Zend_Db_Table_Abstract $tableGateway = null)
+    public function __construct($tableGateway = null)
     {
+        Types::isNullable('tableGateway', $tableGateway, 'Zend_Db_Table_Abstract');
+
         if ($tableGateway === null) {
             $parts = explode('_', get_class($this));
             $table = strtolower(array_pop($parts));

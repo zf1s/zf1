@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -158,11 +161,13 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
     /**
      * Render form element
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @return string
      */
-    public function render(Zend_View_Interface $view = null)
+    public function render($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         $captcha    = $this->getCaptcha();
         $captcha->setName($this->getFullyQualifiedName());
 

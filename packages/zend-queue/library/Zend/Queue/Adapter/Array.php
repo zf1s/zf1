@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -48,8 +51,10 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
      * @param  Zend_Queue|null $queue
      * @return void
      */
-    public function __construct($options, Zend_Queue $queue = null)
+    public function __construct($options, $queue = null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         parent::__construct($options, $queue);
     }
 
@@ -132,13 +137,15 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
     /**
      * Return the approximate number of messages in the queue
      *
-     * @param  Zend_Queue $queue
+     * @param  Zend_Queue|null $queue
      * @return integer
      * @throws Zend_Queue_Exception
      */
     #[ReturnTypeWillChange]
-    public function count(Zend_Queue $queue=null)
+    public function count($queue=null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         if ($queue === null) {
             $queue = $this->_queue;
         }
@@ -162,12 +169,14 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
      * Send a message to the queue
      *
      * @param  string     $message Message to send to the active queue
-     * @param  Zend_Queue $queue
+     * @param  Zend_Queue|null $queue
      * @return Zend_Queue_Message
      * @throws Zend_Queue_Exception
      */
-    public function send($message, Zend_Queue $queue=null)
+    public function send($message, $queue=null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         if ($queue === null) {
             $queue = $this->_queue;
         }
@@ -212,11 +221,13 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
      *
      * @param  integer    $maxMessages  Maximum number of messages to return
      * @param  integer    $timeout      Visibility timeout for these messages
-     * @param  Zend_Queue $queue
+     * @param  Zend_Queue|null $queue
      * @return Zend_Queue_Message_Iterator
      */
-    public function receive($maxMessages = null, $timeout = null, Zend_Queue $queue = null)
+    public function receive($maxMessages = null, $timeout = null, $queue = null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         if ($maxMessages === null) {
             $maxMessages = 1;
         }

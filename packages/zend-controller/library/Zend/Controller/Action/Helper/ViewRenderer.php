@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -175,12 +178,14 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
      *
      * Optionally set view object and options.
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @param  array               $options
      * @return void
      */
-    public function __construct(Zend_View_Interface $view = null, array $options = array())
+    public function __construct($view = null, array $options = array())
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         if (null !== $view) {
             $this->setView($view);
         }
@@ -626,7 +631,7 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
         } elseif (null !== $action) {
             $vars['action'] = $action;
         }
-        
+
         $replacePattern = array('/[^a-z0-9]+$/i', '/^[^a-z0-9]+/i');
         $vars['action'] = preg_replace($replacePattern, '', $vars['action']);
 

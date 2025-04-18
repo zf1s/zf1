@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -183,10 +186,11 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
      * as needed to *unserialize* the profile from an xmlIterator
      *
      * @param SimpleXMLIterator $xmlIterator
-     * @param Zend_Tool_Project_Profile_Resource $resource
+     * @param Zend_Tool_Project_Profile_Resource|null $resource
      */
-    protected function _unserializeRecurser(SimpleXMLIterator $xmlIterator, Zend_Tool_Project_Profile_Resource $resource = null)
+    protected function _unserializeRecurser(SimpleXMLIterator $xmlIterator, $resource = null)
     {
+        Types::isNullable('resource', $resource, 'Zend_Tool_Project_Profile_Resource');
 
         foreach ($xmlIterator as $resourceName => $resourceData) {
 

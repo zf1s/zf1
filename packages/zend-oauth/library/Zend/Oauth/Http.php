@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -81,9 +84,12 @@ class Zend_Oauth_Http
      */
     public function __construct(
         Zend_Oauth_Consumer $consumer,
-        array $parameters = null,
-        Zend_Oauth_Http_Utility $utility = null
+        $parameters = null,
+        $utility = null
     ) {
+        Types::isNullable('parameters', $parameters, 'array');
+        Types::isNullable('utility', $utility, 'Zend_Oauth_Http_Utility');
+
         $this->_consumer = $consumer;
         $this->_preferredRequestScheme = $this->_consumer->getRequestScheme();
         if ($parameters !== null) {
@@ -216,12 +222,14 @@ class Zend_Oauth_Http
      * Manages the switch from OAuth request scheme to another lower preference
      * scheme during a request cycle.
      *
-     * @param  Zend_Http_Response
+     * @param  Zend_Http_Response|null $response
      * @return void
      * @throws Zend_Oauth_Exception if unable to retrieve valid token response
      */
-    protected function _assessRequestAttempt(Zend_Http_Response $response = null)
+    protected function _assessRequestAttempt($response = null)
     {
+        Types::isNullable('response', $response, 'Zend_Http_Response');
+
         switch ($this->_preferredRequestScheme) {
             case Zend_Oauth::REQUEST_SCHEME_HEADER:
                 $this->_preferredRequestScheme = Zend_Oauth::REQUEST_SCHEME_POSTBODY;

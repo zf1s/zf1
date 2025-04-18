@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -239,12 +242,14 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
     }
 
     /**
-     * @param Zend_Validate_Hostname $hostnameValidator OPTIONAL
+     * @param Zend_Validate_Hostname|null $hostnameValidator OPTIONAL
      * @param int                    $allow             OPTIONAL
      * @return $this
      */
-    public function setHostnameValidator(Zend_Validate_Hostname $hostnameValidator = null, $allow = Zend_Validate_Hostname::ALLOW_DNS)
+    public function setHostnameValidator($hostnameValidator = null, $allow = Zend_Validate_Hostname::ALLOW_DNS)
     {
+        Types::isNullable('hostnameValidator', $hostnameValidator, 'Zend_Validate_Hostname');
+
         if (!$hostnameValidator) {
             $hostnameValidator = new Zend_Validate_Hostname($allow);
         }

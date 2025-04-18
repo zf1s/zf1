@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -323,12 +326,14 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
 
     /**
      * @param  string $operation
-     * @param  array  $options
+     * @param  array|null $options
      * @link   http://developer.ebay.com/DevZone/finding/Concepts/MakingACall.html#StandardURLParameters
      * @return DOMDocument
      */
-    protected function _request($operation, array $options = null)
+    protected function _request($operation, $options = null)
     {
+        Types::isNullable('options', $options, 'array');
+
         // generate default options
         // constructor load global-id and application-id values
         $default = array('OPERATION-NAME'       => $operation,

@@ -1,5 +1,7 @@
 <?php
 
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -282,13 +284,15 @@ class Zend_Service_Delicious
      * If no date or url is given, most recent date will be used
      *
      * @param  string    $tag Optional filtering by tag
-     * @param  Zend_Date $dt  Optional filtering by date
+     * @param  Zend_Date|null $dt  Optional filtering by date
      * @param  string    $url Optional filtering by url
      * @throws Zend_Service_Delicious_Exception
      * @return Zend_Service_Delicious_PostList
      */
-    public function getPosts($tag = null, Zend_Date $dt = null, $url = null)
+    public function getPosts($tag = null, $dt = null, $url = null)
     {
+        Types::isNullable('dt', $dt, 'Zend_Date');
+
         $parms = array();
         if ($tag) {
             $parms['tag'] = $tag;
@@ -508,7 +512,7 @@ class Zend_Service_Delicious
         switch ($type) {
             case 'xml':
                 $dom = new DOMDocument() ;
-    
+
                 if (!$dom = @Zend_Xml_Security::scan($responseBody, $dom)) {
                     /**
                      * @see Zend_Service_Delicious_Exception

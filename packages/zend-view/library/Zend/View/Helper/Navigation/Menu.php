@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -113,18 +116,20 @@ class Zend_View_Helper_Navigation_Menu
      * @var string
      */
     protected $_innerIndent = '    ';
-    
+
     /**
      * View helper entry point:
      * Retrieves helper and optionally sets container to operate on
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container  [optional] container to
      *                                               operate on
      * @return Zend_View_Helper_Navigation_Menu      fluent interface,
      *                                               returns self
      */
-    public function menu(Zend_Navigation_Container $container = null)
+    public function menu($container = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if (null !== $container) {
             $this->setContainer($container);
         }
@@ -285,10 +290,10 @@ class Zend_View_Helper_Navigation_Menu
     {
         return $this->_onlyActiveBranch;
     }
-    
+
     /**
      * Sets a flag indicating whether to expand all sibling nodes of the active branch
-     * 
+     *
      * @param  bool $flag                        [optional] expand all siblings of
      *                                           nodes in the active branch. Default is true.
      * @return Zend_View_Helper_Navigation_Menu  fluent interface, returns self
@@ -311,7 +316,7 @@ class Zend_View_Helper_Navigation_Menu
     {
         return $this->_expandSiblingNodesOfActiveBranch;
     }
-    
+
     /**
      * Enables/disables rendering of parents when only rendering active branch
      *
@@ -890,7 +895,7 @@ class Zend_View_Helper_Navigation_Menu
      * Available $options:
      *
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container [optional] container to
      *                                               create menu from. Default
      *                                               is to use the container
      *                                               retrieved from
@@ -899,9 +904,11 @@ class Zend_View_Helper_Navigation_Menu
      *                                               controlling rendering
      * @return string                                rendered menu
      */
-    public function renderMenu(Zend_Navigation_Container $container = null,
+    public function renderMenu($container = null,
                                array $options = array())
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if (null === $container) {
             $container = $this->getContainer();
         }
@@ -958,7 +965,7 @@ class Zend_View_Helper_Navigation_Menu
      * ));
      * </code>
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container  [optional] container to
      *                                               render. Default is to render
      *                                               the container registered in
      *                                               the helper.
@@ -982,13 +989,15 @@ class Zend_View_Helper_Navigation_Menu
      *                                                  {@link getInnerIndent()}.
      * @return string                                   rendered content
      */
-    public function renderSubMenu(Zend_Navigation_Container $container = null,
+    public function renderSubMenu($container = null,
                                   $ulClass = null,
                                   $indent = null,
                                   $ulId   = null,
                                   $addPageClassToLi = false,
                                   $innerIndent = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         return $this->renderMenu($container, array(
             'indent'           => $indent,
             'innerIndent'      => $innerIndent,
@@ -1009,7 +1018,7 @@ class Zend_View_Helper_Navigation_Menu
      * as-is, and will be available in the partial script as 'container', e.g.
      * <code>echo 'Number of pages: ', count($this->container);</code>.
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container [optional] container to
      *                                               pass to view script. Default
      *                                               is to use the container
      *                                               registered in the helper.
@@ -1026,9 +1035,11 @@ class Zend_View_Helper_Navigation_Menu
      *
      * @throws Zend_View_Exception   When no partial script is set
      */
-    public function renderPartial(Zend_Navigation_Container $container = null,
+    public function renderPartial($container = null,
                                   $partial = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if (null === $container) {
             $container = $this->getContainer();
         }
@@ -1082,14 +1093,16 @@ class Zend_View_Helper_Navigation_Menu
      * @see renderPartial()
      * @see renderMenu()
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container [optional] container to
      *                                               render. Default is to
      *                                               render the container
      *                                               registered in the helper.
      * @return string                                helper output
      */
-    public function render(Zend_Navigation_Container $container = null)
+    public function render($container = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if ($partial = $this->getPartial()) {
             return $this->renderPartial($container, $partial);
         } else {

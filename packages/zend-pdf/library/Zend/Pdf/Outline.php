@@ -281,15 +281,15 @@ abstract class Zend_Pdf_Outline implements RecursiveIterator, Countable
      * @param Zend_Pdf_ElementFactory    $factory object factory for newly created indirect objects
      * @param boolean $updateNavigation  Update navigation flag
      * @param Zend_Pdf_Element $parent   Parent outline dictionary reference
-     * @param Zend_Pdf_Element $prev     Previous outline dictionary reference
-     * @param SplObjectStorage $processedOutlines  List of already processed outlines
+     * @param Zend_Pdf_Element|null $prev     Previous outline dictionary reference
+     * @param SplObjectStorage|null $processedOutlines  List of already processed outlines
      * @return Zend_Pdf_Element
      */
     abstract public function dumpOutline(Zend_Pdf_ElementFactory_Interface $factory,
                                                                            $updateNavigation,
                                                           Zend_Pdf_Element $parent,
-                                                          Zend_Pdf_Element $prev = null,
-                                                          SplObjectStorage $processedOutlines = null);
+                                                          $prev = null,
+                                                          $processedOutlines = null);
 
 
     ////////////////////////////////////////////////////////////////////////

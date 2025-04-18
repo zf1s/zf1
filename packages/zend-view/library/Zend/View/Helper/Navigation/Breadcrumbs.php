@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -69,13 +72,15 @@ class Zend_View_Helper_Navigation_Breadcrumbs
      * View helper entry point:
      * Retrieves helper and optionally sets container to operate on
      *
-     * @param  Zend_Navigation_Container $container     [optional] container to
+     * @param  Zend_Navigation_Container|null $container     [optional] container to
      *                                                  operate on
      * @return Zend_View_Helper_Navigation_Breadcrumbs  fluent interface,
      *                                                  returns self
      */
-    public function breadcrumbs(Zend_Navigation_Container $container = null)
+    public function breadcrumbs($container = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if (null !== $container) {
             $this->setContainer($container);
         }
@@ -174,14 +179,16 @@ class Zend_View_Helper_Navigation_Breadcrumbs
      * Renders breadcrumbs by chaining 'a' elements with the separator
      * registered in the helper
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container  [optional] container to
      *                                               render. Default is to
      *                                               render the container
      *                                               registered in the helper.
      * @return string                                helper output
      */
-    public function renderStraight(Zend_Navigation_Container $container = null)
+    public function renderStraight($container = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if (null === $container) {
             $container = $this->getContainer();
         }
@@ -230,7 +237,7 @@ class Zend_View_Helper_Navigation_Breadcrumbs
      * The container will simply be passed on as a model to the view script,
      * so in the script it will be available in <code>$this->container</code>.
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container  [optional] container to
      *                                               pass to view script.
      *                                               Default is to use the
      *                                               container registered in the
@@ -247,9 +254,11 @@ class Zend_View_Helper_Navigation_Breadcrumbs
      *                                               be found.
      * @return string                                helper output
      */
-    public function renderPartial(Zend_Navigation_Container $container = null,
+    public function renderPartial($container = null,
                                   $partial = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if (null === $container) {
             $container = $this->getContainer();
         }
@@ -314,14 +323,16 @@ class Zend_View_Helper_Navigation_Breadcrumbs
      *
      * Implements {@link Zend_View_Helper_Navigation_Helper::render()}.
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container  [optional] container to
      *                                               render. Default is to
      *                                               render the container
      *                                               registered in the helper.
      * @return string                                helper output
      */
-    public function render(Zend_Navigation_Container $container = null)
+    public function render($container = null)
     {
+        Types::isNullable('container', $container, 'Zend_Navigation_Container');
+
         if ($partial = $this->getPartial()) {
             return $this->renderPartial($container, $partial);
         } else {

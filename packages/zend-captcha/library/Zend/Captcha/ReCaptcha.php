@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -255,12 +258,14 @@ class Zend_Captcha_ReCaptcha extends Zend_Captcha_Base
     /**
      * Render captcha
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @param  mixed $element
      * @return string
      */
-    public function render(Zend_View_Interface $view = null, $element = null)
+    public function render($view = null, $element = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         $name = null;
         if ($element instanceof Zend_Form_Element) {
             $name = $element->getBelongsTo();

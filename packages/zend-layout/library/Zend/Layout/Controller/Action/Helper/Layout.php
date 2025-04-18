@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -53,11 +56,13 @@ class Zend_Layout_Controller_Action_Helper_Layout extends Zend_Controller_Action
     /**
      * Constructor
      *
-     * @param  Zend_Layout $layout
+     * @param  Zend_Layout|null $layout
      * @return void
      */
-    public function __construct(Zend_Layout $layout = null)
+    public function __construct($layout = null)
     {
+        Types::isNullable('layout', $layout, 'Zend_Layout');
+
         if (null !== $layout) {
             $this->setLayoutInstance($layout);
         } else {

@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -90,14 +93,16 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      *
      * Constructor is protected to enforce the use of factory methods.
      *
-     * @param  Zend_Ldap_Dn $dn
-     * @param  array        $data
-     * @param  boolean      $fromDataSource
-     * @param  Zend_Ldap    $ldap
+     * @param  Zend_Ldap_Dn   $dn
+     * @param  array          $data
+     * @param  boolean        $fromDataSource
+     * @param  Zend_Ldap|null $ldap
      * @throws Zend_Ldap_Exception
      */
-    protected function __construct(Zend_Ldap_Dn $dn, array $data, $fromDataSource, Zend_Ldap $ldap = null)
+    protected function __construct(Zend_Ldap_Dn $dn, array $data, $fromDataSource, $ldap = null)
     {
+        Types::isNullable('ldap', $ldap, 'Zend_Ldap');
+
         parent::__construct($dn, $data, $fromDataSource);
         if ($ldap !== null) $this->attachLdap($ldap);
         else $this->detachLdap();
@@ -415,12 +420,14 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
     /**
      * Sends all pending changes to the LDAP server
      *
-     * @param  Zend_Ldap $ldap
+     * @param  Zend_Ldap|null $ldap
      * @return Zend_Ldap_Node Provides a fluent interface
      * @throws Zend_Ldap_Exception
      */
-    public function update(Zend_Ldap $ldap = null)
+    public function update($ldap = null)
     {
+        Types::isNullable('ldap', $ldap, 'Zend_Ldap');
+
         if ($ldap !== null) {
             $this->attachLdap($ldap);
         }
@@ -903,12 +910,14 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      *
      * This is an online method.
      *
-     * @param  Zend_Ldap $ldap
+     * @param  Zend_Ldap|null $ldap
      * @return boolean
      * @throws Zend_Ldap_Exception
      */
-    public function exists(Zend_Ldap $ldap = null)
+    public function exists($ldap = null)
     {
+        Types::isNullable('ldap', $ldap, 'Zend_Ldap');
+
         if ($ldap !== null) {
             $this->attachLdap($ldap);
         }
@@ -921,12 +930,14 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      *
      * This is an online method.
      *
-     * @param  Zend_Ldap $ldap
+     * @param  Zend_Ldap|null $ldap
      * @return Zend_Ldap_Node Provides a fluent interface
      * @throws Zend_Ldap_Exception
      */
-    public function reload(Zend_Ldap $ldap = null)
+    public function reload($ldap = null)
     {
+        Types::isNullable('ldap', $ldap, 'Zend_Ldap');
+
         if ($ldap !== null) {
             $this->attachLdap($ldap);
         }
@@ -1053,12 +1064,14 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
     /**
      * Returns the parent of the current node.
      *
-     * @param  Zend_Ldap $ldap
+     * @param  Zend_Ldap|null $ldap
      * @return Zend_Ldap_Node
      * @throws Zend_Ldap_Exception
      */
-    public function getParent(Zend_Ldap $ldap = null)
+    public function getParent($ldap = null)
     {
+        Types::isNullable('ldap', $ldap, 'Zend_Ldap');
+
         if ($ldap !== null) {
             $this->attachLdap($ldap);
         }

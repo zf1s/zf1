@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -19,7 +22,7 @@
  * @version    $Id$
  */
 
- 
+
 /**
  * @category   Zend
  * @package    Zend_Xml_SecurityScan
@@ -77,12 +80,14 @@ class Zend_Xml_Security
      * Scan XML string for potential XXE and XEE attacks
      *
      * @param   string $xml
-     * @param   DomDocument $dom
+     * @param   DomDocument|null $dom
      * @throws  Zend_Xml_Exception
      * @return  SimpleXMLElement|DomDocument|boolean
      */
-    public static function scan($xml, DOMDocument $dom = null)
+    public static function scan($xml, $dom = null)
     {
+        Types::isNullable('dom', $dom, 'DOMDocument');
+
         // If running with PHP-FPM we perform an heuristic scan
         // We cannot use libxml_disable_entity_loader because of this bug
         // @see https://bugs.php.net/bug.php?id=64938
@@ -148,12 +153,14 @@ class Zend_Xml_Security
      * Scan XML file for potential XXE/XEE attacks
      *
      * @param  string $file
-     * @param  DOMDocument $dom
+     * @param  DOMDocument|null $dom
      * @throws Zend_Xml_Exception
      * @return SimpleXMLElement|DomDocument
      */
-    public static function scanFile($file, DOMDocument $dom = null)
+    public static function scanFile($file, $dom = null)
     {
+        Types::isNullable('dom', $dom, 'DOMDocument');
+
         if (!file_exists($file)) {
             // require_once 'Exception.php';
             throw new Zend_Xml_Exception(

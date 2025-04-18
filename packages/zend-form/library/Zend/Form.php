@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -1676,7 +1679,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function addSubForms(array $subForms)
     {
-        foreach ($subForms as $key => $spec) {          
+        foreach ($subForms as $key => $spec) {
             $name = (string) $key;
             if ($spec instanceof Zend_Form) {
                 $this->addSubForm($spec, $name);
@@ -2671,11 +2674,13 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     /**
      * Set view object
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @return Zend_Form
      */
-    public function setView(Zend_View_Interface $view = null)
+    public function setView($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         $this->_view = $view;
         return $this;
     }
@@ -2912,8 +2917,10 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      * @param  bool $include Whether $elements is an inclusion or exclusion list
      * @return Zend_Form
      */
-    public function setElementDecorators(array $decorators, array $elements = null, $include = true)
+    public function setElementDecorators(array $decorators, $elements = null, $include = true)
     {
+        Types::isNullable('elements', $elements, 'array');
+
         if (is_array($elements)) {
             if ($include) {
                 $elementObjs = array();
@@ -2979,11 +2986,13 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     /**
      * Render form
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @return string
      */
-    public function render(Zend_View_Interface $view = null)
+    public function render($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         if (null !== $view) {
             $this->setView($view);
         }

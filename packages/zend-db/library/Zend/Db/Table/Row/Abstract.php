@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -332,12 +335,14 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
      * Set the table object, to re-establish a live connection
      * to the database for a Row that has been de-serialized.
      *
-     * @param Zend_Db_Table_Abstract $table
+     * @param Zend_Db_Table_Abstract|null $table
      * @return boolean
      * @throws Zend_Db_Table_Row_Exception
      */
-    public function setTable(Zend_Db_Table_Abstract $table = null)
+    public function setTable($table = null)
     {
+        Types::isNullable('table', $table, 'Zend_Db_Table_Abstract');
+
         if ($table == null) {
             $this->_table = null;
             $this->_connected = false;
@@ -876,12 +881,14 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
      *
      * @param string|Zend_Db_Table_Abstract  $dependentTable
      * @param string                         OPTIONAL $ruleKey
-     * @param Zend_Db_Table_Select           OPTIONAL $select
+     * @param Zend_Db_Table_Select|null      OPTIONAL $select
      * @return Zend_Db_Table_Rowset_Abstract Query result from $dependentTable
      * @throws Zend_Db_Table_Row_Exception If $dependentTable is not a table or is not loadable.
      */
-    public function findDependentRowset($dependentTable, $ruleKey = null, Zend_Db_Table_Select $select = null)
+    public function findDependentRowset($dependentTable, $ruleKey = null, $select = null)
     {
+        Types::isNullable('select', $select, 'Zend_Db_Table_Select');
+
         $db = $this->_getTable()->getAdapter();
 
         if (is_string($dependentTable)) {
@@ -932,12 +939,14 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
      *
      * @param string|Zend_Db_Table_Abstract $parentTable
      * @param string                        OPTIONAL $ruleKey
-     * @param Zend_Db_Table_Select          OPTIONAL $select
+     * @param Zend_Db_Table_Select|null     OPTIONAL $select
      * @return Zend_Db_Table_Row_Abstract   Query result from $parentTable
      * @throws Zend_Db_Table_Row_Exception If $parentTable is not a table or is not loadable.
      */
-    public function findParentRow($parentTable, $ruleKey = null, Zend_Db_Table_Select $select = null)
+    public function findParentRow($parentTable, $ruleKey = null, $select = null)
     {
+        Types::isNullable('select', $select, 'Zend_Db_Table_Select');
+
         $db = $this->_getTable()->getAdapter();
 
         if (is_string($parentTable)) {
@@ -999,13 +1008,15 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
      * @param  string|Zend_Db_Table_Abstract  $intersectionTable
      * @param  string                         OPTIONAL $callerRefRule
      * @param  string                         OPTIONAL $matchRefRule
-     * @param  Zend_Db_Table_Select           OPTIONAL $select
+     * @param  Zend_Db_Table_Select|null      OPTIONAL $select
      * @return Zend_Db_Table_Rowset_Abstract Query result from $matchTable
      * @throws Zend_Db_Table_Row_Exception If $matchTable or $intersectionTable is not a table class or is not loadable.
      */
     public function findManyToManyRowset($matchTable, $intersectionTable, $callerRefRule = null,
-                                         $matchRefRule = null, Zend_Db_Table_Select $select = null)
+                                         $matchRefRule = null, $select = null)
     {
+        Types::isNullable('select', $select, 'Zend_Db_Table_Select');
+
         $db = $this->_getTable()->getAdapter();
 
         if (is_string($intersectionTable)) {

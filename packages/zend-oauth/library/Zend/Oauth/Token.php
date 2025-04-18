@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -65,9 +68,12 @@ abstract class Zend_Oauth_Token
      * @return void
      */
     public function __construct(
-        Zend_Http_Response $response = null,
-        Zend_Oauth_Http_Utility $utility = null
+        $response = null,
+        $utility = null
     ) {
+        Types::isNullable('response', $response, 'Zend_Controller_Response_Abstract');
+        Types::isNullable('utility', $utility, 'Zend_Oauth_Http_Utility');
+
         if ($response !== null) {
             $this->_response = $response;
             $params = $this->_parseParameters($response);

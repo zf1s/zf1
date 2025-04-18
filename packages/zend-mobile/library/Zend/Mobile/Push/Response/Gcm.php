@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -83,12 +86,14 @@ class Zend_Mobile_Push_Response_Gcm
      * Constructor
      *
      * @param string $responseString JSON encoded response
-     * @param Zend_Mobile_Push_Message_Gcm $message
+     * @param Zend_Mobile_Push_Message_Gcm|null $message
      * @return Zend_Mobile_Push_Response_Gcm
      * @throws Zend_Mobile_Push_Exception_ServerUnavailable
      */
-    public function __construct($responseString = null, Zend_Mobile_Push_Message_Gcm $message = null)
+    public function __construct($responseString = null, $message = null)
     {
+        Types::isNullable('message', $message, 'Zend_Mobile_Push_Message_Gcm');
+
         if ($responseString) {
             if (!$response = json_decode($responseString, true)) {
                 // require_once 'Zend/Mobile/Push/Exception/ServerUnavailable.php';
@@ -195,7 +200,7 @@ class Zend_Mobile_Push_Response_Gcm
      *
      * @return array multi dimensional array of:
      *         NOTE: key is registration_id if the message is passed.
-     *         'registration_id' => array( 
+     *         'registration_id' => array(
      *             'message_id' => 'id',
      *             'error' => 'error',
      *             'registration_id' => 'id'

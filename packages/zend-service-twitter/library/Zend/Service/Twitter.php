@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -143,8 +146,11 @@ class Zend_Service_Twitter
      * @param  null|Zend_Oauth_Consumer $consumer
      * @param  null|Zend_Http_Client $httpClient
      */
-    public function __construct($options = null, Zend_Oauth_Consumer $consumer = null, Zend_Http_Client $httpClient = null)
+    public function __construct($options = null, $consumer = null, $httpClient = null)
     {
+        Types::isNullable('consumer', $consumer, 'Zend_Oauth_Consumer');
+        Types::isNullable('httpClient', $httpClient, 'Zend_Http_Client');
+
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         }

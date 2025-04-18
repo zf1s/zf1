@@ -1,5 +1,7 @@
 <?php
 
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -163,7 +165,7 @@ class Zend_Ldap
         if(!$this->isConnection($this->_resource)) {
             return 0;
         }
-    
+
         $ret = @ldap_get_option($this->_resource, LDAP_OPT_ERROR_NUMBER, $err);
         if ($ret === true) {
             if ($err <= -1 && $err >= -17) {
@@ -639,12 +641,14 @@ class Zend_Ldap
     }
 
     /**
-     * @param  array $attrs An array of names of desired attributes
+     * @param  array|null $attrs An array of names of desired attributes
      * @return array An array of the attributes representing the account
      * @throws Zend_Ldap_Exception
      */
-    protected function _getAccount($acctname, array $attrs = null)
+    protected function _getAccount($acctname, $attrs = null)
     {
+        Types::isNullable('attrs', $attrs, 'array');
+
         $baseDn = $this->getBaseDn();
         if (!$baseDn) {
             /**
@@ -708,7 +712,7 @@ class Zend_Ldap
         $this->_boundUser = false;
         return $this;
     }
-    
+
     /**
      * @param $resource
      *
@@ -719,7 +723,7 @@ class Zend_Ldap
         if (PHP_VERSION_ID < 80100) {
             return is_resource($resource);
         }
-        
+
         return $resource instanceof \LDAP\Connection;
     }
 
@@ -1018,11 +1022,11 @@ class Zend_Ldap
          */
         // require_once 'Zend/Ldap/Collection/Iterator/Default.php';
         $iterator = new Zend_Ldap_Collection_Iterator_Default($this, $search);
-        
+
         if ($sort !== null && is_string($sort)) {
             $iterator->sort($sort);
         }
-        
+
         return $this->_createCollection($iterator, $collectionClass);
     }
 

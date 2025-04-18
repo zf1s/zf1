@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -617,7 +620,7 @@ class Zend_Pdf
             }
         }
     }
-  
+
     /**
      * Load form fields
      *
@@ -1008,11 +1011,13 @@ class Zend_Pdf
     /**
      * Set open Action which is actually Zend_Pdf_Destination or Zend_Pdf_Action object
      *
-     * @param Zend_Pdf_Target $openAction
+     * @param Zend_Pdf_Target|null $openAction
      * @returns Zend_Pdf
      */
-    public function setOpenAction(Zend_Pdf_Target $openAction = null)
+    public function setOpenAction($openAction = null)
     {
+        Types::isNullable('openAction', $openAction, 'Zend_Pdf_Target');
+
         $root = $this->_trailer->Root;
         $root->touch();
 

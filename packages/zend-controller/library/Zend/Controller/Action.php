@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -103,7 +106,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @var array
      */
     public $contexts;
-    
+
     /**
      * Controller's ajax contexts, managed by Zend_Controller_Action_Helper_AjaxContext
      * @var array
@@ -558,8 +561,11 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * object to use
      * @return Zend_Controller_Response_Abstract
      */
-    public function run(Zend_Controller_Request_Abstract $request = null, Zend_Controller_Response_Abstract $response = null)
+    public function run($request = null, $response = null)
     {
+        Types::isNullable('request', $request, 'Zend_Controller_Request_Abstract');
+        Types::isNullable('response', $response, 'Zend_Controller_Response_Abstract');
+
         if (null !== $request) {
             $this->setRequest($request);
         } else {
@@ -721,13 +727,15 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param string $action
      * @param string $controller
      * @param string $module
-     * @param array $params
+     * @param array|null $params
      * @return void
      * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             forward() instead.
      */
-    final protected function _forward($action, $controller = null, $module = null, array $params = null)
+    final protected function _forward($action, $controller = null, $module = null, $params = null)
     {
+        Types::isNullable('params', $params, 'array');
+
         $this->forward($action, $controller, $module, $params);
     }
 
@@ -754,11 +762,13 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param string $action
      * @param string $controller
      * @param string $module
-     * @param array $params
+     * @param array|null $params
      * @return void
      */
-    final public function forward($action, $controller = null, $module = null, array $params = null)
+    final public function forward($action, $controller = null, $module = null, $params = null)
     {
+        Types::isNullable('params', $params, 'array');
+
         $request = $this->getRequest();
 
         if (null !== $params) {

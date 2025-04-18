@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -170,12 +173,14 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
     /**
      * Executes a prepared statement.
      *
-     * @param array $params OPTIONAL Values to bind to parameter placeholders.
+     * @param array|null $params OPTIONAL Values to bind to parameter placeholders.
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function _execute(array $params = null)
+    public function _execute($params = null)
     {
+        Types::isNullable('params', $params, 'array');
+
         $connection = $this->_adapter->getConnection();
         if (!$this->_stmt) {
             return false;
@@ -376,7 +381,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
             // require_once 'Zend/Db/Statement/Sqlsrv/Exception.php';
             throw new Zend_Db_Statement_Sqlsrv_Exception(sqlsrv_errors());
         }
-        
+
         // reset column keys
         $this->_keys = null;
 
@@ -411,7 +416,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
 
         return $num_rows;
     }
-    
+
     /**
      * Returns an array containing all of the result set rows.
      *

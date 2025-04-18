@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -156,11 +159,13 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
      * Get the formatted open tag
      *
      * @param  string $tag
-     * @param  array $attribs
+     * @param  array|null $attribs
      * @return string
      */
-    protected function _getOpenTag($tag, array $attribs = null)
+    protected function _getOpenTag($tag, $attribs = null)
     {
+        Types::isNullable('attribs', $attribs, 'array');
+
         $html = '<' . $tag;
         if (null !== $attribs) {
             $html .= $this->_htmlAttribs($attribs);

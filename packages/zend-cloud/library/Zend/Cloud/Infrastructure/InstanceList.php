@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * @category   Zend
  * @package    Zend_Cloud
@@ -38,11 +41,13 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      * Constructor
      *
      * @param  Adapter $adapter
-     * @param  array $instances
+     * @param  array|null $instances
      * @return void
      */
-    public function __construct($adapter, array $instances = null)
+    public function __construct($adapter, $instances = null)
     {
+        Types::isNullable('instances', $instances, 'array');
+
         if (!($adapter instanceof Zend_Cloud_Infrastructure_Adapter)) {
             // require_once 'Zend/Cloud/Infrastructure/Exception.php';
             throw new Zend_Cloud_Infrastructure_Exception('You must pass a Zend_Cloud_Infrastructure_Adapter');

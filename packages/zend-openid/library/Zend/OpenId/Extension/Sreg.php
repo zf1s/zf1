@@ -1,5 +1,7 @@
 <?php
 
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -48,13 +50,15 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
     /**
      * Creates SREG extension object
      *
-     * @param array $props associative array of SREG variables
+     * @param array|null $props associative array of SREG variables
      * @param string $policy_url SREG policy URL
      * @param float $version SREG version
      * @return array
      */
-    public function __construct(array $props=null, $policy_url=null, $version=1.0)
+    public function __construct($props=null, $policy_url=null, $version=1.0)
     {
+        Types::isNullable('props', $props, 'array');
+
         $this->_props = $props;
         $this->_policy_url = $policy_url;
         $this->_version = $version;

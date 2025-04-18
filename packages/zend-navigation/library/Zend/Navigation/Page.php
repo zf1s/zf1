@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -43,14 +46,14 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
 
     /**
      * Fragment identifier (anchor identifier)
-     * 
-     * The fragment identifier (anchor identifier) pointing to an anchor within 
+     *
+     * The fragment identifier (anchor identifier) pointing to an anchor within
      * a resource that is subordinate to another, primary resource.
      * The fragment identifier introduced by a hash mark "#".
      * Example: http://www.example.org/foo.html#bar ("bar" is the fragment identifier)
-     * 
+     *
      * @link http://www.w3.org/TR/html401/intro/intro.html#fragment-uri
-     * 
+     *
      * @var string|null
      */
     protected $_fragment;
@@ -266,12 +269,12 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
             return new Zend_Navigation_Page_Uri($options);
         } else {
             // require_once 'Zend/Navigation/Exception.php';
-            
+
             $message = 'Invalid argument: Unable to determine class to instantiate';
             if (isset($options['label'])) {
                 $message .= ' (Page label: ' . $options['label'] . ')';
         }
-            
+
             throw new Zend_Navigation_Exception($message);
     }
     }
@@ -382,11 +385,11 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
             throw new Zend_Navigation_Exception(
                     'Invalid argument: $fragment must be a string or null');
         }
- 
+
         $this->_fragment = $fragment;
         return $this;
     }
-    
+
      /**
      * Returns fragment identifier
      *
@@ -537,7 +540,7 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
                 'Invalid argument: $character must be a single character or null'
             );
         }
- 
+
         $this->_accesskey = $character;
         return $this;
     }
@@ -1000,13 +1003,15 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
     /**
      * Sets parent container
      *
-     * @param  Zend_Navigation_Container $parent  [optional] new parent to set.
+     * @param  Zend_Navigation_Container|null $parent  [optional] new parent to set.
      *                                            Default is null which will set
      *                                            no parent.
      * @return Zend_Navigation_Page               fluent interface, returns self
      */
-    public function setParent(Zend_Navigation_Container $parent = null)
+    public function setParent($parent = null)
     {
+        Types::isNullable('parent', $parent, 'Zend_Navigation_Container');
+
         if ($parent === $this) {
             // require_once 'Zend/Navigation/Exception.php';
             throw new Zend_Navigation_Exception(

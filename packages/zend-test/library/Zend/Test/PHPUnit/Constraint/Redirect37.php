@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -61,7 +64,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect37 extends PHPUnit_Framework_Constrai
      * @var string
      */
     protected $_match             = null;
-    
+
     /**
      * What is actual redirect
      */
@@ -173,11 +176,13 @@ class Zend_Test_PHPUnit_Constraint_Redirect37 extends PHPUnit_Framework_Constrai
      * Drastic changes up to PHPUnit 3.5.15 this was:
      *     public function fail($other, $description, $not = false)
      * In PHPUnit 3.6.0 they changed the interface into this:
-     *     protected function fail($other, $description, PHPUnit_Framework_ComparisonFailure $comparisonFailure = NULL)
+     *     protected function fail($other, $description, $comparisonFailure = NULL)
      * We use the new interface for PHP-strict checking
      */
-    public function fail($other, $description, PHPUnit_Framework_ComparisonFailure $cannot_be_used = NULL)
+    public function fail($other, $description, $cannot_be_used = NULL)
     {
+        Types::isNullable('cannot_be_used', $cannot_be_used, 'PHPUnit_Framework_ComparisonFailure');
+
         // require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
         switch ($this->_assertType) {
             case self::ASSERT_REDIRECT_TO:

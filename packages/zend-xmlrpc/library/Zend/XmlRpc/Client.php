@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -124,11 +127,13 @@ class Zend_XmlRpc_Client
      *
      * @param  string $server      Full address of the XML-RPC service
      *                             (e.g. http://time.xmlrpc.com/RPC2)
-     * @param  Zend_Http_Client $httpClient HTTP Client to use for requests
+     * @param  Zend_Http_Client|null $httpClient HTTP Client to use for requests
      * @return void
      */
-    public function __construct($server, Zend_Http_Client $httpClient = null)
+    public function __construct($server, $httpClient = null)
     {
+        Types::isNullable('httpClient', $httpClient, 'Zend_Http_Client');
+
         if ($httpClient === null) {
             $this->_httpClient = new Zend_Http_Client();
         } else {

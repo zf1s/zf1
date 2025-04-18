@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -47,11 +50,13 @@ class Zend_Pdf_Resource_GraphicsState extends Zend_Pdf_Resource
     /**
      * Object constructor.
      *
-     * @param Zend_Pdf_Element_Object $extGStateObject
+     * @param Zend_Pdf_Element_Object|null $extGStateObject
      * @throws Zend_Pdf_Exception
      */
-    public function __construct(Zend_Pdf_Element_Object $extGStateObject = null)
+    public function __construct($extGStateObject = null)
     {
+        Types::isNullable('extGStateObject', $extGStateObject, 'Zend_Pdf_Element_Object');
+
         if ($extGStateObject == null) {
             // Create new Graphics State object
             // require_once 'Zend/Pdf/ElementFactory.php';

@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -36,8 +39,10 @@ class Zend_Db_Adapter_Exception extends Zend_Db_Exception
 {
     protected $_chainedException = null;
 
-    public function __construct($message = '', $code = 0, Exception $e = null)
+    public function __construct($message = '', $code = 0, $e = null)
     {
+        Types::isNullable('e', $e, 'Exception');
+
         if ($e && (0 === $code)) {
             $code = $e->getCode();
         }

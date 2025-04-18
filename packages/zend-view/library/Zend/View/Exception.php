@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -38,8 +41,10 @@ class Zend_View_Exception extends Zend_Exception
 {
     protected $view = null;
 
-    public function setView(Zend_View_Interface $view = null)
+    public function setView($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         $this->view = $view;
         return $this;
     }

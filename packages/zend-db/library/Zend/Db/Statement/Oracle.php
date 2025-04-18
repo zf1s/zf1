@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -222,12 +225,14 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
     /**
      * Executes a prepared statement.
      *
-     * @param array $params OPTIONAL Values to bind to parameter placeholders.
+     * @param array|null $params OPTIONAL Values to bind to parameter placeholders.
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function _execute(array $params = null)
+    public function _execute($params = null)
     {
+        Types::isNullable('params', $params, 'array');
+
         $connection = $this->_adapter->getConnection();
 
         if (!$this->_stmt) {

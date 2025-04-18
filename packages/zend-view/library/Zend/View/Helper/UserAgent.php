@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -42,11 +45,13 @@ class Zend_View_Helper_UserAgent extends Zend_View_Helper_Abstract
     /**
      * Helper method: retrieve or set UserAgent instance
      *
-     * @param  null|Zend_Http_UserAgent $userAgent
+     * @param  Zend_Http_UserAgent|null $userAgent
      * @return Zend_Http_UserAgent
      */
-    public function userAgent(Zend_Http_UserAgent $userAgent = null)
+    public function userAgent($userAgent = null)
     {
+        Types::isNullable('userAgent', $userAgent, 'Zend_Http_UserAgent');
+
         if (null !== $userAgent) {
             $this->setUserAgent($userAgent);
         }

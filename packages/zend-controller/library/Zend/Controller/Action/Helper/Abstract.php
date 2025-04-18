@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -49,11 +52,13 @@ abstract class Zend_Controller_Action_Helper_Abstract
     /**
      * setActionController()
      *
-     * @param  Zend_Controller_Action $actionController
+     * @param  Zend_Controller_Action|null $actionController
      * @return Zend_Controller_ActionHelper_Abstract Provides a fluent interface
      */
-    public function setActionController(Zend_Controller_Action $actionController = null)
+    public function setActionController($actionController = null)
     {
+        Types::isNullable('actionController', $actionController, 'Zend_Controller_Action');
+
         $this->_actionController = $actionController;
         return $this;
     }

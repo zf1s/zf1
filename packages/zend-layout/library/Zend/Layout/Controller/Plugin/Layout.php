@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -45,11 +48,13 @@ class Zend_Layout_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
     /**
      * Constructor
      *
-     * @param  Zend_Layout $layout
+     * @param  Zend_Layout|null $layout
      * @return void
      */
-    public function __construct(Zend_Layout $layout = null)
+    public function __construct($layout = null)
     {
+        Types::isNullable('layout', $layout, 'Zend_Layout');
+
         if (null !== $layout) {
             $this->setLayout($layout);
         }

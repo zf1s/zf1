@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -43,7 +46,7 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
     /**
      * Previous trailer
      *
-     * @var Zend_Pdf_Trailer
+     * @var Zend_Pdf_Trailer|null
      */
     private $_prev;
 
@@ -53,12 +56,14 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
      *
      * @param Zend_Pdf_Element_Dictionary $dict
      * @param Zend_Pdf_Element_Reference_Context $context
-     * @param Zend_Pdf_Trailer $prev
+     * @param Zend_Pdf_Trailer|null $prev
      */
     public function __construct(Zend_Pdf_Element_Dictionary $dict,
                                 Zend_Pdf_Element_Reference_Context $context,
-                                Zend_Pdf_Trailer $prev = null)
+                                $prev = null)
     {
+        Types::isNullable('prev', $prev, 'Zend_Pdf_Trailer');
+
         parent::__construct($dict);
 
         $this->_context = $context;

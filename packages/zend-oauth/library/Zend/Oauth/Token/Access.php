@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -49,8 +52,10 @@ class Zend_Oauth_Token_Access extends Zend_Oauth_Token
      * @return string
      */
     public function toHeader(
-        $url, Zend_Oauth_Config_ConfigInterface $config, array $customParams = null, $realm = null
+        $url, Zend_Oauth_Config_ConfigInterface $config, $customParams = null, $realm = null
     ) {
+        Types::isNullable('customParams', $customParams, 'array');
+
         if (!Zend_Uri::check($url)) {
             // require_once 'Zend/Oauth/Exception.php';
             throw new Zend_Oauth_Exception(
@@ -69,8 +74,10 @@ class Zend_Oauth_Token_Access extends Zend_Oauth_Token
      * @param  null|array $params
      * @return string
      */
-    public function toQueryString($url, Zend_Oauth_Config_ConfigInterface $config, array $params = null)
+    public function toQueryString($url, Zend_Oauth_Config_ConfigInterface $config, $params = null)
     {
+        Types::isNullable('params', $params, 'array');
+
         if (!Zend_Uri::check($url)) {
             // require_once 'Zend/Oauth/Exception.php';
             throw new Zend_Oauth_Exception(

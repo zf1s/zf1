@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -238,17 +241,20 @@ class Zend_Pdf_Outline_Created extends Zend_Pdf_Outline
      * @param Zend_Pdf_ElementFactory    $factory object factory for newly created indirect objects
      * @param boolean $updateNavigation  Update navigation flag
      * @param Zend_Pdf_Element $parent   Parent outline dictionary reference
-     * @param Zend_Pdf_Element $prev     Previous outline dictionary reference
-     * @param SplObjectStorage $processedOutlines  List of already processed outlines
+     * @param Zend_Pdf_Element|null $prev Previous outline dictionary reference
+     * @param SplObjectStorage|null $processedOutlines List of already processed outlines
      * @return Zend_Pdf_Element
      * @throws Zend_Pdf_Exception
      */
     public function dumpOutline(Zend_Pdf_ElementFactory_Interface $factory,
                                                                   $updateNavigation,
                                                  Zend_Pdf_Element $parent,
-                                                 Zend_Pdf_Element $prev = null,
-                                                 SplObjectStorage $processedOutlines = null)
+                                                 $prev = null,
+                                                 $processedOutlines = null)
     {
+        Types::isNullable('prev', $prev, 'Zend_Pdf_Element');
+        Types::isNullable('processedOutlines', $processedOutlines, 'SplObjectStorage');
+
         if ($processedOutlines === null) {
             $processedOutlines = new SplObjectStorage();
         }

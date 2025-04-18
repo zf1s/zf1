@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -42,8 +45,11 @@ class Zend_Oauth_Token_AuthorizedRequest extends Zend_Oauth_Token
      * @param  null|Zend_Oauth_Http_Utility $utility
      * @return void
      */
-    public function __construct(array $data = null, Zend_Oauth_Http_Utility $utility = null)
+    public function __construct($data = null, $utility = null)
     {
+        Types::isNullable('data', $data, 'array');
+        Types::isNullable('utility', $utility, 'Zend_Oauth_Http_Utility');
+
         if ($data !== null) {
             $this->_data = $data;
             $params = $this->_parseData();

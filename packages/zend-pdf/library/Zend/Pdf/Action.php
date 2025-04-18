@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -113,12 +116,14 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
      *
      * @internal
      * @param Zend_Pdf_Element $dictionary (It's actually Dictionary or Dictionary Object or Reference to a Dictionary Object)
-     * @param SplObjectStorage $processedActions  list of already processed action dictionaries, used to avoid cyclic references
+     * @param SplObjectStorage|null $processedActions  list of already processed action dictionaries, used to avoid cyclic references
      * @return Zend_Pdf_Action
      * @throws Zend_Pdf_Exception
      */
-    public static function load(Zend_Pdf_Element $dictionary, SplObjectStorage $processedActions = null)
+    public static function load(Zend_Pdf_Element $dictionary, $processedActions = null)
     {
+        Types::isNullable('processedActions', $processedActions, 'SplObjectStorage');
+
         if ($processedActions === null) {
             $processedActions = new SplObjectStorage();
         }
@@ -254,11 +259,13 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
      *
      * @internal
      * @param Zend_Pdf_ElementFactory $factory   Object factory for newly created indirect objects
-     * @param SplObjectStorage $processedActions  list of already processed actions (used to prevent infinity loop caused by cyclic references)
+     * @param SplObjectStorage|null $processedActions  list of already processed actions (used to prevent infinity loop caused by cyclic references)
      * @return Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference   Dictionary indirect object
      */
-    public function dumpAction(Zend_Pdf_ElementFactory_Interface $factory, SplObjectStorage $processedActions = null)
+    public function dumpAction(Zend_Pdf_ElementFactory_Interface $factory, $processedActions = null)
     {
+        Types::isNullable('processedActions', $processedActions, 'SplObjectStorage');
+
         if ($processedActions === null) {
             $processedActions = new SplObjectStorage();
         }

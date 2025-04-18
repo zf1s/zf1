@@ -1,5 +1,7 @@
 <?php
 
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -46,7 +48,7 @@ class Zend_OpenId_Provider_User_Session extends Zend_OpenId_Provider_User
     /**
      * Reference to an implementation of Zend_Session_Namespace object
      *
-     * @var Zend_Session_Namespace $_session
+     * @var Zend_Session_Namespace|null $_session
      */
     private $_session = null;
 
@@ -54,10 +56,12 @@ class Zend_OpenId_Provider_User_Session extends Zend_OpenId_Provider_User
      * Creates Zend_OpenId_Provider_User_Session object with given session
      * namespace or creates new session namespace named "openid"
      *
-     * @param Zend_Session_Namespace $session
+     * @param Zend_Session_Namespace|null $session
      */
-    public function __construct(Zend_Session_Namespace $session = null)
+    public function __construct($session = null)
     {
+        Types::isNullable('session', $session, 'Zend_Session_Namespace');
+
         if ($session === null) {
             $this->_session = new Zend_Session_Namespace("openid");
         } else {

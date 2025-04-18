@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * LICENSE
  *
@@ -157,8 +160,10 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      * @param  array|null $options
      * @return Zend_Cloud_DocumentService_DocumentSet
      */
-    public function listDocuments($collectionName, array $options = null)
+    public function listDocuments($collectionName, $options = null)
     {
+        Types::isNullable('options', $options, 'array');
+
         $query = $this->select('*')->from($collectionName);
         $items = $this->query($collectionName, $query, $options);
         return $items;

@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -50,7 +53,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
     public function __construct($data)
     {
         set_error_handler(array($this, 'handleXmlErrors'));
-        $this->_sxml = Zend_Xml_Security::scan($data); 
+        $this->_sxml = Zend_Xml_Security::scan($data);
         restore_error_handler();
         if($this->_sxml === false) {
             if ($this->_errstr === null) {
@@ -71,11 +74,13 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
      * @param string $errstr
      * @param string $errfile
      * @param string $errline
-     * @param array  $errcontext
+     * @param array|null $errcontext
      * @return true
      */
-    public function handleXmlErrors($errno, $errstr, $errfile = null, $errline = null, array $errcontext = null)
+    public function handleXmlErrors($errno, $errstr, $errfile = null, $errline = null, $errcontext = null)
     {
+        Types::isNullable('errcontext', $errcontext, 'array');
+
         $this->_errstr = $errstr;
         return true;
     }
@@ -184,7 +189,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
     {
         $status = $this->_sxml->xpath('//status/text()');
         if ( !isset($status[0]) ) return false;
-        
+
         $status = strtolower($status[0]);
 
         if (ctype_alpha($status) && $status == 'success') {

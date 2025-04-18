@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -37,9 +40,12 @@ class Zend_Oauth_Token_Request extends Zend_Oauth_Token
      * @param null|Zend_Oauth_Http_Utility $utility
      */
     public function __construct(
-        Zend_Http_Response $response = null,
-        Zend_Oauth_Http_Utility $utility = null
+        $response = null,
+        $utility = null
     ) {
+        Types::isNullable('response', $response, 'Zend_Http_Response');
+        Types::isNullable('utility', $utility, 'Zend_Oauth_Http_Utility');
+
         parent::__construct($response, $utility);
 
         // detect if server supports OAuth 1.0a

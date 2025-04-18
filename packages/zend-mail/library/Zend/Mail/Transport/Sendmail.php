@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -208,11 +211,13 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
      * @param string $errstr
      * @param string $errfile
      * @param string $errline
-     * @param array  $errcontext
+     * @param array|null $errcontext
      * @return true
      */
-    public function _handleMailErrors($errno, $errstr, $errfile = null, $errline = null, array $errcontext = null)
+    public function _handleMailErrors($errno, $errstr, $errfile = null, $errline = null, $errcontext = null)
     {
+        Types::isNullable('errcontext', $errcontext, 'array');
+
         $this->_errstr = $errstr;
         return true;
     }

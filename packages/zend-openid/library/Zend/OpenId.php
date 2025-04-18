@@ -1,5 +1,7 @@
 <?php
 
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -127,11 +129,11 @@ class Zend_OpenId
         }
 
         $url .= $port;
-        if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) { 
+        if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) {
             // IIS with Microsoft Rewrite Module
             $url .= $_SERVER['HTTP_X_ORIGINAL_URL'];
         } elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
-            // IIS with ISAPI_Rewrite 
+            // IIS with ISAPI_Rewrite
             $url .= $_SERVER['HTTP_X_REWRITE_URL'];
         } elseif (isset($_SERVER['REQUEST_URI'])) {
             $query = strpos($_SERVER['REQUEST_URI'], '?');
@@ -424,12 +426,14 @@ class Zend_OpenId
      *
      * @param string $url URL to redirect to
      * @param array $params additional variable/value pairs to send
-     * @param Zend_Controller_Response_Abstract $response
+     * @param Zend_Controller_Response_Abstract|null $response
      * @param string $method redirection method ('GET' or 'POST')
      */
     static public function redirect($url, $params = null,
-        Zend_Controller_Response_Abstract $response = null, $method = 'GET')
+        $response = null, $method = 'GET')
     {
+        Types::isNullable('response', $response, 'Zend_Controller_Response_Abstract');
+
         $url = Zend_OpenId::absoluteUrl($url);
         $body = "";
         if (null === $response) {

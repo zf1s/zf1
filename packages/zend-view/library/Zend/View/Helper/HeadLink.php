@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -88,8 +91,10 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
      *
      * @return Zend_View_Helper_HeadLink
      */
-    public function headLink(array $attributes = null, $placement = Zend_View_Helper_Placeholder_Container_Abstract::APPEND)
+    public function headLink($attributes = null, $placement = Zend_View_Helper_Placeholder_Container_Abstract::APPEND)
     {
+        Types::isNullable('attributes', $attributes, 'array');
+
         if (null !== $attributes) {
             $item = $this->createData($attributes);
             switch ($placement) {

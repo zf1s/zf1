@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -78,8 +81,10 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
      * @param  string $type Feed type
      * @return void
      */
-    public function __construct(DomDocument $dom, $type = null, DOMXPath $xpath = null)
+    public function __construct(DomDocument $dom, $type = null, $xpath = null)
     {
+        Types::isNullable('xpath', $xpath, 'DOMXPath');
+
         $this->_domDocument = $dom;
 
         if ($type !== null) {

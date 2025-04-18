@@ -34,7 +34,7 @@ interface Zend_View_Helper_Navigation_Helper
     /**
      * Sets navigation container the helper should operate on by default
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container  [optional] container to
      *                                               operate on. Default is
      *                                               null, which indicates that
      *                                               the container should be
@@ -42,7 +42,7 @@ interface Zend_View_Helper_Navigation_Helper
      * @return Zend_View_Helper_Navigation_Helper    fluent interface, returns
      *                                               self
      */
-    public function setContainer(Zend_Navigation_Container $container = null);
+    public function setContainer($container = null);
 
     /**
      * Returns the navigation container the helper operates on by default
@@ -74,11 +74,11 @@ interface Zend_View_Helper_Navigation_Helper
     /**
      * Sets ACL to use when iterating pages
      *
-     * @param  Zend_Acl $acl                       [optional] ACL instance
+     * @param  Zend_Acl|null $acl                       [optional] ACL instance
      * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
      *                                             self
      */
-    public function setAcl(Zend_Acl $acl = null);
+    public function setAcl($acl = null);
 
     /**
      * Returns ACL or null if it isn't set using {@link setAcl()} or
@@ -199,7 +199,7 @@ interface Zend_View_Helper_Navigation_Helper
     /**
      * Renders helper
      *
-     * @param  Zend_Navigation_Container $container  [optional] container to
+     * @param  Zend_Navigation_Container|null $container  [optional] container to
      *                                               render. Default is null,
      *                                               which indicates that the
      *                                               helper should render the
@@ -208,5 +208,5 @@ interface Zend_View_Helper_Navigation_Helper
      * @return string                                helper output
      * @throws Zend_View_Exception                   if unable to render
      */
-    public function render(Zend_Navigation_Container $container = null);
+    public function render($container = null);
 }

@@ -54,11 +54,11 @@ interface Zend_Acl_Assert_Interface
      * privileges, respectively.
      *
      * @param  Zend_Acl                    $acl
-     * @param  Zend_Acl_Role_Interface     $role
-     * @param  Zend_Acl_Resource_Interface $resource
+     * @param  null|Zend_Acl_Role_Interface     $role
+     * @param  null|Zend_Acl_Resource_Interface $resource
      * @param  string                      $privilege
      * @return boolean
      */
-    public function assert(Zend_Acl $acl, Zend_Acl_Role_Interface $role = null, Zend_Acl_Resource_Interface $resource = null,
+    public function assert(Zend_Acl $acl, $role = null, $resource = null,
                            $privilege = null);
 }

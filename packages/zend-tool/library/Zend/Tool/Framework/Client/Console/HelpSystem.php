@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -56,10 +59,12 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
      * respondWithErrorMessage()
      *
      * @param string $errorMessage
-     * @param Exception $exception
+     * @param Exception|null $exception
      */
-    public function respondWithErrorMessage($errorMessage, Exception $exception = null)
+    public function respondWithErrorMessage($errorMessage, $exception = null)
     {
+        Types::isNullable('exception', $exception, 'Exception');
+
         // break apart the message into wrapped chunks
         $errorMessages = explode(PHP_EOL, wordwrap($errorMessage, 70, PHP_EOL, false));
 

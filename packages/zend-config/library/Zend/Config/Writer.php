@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -50,8 +53,10 @@ abstract class Zend_Config_Writer
      *
      * @param null|array $options
      */
-    public function __construct(array $options = null)
+    public function __construct($options = null)
     {
+        Types::isNullable('options', $options, 'array');
+
         if (is_array($options)) {
             $this->setOptions($options);
         }

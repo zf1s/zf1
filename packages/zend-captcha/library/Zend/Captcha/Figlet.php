@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -71,12 +74,14 @@ class Zend_Captcha_Figlet extends Zend_Captcha_Word
     /**
      * Display the captcha
      *
-     * @param Zend_View_Interface $view
+     * @param Zend_View_Interface|null $view
      * @param mixed $element
      * @return string
      */
-    public function render(Zend_View_Interface $view = null, $element = null)
+    public function render($view = null, $element = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         return '<pre>'
              . $this->_figlet->render($this->getWord())
              . "</pre>\n";

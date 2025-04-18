@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -51,8 +54,9 @@ class Zend_Tool_Project_Provider_Module
     implements Zend_Tool_Framework_Provider_Pretendable
 {
 
-    public static function createResources(Zend_Tool_Project_Profile $profile, $moduleName, Zend_Tool_Project_Profile_Resource $targetModuleResource = null)
+    public static function createResources(Zend_Tool_Project_Profile $profile, $moduleName, $targetModuleResource = null)
     {
+        Types::isNullable('targetModuleResource', $targetModuleResource, 'Zend_Tool_Project_Profile_Resource');
 
         // find the appliction directory, it will serve as our module skeleton
         if ($targetModuleResource == null) {
@@ -139,7 +143,7 @@ class Zend_Tool_Project_Provider_Module
         // determine if testing is enabled in the project
         // require_once 'Zend/Tool/Project/Provider/Test.php';
         //$testingEnabled = Zend_Tool_Project_Provider_Test::isTestingEnabled($this->_loadedProfile);
-        
+
         $resources = self::createResources($this->_loadedProfile, $name);
 
         $response = $this->_registry->getResponse();

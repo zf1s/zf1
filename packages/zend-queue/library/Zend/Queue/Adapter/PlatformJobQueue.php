@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -48,8 +51,10 @@ class Zend_Queue_Adapter_PlatformJobQueue extends Zend_Queue_Adapter_AdapterAbst
      * @param  Zend_Queue|null $queue
      * @return void
      */
-    public function __construct($options, Zend_Queue $queue = null)
+    public function __construct($options, $queue = null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         parent::__construct($options, $queue);
 
         if (!extension_loaded("jobqueue_client")) {
@@ -152,8 +157,10 @@ class Zend_Queue_Adapter_PlatformJobQueue extends Zend_Queue_Adapter_AdapterAbst
      * @return integer
      */
     #[ReturnTypeWillChange]
-    public function count(Zend_Queue $queue = null)
+    public function count($queue = null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         if ($queue !== null) {
             // require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception('Queue parameter is not supported');
@@ -170,12 +177,14 @@ class Zend_Queue_Adapter_PlatformJobQueue extends Zend_Queue_Adapter_AdapterAbst
      * Send a message to the queue
      *
      * @param  array | ZendAPI_job $message Message to send to the active queue
-     * @param  Zend_Queue $queue     Not supported
+     * @param  Zend_Queue|null $queue     Not supported
      * @return Zend_Queue_Message
      * @throws Zend_Queue_Exception
      */
-    public function send($message, Zend_Queue $queue = null)
+    public function send($message, $queue = null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         if ($queue !== null) {
             // require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception('Queue parameter is not supported');
@@ -214,12 +223,14 @@ class Zend_Queue_Adapter_PlatformJobQueue extends Zend_Queue_Adapter_AdapterAbst
      *
      * @param  integer    $maxMessages  Maximum number of messages to return
      * @param  integer    $timeout      Ignored
-     * @param  Zend_Queue $queue        Not supported
+     * @param  Zend_Queue $queue|null   Not supported
      * @throws Zend_Queue_Exception
      * @return ArrayIterator
      */
-    public function receive($maxMessages = null, $timeout = null, Zend_Queue $queue = null)
+    public function receive($maxMessages = null, $timeout = null, $queue = null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         if ($maxMessages === null) {
             $maxMessages = 1;
         }

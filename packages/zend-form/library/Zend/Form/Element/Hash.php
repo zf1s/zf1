@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -232,11 +235,13 @@ class Zend_Form_Element_Hash extends Zend_Form_Element_Xhtml
     /**
      * Render CSRF token in form
      *
-     * @param  Zend_View_Interface $view
+     * @param  Zend_View_Interface|null $view
      * @return string
      */
-    public function render(Zend_View_Interface $view = null)
+    public function render($view = null)
     {
+        Types::isNullable('view', $view, 'Zend_View_Interface');
+
         $this->initCsrfToken();
         return parent::render($view);
     }

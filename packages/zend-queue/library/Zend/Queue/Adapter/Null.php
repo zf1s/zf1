@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -40,11 +43,13 @@ class Zend_Queue_Adapter_Null extends Zend_Queue_Adapter_AdapterAbstract
      * Constructor
      *
      * @param  array|Zend_Config $options
-     * @param  null|Zend_Queue $queue
+     * @param  Zend_Queue|null $queue
      * @return void
      */
-    public function __construct($options, Zend_Queue $queue = null)
+    public function __construct($options, $queue = null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         parent::__construct($options, $queue);
     }
 
@@ -103,8 +108,10 @@ class Zend_Queue_Adapter_Null extends Zend_Queue_Adapter_AdapterAbstract
      * @throws Zend_Queue_Exception - not supported.
      */
     #[ReturnTypeWillChange]
-    public function count(Zend_Queue $queue=null)
+    public function count($queue=null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         // require_once 'Zend/Queue/Exception.php';
         throw new Zend_Queue_Exception(__FUNCTION__ . '() is not supported by ' . get_class($this));
     }
@@ -118,8 +125,10 @@ class Zend_Queue_Adapter_Null extends Zend_Queue_Adapter_AdapterAbstract
      *
      * @throws Zend_Queue_Exception - not supported.
      */
-    public function send($message, Zend_Queue $queue=null)
+    public function send($message, $queue=null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         // require_once 'Zend/Queue/Exception.php';
         throw new Zend_Queue_Exception(__FUNCTION__ . '() is not supported by ' . get_class($this));
     }
@@ -129,8 +138,10 @@ class Zend_Queue_Adapter_Null extends Zend_Queue_Adapter_AdapterAbstract
      *
      * @throws Zend_Queue_Exception - not supported.
      */
-    public function receive($maxMessages=null, $timeout=null, Zend_Queue $queue=null)
+    public function receive($maxMessages=null, $timeout=null, $queue=null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+
         // require_once 'Zend/Queue/Exception.php';
         throw new Zend_Queue_Exception(__FUNCTION__ . '() is not supported by ' . get_class($this));
     }

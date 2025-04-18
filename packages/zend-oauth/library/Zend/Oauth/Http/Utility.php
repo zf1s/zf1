@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -45,8 +48,10 @@ class Zend_Oauth_Http_Utility
     public function assembleParams(
         $url,
         Zend_Oauth_Config_ConfigInterface $config,
-        array $serviceProviderParams = null
+        $serviceProviderParams = null
     ) {
+        Types::isNullable('serviceProviderParams', $serviceProviderParams, 'array');
+
         $params = array(
             'oauth_consumer_key'     => $config->getConsumerKey(),
             'oauth_nonce'            => $this->generateNonce(),

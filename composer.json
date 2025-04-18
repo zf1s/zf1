@@ -2,9 +2,16 @@
     "name": "zf1s/zf1",
     "description": "Zend Framework 1 complete package, PHP 5.3-8.3 compatible. Please consider using individual zf1s/zend-* packages instead - see README.",
     "license": "BSD-3-Clause",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:zf1s/compat.git"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/polyfill-php70": "^1.19"
+        "symfony/polyfill-php70": "^1.19",
+        "zf1s/compat": "^1.0"
     },
     "require-dev": {
         "ext-ctype": "*",

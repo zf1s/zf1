@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -69,7 +72,7 @@ abstract class Zend_Queue_Adapter_AdapterAbstract
     /**
      * Contains the Zend_Queue that this object
      *
-     * @var Zend_Queue_Adapter_Abstract
+     * @var Zend_Queue_Adapter_Abstract|null
      */
     protected $_queue = null;
 
@@ -92,12 +95,14 @@ abstract class Zend_Queue_Adapter_AdapterAbstract
      * port           => (string) The port of the database
      *
      * @param  array|Zend_Config $config An array having configuration data
-     * @param  Zend_Queue The Zend_Queue object that created this class
+     * @param  Zend_Queue|null The Zend_Queue object that created this class
      * @return void
      * @throws Zend_Queue_Exception
      */
-    public function __construct($options, Zend_Queue $queue = null)
+    public function __construct($options, $queue = null)
     {
+        Types::isNullable('queue', $queue, 'Zend_Queue');
+        
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         }

@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -116,12 +119,14 @@ class Zend_Ldap_Exception extends Zend_Exception
     const LDAP_X_EXTENSION_NOT_LOADED         = 0x7002;
 
     /**
-     * @param Zend_Ldap $ldap A Zend_Ldap object
+     * @param Zend_Ldap|null $ldap A Zend_Ldap object
      * @param string    $str  An informtive exception message
      * @param int       $code An LDAP error code
      */
-    public function __construct(Zend_Ldap $ldap = null, $str = null, $code = 0)
+    public function __construct($ldap = null, $str = null, $code = 0)
     {
+        Types::isNullable('ldap', $ldap, 'Zend_Ldap');
+
         $errorMessages = array();
         $message = '';
         if ($ldap !== null) {
@@ -150,11 +155,13 @@ class Zend_Ldap_Exception extends Zend_Exception
 
     /**
      * @deprecated not necessary any more - will be removed
-     * @param Zend_Ldap $ldap A Zend_Ldap object
+     * @param Zend_Ldap|null $ldap A Zend_Ldap object
      * @return int The current error code for the resource
      */
-    public static function getLdapCode(Zend_Ldap $ldap = null)
+    public static function getLdapCode($ldap = null)
     {
+        Types::isNullable('ldap', $ldap, 'Zend_Ldap');
+
         if ($ldap !== null) {
             return $ldap->getLastErrorCode();
         }

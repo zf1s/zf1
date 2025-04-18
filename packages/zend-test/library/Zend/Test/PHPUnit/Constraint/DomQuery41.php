@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -136,7 +139,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends PHPUnit_Framework_Constrai
      * @param  null|string  Assertion type
      * @param  string       (optional) String to match (needle), may be required depending on assertion type
      * @return bool
-     * 
+     *
      * NOTE:
      * Drastic changes up to PHPUnit 3.5.15 this was:
      *     public function evaluate($other, $assertType = null)
@@ -219,13 +222,15 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends PHPUnit_Framework_Constrai
      * Drastic changes up to PHPUnit 3.5.15 this was:
      *     public function fail($other, $description, $not = false)
      * In PHPUnit 3.6.0 they changed the interface into this:
-     *     protected function fail($other, $description, PHPUnit_Framework_ComparisonFailure $comparisonFailure = NULL)
+     *     protected function fail($other, $description, $comparisonFailure = NULL)
      * We use the new interface for PHP-strict checking
      * NOTE 2:
      * Interface changed again in PHPUnit 4.1.0 because of refactoring to SebastianBergmann\Comparator
      */
-    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = NULL)
+    public function fail($other, $description, $cannot_be_used = NULL)
     {
+        Types::isNullable('cannot_be_used', $cannot_be_used, '\SebastianBergmann\Comparator\ComparisonFailure');
+
         // require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
         switch ($this->_assertType) {
             case self::ASSERT_CONTENT_CONTAINS:

@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -94,11 +97,11 @@ class Zend_Soap_Server implements Zend_Server_Interface
 
     /**
      * WS-I compliant
-     * 
-     * @var boolean 
+     *
+     * @var boolean
      */
     protected $_wsiCompliant;
-    
+
     /**
      * Registered fault exceptions
      * @var array
@@ -166,11 +169,13 @@ class Zend_Soap_Server implements Zend_Server_Interface
      * options are specified, they are passed on to {@link setOptions()}.
      *
      * @param string $wsdl
-     * @param array $options
+     * @param array|null $options
      * @return void
      */
-    public function __construct($wsdl = null, array $options = null)
+    public function __construct($wsdl = null, $options = null)
     {
+        Types::isNullable('options', $options, 'array');
+
         if (!extension_loaded('soap')) {
             // require_once 'Zend/Soap/Server/Exception.php';
             throw new Zend_Soap_Server_Exception('SOAP extension is not loaded.');
@@ -279,14 +284,14 @@ class Zend_Soap_Server implements Zend_Server_Interface
         if (null !== $this->_wsiCompliant) {
             $options['wsi_compliant'] = $this->_wsiCompliant;
         }
-        
+
         return $options;
     }
     /**
      * Set WS-I compliant
-     * 
+     *
      * @param  boolean $value
-     * @return Zend_Soap_Server 
+     * @return Zend_Soap_Server
      */
     public function setWsiCompliant($value)
     {
@@ -297,10 +302,10 @@ class Zend_Soap_Server implements Zend_Server_Interface
     }
     /**
      * Gt WS-I compliant
-     * 
+     *
      * @return boolean
      */
-    public function getWsiCompliant() 
+    public function getWsiCompliant()
     {
         return $this->_wsiCompliant;
     }
@@ -640,7 +645,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
             $this->_object = new Zend_Soap_Server_Proxy($object);
         } else {
             $this->_object = $object;
-        }    
+        }
 
         return $this;
     }
@@ -823,7 +828,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
             if ($this->_wsiCompliant) {
                 // require_once 'Zend/Soap/Server/Proxy.php';
                 array_unshift($args, 'Zend_Soap_Server_Proxy');
-            } 
+            }
             call_user_func_array(array($server, 'setClass'), $args);
         }
 
@@ -876,7 +881,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
         } catch (Zend_Soap_Server_Exception $e) {
             $setRequestException = $e;
         }
-        
+
         $soap = $this->_getSoap();
 
         $fault = false;
@@ -1011,12 +1016,14 @@ class Zend_Soap_Server implements Zend_Server_Interface
      * @param string $errstr
      * @param string $errfile
      * @param int $errline
-     * @param array $errcontext
+     * @param array|null $errcontext
      * @return void
      * @throws SoapFault
      */
-    public function handlePhpErrors($errno, $errstr, $errfile = null, $errline = null, array $errcontext = null)
+    public function handlePhpErrors($errno, $errstr, $errfile = null, $errline = null, $errcontext = null)
     {
+        Types::isNullable('errcontext', $errcontext, 'array');
+
         throw $this->fault($errstr, "Receiver");
     }
 }

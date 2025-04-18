@@ -1,5 +1,7 @@
 <?php
 
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -140,12 +142,14 @@ class Zend_Service_Flickr
      *  # max_taken_date:  Maximum upload date to search on.  Date should be a MySQL datetime.
      *
      * @param  string $query   username or email
-     * @param  array  $options Additional parameters to refine your query.
+     * @param  array|null $options Additional parameters to refine your query.
      * @return Zend_Service_Flickr_ResultSet
      * @throws Zend_Service_Exception
      */
-    public function userSearch($query, array $options = null)
+    public function userSearch($query, $options = null)
     {
+        Types::isNullable('options', $options, 'array');
+
         static $method = 'flickr.people.getPublicPhotos';
         static $defaultOptions = array('per_page' => 10,
                                        'page'     => 1,

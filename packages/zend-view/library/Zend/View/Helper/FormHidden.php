@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -47,11 +50,13 @@ class Zend_View_Helper_FormHidden extends Zend_View_Helper_FormElement
      * array, all other parameters are ignored, and the array elements
      * are extracted in place of added parameters.
      * @param mixed $value The element value.
-     * @param array $attribs Attributes for the element tag.
+     * @param array|null $attribs Attributes for the element tag.
      * @return string The element XHTML.
      */
-    public function formHidden($name, $value = null, array $attribs = null)
+    public function formHidden($name, $value = null, $attribs = null)
     {
+        Types::isNullable('attribs', $attribs, 'array');
+
         $info = $this->_getInfo($name, $value, $attribs);
         extract($info); // name, value, attribs, options, listsep, disable
         if (isset($id)) {

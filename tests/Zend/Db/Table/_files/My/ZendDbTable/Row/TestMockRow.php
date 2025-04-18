@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -48,21 +51,27 @@ class My_ZendDbTable_Row_TestMockRow extends Zend_Db_Table_Row_Abstract
     public $callerRefRuleKey  = null;
     public $matchRefRuleKey   = null;
 
-    public function findDependentRowset($dependentTable, $ruleKey = null, Zend_Db_Table_Select $select = null)
+    public function findDependentRowset($dependentTable, $ruleKey = null, $select = null)
     {
+        Types::isNullable('select', $select, 'Zend_Db_Table_Select');
+
         $this->dependentTable    = $dependentTable;
         $this->ruleKey           = $ruleKey;
     }
 
-    public function findParentRow($parentTable, $ruleKey = null, Zend_Db_Table_Select $select = null)
+    public function findParentRow($parentTable, $ruleKey = null, $select = null)
     {
+        Types::isNullable('select', $select, 'Zend_Db_Table_Select');
+
         $this->parentTable       = $parentTable;
         $this->ruleKey           = $ruleKey;
     }
 
     public function findManyToManyRowset($matchTable, $intersectionTable, $callerRefRule = null,
-                                         $matchRefRule = null, Zend_Db_Table_Select $select = null)
+                                         $matchRefRule = null, $select = null)
     {
+        Types::isNullable('select', $select, 'Zend_Db_Table_Select');
+
         $this->matchTable        = $matchTable;
         $this->intersectionTable = $intersectionTable;
         $this->callerRefRuleKey  = $callerRefRule;

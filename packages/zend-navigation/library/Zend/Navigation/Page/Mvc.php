@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -400,8 +403,10 @@ class Zend_Navigation_Page_Mvc extends Zend_Navigation_Page
      *                                      which clears all params.
      * @return Zend_Navigation_Page_Mvc     fluent interface, returns self
      */
-    public function setParams(array $params = null)
+    public function setParams($params = null)
     {
+        Types::isNullable('params', $params, 'array');
+
         $this->clearParams();
 
         if (is_array($params)) {

@@ -1,4 +1,7 @@
 <?php
+
+use Zf1s\Compat\Types;
+
 /**
  * Zend Framework
  *
@@ -495,12 +498,14 @@ class Zend_Acl
      * @param  Zend_Acl_Role_Interface|string|array     $roles
      * @param  Zend_Acl_Resource_Interface|string|array $resources
      * @param  string|array                             $privileges
-     * @param  Zend_Acl_Assert_Interface                $assert
+     * @param  Zend_Acl_Assert_Interface|null           $assert
      * @uses   Zend_Acl::setRule()
      * @return Zend_Acl Provides a fluent interface
      */
-    public function allow($roles = null, $resources = null, $privileges = null, Zend_Acl_Assert_Interface $assert = null)
+    public function allow($roles = null, $resources = null, $privileges = null, $assert = null)
     {
+        Types::isNullable('assert', $assert, 'Zend_Acl_Assert_Interface');
+
         return $this->setRule(self::OP_ADD, self::TYPE_ALLOW, $roles, $resources, $privileges, $assert);
     }
 
@@ -510,12 +515,14 @@ class Zend_Acl
      * @param  Zend_Acl_Role_Interface|string|array     $roles
      * @param  Zend_Acl_Resource_Interface|string|array $resources
      * @param  string|array                             $privileges
-     * @param  Zend_Acl_Assert_Interface                $assert
+     * @param  Zend_Acl_Assert_Interface|null           $assert
      * @uses   Zend_Acl::setRule()
      * @return Zend_Acl Provides a fluent interface
      */
-    public function deny($roles = null, $resources = null, $privileges = null, Zend_Acl_Assert_Interface $assert = null)
+    public function deny($roles = null, $resources = null, $privileges = null, $assert = null)
     {
+        Types::isNullable('assert', $assert, 'Zend_Acl_Assert_Interface');
+
         return $this->setRule(self::OP_ADD, self::TYPE_DENY, $roles, $resources, $privileges, $assert);
     }
 
@@ -593,15 +600,17 @@ class Zend_Acl
      * @param  Zend_Acl_Role_Interface|string|array     $roles
      * @param  Zend_Acl_Resource_Interface|string|array $resources
      * @param  string|array                             $privileges
-     * @param  Zend_Acl_Assert_Interface                $assert
+     * @param  Zend_Acl_Assert_Interface|null           $assert
      * @throws Zend_Acl_Exception
      * @uses   Zend_Acl_Role_Registry::get()
      * @uses   Zend_Acl::get()
      * @return Zend_Acl Provides a fluent interface
      */
     public function setRule($operation, $type, $roles = null, $resources = null, $privileges = null,
-                            Zend_Acl_Assert_Interface $assert = null)
+                            $assert = null)
     {
+        Types::isNullable('assert', $assert, 'Zend_Acl_Assert_Interface');
+
         // ensure that the rule type is valid; normalize input to uppercase
         $type = strtoupper($type);
         if (self::TYPE_ALLOW !== $type && self::TYPE_DENY !== $type) {
@@ -915,12 +924,14 @@ class Zend_Acl
      * This method returns true if a rule is found and allows access. If a rule exists and denies access,
      * then this method returns false. If no applicable rule is found, then this method returns null.
      *
-     * @param  Zend_Acl_Role_Interface     $role
-     * @param  Zend_Acl_Resource_Interface $resource
+     * @param  Zend_Acl_Role_Interface          $role
+     * @param  Zend_Acl_Resource_Interface|null $resource
      * @return boolean|null
      */
-    protected function _roleDFSAllPrivileges(Zend_Acl_Role_Interface $role, Zend_Acl_Resource_Interface $resource = null)
+    protected function _roleDFSAllPrivileges(Zend_Acl_Role_Interface $role, $resource = null)
     {
+        Types::isNullable('resource', $resource, 'Zend_Acl_Resource_Interface');
+
         $dfs = array(
             'visited' => array(),
             'stack'   => array()
@@ -949,15 +960,17 @@ class Zend_Acl
      *
      * This method is used by the internal depth-first search algorithm and may modify the DFS data structure.
      *
-     * @param  Zend_Acl_Role_Interface     $role
-     * @param  Zend_Acl_Resource_Interface $resource
-     * @param  array                  $dfs
+     * @param  Zend_Acl_Role_Interface          $role
+     * @param  Zend_Acl_Resource_Interface|null $resource
+     * @param  array                            $dfs
      * @return boolean|null
      * @throws Zend_Acl_Exception
      */
-    protected function _roleDFSVisitAllPrivileges(Zend_Acl_Role_Interface $role, Zend_Acl_Resource_Interface $resource = null,
+    protected function _roleDFSVisitAllPrivileges(Zend_Acl_Role_Interface $role, $resource = null,
                                                  &$dfs = null)
     {
+        Types::isNullable('resource', $resource, 'Zend_Acl_Resource_Interface');
+
         if (null === $dfs) {
             /**
              * @see Zend_Acl_Exception
@@ -992,15 +1005,17 @@ class Zend_Acl
      * This method returns true if a rule is found and allows access. If a rule exists and denies access,
      * then this method returns false. If no applicable rule is found, then this method returns null.
      *
-     * @param  Zend_Acl_Role_Interface     $role
-     * @param  Zend_Acl_Resource_Interface $resource
-     * @param  string                      $privilege
+     * @param  Zend_Acl_Role_Interface          $role
+     * @param  Zend_Acl_Resource_Interface|null $resource
+     * @param  string                           $privilege
      * @return boolean|null
      * @throws Zend_Acl_Exception
      */
-    protected function _roleDFSOnePrivilege(Zend_Acl_Role_Interface $role, Zend_Acl_Resource_Interface $resource = null,
+    protected function _roleDFSOnePrivilege(Zend_Acl_Role_Interface $role, $resource = null,
                                             $privilege = null)
     {
+        Types::isNullable('resource', $resource, 'Zend_Acl_Resource_Interface');
+
         if (null === $privilege) {
             /**
              * @see Zend_Acl_Exception
@@ -1037,16 +1052,18 @@ class Zend_Acl
      *
      * This method is used by the internal depth-first search algorithm and may modify the DFS data structure.
      *
-     * @param  Zend_Acl_Role_Interface     $role
-     * @param  Zend_Acl_Resource_Interface $resource
-     * @param  string                      $privilege
-     * @param  array                       $dfs
+     * @param  Zend_Acl_Role_Interface          $role
+     * @param  Zend_Acl_Resource_Interface|null $resource
+     * @param  string                           $privilege
+     * @param  array                            $dfs
      * @return boolean|null
      * @throws Zend_Acl_Exception
      */
-    protected function _roleDFSVisitOnePrivilege(Zend_Acl_Role_Interface $role, Zend_Acl_Resource_Interface $resource = null,
+    protected function _roleDFSVisitOnePrivilege(Zend_Acl_Role_Interface $role, $resource = null,
                                                 $privilege = null, &$dfs = null)
     {
+        Types::isNullable('resource', $resource, 'Zend_Acl_Resource_Interface');
+
         if (null === $privilege) {
             /**
              * @see Zend_Acl_Exception
@@ -1093,14 +1110,17 @@ class Zend_Acl
      * If all three parameters are null, then the default ACL rule type is returned,
      * based on whether its assertion method passes.
      *
-     * @param  Zend_Acl_Resource_Interface $resource
-     * @param  Zend_Acl_Role_Interface     $role
-     * @param  string                      $privilege
+     * @param  Zend_Acl_Resource_Interface|null $resource
+     * @param  Zend_Acl_Role_Interface|null     $role
+     * @param  string                           $privilege
      * @return string|null
      */
-    protected function _getRuleType(Zend_Acl_Resource_Interface $resource = null, Zend_Acl_Role_Interface $role = null,
+    protected function _getRuleType($resource = null, $role = null,
                                     $privilege = null)
     {
+        Types::isNullable('resource', $resource, 'Zend_Acl_Resource_Interface');
+        Types::isNullable('role', $role, 'Zend_Acl_Role_Interface');
+
         // get the rules for the $resource and $role
         if (null === ($rules = $this->_getRules($resource, $role))) {
             return null;
@@ -1149,14 +1169,17 @@ class Zend_Acl
      *
      * If the $create parameter is true, then a rule set is first created and then returned to the caller.
      *
-     * @param  Zend_Acl_Resource_Interface $resource
-     * @param  Zend_Acl_Role_Interface     $role
-     * @param  boolean                     $create
+     * @param  Zend_Acl_Resource_Interface|null $resource
+     * @param  Zend_Acl_Role_Interface|null     $role
+     * @param  boolean                          $create
      * @return array|null
      */
-    protected function &_getRules(Zend_Acl_Resource_Interface $resource = null, Zend_Acl_Role_Interface $role = null,
+    protected function &_getRules($resource = null, $role = null,
                                   $create = false)
     {
+        Types::isNullable('resource', $resource, 'Zend_Acl_Resource_Interface');
+        Types::isNullable('role', $role, 'Zend_Acl_Role_Interface');
+
         // create a reference to null
         $null = null;
         $nullRef =& $null;
