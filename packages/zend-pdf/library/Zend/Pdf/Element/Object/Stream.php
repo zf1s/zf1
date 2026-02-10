@@ -436,7 +436,7 @@ class Zend_Pdf_Element_Object_Stream extends Zend_Pdf_Element_Object
         // Update stream length
         $this->dictionary->Length->value = $this->_value->length();
 
-        return  $this->_objNum + $shift . " " . $this->_genNum . " obj \n"
+        return  $this->_objNum + $shift . " " . $this->_genNum . " obj\n"
              .  $this->dictionary->toString($factory) . "\n"
              .  $this->_value->toString($factory) . "\n"
              . "endobj\n";

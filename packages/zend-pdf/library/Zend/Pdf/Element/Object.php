@@ -172,7 +172,7 @@ class Zend_Pdf_Element_Object extends Zend_Pdf_Element
     {
         $shift = $factory->getEnumerationShift($this->_factory);
 
-        return  $this->_objNum + $shift . " " . $this->_genNum . " obj \n"
+        return  $this->_objNum + $shift . " " . $this->_genNum . " obj\n"
              .  $this->_value->toString($factory) . "\n"
              . "endobj\n";
     }
