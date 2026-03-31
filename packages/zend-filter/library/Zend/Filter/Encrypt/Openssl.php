@@ -70,6 +70,21 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
     protected $_package = false;
 
     /**
+     * Cipher method for seal/open operations.
+     * When null, auto-detected via getCipher().
+     *
+     * @var string|null
+     */
+    protected $_cipher;
+
+    /**
+     * Initialization vector from last encryption
+     *
+     * @var string
+     */
+    protected $_iv = '';
+
+    /**
      * Class constructor
      * Available options
      *   'public'      => public key
@@ -78,6 +93,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
      *   'passphrase'  => passphrase
      *   'compression' => compress value with this compression adapter
      *   'package'     => pack envelope keys into encrypted string, simplifies decryption
+     *   'cipher'      => cipher method for seal/open (auto-detected when not set)
      *
      * @param string|array $options Options for this adapter
      */
@@ -109,6 +125,11 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
         if (array_key_exists('package', $options)) {
             $this->setPackage($options['package']);
             unset($options['package']);
+        }
+
+        if (array_key_exists('cipher', $options)) {
+            $this->setCipher($options['cipher']);
+            unset($options['cipher']);
         }
 
         $this->_setKeys($options);
@@ -386,7 +407,19 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
             $value    = $compress->filter($value);
         }
 
-        $crypt  = openssl_seal($value, $encrypted, $encryptedkeys, $keys, 'RC4');
+        // The $iv output parameter is only supported in PHP >= 7.0; on older versions
+        // $iv stays empty - the default fallback ciphers for PHP < 7.0 (RC4, AES-128-ECB)
+        // don't require an IV anyway. See getCipher().
+        // The IV is prepended to the encrypted output so decrypt() can extract it.
+        $cipher = $this->getCipher();
+        $iv = '';
+        if (PHP_VERSION_ID >= 70000) {
+            $crypt = openssl_seal($value, $encrypted, $encryptedkeys, $keys, $cipher, $iv);
+            $this->_iv = $iv;
+        } else {
+            $crypt = openssl_seal($value, $encrypted, $encryptedkeys, $keys, $cipher);
+        }
+
         if (PHP_VERSION_ID < 80000) {
             foreach ($keys as $key) {
                 openssl_free_key($key);
@@ -407,7 +440,9 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
                 $header .= pack('H32n', $fingerprints[$key], strlen($envKey)) . $envKey;
             }
 
-            $encrypted = $header . $encrypted;
+            $encrypted = $header . $iv . $encrypted;
+        } else {
+            $encrypted = $iv . $encrypted;
         }
 
         return $encrypted;
@@ -466,7 +501,26 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
             $value = substr($value, $length);
         }
 
-        $crypt  = openssl_open($value, $decrypted, $envelope, $keys, 'RC4');
+        $cipher = $this->getCipher();
+        if (PHP_VERSION_ID >= 70000) {
+            // extract IV and decrypt - PHP >= 7.0 supports the IV parameter and
+            // the IV was embedded during encrypt(); older versions don't use IV at all
+            $ivLength = openssl_cipher_iv_length($cipher);
+            if ($ivLength > 0 && strlen($value) > $ivLength) {
+                $iv = substr($value, 0, $ivLength);
+                $value = substr($value, $ivLength);
+            } elseif ($ivLength > 0) {
+                // value too short to contain IV - pad to required length so openssl_open
+                // doesn't error on IV length; decryption will fail and return false
+                $iv = str_pad(substr($value, 0, $ivLength), $ivLength, "\0");
+                $value = '';
+            } else {
+                $iv = '';
+            }
+            $crypt = openssl_open($value, $decrypted, $envelope, $keys, $cipher, $iv);
+        } else {
+            $crypt = openssl_open($value, $decrypted, $envelope, $keys, $cipher);
+        }
         if (PHP_VERSION_ID < 80000) {
             openssl_free_key($keys);
         }
@@ -484,6 +538,63 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
         }
 
         return $decrypted;
+    }
+
+    /**
+     * Returns the cipher used for seal/open operations.
+     *
+     * RC4 was the implicit default in openssl_seal() before PHP 8.0 and was later hardcoded
+     * explicitly, but is disabled in OpenSSL 3.x (i.a. Ubuntu 22.04+).
+     * RC4 is considered insecure (see php.net/openssl-seal).
+     *
+     * Auto-detects the best available cipher when not explicitly set:
+     * - RC4 if available and OpenSSL < 3.0 (backward compat with existing encrypted data)
+     * - AES-128-ECB on PHP < 7.0 (no IV param support in openssl_seal/openssl_open)
+     * - AES-128-CBC on PHP 7.0+
+     *
+     * AES-128 is used to match RC4's 128-bit key size. AES-256 would also work,
+     * but 128-bit is widely considered sufficient and keeps the fallback consistent.
+     *
+     * @return string
+     */
+    public function getCipher()
+    {
+        if ($this->_cipher !== null) {
+            return $this->_cipher;
+        }
+
+        // RC4 is listed by openssl_get_cipher_methods() on PHP 5.6-8.0 even when
+        // OpenSSL 3.x has it disabled (PHP 8.1+ correctly removed it from the list).
+        // Only trust the listing on OpenSSL < 3.0.
+        if (OPENSSL_VERSION_NUMBER < 0x30000000
+            && in_array('RC4', openssl_get_cipher_methods())
+        ) {
+            $this->_cipher = 'RC4';
+        } elseif (PHP_VERSION_ID < 70000) {
+            // PHP < 7.0 does not support the IV parameter in openssl_seal/openssl_open,
+            // so we must use a cipher that does not require an IV.
+            // ECB (Electronic Codebook) encrypts each block independently without IV.
+            $this->_cipher = 'AES-128-ECB';
+        } else {
+            // CBC (Cipher Block Chaining) - each block is XORed with the previous ciphertext
+            // block, requires IV. GCM would be stronger (authenticated encryption) but
+            // openssl_seal/openssl_open can't handle authentication tags.
+            $this->_cipher = 'AES-128-CBC';
+        }
+
+        return $this->_cipher;
+    }
+
+    /**
+     * Sets the cipher method for seal/open operations
+     *
+     * @param string $cipher
+     * @return Zend_Filter_Encrypt_Openssl
+     */
+    public function setCipher($cipher)
+    {
+        $this->_cipher = $cipher;
+        return $this;
     }
 
     /**

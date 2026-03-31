@@ -309,4 +309,51 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt';
         $input = $filter->decrypt($output);
         $this->assertEquals('teststring', trim($input));
     }
+
+    /**
+     * @return void
+     */
+    public function testGetCipherAutoDetects()
+    {
+        $filter = new Zend_Filter_Encrypt_Openssl();
+        $cipher = $filter->getCipher();
+        $this->assertInternalType('string', $cipher);
+        $this->assertNotEmpty($cipher);
+    }
+
+    /**
+     * @return void
+     */
+    public function testSetCipher()
+    {
+        $filter = new Zend_Filter_Encrypt_Openssl();
+        $result = $filter->setCipher('AES-256-CBC');
+        $this->assertInstanceOf('Zend_Filter_Encrypt_Openssl', $result);
+        $this->assertEquals('AES-256-CBC', $filter->getCipher());
+    }
+
+    /**
+     * @return void
+     */
+    public function testSetCipherOverridesAutoDetection()
+    {
+        $filter = new Zend_Filter_Encrypt_Openssl();
+        $auto   = $filter->getCipher();
+        $filter->setCipher('AES-256-CBC');
+        $this->assertEquals('AES-256-CBC', $filter->getCipher());
+        $this->assertNotEquals($auto, $filter->getCipher());
+    }
+
+    /**
+     * @return void
+     */
+    public function testCipherOptionInConstructor()
+    {
+        $filter = new Zend_Filter_Encrypt_Openssl(array(
+            'public' => dirname(__FILE__) . '/../_files/publickey.pem',
+            'cipher' => 'AES-256-CBC',
+        ));
+        $this->assertEquals('AES-256-CBC', $filter->getCipher());
+    }
+
 }

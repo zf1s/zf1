@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     name: PHP ${{ matrix.php }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -43,7 +43,7 @@ jobs:
       POSTGRES_DB: "zftest"
       POSTGRES_HOST: "127.0.0.1"
 
-      # https://hub.docker.com/r/bitnami/openldap
+      # https://hub.docker.com/r/bitnamilegacy/openldap
       LDAP_ROOT: "dc=example,dc=com"
       LDAP_ALLOW_ANON_BINDING: false
       LDAP_SKIP_DEFAULT_TREE: "yes"
@@ -88,7 +88,7 @@ jobs:
           --health-retries 5
 
       openldap:
-        image: bitnami/openldap:2.5
+        image: bitnamilegacy/openldap:2.6
         ports:
           - 1389:1389
         env:

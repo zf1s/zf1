@@ -12,5 +12,5 @@ olcAccess: to attrs=shadowLastChange
   by * read
 -
 add: olcAccess
-olcAccess: to *	
+olcAccess: to *
   by * read

@@ -302,7 +302,13 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         //
         // Still values returned by date_sun_info() are slightly different in php 8.0+, (but only for sunrise/sunset, not for twilight)
         // so yet another set of conditions is added to this test and DateTest::testSunFunc().
-        if (PHP_VERSION_ID >= 80000) {
+        //
+        // Update 2026-03-30: They fixed the calculations - https://github.com/php/php-src/pull/18317
+        // - fix applied to PHP 8.3.22+, 8.4.8+, 8.5+
+        if (
+            (PHP_VERSION_ID >= 80000 && PHP_VERSION_ID < 80322) ||
+            (PHP_VERSION_ID >= 80400 && PHP_VERSION_ID < 80408)
+        ) {
             $this->assertSame( 9961443, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), true ));
             $this->assertSame(10010614, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), false));
             $this->assertSame( 9966709, $date->calcSun(array('latitude' => -38.4, 'longitude' => -29), true ));
@@ -356,7 +362,10 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         }
 
         $date = new Zend_Date_DateObjectTestHelper(-148309884);
-        if (PHP_VERSION_ID >= 80000) {
+        if (
+            (PHP_VERSION_ID >= 80000 && PHP_VERSION_ID < 80322) ||
+            (PHP_VERSION_ID >= 80400 && PHP_VERSION_ID < 80408)
+        ) {
             $this->assertSame(-148322895, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), true ));
             $this->assertSame(-148274514, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), false));
             $this->assertSame(-148318410, $date->calcSun(array('latitude' => -38.4, 'longitude' => -29), true ));

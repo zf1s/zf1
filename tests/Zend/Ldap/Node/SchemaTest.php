@@ -127,7 +127,7 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
         $this->assertEquals('2.5.6.5', $ou->getOid());
         $this->assertEquals(array('objectClass', 'ou'), $ou->getMustContain());
         $this->assertEquals(array('businessCategory', 'description', 'destinationIndicator',
-            'facsimileTelephoneNumber', 'internationaliSDNNumber', 'l',
+            'facsimileTelephoneNumber', 'internationalISDNNumber', 'l',
             'physicalDeliveryOfficeName', 'postOfficeBox', 'postalAddress', 'postalCode',
             'preferredDeliveryMethod', 'registeredAddress', 'searchGuide', 'seeAlso', 'st',
             'street', 'telephoneNumber', 'teletexTerminalIdentifier', 'telexNumber',
@@ -148,14 +148,14 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
         $this->assertEquals(array('userPassword', 'searchGuide', 'seeAlso', 'businessCategory',
             'x121Address', 'registeredAddress', 'destinationIndicator', 'preferredDeliveryMethod',
             'telexNumber', 'teletexTerminalIdentifier', 'telephoneNumber',
-            'internationaliSDNNumber', 'facsimileTelephoneNumber', 'street', 'postOfficeBox',
+            'internationalISDNNumber', 'facsimileTelephoneNumber', 'street', 'postOfficeBox',
             'postalCode', 'postalAddress', 'physicalDeliveryOfficeName', 'st', 'l',
             'description'), $ou->may);
         $this->assertEquals("( 2.5.6.5 NAME 'organizationalUnit' " .
             "DESC 'RFC2256: an organizational unit' SUP top STRUCTURAL MUST ou " .
             "MAY ( userPassword $ searchGuide $ seeAlso $ businessCategory $ x121Address $ " .
             "registeredAddress $ destinationIndicator $ preferredDeliveryMethod $ telexNumber $ " .
-            "teletexTerminalIdentifier $ telephoneNumber $ internationaliSDNNumber $ " .
+            "teletexTerminalIdentifier $ telephoneNumber $ internationalISDNNumber $ " .
             "facsimileTelephoneNumber $ street $ postOfficeBox $ postalCode $ postalAddress $ " .
             "physicalDeliveryOfficeName $ st $ l $ description ) )", $ou->_string);
         $this->assertEquals(array(), $ou->aliases);
