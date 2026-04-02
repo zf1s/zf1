@@ -52,7 +52,7 @@ if ($previousTag) {
         // extract all @mentions from the auto-generated notes
         preg_match_all('/@([a-zA-Z0-9_-]+)/', $autoNotes, $matches);
         $allContributors = array_unique($matches[1]);
-        sort($allContributors);
+        usort($allContributors, 'strcasecmp');
 
         // extract "New Contributors" section if present
         $lines = explode("\n", $autoNotes);
@@ -72,6 +72,13 @@ if ($previousTag) {
                 }
             }
         }
+
+        // sort new contributors by PR number
+        usort($newContributorLines, function ($a, $b) {
+            preg_match('/\/pull\/(\d+)/', $a, $ma);
+            preg_match('/\/pull\/(\d+)/', $b, $mb);
+            return ($ma[1] ?? 0) - ($mb[1] ?? 0);
+        });
 
         $parts = [];
         if ($allContributors) {

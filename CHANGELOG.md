@@ -1,20 +1,20 @@
 ## Changelog:
 
 ### 1.15.6 - 2026-04-02
-- zend-controller
-  - fix legacy IIS rewrite header vulnerability ([#197], [#200])
+- general: ci & tests
+  - upgrade test runner to ubuntu 22.04, LDAP image and OpenSSL fixes ([#213])
 - zend-config
   - update dependencies according to usage ([#187])
+- zend-controller
+  - fix legacy IIS rewrite header vulnerability ([#197], [#200])
 - zend-db
   - update `$_schema` type hint from array to string ([#202])
+- zend-pdf
+  - fix PDF-A compatibility - no whitespace after `obj` ([#210])
 - zend-rest
   - update dependencies according to usage ([#192])
 - zend-timesync
   - fix NTP offset sign in `_extract()`, add `getTimeSyncOffset()` ([#214])
-- zend-pdf
-  - fix PDF-A compatibility - no whitespace after `obj` ([#210])
-- general: ci & tests
-  - upgrade test runner to ubuntu 22.04, LDAP image and OpenSSL fixes ([#213])
 
 [#187]: https://github.com/zf1s/zf1/pull/187
 [#192]: https://github.com/zf1s/zf1/pull/192
