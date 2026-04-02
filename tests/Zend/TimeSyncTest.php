@@ -350,4 +350,60 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
         $ntp = Zend_TimeSync_Ntp::microtimeToNtp('0.123456 1234567890');
         $this->assertSame(pack('NN', 0xcd408152, 0x1f9acffa), $ntp);
     }
+
+    /**
+     * verify that NTP offset sign is correct:
+     * positive offset = client behind, negative = client ahead
+     *
+     * @return void
+     */
+    public function testNtpOffsetSign()
+    {
+        $now = time();
+        $ntp = new Zend_TimeSync_Ntp_ExtractHelper('pool.ntp.org');
+
+        // _extract() requires the full NTP result array; only the four
+        // timestamps matter for offset, the rest is for info metadata
+        $base = array(
+            'flags'          => 0x24, // leap=0, version=4, mode=server
+            'stratum'        => 2,    // secondary reference (typical for pool.ntp.org)
+            'poll'           => 6,    // polling interval: 2^6 = 64 seconds
+            'precision'      => 0,    // clock precision (not used in offset calc)
+            'rootdelay'      => 0.0,  // round-trip delay to primary reference
+            'rootdispersion' => 0.0,  // max error relative to primary reference
+            'referenceid'    => "\0\0\0\0", // reference clock identifier
+            'referencestamp' => 0.0,  // when server clock was last corrected
+        );
+
+        // simulate client 2 seconds behind: server timestamps are 2s ahead
+        $ntp->extract($base + array(
+            'originatestamp' => (float) $now,        // T1: client send
+            'receivestamp'   => (float) ($now + 2),  // T2: server recv
+            'transmitstamp'  => (float) ($now + 2),  // T3: server send
+            'clientreceived' => (float) $now,        // T4: client recv
+        ));
+        $info = $ntp->getInfo();
+        $this->assertEquals(2.0, $info['offset']);
+
+        // simulate client 3.4 seconds ahead: server timestamps are 3.4s behind
+        $ntp->extract($base + array(
+            'originatestamp' => (float) $now,          // T1: client send
+            'receivestamp'   => (float) ($now - 3.4),  // T2: server recv
+            'transmitstamp'  => (float) ($now - 3.4),  // T3: server send
+            'clientreceived' => (float) $now,          // T4: client recv
+        ));
+        $info = $ntp->getInfo();
+        $this->assertEquals(-3.4, $info['offset'], '', 0.001);
+    }
+}
+
+/**
+ * exposes protected _extract() for unit testing offset calculation
+ */
+class Zend_TimeSync_Ntp_ExtractHelper extends Zend_TimeSync_Ntp
+{
+    public function extract($binary)
+    {
+        return $this->_extract($binary);
+    }
 }

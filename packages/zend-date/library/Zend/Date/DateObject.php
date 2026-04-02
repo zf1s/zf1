@@ -109,6 +109,20 @@ abstract class Zend_Date_DateObject {
     }
 
     /**
+     * Returns the time synchronisation offset in seconds.
+     *
+     * The offset is set when using Zend_TimeSync:
+     * - per-instance: new Zend_Date($timeSyncProtocol) or $timeSync->getDate()
+     * - globally: Zend_Date::setOptions(array('timesync' => $timeSyncProtocol))
+     *
+     * @return integer
+     */
+    public function getTimeSyncOffset()
+    {
+        return $this->_syncronised;
+    }
+
+    /**
      * Internal function.
      * Returns time().  This method exists to allow unit tests to work-around methods that might otherwise
      * be hard-coded to use time().  For example, this makes it possible to test isYesterday() in Date.php.
