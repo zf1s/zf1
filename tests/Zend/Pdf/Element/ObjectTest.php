@@ -141,6 +141,6 @@ class Zend_Pdf_Element_ObjectTest extends PHPUnit_Framework_TestCase
         $intObj  = new Zend_Pdf_Element_Numeric(100);
         $obj     = new Zend_Pdf_Element_Object($intObj, 55, 3, $factory);
 
-        $this->assertEquals($obj->dump($factory), "55 3 obj \n100\nendobj\n");
+        $this->assertEquals($obj->dump($factory), "55 3 obj\n100\nendobj\n");
     }
 }
