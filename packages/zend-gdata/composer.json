@@ -12,8 +12,7 @@
         "zf1s/zend-http": "^1.15.6",
         "zf1s/zend-mime": "^1.15.6",
         "zf1s/zend-version": "^1.15.6",
-        "zf1s/zend-xml": "^1.15.6",
-        "symfony/polyfill-php70": "^1.19"
+        "zf1s/zend-xml": "^1.15.6"
     },
     "autoload": {
         "psr-0": {
