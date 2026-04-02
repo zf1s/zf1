@@ -1,5 +1,30 @@
 ## Changelog:
 
+### 1.15.6 - 2026-04-02
+- zend-controller
+  - fix legacy IIS rewrite header vulnerability ([#197], [#200])
+- zend-config
+  - update dependencies according to usage ([#187])
+- zend-db
+  - update `$_schema` type hint from array to string ([#202])
+- zend-rest
+  - update dependencies according to usage ([#192])
+- zend-timesync
+  - fix NTP offset sign in `_extract()`, add `getTimeSyncOffset()` ([#214])
+- zend-pdf
+  - fix PDF-A compatibility - no whitespace after `obj` ([#210])
+- general: ci & tests
+  - upgrade test runner to ubuntu 22.04, LDAP image and OpenSSL fixes ([#213])
+
+[#187]: https://github.com/zf1s/zf1/pull/187
+[#192]: https://github.com/zf1s/zf1/pull/192
+[#197]: https://github.com/zf1s/zf1/pull/197
+[#200]: https://github.com/zf1s/zf1/pull/200
+[#202]: https://github.com/zf1s/zf1/pull/202
+[#210]: https://github.com/zf1s/zf1/pull/210
+[#213]: https://github.com/zf1s/zf1/pull/213
+[#214]: https://github.com/zf1s/zf1/pull/214
+
 ### 1.15.5 - 2024-04-18
 - zend-controller
   - fixes "Creation of dynamic property ::$ajaxable is deprecated" on PHP 8.2+ when using `ContextSwitch` helper ([#196])
