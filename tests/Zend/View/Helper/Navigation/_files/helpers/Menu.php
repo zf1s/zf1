@@ -12,7 +12,7 @@ class My_View_Helper_Navigation_Menu
      * @return My_View_Helper_Navigation_Menu        fluent interface,
      *                                               returns self
      */
-    public function menu(Zend_Navigation_Container $container = null)
+    public function menu(?Zend_Navigation_Container $container = null)
     {
         if (null !== $container) {
             $this->setContainer($container);
@@ -32,7 +32,7 @@ class My_View_Helper_Navigation_Menu
      *                                               registered in the helper.
      * @return string                                helper output
      */
-    public function render(Zend_Navigation_Container $container = null)
+    public function render(?Zend_Navigation_Container $container = null)
     {
         return '<menu/>';
     }
