@@ -80,7 +80,7 @@ class Zend_Service_Twitter_TwitterTest extends PHPUnit_Framework_TestCase
      * @param array $params Expected GET/POST parameters for the request
      * @return Zend_Http_Client
      */
-    protected function stubTwitter($path, $method, $responseFile = null, array $params = null)
+    protected function stubTwitter($path, $method, $responseFile = null, ?array $params = null)
     {
         $client = $this->getMock('Zend_Oauth_Client', array(), array(), '', false);
         $client->expects($this->any())->method('resetParameters')
