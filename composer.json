@@ -207,7 +207,7 @@
         "zf1s/zend-xmlrpc": "self.version"
     },
     "scripts": {
-        "lint": "parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php .",
+        "lint": "parallel-lint --exclude vendor --exclude bin --exclude tests/Zend/Loader/_files/ParseError.php .",
         "lint.checkstyle": "@lint --checkstyle",
         "test": "phpunit"
     }

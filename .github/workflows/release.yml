@@ -1,0 +1,175 @@
+name: "Release"
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (commits are always synced; providing a tag also syncs it to individual repos and effectively publishes to packagist.org)'
+        required: false
+        default: ''
+
+jobs:
+  split:
+    name: split ${{ matrix.package }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - zend-acl
+          - zend-amf
+          - zend-application
+          - zend-auth
+          - zend-barcode
+          - zend-cache
+          - zend-captcha
+          - zend-cloud
+          - zend-codegenerator
+          - zend-config
+          - zend-console-getopt
+          - zend-controller
+          - zend-crypt
+          - zend-currency
+          - zend-date
+          - zend-db
+          - zend-debug
+          - zend-dojo
+          - zend-dom
+          - zend-eventmanager
+          - zend-exception
+          - zend-feed
+          - zend-file
+          - zend-file-transfer
+          - zend-filter
+          - zend-form
+          - zend-gdata
+          - zend-http
+          - zend-json
+          - zend-layout
+          - zend-ldap
+          - zend-loader
+          - zend-locale
+          - zend-log
+          - zend-mail
+          - zend-markup
+          - zend-measure
+          - zend-memory
+          - zend-mime
+          - zend-mobile
+          - zend-navigation
+          - zend-oauth
+          - zend-openid
+          - zend-paginator
+          - zend-pdf
+          - zend-progressbar
+          - zend-queue
+          - zend-reflection
+          - zend-registry
+          - zend-rest
+          - zend-search
+          - zend-search-lucene
+          - zend-serializer
+          - zend-server
+          - zend-service
+          - zend-service-akismet
+          - zend-service-amazon
+          - zend-service-audioscrobbler
+          - zend-service-console
+          - zend-service-delicious
+          - zend-service-ebay
+          - zend-service-flickr
+          - zend-service-livedocx
+          - zend-service-rackspace
+          - zend-service-recaptcha
+          - zend-service-shorturl
+          - zend-service-slideshare
+          - zend-service-strikeiron
+          - zend-service-twitter
+          - zend-service-windowsazure
+          - zend-service-yahoo
+          - zend-session
+          - zend-soap
+          - zend-stdlib
+          - zend-tag
+          - zend-test
+          - zend-text
+          - zend-timesync
+          - zend-tool
+          - zend-translate
+          - zend-uri
+          - zend-validate
+          - zend-version
+          - zend-view
+          - zend-wildfire
+          - zend-xml
+          - zend-xmlrpc
+
+    steps:
+      - name: Generate token
+        uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          app-id: ${{ secrets.SPLIT_APP_ID }}
+          private-key: ${{ secrets.SPLIT_APP_PRIVATE_KEY }}
+          owner: zf1s
+
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # full history required for splitsh-lite
+          persist-credentials: false # don't let checkout's auth interfere with our app token
+
+      - name: Install splitsh-lite
+        run: |
+          curl -sL https://github.com/splitsh/lite/releases/download/v1.0.1/lite_linux_amd64.tar.gz | tar xz
+          sudo mv splitsh-lite /usr/local/bin/
+
+      # splitsh-lite rewrites the git history for the given prefix, producing a new
+      # commit tree as if the subdirectory was always its own repo.
+      # the resulting SHAs are deterministic - same input always produces same output.
+      - name: Split
+        env:
+          REMOTE: https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/zf1s/${{ matrix.package }}.git
+          PACKAGE: ${{ matrix.package }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          SHA=$(splitsh-lite --prefix="packages/$PACKAGE")
+          git remote add target "$REMOTE"
+          git push target "$SHA:refs/heads/master" -f
+          if [ -n "$TAG" ]; then
+            git push target "$SHA:refs/tags/$TAG" -f
+          fi
+
+  release:
+    name: create GitHub release
+    needs: split
+    runs-on: ubuntu-latest
+    if: inputs.tag != ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-tags: true # needed for previous tag detection in compose-release-notes.php
+
+      - name: Compose release notes
+        id: notes
+        env:
+          TAG: ${{ inputs.tag }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BODY=$(php bin/compose-release-notes.php "$TAG")
+          # use a delimiter to handle multiline output
+          echo "body<<RELEASE_NOTES_EOF" >> "$GITHUB_OUTPUT"
+          echo "$BODY" >> "$GITHUB_OUTPUT"
+          echo "RELEASE_NOTES_EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ inputs.tag }}
+          BODY: ${{ steps.notes.outputs.body }}
+        run: |
+          gh release create "$TAG" \
+            --repo zf1s/zf1 \
+            --title "$TAG" \
+            --notes "$BODY"
