@@ -132,10 +132,11 @@ jobs:
           REMOTE: https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/zf1s/${{ matrix.package }}.git
           PACKAGE: ${{ matrix.package }}
           TAG: ${{ inputs.tag }}
+          BRANCH: ${{ github.ref_name }}
         run: |
           SHA=$(splitsh-lite --prefix="packages/$PACKAGE")
           git remote add target "$REMOTE"
-          git push target "$SHA:refs/heads/master" -f
+          git push target "$SHA:refs/heads/$BRANCH" -f
           if [ -n "$TAG" ]; then
             git push target "$SHA:refs/tags/$TAG" -f
           fi

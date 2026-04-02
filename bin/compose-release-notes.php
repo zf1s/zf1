@@ -28,13 +28,40 @@ if ($previousTag === null) {
     $tags = shell_exec('git tag --sort=-version:refname 2>/dev/null');
     if ($tags) {
         $tagList = array_values(array_filter(array_map('trim', explode("\n", $tags))));
-        $pos = array_search($tag, $tagList, true);
-        if ($pos !== false && isset($tagList[$pos + 1])) {
+
+        // filter to same major.minor series (e.g. 1.16.0 only looks at 1.16.* tags)
+        // to avoid comparing across divergent branches (1.15.x vs 1.16.x)
+        preg_match('/^(\d+\.\d+)\./', $tag, $m);
+        $prefix = isset($m[1]) ? $m[1] . '.' : null;
+        if ($prefix) {
+            $seriesTags = array_values(array_filter($tagList, function ($t) use ($prefix) {
+                return strpos($t, $prefix) === 0;
+            }));
+        } else {
+            $seriesTags = $tagList;
+        }
+
+        $pos = array_search($tag, $seriesTags, true);
+        if ($pos !== false && isset($seriesTags[$pos + 1])) {
             // tag exists, take the one after it
-            $previousTag = $tagList[$pos + 1];
-        } elseif ($pos === false && count($tagList) > 0) {
-            // tag doesn't exist yet, use the latest existing tag
-            $previousTag = $tagList[0];
+            $previousTag = $seriesTags[$pos + 1];
+        } elseif ($pos === false && count($seriesTags) > 0) {
+            // tag doesn't exist yet, use the latest existing tag in series
+            $previousTag = $seriesTags[0];
+        }
+
+        // if no previous tag found in series (first release), look at previous minor
+        if ($previousTag === null && $prefix) {
+            $parts = explode('.', $m[1]);
+            if ($parts[1] > 0) {
+                $prevMinor = $parts[0] . '.' . ($parts[1] - 1) . '.';
+                $prevMinorTags = array_values(array_filter($tagList, function ($t) use ($prevMinor) {
+                    return strpos($t, $prevMinor) === 0;
+                }));
+                if (!empty($prevMinorTags)) {
+                    $previousTag = $prevMinorTags[0];
+                }
+            }
         }
     }
 }
@@ -49,9 +76,12 @@ if ($previousTag) {
     );
     $autoNotes = shell_exec($cmd);
     if ($autoNotes) {
-        // extract all @mentions from the auto-generated notes
+        // extract all @mentions from the auto-generated notes, excluding phpdoc tags
+        $phpdocTags = array('return', 'param', 'throws', 'var', 'see', 'deprecated', 'since', 'author', 'property', 'method', 'type');
         preg_match_all('/@([a-zA-Z0-9_-]+)/', $autoNotes, $matches);
-        $allContributors = array_unique($matches[1]);
+        $allContributors = array_unique(array_filter($matches[1], function ($name) use ($phpdocTags) {
+            return !in_array(strtolower($name), $phpdocTags, true);
+        }));
         usort($allContributors, 'strcasecmp');
 
         // extract "New Contributors" section if present
