@@ -36,6 +36,7 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
     protected $_instance;
     protected $_className;
     protected $_root;
+    protected $_tmpDir;
 
     public function __construct($name = null, array $data = array(), $dataName = '')
     {
@@ -75,19 +76,32 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
 
     public function getTmpDir($date = true)
     {
+        // cache the path within a test run - multiple calls during the same test
+        // can land on different seconds in the timestamp suffix, causing mkdir()
+        // and cache_dir to point to different directories
+        if ($date && $this->_tmpDir !== null) {
+            return $this->_tmpDir;
+        }
+
         $suffix = '';
         if ($date) {
             $suffix = date('mdyHis');
         }
         if (is_writable($this->_root)) {
-            return $this->_root . DIRECTORY_SEPARATOR . 'zend_cache_tmp_dir_' . $suffix;
+            $dir = $this->_root . DIRECTORY_SEPARATOR . 'zend_cache_tmp_dir_' . $suffix;
         } else {
             if (getenv('TMPDIR')){
-                return getenv('TMPDIR') . DIRECTORY_SEPARATOR . 'zend_cache_tmp_dir_' . $suffix;
+                $dir = getenv('TMPDIR') . DIRECTORY_SEPARATOR . 'zend_cache_tmp_dir_' . $suffix;
             } else {
                 die("no writable tmpdir found");
             }
         }
+
+        if ($date) {
+            $this->_tmpDir = $dir;
+        }
+
+        return $dir;
     }
 
     public function tearDown()
@@ -96,6 +110,7 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
             $this->_instance->clean();
         }
         $this->rmdir();
+        $this->_tmpDir = null;
     }
 
     public function testConstructorCorrectCall()
