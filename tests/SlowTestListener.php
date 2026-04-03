@@ -1,19 +1,28 @@
 <?php
+/**
+ * PHPUnit test listener that reports slow tests and suite starts.
+ *
+ * Prints a warning to stderr for any test exceeding the threshold,
+ * and logs suite starts with test counts for progress tracking.
+ *
+ * Usage: uncomment the <listeners> block in phpunit.xml.dist to enable.
+ */
 class SlowTestListener implements PHPUnit_Framework_TestListener
 {
-    private $startTime;
-    private $threshold = 0.5; // seconds
+    private $threshold;
 
-    public function startTest(PHPUnit_Framework_Test $test)
+    public function __construct($threshold = 0.5)
     {
-        $this->startTime = microtime(true);
+        $this->threshold = $threshold;
     }
+
+    public function startTest(PHPUnit_Framework_Test $test) {}
 
     public function endTest(PHPUnit_Framework_Test $test, $time)
     {
-        $elapsed = microtime(true) - $this->startTime;
-        if ($elapsed > $this->threshold) {
-            fprintf(STDERR, "\nSLOW TEST (%.1fs): %s\n", $elapsed, $test->toString());
+        if ($time > $this->threshold) {
+            $name = $test instanceof PHPUnit_Framework_SelfDescribing ? $test->toString() : get_class($test);
+            fprintf(STDERR, "\nSLOW TEST (%.1fs): %s\n", $time, $name);
         }
     }
 
