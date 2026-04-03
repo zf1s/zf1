@@ -10,6 +10,17 @@
         </whitelist>
     </filter>
 
+    <!-- uncomment to identify slow tests (default threshold: 0.5s) -->
+    <!--
+    <listeners>
+        <listener class="SlowTestListener" file="tests/SlowTestListener.php">
+            <arguments>
+                <double>0.5</double>
+            </arguments>
+        </listener>
+    </listeners>
+    -->
+
     <php>
         <ini name="date.timezone" value="UTC"/>
     </php>

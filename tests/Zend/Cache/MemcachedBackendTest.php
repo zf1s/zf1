@@ -77,7 +77,11 @@ class Zend_Cache_MemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTe
         parent::tearDown();
         unset($this->_instance);
         // We have to wait after a memcache flush
-        sleep(1);
+        // sleep(1);
+        // flush_all sets an oldest_live timestamp and lazily invalidates items on access.
+        // in old memcached, this timestamp had 1s resolution - items stored in the same second
+        // as flush_all could get invalidated too. modern memcached (1.4.x+) handles this correctly,
+        // so the sleep is no longer needed.
     }
 
     public function testConstructorCorrectCall()
