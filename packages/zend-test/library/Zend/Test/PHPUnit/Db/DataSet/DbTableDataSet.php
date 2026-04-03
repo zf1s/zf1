@@ -55,7 +55,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet extends PHPUnit_Extensions_Dat
      */
     public function addTable(Zend_Db_Table_Abstract $table, $where = null, $order = null, $count = null, $offset = null)
     {
-        $tableName = $table->info('name');
+        $tableName = $table->info('name') ?? '';
         $this->tables[$tableName] = new Zend_Test_PHPUnit_Db_DataSet_DbTable($table, $where, $order, $count, $offset);
     }
 
