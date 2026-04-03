@@ -102,9 +102,10 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
 
     /**
      * Serialize
-     * 
+     *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function __serialize()
     {
         $data = array();
