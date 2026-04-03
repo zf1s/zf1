@@ -5,15 +5,14 @@
     "homepage": "http://framework.zend.com/",
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=7.1",
         "ext-ctype": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
         "ext-zlib": "*",
         "zf1s/zend-exception": "^1.15.6",
         "zf1s/zend-log": "^1.15.6",
-        "zf1s/zend-memory": "^1.15.6",
-        "symfony/polyfill-php70": "^1.19"
+        "zf1s/zend-memory": "^1.15.6"
     },
     "autoload": {
         "psr-0": {
