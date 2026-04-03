@@ -594,7 +594,6 @@ class Zend_Log
             E_USER_ERROR        => Zend_Log::ERR,
             E_CORE_ERROR        => Zend_Log::ERR,
             E_RECOVERABLE_ERROR => Zend_Log::ERR,
-            E_STRICT            => Zend_Log::DEBUG,
         );
         // PHP 5.3.0+
         if (defined('E_DEPRECATED')) {
@@ -602,6 +601,10 @@ class Zend_Log
         }
         if (defined('E_USER_DEPRECATED')) {
             $this->_errorHandlerMap['E_USER_DEPRECATED'] = Zend_Log::DEBUG;
+        }
+        // E_STRICT has been deprecated in PHP 8.4
+        if (defined('E_STRICT')) {
+            $this->_errorHandlerMap['E_STRICT'] = Zend_Log::DEBUG;
         }
 
         $this->_registeredErrorHandler = true;

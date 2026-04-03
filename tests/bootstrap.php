@@ -2,7 +2,10 @@
 /*
  * Set error reporting to the level to which Zend Framework code must comply.
  */
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL);
+if (PHP_VERSION_ID < 70400) {
+    error_reporting(E_ALL | E_STRICT);
+}
 
 $rootDir = dirname(__DIR__);
 

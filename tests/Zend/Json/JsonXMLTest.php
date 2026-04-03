@@ -20,7 +20,10 @@
  * @version    $Id$
  */
 
-error_reporting( E_ALL | E_STRICT ); // now required for each test suite
+error_reporting(E_ALL); // now required for each test suite
+if (PHP_VERSION_ID < 70400) {
+    error_reporting(E_ALL | E_STRICT);
+}
 
 /**
  * Zend_Json
