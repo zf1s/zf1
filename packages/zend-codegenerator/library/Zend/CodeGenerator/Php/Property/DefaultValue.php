@@ -247,7 +247,7 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
 
             if ($type == self::TYPE_ARRAY) {
                 $rii = new RecursiveIteratorIterator(
-                    $it = new RecursiveArrayIterator($value),
+                    $it = new RecursiveArrayIterator((array) $value),
                     RecursiveIteratorIterator::SELF_FIRST
                     );
                 foreach ($rii as $curKey => $curValue) {
