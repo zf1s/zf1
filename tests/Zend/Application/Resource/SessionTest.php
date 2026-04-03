@@ -76,19 +76,27 @@ class Zend_Application_Resource_SessionTest extends PHPUnit_Framework_TestCase
      */
     public function testSetOptions()
     {
-        Zend_Session::setOptions(array(
-            'use_only_cookies' => false,
+        $options = array(
             'remember_me_seconds' => 3600,
-        ));
+        );
+        $resourceOptions = array(
+            'remember_me_seconds' => 7200,
+        );
 
-        $this->resource->setOptions(array(
-             'use_only_cookies' => true,
-             'remember_me_seconds' => 7200,
-        ));
+        // disabling session.use_only_cookies is deprecated in php 8.4
+        if (PHP_VERSION_ID < 80400) {
+            $options['use_only_cookies'] = false;
+            $resourceOptions['use_only_cookies'] = true;
+        }
+
+        Zend_Session::setOptions($options);
+        $this->resource->setOptions($resourceOptions);
 
         $this->resource->init();
 
-        $this->assertEquals(1, Zend_Session::getOptions('use_only_cookies'));
+        if (PHP_VERSION_ID < 80400) {
+            $this->assertEquals(1, Zend_Session::getOptions('use_only_cookies'));
+        }
         $this->assertEquals(7200, Zend_Session::getOptions('remember_me_seconds'));
     }
 
