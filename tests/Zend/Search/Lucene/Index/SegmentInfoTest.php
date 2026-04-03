@@ -88,9 +88,9 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
         $fieldInfo = $segmentInfo->getField(2);
 
         $this->assertEquals($fieldInfo->name, 'contents');
-        $this->assertTrue((boolean)$fieldInfo->isIndexed);
+        $this->assertTrue((bool)$fieldInfo->isIndexed);
         $this->assertEquals($fieldInfo->number, 2);
-        $this->assertFalse((boolean)$fieldInfo->storeTermVector);
+        $this->assertFalse((bool)$fieldInfo->storeTermVector);
     }
 
     public function testGetFields()
@@ -110,19 +110,19 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends PHPUnit_Framework_TestCas
         $fieldInfos = $segmentInfo->getFieldInfos();
 
         $this->assertEquals($fieldInfos[0]->name, 'path');
-        $this->assertTrue((boolean)$fieldInfos[0]->isIndexed);
+        $this->assertTrue((bool)$fieldInfos[0]->isIndexed);
         $this->assertEquals($fieldInfos[0]->number, 0);
-        $this->assertFalse((boolean)$fieldInfos[0]->storeTermVector);
+        $this->assertFalse((bool)$fieldInfos[0]->storeTermVector);
 
         $this->assertEquals($fieldInfos[1]->name, 'modified');
-        $this->assertTrue((boolean)$fieldInfos[1]->isIndexed);
+        $this->assertTrue((bool)$fieldInfos[1]->isIndexed);
         $this->assertEquals($fieldInfos[1]->number, 1);
-        $this->assertFalse((boolean)$fieldInfos[1]->storeTermVector);
+        $this->assertFalse((bool)$fieldInfos[1]->storeTermVector);
 
         $this->assertEquals($fieldInfos[2]->name, 'contents');
-        $this->assertTrue((boolean)$fieldInfos[2]->isIndexed);
+        $this->assertTrue((bool)$fieldInfos[2]->isIndexed);
         $this->assertEquals($fieldInfos[2]->number, 2);
-        $this->assertFalse((boolean)$fieldInfos[2]->storeTermVector);
+        $this->assertFalse((bool)$fieldInfos[2]->storeTermVector);
     }
 
     public function testCount()

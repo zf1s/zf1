@@ -239,7 +239,7 @@ class Zend_Service_Amazon_S3_OnlineTest extends PHPUnit_Framework_TestCase
         
         $this->assertFalse($this->_amazon->isBucketAvailable($this->_bucket));
         $this->assertFalse($this->_amazon->isObjectAvailable($this->_bucket."/zftest"));
-        $this->assertFalse((boolean)$this->_amazon->getObjectsByBucket($this->_bucket));
+        $this->assertFalse((bool)$this->_amazon->getObjectsByBucket($this->_bucket));
         $list = $this->_amazon->getBuckets();
         $this->assertNotContains($this->_bucket, $list);
     }
