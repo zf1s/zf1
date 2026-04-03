@@ -10,6 +10,10 @@
         </whitelist>
     </filter>
 
+    <listeners>
+        <listener class="SlowTestListener" file="tests/SlowTestListener.php"/>
+    </listeners>
+
     <php>
         <ini name="date.timezone" value="UTC"/>
     </php>
