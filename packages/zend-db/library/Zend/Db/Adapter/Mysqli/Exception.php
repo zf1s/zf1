@@ -40,7 +40,9 @@ class Zend_Db_Adapter_Mysqli_Exception extends Zend_Db_Adapter_Exception
     public static function fromMysqliException(mysqli_sql_exception $exception)
     {
         $p = new ReflectionProperty('mysqli_sql_exception', 'sqlstate');
-        $p->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $p->setAccessible(true);
+        }
         $sqlstate = $p->getValue($exception);
 
         return new self(

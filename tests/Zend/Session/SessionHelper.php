@@ -29,7 +29,9 @@ class Zend_Session_SessionHelper
                 ) as $prop => $value) {
             list($class, $property) = explode('::', $prop);
             $reflection = new ReflectionProperty($class, $property);
-            $reflection->setAccessible(true);
+            if (PHP_VERSION_ID < 80100) {
+                $reflection->setAccessible(true);
+            }
             $reflection->setValue(null, $value);
         }
     }
