@@ -222,7 +222,10 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _read()
     {
-        $flags = ord(fread($this->_socket, 1));
+        // fread returns "" on timeout/incomplete response; ord("") is deprecated in php 8.5
+        // (previously silently returned 0). Timeout is checked below but only after this read.
+        $byte  = fread($this->_socket, 1);
+        $flags = ($byte !== '' && $byte !== false) ? ord($byte) : 0;
         $info  = stream_get_meta_data($this->_socket);
 
         if ($info['timed_out'] === true) {
