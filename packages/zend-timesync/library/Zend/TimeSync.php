@@ -264,8 +264,6 @@ class Zend_TimeSync implements IteratorAggregate
      */
     protected function _addServer($target, $alias)
     {
-        $alias = $alias ?? '';
-
         if ($pos = strpos($target, '://')) {
             $protocol = substr($target, 0, $pos);
             $adress = substr($target, $pos + 3);
@@ -302,6 +300,6 @@ class Zend_TimeSync implements IteratorAggregate
         }
         $timeServerObj = new $className($adress, $port);
 
-        $this->_timeservers[$alias] = $timeServerObj;
+        $this->_timeservers[$alias ?? ''] = $timeServerObj;
     }
 }
