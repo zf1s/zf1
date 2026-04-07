@@ -27,9 +27,12 @@ jobs:
           - "8.2"
           - "8.3"
           - "8.4"
-        include:
-          - php: "8.5"
-            experimental: true
+          - "8.5"
+        # to add a new PHP version as experimental during compat work
+        # (experimental: true allows CI to pass even if that version fails):
+        # include:
+        #   - php: "8.6"
+        #     experimental: true
 
     env:
       MYSQL_USER: "zftest"
