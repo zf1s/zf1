@@ -5045,16 +5045,30 @@ class Zend_DateTest extends PHPUnit_Framework_TestCase
 
     public function testTimesync()
     {
-        try {
-            $server = new Zend_TimeSync('ntp://pool.ntp.org', 'alias');
-            $date = $server->getDate();
-            $info = $server->getInfo();
+        // pool.ntp.org is unreachable from GitHub Actions runners,
+        // try multiple servers to avoid marking test incomplete unnecessarily
+        $servers = array(
+            'ntp://time.windows.com',
+            'ntp://pool.ntp.org',
+        );
 
-            // verify the NTP offset was correctly passed through to Zend_Date
-            $this->assertEquals((int) round($info['offset']), $date->getTimeSyncOffset());
-        } catch (Zend_TimeSync_Exception $e) {
-            $this->markTestIncomplete('NTP timeserver not available.');
+        $lastException = null;
+        foreach ($servers as $serverUri) {
+            try {
+                $server = new Zend_TimeSync($serverUri, 'alias');
+                $server->setOptions(array('timeout' => 5));
+                $date = $server->getDate();
+                $info = $server->getInfo();
+
+                // verify the NTP offset was correctly passed through to Zend_Date
+                $this->assertEquals((int) round($info['offset']), $date->getTimeSyncOffset());
+                return;
+            } catch (Zend_TimeSync_Exception $e) {
+                $lastException = $e;
+            }
         }
+
+        $this->markTestIncomplete('NTP timeservers not available: ' . $lastException->getMessage());
     }
 
     public function testUsePhpDateFormat()
