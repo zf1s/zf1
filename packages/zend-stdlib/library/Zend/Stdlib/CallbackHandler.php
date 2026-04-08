@@ -92,9 +92,13 @@ class Zend_Stdlib_CallbackHandler
      */
     protected function registerCallback($callback)
     {
-        set_error_handler(array($this, 'errorHandler'), E_STRICT);
+        if (PHP_VERSION_ID < 70400) {
+            set_error_handler(array($this, 'errorHandler'), E_STRICT);
+        }
         $callable = is_callable($callback);
-        restore_error_handler();
+        if (PHP_VERSION_ID < 70400) {
+            restore_error_handler();
+        }
         if (!$callable || $this->error) {
             // require_once 'Zend/Stdlib/Exception/InvalidCallbackException.php';
             throw new Zend_Stdlib_Exception_InvalidCallbackException('Invalid callback provided; not callable');

@@ -67,7 +67,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @param  Zend_Queue The Zend_Queue object that created this class
      * @return void
      */
-    public function __construct($options, Zend_Queue $queue = null)
+    public function __construct($options, ?Zend_Queue $queue = null)
     {
         parent::__construct($options);
 
@@ -230,7 +230,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @param  Zend_Queue $queue
      * @return Zend_Queue_Message_Iterator
      */
-    public function receive($maxMessages=null, $timeout=null, Zend_Queue $queue=null)
+    public function receive($maxMessages=null, $timeout=null, ?Zend_Queue $queue=null)
     {
         if ($maxMessages === null) {
             $maxMessages = 1;
@@ -296,7 +296,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @param  Zend_Queue $queue
      * @return Zend_Queue_Message
      */
-    public function send($message, Zend_Queue $queue=null)
+    public function send($message, ?Zend_Queue $queue=null)
     {
         if ($queue === null) {
             $queue = $this->_queue;
@@ -345,7 +345,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @throws Zend_Queue_Exception (not supported)
      */
     #[ReturnTypeWillChange]
-    public function count(Zend_Queue $queue=null)
+    public function count(?Zend_Queue $queue=null)
     {
         // require_once 'Zend/Queue/Exception.php';
         throw new Zend_Queue_Exception('count() is not supported in this adapter');

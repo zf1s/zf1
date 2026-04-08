@@ -684,7 +684,10 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
 
     public function testZf995UndefinedPropertiesReturnNull()
     {
-        error_reporting(E_ALL | E_STRICT);
+        error_reporting(E_ALL);
+        if (PHP_VERSION_ID < 70400) {
+            error_reporting(E_ALL | E_STRICT);
+        }
         ini_set('display_errors', true);
         $view = new Zend_View();
         $view->setScriptPath(dirname(__FILE__) . '/View/_templates');
