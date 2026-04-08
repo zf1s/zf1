@@ -5,5 +5,7 @@
 composer.lock
 vendor
 phpunit.xml
+.phpcs.cache
+.php-cs-fixer.cache
 tests/Zend/Paginator/_files/test-write-tmp.sqlite
 tests/TestConfiguration.php
