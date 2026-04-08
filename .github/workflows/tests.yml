@@ -126,6 +126,7 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
+      # runs on every PHP version to catch syntax incompatible with older versions
       - name: Lint PHP source files
         run: |
           composer lint.checkstyle | cs2pr
@@ -147,5 +148,22 @@ jobs:
       - name: "Run PHPUnit tests (Experimental: ${{ matrix.experimental }})"
         run: vendor/bin/phpunit --verbose
         continue-on-error: ${{ matrix.experimental }}
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          # lint only needs to run once, not per PHP version
+          php-version: "8.5"
+          tools: phpcs, cs2pr
+
+      - name: Run phpcs
+        run: phpcs --report=checkstyle -q | cs2pr
 
 # vim:ft=yaml:et:ts=2:sw=2

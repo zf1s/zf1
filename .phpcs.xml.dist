@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<ruleset name="zf1s">
+    <description>zf1s coding standard</description>
+
+    <arg name="cache" value=".phpcs.cache"/>
+
+    <file>packages</file>
+    <file>tests</file>
+
+    <exclude-pattern>tests/Zend/Loader/_files/ParseError.php</exclude-pattern>
+    <exclude-pattern>tests/Zend/Http/Client/_files</exclude-pattern>
+
+    <!--
+        keep long array syntax - the original ZF1 convention.
+        we don't modernize the codebase for its own sake
+        (see https://github.com/zf1s/zf1/pull/199,
+             https://github.com/zf1s/zf1/pull/138#issuecomment-1275759257).
+    -->
+    <rule ref="Generic.Arrays.DisallowShortArraySyntax"/>
+</ruleset>
