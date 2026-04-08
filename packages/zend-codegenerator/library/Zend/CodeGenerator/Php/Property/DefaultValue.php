@@ -228,6 +228,38 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
     }
 
     /**
+     * Wraps each array element in a DefaultValue instance for code generation.
+     *
+     * Replaces the old RecursiveArrayIterator approach which had two php 8.5
+     * incompatibilities: it mutated values via offsetSet during iteration
+     * (replacing arrays with DefaultValue objects), and then when the iterator
+     * tried to descend into those replaced values, RecursiveArrayIterator called
+     * new ArrayIterator($object) - deprecated in php 8.5. On older PHP this
+     * silently yielded no children (protected properties aren't iterable), so
+     * only the top-level array was ever processed by the iterator; nested arrays
+     * were handled later by recursive generate() calls. This method does the
+     * same thing explicitly.
+     *
+     * @param  array $array
+     * @param  int   $depth
+     * @return array
+     */
+    protected function _prepareArrayValue(array $array, $depth)
+    {
+        $result = array();
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $value = new self(array('value' => $this->_prepareArrayValue($value, $depth + 1)));
+            } elseif (!$value instanceof self) {
+                $value = new self(array('value' => $value));
+            }
+            $value->setArrayDepth($depth);
+            $result[$key] = $value;
+        }
+        return $result;
+    }
+
+    /**
      * generate()
      *
      * @return string
@@ -246,18 +278,7 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
             $type = $this->_getAutoDeterminedType($value);
 
             if ($type == self::TYPE_ARRAY) {
-                $rii = new RecursiveIteratorIterator(
-                    $it = new RecursiveArrayIterator($value),
-                    RecursiveIteratorIterator::SELF_FIRST
-                    );
-                foreach ($rii as $curKey => $curValue) {
-                    if (!$curValue instanceof Zend_CodeGenerator_Php_Property_DefaultValue) {
-                        $curValue = new self(array('value' => $curValue));
-                        $rii->getSubIterator()->offsetSet($curKey, $curValue);
-                    }
-                    $curValue->setArrayDepth($rii->getDepth());
-                }
-                $value = $rii->getSubIterator()->getArrayCopy();
+                $value = $this->_prepareArrayValue((array) $value, 0);
             }
 
         }

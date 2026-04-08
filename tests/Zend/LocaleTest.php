@@ -952,7 +952,9 @@ class Zend_LocaleTest extends PHPUnit_Framework_TestCase
 
         $class    = new ReflectionClass('Zend_Locale');
         $property = $class->getProperty('_localeData');
-        $property->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $property->setAccessible(true);
+        }
 
         $locale     = new Zend_Locale();
         $localeData = $property->getValue($locale);

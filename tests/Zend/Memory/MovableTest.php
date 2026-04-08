@@ -122,13 +122,13 @@ class Zend_Memory_Container_MovableTest extends PHPUnit_Framework_TestCase
         $memoryManager = new Zend_Memory_Manager_Dummy();
         $memObject = new Zend_Memory_Container_Movable($memoryManager, 10, '0123456789');
 
-        $this->assertFalse((boolean)$memObject->isLocked());
+        $this->assertFalse((bool)$memObject->isLocked());
 
         $memObject->lock();
-        $this->assertTrue((boolean)$memObject->isLocked());
+        $this->assertTrue((bool)$memObject->isLocked());
 
         $memObject->unlock();
-        $this->assertFalse((boolean)$memObject->isLocked());
+        $this->assertFalse((bool)$memObject->isLocked());
     }
 
     /**

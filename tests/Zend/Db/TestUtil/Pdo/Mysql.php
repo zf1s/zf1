@@ -56,8 +56,11 @@ class Zend_Db_TestUtil_Pdo_Mysql extends Zend_Db_TestUtil_Mysqli
             $constants['driver_options'] = array();
         }
 
-        if (!isset($constants['driver_options'][PDO::MYSQL_ATTR_USE_BUFFERED_QUERY])) {
-            $constants['driver_options'][PDO::MYSQL_ATTR_USE_BUFFERED_QUERY] = true;
+        $bufferedQueryAttr = PHP_VERSION_ID >= 80500
+            ? Pdo\Mysql::ATTR_USE_BUFFERED_QUERY
+            : PDO::MYSQL_ATTR_USE_BUFFERED_QUERY;
+        if (!isset($constants['driver_options'][$bufferedQueryAttr])) {
+            $constants['driver_options'][$bufferedQueryAttr] = true;
         }
 
         return $constants;

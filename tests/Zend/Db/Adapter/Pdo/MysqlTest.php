@@ -111,18 +111,21 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
     public function testAdapterDriverOptions()
     {
         $params = $this->_util->getParams();
+        $attr = PHP_VERSION_ID >= 80500
+            ? Pdo\Mysql::ATTR_USE_BUFFERED_QUERY
+            : PDO::MYSQL_ATTR_USE_BUFFERED_QUERY;
 
-        $params['driver_options'] = array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true);
-
-        $db = Zend_Db::factory($this->getDriver(), $params);
-
-        $this->assertTrue((boolean) $db->getConnection()->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY));
-
-        $params['driver_options'] = array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false);
+        $params['driver_options'] = array($attr => true);
 
         $db = Zend_Db::factory($this->getDriver(), $params);
 
-        $this->assertFalse((boolean) $db->getConnection()->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY));
+        $this->assertTrue((bool) $db->getConnection()->getAttribute($attr));
+
+        $params['driver_options'] = array($attr => false);
+
+        $db = Zend_Db::factory($this->getDriver(), $params);
+
+        $this->assertFalse((bool) $db->getConnection()->getAttribute($attr));
     }
 
     public function testAdapterInsertSequence()
@@ -283,7 +286,10 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
     public function testZF2101()
     {
         $params = $this->_util->getParams();
-        $params['driver_options'] = array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true);
+        $attr = PHP_VERSION_ID >= 80500
+            ? Pdo\Mysql::ATTR_USE_BUFFERED_QUERY
+            : PDO::MYSQL_ATTR_USE_BUFFERED_QUERY;
+        $params['driver_options'] = array($attr => true);
         $db = Zend_Db::factory($this->getDriver(), $params);
 
         // Set default bound value

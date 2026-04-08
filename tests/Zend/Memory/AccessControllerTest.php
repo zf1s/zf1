@@ -146,13 +146,13 @@ class Zend_Memory_Container_AccessControllerTest extends PHPUnit_Framework_TestC
         $memoryManager  = $this->_getMemoryManager();
         $memObject      = $memoryManager->create('012345678');
 
-        $this->assertFalse((boolean)$memObject->isLocked());
+        $this->assertFalse((bool)$memObject->isLocked());
 
         $memObject->lock();
-        $this->assertTrue((boolean)$memObject->isLocked());
+        $this->assertTrue((bool)$memObject->isLocked());
 
         $memObject->unlock();
-        $this->assertFalse((boolean)$memObject->isLocked());
+        $this->assertFalse((bool)$memObject->isLocked());
     }
 }
 

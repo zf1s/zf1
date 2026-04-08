@@ -56,7 +56,9 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/not a stream/i', $e->getMessage());
         }
-        xml_parser_free($resource);
+        if (PHP_VERSION_ID < 80000) {
+            xml_parser_free($resource);
+        }
     }
 
     public function testConstructorWithValidStream()

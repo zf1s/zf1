@@ -722,7 +722,9 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
 
                     } else {
                         if (method_exists($property,'setAccessible')) {
-                            $property->setAccessible(true);
+                            if (PHP_VERSION_ID < 80100) {
+                                $property->setAccessible(true);
+                            }
                             $return[$name] = $this->_encodeObject($property->getValue($object), $objectDepth + 1, 1);
                         } else
                         if ($property->isPublic()) {

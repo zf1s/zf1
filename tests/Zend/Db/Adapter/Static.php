@@ -64,7 +64,7 @@ class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
      */
     public function setOnQuerySleep($seconds = 0)
     {
-        $this->_onQuerySleep = (integer) $seconds;
+        $this->_onQuerySleep = (int) $seconds;
 
         return $this;
     }

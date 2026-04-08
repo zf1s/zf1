@@ -752,8 +752,8 @@ class Zend_Locale_FormatTest extends PHPUnit_Framework_TestCase
      */
     public function testToNumberFormat2()
     {
-        $this->assertEquals((double) 1.7, (double) Zend_Locale_Format::toNumber(1.7, array('locale' => 'en')));
-        $this->assertEquals((double) 2.3, (double) Zend_Locale_Format::toNumber(2.3, array('locale' => 'en')));
+        $this->assertEquals((float) 1.7, (float) Zend_Locale_Format::toNumber(1.7, array('locale' => 'en')));
+        $this->assertEquals((float) 2.3, (float) Zend_Locale_Format::toNumber(2.3, array('locale' => 'en')));
     }
 
     /**
