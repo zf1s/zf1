@@ -242,7 +242,10 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
 
             }
 
-        } catch (Exception $exception) {
+        } catch (Throwable $exception) {
+            if (!$exception instanceof Exception) {
+                $exception = new Zend_Tool_Framework_Client_Exception($exception->getMessage(), $exception->getCode(), $exception);
+            }
             $this->_registry->getResponse()->setException($exception);
         }
 

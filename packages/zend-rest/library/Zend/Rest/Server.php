@@ -266,7 +266,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
                                 $this->_functions[$this->_method]->getName(),
                                 $callingArgs
                             );
-                        } catch (Exception $e) {
+                        } catch (Throwable $e) {
                             $result = $this->fault($e);
                         }
                     }
@@ -515,7 +515,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
         $xmlResponse = $dom->createElement('response');
         $xmlMethod->appendChild($xmlResponse);
 
-        if ($exception instanceof Exception) {
+        if ($exception instanceof Throwable) {
             $element = $dom->createElement('message');
             $element->appendChild(
                 $dom->createTextNode($exception->getMessage())
@@ -630,7 +630,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
                 ),
                 $args
             );
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $result = $this->fault($e);
         }
         return $result;
@@ -652,7 +652,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
             } else {
                 $object = $this->_functions[$this->_method]->getDeclaringClass()->newInstance();
             }
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             // require_once 'Zend/Rest/Server/Exception.php';
             throw new Zend_Rest_Server_Exception(
                 'Error instantiating class ' . $class .
@@ -669,7 +669,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
                 $object,
                 $args
             );
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $result = $this->fault($e);
         }
 
