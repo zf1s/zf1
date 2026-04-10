@@ -207,6 +207,47 @@ class Zend_Controller_Plugin_BrokerTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($response->hasExceptionOfMessage('dispatchLoopShutdown triggered exception'));
     }
 
+    public function testBrokerCatchesPhpErrors()
+    {
+        $request  = new Zend_Controller_Request_Http('http://framework.zend.com/empty');
+        $response = new Zend_Controller_Response_Cli();
+        $broker   = new Zend_Controller_Plugin_Broker();
+        $broker->setRequest($request);
+        $broker->setResponse($response);
+        $broker->registerPlugin(new Zend_Controller_Plugin_BrokerTest_ErrorTestPlugin());
+        try {
+            $broker->routeStartup($request);
+        } catch (Throwable $e) {
+            $this->fail('Broker should catch PHP errors: ' . $e->getMessage());
+        }
+
+        $exceptions = $response->getException();
+        $this->assertCount(1, $exceptions);
+        $this->assertInstanceOf('Zend_Controller_Exception', $exceptions[0]);
+        $this->assertInstanceOf('TypeError', $exceptions[0]->getPrevious());
+        $this->assertEquals('routeStartup triggered error', $exceptions[0]->getMessage());
+    }
+
+    public function testBrokerWrapsPhpErrorsWhenThrowExceptions()
+    {
+        $this->controller->throwExceptions(true);
+
+        $request  = new Zend_Controller_Request_Http('http://framework.zend.com/empty');
+        $response = new Zend_Controller_Response_Cli();
+        $broker   = new Zend_Controller_Plugin_Broker();
+        $broker->setRequest($request);
+        $broker->setResponse($response);
+        $broker->registerPlugin(new Zend_Controller_Plugin_BrokerTest_ErrorTestPlugin());
+
+        try {
+            $broker->routeStartup($request);
+            $this->fail('Broker should throw when throwExceptions is true');
+        } catch (Throwable $e) {
+            $this->assertInstanceOf('Zend_Controller_Exception', $e);
+            $this->assertInstanceOf('TypeError', $e->getPrevious());
+        }
+    }
+
     public function testRegisterPluginStackOrderIsSane()
     {
         $broker   = new Zend_Controller_Plugin_Broker();
@@ -337,6 +378,14 @@ class Zend_Controller_Plugin_BrokerTest_ExceptionTestPlugin extends Zend_Control
     public function dispatchLoopShutdown()
     {
         throw new Exception('dispatchLoopShutdown triggered exception');
+    }
+}
+
+class Zend_Controller_Plugin_BrokerTest_ErrorTestPlugin extends Zend_Controller_Plugin_Abstract
+{
+    public function routeStartup(Zend_Controller_Request_Abstract $request)
+    {
+        throw new TypeError('routeStartup triggered error');
     }
 }
 
