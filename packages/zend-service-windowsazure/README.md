@@ -1,7 +1,7 @@
 # zend-service-windowsazure (Zend Framework 1)
 
-This package is a part of the Zend Framework 1. Each component was separated and put into its own composer package.
-**PHP 5.3-8.3** compatible.
+This package is a part of [zf1s](https://github.com/zf1s/zf1), a fork of Zend Framework 1, automatically split from the monorepo and published as a standalone composer package.
+**PHP 5.3-8.5** compatible. _(see [PHP version support](https://github.com/zf1s/zf1#php-version-support) for details)_
 
 - [Report issues](https://github.com/zf1s/zf1/issues) and
   [send Pull Requests](https://github.com/zf1s/zf1/pulls)

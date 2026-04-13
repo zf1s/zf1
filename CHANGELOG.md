@@ -1,5 +1,25 @@
 ## Changelog:
 
+### 1.16.0 - 2026-04-13
+- **minimum PHP version bumped from 5.3 to 7.1** ([#216])
+  - PHP 8.4 deprecated implicit nullable parameters (`Type $param = null`), the fix (`?Type`) requires PHP 7.1+
+  - for PHP 5.3+ support use `1.15.x` releases
+- general
+  - php 8.4 compatibility ([#218])
+  - php 8.5 compatibility ([#225])
+  - bump dev dependencies ([#215], [#218])
+  - fix flaky cache backend and slow memcached tests ([#217], [#220])
+- zend-controller, zend-json, zend-rest, zend-soap, zend-tool, zend-xmlrpc
+  - catch `Throwable` instead of `Exception` in dispatch/server error boundaries ([#230])
+
+[#215]: https://github.com/zf1s/zf1/pull/215
+[#216]: https://github.com/zf1s/zf1/pull/216
+[#217]: https://github.com/zf1s/zf1/pull/217
+[#218]: https://github.com/zf1s/zf1/pull/218
+[#220]: https://github.com/zf1s/zf1/pull/220
+[#225]: https://github.com/zf1s/zf1/pull/225
+[#230]: https://github.com/zf1s/zf1/pull/230
+
 ### 1.15.6 - 2026-04-02
 - general: ci & tests
   - upgrade test runner to ubuntu 22.04, LDAP image and OpenSSL fixes ([#213])

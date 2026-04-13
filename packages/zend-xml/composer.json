@@ -9,7 +9,7 @@
         "ext-dom": "*",
         "ext-simplexml": "*",
         "ext-xml": "*",
-        "zf1s/zend-exception": "^1.15.6"
+        "zf1s/zend-exception": "^1.16.0"
     },
     "autoload": {
         "psr-0": {

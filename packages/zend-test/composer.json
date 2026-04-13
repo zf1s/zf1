@@ -6,12 +6,12 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=7.1",
-        "zf1s/zend-controller": "^1.15.6",
-        "zf1s/zend-dom": "^1.15.6",
-        "zf1s/zend-exception": "^1.15.6",
-        "zf1s/zend-layout": "^1.15.6",
-        "zf1s/zend-registry": "^1.15.6",
-        "zf1s/zend-session": "^1.15.6"
+        "zf1s/zend-controller": "^1.16.0",
+        "zf1s/zend-dom": "^1.16.0",
+        "zf1s/zend-exception": "^1.16.0",
+        "zf1s/zend-layout": "^1.16.0",
+        "zf1s/zend-registry": "^1.16.0",
+        "zf1s/zend-session": "^1.16.0"
     },
     "autoload": {
         "psr-0": {

@@ -3,6 +3,7 @@
 [![Build Status](https://github.com/zf1s/zf1/actions/workflows/tests.yml/badge.svg)](https://github.com/zf1s/zf1/actions/workflows/tests.yml)
 
 This is a monorepo of a fork of Zend Framework 1, made after it's reached its EOL.
+**PHP 5.3-8.5** compatible. _(see [PHP version support](#php-version-support) for details)_
 
 All original framework's components have been split into individual packages, which can be installed separately with `composer`, e.g.
 ```
@@ -97,26 +98,28 @@ where `*` may be one of:
 [xml](https://github.com/zf1s/zend-xml),
 [xmlrpc](https://github.com/zf1s/zend-xmlrpc).
 
-These packages will be maintained as long as we're using them, mainly just to keep it all working on new versions of PHP as they're released.
-Currently everything should be compatible with **PHP 5.3-8.3**. _5.2 support is dropped._
-
-They may also contain some fixes, either for long-standing bugs, which haven't made their way into zf1 official repo before EOL, or newly found ones
-and (backwards compatible) adjustments (optimisations for composer autoloader mostly). Maybe even one or two new features.
-
-Still, the main purpose is to allow working on legacy projects on more modern systems, while opening the possibility to **migrate away from zf1 gradually, one component at a time**.
-
-
-### Alternative Installation Method
+### Alternative installation method
 
 You may also install the whole framework at once, using composer:
 ```
 composer require zf1s/zf1
 ```
-to easy up the transition period, but please keep in mind the recommended approach is to
-identify and install only the packages you need.
+to easy up the transition period, but please keep in mind the recommended approach is to identify and install only the packages you need.
 
+### Project philosophy
+
+This fork focuses on keeping Zend Framework 1 running on modern PHP versions with minimal changes to the original codebase. We don't modernize the code for the sake of it. The goal is to give legacy projects a chance to run on updated environments. It may also contain fixes for long-standing or newly discovered bugs, and occasional backward-compatible improvements.
+
+That said, zf1s is meant as a bridge, not a destination - the recommended approach is to migrate away from zf1 gradually, one component at a time, and the modularized package structure should allow that. Of course, migrating away requires time and resources and may not always be realistic - we get it, and that's also why this fork exists.
+
+### PHP version support
+
+- **1.16.x** (current) - supports PHP 7.1-8.5
+- **1.15.x** - supports PHP 5.3-8.3, may receive backported fixes if time allows
+
+`1.15.x` can also serve as a stepping stone when migrating from older PHP (<7.1): start with `1.15.x` on your current PHP, upgrade to 7.1+, then switch to `1.16.x`.
+
+This fork has always kept the PHP version requirement as low as possible, supporting all the way down to PHP 5.3. PHP 8.4 forced a change - supporting both at the same time became unwieldy. See [#216](https://github.com/zf1s/zf1/pull/216) for details and reasoning.
 
 ### Changelog: [here](CHANGELOG.md)
 Original README: [click](README.orig.md)
-
-
