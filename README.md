@@ -117,9 +117,9 @@ That said, zf1s is meant as a bridge, not a destination - the recommended approa
 - **1.16.x** (current) - supports PHP 7.1-8.5
 - **1.15.x** - supports PHP 5.3-8.3, may receive backported fixes if time allows
 
-`1.15.x` can also serve as a stepping stone when migrating from older PHP (<7.1): start with `1.15.x` on your current PHP, upgrade to 7.1+, then switch to `1.16.x`.
+`1.15.x` can also serve as a stepping stone when coming from older PHP (<7.1): first make sure everything works on your current PHP version with `1.15.x`, then upgrade PHP to a commonly supported version (7.1-8.3), then switch to `1.16.x`.
 
-This fork has always kept the PHP version requirement as low as possible, supporting all the way down to PHP 5.3. PHP 8.4 forced a change - supporting both at the same time became unwieldy. See [#216](https://github.com/zf1s/zf1/pull/216) for details and reasoning.
+This fork has always kept the PHP version requirement as low as possible - all the way down to PHP 5.3 - to keep the barrier to entry low for legacy projects. PHP 8.4 forced a change - supporting both at the same time became unwieldy. See [#216](https://github.com/zf1s/zf1/pull/216) for details and reasoning.
 
 ### Changelog: [here](CHANGELOG.md)
 Original README: [click](README.orig.md)
