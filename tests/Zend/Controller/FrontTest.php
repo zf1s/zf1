@@ -705,6 +705,34 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
 
         $this->assertFalse(Zend_Controller_Action_HelperBroker::hasHelper('viewRenderer'));
     }
+
+    public function testDispatchCatchesPhpErrorFromControllerAction()
+    {
+        $this->_controller->throwExceptions(false);
+
+        $request  = new Zend_Controller_Request_Http('http://example.com/error-throwing/index');
+        $response = $this->_controller->dispatch($request);
+
+        $exceptions = $response->getException();
+        $this->assertNotEmpty($exceptions);
+        $this->assertInstanceOf('Zend_Controller_Exception', $exceptions[0]);
+        $this->assertInstanceOf('TypeError', $exceptions[0]->getPrevious());
+    }
+
+    public function testDispatchRethrowsPhpErrorFromControllerAction()
+    {
+        $this->_controller->throwExceptions(true);
+
+        $request = new Zend_Controller_Request_Http('http://example.com/error-throwing/index');
+
+        try {
+            $this->_controller->dispatch($request);
+            $this->fail('Dispatch should throw when throwExceptions is true');
+        } catch (Throwable $e) {
+            $this->assertInstanceOf('TypeError', $e);
+            $this->assertEquals('controller action triggered a type error', $e->getMessage());
+        }
+    }
 }
 
 // Call Zend_Controller_FrontTest::main() if this source file is executed directly.

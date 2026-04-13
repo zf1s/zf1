@@ -887,7 +887,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
         } else {
             try {
                 $soap->handle($this->_request);
-            } catch (Exception $e) {
+            } catch (Throwable $e) {
                 $fault = $this->fault($e);
             }
         }
@@ -978,7 +978,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
      */
     public function fault($fault = null, $code = "Receiver")
     {
-        if ($fault instanceof Exception) {
+        if ($fault instanceof Throwable) {
             $class = get_class($fault);
             if (in_array($class, $this->_faultExceptions)) {
                 $message = $fault->getMessage();

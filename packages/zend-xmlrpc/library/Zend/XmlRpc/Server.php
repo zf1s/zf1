@@ -304,7 +304,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
      */
     public function fault($fault = null, $code = 404)
     {
-        if (!$fault instanceof Exception) {
+        if (!$fault instanceof Throwable) {
             $fault = (string) $fault;
             if (empty($fault)) {
                 $fault = 'Unknown Error';
@@ -340,7 +340,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
         } else {
             try {
                 $response = $this->_handle($request);
-            } catch (Exception $e) {
+            } catch (Throwable $e) {
                 $response = $this->fault($e);
             }
         }
