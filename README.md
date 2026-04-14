@@ -3,6 +3,7 @@
 [![Build Status](https://github.com/zf1s/zf1/actions/workflows/tests.yml/badge.svg)](https://github.com/zf1s/zf1/actions/workflows/tests.yml)
 
 This is a monorepo of a fork of Zend Framework 1, made after it's reached its EOL.
+
 **PHP 5.3-8.5** compatible. _(see [PHP version support](#php-version-support) for details)_
 
 All original framework's components have been split into individual packages, which can be installed separately with `composer`, e.g.
