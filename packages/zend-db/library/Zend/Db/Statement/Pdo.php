@@ -254,7 +254,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
             $cursor = PDO::FETCH_ORI_NEXT;
         }
         try {
-            return $this->_stmt->fetch($style, $cursor, $offset);
+            return $this->_stmt->fetch(self::_normalizeFetchMode($style), $cursor, $offset);
         } catch (ValueError $e) {
             // PHP 8.0+ throws ValueError on invalid arguments
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
@@ -262,6 +262,59 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
             // require_once 'Zend/Db/Statement/Exception.php';
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
         }
+    }
+
+    /**
+     * Translate Zend_Db fetch-mode modifier flags to their native PDO values.
+     *
+     * The Zend_Db::FETCH_* constants are integer literals frozen from an old
+     * PDO snapshot (see the generator note in Zend_Db). PHP 8.5 renumbered the
+     * PDO fetch *modifier* flags (FETCH_GROUP, FETCH_UNIQUE, FETCH_CLASSTYPE,
+     * FETCH_SERIALIZE), so the frozen literals no longer equal PDO's runtime
+     * constants and PDO rejects them with a ValueError ("must be a bitmask of
+     * PDO::FETCH_* constants"). Remap the drifted flag bits before handing the
+     * mode to the native PDOStatement. On PHP < 8.5 every mapping is the
+     * identity, so this is a no-op there.
+     *
+     * The base fetch mode (FETCH_ASSOC, FETCH_NUM, FETCH_COLUMN, ...) is
+     * unchanged across versions and passes through untouched. Flags are
+     * remapped widest-first because the legacy literals overlap in their bit
+     * patterns (legacy FETCH_UNIQUE embeds the legacy FETCH_GROUP bit).
+     *
+     * @param  mixed $mode
+     * @return mixed
+     */
+    protected static function _normalizeFetchMode($mode)
+    {
+        if (!is_int($mode)) {
+            return $mode;
+        }
+
+        // legacy Zend_Db literal => native PDO runtime value; widest flag first
+        $flags = array(
+            Zend_Db::FETCH_UNIQUE    => PDO::FETCH_UNIQUE,
+            Zend_Db::FETCH_GROUP     => PDO::FETCH_GROUP,
+            Zend_Db::FETCH_CLASSTYPE => PDO::FETCH_CLASSTYPE,
+            Zend_Db::FETCH_SERIALIZE => PDO::FETCH_SERIALIZE,
+        );
+
+        $allFlags = 0;
+        foreach ($flags as $legacy => $native) {
+            $allFlags |= $legacy;
+        }
+
+        // Keep the base fetch mode, drop any legacy modifier-flag bits...
+        $result = $mode & ~$allFlags;
+        // ...then re-add the modifier flags using PDO's runtime values.
+        $remaining = $mode;
+        foreach ($flags as $legacy => $native) {
+            if (($remaining & $legacy) === $legacy) {
+                $result |= $native;
+                $remaining &= ~$legacy;
+            }
+        }
+
+        return $result;
     }
 
     /**
@@ -293,9 +346,9 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
                 if ($col === null) {
                     $col = 0;
                 }
-                return $this->_stmt->fetchAll($style, $col);
+                return $this->_stmt->fetchAll(self::_normalizeFetchMode($style), $col);
             } else {
-                return $this->_stmt->fetchAll($style);
+                return $this->_stmt->fetchAll(self::_normalizeFetchMode($style));
             }
         } catch (ValueError $e) {
             // PHP 8.0+ throws ValueError on invalid arguments
@@ -440,7 +493,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
     {
         $this->_fetchMode = $mode;
         try {
-            return $this->_stmt->setFetchMode($mode);
+            return $this->_stmt->setFetchMode(self::_normalizeFetchMode($mode));
         } catch (ValueError $e) {
             // PHP 8.0+ throws ValueError on invalid arguments
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
