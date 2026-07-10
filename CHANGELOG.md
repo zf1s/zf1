@@ -1,5 +1,11 @@
 ## Changelog:
 
+### 1.16.1 - 2026-07-10
+- zend-db
+  - php 8.5: fix `ValueError` when fetching with `Zend_Db::FETCH_*` modifier flags - php 8.5 renumbered PDO's fetch constants, so they are now remapped to their native `PDO::FETCH_*` values ([#232])
+
+[#232]: https://github.com/zf1s/zf1/pull/232
+
 ### 1.16.0 - 2026-04-13
 - **minimum PHP version bumped from 5.3 to 7.1** ([#216])
   - PHP 8.4 deprecated implicit nullable parameters (`Type $param = null`), the fix (`?Type`) requires PHP 7.1+

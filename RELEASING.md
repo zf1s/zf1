@@ -1,6 +1,6 @@
 ### How to Release
 
-1. Bump interdependencies of packages to the next version
+1. Bump interdependencies of packages and `Zend_Version::VERSION` to the next version
 
     ```bash
     php bin/bump-deps.php <version>
