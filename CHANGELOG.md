@@ -1,5 +1,14 @@
 ## Changelog:
 
+### 1.16.2 - 2026-09-14
+- zend-db
+  - fix `Zend_Db_Select::from()` phpdoc - allow `Zend_Db_Select` as `$name` ([#233])
+- zend-validate
+  - fix max length bypass with malformed byte sequences in `Zend_Validate_StringLength` ([#234])
+
+[#233]: https://github.com/zf1s/zf1/pull/233
+[#234]: https://github.com/zf1s/zf1/pull/234
+
 ### 1.16.1 - 2026-07-10
 - zend-db
   - php 8.5: fix `ValueError` when fetching with `Zend_Db::FETCH_*` modifier flags - php 8.5 renumbered PDO's fetch constants, so they are now remapped to their native `PDO::FETCH_*` values ([#232])
