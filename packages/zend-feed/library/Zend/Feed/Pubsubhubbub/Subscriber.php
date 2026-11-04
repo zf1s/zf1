@@ -792,7 +792,8 @@ class Zend_Feed_Pubsubhubbub_Subscriber
         if (!empty($this->_testStaticToken)) {
             return $this->_testStaticToken;
         }
-        return uniqid(rand(), true) . time();
+        // the hub sends the token back to the callback, it must not be predictable
+        return bin2hex(random_bytes(16));
     }
 
     /**

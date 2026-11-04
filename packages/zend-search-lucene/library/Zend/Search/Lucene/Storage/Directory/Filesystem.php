@@ -157,6 +157,10 @@ class Zend_Search_Lucene_Storage_Directory_Filesystem extends Zend_Search_Lucene
         $result = array();
 
         $dirContent = opendir( $this->_dirPath );
+        if ($dirContent === false) {
+            // e.g. the directory was removed, readdir(false) loops endlessly on php 7 and throws on php 8
+            return $result;
+        }
         while (($file = readdir($dirContent)) !== false) {
             if (($file == '..')||($file == '.'))   continue;
 

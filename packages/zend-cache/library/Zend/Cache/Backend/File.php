@@ -571,8 +571,9 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
         if (!$result) {
             return false;
         }
-        $tmp = @unserialize($result);
-        return $tmp;
+        // metadatas are an array of scalars, never create objects from a file in the cache dir
+        $tmp = @unserialize($result, array('allowed_classes' => false));
+        return is_array($tmp) ? $tmp : false;
     }
 
     /**

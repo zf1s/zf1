@@ -25,6 +25,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'Zend/Cache/ApcBackendTest.php';
+require_once 'Zend/Cache/BackendUnserializeTest.php';
 require_once 'Zend/Cache/ClassFrontendTest.php';
 require_once 'Zend/Cache/CoreTest.php';
 require_once 'Zend/Cache/FactoryTest.php';
@@ -68,6 +69,7 @@ class Zend_Cache_AllTests
         $suite->addTestSuite('Zend_Cache_FactoryTest');
         $suite->addTestSuite('Zend_Cache_CoreTest');
         $suite->addTestSuite('Zend_Cache_FileBackendTest');
+        $suite->addTestSuite('Zend_Cache_BackendUnserializeTest');
         $suite->addTestSuite('Zend_Cache_StaticBackendTest');
         $suite->addTestSuite('Zend_Cache_OutputFrontendTest');
         $suite->addTestSuite('Zend_Cache_FunctionFrontendTest');
