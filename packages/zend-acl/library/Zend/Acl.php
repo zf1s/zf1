@@ -229,6 +229,7 @@ class Zend_Acl
             $roleId = $role;
         }
 
+        // numeric ids like '5' are integer array keys, so compare both as strings
         foreach ($this->_rules['allResources']['byRoleId'] as $roleIdCurrent => $rules) {
             if ((string) $roleId === (string) $roleIdCurrent) {
                 unset($this->_rules['allResources']['byRoleId'][$roleIdCurrent]);
@@ -461,6 +462,7 @@ class Zend_Acl
         }
 
         foreach ($resourcesRemoved as $resourceIdRemoved) {
+            // numeric ids like '123' are integer array keys, so compare both as strings
             foreach ($this->_rules['byResourceId'] as $resourceIdCurrent => $rules) {
                 if ((string) $resourceIdRemoved === (string) $resourceIdCurrent) {
                     unset($this->_rules['byResourceId'][$resourceIdCurrent]);
@@ -748,11 +750,14 @@ class Zend_Acl
                          * set resources (per privilege as well)
                          */
                         foreach (array_merge(array(null), $allResources) as $resource) {
+                            // no rules to remove for this resource, do not create empty ones
                             $rules =& $this->_getRules($resource, $role);
                             if (null === $rules) {
                                 continue;
                             }
                             if (0 === count($privileges)) {
+                                // only the rule for all roles on all resources is the default, which is reset to deny,
+                                // a rule for all roles on a single resource is removed - same as in the branch above
                                 if (null === $resource && null === $role) {
                                     if ($type === $rules['allPrivileges']['type']) {
                                         $rules = array(

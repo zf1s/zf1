@@ -884,9 +884,6 @@ class Zend_Acl_AclTest extends PHPUnit_Framework_TestCase
     /**
      * Ensures that removal of a Role with a numeric identifier results in its rules being removed
      *
-     * PHP stores numeric string identifiers as integer array keys, so a strict comparison
-     * against the string identifier never matched and the rules outlived the Role.
-     *
      * @return void
      */
     public function testRuleRoleRemoveWithNumericIdentifier()
