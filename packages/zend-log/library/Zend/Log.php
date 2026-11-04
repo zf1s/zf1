@@ -595,16 +595,16 @@ class Zend_Log
             E_CORE_ERROR        => Zend_Log::ERR,
             E_RECOVERABLE_ERROR => Zend_Log::ERR,
         );
-        // PHP 5.3.0+
+        // PHP 5.3.0+, keyed by error level like above: errorHandler() looks the priority up by $errno
         if (defined('E_DEPRECATED')) {
-            $this->_errorHandlerMap['E_DEPRECATED'] = Zend_Log::DEBUG;
+            $this->_errorHandlerMap[E_DEPRECATED] = Zend_Log::DEBUG;
         }
         if (defined('E_USER_DEPRECATED')) {
-            $this->_errorHandlerMap['E_USER_DEPRECATED'] = Zend_Log::DEBUG;
+            $this->_errorHandlerMap[E_USER_DEPRECATED] = Zend_Log::DEBUG;
         }
-        // E_STRICT has been deprecated in PHP 8.4
-        if (defined('E_STRICT')) {
-            $this->_errorHandlerMap['E_STRICT'] = Zend_Log::DEBUG;
+        // E_STRICT has been deprecated in PHP 8.4, it is not raised since PHP 8.0
+        if (PHP_VERSION_ID < 80400) {
+            $this->_errorHandlerMap[E_STRICT] = Zend_Log::DEBUG;
         }
 
         $this->_registeredErrorHandler = true;
