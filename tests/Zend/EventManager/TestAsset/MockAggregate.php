@@ -44,14 +44,22 @@ class Zend_EventManager_TestAsset_MockAggregate implements Zend_EventManager_Lis
         $listeners[] = $events->attach('foo.bar', array( $this, 'fooBar' ));
         $listeners[] = $events->attach('foo.baz', array( $this, 'fooBaz' ));
 
-        $this->listeners[ spl_object_hash($events) ] = $listeners;
+        // same value as spl_object_hash(), which is deprecated since php 8.6
+        $hash = PHP_VERSION_ID >= 80600
+            ? sprintf('%016x%016x', spl_object_id($events), 0)
+            : spl_object_hash($events);
+        $this->listeners[ $hash ] = $listeners;
 
         return __METHOD__;
     }
 
     public function detach(Zend_EventManager_EventCollection $events)
     {
-        foreach ($this->listeners[ spl_object_hash($events) ] as $listener) {
+        // same value as spl_object_hash(), which is deprecated since php 8.6
+        $hash = PHP_VERSION_ID >= 80600
+            ? sprintf('%016x%016x', spl_object_id($events), 0)
+            : spl_object_hash($events);
+        foreach ($this->listeners[ $hash ] as $listener) {
             $events->detach($listener);
         }
 
