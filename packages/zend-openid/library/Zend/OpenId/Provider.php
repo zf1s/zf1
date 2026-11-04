@@ -474,6 +474,11 @@ class Zend_OpenId_Provider
             }
 
             $dh = Zend_OpenId::createDhKey($p, $g);
+            if ($dh === false) {
+                // openssl rejected the parameters, e.g. OpenSSL 3+ rejects a modulus it considers too small
+                $ret['error'] = 'Wrong "openid.dh_modulus" or "openid.dh_gen"';
+                return $ret;
+            }
             $dh_details = Zend_OpenId::getDhKeyDetails($dh);
 
             $sec = Zend_OpenId::computeDhSecret(

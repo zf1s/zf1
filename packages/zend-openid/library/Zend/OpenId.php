@@ -696,7 +696,7 @@ class Zend_OpenId
     {
         if (function_exists('openssl_dh_compute_key')) {
             $ret = openssl_dh_compute_key($pub_key, $dh);
-            if (ord($ret[0]) > 127) {
+            if ($ret !== false && ord($ret[0]) > 127) {
                 $ret = "\0" . $ret;
             }
             return $ret;

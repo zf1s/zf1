@@ -637,6 +637,30 @@ class Zend_OpenId_ProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * An association with DH parameters openssl rejects ends with an error response
+     */
+    public function testAssociateWithInvalidDhModulus()
+    {
+        if (!function_exists('openssl_dh_compute_key')) {
+            $this->markTestSkipped('the DH parameters are only validated by openssl');
+        }
+        $storage = new Zend_OpenId_Provider_Storage_File(dirname(__FILE__)."/_files/provider");
+        $provider = new Zend_OpenId_ProviderHelper(null, null, $this->_user, $storage);
+
+        $ret = $provider->handle(array('openid_assoc_type'=>'HMAC-SHA1',
+                                       'openid_mode'=>'associate',
+                                       'openid_session_type'=>'DH-SHA1',
+                                       'openid_dh_modulus'=>base64_encode(chr(1)),
+                                       'openid_dh_gen'=>'Ag==',
+                                       'openid_dh_consumer_public'=>'Ag==',
+                                       ));
+        $this->assertSame(
+            "assoc_type:HMAC-SHA1\nsession_type:DH-SHA1\nerror:Wrong \"openid.dh_modulus\" or \"openid.dh_gen\"\n",
+            $ret
+        );
+    }
+
+    /**
      * testing _checkAuthentication
      *
      */
