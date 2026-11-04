@@ -1382,6 +1382,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
     public function isValid($value, $context = null)
     {
         $this->setValue($value);
+        // checked after setValue(), which may turn an array into a single value (e.g. in a subclass)
         if ($this->_rejectArrayValue && !$this->isArray() && is_array($this->_value)) {
             return $this->_failArrayValue();
         }

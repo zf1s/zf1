@@ -68,16 +68,19 @@ class Zend_Form_Element_ArrayValueTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function testArrayValueDoesNotReachFiltersAndView()
+    public function testRejectedArrayValueIsNotFiltered()
     {
-        // StringTrim turned the array into "Array" (with a warning), which passed NotEmpty
+        // StringTrim turned the array into 'Array' (with a warning), which passed NotEmpty
         $element = new Zend_Form_Element_Text('foo', array('required' => true, 'filters' => array('StringTrim')));
         $this->assertFalse($element->isValid(array('a')));
         $this->assertSame('', $element->getValue());
+    }
 
+    public function testRejectedArrayValueIsNotRendered()
+    {
         $element = new Zend_Form_Element_Text('foo');
         $element->isValid(array('a'));
-        $this->assertContains('value=""', $element->render(new Zend_View()));
+        $this->assertContains('<input type="text" name="foo" id="foo" value="">', $element->render(new Zend_View()));
     }
 
     public function testFormWithTamperedArrayValueIsNotValid()
