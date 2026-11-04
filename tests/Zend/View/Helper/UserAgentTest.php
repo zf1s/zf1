@@ -80,10 +80,7 @@ class Zend_View_Helper_UserAgentTest extends PHPUnit_Framework_TestCase
             $this->helper->userAgent() instanceof Zend_Http_UserAgent
         );
         $this->helper->userAgent($this->userAgent);
-        $this->assertEquals(
-            spl_object_hash($this->userAgent),
-            spl_object_hash($this->helper->getUserAgent())
-        );
+        $this->assertSame($this->userAgent, $this->helper->getUserAgent());
     }
 
     public function testGetUserAgentDefault()
@@ -96,10 +93,7 @@ class Zend_View_Helper_UserAgentTest extends PHPUnit_Framework_TestCase
     public function testSetAndGetUserAgent()
     {
         $this->helper->setUserAgent($this->userAgent);
-        $this->assertEquals(
-            spl_object_hash($this->userAgent),
-            spl_object_hash($this->helper->getUserAgent())
-        );
+        $this->assertSame($this->userAgent, $this->helper->getUserAgent());
     }
 }
 

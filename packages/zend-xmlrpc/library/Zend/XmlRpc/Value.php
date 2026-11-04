@@ -275,7 +275,7 @@ abstract class Zend_XmlRpc_Value
             return self::XMLRPC_TYPE_ARRAY;
         } elseif (is_int($value)) {
             return ($value > PHP_INT_MAX) ? self::XMLRPC_TYPE_I8 : self::XMLRPC_TYPE_INTEGER;
-        } elseif (is_double($value)) {
+        } elseif (is_float($value)) {
             return self::XMLRPC_TYPE_DOUBLE;
         } elseif (is_bool($value)) {
             return self::XMLRPC_TYPE_BOOLEAN;
@@ -488,7 +488,9 @@ abstract class Zend_XmlRpc_Value
     {
         // php 7.2 compatibility
         // list($type, $value) = each($xml);
-        list($type, $value) = array(key($xml), current($xml));
+        // key()/current() on objects is deprecated since php 8.1, the array cast yields the same children
+        $children = (array) $xml;
+        list($type, $value) = array(key($children), current($children));
 
         if ($type === null && $value === false) {
             $namespaces = array('ex' => 'http://ws.apache.org/xmlrpc/namespaces/extensions');
@@ -496,7 +498,8 @@ abstract class Zend_XmlRpc_Value
                 $namespaceXml = $xml->children($namespaceUri);
                 // php 7.2 compatibility
                 // list($type, $value) = each($namespaceXml);
-                list($type, $value) = array(key($namespaceXml), current($namespaceXml));
+                $children = (array) $namespaceXml;
+                list($type, $value) = array(key($children), current($children));
                 if ($type !== null) {
                     $type = $namespaceName . ':' . $type;
                     break;

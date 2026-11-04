@@ -1295,7 +1295,10 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
      */
     public final function hashCode()
     {
-        return spl_object_hash($this);
+        // same value as spl_object_hash(), which is deprecated since php 8.6
+        return PHP_VERSION_ID >= 80600
+            ? sprintf('%016x%016x', spl_object_id($this), 0)
+            : spl_object_hash($this);
     }
 
     /**

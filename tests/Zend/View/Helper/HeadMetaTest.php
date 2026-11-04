@@ -323,6 +323,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $this->helper->headMeta('some-content', 'tag value', 'not allowed key');
         set_error_handler(array($this, 'handleErrors'));
         $string = @$this->helper->toString();
+        restore_error_handler();
         $this->assertEquals('', $string);
         $this->assertTrue(is_string($this->error));
     }

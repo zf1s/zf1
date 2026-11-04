@@ -244,6 +244,26 @@ class Zend_Config_XmlTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    public function testErrorHandlerIsRestoredWhenLoadingFails()
+    {
+        $invalidSources = array(
+            $this->_xmlFileInvalid,
+            '<?xml version="1.0"?><!DOCTYPE c [<!ENTITY e "v">]><c><a>&e;</a></c>',
+        );
+        foreach ($invalidSources as $xml) {
+            $before = set_error_handler('var_dump');
+            restore_error_handler();
+            try {
+                new Zend_Config_Xml($xml);
+                $this->fail('An expected exception has not been raised');
+            } catch (Zend_Exception $expected) {
+            }
+            $after = set_error_handler('var_dump');
+            restore_error_handler();
+            $this->assertSame($before, $after);
+        }
+    }
+
     public function testShortParamsOne()
     {
         $config = new Zend_Config_Xml($this->_xmlFileShortParamsOneConfig, 'all');

@@ -514,7 +514,7 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
      */
     public function testInstanceWithOldOptions()
     {
-        $handler = set_error_handler(array($this, 'errorHandler'), E_USER_NOTICE);
+        set_error_handler(array($this, 'errorHandler'), E_USER_NOTICE);
         $validator = new Zend_Validate_EmailAddress();
         $options   = $validator->getOptions();
 
@@ -527,8 +527,9 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
 
             $this->assertEquals(Zend_Validate_Hostname::ALLOW_ALL, $options['allow']);
             $this->assertTrue($options['mx']);
-            set_error_handler($handler);
+            restore_error_handler();
         } catch (Zend_Exception $e) {
+            restore_error_handler();
             $this->markTestSkipped('MX not available on this system');
         }
     }

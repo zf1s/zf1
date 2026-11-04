@@ -388,7 +388,10 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
             $object = &$objectByVal;
         }
 
-        $hash = spl_object_hash($object);
+        // same value as spl_object_hash(), which is deprecated since php 8.6
+        $hash = PHP_VERSION_ID >= 80600
+            ? sprintf('%016x%016x', spl_object_id($object), 0)
+            : spl_object_hash($object);
         $ref = array_key_exists($hash, $this->_referenceObjects) 
              ? $this->_referenceObjects[$hash] 
              : false;

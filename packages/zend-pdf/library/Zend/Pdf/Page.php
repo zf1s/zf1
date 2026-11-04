@@ -663,7 +663,11 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
                 throw new Zend_Pdf_Exception('Font dictionary has to be an indirect object or object reference.');
             }
 
-            $fontResourcesUnique[spl_object_hash($fontDictionary->getObject())] = $fontDictionary;
+            // same value as spl_object_hash(), which is deprecated since php 8.6
+            $resourceId = PHP_VERSION_ID >= 80600
+                ? sprintf('%016x%016x', spl_object_id($fontDictionary->getObject()), 0)
+                : spl_object_hash($fontDictionary->getObject());
+            $fontResourcesUnique[$resourceId] = $fontDictionary;
         }
 
         $fonts = array();
@@ -714,7 +718,10 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
                 throw new Zend_Pdf_Exception('Font dictionary has to be an indirect object or object reference.');
             }
 
-            $resourceId = spl_object_hash($fontDictionary->getObject());
+            // same value as spl_object_hash(), which is deprecated since php 8.6
+            $resourceId = PHP_VERSION_ID >= 80600
+                ? sprintf('%016x%016x', spl_object_id($fontDictionary->getObject()), 0)
+                : spl_object_hash($fontDictionary->getObject());
             if (isset($fontResourcesUnique[$resourceId])) {
                 continue;
             } else {
