@@ -28,10 +28,11 @@ jobs:
           - "8.3"
           - "8.4"
           - "8.5"
+          - "8.6"
         # to add a new PHP version as experimental during compat work
         # (experimental: true allows CI to pass even if that version fails):
         # include:
-        #   - php: "8.6"
+        #   - php: "8.7"
         #     experimental: true
 
     env:
