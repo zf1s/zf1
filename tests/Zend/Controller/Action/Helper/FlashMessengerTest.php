@@ -111,7 +111,7 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework
         $this->front->setParam('noViewRenderer', true);
         $request  = new Zend_Controller_Request_Http('http://framework.zend.com/helper-flash-messenger');
         $response = $this->front->dispatch($request);
-        $this->assertEquals('Zend_Controller_Action_Helper_FlashMessenger123456', $response->getBody());
+        $this->assertSame('Zend_Controller_Action_Helper_FlashMessenger123456', $response->getBody());
     }
 
     public function testClearMessages()
@@ -122,19 +122,17 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework
         // added messages are available in the next request, fake it like in testSimulateCrossRequestMessagePassing()
         FlashMessengerControllerActionHelper::reset();
         $helper = new Zend_Controller_Action_Helper_FlashMessenger();
-        $this->assertTrue($helper->hasMessages());
-        $this->assertEquals(2, count($helper));
+        $this->assertSame(array('foo', 'bar'), $helper->getMessages());
 
-        $helper->clearMessages();
-        $this->assertFalse($helper->hasMessages());
-        $this->assertEquals(0, count($helper));
+        $this->assertTrue($helper->clearMessages());
+        $this->assertSame(array(), $helper->getMessages());
+        $this->assertSame(0, count($helper));
     }
 
     public function testDirectProxiesToAddMessage()
     {
         $this->helper->direct('foo');
-        $this->assertTrue($this->helper->hasCurrentMessages());
-        $this->assertEquals(array('foo'), $this->helper->getCurrentMessages());
+        $this->assertSame(array('foo'), $this->helper->getCurrentMessages());
     }
 
     /**
