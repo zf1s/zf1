@@ -44,6 +44,12 @@ class Zend_Form_Element_Hash extends Zend_Form_Element_Xhtml
     public $helper = 'formHidden';
 
     /**
+     * The element holds a single value, see Zend_Form_Element::$_rejectArrayValue
+     * @var bool
+     */
+    protected $_rejectArrayValue = true;
+
+    /**
      * Actual hash used.
      *
      * @var mixed

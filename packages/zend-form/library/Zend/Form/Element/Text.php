@@ -39,4 +39,10 @@ class Zend_Form_Element_Text extends Zend_Form_Element_Xhtml
      * @var string
      */
     public $helper = 'formText';
+
+    /**
+     * The element holds a single value, see Zend_Form_Element::$_rejectArrayValue
+     * @var bool
+     */
+    protected $_rejectArrayValue = true;
 }

@@ -41,6 +41,12 @@ class Zend_Form_Element_Password extends Zend_Form_Element_Xhtml
     public $helper = 'formPassword';
 
     /**
+     * The element holds a single value, see Zend_Form_Element::$_rejectArrayValue
+     * @var bool
+     */
+    protected $_rejectArrayValue = true;
+
+    /**
      * Whether or not to render the password
      * @var bool
      */
