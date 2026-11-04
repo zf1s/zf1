@@ -586,6 +586,10 @@ class Zend_OpenId_Consumer
         $dh = Zend_OpenId::createDhKey(pack('H*', Zend_OpenId::DH_P),
                                        pack('H*', Zend_OpenId::DH_G),
                                        $priv_key);
+        if ($dh === false) {
+            // openssl rejected the parameters, the association fails like on any other error
+            return false;
+        }
         $dh_details = Zend_OpenId::getDhKeyDetails($dh);
 
         $params['openid.dh_modulus']         = base64_encode(
