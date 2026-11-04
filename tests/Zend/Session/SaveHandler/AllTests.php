@@ -25,6 +25,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'Zend/Session/SaveHandler/DbTableTest.php';
+require_once 'Zend/Session/SaveHandler/SessionHandlerAdapterTest.php';
 
 /**
  * @category   Zend
@@ -60,6 +61,7 @@ class Zend_Session_SaveHandler_AllTests
         } else {
             $suite->addTestSuite('Zend_Session_SaveHandler_DbTableTest');
         }
+        $suite->addTestSuite('Zend_Session_SaveHandler_SessionHandlerAdapterTest');
 
         return $suite;
     }
