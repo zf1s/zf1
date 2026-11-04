@@ -739,19 +739,14 @@ class Zend_Soap_AutoDiscoverTest extends PHPUnit_Framework_TestCase
         $this->assertNotContains("?wsdl", $uri);
         $this->assertEquals("http://localhost/my_script.php", $uri);
 
-        // IIS with ISAPI_Rewrite
-        $_SERVER = array('HTTP_X_REWRITE_URL' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost');
+        // legacy rewrite headers should not be processed, see https://framework.zend.com/security/advisory/ZF2018-01
+        $_SERVER = array('HTTP_X_REWRITE_URL' => '/evil_script.php?wsdl', 'REQUEST_URI' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost');
         $server = new Zend_Soap_AutoDiscover();
-        $uri = $server->getUri()->getUri();
-        $this->assertNotContains("?wsdl", $uri);
-        $this->assertEquals("http://localhost/my_script.php", $uri);
+        $this->assertSame("http://localhost/my_script.php", $server->getUri()->getUri());
 
-        // IIS with Microsoft Rewrite Module
-        $_SERVER = array('HTTP_X_ORIGINAL_URL' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost');
+        $_SERVER = array('HTTP_X_ORIGINAL_URL' => '/evil_script.php?wsdl', 'REQUEST_URI' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost');
         $server = new Zend_Soap_AutoDiscover();
-        $uri = $server->getUri()->getUri();
-        $this->assertNotContains("?wsdl", $uri);
-        $this->assertEquals("http://localhost/my_script.php", $uri);
+        $this->assertSame("http://localhost/my_script.php", $server->getUri()->getUri());
     }
 
     /**

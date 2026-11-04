@@ -144,6 +144,25 @@ class Zend_OpenIdTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Legacy IIS rewrite headers can be sent by any client, see https://framework.zend.com/security/advisory/ZF2018-01
+     */
+    public function testSelfUrlIgnoresLegacyRewriteHeaders()
+    {
+        unset($_SERVER['SCRIPT_URI']);
+        unset($_SERVER['HTTPS']);
+        unset($_SERVER['SERVER_PORT']);
+        $_SERVER['HTTP_HOST'] = 'www.test.com';
+        $_SERVER['REQUEST_URI'] = '/test.php?openid.mode=id_res';
+
+        $_SERVER['HTTP_X_ORIGINAL_URL'] = '/evil.php';
+        $this->assertSame( 'http://www.test.com/test.php', Zend_OpenId::selfUrl() );
+
+        unset($_SERVER['HTTP_X_ORIGINAL_URL']);
+        $_SERVER['HTTP_X_REWRITE_URL'] = '/evil.php';
+        $this->assertSame( 'http://www.test.com/test.php', Zend_OpenId::selfUrl() );
+    }
+
+    /**
      * testing testAbsolutefUrl
      *
      */

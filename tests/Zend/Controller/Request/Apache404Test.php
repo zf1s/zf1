@@ -96,6 +96,19 @@ class Zend_Controller_Request_Apache404Test extends PHPUnit_Framework_TestCase
         $this->assertEquals('/foo/bar', $requestUri);
         $this->assertSame(array('baz' => 'bat', 'bat' => 'delta'), $request->getQuery());
     }
+
+    /**
+     * Legacy IIS rewrite headers can be sent by any client, see https://framework.zend.com/security/advisory/ZF2018-01
+     */
+    public function testLegacyRewriteHeaderIsIgnored()
+    {
+        $_SERVER['HTTP_X_REWRITE_URL'] = '/admin/secret';
+        $_SERVER['REDIRECT_URL']       = '/foo/bar';
+        $_SERVER['REQUEST_URI']        = '/baz/bat';
+
+        $request = new Zend_Controller_Request_Apache404();
+        $this->assertSame('/foo/bar', $request->getRequestUri());
+    }
 }
 
 // Call Zend_Controller_Request_Apache404Test::main() if this source file is executed directly.

@@ -223,14 +223,11 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
     protected function _detectCallbackUrl()
     {
         $callbackUrl = '';
-        if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) {
-            $callbackUrl = $_SERVER['HTTP_X_ORIGINAL_URL'];
-        } elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
-            $callbackUrl = $_SERVER['HTTP_X_REWRITE_URL'];
-        } elseif (isset($_SERVER['REQUEST_URI'])) {
+        // X-Original-URL and X-Rewrite-URL headers are not used, any client can send them (ZF2018-01)
+        if (isset($_SERVER['REQUEST_URI'])) {
             $callbackUrl = $_SERVER['REQUEST_URI'];
             $scheme = 'http';
-            if ($_SERVER['HTTPS'] == 'on') {
+            if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
                 $scheme = 'https';
             }
             $schemeAndHttpHost = $scheme . '://' . $this->_getHttpHost();
@@ -257,7 +254,7 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
             return $_SERVER['HTTP_HOST'];
         }
         $scheme = 'http';
-        if ($_SERVER['HTTPS'] == 'on') {
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
             $scheme = 'https';
         }
         $name = $_SERVER['SERVER_NAME'];

@@ -127,13 +127,8 @@ class Zend_OpenId
         }
 
         $url .= $port;
-        if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) { 
-            // IIS with Microsoft Rewrite Module
-            $url .= $_SERVER['HTTP_X_ORIGINAL_URL'];
-        } elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
-            // IIS with ISAPI_Rewrite 
-            $url .= $_SERVER['HTTP_X_REWRITE_URL'];
-        } elseif (isset($_SERVER['REQUEST_URI'])) {
+        // X-Original-URL and X-Rewrite-URL headers are not used, any client can send them (ZF2018-01)
+        if (isset($_SERVER['REQUEST_URI'])) {
             $query = strpos($_SERVER['REQUEST_URI'], '?');
             if ($query === false) {
                 $url .= $_SERVER['REQUEST_URI'];
