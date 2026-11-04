@@ -1089,12 +1089,14 @@ class Zend_Wildfire_WildfireTest_TestObject2
   static protected $staticProtected = 'StaticProtected';
 }
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_TestObject3
 {
   var $name = 'Name';
   var $value = 'Value';
 }
 
+#[AllowDynamicProperties]
 class Zend_Wildfire_WildfireTest_JsonEncodingTestClass
 {
 }
