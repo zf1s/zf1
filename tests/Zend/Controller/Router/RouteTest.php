@@ -249,20 +249,13 @@ class Zend_Controller_Router_RouteTest extends PHPUnit_Framework_TestCase
     public function testEmptyVariableWithoutDefault()
     {
         $route = new Zend_Controller_Router_Route('tag/:tag/page/:page', array('page' => 1));
-        $values = $route->match('tag//page/3');
-
-        $this->assertArrayHasKey('tag', $values);
-        $this->assertNull($values['tag']);
-        $this->assertEquals('3', $values['page']);
+        $this->assertSame(array('tag' => null, 'page' => '3'), $route->match('tag//page/3'));
     }
 
     public function testEmptyVariableWithDefault()
     {
         $route = new Zend_Controller_Router_Route('tag/:tag/page/:page', array('tag' => 'all', 'page' => 1));
-        $values = $route->match('tag//page/3');
-
-        $this->assertEquals('all', $values['tag']);
-        $this->assertEquals('3', $values['page']);
+        $this->assertSame(array('tag' => 'all', 'page' => '3'), $route->match('tag//page/3'));
     }
 
     public function testVariablesWithDefaultAndValue()
