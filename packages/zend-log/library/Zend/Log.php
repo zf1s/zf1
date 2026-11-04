@@ -597,14 +597,14 @@ class Zend_Log
         );
         // PHP 5.3.0+
         if (defined('E_DEPRECATED')) {
-            $this->_errorHandlerMap['E_DEPRECATED'] = Zend_Log::DEBUG;
+            $this->_errorHandlerMap[E_DEPRECATED] = Zend_Log::DEBUG;
         }
         if (defined('E_USER_DEPRECATED')) {
-            $this->_errorHandlerMap['E_USER_DEPRECATED'] = Zend_Log::DEBUG;
+            $this->_errorHandlerMap[E_USER_DEPRECATED] = Zend_Log::DEBUG;
         }
-        // E_STRICT has been deprecated in PHP 8.4
-        if (defined('E_STRICT')) {
-            $this->_errorHandlerMap['E_STRICT'] = Zend_Log::DEBUG;
+        // E_STRICT has been deprecated in PHP 8.4, it is not raised since PHP 8.0
+        if (PHP_VERSION_ID < 80400) {
+            $this->_errorHandlerMap[E_STRICT] = Zend_Log::DEBUG;
         }
 
         $this->_registeredErrorHandler = true;

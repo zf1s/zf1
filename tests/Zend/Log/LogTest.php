@@ -380,6 +380,43 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @group ZF-9192
+     */
+    public function testErrorHandlerLogsDeprecationsWithDebugPriority()
+    {
+        $writer = new Zend_Log_Writer_Mock();
+        $logger = new Zend_Log($writer);
+
+        $oldErrorLevel = error_reporting(E_ALL);
+        // the logger passes errors on to the original handler, keep them away from phpunit
+        set_error_handler(array($this, 'ignoreError'));
+        $logger->registerErrorHandler();
+
+        trigger_error('Testing user deprecation', E_USER_DEPRECATED);
+        $logger->errorHandler(E_DEPRECATED, 'Testing deprecation', __FILE__, __LINE__);
+        if (PHP_VERSION_ID < 80400) {
+            $logger->errorHandler(E_STRICT, 'Testing strict standards', __FILE__, __LINE__);
+        }
+
+        restore_error_handler(); // Pop off the Logger
+        restore_error_handler(); // Pop off ignoreError
+        error_reporting($oldErrorLevel);
+
+        $this->assertCount(PHP_VERSION_ID < 80400 ? 3 : 2, $writer->events);
+        foreach ($writer->events as $event) {
+            $this->assertSame(Zend_Log::DEBUG, $event['priority'], $event['message']);
+        }
+    }
+
+    /**
+     * Used by testErrorHandlerLogsDeprecationsWithDebugPriority
+     */
+    public function ignoreError()
+    {
+        return true;
+    }
+
+    /**
      * @group ZF-9870
      */
     public function testSetAndGetTimestampFormat()
