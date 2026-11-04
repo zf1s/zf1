@@ -385,7 +385,8 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
             $value = $context;
         }
 
-        $name = $this->getName();
+        // a captcha without a name looked up the '' key already, as null array offsets mean ''
+        $name = (string) $this->getName();
 
         if (isset($value[$name])) {
             $value = $value[$name];
@@ -395,11 +396,21 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
             $this->_error(self::MISSING_VALUE);
             return false;
         }
+        // e.g. captcha[input][]=... in a tampered request, strtolower() throws a TypeError on it
+        if (is_array($value['input'])) {
+            $this->_error(self::BAD_CAPTCHA);
+            return false;
+        }
         $input = strtolower($value['input']);
         $this->_setValue($input);
 
         if (!isset($value['id'])) {
             $this->_error(self::MISSING_ID);
+            return false;
+        }
+        // e.g. captcha[id][]=..., it would end up in the session namespace name as "Array"
+        if (is_array($value['id'])) {
+            $this->_error(self::BAD_CAPTCHA);
             return false;
         }
 
