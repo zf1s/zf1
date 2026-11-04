@@ -595,7 +595,7 @@ class Zend_Log
             E_CORE_ERROR        => Zend_Log::ERR,
             E_RECOVERABLE_ERROR => Zend_Log::ERR,
         );
-        // PHP 5.3.0+
+        // PHP 5.3.0+, keyed by error level like above: errorHandler() looks the priority up by $errno
         if (defined('E_DEPRECATED')) {
             $this->_errorHandlerMap[E_DEPRECATED] = Zend_Log::DEBUG;
         }

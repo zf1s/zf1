@@ -402,10 +402,15 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         restore_error_handler(); // Pop off ignoreError
         error_reporting($oldErrorLevel);
 
-        $this->assertCount(PHP_VERSION_ID < 80400 ? 3 : 2, $writer->events);
-        foreach ($writer->events as $event) {
-            $this->assertSame(Zend_Log::DEBUG, $event['priority'], $event['message']);
+        $expected = array(E_USER_DEPRECATED => Zend_Log::DEBUG, E_DEPRECATED => Zend_Log::DEBUG);
+        if (PHP_VERSION_ID < 80400) {
+            $expected[E_STRICT] = Zend_Log::DEBUG;
         }
+        $logged = array();
+        foreach ($writer->events as $event) {
+            $logged[$event['errno']] = $event['priority'];
+        }
+        $this->assertSame($expected, $logged);
     }
 
     /**
