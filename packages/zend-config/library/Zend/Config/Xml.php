@@ -101,26 +101,30 @@ class Zend_Config_Xml extends Zend_Config
         }
 
         set_error_handler(array($this, '_loadFileErrorHandler')); // Warnings and errors are suppressed
-        if (strstr($xml, '<?xml')) {
-            $config = Zend_Xml_Security::scan($xml);
-        } else {
-            try {
-                if (!$config = Zend_Xml_Security::scanFile($xml)) {
+        // restore the error handler on every exit path - otherwise a failed load (any exception thrown below)
+        // leaves it installed, silently swallowing all later errors of the caller
+        try {
+            if (strstr($xml, '<?xml')) {
+                $config = Zend_Xml_Security::scan($xml);
+            } else {
+                try {
+                    if (!$config = Zend_Xml_Security::scanFile($xml)) {
+                        // require_once 'Zend/Config/Exception.php';
+                        throw new Zend_Config_Exception(
+                            "Error failed to load $xml file"
+                        );
+                    }
+                } catch (Zend_Xml_Exception $e) {
                     // require_once 'Zend/Config/Exception.php';
                     throw new Zend_Config_Exception(
-                        "Error failed to load $xml file"
+                        $e->getMessage()
                     );
                 }
-            } catch (Zend_Xml_Exception $e) {
-                restore_error_handler();
-                // require_once 'Zend/Config/Exception.php';
-                throw new Zend_Config_Exception(
-                    $e->getMessage()
-                );
             }
+        } finally {
+            restore_error_handler();
         }
 
-        restore_error_handler();
         // Check if there was a error while loading file
         if ($this->_loadFileErrorStr !== null) {
             // require_once 'Zend/Config/Exception.php';
