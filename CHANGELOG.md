@@ -1,5 +1,14 @@
 ## Changelog:
 
+### 1.16.3 - 2026-11-04
+- general
+  - php 8.6 compatibility ([#237])
+- zend-db
+  - fix php 8.1+ deprecation when quoting null ([#236])
+
+[#236]: https://github.com/zf1s/zf1/pull/236
+[#237]: https://github.com/zf1s/zf1/pull/237
+
 ### 1.16.2 - 2026-09-14
 - zend-db
   - fix `Zend_Db_Select::from()` phpdoc - allow `Zend_Db_Select` as `$name` ([#233])

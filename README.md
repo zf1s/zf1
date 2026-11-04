@@ -4,7 +4,7 @@
 
 This is a monorepo of a fork of Zend Framework 1, made after it's reached its EOL.
 
-**PHP 5.3-8.5** compatible. _(see [PHP version support](#php-version-support) for details)_
+**PHP 5.3-8.6** compatible. _(see [PHP version support](#php-version-support) for details)_
 
 All original framework's components have been split into individual packages, which can be installed separately with `composer`, e.g.
 ```
@@ -115,7 +115,7 @@ That said, zf1s is meant as a bridge, not a destination - the recommended approa
 
 ### PHP version support
 
-- **1.16.x** (current) - supports PHP 7.1-8.5
+- **1.16.x** (current) - supports PHP 7.1-8.6
 - **1.15.x** - supports PHP 5.3-8.3, may receive backported fixes if time allows
 
 `1.15.x` can also serve as a stepping stone when coming from older PHP (<7.1): first make sure everything works on your current PHP version with `1.15.x`, then upgrade PHP to a commonly supported version (7.1-8.3), then switch to `1.16.x`.
