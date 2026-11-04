@@ -1,8 +1,20 @@
 <phpunit bootstrap="tests/bootstrap.php"
          colors="true">
-    <testsuite name="Zend Framework - Testsuite">
-        <directory>./tests/AllTests.php</directory>
-    </testsuite>
+    <testsuites>
+        <!--
+            the suites of AllTests::suiteBuffered(), which `php tests/AllTests.php` runs before AllTests::suite(),
+            listed first so their files are not loaded yet by tests/AllTests.php
+        -->
+        <testsuite name="Zend Framework - Buffered">
+            <file>./tests/Zend/OpenIdTest.php</file>
+            <file>./tests/Zend/OpenId/AllTests.php</file>
+            <file>./tests/Zend/Session/AllTests.php</file>
+            <file>./tests/Zend/Soap/AllTests.php</file>
+        </testsuite>
+        <testsuite name="Zend Framework - Testsuite">
+            <directory>./tests/AllTests.php</directory>
+        </testsuite>
+    </testsuites>
 
     <filter>
         <whitelist>

@@ -496,6 +496,9 @@ class Zend_Session extends Zend_Session_Abstract
                     throw new Zend_Session_Exception(__CLASS__ . '::' . __FUNCTION__ . '() - ' . Zend_Session_Exception::$sessionStartError);
                 }
             }
+        } elseif (!isset($_SESSION)) {
+            // session_start() defines $_SESSION, unit test mode has to as well (php < 8.1 warns when unsetting its keys otherwise)
+            $_SESSION = array();
         }
 
         parent::$_readable = true;

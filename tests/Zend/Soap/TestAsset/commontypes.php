@@ -592,7 +592,9 @@ class Zend_Soap_TestAsset_ServerTestClass
      */
     public function testFunc5()
     {
-        trigger_error("Test Message", E_USER_ERROR);
+        // passing E_USER_ERROR is deprecated as of php 8.4, the @ hides only that deprecation:
+        // error handlers are called regardless and Zend_Soap_Server still turns the error into a fault
+        @trigger_error("Test Message", E_USER_ERROR);
     }
 }
 
