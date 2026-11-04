@@ -355,10 +355,10 @@ class Zend_Soap_ServerTest extends PHPUnit_Framework_TestCase
     {
         $server = new Zend_Soap_Server();
 
-        // SOAP_FUNCTIONS_ALL as a value should pass
-        $server->addFunction(SOAP_FUNCTIONS_ALL);
+        // SOAP_FUNCTIONS_ALL as a value should pass, the constant itself is deprecated as of php 8.4
+        $server->addFunction(999);
         $server->addFunction('substr');
-        $this->assertEquals(array(SOAP_FUNCTIONS_ALL), $server->getFunctions());
+        $this->assertSame(array(999), $server->getFunctions());
     }
 
     public function testSetClass()
@@ -1122,7 +1122,9 @@ class Zend_Soap_Server_TestClass {
      */
     function testFunc5()
     {
-        trigger_error("Test Message", E_USER_ERROR);
+        // passing E_USER_ERROR is deprecated as of php 8.4, the @ hides only that deprecation:
+        // error handlers are called regardless and Zend_Soap_Server still turns the error into a fault
+        @trigger_error("Test Message", E_USER_ERROR);
     }
 }
 
