@@ -271,14 +271,20 @@ class Zend_Session extends Zend_Session_Abstract
             return;
         }
 
-        $result = session_set_save_handler(
-            array(&$saveHandler, 'open'),
-            array(&$saveHandler, 'close'),
-            array(&$saveHandler, 'read'),
-            array(&$saveHandler, 'write'),
-            array(&$saveHandler, 'destroy'),
-            array(&$saveHandler, 'gc')
-            );
+        if (PHP_VERSION_ID >= 80400) {
+            // passing the callbacks one by one is deprecated as of php 8.4,
+            // false: the callback form does not register session_write_close() on shutdown either
+            $result = session_set_save_handler(new Zend_Session_SaveHandler_SessionHandlerAdapter($saveHandler), false);
+        } else {
+            $result = session_set_save_handler(
+                array(&$saveHandler, 'open'),
+                array(&$saveHandler, 'close'),
+                array(&$saveHandler, 'read'),
+                array(&$saveHandler, 'write'),
+                array(&$saveHandler, 'destroy'),
+                array(&$saveHandler, 'gc')
+                );
+        }
 
         if (!$result) {
             throw new Zend_Session_Exception('Unable to set session handler');

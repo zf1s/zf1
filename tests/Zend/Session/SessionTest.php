@@ -117,7 +117,8 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
      */
     public function sortResult(array $result)
     {
-        $results = explode(';', array_pop($result));
+        // no output at all once the namespace expired
+        $results = explode(';', (string) array_pop($result));
         sort($results);
         return implode(';', $results);
     }

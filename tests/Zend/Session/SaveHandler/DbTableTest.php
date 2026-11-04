@@ -352,6 +352,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
 
         $this->_usedSaveHandlers[] =
             $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
+        // runs in a separate process, so the real session_set_save_handler() and session_start()
+        // can be used without affecting other tests
+        Zend_Session::$_unitTestEnabled = false;
         Zend_Session::setSaveHandler($saveHandler);
         Zend_Session::start();
 
@@ -371,7 +374,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
 
         session_write_close();
 
-        foreach ($this->_db->query('SELECT * FROM Sessions')->fetchAll() as $row) {
+        $rows = $this->_db->query('SELECT * FROM Sessions')->fetchAll();
+        $this->assertCount(1, $rows, 'Session was not saved through the save handler');
+        foreach ($rows as $row) {
             $this->assertSame($row[$config[Zend_Session_SaveHandler_DbTable::DATA_COLUMN]],
                 $testAgainst, 'Data was not saved properly'
             );
