@@ -246,6 +246,25 @@ class Zend_Controller_Router_RouteTest extends PHPUnit_Framework_TestCase
         $this->assertNull($values['year']);
     }
 
+    public function testEmptyVariableWithoutDefault()
+    {
+        $route = new Zend_Controller_Router_Route('tag/:tag/page/:page', array('page' => 1));
+        $values = $route->match('tag//page/3');
+
+        $this->assertArrayHasKey('tag', $values);
+        $this->assertNull($values['tag']);
+        $this->assertEquals('3', $values['page']);
+    }
+
+    public function testEmptyVariableWithDefault()
+    {
+        $route = new Zend_Controller_Router_Route('tag/:tag/page/:page', array('tag' => 'all', 'page' => 1));
+        $values = $route->match('tag//page/3');
+
+        $this->assertEquals('all', $values['tag']);
+        $this->assertEquals('3', $values['page']);
+    }
+
     public function testVariablesWithDefaultAndValue()
     {
         $route = new Zend_Controller_Router_Route(':controller/:action/:year', array('year' => '2006'));
