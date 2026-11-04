@@ -252,6 +252,29 @@ class Zend_Captcha_FigletTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->element->isValid("", $input));
     }
 
+    public function testArrayInputNotValid()
+    {
+        $this->testCaptchaIsRendered();
+        $input = array($this->element->getName() => array("id" => $this->captcha->getId(), "input" => array($this->captcha->getWord())));
+        $this->assertFalse($this->element->isValid("", $input));
+        $this->assertSame(array(Zend_Captcha_Word::BAD_CAPTCHA), $this->captcha->getErrors());
+    }
+
+    public function testArrayIdNotValid()
+    {
+        $this->testCaptchaIsRendered();
+        $input = array($this->element->getName() => array("id" => array($this->captcha->getId()), "input" => $this->captcha->getWord()));
+        $this->assertFalse($this->element->isValid("", $input));
+        $this->assertSame(array(Zend_Captcha_Word::BAD_CAPTCHA), $this->captcha->getErrors());
+    }
+
+    public function testCaptchaWithoutNameValidatesNotNestedArray()
+    {
+        $captcha = new Zend_Captcha_Figlet(array('sessionClass' => 'Zend_Captcha_FigletTest_SessionContainer'));
+        $id = $captcha->generate();
+        $this->assertTrue($captcha->isValid(array('id' => $id, 'input' => $captcha->getWord())));
+    }
+
     public function testUsesWordCaptchaDecoratorByDefault()
     {
         $this->assertEquals('Captcha_Word', $this->element->getCaptcha()->getDecorator());
