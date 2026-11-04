@@ -104,6 +104,21 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends PHPUnit_Framework_T
         $_SERVER = $this->_originalServer;
     }
 
+    /**
+     * Legacy IIS rewrite headers can be sent by any client, see https://framework.zend.com/security/advisory/ZF2018-01
+     */
+    public function testDetectCallbackUrlIgnoresLegacyRewriteHeaders()
+    {
+        $_SERVER['HTTP_X_ORIGINAL_URL'] = '/evil/path';
+        $_SERVER['HTTP_X_REWRITE_URL']  = '/evil/path';
+        $_SERVER['REQUEST_URI']         = '/some/path/callback/verifytokenkey';
+        $_SERVER['HTTP_HOST']           = 'www.example.com';
+        unset($_SERVER['HTTPS']);
+
+        $callback = new Zend_Feed_Pubsubhubbub_Subscriber_CallbackTestDetectCallbackUrl();
+        $this->assertSame('/some/path/callback/verifytokenkey', $callback->detectCallbackUrl());
+    }
+
 
     public function testCanSetHttpResponseObject()
     {
@@ -527,6 +542,17 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends PHPUnit_Framework_T
         return $mocked;
     }
 
+}
+
+/**
+ * Exposes Zend_Feed_Pubsubhubbub_CallbackAbstract::_detectCallbackUrl()
+ */
+class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTestDetectCallbackUrl extends Zend_Feed_Pubsubhubbub_Subscriber_Callback
+{
+    public function detectCallbackUrl()
+    {
+        return $this->_detectCallbackUrl();
+    }
 }
 
 /**
