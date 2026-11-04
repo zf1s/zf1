@@ -86,18 +86,6 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework
 
     public function setUp()
     {
-        $savePath = ini_get('session.save_path');
-        if (strpos($savePath, ';')) {
-            $savePath = explode(';', $savePath);
-            $savePath = array_pop($savePath);
-        }
-        if (empty($savePath)) {
-            $this->markTestSkipped('Cannot test FlashMessenger due to unavailable session save path');
-        }
-
-        if (headers_sent()) {
-            $this->markTestSkipped('Cannot test FlashMessenger: cannot start session because headers already sent');
-        }
         Zend_Session::start();
 
         $this->front      = Zend_Controller_Front::getInstance();
@@ -113,35 +101,38 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework
 
     public function tearDown()
     {
+        FlashMessengerControllerActionHelper::reset();
         Zend_Session_SessionHelper::reset();
     }
 
     public function testLoadFlashMessenger()
     {
-        $this->markTestSkipped();
-        $response = $this->front->dispatch($this->request);
-        $this->assertEquals('Zend_Controller_Action_Helper_FlashMessenger123456', $response->getBody());
+        // the test controller has no view script to render
+        $this->front->setParam('noViewRenderer', true);
+        $request  = new Zend_Controller_Request_Http('http://framework.zend.com/helper-flash-messenger');
+        $response = $this->front->dispatch($request);
+        $this->assertSame('Zend_Controller_Action_Helper_FlashMessenger123456', $response->getBody());
     }
 
     public function testClearMessages()
     {
-        $this->markTestSkipped();
         $this->helper->addMessage('foo');
         $this->helper->addMessage('bar');
-        $this->assertTrue($this->helper->hasMessages());
-        $this->assertEquals(2, count($this->helper));
 
-        $this->helper->clearMessages();
-        $this->assertFalse($this->helper->hasMessages());
-        $this->assertEquals(0, count($this->helper));
+        // added messages are available in the next request, fake it like in testSimulateCrossRequestMessagePassing()
+        FlashMessengerControllerActionHelper::reset();
+        $helper = new Zend_Controller_Action_Helper_FlashMessenger();
+        $this->assertSame(array('foo', 'bar'), $helper->getMessages());
+
+        $this->assertTrue($helper->clearMessages());
+        $this->assertSame(array(), $helper->getMessages());
+        $this->assertSame(0, count($helper));
     }
 
     public function testDirectProxiesToAddMessage()
     {
-        $this->markTestSkipped();
         $this->helper->direct('foo');
-        $this->assertTrue($this->helper->hasMessages());
-        $this->assertEquals(1, count($this->helper));
+        $this->assertSame(array('foo'), $this->helper->getCurrentMessages());
     }
 
     /**
@@ -233,7 +224,7 @@ class FlashMessengerControllerActionHelper extends Zend_Controller_Action_Helper
 {
     public function getName() { return 'FlashMessenger'; }
 
-    public function reset()
+    public static function reset()
     {
         self::$_messages = array();
         self::$_session = NULL;
