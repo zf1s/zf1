@@ -127,6 +127,7 @@ class Zend_OpenId
         }
 
         $url .= $port;
+        // X-Original-URL and X-Rewrite-URL headers are not used, any client can send them (ZF2018-01)
         if (isset($_SERVER['REQUEST_URI'])) {
             $query = strpos($_SERVER['REQUEST_URI'], '?');
             if ($query === false) {

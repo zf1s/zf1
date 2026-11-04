@@ -268,6 +268,7 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
      */
     protected function getRequestUriWithoutParameters()
     {
+        // X-Original-URL and X-Rewrite-URL headers are not used, any client can send them (ZF2018-01)
         if (isset($_SERVER['REQUEST_URI'])) {
             $requestUri = $_SERVER['REQUEST_URI'];
         } elseif (isset($_SERVER['ORIG_PATH_INFO'])) { // IIS 5.0, PHP as CGI

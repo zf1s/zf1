@@ -223,6 +223,7 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
     protected function _detectCallbackUrl()
     {
         $callbackUrl = '';
+        // X-Original-URL and X-Rewrite-URL headers are not used, any client can send them (ZF2018-01)
         if (isset($_SERVER['REQUEST_URI'])) {
             $callbackUrl = $_SERVER['REQUEST_URI'];
             $scheme = 'http';

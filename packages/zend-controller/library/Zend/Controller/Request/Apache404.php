@@ -46,6 +46,7 @@ class Zend_Controller_Request_Apache404 extends Zend_Controller_Request_Http
     {
         $parseUriGetVars = false;
         if ($requestUri === null) {
+            // X-Original-URL and X-Rewrite-URL headers are not used, any client can send them (ZF2018-01)
             if (isset($_SERVER['REDIRECT_URL'])) {  // Check if using mod_rewrite
                 $requestUri = $_SERVER['REDIRECT_URL'];
                 if (isset($_SERVER['REDIRECT_QUERY_STRING'])) {
