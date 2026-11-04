@@ -1044,6 +1044,19 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     }
 
     /**
+     * test that quote() and quoteInto() accept null
+     * and return an empty quoted string.
+     */
+    public function testAdapterQuoteNull()
+    {
+        $value = $this->_db->quote(null);
+        $this->assertEquals("''", $value);
+
+        $value = $this->_db->quoteInto('foo = ?', null);
+        $this->assertEquals("foo = ''", $value);
+    }
+
+    /**
      * test that quote() escapes a single-quote
      * character in a string.
      */
