@@ -51,6 +51,13 @@ class Zend_Form_Element implements Zend_Validate_Interface
     const VALIDATE  = 'VALIDATE';
 
     /**
+     * Error key and message used when an array value is rejected, see $_rejectArrayValue
+     * The message is the one of the standard validators, so existing translations apply.
+     */
+    const INVALID_TYPE         = 'invalidType';
+    const INVALID_TYPE_MESSAGE = 'Invalid type given. String expected';
+
+    /**
      * Default view helper to use
      * @var string
      */
@@ -128,6 +135,18 @@ class Zend_Form_Element implements Zend_Validate_Interface
      * @var bool
      */
     protected $_isArray = false;
+
+    /**
+     * Should isValid() reject an array value when the element does not represent an array?
+     *
+     * Enabled by the built-in elements holding a single value (text, select, ...), whose filters,
+     * validators and view helpers do not expect an array, e.g. from field[]=... in a tampered request.
+     * Disabled by default, so other elements, like composite elements built from several inputs,
+     * keep receiving array values.
+     *
+     * @var bool
+     */
+    protected $_rejectArrayValue = false;
 
     /**
      * Is the error marked as in an invalid state?
@@ -1363,6 +1382,9 @@ class Zend_Form_Element implements Zend_Validate_Interface
     public function isValid($value, $context = null)
     {
         $this->setValue($value);
+        if ($this->_rejectArrayValue && !$this->isArray() && is_array($this->_value)) {
+            return $this->_failArrayValue();
+        }
         $value = $this->getValue();
 
         if ((('' === $value) || (null === $value))
@@ -1469,6 +1491,38 @@ class Zend_Form_Element implements Zend_Validate_Interface
         }
 
         return $result;
+    }
+
+    /**
+     * Fail validation of an array value, see $_rejectArrayValue
+     *
+     * The value is dropped, so it is neither filtered nor rendered back into the form.
+     *
+     * @return bool always false
+     */
+    protected function _failArrayValue()
+    {
+        $this->setValue(null);
+
+        if ($this->_hasErrorMessages()) {
+            $this->_messages = $this->_getErrorMessages();
+            $this->_errors   = $this->_messages;
+            return false;
+        }
+
+        $message    = self::INVALID_TYPE_MESSAGE;
+        $translator = $this->getTranslator();
+        if (null === $translator && !$this->translatorIsDisabled()) {
+            // same fallback as for the validators in isValid()
+            $translator = Zend_Validate_Abstract::getDefaultTranslator();
+        }
+        if (null !== $translator) {
+            $message = $translator->translate($message);
+        }
+        $this->_messages = array(self::INVALID_TYPE => $message);
+        $this->_errors   = array(self::INVALID_TYPE);
+
+        return false;
     }
 
     /**
