@@ -102,6 +102,16 @@ class Zend_Search_Lucene_Storage_DirectoryTest extends PHPUnit_Framework_TestCas
         $directory->close();
     }
 
+    public function testFileListOfRemovedDirectory()
+    {
+        $path = dirname(__FILE__) . '/_tempFiles/_files/removed';
+        $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem($path);
+        rmdir($path);
+
+        // opendir() warns about the missing directory
+        $this->assertSame(array(), @$directory->fileList());
+    }
+
     public function testFilesystemSubfoldersAutoCreation()
     {
         $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_tempFiles/_files/dir1/dir2/dir3');

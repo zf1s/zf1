@@ -237,7 +237,11 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
                 return false;
             }
         }
-        $array = $resultFast !== false ? unserialize($resultFast) : unserialize($resultSlow);
+        // the array from _prepareData() holds the data string and numbers, never create objects from a backend
+        $array = unserialize($resultFast !== false ? $resultFast : $resultSlow, array('allowed_classes' => false));
+        if (!is_array($array)) {
+            return false;
+        }
         
         //In case no cache entry was found in the FastCache and auto-filling is enabled, copy data to FastCache
         if ($resultFast === false && $this->_options['auto_fill_fast_cache']) {

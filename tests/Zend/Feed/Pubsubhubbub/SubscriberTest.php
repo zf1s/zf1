@@ -57,6 +57,14 @@ class Zend_Feed_Pubsubhubbub_SubscriberTest extends PHPUnit_Framework_TestCase
     }
 
 
+    public function testGeneratesRandomVerifyToken()
+    {
+        $subscriber = new Zend_Feed_Pubsubhubbub_SubscriberTest_Subscriber();
+        $token = $subscriber->generateVerifyToken();
+        $this->assertRegExp('/^[0-9a-f]{32}$/', $token);
+        $this->assertNotSame($token, $subscriber->generateVerifyToken());
+    }
+
     public function testAddsHubServerUrl()
     {
         $this->_subscriber->addHubUrl('http://www.example.com/hub');
@@ -351,4 +359,15 @@ class Zend_Feed_Pubsubhubbub_SubscriberTest extends PHPUnit_Framework_TestCase
         return $mocked;
     }
 
+}
+
+/**
+ * Exposes Zend_Feed_Pubsubhubbub_Subscriber::_generateVerifyToken()
+ */
+class Zend_Feed_Pubsubhubbub_SubscriberTest_Subscriber extends Zend_Feed_Pubsubhubbub_Subscriber
+{
+    public function generateVerifyToken()
+    {
+        return $this->_generateVerifyToken();
+    }
 }
