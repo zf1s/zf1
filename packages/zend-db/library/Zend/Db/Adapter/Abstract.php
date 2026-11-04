@@ -903,6 +903,11 @@ abstract class Zend_Db_Adapter_Abstract
             return $quotedValue;
         }
 
+        // php 8.1+ deprecates passing null to the string functions used by _quote(), quote it as an empty string like before
+        if ($value === null) {
+            $value = '';
+        }
+
         return $this->_quote($value);
     }
 
