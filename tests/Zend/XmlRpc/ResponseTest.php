@@ -147,7 +147,9 @@ class Zend_XmlRpc_ResponseTest extends PHPUnit_Framework_TestCase
         $invalidResponse = 'foo';
         $response = new Zend_XmlRpc_Response();
         $this->assertFalse($this->_errorOccured);
-        $this->assertFalse($response->loadXml($invalidResponse));
+        $loaded = $response->loadXml($invalidResponse);
+        restore_error_handler();
+        $this->assertFalse($loaded);
         $this->assertFalse($this->_errorOccured);
     }
 
