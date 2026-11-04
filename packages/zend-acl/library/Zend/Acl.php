@@ -230,14 +230,14 @@ class Zend_Acl
         }
 
         foreach ($this->_rules['allResources']['byRoleId'] as $roleIdCurrent => $rules) {
-            if ($roleId === $roleIdCurrent) {
+            if ((string) $roleId === (string) $roleIdCurrent) {
                 unset($this->_rules['allResources']['byRoleId'][$roleIdCurrent]);
             }
         }
         foreach ($this->_rules['byResourceId'] as $resourceIdCurrent => $visitor) {
             if (array_key_exists('byRoleId', $visitor)) {
                 foreach ($visitor['byRoleId'] as $roleIdCurrent => $rules) {
-                    if ($roleId === $roleIdCurrent) {
+                    if ((string) $roleId === (string) $roleIdCurrent) {
                         unset($this->_rules['byResourceId'][$resourceIdCurrent]['byRoleId'][$roleIdCurrent]);
                     }
                 }
@@ -462,7 +462,7 @@ class Zend_Acl
 
         foreach ($resourcesRemoved as $resourceIdRemoved) {
             foreach ($this->_rules['byResourceId'] as $resourceIdCurrent => $rules) {
-                if ($resourceIdRemoved === $resourceIdCurrent) {
+                if ((string) $resourceIdRemoved === (string) $resourceIdCurrent) {
                     unset($this->_rules['byResourceId'][$resourceIdCurrent]);
                 }
             }
@@ -748,12 +748,12 @@ class Zend_Acl
                          * set resources (per privilege as well)
                          */
                         foreach (array_merge(array(null), $allResources) as $resource) {
-                            $rules =& $this->_getRules($resource, $role, true);
+                            $rules =& $this->_getRules($resource, $role);
                             if (null === $rules) {
                                 continue;
                             }
                             if (0 === count($privileges)) {
-                                if (null === $role) {
+                                if (null === $resource && null === $role) {
                                     if ($type === $rules['allPrivileges']['type']) {
                                         $rules = array(
                                             'allPrivileges' => array(

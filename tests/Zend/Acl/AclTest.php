@@ -882,6 +882,79 @@ class Zend_Acl_AclTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Ensures that removal of a Role with a numeric identifier results in its rules being removed
+     *
+     * PHP stores numeric string identifiers as integer array keys, so a strict comparison
+     * against the string identifier never matched and the rules outlived the Role.
+     *
+     * @return void
+     */
+    public function testRuleRoleRemoveWithNumericIdentifier()
+    {
+        $this->_acl->addRole(new Zend_Acl_Role('5'))
+                   ->add(new Zend_Acl_Resource('area'))
+                   ->allow('5')
+                   ->allow('5', 'area');
+        $this->_acl->removeRole('5');
+        $this->_acl->addRole(new Zend_Acl_Role('5'));
+        $this->assertFalse($this->_acl->isAllowed('5'));
+        $this->assertFalse($this->_acl->isAllowed('5', 'area'));
+    }
+
+    /**
+     * Ensures that removal of a Resource with a numeric identifier results in its rules being removed
+     *
+     * @return void
+     */
+    public function testRulesResourceRemoveWithNumericIdentifier()
+    {
+        $this->_acl->add(new Zend_Acl_Resource('123'))
+                   ->allow(null, '123');
+        $this->_acl->remove('123');
+        $this->_acl->add(new Zend_Acl_Resource('123'));
+        $this->assertFalse($this->_acl->isAllowed(null, '123'));
+    }
+
+    /**
+     * Ensures that removing allow rules for all Roles on all Resources removes the per-Resource
+     * rules instead of turning them into deny rules
+     *
+     * @return void
+     */
+    public function testRemoveAllowWithNullForRolesAndResourcesRemovesResourceRules()
+    {
+        $this->_acl->addRole(new Zend_Acl_Role('guest'))
+                   ->add(new Zend_Acl_Resource('area'))
+                   ->add(new Zend_Acl_Resource('other'))
+                   ->allow(null, 'area');
+        $this->_acl->removeAllow(null, null);
+        $this->assertFalse($this->_acl->isAllowed('guest', 'area'));
+
+        // a global allow applies again, no deny rule was left on 'area'
+        $this->_acl->allow();
+        $this->assertTrue($this->_acl->isAllowed('guest', 'area'));
+        $this->assertTrue($this->_acl->isAllowed('guest', 'other'));
+    }
+
+    /**
+     * Ensures that removing deny rules for all Roles on all Resources removes the per-Resource rules
+     *
+     * @return void
+     */
+    public function testRemoveDenyWithNullForRolesAndResourcesRemovesResourceRules()
+    {
+        $this->_acl->addRole(new Zend_Acl_Role('guest'))
+                   ->add(new Zend_Acl_Resource('area'))
+                   ->add(new Zend_Acl_Resource('other'))
+                   ->allow()
+                   ->deny(null, 'area');
+        $this->assertFalse($this->_acl->isAllowed('guest', 'area'));
+        $this->_acl->removeDeny(null, null);
+        $this->assertTrue($this->_acl->isAllowed('guest', 'area'));
+        $this->assertTrue($this->_acl->isAllowed('guest', 'other'));
+    }
+
+    /**
      * Ensures that an example for a content management system is operable
      *
      * @return void
