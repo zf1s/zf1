@@ -9,12 +9,20 @@
         "ext-dom": "*",
         "ext-mbstring": "*",
         "ext-simplexml": "*",
+        "zf1s/zend-date": "^1.16.3",
         "zf1s/zend-exception": "^1.16.3",
         "zf1s/zend-http": "^1.16.3",
         "zf1s/zend-loader": "^1.16.3",
         "zf1s/zend-uri": "^1.16.3",
+        "zf1s/zend-validate": "^1.16.3",
         "zf1s/zend-version": "^1.16.3",
         "zf1s/zend-xml": "^1.16.3"
+    },
+    "suggest": {
+        "zf1s/zend-cache": "Used in special situations or with special adapters",
+        "zf1s/zend-config": "Used in special situations or with special adapters",
+        "zf1s/zend-controller": "Used in special situations or with special adapters",
+        "zf1s/zend-db": "Used in special situations or with special adapters"
     },
     "autoload": {
         "psr-0": {
